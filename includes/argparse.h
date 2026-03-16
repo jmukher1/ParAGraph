@@ -255,7 +255,7 @@ namespace {
 template <class T> inline const auto generic_strtod = nullptr;
 template <> inline const auto generic_strtod<float> = strtof;
 template <> inline const auto generic_strtod<double> = strtod;
-template <> inline const auto generic_strtod<long double> = strtold;
+//template <> inline const auto generic_strtod<long float> = strtold;
 
 } // namespace
 

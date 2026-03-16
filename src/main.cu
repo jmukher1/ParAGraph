@@ -1,11 +1,17 @@
 #include <iostream>
 
+#include "abm.cuh"
+#include "int2.cuh"
 #include "argparse.h"
-#include "abm.h"
+#include <stdio.h>
+#include <stdlib.h>
+#include <iostream>
 
+using namespace std;
 
 int main(int argc, char* argv[]) {
     std::chrono::steady_clock::time_point t0 = std::chrono::steady_clock::now();
+    printf("\nStart ABM....");
     argparse::ArgumentParser main_program("abm");
 
     main_program.add_description("Agent Based Modelling");
@@ -74,6 +80,7 @@ int main(int argc, char* argv[]) {
         .default_value(int(1))
         .help("Log level where 0 = silent, 1 = info, 2 = verbose")
         .scan<'d', int>();
+    printf("\nparse_args....");
     try {
         main_program.parse_args(argc, argv);
     } catch (const std::runtime_error& err) {
@@ -82,6 +89,7 @@ int main(int argc, char* argv[]) {
         std::exit(1);
     }
 
+    printf("\nedgelist....");
     std::string edgelist = main_program.get<std::string>("--edgelist");
     std::string nodelist = main_program.get<std::string>("--nodelist");
     std::string out_degree_bag = main_program.get<std::string>("--out-degree-bag");
@@ -94,27 +102,24 @@ int main(int argc, char* argv[]) {
     double fitness_weight = main_program.get<double>("--fitness-weight");
     double growth_rate = main_program.get<double>("--growth-rate");
     int num_cycles = main_program.get<int>("--num-cycles");
+    printf("\nnum-cycles....");
     double same_year_proportion = main_program.get<double>("--same-year-proportion");
     std::string output_file = main_program.get<std::string>("--output-file");
+    printf("\noutput-file....");
     std::string auxiliary_information_file = main_program.get<std::string>("--auxiliary-information-file");
     std::string log_file = main_program.get<std::string>("--log-file");
+    printf("\nlog-file = %s....", log_file.c_str());
     int num_processors = main_program.get<int>("--num-processors");
+    printf("\nnum-processors = %d....", num_processors);
     int log_level = main_program.get<int>("--log-level") - 1; // so that enum is cleaner
+     printf("\nlog-level = %d", log_level);
+    printf("\nInit ABM....");
     ABM* abm = new ABM(edgelist, nodelist, out_degree_bag, recency_probabilities, planted_nodes, alpha, fully_random_citations, preferential_weight, recency_weight, fitness_weight, growth_rate, num_cycles, same_year_proportion, output_file, auxiliary_information_file, log_file, num_processors, log_level);
-    abm->main();
+    printf("\nExec ABM....");
+    execute(abm);
     std::chrono::steady_clock::time_point t1 = std::chrono::steady_clock::now();
     auto durationE2E = std::chrono::duration_cast<std::chrono::milliseconds>(t1 - t0);
-    //std::cout << "\nE2E Time for num_cycles = "<< num_cycles << " with growth_rate = "<< (100*growth_rate) 
-    //    << " % with thread count = " <<  num_processors << " is: " << durationE2E.count()/1000 << " seconds." << std::endl;
-    std::ostringstream msg;
-
-    msg << "\nE2E Time for num_cycles = " << num_cycles
-        << " with growth_rate = " << (100 * growth_rate)
-        << " % with thread count = " << num_processors
-        << " is: " << durationE2E.count() / 1000
-        << " seconds.";
-
-    abm->WriteToLogFile(msg.str(), Log::info);
-
+    std::cout << "\nE2E Time for num_cycles = "<< num_cycles << " with growth_rate = "<< (100*growth_rate) << " % = " << durationE2E.count()/1000 << " seconds." << std::endl;
+    
     delete abm;
 }
