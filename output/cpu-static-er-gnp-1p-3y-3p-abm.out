@@ -1,0 +1,9 @@
+========================================
+Citation Network Growth Simulation
+========================================
+Model: Erdős-Rényi G(n,p)
+  - Each edge created with probability p = 0.01
+Growth rate: 0.03
+Num cycles: 3
+Output: ./output/cpu-static-output-er-gnp-1p-3y-3p.edgelist
+========================================

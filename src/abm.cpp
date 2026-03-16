@@ -697,6 +697,28 @@ void ABM::AgeAuthors(std::map<int, std::vector<int>>& author_to_publication_map,
 }
 */
 
+// ---------------------------------------------------------------------------
+// Erdos-Renyi G(n,p): connect new node to each existing node with prob p.
+// Returns number of edges actually added.
+// ---------------------------------------------------------------------------
+int ABM::MakeERGNPCitations(Graph* graph,
+                             const std::map<int, int>& reverse_continuous_node_mapping,
+                             int* citations,
+                             double p) {
+    std::random_device rand_dev;
+    std::minstd_rand generator{rand_dev()};
+    std::uniform_real_distribution<double> uniform_dist{0.0, 1.0};
+
+    int num_cited = 0;
+    int graph_size = static_cast<int>(graph->GetNodeSet().size());
+    for (int i = 0; i < graph_size; i++) {
+        if (uniform_dist(generator) < p) {
+            citations[num_cited++] = reverse_continuous_node_mapping.at(i);
+        }
+    }
+    return num_cited;
+}
+
 int ABM::main() {
     /* reading input edgelist, nodelist, outdegree bag, recency probabilities */
     Graph* graph = new Graph(this->edgelist, this->nodelist);
@@ -773,27 +795,22 @@ int ABM::main() {
         /* std::cout << "new year" << std::endl; */
         int current_graph_size = graph->GetNodeSet().size();
         this->WriteToLogFile("current year is: " + std::to_string(current_year) + " and the graph is " + std::to_string(current_graph_size) + " nodes large", Log::info);
-        this->FillInDegreeArr(graph, continuous_node_mapping, in_degree_arr);
-        this->WriteToLogFile("indegree for current year filled", Log::debug);
-        this->FillFitnessArr(graph, continuous_node_mapping, current_year, fitness_arr);
-        this->WriteToLogFile("fitness for current year filled", Log::debug);
-        this->FillRecencyArr(graph, reverse_continuous_node_mapping, current_year, recency_arr);
-        this->WriteToLogFile("recency for current year calculated", Log::debug);
-        this->CalculateScores(in_degree_arr, pa_arr, current_graph_size);
-        /* double current_max_pa_score = pa_arr[0]; */
-        /* int current_max_pa_node_id = reverse_continuous_node_mapping.at(0); */
-        /* for(int i = 0; i < current_graph_size; i ++) { */
-        /*     if(pa_arr[i] > current_max_pa_score) { */
-        /*         current_max_pa_score = pa_arr[i]; */
-        /*         current_max_pa_node_id = reverse_continuous_node_mapping.at(i); */
-        /*     } */
-        /* } */
-        /* this->WriteToLogFile("max indegree pa score: " + std::to_string(current_max_pa_score), Log::debug); */
-        /* this->WriteToLogFile("max indegree pa node id: " + std::to_string(current_max_pa_node_id), Log::debug); */
 
-        this->WriteToLogFile("indegree gammad", Log::debug);
-        this->CalculateScores(fitness_arr, fit_arr, current_graph_size);
-        this->WriteToLogFile("fitness gammad", Log::debug);
+        bool is_er_model = (this->model_name == "er" || this->model_name == "er-gnp");
+
+        if (!is_er_model) {
+            // PA model: build score arrays used by MakeCitations
+            this->FillInDegreeArr(graph, continuous_node_mapping, in_degree_arr);
+            this->WriteToLogFile("indegree for current year filled", Log::debug);
+            this->FillFitnessArr(graph, continuous_node_mapping, current_year, fitness_arr);
+            this->WriteToLogFile("fitness for current year filled", Log::debug);
+            this->FillRecencyArr(graph, reverse_continuous_node_mapping, current_year, recency_arr);
+            this->WriteToLogFile("recency for current year calculated", Log::debug);
+            this->CalculateScores(in_degree_arr, pa_arr, current_graph_size);
+            this->WriteToLogFile("indegree gammad", Log::debug);
+            this->CalculateScores(fitness_arr, fit_arr, current_graph_size);
+            this->WriteToLogFile("fitness gammad", Log::debug);
+        }
 
         /* initialize new nodes */
         int num_new_nodes = std::ceil(current_graph_size * this->growth_rate);
@@ -807,52 +824,80 @@ int ABM::main() {
             next_node_id ++;
         }
         this->WriteToLogFile("all new nodes initialized with years and mapped", Log::debug);
-        this->FillSameYearSourceNodes(same_year_source_nodes, new_nodes_vec.size());
 
-
-        for(size_t i = 0; i < new_nodes_vec.size(); i ++) {
-            int new_node = new_nodes_vec[i];
-            std::vector<int> generator_nodes = this->GetGeneratorNodes(graph, reverse_continuous_node_mapping);
-            this->UpdateGraphAttributesGeneratorNodes(graph, new_node, generator_nodes);
+        if (!is_er_model) {
+            // PA: pick generator node up front so it can be stored as an attribute
+            for(size_t i = 0; i < new_nodes_vec.size(); i ++) {
+                int new_node = new_nodes_vec[i];
+                std::vector<int> generator_nodes = this->GetGeneratorNodes(graph, reverse_continuous_node_mapping);
+                this->UpdateGraphAttributesGeneratorNodes(graph, new_node, generator_nodes);
+            }
         }
+        this->FillSameYearSourceNodes(same_year_source_nodes, new_nodes_vec.size());
 
         #pragma omp parallel for reduction(merge_int_pair_vecs: new_edges_vec)
         for(size_t i = 0; i < new_nodes_vec.size(); i ++) {
             std::vector<std::pair<int, int>> local_new_edges_vec;
             int citations[250]; // out-degree assumed to be max 249
-            this->WriteToLogFile("starting node " + std::to_string(i) + "/" + std::to_string(new_nodes_vec.size()), Log::debug);
             int new_node = new_nodes_vec[i];
-            /* this->AssignAuthor(graph, new_node, author_to_publication_map, number_published_to_author_map, author_remaining_years_map); */
             int weight_arr_index = continuous_node_mapping[new_node] - initial_graph_size;
-            double pa_weight = pa_weight_arr[weight_arr_index];
+
+            this->WriteToLogFile("starting node " + std::to_string(i) + "/" + std::to_string(new_nodes_vec.size()), Log::debug);
+
+            // ---------------------------------------------------------------
+            // ER models: bypass all PA/recency/fitness machinery
+            // ---------------------------------------------------------------
+            if (is_er_model) {
+                int num_actually_cited = 0;
+                std::vector<int> empty_generators;
+
+                if (this->model_name == "er") {
+                    // ER Fixed-K: sample exactly out_degree_arr[i] distinct targets uniformly
+                    num_actually_cited = this->MakeUniformRandomCitations(
+                        graph, reverse_continuous_node_mapping,
+                        empty_generators, citations, 0,
+                        out_degree_arr[weight_arr_index]);
+                } else {
+                    // ER G(n,p): each existing node is a target independently with prob p
+                    num_actually_cited = this->MakeERGNPCitations(
+                        graph, reverse_continuous_node_mapping,
+                        citations, this->er_probability);
+                }
+
+                for (int j = 0; j < num_actually_cited; j++) {
+                    local_new_edges_vec.push_back({new_node, citations[j]});
+                }
+                new_edges_vec.insert(new_edges_vec.end(), local_new_edges_vec.begin(), local_new_edges_vec.end());
+                continue; // skip PA logic below
+            }
+
+            // ---------------------------------------------------------------
+            // PA model (original logic)
+            // ---------------------------------------------------------------
+            double pa_weight  = pa_weight_arr[weight_arr_index];
             double rec_weight = rec_weight_arr[weight_arr_index];
             double fit_weight = fit_weight_arr[weight_arr_index];
-            double alpha = alpha_arr[weight_arr_index];
+            double alpha      = alpha_arr[weight_arr_index];
             std::vector<int> generator_nodes = this->GetGraphAttributesGeneratorNodes(graph, new_node);
-            std::map<int, std::vector<int>> one_and_two_hop_neighborhood_map = this->GetOneAndTwoHopNeighborhood(graph, generator_nodes, reverse_continuous_node_mapping);
+            std::map<int, std::vector<int>> one_and_two_hop_neighborhood_map =
+                this->GetOneAndTwoHopNeighborhood(graph, generator_nodes, reverse_continuous_node_mapping);
 
-            int num_generator_node_citation = generator_nodes.size(); // should be 1 for now
-            int same_year_citation = same_year_source_nodes.count(i); // could be 0 or 1
-            int num_fully_random_cited_reserved = std::floor(this->fully_random_citations * out_degree_arr[weight_arr_index]); // e.g., 5% of out-degree. some small number
+            int num_generator_node_citation    = generator_nodes.size();
+            int same_year_citation             = same_year_source_nodes.count(i);
+            int num_fully_random_cited_reserved = std::floor(this->fully_random_citations * out_degree_arr[weight_arr_index]);
 
-            // now the number of things to cite from distance 1 is the remaining citations * alpha. Call this remaining citations R for later.
-            // unless distance 1 neighborhood is too small
             int num_citations_inside = std::ceil((out_degree_arr[weight_arr_index] - num_generator_node_citation - same_year_citation - num_fully_random_cited_reserved) * alpha);
             num_citations_inside = std::min(num_citations_inside, (int)one_and_two_hop_neighborhood_map[1].size());
 
-            // now the number of things to cite from distance 2 is the remaining citations
-            // unless distance 2 neighborhood is too small
             int num_citations_outside = out_degree_arr[weight_arr_index] - num_generator_node_citation - same_year_citation - num_fully_random_cited_reserved - num_citations_inside;
             num_citations_outside = std::min(num_citations_outside, (int)one_and_two_hop_neighborhood_map[2].size());
 
-            // if it turns out that the 2-hop neighborhood (including 1 and 2) is small than R from earlier, then the leftover citations get cited randomly from the graph
             int num_fully_random_cited = out_degree_arr[weight_arr_index] - num_generator_node_citation - same_year_citation - num_citations_inside - num_citations_outside;
 
             int num_actually_cited = 0;
             if (same_year_citation) {
                 num_actually_cited += this->MakeSameYearCitations(new_nodes_vec.size(), reverse_continuous_node_mapping, citations, current_graph_size);
             }
-
             num_actually_cited += this->MakeCitations(graph, continuous_node_mapping, current_year, one_and_two_hop_neighborhood_map[1], citations + num_actually_cited, pa_arr, recency_arr, fit_arr, pa_weight, rec_weight, fit_weight, current_graph_size, num_citations_inside);
             num_actually_cited += this->MakeCitations(graph, continuous_node_mapping, current_year, one_and_two_hop_neighborhood_map[2], citations + num_actually_cited, pa_arr, recency_arr, fit_arr, pa_weight, rec_weight, fit_weight, current_graph_size, num_citations_outside);
             num_actually_cited += this->MakeUniformRandomCitations(graph, reverse_continuous_node_mapping, generator_nodes, citations, num_actually_cited, num_fully_random_cited);
@@ -917,4 +962,6 @@ int ABM::main() {
     /* delete[] citations; */
     delete[] random_weight_arr;
     delete[] current_score_arr;
+    delete graph;
+    return 0;
 }    

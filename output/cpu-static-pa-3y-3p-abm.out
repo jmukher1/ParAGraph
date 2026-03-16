@@ -1,0 +1,15 @@
+========================================
+Citation Network Growth Simulation
+========================================
+Model: Preferential Attachment (PA)
+  - Uses degree, recency, and fitness
+  - Alpha (neighborhood): 0.500000
+Growth rate: 0.03
+Num cycles: 3
+Output: ./output/cpu-static-output-pa-3y-3p.edgelist
+========================================
+========================================
+Simulation completed successfully!
+========================================
+
+E2E Time (CPU-Models), model:pa for num_cycles = 3 with growth_rate = 3 % with thread count = 64 is: 60 seconds.
