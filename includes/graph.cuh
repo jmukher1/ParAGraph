@@ -96,16 +96,14 @@ class Graph {
         std::string getType(int nodeId) const; 
         std::map<int, int> getContinuousNodeMapping();
         std::map<int, int> getReverseContinuousNodeMapping();
-
-        
-    private:
+    
+    public:
         std::string edgelist;
         std::string nodelist;
         std::set<int> node_set;
         std::map<int, std::set<int>> forward_adj_map;
         std::map<int, std::set<int>> backward_adj_map;
         int node_seq_id = 0;
-    public:
         std::map<int, Node> nodeAttributeMap;
         std::map<int, int> continuous_node_mapping;
         std::map<int, int> reverse_continuous_node_mapping;

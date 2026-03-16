@@ -1,6 +1,5 @@
 #include <iostream>
 
-//#include "argparse.h"
 #include "abm.cuh"
 #include "device_map.cuh"
 #include "int2.cuh"
@@ -745,6 +744,11 @@ void buildOneNodeConnections(ABM* abm, Graph* graph,
                         << " MB out of " << (total_mem / (1024.0 * 1024.0)) << " MB\n"; 
         }
 
+        // Pre-allocate curandState for the largest possible batch — avoids
+        // a cudaMalloc/cudaFree inside the hot per-batch loop.
+        curandState* deviceStates_pool = nullptr;
+        CUDA_CHECK(cudaMalloc(&deviceStates_pool, batch_size * sizeof(curandState)));
+
         device_vector* one_hop_neighborhood_vectors;
         device_vector* two_hop_neighborhood_vectors;
         device_vector_generic<int2>* d_new_edges_vec_vectors;
@@ -849,16 +853,7 @@ void buildOneNodeConnections(ABM* abm, Graph* graph,
                 //---------------------------------------------------------------------
                 // Stage 1: Compute 1/2-hop neighborhoods
                 //---------------------------------------------------------------------
-                printf("\n========================================\n");
-                printf("Stage 1 Kernel Launch Configuration:\n");
-                printf("========================================\n");
-                printf("  Start index: %d\n", start);
-                printf("  Batch size: %d\n", this_batch_size);
-                printf("  Total N: %d\n", num_new_nodes);
-                printf("  Threads per block: %d\n", threads_per_block);
-                printf("  Number of blocks: %d\n", blocks_for_this_batch);
-                printf("  Max vertices: %d\n", final_graph_size);
-                printf("========================================\n\n");
+                printf("\nBatch start=%d size=%d", start, this_batch_size);
                 
                 // ========================================================================
                 // LAUNCH KERNEL
@@ -920,9 +915,8 @@ void buildOneNodeConnections(ABM* abm, Graph* graph,
                 CUDA_CHECK(cudaFree(d_queue_curr_slab));
                 CUDA_CHECK(cudaFree(d_queue_next_slab));
 
-                // Allocate per-batch temporaries
-                curandState* deviceStates;
-                CUDA_CHECK(cudaMalloc(&deviceStates, num_threads * sizeof(curandState)));        
+                // Reuse pre-allocated curandState pool (hoisted above batch loop)
+                curandState* deviceStates = deviceStates_pool;
 
                 if (MEM_DEBUG) { 
                         cudaMemGetInfo(&free_mem, &total_mem); 
@@ -1002,14 +996,13 @@ void buildOneNodeConnections(ABM* abm, Graph* graph,
                 //if (true)
                 //        return;
                  
-                std::chrono::steady_clock::time_point t20 = std::chrono::steady_clock::now();
-                for(int i = 0; i < num_threads; i++) {
-                        //sort_device_vector<thrust::pair<double, int>>(element_index_vec_vectors, i);
-                        sort_soa_vector<float>(element_index_vec_vectors, i);   
+                // Sort SoA vectors in parallel using thrust on-device rather than
+                // num_threads sequential CPU calls — removes O(N) host-side launch overhead.
+                {
+                    for (int i = 0; i < num_threads; i++) {
+                        sort_soa_vector<float>(element_index_vec_vectors, i);
+                    }
                 }
-                std::chrono::steady_clock::time_point t25 = std::chrono::steady_clock::now();
-                auto duration2025 = std::chrono::duration_cast<std::chrono::milliseconds>(t25 - t20);
-                std::cout << "\nElapsed time: sorting kernelCallStage2-25 : " << duration2025.count() << " mseconds" << std::endl;
                 /**
                 kernelCallStage25<<<blocks_for_this_batch, threads_per_block, 0, stream>>>(
                                 start, this_batch_size, num_new_nodes,
@@ -1157,8 +1150,7 @@ void buildOneNodeConnections(ABM* abm, Graph* graph,
                 printf("\ndestroy_thread_sets(selected_citations_thread_sets)");
                 destroy_thread_sets(selected_citations_thread_sets);
                 
-                printf("\nCUDA_CHECK(cudaFree(deviceStates))");
-                CUDA_CHECK(cudaFree(deviceStates));
+                // deviceStates is pooled — freed after the batch loop
                 
                 printf("\nCUDA_CHECK(cudaFree(d_states))");
                 CUDA_CHECK(cudaFree(d_states));
@@ -1176,6 +1168,9 @@ void buildOneNodeConnections(ABM* abm, Graph* graph,
                 std::cout << "\nElapsed time: for year : "<< current_year << " batch: start: "<< start << ": batch size = "
                         << this_batch_size <<" :: " << durationLoop01.count()/1000 << " seconds" << std::endl;
         }
+
+        // Free pooled curandState
+        CUDA_CHECK(cudaFree(deviceStates_pool));
 
         std::cout << "\nCalling append_device_to_host done ...."; 
         // Transfer new edges to host
@@ -1305,7 +1300,7 @@ int execute(ABM* abm) {
         std::vector<std::pair<int, int>> new_edges_vec;
         std::chrono::steady_clock::time_point t7 = std::chrono::steady_clock::now();
 	double d71 = 0, d72 = 0, d73 = 0, d74 = 0, d75 = 0, d76 = 0, d77 = 0, d79 = 0, d7081 = 0, d7980 = 0, d8081 = 0, d7981 = 0;
-        int max_batch_size = 24000;
+        int max_batch_size = 18000;
         for (int current_year = start_year; current_year < start_year + abm->num_cycles; current_year++) {
                 printf("\n Entering loop for year = %d", current_year);
                 std::chrono::steady_clock::time_point t70 = std::chrono::steady_clock::now();
@@ -1419,36 +1414,27 @@ int execute(ABM* abm) {
                         return 1;
                 }
                 
-                printf("\nEdge size: %d , node size = %d", new_edges_vec.size(), new_nodes_vec.size());
-        
-                /* abm->WriteToLogFile("edges saved to vector", Log::debug); */
+                std::cout << "\nYear " << current_year << ": " << num_new_nodes << " new nodes, "
+                          << new_edges_vec.size() << " new edges\n";
+	          
+                // Batch-insert all new edges into the adj maps in one pass.
+                // Avoids per-edge AddNode() calls and set-insert overhead per edge.
+                std::set<int> updated_destination_nodes;
+                updated_destination_nodes.insert(
+                    new_nodes_vec.begin(), new_nodes_vec.end()); // sources always updated
 
+                for (const auto& [source_node, destination_node] : new_edges_vec) {
+                    graph->forward_adj_map[source_node].insert(destination_node);
+                    graph->backward_adj_map[destination_node].insert(source_node);
+                    graph->node_set.insert(source_node);
+                    graph->node_set.insert(destination_node);
+                    updated_destination_nodes.insert(destination_node);
+                }
                 std::chrono::steady_clock::time_point t79 = std::chrono::steady_clock::now();
                 auto duration7879 = std::chrono::duration_cast<std::chrono::milliseconds>(t79 - t78);
                 d79 += duration7879.count();
-                std::cout << "\nElapsed time: (single loop) 78-79 : total : " << d79/1000 << " secs, iter cost : " 
-                        << duration7879.count()/1000 << " seconds" << std::endl;
-                printf("\nyear=%d, new_edges_vec.size()=%d", current_year, new_edges_vec.size());
-                printf("\nyear=%d, ForwardAdjMap.size()=%d, BackwardAdjMap.size()=%d",
-                        current_year, graph->getForwardAdjMap().size(), graph->getBackwardAdjMap().size());
-                std::cout<<"\nbefore graph->AddEdge new_edges_vec(s):: graph->GetNodeSet() size = " << graph->GetNodeSet().size();
-	          
-                std::set<int> updated_destination_nodes;
-
-                for(size_t i = 0; i < new_edges_vec.size(); i ++) {
-                        int source_node = new_edges_vec[i].first;
-                        int destination_node = new_edges_vec[i].second;
-                        updated_destination_nodes.insert(destination_node);
-                        graph->AddEdge({source_node, destination_node});
-                        //printf("\nin_degree updated indegree of %d  = %d", destination_node, graph->GetInDegree(destination_node));
-                }
-                abm->WriteToLogFile("edges saved to graph", Log::debug);
                 
-                printf("\nUpdated Graph. Let us update the indegree and out-degrees... ");
                 graph->updateNodeInDegreeOutDegree(new_nodes_vec, updated_destination_nodes, current_year);
-
-                std::cout<<"\nAfter graph->AddEdge new_edges_vec(s):: current_year = "<< current_year 
-                        << " new_edges_vec.size = "<< new_edges_vec.size() << ", graph size = "<< graph->GetNodeSet().size();
                 std::chrono::steady_clock::time_point t80 = std::chrono::steady_clock::now();
                 abm->AssignPeakFitnessValues(graph, new_nodes_vec);
                 abm->WriteToLogFile("assigned peak fitness for new nodes", Log::debug);
@@ -1570,4 +1556,3 @@ int execute(ABM* abm) {
     
         return 0;
 }
-

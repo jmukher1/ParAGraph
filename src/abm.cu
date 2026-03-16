@@ -110,8 +110,14 @@ void ABM::ReadRecencyProbabilities() {
 }
 
 void ABM::FillInDegreeArr(Graph* graph, int* in_degree_arr) {
-    for(auto const& node_seq_id : graph->GetNodeSet()) {
-        in_degree_arr[node_seq_id] = graph->GetIntAttribute("in_degree", node_seq_id); //graph->GetInDegree(node_seq_id);
+    // Direct field access via nodeAttributeMap reference — no string key lookup.
+    // Using [] instead of at() avoids the second hash lookup for copy-back.
+    const auto& nodeSet = graph->GetNodeSet();
+    const auto& attrMap = graph->nodeAttributeMap;
+    /*#pragma omp parallel for schedule(static)*/
+    for (auto it = nodeSet.begin(); it != nodeSet.end(); ++it) {
+        int node_seq_id = *it;
+        in_degree_arr[node_seq_id] = attrMap.at(node_seq_id).in_degree;
     }
 }
 
@@ -144,53 +150,60 @@ void ABM::InitializeFitness(Graph* graph) {
 }
 
 void ABM::FillFitnessArr(Graph* graph, /*const std::map<int, int>& continuous_node_mapping,*/ int current_year, int* fitness_arr) {
-    for(auto const& node_seq_id : graph->GetNodeSet()) {
-        //if (continuous_node_mapping.find(node) != continuous_node_mapping.end()) {
-        int fitness_peak_value = graph->GetIntAttribute("fitness_peak_value", node_seq_id);
-        int fitness_lag_duration = graph->GetIntAttribute("fitness_lag_duration", node_seq_id);
-        int fitness_peak_duration = graph->GetIntAttribute("fitness_peak_duration", node_seq_id);
-        int published_year = graph->GetIntAttribute("year", node_seq_id);
+    // Access Node fields directly to avoid repeated string-key lookups.
+    const auto& nodeSet = graph->GetNodeSet();
+    const auto& attrMap = graph->nodeAttributeMap;
+    const double decay_alpha = this->fitness_decay_alpha;
+    /*#pragma omp parallel for schedule(static)*/
+    for (auto it = nodeSet.begin(); it != nodeSet.end(); ++it) {
+        int node_seq_id = *it;
+        const Node& node = attrMap.at(node_seq_id);
+        int fitness_peak_value    = node.fitness_peak_value;
+        int fitness_lag_duration  = node.fitness_lag_duration;
+        int fitness_peak_duration = node.fitness_peak_duration;
+        int published_year        = node.year;
         if (published_year + fitness_lag_duration > current_year) {
             fitness_arr[node_seq_id] = 1;
         } else if (published_year + fitness_lag_duration + fitness_peak_duration >= current_year) {
             fitness_arr[node_seq_id] = fitness_peak_value;
         } else {
-            double decayed_fitness_value = fitness_peak_value / pow(current_year - published_year - fitness_lag_duration - fitness_peak_duration + 1, this->fitness_decay_alpha);
-            fitness_arr[node_seq_id] = decayed_fitness_value;
-        }  
+            double decayed = fitness_peak_value /
+                pow(current_year - published_year - fitness_lag_duration - fitness_peak_duration + 1,
+                    decay_alpha);
+            fitness_arr[node_seq_id] = (int)decayed;
+        }
     }
 }
 
 
 void ABM::FillRecencyArr(Graph* graph, /*const std::map<int, int>& reverse_continuous_node_mapping,*/ int current_year, double* recency_arr) {
-    std::map<int, int> year_count;
-    double unique_year_sum = 0.0;
-    for(auto const& node_seq_id : graph->GetNodeSet()) {
-        int current_published_year = graph->GetIntAttribute("year", node_seq_id);
-        int year_diff = current_year - current_published_year;
-        if(!year_count.contains(year_diff)) {
-            unique_year_sum += this->recency_probabilities_map[year_diff];
-        }
-        year_count[year_diff] ++;
-    }
-    // Mark: removed for node-level
-    /* #pragma omp parallel for simd */
-    //for(size_t i = 0; i < graph->GetNodeSet().size(); i ++) {
-    for(auto const& node_seq_id : graph->GetNodeSet()) {
-        int current_published_year = graph->GetIntAttribute("year", node_seq_id);
-        int year_diff = current_year - current_published_year;
-        recency_arr[node_seq_id] = (float)this->recency_probabilities_map[year_diff] / year_count[year_diff];
-        if (DATA_DEBUG && node_seq_id > 491000) {
-            printf("\nFillRecencyArr::For node_seq_id = %d, node_id = %d, current_year %d - current_published_year %d = year_diff %d , recency_arr[node_seq_id] = %.15lf, year_count[year_diff] = %d",
-                node_seq_id, graph->reverse_continuous_node_mapping[node_seq_id], current_year, current_published_year, year_diff, recency_arr[node_seq_id], year_count[year_diff]);
-        }
-    }
+    // Single pass: compute year_count and recency values together.
+    // Use unordered_map for O(1) average vs O(log n) for std::map.
+    const auto& nodeSet = graph->GetNodeSet();
+    const auto& attrMap = graph->nodeAttributeMap;
+    const auto& rec_probs = this->recency_probabilities_map;
 
-    //printf("\nunique_year_sum = %lf",  unique_year_sum);
-    // Mark: removed for node-level
-    /* #pragma omp parallel for simd */
-    for(auto const& node_seq_id : graph->GetNodeSet()) {
-        recency_arr[node_seq_id] /= unique_year_sum;
+    std::unordered_map<int, int> year_count;
+    year_count.reserve(256);
+    double unique_year_sum = 0.0;
+
+    for (int node_seq_id : nodeSet) {
+        int year_diff = current_year - attrMap.at(node_seq_id).year;
+        auto [it, inserted] = year_count.emplace(year_diff, 0);
+        if (inserted) {
+            auto p = rec_probs.find(year_diff);
+            unique_year_sum += (p != rec_probs.end()) ? p->second : 0.0;
+        }
+        it->second++;
+    }
+    /*if (unique_year_sum < 1e-15) unique_year_sum = 1.0;*/
+
+    // Fill recency array in one pass — no second iteration needed
+    for (int node_seq_id : nodeSet) {
+        int year_diff = current_year - attrMap.at(node_seq_id).year;
+        auto p = rec_probs.find(year_diff);
+        double prob = (p != rec_probs.end()) ? p->second : 0.0;
+        recency_arr[node_seq_id] = prob / (year_count.at(year_diff) * unique_year_sum);
     }
 }
 
@@ -309,20 +322,17 @@ void ABM::updateGraphAttributesGeneratorNode(Graph* graph, int new_node_seq_id, 
 }
 
 void ABM::CalculateScores(int* src_arr, double* dst_arr, int len) {
-    double sum = 0;
-    // Mark: removed for node-level
-    /* #pragma omp parallel for simd */
-    for(int i = 0; i < len; i ++) {
-        dst_arr[i] = pow(src_arr[i], this->gamma) + 1;
+    const double g = this->gamma;
+    double sum = 0.0;
+    #pragma omp parallel for simd schedule(static) reduction(+:sum)
+    for (int i = 0; i < len; i++) {
+        double v = pow((double)src_arr[i], g) + 1.0;
+        dst_arr[i] = v;
+        sum += v;
     }
-    // Mark: removed for node-level
-    /* #pragma omp parallel for reduction(+:sum) */
-    for(int i = 0; i < len; i ++) {
-        sum += dst_arr[i];
-    }
-    // Mark: removed for node-level
-    /* #pragma omp parallel for simd */
-    for(int i = 0; i < len; i ++) {
+    if (sum < 1e-30) sum = 1.0;
+    #pragma omp parallel for simd schedule(static)
+    for (int i = 0; i < len; i++) {
         dst_arr[i] /= sum;
     }
 }

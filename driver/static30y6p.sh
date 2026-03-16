@@ -8,7 +8,7 @@ OUTPUT=$(readlink -f ./output)/
 ERRORS=$(readlink -f ./errors)/
 
 NUM_THREADS=64
-GROWTH_RATE=0.03
+GROWTH_RATE=0.06
 NUM_CYCLES=30
 
 GROWTH_PERCENT=$(echo "$GROWTH_RATE * 100" | bc | cut -d. -f1)

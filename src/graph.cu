@@ -216,72 +216,57 @@ void Graph::updateNodeInDegreeOutDegree() {
 void Graph::updateNodeInDegreeOutDegree(std::vector<int> new_nodes_vec,
                                     std::set<int> updated_destination_nodes, 
                                     int year) {
-    long totalOutDegree = 0;
-    for (const auto& [nodeSeqId, set] : this->forward_adj_map) {
-        int outdegree = set.size();
-        this->SetIntAttribute("out_degree", nodeSeqId, outdegree); 
-        totalOutDegree += outdegree;
+    // Only update nodes that changed this year:
+    //   - new_nodes_vec: out_degree changed (they made citations)
+    //   - updated_destination_nodes: in_degree changed (they received citations)
+    // This avoids iterating the entire forward/backward adj maps (~1.2M entries).
+
+    for (int nodeSeqId : new_nodes_vec) {
+        auto fit = this->forward_adj_map.find(nodeSeqId);
+        int outdegree = (fit != this->forward_adj_map.end()) ? (int)fit->second.size() : 0;
+        auto& node = this->nodeAttributeMap.at(nodeSeqId);
+        node.out_degree = outdegree;
     }
-    long totalInDegree = 0;
-    std::cout<<"\nIn updateNodeInDegreeOutDegree: Update Indegree:";
-    for (const auto& [nodeSeqId, set] : this->backward_adj_map) {
-        int indegree = set.size();
-        // std::cout <<"\nin_degree update:: "<< nodeSeqId << " => (indegree) = " << indegree << "\n";
-        this->SetIntAttribute("in_degree", nodeSeqId, indegree); 
-        totalInDegree += indegree;
+
+    for (int nodeSeqId : updated_destination_nodes) {
+        auto bit = this->backward_adj_map.find(nodeSeqId);
+        int indegree = (bit != this->backward_adj_map.end()) ? (int)bit->second.size() : 0;
+        auto& node = this->nodeAttributeMap.at(nodeSeqId);
+        node.in_degree = indegree;
     }
-    
-    std::cout<<"\nTotal:: on year ::"<< year << ": In-Degree = "<< totalInDegree << ", Out-Degree = " << totalOutDegree << std::endl;
+
+    std::cout << "\nupdateNodeInDegreeOutDegree(year=" << year
+              << "): updated " << new_nodes_vec.size() << " out-degrees, "
+              << updated_destination_nodes.size() << " in-degrees\n";
 }
 
 void Graph::SetIntAttribute(std::string attribute_key, int nodeSeqId, int attribute_value) {
-    if (this->nodeAttributeMap.contains(nodeSeqId)) {
-        Node node = this->nodeAttributeMap.at(nodeSeqId);
-
-        if (attribute_key == "fitness_peak_value")
-            node.fitness_peak_value = attribute_value;
-        else if (attribute_key == "fitness_lag_duration")
-            node.fitness_lag_duration = attribute_value;
-        else if (attribute_key == "fitness_peak_duration")
-            node.fitness_peak_duration = attribute_value;
-        else if (attribute_key == "published_year")
-            node.published_year = attribute_value;
-        else if (attribute_key == "year")
-            node.year = attribute_value;
-        else if (attribute_key == "out_degree")
-            node.out_degree = attribute_value;
-        else if (attribute_key == "assigned_out_degree")
-            node.assigned_out_degree = attribute_value;
-        else if (attribute_key == "in_degree")
-            node.in_degree = attribute_value;
-        else if (attribute_key == "planted_nodes_line_number")
-            node.planted_nodes_line_number = attribute_value;
-        
-        nodeAttributeMap[nodeSeqId] = node;
+    auto it = this->nodeAttributeMap.find(nodeSeqId);
+    if (it != this->nodeAttributeMap.end()) {
+        // Update in-place via reference — avoids the copy-out/reinsert pattern
+        Node& node = it->second;
+        if      (attribute_key == "fitness_peak_value")     node.fitness_peak_value     = attribute_value;
+        else if (attribute_key == "fitness_lag_duration")   node.fitness_lag_duration   = attribute_value;
+        else if (attribute_key == "fitness_peak_duration")  node.fitness_peak_duration  = attribute_value;
+        else if (attribute_key == "published_year")         node.published_year         = attribute_value;
+        else if (attribute_key == "year")                   node.year                   = attribute_value;
+        else if (attribute_key == "out_degree")             node.out_degree             = attribute_value;
+        else if (attribute_key == "assigned_out_degree")    node.assigned_out_degree    = attribute_value;
+        else if (attribute_key == "in_degree")              node.in_degree              = attribute_value;
+        else if (attribute_key == "planted_nodes_line_number") node.planted_nodes_line_number = attribute_value;
     } else {
-        Node* node = new Node();
-        
-        if (attribute_key == "fitness_peak_value")
-            node->fitness_peak_value = attribute_value;
-        else if (attribute_key == "fitness_lag_duration")
-            node->fitness_lag_duration = attribute_value;
-        else if (attribute_key == "fitness_peak_duration")
-            node->fitness_peak_duration = attribute_value;
-        else if (attribute_key == "published_year")
-            node->published_year = attribute_value;
-        else if (attribute_key == "year")
-            node->year = attribute_value;
-        else if (attribute_key == "out_degree")
-            node->out_degree = attribute_value;
-        else if (attribute_key == "assigned_out_degree")
-            node->assigned_out_degree = attribute_value;
-        else if (attribute_key == "in_degree")
-            node->in_degree = attribute_value;
-        else if (attribute_key == "planted_nodes_line_number")
-            node->planted_nodes_line_number = attribute_value; 
-        nodeAttributeMap.emplace(nodeSeqId, *node);
+        Node node{};
+        if      (attribute_key == "fitness_peak_value")     node.fitness_peak_value     = attribute_value;
+        else if (attribute_key == "fitness_lag_duration")   node.fitness_lag_duration   = attribute_value;
+        else if (attribute_key == "fitness_peak_duration")  node.fitness_peak_duration  = attribute_value;
+        else if (attribute_key == "published_year")         node.published_year         = attribute_value;
+        else if (attribute_key == "year")                   node.year                   = attribute_value;
+        else if (attribute_key == "out_degree")             node.out_degree             = attribute_value;
+        else if (attribute_key == "assigned_out_degree")    node.assigned_out_degree    = attribute_value;
+        else if (attribute_key == "in_degree")              node.in_degree              = attribute_value;
+        else if (attribute_key == "planted_nodes_line_number") node.planted_nodes_line_number = attribute_value;
+        nodeAttributeMap.emplace(nodeSeqId, node);
     }
-    
 }
 
 int Graph::GetIntAttribute(std::string attribute_key, int nodeSeqId) const {
@@ -819,4 +804,3 @@ void Graph::WriteAttributes(std::string auxiliary_information_file) const {
     auxiliary_information_filehandle.close();
     // seq_auxiliary_information_filehandle.close();
 }
-

@@ -342,6 +342,7 @@ int2* convertToDeviceArray(std::vector<std::pair<int, int>> vec, cuco::legacy::s
 	return device_array;
 }  
 
+
 void print_host_map(const std::map<int, std::set<int>>& host_map) {
     for (const auto& [key, value_set] : host_map) {
         std::cout << "Key: " << key << " -> { ";

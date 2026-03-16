@@ -112,14 +112,14 @@ int main(int argc, char* argv[]) {
     int num_processors = main_program.get<int>("--num-processors");
     printf("\nnum-processors = %d....", num_processors);
     int log_level = main_program.get<int>("--log-level") - 1; // so that enum is cleaner
-     printf("\nlog-level = %d", log_level);
+    printf("\nlog-level = %d", log_level);
     printf("\nInit ABM....");
     ABM* abm = new ABM(edgelist, nodelist, out_degree_bag, recency_probabilities, planted_nodes, alpha, fully_random_citations, preferential_weight, recency_weight, fitness_weight, growth_rate, num_cycles, same_year_proportion, output_file, auxiliary_information_file, log_file, num_processors, log_level);
     printf("\nExec ABM....");
     execute(abm);
+
     std::chrono::steady_clock::time_point t1 = std::chrono::steady_clock::now();
     auto durationE2E = std::chrono::duration_cast<std::chrono::milliseconds>(t1 - t0);
     std::cout << "\nE2E Time for num_cycles = "<< num_cycles << " with growth_rate = "<< (100*growth_rate) << " % = " << durationE2E.count()/1000 << " seconds." << std::endl;
-    
     delete abm;
 }
