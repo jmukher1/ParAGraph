@@ -698,6 +698,8 @@ void ABM::AgeAuthors(std::map<int, std::vector<int>>& author_to_publication_map,
 */
 
 int ABM::main() {
+    std::chrono::steady_clock::time_point t0 = std::chrono::steady_clock::now();
+    
     /* reading input edgelist, nodelist, outdegree bag, recency probabilities */
     Graph* graph = new Graph(this->edgelist, this->nodelist);
     /* graph->PrintGraph(); */
@@ -904,6 +906,20 @@ int ABM::main() {
 
     graph->WriteAttributes(this->auxiliary_information_file);
     this->WriteToLogFile("wrote graph", Log::info);
+    std::chrono::steady_clock::time_point t1 = std::chrono::steady_clock::now();
+    auto durationE2E = std::chrono::duration_cast<std::chrono::milliseconds>(t1 - t0);
+    //std::cout << "\nE2E Time for num_cycles = "<< num_cycles << " with growth_rate = "<< (100*growth_rate) 
+    //    << " % with thread count = " <<  num_processors << " is: " << durationE2E.count()/1000 << " seconds." << std::endl;
+    std::ostringstream msg;
+
+    msg << "\nE2E Time for num_cycles = " << num_cycles
+        << " with growth_rate = " << (100 * growth_rate)
+        << " % with thread count = " << num_processors
+        << " is: " << durationE2E.count() / 1000
+        << " seconds.";
+
+    this->WriteToLogFile(msg.str(), Log::info);
+    std::cout << msg.str() << std::endl;
     delete[] in_degree_arr;
     delete[] fitness_arr;
     delete[] pa_arr;

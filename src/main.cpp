@@ -5,7 +5,6 @@
 
 
 int main(int argc, char* argv[]) {
-    std::chrono::steady_clock::time_point t0 = std::chrono::steady_clock::now();
     argparse::ArgumentParser main_program("abm");
 
     main_program.add_description("Agent Based Modelling");
@@ -102,19 +101,6 @@ int main(int argc, char* argv[]) {
     int log_level = main_program.get<int>("--log-level") - 1; // so that enum is cleaner
     ABM* abm = new ABM(edgelist, nodelist, out_degree_bag, recency_probabilities, planted_nodes, alpha, fully_random_citations, preferential_weight, recency_weight, fitness_weight, growth_rate, num_cycles, same_year_proportion, output_file, auxiliary_information_file, log_file, num_processors, log_level);
     abm->main();
-    std::chrono::steady_clock::time_point t1 = std::chrono::steady_clock::now();
-    auto durationE2E = std::chrono::duration_cast<std::chrono::milliseconds>(t1 - t0);
-    //std::cout << "\nE2E Time for num_cycles = "<< num_cycles << " with growth_rate = "<< (100*growth_rate) 
-    //    << " % with thread count = " <<  num_processors << " is: " << durationE2E.count()/1000 << " seconds." << std::endl;
-    std::ostringstream msg;
-
-    msg << "\nE2E Time for num_cycles = " << num_cycles
-        << " with growth_rate = " << (100 * growth_rate)
-        << " % with thread count = " << num_processors
-        << " is: " << durationE2E.count() / 1000
-        << " seconds.";
-
-    abm->WriteToLogFile(msg.str(), Log::info);
 
     delete abm;
 }
