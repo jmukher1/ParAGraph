@@ -175,8 +175,6 @@ private:
 
     void freeKeys(K* keys) {
         if (keys) {
-            printf("\ncudaFree(keys)");
-        
             cudaFree(keys);
             keys = nullptr;
         }
@@ -184,8 +182,6 @@ private:
 
     void freeValues(V* values) {
         if (values) {
-            printf("\ncudaFree(values)");
-        
             cudaFree(values);
             values = nullptr;
         }
@@ -193,24 +189,15 @@ private:
 
     void freeDSize(int* d_size) {
         if (d_size) {
-            printf("\ncudaFree(d_size)");
-        
             cudaFree(d_size);
             d_size = nullptr;
         }
     }
 
     __host__ void cleanup() {
-        printf("\nInside cleanup");
-        
-        //cudaDeviceSynchronize();
-        printf("\ncudaDeviceSynchronize");
-        
         freeKeys(keys);
         freeValues(values);
         freeDSize(d_size);
-        
-        printf("\ncleanup done");
     }
 
 public:

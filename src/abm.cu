@@ -39,7 +39,7 @@ int ABM::WriteToLogFile(std::string message, Log message_type) {
         this->num_calls_to_log_write ++;
     }
     return 0;
-}
+} 
 
 void ABM::ReadPlantedNodes() {
     char delimiter = ',';
@@ -379,9 +379,6 @@ __device__ int ABM::MakeSameYearCitations(int idx, int new_node, int num_new_nod
     int current_citation = getRandom(num_new_nodes, deviceState);
     int key = current_graph_size + current_citation;
     citations[0] = key;
-    if (DATA_DEBUG && (idx % 1000 == 1)) {
-        printf("\nFor idx = %d, new_node = %d, inserted key = %d", idx, new_node, key);
-    }
     
     return 1;
 }
@@ -453,23 +450,6 @@ __device__ void ABM::PopulateCitations(int idx, int new_node, int N, Graph* grap
             int initial_graph_size,
             int final_graph_size,
             int num_citations) {
-
-    if (DATA_DEBUG && idx % 1000 == 1) {
-        printf("\nInside PopulateCitations: thrust::sort done for idx = %d with num_citations = %d ", idx, num_citations);
-        printf("\nInside PopulateCitations: idx = %d element_index_vec size = %d ", idx, element_index_vec.size());
-    }
-
-    if (DATA_DEBUG && element_index_vec.size() > 100000) {
-        for (int i = 0; i < num_citations; i++) {
-            if (element_index_vec.get_index(i) > 491532) {
-                printf("\nidx = %d i = %d Agent : citations[i] = element_index_vec.get_index(i) = %d, weight = %.12lf", 
-                    idx, i,  element_index_vec.get_index(i),  element_index_vec.get_weight(i));
-            } else {
-                printf("\nidx = %d i = %d seed : citations[i] = element_index_vec.get_index(i) = %d, weight = %.12lf", 
-                    idx, i,  element_index_vec.get_index(i),  element_index_vec.get_weight(i));
-            }
-        }
-    }
     for (int i = 0; i < num_citations; i ++) {
         //thrust::pair<double, int> tpair = element_index_vec[i];
         int citation = element_index_vec.get_index(i);
@@ -505,8 +485,8 @@ __device__ void ABM::MakePopulateCitations(int idx, int new_node, int N, Graph* 
     }
 
     if (candidate_size < num_citations) {
-        printf("\nInside MakeCitations: For idx = %d candidate_size %d < num_citations %d.. resetting num_citations", 
-            idx, candidate_size, num_citations);
+        //printf("\nInside MakeCitations: For idx = %d candidate_size %d < num_citations %d.. resetting num_citations", 
+        //    idx, candidate_size, num_citations);
         num_citations = candidate_size;
     }
      
@@ -574,21 +554,12 @@ __device__ void ABM::MakePopulateCitations(int idx, int new_node, int N, Graph* 
         d_heap.insert(random_weight, candidate_node);
         // element_index_vec.push_back(random_weight, candidate_node, "element_index_vec");
     }
-    if (DATA_DEBUG && posWtCnt > 0)
-        printf("\nfor idx = %d, new_node = %d, posWtCnt = %d", idx, new_node, posWtCnt);
-
-    if (DATA_DEBUG && (idx % 1000 == 1)) {
-        printf("\nfor idx = %d, new_node = %d, d_heap.sort_descending_inplace", idx, new_node);
-    }
+     
     d_heap.sort_descending_inplace();
 
     for (int i = 0; i < num_citations; i ++) {
         int citation = d_heap.data[i].index; // element_index_vec.get_index(i);
         citations[num_cited_so_far+i] = citation;
-        if (DATA_DEBUG && (idx % 1000 == 1)) {
-            printf("\nfor idx = %d, citations[num_cited_so_far %d +i %d ] = citation %d : weight = %f", 
-                idx, num_cited_so_far, i, citation, d_heap.data[i].value);
-        }
     }
     num_actually_cited = num_cited_so_far + num_citations;
 }
@@ -645,10 +616,7 @@ __device__ void ABM::GetOneAndTwoHopNeighborhood(
                 // Expand forward (outgoing) neighbors
                 int out_start = __ldg(&d_forward_adj_map->offsets[current_node]);
                 int out_end   = __ldg(&d_forward_adj_map->offsets[current_node + 1]);
-                if (DATA_DEBUG) {
-                    printf("\nFor idx = %d, node = %d, out_start = %d, out_end = %d, outdeg = %d", 
-                        idx, new_node, out_start, out_end, (out_end - out_start));
-                }
+                
                 for (int e = out_start; e < out_end; ++e) {
                     int nbr = __ldg(&d_forward_adj_map->edges[e]);
 
@@ -661,9 +629,6 @@ __device__ void ABM::GetOneAndTwoHopNeighborhood(
                         if (discovered_distance == 1) {
                             if (one_hop_neighborhood.size() < one_hop_neighborhood.get_capacity()) {
                                 one_hop_neighborhood.push_back(nbr, "one_hop_neighborhood");
-                                if (DATA_DEBUG)
-                                    printf("\n[1-HOP]: Outgoing idx=%d added nbr %d: new size = %d\n", idx, nbr, one_hop_neighborhood.size());
-
                             } else {
                                 printf("WARNING: one_hop_neighborhood overflow at idx=%d, size=%d\n",
                                        idx, one_hop_neighborhood.size());
@@ -671,9 +636,6 @@ __device__ void ABM::GetOneAndTwoHopNeighborhood(
                         } else if (discovered_distance == 2) {
                             if (two_hop_neighborhood.size() < two_hop_neighborhood.get_capacity()) {
                                 two_hop_neighborhood.push_back(nbr, "two_hop_neighborhood");
-                                if (DATA_DEBUG)
-                                    printf("\n[2-HOP]: Outgoing idx=%d added nbr %d: new size = %d\n", idx, nbr, one_hop_neighborhood.size());
-
                             } else {
                                 printf("WARNING: two_hop_neighborhood overflow at idx=%d, size=%d\n",
                                        idx, two_hop_neighborhood.size());
@@ -685,10 +647,7 @@ __device__ void ABM::GetOneAndTwoHopNeighborhood(
                 // Expand backward (incoming) neighbors
                 int in_start = __ldg(&d_backward_adj_map->offsets[current_node]);
                 int in_end   = __ldg(&d_backward_adj_map->offsets[current_node + 1]);
-                if (DATA_DEBUG) {
-                    printf("\nFor idx = %d, node = %d, in_start = %d, in_end = %d, outdeg = %d", 
-                        idx, new_node, in_start, in_end, (in_end - in_start));
-                }
+                
                 for (int e = in_start; e < in_end; ++e) {
                     int nbr = __ldg(&d_backward_adj_map->edges[e]);
 
@@ -700,8 +659,6 @@ __device__ void ABM::GetOneAndTwoHopNeighborhood(
                         if (discovered_distance == 1) {
                             if (one_hop_neighborhood.size() < one_hop_neighborhood.get_capacity()) {
                                 one_hop_neighborhood.push_back(nbr, "one_hop_neighborhood");
-                                if (DATA_DEBUG)
-                                    printf("\n[1-HOP]: incoming idx=%d added nbr %d: new size = %d\n", idx, nbr, one_hop_neighborhood.size());
                             } else {
                                 printf("WARNING: one_hop_neighborhood overflow at idx=%d, size=%d\n",
                                        idx, one_hop_neighborhood.size());
@@ -709,8 +666,6 @@ __device__ void ABM::GetOneAndTwoHopNeighborhood(
                         } else if (discovered_distance == 2) {
                             if (two_hop_neighborhood.size() < two_hop_neighborhood.get_capacity()) {
                                 two_hop_neighborhood.push_back(nbr, "two_hop_neighborhood");
-                                if (DATA_DEBUG)
-                                    printf("\n[2-HOP]: incoming idx=%d added nbr %d: new size = %d\n", idx, nbr, one_hop_neighborhood.size());
                             } else {
                                 printf("WARNING: two_hop_neighborhood overflow at idx=%d, size=%d\n",
                                        idx, two_hop_neighborhood.size());
@@ -777,25 +732,10 @@ __device__ void ABM::GetOneAndTwoHopNeighborhood_Warp(
     // ---------------------------------------------------------------
     int gen_word = generator_node >> 5;
     int gen_bit = generator_node & 31;
-    if (DATA_DEBUG && (idx % 10000 == 1)) {
-        printf("\nFor idx = %d, node = %d, generator_node = %d gen_word = %d, gen_bit = %d", 
-            idx, new_node, generator_node, gen_word, gen_bit);
-    }
 
     if (lane_id == 0) {
         visited_bitmap[gen_word] |= (1u << gen_bit);
         frontier_curr_bitmap[gen_word] |= (1u << gen_bit);
-
-        if (idx % 10000 == 1) {
-            printf("\n[INIT] idx=%d node=%d: generator=%d set at word=%d bit=%d\n",
-                   idx, new_node, generator_node, gen_word, gen_bit);
-        }
-
-        if (DATA_DEBUG) {
-            printf("\nGenerator %d set in word %d bit %d: 0x%08x for idx=%d node=%d\n",
-            generator_node, gen_word, gen_bit, 
-            frontier_curr_bitmap[gen_word], idx, new_node);
-        }
     }
     __syncwarp();
 
@@ -813,11 +753,6 @@ __device__ void ABM::GetOneAndTwoHopNeighborhood_Warp(
 
         __syncwarp();
 
-        if (idx % 10000 == 1 && lane_id == 0) {
-            printf("\n[LEVEL %d] idx=%d node=%d: Starting frontier expansion\n",
-                   level, idx, new_node);
-        }
-
         // --------------------------------------------------------------------
         // Warp-centric frontier expansion
         // WARP-STRIDED BITMAP PROCESSING (line 57-77 adapted for bitmaps)
@@ -828,16 +763,6 @@ __device__ void ABM::GetOneAndTwoHopNeighborhood_Warp(
 
             if (word == 0) {
                 continue;
-            } else {
-                if (DATA_DEBUG && (idx % 10000 == 1)) {
-                    printf("\n[L2] idx = %d, node = %d, word_idx=%d word=0x%08x is non-zero...generator=%d  \n",
-                            idx, new_node, word_idx, word, generator_node);
-                }
-            }
-
-            if (idx % 10000 == 1) {
-                printf("\n[L%d] idx=%d lane=%d word_idx=%d: processing word=0x%08x\n",
-                       (level+1), idx, lane_id, word_idx, word);
             }
 
             int base_node = word_idx << 5;
@@ -845,10 +770,7 @@ __device__ void ABM::GetOneAndTwoHopNeighborhood_Warp(
             while (word != 0) {
                 int bit_pos = __ffs(word) - 1;
                 int vertex = base_node + bit_pos;
-                if (DATA_DEBUG && (idx % 10000 == 1)) {
-                    printf("\n[L2] idx = %d, node = %d, word=0x%08x is non-zero...bit_pos=%d vertex = %d \n",
-                        idx, new_node, word, bit_pos, vertex);
-                }
+                
                 if (vertex >= max_vertices) continue;  // Bounds check
 
                 // Clear this bit in local copy (lane0 does this)
@@ -865,11 +787,6 @@ __device__ void ABM::GetOneAndTwoHopNeighborhood_Warp(
                     int start = d_forward_adj->offsets[vertex];
                     int end   = d_forward_adj->offsets[vertex + 1];
                     int num_nbr = end - start;
-
-                    if (MEM_DEBUG && idx % 10000 == 1) {
-                        printf("\n[FORWARD] idx=%d lane=%d vertex=%d: start=%d end=%d deg computed=%d out_degree = %d\n",
-                               idx, lane_id, vertex, start, end, num_nbr, out_degree);
-                    }
 
                     // Warp-strided neighbor iteration (SIMD pattern from paper)
                     for (int e = start; e < end; e++) {  
@@ -891,16 +808,8 @@ __device__ void ABM::GetOneAndTwoHopNeighborhood_Warp(
                                 // Classify by level (level=0→1-hop, level=1→2-hop)
                                 if (level == 0) {
                                     one_hop_neighborhood.insert(w);
-                                    if (DATA_DEBUG) {
-                                        printf("\n[1-HOP] idx=%d lane=%d: added vertex %d: new size = %d\n",
-                                                idx, lane_id, w, one_hop_neighborhood.size());
-                                    }
                                 } else if (level == 1) {
                                     two_hop_neighborhood.insert(w);
-                                    if (DATA_DEBUG) {
-                                        printf("\n[2-HOP] idx=%d lane=%d: added vertex %d: new size = %d\n",
-                                                idx, lane_id, w, two_hop_neighborhood.size());
-                                    }
                                 }
                             }
                         }
@@ -915,11 +824,6 @@ __device__ void ABM::GetOneAndTwoHopNeighborhood_Warp(
                     int start = d_backward_adj->offsets[vertex];
                     int end   = d_backward_adj->offsets[vertex + 1];
                     int num_nbr = end - start;
-
-                    if (MEM_DEBUG && idx % 10000 == 1) {
-                        printf("\n[BACKWARD] idx=%d lane=%d vertex=%d: start=%d end=%d in deg computed =%d in_degree = %d\n",
-                               idx, lane_id, vertex, start, end, num_nbr, in_degree);
-                    }
 
                     // Warp-strided neighbor iteration
                     for (int e = start; e < end; e++) {    
@@ -941,16 +845,9 @@ __device__ void ABM::GetOneAndTwoHopNeighborhood_Warp(
                                 // Classify by level
                                 if (level == 0) {
                                     one_hop_neighborhood.insert(w);
-                                    if (DATA_DEBUG) {
-                                        printf("\n[1-HOP-IN] idx=%d lane=%d: added vertex %d: new size = %d\n",
-                                                idx, lane_id, w, one_hop_neighborhood.size());
-                                    }
+                                    
                                 } else if (level == 1) {
                                     two_hop_neighborhood.insert(w);
-                                    if (DATA_DEBUG) {
-                                        printf("\n[2-HOP-IN] idx=%d lane=%d: added vertex %d: new size = %d\n",
-                                                idx, lane_id, w, two_hop_neighborhood.size());
-                                    }
                                 }
                             }
                         }
@@ -966,11 +863,7 @@ __device__ void ABM::GetOneAndTwoHopNeighborhood_Warp(
         // ========================================================================
         __threadfence_block();
         __syncwarp();
-
-        if (idx % 10000 == 1 && lane_id == 0) {
-            printf("\n[LEVEL %d] idx=%d node=%d: Completed, swapping frontiers\n",
-                   level, idx, new_node);
-        }
+        
 
         // ========================================================================
         // SWAP FRONTIERS: Copy next → current (paper frontier swap pattern)
@@ -987,11 +880,6 @@ __device__ void ABM::GetOneAndTwoHopNeighborhood_Warp(
     // FINAL SYNC: Ensure all operations complete
     // ============================================================================
     __syncwarp();
-
-    if (idx % 10000 == 1 && lane_id == 0) {
-        printf("\n[DONE] idx=%d node=%d: 1-hop=%d 2-hop=%d\n",
-               idx, new_node, *one_hop_neighborhood.d_size, *two_hop_neighborhood.d_size);
-    }
 }
 
  
@@ -1021,11 +909,7 @@ __device__ void ABM::ABMKernelStage2(
             current_graph_size,
             deviceState);
     }
-
-    if (DATA_DEBUG && idx %10000 == 1) {
-        printf("\nCalling MakeCitations (one hop) for node %d of idx = %d one_hop_neighborhood size = %d", 
-            new_node, idx, one_hop_neighborhood.size());
-    }
+    
     int num_actually_cited_so_far = num_actually_cited;
 
     this->MakePopulateCitations(idx, new_node, N, graph,
@@ -1039,11 +923,6 @@ __device__ void ABM::ABMKernelStage2(
         num_actually_cited_so_far,
         num_citations_inside,
         num_actually_cited);
-        
-    if (DATA_DEBUG && (idx %1000 == 1)) {
-        printf("\nIn ABMKernelStage2:: idx=%d, one_hop_neighborhood.size()=%d, num_citations_inside(before min)=%d", 
-            idx, one_hop_neighborhood.size(), num_citations_inside); 
-    }
 }
 
 
@@ -1063,11 +942,6 @@ __device__ void ABM::ABMKernelStage3(
     int& num_actually_cited,
     curandState* deviceState)
 {
-    
-    if (DATA_DEBUG && (idx % 1000 == 1)) {
-        printf("\nIn ABMKernelStage3: idx = %d, calling MakeCitations for two_hop_neighborhood of size = %d. num_citations_outside = %d", 
-            idx, two_hop_neighborhood.size(), num_citations_outside);
-    }
     this->MakePopulateCitations(idx, new_node, N, graph,
         deviceState,  
         current_year, two_hop_neighborhood, 
@@ -1105,11 +979,6 @@ __device__ void ABM::ABMKernelStage4(
         current_graph_size, initial_graph_size, final_graph_size,
         num_citations_outside);*/
 
-    if (DATA_DEBUG && idx % 10000 == 1) {
-        printf("\nIn ABMKernelStage4: idx = %d, num_actually_cited = %d, num_citations_outside = %d, num_fully_random_cited = %d ", 
-            idx, num_actually_cited, num_citations_outside, num_fully_random_cited);
-    }
-
     num_actually_cited += this->MakeUniformRandomCitations(
         graph, idx, graphNodeSetSize, selected_citations,
         per_thread_selected_set_capacity,
@@ -1121,10 +990,5 @@ __device__ void ABM::ABMKernelStage4(
     d_new_edges_vec.push_back(make_int2(new_node, generator_node), "d_new_edges_vec");
     for (int j = 0; j < num_actually_cited; j++) {
         d_new_edges_vec.push_back(make_int2(new_node, citations[j]), "d_new_edges_vec");
-    }
-
-    if (DATA_DEBUG && (idx % 1000 == 1)) {
-        printf("\nPushed citations: year=%d, idx=%d, d_new_edges_vec.size()=%d, num_actually_cited=%d", 
-            current_year, idx, d_new_edges_vec.size(), num_actually_cited); 
     }
 }

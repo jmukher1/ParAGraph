@@ -19,7 +19,6 @@ Graph::Graph(std::string edgelist, std::string nodelist) : edgelist(edgelist), n
     std::cout << "Elapsed time: 1-2 : " << duration12.count()/1000 << " seconds" << std::endl;
     std::cout << "Elapsed time: 2-3 : " << duration23.count()/1000 << " seconds" << std::endl;
     printf("\nInitialized Graph. Let us update the indegree and out-degrees... ");
-    
 }
 
 inline int fast_atoi(const char* str, const char* end) {
@@ -42,6 +41,297 @@ inline int fast_atoi(const char* str, const char* end) {
     
     return negative ? -result : result;
 }
+
+
+void Graph::PrintFinalGraphStatistics() {
+
+    const size_t num_nodes = this->node_set.size();
+
+    // count edges
+    size_t num_edges = 0;
+    for (const auto& [u, nbrs] : forward_adj_map) {
+        num_edges += nbrs.size();
+    }
+
+    long total_in = 0;
+    long total_out = 0;
+
+    int min_in = INT_MAX;
+    int max_in = INT_MIN;
+
+    int min_out = INT_MAX;
+    int max_out = INT_MIN;
+
+    int isolated = 0;
+
+    std::vector<int> degree;
+    degree.reserve(num_nodes);
+
+    for (const auto& node : node_set) {
+
+        int indeg = GetInDegree(node);
+        int outdeg = GetOutDegree(node);
+
+        total_in += indeg;
+        total_out += outdeg;
+
+        min_in = std::min(min_in, indeg);
+        max_in = std::max(max_in, indeg);
+
+        min_out = std::min(min_out, outdeg);
+        max_out = std::max(max_out, outdeg);
+
+        int deg = indeg + outdeg;
+        degree.push_back(deg);
+
+        if (deg == 0)
+            isolated++;
+    }
+
+    double avg_in = (double)total_in / num_nodes;
+    double avg_out = (double)total_out / num_nodes;
+
+    // compute std deviation
+    double var_in = 0;
+    double var_out = 0;
+
+    for (const auto& node : node_set) {
+        int indeg = GetInDegree(node);
+        int outdeg = GetOutDegree(node);
+
+        var_in += (indeg - avg_in) * (indeg - avg_in);
+        var_out += (outdeg - avg_out) * (outdeg - avg_out);
+    }
+
+    double std_in = std::sqrt(var_in / num_nodes);
+    double std_out = std::sqrt(var_out / num_nodes);
+
+    double density = (double)num_edges / (num_nodes * (num_nodes - 1));
+
+    std::cout << "\n================ FINAL GRAPH STATISTICS ================" << std::endl;
+
+    std::cout << "Nodes: " << num_nodes << std::endl;
+    std::cout << "Edges: " << num_edges << std::endl;
+    std::cout << "Density: " << density << std::endl;
+
+    std::cout << "\nIn-degree statistics" << std::endl;
+    std::cout << "Avg: " << avg_in << std::endl;
+    std::cout << "StdDev: " << std_in << std::endl;
+    std::cout << "Min: " << min_in << std::endl;
+    std::cout << "Max: " << max_in << std::endl;
+
+    std::cout << "\nOut-degree statistics" << std::endl;
+    std::cout << "Avg: " << avg_out << std::endl;
+    std::cout << "StdDev: " << std_out << std::endl;
+    std::cout << "Min: " << min_out << std::endl;
+    std::cout << "Max: " << max_out << std::endl;
+
+    std::cout << "\nIsolated Nodes: " << isolated << std::endl;
+
+    /* ---------------------------
+       Degree histogram
+       --------------------------- */
+
+    std::unordered_map<int,int> histogram;
+
+    for (auto d : degree)
+        histogram[d]++;
+
+    std::cout << "\nDegree Histogram (degree : count)\n";
+
+    for (const auto& [d,c] : histogram)
+        std::cout << d << " : " << c << std::endl;
+
+    /* ---------------------------
+       Power-law exponent
+       --------------------------- */
+
+    int kmin = 1;
+    double sum_log = 0;
+    int count = 0;
+
+    for (auto d : degree) {
+        if (d >= kmin) {
+            sum_log += std::log((double)d/kmin);
+            count++;
+        }
+    }
+
+    double alpha = 1 + (double)count / sum_log;
+
+    std::cout << "\nEstimated Power-law exponent (alpha): " << alpha << std::endl;
+
+    /* ---------------------------
+       Giant component
+       --------------------------- */
+
+    std::unordered_set<int> visited;
+    size_t largest_component = 0;
+
+    for (const auto& start : node_set) {
+
+        if (visited.contains(start))
+            continue;
+
+        std::queue<int> q;
+        q.push(start);
+        visited.insert(start);
+
+        size_t component_size = 0;
+
+        while (!q.empty()) {
+
+            int v = q.front();
+            q.pop();
+            component_size++;
+
+            if (forward_adj_map.contains(v)) {
+                for (int u : forward_adj_map.at(v)) {
+                    if (!visited.contains(u)) {
+                        visited.insert(u);
+                        q.push(u);
+                    }
+                }
+            }
+
+            if (backward_adj_map.contains(v)) {
+                for (int u : backward_adj_map.at(v)) {
+                    if (!visited.contains(u)) {
+                        visited.insert(u);
+                        q.push(u);
+                    }
+                }
+            }
+        }
+
+        largest_component = std::max(largest_component, component_size);
+    }
+
+    std::cout << "\nGiant Component Size: "
+              << largest_component
+              << " (" << (100.0 * largest_component / num_nodes)
+              << "% of nodes)" << std::endl;
+
+    std::cout << "========================================================\n" << std::endl;
+}   
+
+/*void Graph::PrintAdvancedGraphStatistics() {
+
+    size_t num_nodes = nodes.size();
+    size_t num_edges = edges.size();
+
+    std::vector<int> degree(num_nodes);
+
+    for (size_t i = 0; i < num_nodes; i++) {
+        degree[i] = nodes[i].indegree + nodes[i].outdegree;
+    }
+
+    /* -------------------------
+       Degree distribution
+       ------------------------- * /
+
+    std::unordered_map<int,int> histogram;
+
+    for (auto d : degree) {
+        histogram[d]++;
+    }
+
+    std::cout << "\nDegree Distribution Histogram (degree : count)\n";
+
+    for (auto &p : histogram) {
+        std::cout << p.first << " : " << p.second << std::endl;
+    }
+
+    /* -------------------------
+       Power-law exponent
+       (maximum likelihood)
+       ------------------------- * /
+
+    int kmin = 1;
+    double sum_log = 0.0;
+    int count = 0;
+
+    for (auto d : degree) {
+        if (d >= kmin) {
+            sum_log += std::log((double)d / kmin);
+            count++;
+        }
+    }
+
+    double alpha = 1 + (double)count / sum_log;
+
+    std::cout << "\nEstimated Power-law Exponent (alpha): "
+              << alpha << std::endl;
+
+    /* -------------------------
+       Isolated nodes
+       ------------------------- * /
+
+    int isolated = 0;
+
+    for (auto d : degree) {
+        if (d == 0)
+            isolated++;
+    }
+
+    std::cout << "Isolated nodes: " << isolated << std::endl;
+
+    /* -------------------------
+       Giant component size
+       (BFS)
+       ------------------------- * /
+
+    std::vector<bool> visited(num_nodes,false);
+
+    int largest_component = 0;
+
+    for (size_t i=0;i<num_nodes;i++) {
+
+        if (visited[i])
+            continue;
+
+        std::queue<int> q;
+        q.push(i);
+        visited[i] = true;
+
+        int size = 0;
+
+        while(!q.empty()) {
+
+            int v = q.front();
+            q.pop();
+            size++;
+
+            for (auto &e : nodes[v].out_edges) {
+
+                int u = e.target;
+
+                if (!visited[u]) {
+                    visited[u] = true;
+                    q.push(u);
+                }
+            }
+
+            for (auto &e : nodes[v].in_edges) {
+
+                int u = e.source;
+
+                if (!visited[u]) {
+                    visited[u] = true;
+                    q.push(u);
+                }
+            }
+        }
+
+        largest_component = std::max(largest_component, size);
+    }
+
+    std::cout << "Giant component size: "
+              << largest_component
+              << " (" << (100.0*largest_component/num_nodes)
+              << "% of graph)" << std::endl;
+
+}*/
 
 void Graph::ParseNodelist() {
     printf("\nInside  Graph ParseNodelist.....");

@@ -11,6 +11,13 @@
 #include <iostream>
 #include <fstream>
 #include <sstream>
+#include <unordered_map>
+#include <unordered_set>
+#include <queue>
+#include <cmath>
+#include <numeric>
+#include <algorithm>
+
 #include <cuda_runtime.h>
 
 #include "device_map.cuh"
@@ -64,6 +71,8 @@ class Graph {
         void updateNodeInDegreeOutDegree(std::vector<int> new_nodes_vec,
                                         std::set<int> updated_destination_nodes,
                                         int year);
+        void PrintFinalGraphStatistics();
+        //void PrintAdvancedGraphStatistics();
         //__host__ __device__ const device_map<int, Node>::device_view getd_nodeAttributeMap_view();
         std::map<int, std::set<int>> getForwardAdjMap();
         std::map<int, std::set<int>> getBackwardAdjMap();

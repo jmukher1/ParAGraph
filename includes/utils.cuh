@@ -51,7 +51,7 @@
 #define SEED_TYPE 0
 #define AGENT_TYPE 1
 
-#define MEM_DEBUG true
+#define MEM_DEBUG false
 #define DATA_DEBUG false
 
 #ifndef WARP_SIZE
@@ -196,7 +196,7 @@ void append_device_to_host(device_vector_generic<T>* d_vec_vectors,
         }
     }
 
-    printf("\nTotal new edges = %d", countEdges);
+    //printf("\nTotal new edges = %d", countEdges);
 }
 
 void convertStdSetToDeviceStaticSet(
@@ -215,8 +215,8 @@ inline void create_thread_vectors_int(int num_threads, int max_node_id,
         new (&((*d_vectors)[i])) device_vector();
         (*d_vectors)[i].allocate(max_node_id);
     } 
-    printf("[create_thread_vectors_int] Creating %d vectors (device memory)\n", 
-           num_threads);
+    //("[create_thread_vectors_int] Creating %d vectors (device memory)\n", 
+    //       num_threads);
     
     /*/ Create temporary host array
     device_vector* h_vectors = new device_vector[num_threads];
@@ -268,8 +268,8 @@ __host__ void create_thread_vectors_bulk(
     int* capacities_per_thread,
     device_vector_generic<T>** d_vectors)
 {
-    printf("\n[create_thread_vectors_bulk] Starting bulk allocation\n");
-    printf("  Num vectors: %d\n", num_threads);
+    //("\n[create_thread_vectors_bulk] Starting bulk allocation\n");
+    //printf("  Num vectors: %d\n", num_threads);
 
     // =========================================================
     // 1. Create host array of vector structs
@@ -302,8 +302,8 @@ __host__ void create_thread_vectors_bulk(
         total_elements += capacities_per_thread[i];
     }
 
-    printf("  Total elements: %zu\n", total_elements);
-    printf("  Total bytes: %.2f MB\n", total_elements * sizeof(T) / (1024.0 * 1024.0));
+    //("  Total elements: %zu\n", total_elements);
+    //printf("  Total bytes: %.2f MB\n", total_elements * sizeof(T) / (1024.0 * 1024.0));
 
     // =========================================================
     // 3. Bulk allocate `data` for ALL vectors
@@ -320,13 +320,7 @@ __host__ void create_thread_vectors_bulk(
         if (capacities_per_thread[i] > 0)
             h_vectors[i].data = d_bulk_data + offsets[i];
         else
-            h_vectors[i].data = nullptr;
-
-        if (i < 5 || i % 5000 == 0) {
-            printf("  Vector[%d]: capacity=%d offset=%zu ptr=%p\n",
-                   i, capacities_per_thread[i], offsets[i], 
-                   (void*)h_vectors[i].data);
-        }
+            h_vectors[i].data = nullptr; 
     }
 
     // =========================================================
@@ -340,8 +334,8 @@ __host__ void create_thread_vectors_bulk(
                           num_threads * sizeof(device_vector_generic<T>),
                           cudaMemcpyHostToDevice));
 
-    printf("[create_thread_vectors_bulk] Done. Single cudaMalloc for %zu elements.\n",
-           total_elements);
+    //("[create_thread_vectors_bulk] Done. Single cudaMalloc for %zu elements.\n",
+    //       total_elements);
 }
 
 template <typename T>
@@ -369,7 +363,7 @@ __host__ void create_soa_vectors_bulk(
     int* capacities_per_thread,
     device_vector_soa<W>** d_vectors)
 {
-    printf("\n[create_soa_vectors_bulk] Creating %d vectors\n", num_vectors);
+    //printf("\n[create_soa_vectors_bulk] Creating %d vectors\n", num_vectors);
     
     // Calculate total elements
     size_t total_elements = 0;
@@ -379,11 +373,11 @@ __host__ void create_soa_vectors_bulk(
         total_elements += capacities_per_thread[i];
     }
     
-    printf("  Total elements: %zu\n", total_elements);
+    /*printf("  Total elements: %zu\n", total_elements);
     printf("  Memory: weights=%zu MB, indices=%zu MB, total=%zu MB\n",
            (total_elements * sizeof(W)) / (1024*1024),
            (total_elements * sizeof(uint32_t)) / (1024*1024),
-           (total_elements * (sizeof(W) + sizeof(uint32_t))) / (1024*1024));
+           (total_elements * (sizeof(W) + sizeof(uint32_t))) / (1024*1024));*/
     
     // Allocate bulk storage for weights and indices
     W* d_bulk_weights = nullptr;
@@ -422,7 +416,7 @@ __host__ void create_soa_vectors_bulk(
                           num_vectors * sizeof(device_vector_soa<W>),
                           cudaMemcpyHostToDevice));
     
-    printf("[create_soa_vectors_bulk] Done\n");
+    //printf("[create_soa_vectors_bulk] Done\n");
 }
 
 template<typename W>
@@ -431,7 +425,7 @@ __host__ void create_soa_vectors_individual(
     int* capacities_per_thread,
     device_vector_soa<W>** d_vectors)
 {
-    printf("\n[create_soa_vectors_individual] Creating %d vectors individually\n", num_vectors);
+    //printf("\n[create_soa_vectors_individual] Creating %d vectors individually\n", num_vectors);
     
     // Create host array of vector descriptors
     std::vector<device_vector_soa<W>> h_vecs(num_vectors);
@@ -463,8 +457,8 @@ __host__ void create_soa_vectors_individual(
         CUDA_CHECK(cudaMemcpy(h_vecs[i].d_capacity, &cap, sizeof(int), cudaMemcpyHostToDevice));
     }
     
-    printf("  Total memory allocated: %.2f MB across %d vectors\n",
-           total_memory / (1024.0 * 1024.0), num_vectors);
+    //printf("  Total memory allocated: %.2f MB across %d vectors\n",
+    //       total_memory / (1024.0 * 1024.0), num_vectors);
     
     // Allocate device array for vector descriptors
     CUDA_CHECK(cudaMalloc(d_vectors, num_vectors * sizeof(device_vector_soa<W>)));
@@ -474,7 +468,7 @@ __host__ void create_soa_vectors_individual(
                           num_vectors * sizeof(device_vector_soa<W>),
                           cudaMemcpyHostToDevice));
     
-    printf("[create_soa_vectors_individual] Done\n");
+    // printf("[create_soa_vectors_individual] Done\n");
 }
 
 template<typename W>
@@ -482,7 +476,7 @@ __host__ void destroy_soa_vectors_individual(
     device_vector_soa<W>* d_vectors,
     int num_vectors)
 {
-    printf("\n[destroy_soa_vectors_individual] Cleaning up %d vectors\n", num_vectors);
+    // ("\n[destroy_soa_vectors_individual] Cleaning up %d vectors\n", num_vectors);
     
     if (d_vectors == nullptr) {
         printf("  Warning: d_vectors is nullptr, nothing to clean up\n");
@@ -535,8 +529,8 @@ __host__ void destroy_soa_vectors_individual(
     // Free the device array of vector descriptors
     CUDA_CHECK(cudaFree(d_vectors));
     
-    printf("  Total memory freed: %.2f MB\n", total_freed / (1024.0 * 1024.0));
-    printf("[destroy_soa_vectors_individual] Done\n");
+    //printf("  Total memory freed: %.2f MB\n", total_freed / (1024.0 * 1024.0));
+    //printf("[destroy_soa_vectors_individual] Done\n");
 }
 
 
@@ -633,7 +627,7 @@ __host__ void cleanup_soa_vectors_bulk(
     }
     
     cudaFree(d_vectors);
-    printf("[cleanup_soa_vectors_bulk] Freed %d vectors\n", num_vectors);
+    //printf("[cleanup_soa_vectors_bulk] Freed %d vectors\n", num_vectors);
 }
 
 // Sorting helper
@@ -664,7 +658,7 @@ __host__ void create_min_heap_array(
     int* h_capacities,                   // Array of K values [K1, K2, ..., Kp]
     device_min_heap_array<T>** d_heap_array)
 {
-    printf("\n[create_min_heap_array] Creating %d min heaps\n", num_threads);
+    //printf("\n[create_min_heap_array] Creating %d min heaps\n", num_threads);
     
     // Calculate total storage needed and offsets
     std::vector<size_t> offsets(num_threads);
@@ -673,13 +667,13 @@ __host__ void create_min_heap_array(
     for (int i = 0; i < num_threads; i++) {
         offsets[i] = total_elements;
         total_elements += h_capacities[i];
-        printf("  Heap[%d]: capacity=%d, offset=%zu\n", 
-               i, h_capacities[i], offsets[i]);
+        //("  Heap[%d]: capacity=%d, offset=%zu\n", 
+        //       i, h_capacities[i], offsets[i]);
     }
     
-    printf("  Total elements across all heaps: %zu\n", total_elements);
+    /*printf("  Total elements across all heaps: %zu\n", total_elements);
     printf("  Memory: %.2f MB\n", 
-           (total_elements * sizeof(typename device_min_heap<T>::Element)) / (1024.0 * 1024.0));
+           (total_elements * sizeof(typename device_min_heap<T>::Element)) / (1024.0 * 1024.0));*/
     
     // Allocate bulk storage for all heap elements
     typename device_min_heap<T>::Element* d_bulk_storage;
@@ -717,7 +711,7 @@ __host__ void create_min_heap_array(
     CUDA_CHECK(cudaMemcpy(*d_heap_array, &h_heap_array, 
                           sizeof(device_min_heap_array<T>), cudaMemcpyHostToDevice));
     
-    printf("[create_min_heap_array] Allocation complete\n");
+    //printf("[create_min_heap_array] Allocation complete\n");
 }
 
 // ============================================================================
@@ -765,7 +759,7 @@ __host__ void cleanup_vectors_bulk(
         return;
     }
     
-    printf("\n[cleanup_vectors_bulk] Starting cleanup for %d vectors\n", num_threads);
+    //printf("\n[cleanup_vectors_bulk] Starting cleanup for %d vectors\n", num_threads);
     
     // =========================================================
     // 1. Copy vector array from device to host
@@ -782,7 +776,7 @@ __host__ void cleanup_vectors_bulk(
     if (num_threads > 0 && h_vectors[0].data != nullptr) {
         T* d_bulk_data = h_vectors[0].data;
         CUDA_CHECK(cudaFree(d_bulk_data));
-        printf("  Freed bulk data at: %p\n", (void*)d_bulk_data);
+        //printf("  Freed bulk data at: %p\n", (void*)d_bulk_data);
     }
     
     // =========================================================
@@ -796,16 +790,16 @@ __host__ void cleanup_vectors_bulk(
             CUDA_CHECK(cudaFree(h_vectors[i].d_capacity));
         }
     }
-    printf("  Freed %d d_size and %d d_capacity pointers\n", num_threads, num_threads);
+    //printf("  Freed %d d_size and %d d_capacity pointers\n", num_threads, num_threads);
     
     // =========================================================
     // 4. Free the vector array itself
     // =========================================================
     CUDA_CHECK(cudaFree(d_vectors));
-    printf("  Freed vector array at: %p\n", (void*)d_vectors);
+    /*printf("  Freed vector array at: %p\n", (void*)d_vectors);
     
     printf("[cleanup_vectors_bulk] Cleanup complete. Total frees: %d (1 bulk + %d metadata + 1 array)\n",
-           2 * num_threads + 2, 2 * num_threads);
+           2 * num_threads + 2, 2 * num_threads);*/
 }
 
 // ============================================================================
@@ -946,7 +940,7 @@ inline void convertHostMapToDeviceMap(const std::map<K, V>& hostMap, device_map<
     host_size = int(N);
     d_map->setSize(host_size);
 
-    printf("\nConverted host map with %d keys to device_map of size %d\n", N, d_map->size());
+    //printf("\nConverted host map with %d keys to device_map of size %d\n", N, d_map->size());
 }
 
 template <typename K, typename V>
@@ -977,7 +971,7 @@ inline void freeDeviceMap(device_map<K, V>* d_map) {
     // But if you need to explicitly clear it:
     // d_map->d_index_map.clear();  // If such method exists
     
-    printf("Freed device_map resources\n");
+    //("Freed device_map resources\n");
 }
 
  

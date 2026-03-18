@@ -31,22 +31,12 @@ __global__ void kernelCallStage1(
         if (idx >= total_N) return;
 
 
-        if (DATA_DEBUG && (idx % 1000 == 1)) {
-                printf("\nIn kernelCallStage1:: idx = %d, start_idx = %d, batch_size = %d, total_N = %d", 
-                        idx, start_idx, batch_size, total_N);
-        }
-    
         int new_node = d_new_nodes_arr[idx];
         d_states[local_idx].generator_node = abm->getGraphAttributesGeneratorNode(
             graph, 
             d_nodeAttributeMap_view, 
             new_node
-        );
-    
-        if (DATA_DEBUG && idx % 10000 == 1) {
-                printf("\n[KERNEL] idx=%d new_node=%d generator=%d\n",
-                idx, new_node, d_states[local_idx].generator_node);
-        }
+        ); 
         
         abm->GetOneAndTwoHopNeighborhood(
                 graph,
@@ -61,318 +51,7 @@ __global__ void kernelCallStage1(
                 one_hop_neighborhood_vectors[local_idx],
                 two_hop_neighborhood_vectors[local_idx]);
 
-        if (DATA_DEBUG) {
-                printf("\nhopdegree, %d, %d, %d, %d",
-                        idx, new_node, one_hop_neighborhood_vectors[local_idx].size(), two_hop_neighborhood_vectors[local_idx].size());
-        }
 }
-
-/*/ ============================================================================
-// WARP-COOPERATIVE KERNEL: Each warp processes one BFS independently
-// Based on "Accelerating CUDA Graph Algorithms at Maximum Warp"
-// ============================================================================
-
-__global__ void kernelCallStage1_Warp(
-    int start_idx,
-    int batch_size,
-    int total_N,
-    ABM* abm,
-    Graph* graph,
-    DeviceGraph* d_forward_adj_map_Graph,
-    DeviceGraph* d_backward_adj_map_Graph,
-    device_map<int, Node>::device_view d_nodeAttributeMap_view,
-    ABMStageState* d_states,
-    int* d_new_nodes_arr,
-    int num_generator_node_citation,
-    device_vector* one_hop_neighborhood_vectors,
-    device_vector* two_hop_neighborhood_vectors,
-    CompactBFSState* d_bfs_pool,
-    int initial_graph_size)
-{
-    // ========================================================================
-    // WARP IDENTIFICATION (Critical for warp-cooperative execution)
-    // ========================================================================
-    
-    // Thread position within warp (0-31)
-    int lane_id = threadIdx.x & 31;
-    
-    // Warp position within block
-    int warp_in_block = threadIdx.x / WARP_SIZE;
-    
-    // Total warps per block
-    int warps_per_block = blockDim.x / WARP_SIZE;
-    
-    // Global warp ID across entire grid
-    int global_warp_id = blockIdx.x * warps_per_block + warp_in_block;
-    
-    // ========================================================================
-    // BOUNDS CHECK: Ensure we don't exceed batch size
-    // ========================================================================
-    if (global_warp_id >= batch_size) return;
-    
-    int idx = start_idx + global_warp_id;
-    if (idx >= total_N) return;
-    
-    int max_vertices = initial_graph_size + total_N;
-    
-    // ========================================================================
-    // DEBUG: Print warp configuration (lane 0 only to avoid spam)
-    // ========================================================================
-    if (DATA_DEBUG && idx % 10000 == 1 && lane_id == 0) {
-        printf("\n[KERNEL] idx=%d global_warp_id=%d block=%d warp_in_block=%d\n",
-               idx, global_warp_id, blockIdx.x, warp_in_block);
-    }
-    
-    // ========================================================================
-    // RETRIEVE INPUT DATA (All lanes cooperate/read same values)
-    // ========================================================================
-    int new_node = d_new_nodes_arr[idx];
-    
-    // Lane 0 retrieves generator node (will be broadcast to all lanes)
-    if (lane_id == 0) {
-        d_states[global_warp_id].generator_node = abm->getGraphAttributesGeneratorNode(
-            graph, 
-            d_nodeAttributeMap_view, 
-            new_node
-        );
-    }
-    __syncwarp();  // CRITICAL: Ensure all lanes see generator_node
-    
-    // All lanes now read the same generator_node
-    int generator_node = d_states[global_warp_id].generator_node;
-    
-    if (DATA_DEBUG && idx % 10000 == 1 && lane_id == 0) {
-        printf("\n[KERNEL] idx=%d new_node=%d generator=%d\n",
-               idx, new_node, generator_node);
-    }
-    
-    // ========================================================================
-    // GET BFS STATE BITMAPS (Warp-private memory pointers)
-    // ========================================================================
-    CompactBFSState& bfs_state = d_bfs_pool[global_warp_id];
-    
-    // Extract bitmap pointers for this warp
-    uint32_t* visited_bitmap       = bfs_state.d_visited_bitmap;
-    uint32_t* frontier_curr_bitmap = bfs_state.d_queue_bitmap_curr;
-    uint32_t* frontier_next_bitmap = bfs_state.d_queue_bitmap_next;
-    
-    // Validate bitmaps (lane 0 checks, all lanes return if invalid)
-    bool valid = true;
-    if (lane_id == 0) {
-        if (visited_bitmap == nullptr || 
-            frontier_curr_bitmap == nullptr || 
-            frontier_next_bitmap == nullptr) {
-            printf("[ERROR] idx=%d: NULL bitmap pointers!\n", idx);
-            valid = false;
-        }
-        
-        if (bfs_state.bitmap_words <= 0 || bfs_state.bitmap_words > 100000000) {
-            printf("[ERROR] idx=%d: Invalid bitmap_words=%d\n", idx, bfs_state.bitmap_words);
-            valid = false;
-        }
-    }
-    
-    // Broadcast validation result to all lanes
-    valid = __shfl_sync(0xFFFFFFFF, valid, 0);
-    if (!valid) return;
-    
-    // ========================================================================
-    // GET OUTPUT VECTORS (References to this warp's output buffers)
-    // ========================================================================
-    device_vector& one_hop  = one_hop_neighborhood_vectors[global_warp_id];
-    device_vector& two_hop  = two_hop_neighborhood_vectors[global_warp_id];
-    
-    // ========================================================================
-    // LAUNCH WARP-COOPERATIVE BFS
-    // All 32 threads in this warp cooperate on the same BFS task
-    // ========================================================================
-    abm->GetOneAndTwoHopNeighborhood_Warp(
-        graph,
-        idx,
-        new_node,
-        d_forward_adj_map_Graph,
-        d_backward_adj_map_Graph,
-        d_nodeAttributeMap_view,
-        generator_node,
-        num_generator_node_citation,
-        visited_bitmap,         // Warp-private bitmap
-        frontier_curr_bitmap,   // Warp-private bitmap
-        frontier_next_bitmap,   // Warp-private bitmap
-        one_hop,
-        two_hop,
-        max_vertices
-    );
-    
-    // ========================================================================
-    // FINAL SYNC AND REPORTING (Lane 0 only to avoid duplicate output)
-    // ========================================================================
-    __syncwarp();
-    
-    if (DATA_DEBUG && idx % 1000 == 1 && lane_id == 0) {
-        printf("\n[RESULT] idx=%d new_node=%d gen=%d: 1-hop=%d 2-hop=%d\n",
-               idx, new_node, generator_node, one_hop.size(), two_hop.size());
-    }
-}
-
-// ============================================================================
-// HOST-SIDE LAUNCH WRAPPER
-// ============================================================================
-
-void launch_stage1_kernel(
-    int start_idx,
-    int batch_size,
-    int total_N,
-    ABM* d_abm,
-    Graph* d_graph,
-    DeviceGraph* d_forward_adj,
-    DeviceGraph* d_backward_adj,
-    device_map<int, Node>::device_view d_nodeAttr_view,
-    ABMStageState* d_states,
-    int* d_new_nodes,
-    int num_gen_citations,
-    device_vector* d_one_hop_vecs,
-    device_vector* d_two_hop_vecs,
-    CompactBFSState* d_bfs_pool,
-    int initial_graph_size)
-{
-    // ========================================================================
-    // KERNEL LAUNCH CONFIGURATION
-    // Key principle: Each warp handles one BFS independently
-    // ========================================================================
-    
-    // Each warp processes one BFS task
-    int warps_needed = batch_size;
-    
-    // Threads per block (must be multiple of 32)
-    // Common choices: 128 (4 warps), 256 (8 warps), 512 (16 warps)
-    int threads_per_block = 256;  // 8 warps per block
-    int warps_per_block = threads_per_block / WARP_SIZE;
-    
-    // Calculate number of blocks needed
-    int num_blocks = (warps_needed + warps_per_block - 1) / warps_per_block;
-    
-    // ========================================================================
-    // PRINT LAUNCH CONFIGURATION
-    // ========================================================================
-    printf("\n========================================\n");
-    printf("Stage 1 Kernel Launch Configuration:\n");
-    printf("========================================\n");
-    printf("  Start index: %d\n", start_idx);
-    printf("  Batch size: %d\n", batch_size);
-    printf("  Total N: %d\n", total_N);
-    printf("  Warps needed: %d\n", warps_needed);
-    printf("  Threads per block: %d\n", threads_per_block);
-    printf("  Warps per block: %d\n", warps_per_block);
-    printf("  Number of blocks: %d\n", num_blocks);
-    printf("  Total threads: %d\n", num_blocks * threads_per_block);
-    printf("  Max vertices: %d\n", initial_graph_size + total_N);
-    printf("========================================\n\n");
-    
-    // ========================================================================
-    // LAUNCH KERNEL
-    // ========================================================================
-    kernelCallStage1<<<num_blocks, threads_per_block>>>(
-        start_idx,
-        batch_size,
-        total_N,
-        d_abm,
-        d_graph,
-        d_forward_adj,
-        d_backward_adj,
-        d_nodeAttr_view,
-        d_states,
-        d_new_nodes,
-        num_gen_citations,
-        d_one_hop_vecs,
-        d_two_hop_vecs,
-        d_bfs_pool,
-        initial_graph_size
-    );
-    
-    // ========================================================================
-    // ERROR CHECKING
-    // ========================================================================
-    cudaError_t launch_err = cudaGetLastError();
-    if (launch_err != cudaSuccess) {
-        printf("ERROR: Kernel launch failed: %s\n", cudaGetErrorString(launch_err));
-        return;
-    }
-    
-    // Optional: Synchronize and check for execution errors
-    cudaError_t sync_err = cudaDeviceSynchronize();
-    if (sync_err != cudaSuccess) {
-        printf("ERROR: Kernel execution failed: %s\n", cudaGetErrorString(sync_err));
-        return;
-    }
-    
-    printf("\nStage 1 kernel completed successfully\n\n");
-}*/
-
-/*/ In kernelCallStage1
-__global__ void kernelCallStage1(
-    int start_idx,
-    int batch_size,
-    int total_N,
-    ABM* abm,
-    Graph* graph,
-    DeviceGraph* d_forward_adj_map_Graph,
-    DeviceGraph* d_backward_adj_map_Graph,
-    device_map<int, Node>::device_view d_nodeAttributeMap_view,
-    ABMStageState* d_states,
-    int* d_new_nodes_arr,
-    int num_generator_node_citation,
-    device_vector* one_hop_neighborhood_vectors,
-    device_vector* two_hop_neighborhood_vectors,
-    CompactBFSState* d_bfs_pool,
-    int initial_graph_size)
-{
-    int max_vertices = initial_graph_size + total_N;
-
-        int threads_per_block = blockDim.x * blockDim.y;
-        // Global warp ID across grid
-        // Each warp handles one BFS job
-        int global_warp_id = blockIdx.x * threads_per_block + threadIdx.y * blockDim.x + threadIdx.x;
-
-        if (global_warp_id >= batch_size) return;
-        int idx = start_idx + global_warp_id;
-        if (idx >= total_N) return;
-
-        int new_node = d_new_nodes_arr[idx];
-        if (idx % 1000 == 1) {
-                printf("\nIn kernelCallStage1:: idx = %d, new_node = %d, threads_per_block = %d, batch_size = %d, global_warp_id = %d", 
-                        idx, new_node, threads_per_block, batch_size, global_warp_id);
-        }
-
-        // Retrieve generator node
-        d_states[global_warp_id].generator_node = abm->getGraphAttributesGeneratorNode(
-                        graph, d_nodeAttributeMap_view, new_node);
-        __syncwarp(); // Ensure generator node is set before warp uses it
-        int generator_node = d_states[global_warp_id].generator_node;
-
-        // Launch warp-cooperative BFS for this node
-        abm->GetOneAndTwoHopNeighborhood_WarpCoop(
-                graph,
-                idx,
-                new_node,
-                d_forward_adj_map_Graph,
-                d_backward_adj_map_Graph,
-                d_nodeAttributeMap_view,
-                generator_node,
-                num_generator_node_citation,
-                d_bfs_pool[global_warp_id],
-                one_hop_neighborhood_vectors[global_warp_id],
-                two_hop_neighborhood_vectors[global_warp_id],
-                max_vertices
-        );
-
-        // Optional debug print (only lane 0 of warp prints)
-        //if (idx % 1000 == 1) {
-                printf("\nidx=%d, new_node=%d, one_hop_size=%d, two_hop_size=%d",
-                idx, new_node,
-                one_hop_neighborhood_vectors[global_warp_id].size(),
-                two_hop_neighborhood_vectors[global_warp_id].size());
-        //}
-}*/
 
 __global__ void kernelCallStage2(
     int start_idx,
@@ -407,11 +86,6 @@ __global__ void kernelCallStage2(
         int idx = start_idx + local_idx;
         if (idx >= total_N) return;
 
-        if (DATA_DEBUG && (idx % 1000 == 1)) {
-                printf("\nIn kernelCallStage2:: idx = %d, start_idx = %d, batch_size = %d, total_N = %d", 
-                        idx, start_idx, batch_size, total_N);
-        }
-
         // initialize RNG for this node
         curand_init(seed, idx, 0, &deviceStates[local_idx]);
         
@@ -422,20 +96,12 @@ __global__ void kernelCallStage2(
         double fit_weight = __ldg(&fit_weight_arr[idx]);
         double alpha      = __ldg(&alpha_arr[idx]);
 
-        if (DATA_DEBUG && idx % 1000 == 1) {
-                printf("\nFor idx = %d, pa_weight = %lf, rec_weight = %lf, fit_weight = %lf, alpha = %lf ", 
-                        idx, pa_weight, rec_weight, fit_weight, alpha);
-        }
-
         int outdeg = out_degree_arr[idx];
 
         // CPU code: int same_year_citation = same_year_source_nodes.count(i); // could be 0 or 1
         d_states[local_idx].same_year_citation = d_same_year_source_nodes_set_ref.contains(idx) ? 1 : 0;
         d_states[local_idx].num_fully_random_cited_reserved = __float2int_rd(fully_random_citations * outdeg);
         
-        if (DATA_DEBUG && (idx % 10000 == 1))
-                printf("\nd_states[local_idx=%d].num_fully_random_cited_reserved = %d", local_idx, d_states[local_idx].num_fully_random_cited_reserved);
-
         // Calculate number of citations from 1-hop neighborhood
         int remaining = outdeg - num_generator_node_citation
                         - d_states[local_idx].same_year_citation
@@ -445,11 +111,6 @@ __global__ void kernelCallStage2(
         d_states[local_idx].num_citations_inside = min(d_states[local_idx].num_citations_inside, 
                                                 (int)(one_hop_neighborhood_vectors[local_idx]).size());
         
-        if (DATA_DEBUG && (idx % 10000 == 1)) {
-                printf("\noutdeg = %d, num_generator_node_citation = %d, d_states[local_idx=%d].num_citations_inside = %d, d_states[local_idx=%d].num_fully_random_cited_reserved = %d", 
-                        outdeg, num_generator_node_citation, local_idx, d_states[local_idx].num_citations_inside, local_idx, d_states[local_idx].num_fully_random_cited_reserved);
-        }
-
         d_states[local_idx].num_actually_cited = 0; 
 
         abm->ABMKernelStage2(
@@ -500,11 +161,6 @@ __global__ void kernelCallStage3(
         int idx = start_idx + local_idx;
         if (idx >= total_N) return;
 
-        if (DATA_DEBUG && (idx % 1000 == 1)) {
-                printf("\nIn kernelCallStage3:: idx = %d, start_idx = %d, batch_size = %d, total_N = %d", 
-                        idx, start_idx, batch_size, total_N);
-        }
-
         int new_node = d_new_nodes_arr[idx];
         int outdeg = out_degree_arr[idx];
 
@@ -521,10 +177,6 @@ __global__ void kernelCallStage3(
         // Calculate number of citations from 2-hop neighborhood
         d_states[local_idx].num_citations_outside = min(remaining, (int)(two_hop_neighborhood_vectors[local_idx]).size());
 
-        if (DATA_DEBUG) {
-                printf("\nkernel stage 3:: i = %d, node = %d, outdeg = %d, same_year_citation = %d, num_actually_cited = %d, num_citations inside = %d, outside = %d, num_fully_random_cited_reserved = %d", 
-                        local_idx, new_node, outdeg, d_states[local_idx].same_year_citation, d_states[local_idx].num_actually_cited, d_states[local_idx].num_citations_inside, d_states[local_idx].num_citations_outside, d_states[local_idx].num_fully_random_cited_reserved);
-        }
         int num_actually_cited_so_far = d_states[local_idx].num_actually_cited;
         abm->ABMKernelStage3(
                 idx, total_N, graph, graphNodeSetSize, 
@@ -572,9 +224,6 @@ __global__ void kernelCallStage4(
         int idx = start_idx + local_idx;
         if (idx >= total_N) return;
 
-        if (DATA_DEBUG && (idx % 1000 == 1)) 
-                printf("\nIn kernelCallStage4:: idx = %d, start_idx = %d, batch_size = %d, total_N = %d", idx, start_idx, batch_size, total_N);
-
         int new_node = d_new_nodes_arr[idx];
         int outdeg = out_degree_arr[idx]; 
 
@@ -583,10 +232,6 @@ __global__ void kernelCallStage4(
                                                 - d_states[local_idx].same_year_citation
                                                 - d_states[local_idx].num_citations_inside
                                                 - d_states[local_idx].num_citations_outside;
-        if (DATA_DEBUG && outdeg > 100000) { 
-                printf("\nStage 4: idx = %d, new_node = %d, outdeg = %d, num_citations_inside = %d, num_citations_outside = %d, num_fully_random_cited = %d", 
-                        idx, new_node, outdeg, d_states[local_idx].num_citations_inside, d_states[local_idx].num_citations_outside, d_states[local_idx].num_fully_random_cited);
-        }
          
         abm->ABMKernelStage4(
                 idx, total_N, graph, graphNodeSetSize,
@@ -676,44 +321,44 @@ void buildOneNodeConnections(ABM* abm, Graph* graph,
         CUDA_CHECK(cudaMemcpyAsync(d_alpha_arr, alpha_arr, growth_in_graph_size * sizeof(double), cudaMemcpyHostToDevice, stream));
         CUDA_CHECK(cudaMemcpyAsync(d_out_degree_arr, out_degree_arr, growth_in_graph_size * sizeof(int), cudaMemcpyHostToDevice, stream));
 
-        if (MEM_DEBUG) { 
+        /*if (MEM_DEBUG) { 
                 cudaMemGetInfo(&free_mem, &total_mem); std::cout << "\n5.Free " 
                 << (free_mem / (1024.0 * 1024.0)) << " MB out of " << (total_mem / (1024.0 * 1024.0)) << " MB\n"; 
-        }
+        }*/
         // ---------------------------------------------------------------------
         // GRAPH STRUCTURES (needed only for Stage 1)
         // ---------------------------------------------------------------------
-        std::cout<<"\ncalling prepareGraph(graph->getForwardAdjMap ...";
+        //std::cout<<"\ncalling prepareGraph(graph->getForwardAdjMap ...";
         DeviceGraph* d_forward_adj_map_Graph;
         CUDA_CHECK(cudaMalloc(&d_forward_adj_map_Graph, sizeof(DeviceGraph)));
         prepareGraph(graph->getForwardAdjMap(), d_forward_adj_map_Graph, graph->getNodeSetSize());
 
-        if (MEM_DEBUG) { 
+        /*if (MEM_DEBUG) { 
                 cudaMemGetInfo(&free_mem, &total_mem); 
                 std::cout << "\n6.Free " << (free_mem / (1024.0 * 1024.0)) << " MB out of " 
                         << (total_mem / (1024.0 * 1024.0)) << " MB\n"; 
-        }
+        }*/
 
-        std::cout<<"\ncalling prepareGraph(graph->getBackwardAdjMap ...";
+        //std::cout<<"\ncalling prepareGraph(graph->getBackwardAdjMap ...";
         DeviceGraph* d_backward_adj_map_Graph;
         CUDA_CHECK(cudaMalloc(&d_backward_adj_map_Graph, sizeof(DeviceGraph)));
         prepareGraph(graph->getBackwardAdjMap(), d_backward_adj_map_Graph, graph->getNodeSetSize());
 
-        if (MEM_DEBUG) { 
+        /*if (MEM_DEBUG) { 
                 cudaMemGetInfo(&free_mem, &total_mem); 
                 std::cout << "\n7.Free " << (free_mem / (1024.0 * 1024.0)) 
                         << " MB out of " << (total_mem / (1024.0 * 1024.0)) << " MB\n"; 
-        }
+        }*/
 
         int nodeAttrMapSize = graph->getNodeAttributeMapSize();
-        printf("\nNodeAttributeMapSize = %d for year %d", nodeAttrMapSize, current_year);
+        //printf("\nNodeAttributeMapSize = %d for year %d", nodeAttrMapSize, current_year);
         device_map<int, Node>* d_nodeAttributeMap = new device_map<int, Node>(nodeAttrMapSize);
         convertHostMapToDeviceMap<int, Node>(graph->getNodeAttributeMap(), d_nodeAttributeMap, nodeAttrMapSize);
 
         // ---------------------------------------------------------------------
         // SAME-YEAR STATIC SET (used in Stage 2)
         // ---------------------------------------------------------------------
-        printf("\nSAME-YEAR STATIC SET (used in Stage 2)");
+        //printf("\nSAME-YEAR STATIC SET (used in Stage 2)");
         set_type* d_same_year_source_nodes_set =
                 new set_type(same_year_source_nodes_capacity,
                         cuco::empty_key<int>{empty_key_sentinel});
@@ -721,28 +366,22 @@ void buildOneNodeConnections(ABM* abm, Graph* graph,
         auto d_same_year_source_nodes_set_ref = d_same_year_source_nodes_set->ref(
                 cuco::op::insert, cuco::op::find, cuco::op::erase, cuco::op::contains);
 
-        if (MEM_DEBUG) { 
-                cudaMemGetInfo(&free_mem, &total_mem); 
-                std::cout << "\n8.Free " << (free_mem / (1024.0 * 1024.0)) 
-                        << " MB out of " << (total_mem / (1024.0 * 1024.0)) << " MB\n"; 
-        }
-
         // ---------------------------------------------------------------------
         // PER-BATCH LAUNCH CONFIG
         // ---------------------------------------------------------------------
-        printf("\nPER-BATCH LAUNCH CONFIG");
+        //printf("\nPER-BATCH LAUNCH CONFIG");
         int threadBlockSizeX = 16, threadBlockSizeY = 16;
         dim3 threads_per_block(threadBlockSizeX, threadBlockSizeY);
         int threadBlockSize = threadBlockSizeX * threadBlockSizeY;
         int batch_size = std::min(max_batch_size, num_new_nodes);
-        printf("\nbatch_size = %d for max_batch_size = %d",  batch_size, max_batch_size);
+        //printf("\nbatch_size = %d for max_batch_size = %d",  batch_size, max_batch_size);
         unsigned long long seed = static_cast<unsigned long long>(time(NULL));
 
-        if (MEM_DEBUG) { 
+        /*if (MEM_DEBUG) { 
                 cudaMemGetInfo(&free_mem, &total_mem); 
                 std::cout << "\n9.Free " << (free_mem / (1024.0 * 1024.0)) 
                         << " MB out of " << (total_mem / (1024.0 * 1024.0)) << " MB\n"; 
-        }
+        }*/
 
         // Pre-allocate curandState for the largest possible batch — avoids
         // a cudaMalloc/cudaFree inside the hot per-batch loop.
@@ -752,11 +391,8 @@ void buildOneNodeConnections(ABM* abm, Graph* graph,
         device_vector* one_hop_neighborhood_vectors;
         device_vector* two_hop_neighborhood_vectors;
         device_vector_generic<int2>* d_new_edges_vec_vectors;
-        std::cout << "\ncreate d_new_edges_vec_vectors...";
-        if (DATA_DEBUG) {
-                for(int i = 0; i < num_new_nodes; i++)
-                        printf("\nout_degree_arr[i%d]=%d", i, out_degree_arr[i]);
-        }
+        //std::cout << "\ncreate d_new_edges_vec_vectors...";
+        
         create_thread_vectors_bulk<int2>(num_new_nodes, out_degree_arr, &d_new_edges_vec_vectors);
 
         // ---------------------------------------------------------------------
@@ -767,29 +403,29 @@ void buildOneNodeConnections(ABM* abm, Graph* graph,
                 int this_batch_size = std::min(batch_size, num_new_nodes - start);
                 int blocks_for_this_batch = (this_batch_size + threadBlockSize - 1) / threadBlockSize;
                 int num_threads = this_batch_size;
-                printf("\nstart = %d this_batch_size = %d", start, this_batch_size);
+                //printf("\nstart = %d this_batch_size = %d", start, this_batch_size);
 
                 ABMStageState* d_states = nullptr;
                 cudaMalloc(&d_states, num_threads * sizeof(ABMStageState));
                 cudaMemset(d_states, 0, num_threads * sizeof(ABMStageState)); 
                 
-                if (MEM_DEBUG) { 
+                /*if (MEM_DEBUG) { 
                         cudaMemGetInfo(&free_mem, &total_mem); 
                         std::cout << "\n10.Free " << (free_mem / (1024.0 * 1024.0)) 
                                 << " MB out of " << (total_mem / (1024.0 * 1024.0)) << " MB\n"; 
-                }
+                }*/
 
                 create_thread_vectors_int(num_threads, per_thread_vector_capacity, &one_hop_neighborhood_vectors);
                 create_thread_vectors_int(num_threads, per_thread_vector_capacity, &two_hop_neighborhood_vectors);
-                std::cout << "\ncreate_thread_vectors_int for one and two hop neighborhood vectors ....";
+                //std::cout << "\ncreate_thread_vectors_int for one and two hop neighborhood vectors ....";
 
-                if (MEM_DEBUG) { 
+                /*if (MEM_DEBUG) { 
                         cudaMemGetInfo(&free_mem, &total_mem); 
                         std::cout << "\n10.1.Free " << (free_mem / (1024.0 * 1024.0)) 
                                 << " MB out of " << (total_mem / (1024.0 * 1024.0)) << " MB\n"; 
-                }
+                }*/
                 // Allocate CUB BFS pool
-                std::cout << "Allocating CompactBFSState pool for " << num_threads << " threads...\n";
+                //std::cout << "Allocating CompactBFSState pool for " << num_threads << " threads...\n";
 
                 // ------------------------------------------------------------------
                 // 1. Precompute sizes: Compute bitmap size (2 bits per node)
@@ -843,17 +479,17 @@ void buildOneNodeConnections(ABM* abm, Graph* graph,
                         cudaMemcpyHostToDevice);
 
                 delete[] h_bfs_pool; 
-                if (MEM_DEBUG) { 
+                /*if (MEM_DEBUG) { 
                         cudaMemGetInfo(&free_mem, &total_mem); 
                         std::cout << "\n10.2.Free " << (free_mem / (1024.0 * 1024.0)) 
                                 << " MB out of " << (total_mem / (1024.0 * 1024.0)) << " MB\n"; 
-                }
+                }*/
                  
 
                 //---------------------------------------------------------------------
                 // Stage 1: Compute 1/2-hop neighborhoods
                 //---------------------------------------------------------------------
-                printf("\nBatch start=%d size=%d", start, this_batch_size);
+                //printf("\nBatch start=%d size=%d", start, this_batch_size);
                 
                 // ========================================================================
                 // LAUNCH KERNEL
@@ -876,36 +512,19 @@ void buildOneNodeConnections(ABM* abm, Graph* graph,
                         graph->getNodeSetSize()
                 );
     
-                
-                /*launch_stage1_kernel(
-                        start,
-                        this_batch_size,
-                        num_new_nodes,
-                        abm,
-                        graph,
-                        d_forward_adj_map_Graph,
-                        d_backward_adj_map_Graph,
-                        d_nodeAttributeMap->get_device_view(),
-                        d_states,
-                        d_new_nodes_arr,
-                        num_generator_node_citation,
-                        one_hop_neighborhood_vectors, // host pointer to device array
-                        two_hop_neighborhood_vectors, // host pointer to device array
-                        d_bfs_pool,
-                        graph->getNodeSetSize());*/
-
+        
                 CUDA_CHECK(cudaGetLastError());
                 CUDA_CHECK(cudaStreamSynchronize(stream));
                 //cudaDeviceSynchronize();
 
-                std::cout << "\ncleanup d_bfs_pool ...";
+                // std::cout << "\ncleanup d_bfs_pool ...";
                 // Free device memory
                 if (d_bfs_pool) {
                         cudaFree(d_bfs_pool);
                         d_bfs_pool = nullptr;
                 }
 
-                printf("\nFreeing BFS slabs");
+                //("\nFreeing BFS slabs");
                 // Free the single bitmap slab
                 //CUDA_CHECK(cudaFree(d_state_bitmap_slab));
 
@@ -918,21 +537,16 @@ void buildOneNodeConnections(ABM* abm, Graph* graph,
                 // Reuse pre-allocated curandState pool (hoisted above batch loop)
                 curandState* deviceStates = deviceStates_pool;
 
-                if (MEM_DEBUG) { 
+                /*if (MEM_DEBUG) { 
                         cudaMemGetInfo(&free_mem, &total_mem); 
                         std::cout << "\n12.Free " << (free_mem / (1024.0 * 1024.0)) 
                                 << " MB out of " << (total_mem / (1024.0 * 1024.0)) << " MB\n"; 
                 }
 
 
-                std::cout << "\nextract_vector_sizes for one_hop_neighborhood_vectors...";
+                std::cout << "\nextract_vector_sizes for one_hop_neighborhood_vectors...";*/
                 int* one_hop_sizes = extract_vector_sizes(one_hop_neighborhood_vectors, num_threads);
 
-                if (DATA_DEBUG) {
-                        for(int i = 0; i < num_threads; i++) {
-                                printf("\nextracted one_hop_neighborhood_vectors[i=%d] size = %d", i, one_hop_sizes[i]);
-                        }
-                }
                 //---------------------------------------------------------------------
                 // Stage 2: Same-year + 1-hop citations
                 //---------------------------------------------------------------------
@@ -942,7 +556,7 @@ void buildOneNodeConnections(ABM* abm, Graph* graph,
                        per_thread_citations_vector_capacities[i] = per_thread_citations_vector_capacity; 
                 create_thread_vectors_bulk<int>(num_threads, per_thread_citations_vector_capacities, &citations_vectors);
                 
-                std::cout << "\ncreate_soa_vectors_bulk<float>(num_threads, one_hop_sizes, &element_index_vec_vectors";
+                //std::cout << "\ncreate_soa_vectors_bulk<float>(num_threads, one_hop_sizes, &element_index_vec_vectors";
                 // NEW WAY (SoA):
                 device_vector_soa<float>* element_index_vec_vectors;
                 create_soa_vectors_bulk<float>(num_threads, one_hop_sizes, &element_index_vec_vectors);
@@ -950,14 +564,14 @@ void buildOneNodeConnections(ABM* abm, Graph* graph,
                 DeviceHeapArray<float> one_hop_heaps = allocate_device_heaps_host_only<float>(num_threads, 
                                                         per_thread_citations_vector_capacity);
 
-                printf("\nFreeing host arrays");
+                //("\nFreeing host arrays");
                 delete[] one_hop_sizes;
                 
-                if (MEM_DEBUG) { 
+                /*if (MEM_DEBUG) { 
                         cudaMemGetInfo(&free_mem, &total_mem); 
                         std::cout << "\n13.Free " << (free_mem / (1024.0 * 1024.0)) 
                                 << " MB out of " << (total_mem / (1024.0 * 1024.0)) << " MB\n"; 
-                }
+                }*/
                 
                 kernelCallStage2<<<blocks_for_this_batch, threads_per_block, 0, stream>>>(
                                 start, this_batch_size, num_new_nodes,
@@ -987,88 +601,64 @@ void buildOneNodeConnections(ABM* abm, Graph* graph,
 
                 destroy_device_heaps<float>(one_hop_heaps); 
 
-                std::cout << "\ndestroy_thread_vectors(one_hop_neighborhood_vectors";
+                /*std::cout << "\ndestroy_thread_vectors(one_hop_neighborhood_vectors";
                 if (MEM_DEBUG) { 
                         cudaMemGetInfo(&free_mem, &total_mem); 
                         std::cout << "\n14.Free " << (free_mem / (1024.0 * 1024.0)) 
                                 << " MB out of " << (total_mem / (1024.0 * 1024.0)) << " MB\n"; 
-                }
-                //if (true)
-                //        return;
+                }*/ 
                  
                 // Sort SoA vectors in parallel using thrust on-device rather than
                 // num_threads sequential CPU calls — removes O(N) host-side launch overhead.
-                {
-                    for (int i = 0; i < num_threads; i++) {
+                for (int i = 0; i < num_threads; i++) {
                         sort_soa_vector<float>(element_index_vec_vectors, i);
-                    }
                 }
                 /**
-                kernelCallStage25<<<blocks_for_this_batch, threads_per_block, 0, stream>>>(
-                                start, this_batch_size, num_new_nodes,
-                                abm, graph,
-                                d_states,
-                                deviceStates, seed,
-                                d_new_nodes_arr,
-                                element_index_vec_vectors,
-                                citations_vectors,
-                                d_pa_arr, d_recency_arr, d_fit_arr,
-                                d_pa_weight_arr, d_rec_weight_arr, d_fit_weight_arr, d_alpha_arr,
-                                d_out_degree_arr,
-                                abm->get_fully_random_citations(),
-                                num_generator_node_citation,
-                                current_year, current_graph_size,
-                                initial_graph_size, final_graph_size);
-                CUDA_CHECK(cudaGetLastError());
-                CUDA_CHECK(cudaStreamSynchronize(stream));
-                */     
                 if (MEM_DEBUG) { 
                         cudaMemGetInfo(&free_mem, &total_mem); 
                         std::cout << "\n14.1.Free " << (free_mem / (1024.0 * 1024.0)) 
                                 << " MB out of " << (total_mem / (1024.0 * 1024.0)) << " MB\n"; 
-                }
+                }*/
 
                 // Free all per-batch temporaries
                 // cleanup_vectors_bulk<thrust::pair<double, int>>(element_index_vec_vectors, num_threads);
                 // Cleanup:
-                //cleanup_soa_vectors_bulk<float>(element_index_vec_vectors, num_threads);
+                /*/cleanup_soa_vectors_bulk<float>(element_index_vec_vectors, num_threads);
                 if (MEM_DEBUG) { 
                         cudaMemGetInfo(&free_mem, &total_mem); 
                         std::cout << "\n14.2.Free " << (free_mem / (1024.0 * 1024.0)) 
                                 << " MB out of " << (total_mem / (1024.0 * 1024.0)) << " MB\n"; 
-                }
+                }*/
                 
                 int* two_hop_sizes = extract_vector_sizes(two_hop_neighborhood_vectors, num_threads);
-                std::cout << "\ncreate_thread_sets(num_threads...";
-                //if (MEM_DEBUG) { 
+                /*std::cout << "\ncreate_thread_sets(num_threads...";
+                if (MEM_DEBUG) { 
                         cudaMemGetInfo(&free_mem, &total_mem); 
                         std::cout << "\n14.5.Free " << (free_mem / (1024.0 * 1024.0)) 
                                 << " MB out of " << (total_mem / (1024.0 * 1024.0)) << " MB\n"; 
-                //}
-                //create_soa_vectors_bulk<float>(num_threads, two_hop_sizes, &element_index_vec_vectors);
-                // create_soa_vectors_individual<float>(num_threads, two_hop_sizes, &element_index_vec_vectors);
-
+                }*/
+                
                 DeviceHeapArray<float> heaps = allocate_device_heaps_host_only<float>(num_threads, 
                                                         per_thread_citations_vector_capacity);
                 
-                printf("\nFreeing host arrays");
+                //printf("\nFreeing host arrays");
                 delete[] two_hop_sizes;
                 
-                if (MEM_DEBUG) { 
+                /*if (MEM_DEBUG) { 
                         cudaMemGetInfo(&free_mem, &total_mem); 
                         std::cout << "\n14.6.Free " << (free_mem / (1024.0 * 1024.0)) 
                                 << " MB out of " << (total_mem / (1024.0 * 1024.0)) << " MB\n"; 
-                }
+                }*/
                 //---------------------------------------------------------------------
                 // Stage 3: 2-hop + random citations + edge writes
                 //---------------------------------------------------------------------
                 ThreadSets* selected_citations_thread_sets = new ThreadSets();
                 create_thread_sets(num_threads, per_thread_selected_set_capacity, selected_citations_thread_sets);
-                if (MEM_DEBUG) { 
+                /*if (MEM_DEBUG) { 
                         cudaMemGetInfo(&free_mem, &total_mem); 
                         std::cout << "\n14.7.Free " << (free_mem / (1024.0 * 1024.0)) 
                                 << " MB out of " << (total_mem / (1024.0 * 1024.0)) << " MB\n"; 
-                }
+                }*/
 
                 kernelCallStage3<<<blocks_for_this_batch, threads_per_block, 0, stream>>>(
                                 start, this_batch_size, num_new_nodes,
@@ -1096,15 +686,15 @@ void buildOneNodeConnections(ABM* abm, Graph* graph,
 
                 destroy_device_heaps<float>(heaps);
 
-                printf("\ndestroy_thread_vectors_int(two_hop_neighborhood_vectors, num_threads)");
+                //printf("\ndestroy_thread_vectors_int(two_hop_neighborhood_vectors, num_threads)");
                 // Free 2-hop data (no longer needed after Stage 2)
                 destroy_thread_vectors_int(two_hop_neighborhood_vectors, num_threads);
 
-                if (MEM_DEBUG) { 
+                /*if (MEM_DEBUG) { 
                         cudaMemGetInfo(&free_mem, &total_mem); 
                         std::cout << "\n15.Free " << (free_mem / (1024.0 * 1024.0)) 
                                 << " MB out of " << (total_mem / (1024.0 * 1024.0)) << " MB\n"; 
-                }
+                }*/
                 
                 /*std::chrono::steady_clock::time_point t3 = std::chrono::steady_clock::now();
                 for(int i = 0; i < num_threads; i++) {
@@ -1138,26 +728,26 @@ void buildOneNodeConnections(ABM* abm, Graph* graph,
                 CUDA_CHECK(cudaStreamSynchronize(stream));
 
                 
-                printf("\ndestroy_thread_vectors(element_index_vec_vectors, num_threads)");
+                //printf("\ndestroy_thread_vectors(element_index_vec_vectors, num_threads)");
                 // Free all per-batch temporaries
                 // Cleanup:
                 //cleanup_soa_vectors_bulk<float>(element_index_vec_vectors, num_threads);
                 //destroy_soa_vectors_individual<float>(element_index_vec_vectors, num_threads);       
                 
-                printf("\ndestroy_thread_vectors<int>(citations_vectors, num_threads)");
+                //printf("\ndestroy_thread_vectors<int>(citations_vectors, num_threads)");
                 cleanup_vectors_bulk<int>(citations_vectors, num_threads);
                 
-                printf("\ndestroy_thread_sets(selected_citations_thread_sets)");
+                //printf("\ndestroy_thread_sets(selected_citations_thread_sets)");
                 destroy_thread_sets(selected_citations_thread_sets);
                 
                 // deviceStates is pooled — freed after the batch loop
                 
-                printf("\nCUDA_CHECK(cudaFree(d_states))");
+                //printf("\nCUDA_CHECK(cudaFree(d_states))");
                 CUDA_CHECK(cudaFree(d_states));
 
                 delete[] per_thread_citations_vector_capacities;
 
-                std::cout << "\ndestroyed all the storage...";
+                /*std::cout << "\ndestroyed all the storage...";
                 if (MEM_DEBUG) { 
                         cudaMemGetInfo(&free_mem, &total_mem); 
                         std::cout << "\n16.Free " << (free_mem / (1024.0 * 1024.0)) 
@@ -1166,28 +756,28 @@ void buildOneNodeConnections(ABM* abm, Graph* graph,
                 std::chrono::steady_clock::time_point tl1 = std::chrono::steady_clock::now();
                 auto durationLoop01 = std::chrono::duration_cast<std::chrono::milliseconds>(tl1 - tl0);
                 std::cout << "\nElapsed time: for year : "<< current_year << " batch: start: "<< start << ": batch size = "
-                        << this_batch_size <<" :: " << durationLoop01.count()/1000 << " seconds" << std::endl;
+                        << this_batch_size <<" :: " << durationLoop01.count()/1000 << " seconds" << std::endl;*/
         }
 
         // Free pooled curandState
         CUDA_CHECK(cudaFree(deviceStates_pool));
 
-        std::cout << "\nCalling append_device_to_host done ...."; 
+        //std::cout << "\nCalling append_device_to_host done ...."; 
         // Transfer new edges to host
         // destroy_thread_vectors of d_new_edges_vec_vectors already embedded in append_device_to_host
         append_device_to_host<int2>(d_new_edges_vec_vectors, new_edges_vec, num_new_nodes, out_degree_arr, graph->getNodeSetSize());
 
-        std::cout << "\nappended d_new_edges_vec_vectors .... new_edges_vec size = "<< new_edges_vec.size(); 
+        //std::cout << "\nappended d_new_edges_vec_vectors .... new_edges_vec size = "<< new_edges_vec.size(); 
 
         // Destroy device vectors
         cleanup_vectors_bulk<int2>(d_new_edges_vec_vectors, num_new_nodes);
         
-        std::cout << "\ndestroyed d_new_edges_vec_vectors... ";
+        /*std::cout << "\ndestroyed d_new_edges_vec_vectors... ";
         if (MEM_DEBUG) { 
                 cudaMemGetInfo(&free_mem, &total_mem); 
                 std::cout << "\n17.Free " << (free_mem / (1024.0 * 1024.0)) 
                         << " MB out of " << (total_mem / (1024.0 * 1024.0)) << " MB\n"; 
-        }
+        }*/
                 
         // ---------------------------------------------------------------------
         // FINAL CLEANUP (static structures)
@@ -1200,12 +790,12 @@ void buildOneNodeConnections(ABM* abm, Graph* graph,
         freeDeviceGraph(d_forward_adj_map_Graph);
         freeDeviceGraph(d_backward_adj_map_Graph);
 
-        std::cout << "\nfreeDeviceGraph(d_backward_adj_map_Graph";
+        /*std::cout << "\nfreeDeviceGraph(d_backward_adj_map_Graph";
         if (MEM_DEBUG) { 
                 cudaMemGetInfo(&free_mem, &total_mem); 
                 std::cout << "\n18.Free " << (free_mem / (1024.0 * 1024.0)) 
                         << " MB out of " << (total_mem / (1024.0 * 1024.0)) << " MB\n"; 
-        }
+        }*/
 
         CUDA_CHECK(cudaFree(d_new_nodes_arr));
         CUDA_CHECK(cudaFree(d_pa_arr));
@@ -1218,17 +808,17 @@ void buildOneNodeConnections(ABM* abm, Graph* graph,
         CUDA_CHECK(cudaFree(d_out_degree_arr));
 
 
-        if (MEM_DEBUG) { 
+        /*if (MEM_DEBUG) { 
                 cudaMemGetInfo(&free_mem, &total_mem); 
                 std::cout << "\n19.Free " << (free_mem / (1024.0 * 1024.0)) 
                         << " MB out of " << (total_mem / (1024.0 * 1024.0)) << " MB\n"; 
-        }
+        }*/
 
         CUDA_CHECK(cudaStreamDestroy(stream));
-        std::cout << "\n[Cleanup] buildOneNodeConnections finished.\n";
+        /*std::cout << "\n[Cleanup] buildOneNodeConnections finished.\n";
         cudaMemGetInfo(&free_mem, &total_mem); 
         std::cout << "\nFree (all) " << (free_mem / (1024.0 * 1024.0)) 
-                        << " MB out of " << (total_mem / (1024.0 * 1024.0)) << " MB\n"; 
+                        << " MB out of " << (total_mem / (1024.0 * 1024.0)) << " MB\n"; */
 }
 
 
@@ -1300,7 +890,7 @@ int execute(ABM* abm) {
         std::vector<std::pair<int, int>> new_edges_vec;
         std::chrono::steady_clock::time_point t7 = std::chrono::steady_clock::now();
 	double d71 = 0, d72 = 0, d73 = 0, d74 = 0, d75 = 0, d76 = 0, d77 = 0, d79 = 0, d7081 = 0, d7980 = 0, d8081 = 0, d7981 = 0;
-        int max_batch_size = 18000;
+        int max_batch_size = 20000;
         for (int current_year = start_year; current_year < start_year + abm->num_cycles; current_year++) {
                 printf("\n Entering loop for year = %d", current_year);
                 std::chrono::steady_clock::time_point t70 = std::chrono::steady_clock::now();
@@ -1505,6 +1095,10 @@ int execute(ABM* abm) {
         graph->WriteAttributes(abm->auxiliary_information_file);
         abm->WriteToLogFile("wrote graph", Log::info);
         std::chrono::steady_clock::time_point t11 = std::chrono::steady_clock::now();
+
+        //printf("\nPrint ABM Graph Statistics....");
+        //graph->PrintFinalGraphStatistics();
+
         delete[] in_degree_arr;
         delete[] fitness_arr;
         delete[] pa_arr;

@@ -525,7 +525,7 @@ public:
     __host__ void print_stats() const {
         int num_words_host;
         cudaMemcpy(&num_words_host, d_bitmap_words, sizeof(int), cudaMemcpyDeviceToHost);
-        
+        /**
         printf("device_vector stats:\n");
         printf("  Max node ID: %d\n", max_node_id);
         printf("  Size: %d nodes\n", size_host());
@@ -533,7 +533,8 @@ public:
         printf("  Bitmap words: %d (%.2f KB)\n", 
                num_words_host, num_words_host * 4.0 / 1024.0);
         printf("  Memory savings vs int array: %.1f%%\n",
-               (1.0 - (num_words_host * 4.0) / (max_node_id * 4.0)) * 100.0);
+               (1.0 - (num_words_host * 4.0) / (max_node_id * 4.0)) * 100.0); 
+               */
     }
 
 public:
