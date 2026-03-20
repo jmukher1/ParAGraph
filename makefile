@@ -1,7 +1,7 @@
 # Makefile for Citation ABM with MASS CUDA
 
 # MASS Library Configuration
-MASS_DIR = /homes/jmukher/workspace/uiuc/relevant_baseline/mass_cpp_core
+MASS_DIR = ./../mass_cpp_core
 MASS_INCLUDE = $(MASS_DIR)/source
 MASS_LIB = $(MASS_DIR)/ubuntu
 
@@ -24,7 +24,7 @@ MASS_LIBS = -L$(MASS_LIB) -lmass
 BUILD_DIR = build
 BIN_DIR = $(BUILD_DIR)/bin
 OBJ_DIR = $(BUILD_DIR)/obj
-
+INC_DIR = includes
 # Targets
 TARGET = $(BIN_DIR)/citation_abm_mass
 SOURCES = src/citation_abm_mass.cu
@@ -40,7 +40,7 @@ directories:
 
 # Build main executable
 $(TARGET): $(SOURCES) $(HEADERS)
-	$(NVCC) $(NVCC_FLAGS) $(CUDA_ARCH) -o $@ $(SOURCES) $(CUDA_LIBS) $(MASS_LIBS)
+	$(NVCC) $(NVCC_FLAGS) $(CUDA_ARCH) -I$(INC_DIR) -o $@ $(SOURCES) $(CUDA_LIBS) $(MASS_LIBS)
 	@echo "Built successfully: $(TARGET)"
 
 # Run simulation

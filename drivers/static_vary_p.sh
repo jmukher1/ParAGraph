@@ -10,7 +10,7 @@ OUTPUT=$(readlink -f ./output)/
 ERRORS=$(readlink -f ./errors)/
 
 NUM_THREADS=1
-NUM_CYCLES=3
+NUM_CYCLES=30
 
 INPUT_EDGELIST="sj_edgelist"
 INPUT_NODELIST="sj_nodelist"
@@ -23,11 +23,19 @@ LOG_LEVEL="1"
 
 #growth_percents="1 3 5 7 9 11 15 20 25 50 75 100"
 #growth_percents="1 3 5 10 15"
-growth_percents="1 3 6"
-
+growth_percents="6"
+BFS_BATCH_SIZE=10
 for GROWTH_PERCENT in $growth_percents
 do
     GROWTH_RATE=$(echo "scale=2; $GROWTH_PERCENT/100" | bc)
+     
+    if [ "$GROWTH_PERCENT" -eq 5 ]; then
+        BFS_BATCH_SIZE=20
+        echo "For GROWTH_PERCENT = $GROWTH_PERCENT %, BFS_BATCH_SIZE = $BFS_BATCH_SIZE."
+    elif [ "$GROWTH_PERCENT" -ge 6 ]; then
+        BFS_BATCH_SIZE=30
+        echo "For GROWTH_PERCENT = $GROWTH_PERCENT %, BFS_BATCH_SIZE = $BFS_BATCH_SIZE."
+    fi
 
     OUTPUT_FILE="./output/mass_cuda-static-output-${NUM_CYCLES}y-${GROWTH_PERCENT}p.edgelist"
     OUTPUT_LOG="./output/mass_cuda-static-output-${NUM_CYCLES}y-${GROWTH_PERCENT}p.log"
@@ -43,6 +51,7 @@ do
     --nodelist ${INPUT_NODELIST} \
     --out-degree-bag ${OUTDEGREE_BAG} \
     --recency-probabilities ${RECENCY_PROBABILITIES} \
+    --bfs-batches ${BFS_BATCH_SIZE} \
     --alpha 0.5 \
     --preferential-weight 0.33 \
     --recency-weight 0.33 \
@@ -52,11 +61,11 @@ do
     --num-cycles ${NUM_CYCLES} \
     --same-year-proportion ${SAME_YEAR_PROPORTION} \
     --output-file ${OUTPUT_FILE} \
-    --auxiliary-information-file ${OUTPUT_AUX} \
-    --log-file ${OUTPUT_LOG} \
-    --num-processors ${NUM_THREADS} \
-    --log-level ${LOG_LEVEL} \
+    --auxiliary-information-file ${OUTPUT_AUX} | tee ${OUT_FILE}
+    #--log-file ${OUTPUT_LOG} \
+    #--num-processors ${NUM_THREADS} \
+    #--log-level ${LOG_LEVEL} | 
     #2>${ERRORS}/abm-${GROWTH_PERCENT}p.err \
-    1>${OUT_FILE}
+    #1>${OUT_FILE}
 
 done

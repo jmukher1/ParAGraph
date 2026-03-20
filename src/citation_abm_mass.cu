@@ -1134,10 +1134,12 @@ int main(int argc, char** argv) {
     sim.run();
     sim.exportResults();
 
+    std::chrono::steady_clock::time_point t1 = std::chrono::steady_clock::now();
+    auto durationE2E = std::chrono::duration_cast<std::chrono::milliseconds>(t1 - t0);
     std::ostringstream msg;
 
-    msg << "\nMASS_CUDA: E2E Time for num_cycles = " << num_cycles
-        << " with growth_rate = " << (100 * growth_rate)
+    msg << "\nMASS_CUDA: E2E Time for num_cycles = " << cfg.num_cycles
+        << " with growth_rate = " << (100 * cfg.growth_rate)
         << " is: " << durationE2E.count() / 1000
         << " seconds.";
 
