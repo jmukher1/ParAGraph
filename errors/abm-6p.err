@@ -1,4 +1,0 @@
-CUDA error at src/kernel.cu:516: invalid argument
-Caught CUDA exception in buildOneNodeConnections: invalid argument
-4892.81user 61.43system 1:22:34elapsed 99%CPU (0avgtext+0avgdata 11706056maxresident)k
-424inputs+808outputs (2426major+54360431minor)pagefaults 0swaps

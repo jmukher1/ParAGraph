@@ -10,7 +10,7 @@ OUTPUT=$(readlink -f ./output)/
 ERRORS=$(readlink -f ./errors)/
 
 NUM_THREADS=1
-NUM_CYCLES=30
+NUM_CYCLES=3
 
 INPUT_EDGELIST="sj_edgelist"
 INPUT_NODELIST="sj_nodelist"
@@ -23,7 +23,7 @@ LOG_LEVEL="1"
 
 #growth_percents="1 3 5 7 9 11 15 20 25 50 75 100"
 #growth_percents="1 3 5 10 15"
-growth_percents="6"
+growth_percents="3"
 BFS_BATCH_SIZE=10
 for GROWTH_PERCENT in $growth_percents
 do

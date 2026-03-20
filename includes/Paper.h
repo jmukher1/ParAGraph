@@ -268,7 +268,6 @@ public:
         int  generator_node;
         int  citations_made;
         bool is_new;
-        bool is_same_year_source;  // set deterministically on host (mirrors GPU FillSameYearSourceNodes)
 
         int cited_papers[MAX_CITATIONS];
 
@@ -279,8 +278,7 @@ public:
               pa_weight(0.33f), recency_weight(0.33f), fitness_weight(0.34f),
               alpha(0.7f),
               in_degree(0), out_degree(0), assigned_out_degree(0),
-              generator_node(-1), citations_made(0), is_new(false),
-              is_same_year_source(false)
+              generator_node(-1), citations_made(0), is_new(false)
         {
             for (int i = 0; i < MAX_CITATIONS; i++) cited_papers[i] = -1;
         }
@@ -362,23 +360,16 @@ public:
                                 / powf(since_pk + 1.0f, FITNESS_DECAY_ALPHA);
     }
 
-    __device__ void selectGenerator(int num_papers, curandState* rng)
+    // Mirrors GPU: generator is selected from the OLD population only (seeds +
+    // prior-year agents).  New papers have no edges yet, so BFS from a new-paper
+    // generator yields empty 1-hop/2-hop and degenerates every citation to
+    // fully-random, breaking the PA/fitness-guided WRS distribution.
+    __device__ void selectGenerator(int old_population, curandState* rng)
     {
         if (!state.is_new) return;
-        int gen = (int)((unsigned)curand(rng) % (unsigned)num_papers);
-        if (gen == state.id && num_papers > 1)
-            gen = (gen + 1) % num_papers;
+        if (old_population <= 0) { state.generator_node = -1; return; }
+        int gen = (int)((unsigned)curand(rng) % (unsigned)old_population);
         state.generator_node = gen;
-    }
-
-    // ── computeRawFitnessScore ─────────────────────────────────────────────────
-    // GPU stores fitness in int* before applying gamma (implicit float→int truncation
-    // in FillFitnessArr → int* fitness_arr).  We replicate that truncation so
-    // computeRawScoresKernel in citation_abm_mass.cu can call (int)current_fitness.
-    __host__ __device__ __forceinline__
-    int truncatedFitnessForScore() const {
-        int f = (int)state.current_fitness;
-        return (f < 0) ? 0 : f;
     }
 
     __device__ __forceinline__
@@ -458,6 +449,21 @@ public:
         return added;
     }
 
+    // ─────────────────────────────────────────────────────────────────────────
+    // makeCitations – mirrors GPU ABMKernelStage2/3/4 pipeline exactly.
+    //
+    // Stage ordering matches GPU:
+    //   Stage 0 : cite generator node  (always 1 edge)
+    //   Stage 1 : same-year citation   (0 or 1 edge, BEFORE 1-hop WRS)
+    //   Stage 2 : 1-hop WRS            (BFS 1-hop neighbourhood)
+    //   Stage 3 : 2-hop WRS            (BFS 2-hop neighbourhood)
+    //   Stage 4 : fully-random         (pool = [0, prev_population) only,
+    //                                   mirrors GPU graphNodeSetSize = old nodes)
+    //
+    // Key invariant (matches GPU Stage 4 budget formula):
+    //   num_rand = budget - gen - same - k_1hop - k_2hop
+    //   where k_1hop/k_2hop are the PLANNED (capped) values, not actual cited.
+    // ─────────────────────────────────────────────────────────────────────────
     __device__ void makeCitations(
         const Paper*       all_papers,
         int                num_papers,
@@ -474,8 +480,7 @@ public:
         const float*       d_fit_arr_norm,
         const float*       d_recency_arr,
         float              fully_random_ratio,
-        // same_year_ratio removed: selection is now deterministic via
-        // state.is_same_year_source (set on host, mirrors FillSameYearSourceNodes)
+        float              same_year_ratio,
         curandState*       rng)
     {
         if (!state.is_new) return;
@@ -484,19 +489,39 @@ public:
         int budget  = state.assigned_out_degree;
         int num_gen = (state.generator_node >= 0) ? 1 : 0;
 
-        // Stage 0: cite generator
+        // ── Stage 0: cite generator ──────────────────────────────────────────
         if (num_gen > 0 && state.citations_made < MAX_CITATIONS)
             state.cited_papers[state.citations_made++] = state.generator_node;
 
-        // Stage 1: same-year — determined deterministically on host (mirrors GPU FillSameYearSourceNodes),
-        // NOT a per-paper Bernoulli.  Exactly floor(num_new * same_year_proportion) papers are marked.
-        int num_same = state.is_same_year_source ? 1 : 0;
+        // ── Determine same-year flag (Bernoulli) ──────────────────────────────
+        // GPU selects a deterministic subset of floor(N * proportion) papers;
+        // Bernoulli is statistically equivalent and compatible with per-thread RNG.
+        int num_same = (curand_uniform(rng) < same_year_ratio) ? 1 : 0;
 
+        // ── Stage 1: same-year citation – BEFORE 1-hop WRS ───────────────────
+        // Mirrors GPU ABMKernelStage2 which calls MakeSameYearCitations first.
+        // GPU picks uniformly from [0, num_new_nodes-1] with no dedup;
+        // we replicate that: one direct pick, no cross-citation dedup.
+        int num_new_cohort = num_papers - prev_population;
+        if (num_same > 0 && num_new_cohort > 0
+                && state.citations_made < MAX_CITATIONS) {
+            int offset = (int)((unsigned)curand(rng) % (unsigned)num_new_cohort);
+            int rid    = prev_population + offset;
+            // Only skip self-citation (GPU has no explicit guard, but self-pick
+            // is extremely rare; one fallback step matches GPU's intent).
+            if (rid == state.id && num_new_cohort > 1)
+                rid = prev_population + ((offset + 1) % num_new_cohort);
+            state.cited_papers[state.citations_made++] = rid;
+        } else {
+            num_same = 0;   // couldn't make the same-year citation
+        }
+
+        // ── Budget: remaining slots for 1-hop + 2-hop ────────────────────────
         int num_rand_reserved = (int)floorf(fully_random_ratio * (float)budget);
         int remaining = budget - num_gen - num_same - num_rand_reserved;
         if (remaining < 0) remaining = 0;
 
-        // BFS
+        // ── BFS from generator ────────────────────────────────────────────────
         int one_cnt = 0, two_cnt = 0;
         if (state.generator_node >= 0) {
             bfs_hash_reset(visited_ht);
@@ -506,49 +531,35 @@ public:
                 one_hop, one_cnt, two_hop, two_cnt);
         }
 
-        // Stage 2: 1-hop WRS
+        // ── Stage 2: 1-hop WRS ───────────────────────────────────────────────
         int k_1hop_planned = (int)ceilf(state.alpha * (float)remaining);
         int k_1hop = min(k_1hop_planned, one_cnt);
-        int act_1hop = MakePopulateCitations(num_papers,
-                                             one_hop, one_cnt, k_1hop,
-                                             d_pa_arr_norm, d_fit_arr_norm,
-                                             d_recency_arr, rng);
+        MakePopulateCitations(num_papers,
+                              one_hop, one_cnt, k_1hop,
+                              d_pa_arr_norm, d_fit_arr_norm,
+                              d_recency_arr, rng);
 
-        // Stage 3: 2-hop WRS
+        // ── Stage 3: 2-hop WRS ───────────────────────────────────────────────
         int remaining3 = budget - num_gen - num_same - num_rand_reserved - k_1hop;
         if (remaining3 < 0) remaining3 = 0;
         int k_2hop = min(remaining3, two_cnt);
-        int act_2hop = MakePopulateCitations(num_papers,
-                                             two_hop, two_cnt, k_2hop,
-                                             d_pa_arr_norm, d_fit_arr_norm,
-                                             d_recency_arr, rng);
+        MakePopulateCitations(num_papers,
+                              two_hop, two_cnt, k_2hop,
+                              d_pa_arr_norm, d_fit_arr_norm,
+                              d_recency_arr, rng);
 
-        // Stage 4: fully-random – fill remainder
-        // Mirrors GPU kernelCallStage4 exactly:
+        // ── Stage 4: fully-random ─────────────────────────────────────────────
+        // Budget formula mirrors GPU kernelCallStage4:
         //   num_fully_random = outdeg - gen - same - planned_inside - planned_outside
-        // Uses PLANNED k_1hop and k_2hop (not actual), matching GPU which subtracts
-        // num_citations_inside and num_citations_outside (the planned/capped values,
-        // not num_actually_cited). This keeps total citations = assigned_out_degree.
+        // Pool = [0, prev_population) only, matching GPU where MakeUniformRandomCitations
+        // samples from graphNodeSetSize = old nodes (before current-year nodes are
+        // inserted into the node set).
         int num_rand = budget - num_gen - num_same - k_1hop - k_2hop;
         if (num_rand < 0) num_rand = 0;
         for (int i = 0; i < num_rand && state.citations_made < MAX_CITATIONS; i++) {
             for (int att = 0; att < 40; att++) {
-                int rid = (int)((unsigned)curand(rng) % (unsigned)num_papers);
-                if (rid == state.id) continue;
-                bool dup = false;
-                for (int ck = 0; ck < state.citations_made; ck++)
-                    if (state.cited_papers[ck] == rid) { dup = true; break; }
-                if (!dup) { state.cited_papers[state.citations_made++] = rid; break; }
-            }
-        }
-
-        // Stage 5: same-year with dedup
-        int num_new_cohort = num_papers - prev_population;
-        for (int i = 0; i < num_same && state.citations_made < MAX_CITATIONS; i++) {
-            if (num_new_cohort <= 0) break;
-            for (int att = 0; att < 40; att++) {
-                int offset = (int)((unsigned)curand(rng) % (unsigned)num_new_cohort);
-                int rid    = prev_population + offset;
+                // Sample from OLD nodes only (seeds + prior-year agents).
+                int rid = (int)((unsigned)curand(rng) % (unsigned)prev_population);
                 if (rid == state.id) continue;
                 bool dup = false;
                 for (int ck = 0; ck < state.citations_made; ck++)

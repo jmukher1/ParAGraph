@@ -161,12 +161,14 @@ __global__ void updateFitnessKernel(Paper* papers, int n, int year) {
     if (i < n) papers[i].updateFitness(year);
 }
 
-__global__ void selectGeneratorKernel(Paper* papers, int n, int gen_range, curandState* states) {
+// Mirrors GPU CPU-side getGeneratorNode() which samples from graph->getNodeSetSize()
+// evaluated BEFORE new nodes are inserted into node_set.  Generator must be an
+// old node (seed or prior-year agent) so BFS has edges to explore; a new-paper
+// generator has no edges and yields empty 1-hop/2-hop → all citations fall to random.
+__global__ void selectGeneratorKernel(Paper* papers, int n, int old_population, curandState* states) {
     int i = blockIdx.x * blockDim.x + threadIdx.x;
     if (i < n && papers[i].state.is_new)
-        // gen_range = prev_population: mirrors GPU getGeneratorNode(graph) which samples
-        // from graph->getNodeSetSize() BEFORE new nodes are added.
-        papers[i].selectGenerator(gen_range, &states[i]);
+        papers[i].selectGenerator(old_population, &states[i]);
 }
 
 __global__ void computeRawScoresKernel(
@@ -184,13 +186,11 @@ __global__ void computeRawScoresKernel(
     if (d_bwd && i < d_bwd->num_nodes)
         in_deg = __ldg(&d_bwd->offsets[i + 1]) - __ldg(&d_bwd->offsets[i]);
 
-    // GPU CalculateScores receives int* fitness_arr (fitness was stored via
-    //   fitness_arr[i] = decayed_fitness_value  →  implicit double→int truncation).
-    // Replicate that truncation so WRS scores match the reference exactly.
-    int fit_int = papers[i].truncatedFitnessForScore();
+    float fit = papers[i].state.current_fitness;
+    if (fit < 0.0f) fit = 0.0f;
 
-    raw_pa [i] = powf((float)in_deg,  gamma) + 1.0f;
-    raw_fit[i] = powf((float)fit_int, gamma) + 1.0f;
+    raw_pa [i] = powf((float)in_deg, gamma) + 1.0f;
+    raw_fit[i] = powf(fit,           gamma) + 1.0f;
 }
 
 // ─────────────────────────────────────────────────────────────────────────────
@@ -212,9 +212,7 @@ __global__ void makeCitationsWithBFSKernel(
     const float*       d_fit_arr_norm,
     const float*       d_recency_arr,
     float              rand_ratio,
-    // same_ratio removed: same-year selection is now embedded in
-    // paper.state.is_same_year_source (set deterministically on host by
-    // simulateOneYear, mirroring GPU FillSameYearSourceNodes).
+    float              same_ratio,
     curandState*       rand_states)
 {
     int tid = blockIdx.x * blockDim.x + threadIdx.x;
@@ -239,7 +237,7 @@ __global__ void makeCitationsWithBFSKernel(
         one_hop, two_hop,
         current_year,
         d_pa_arr_norm, d_fit_arr_norm, d_recency_arr,
-        rand_ratio,
+        rand_ratio, same_ratio,
         &rand_states[paper_idx]);
 }
 
@@ -520,16 +518,14 @@ public:
         cudaMemset(d_recency_arr, 0, total_pop * sizeof(float));
         if (old_pop <= 0) return;
 
-        // GPU FillRecencyArr uses std::map::operator[] for missing year diffs,
-        // which default-constructs a 0.0 entry — NOT a 0.01 fallback.
-        // Using 0.01 here was producing a systematic bias for year diffs absent
-        // from the recency file (e.g. very old seed papers whose ydiff exceeds
-        // the recency table range).
         std::map<int, int> year_count;
         double unique_year_sum = 0.0;
         for (int i = 0; i < old_pop; i++) {
             int ydiff = current_year - h_papers[i].state.year;
             if (year_count.find(ydiff) == year_count.end()) {
+                // GPU uses 0.0 for unmapped year-diffs (not 0.01).
+                // Using a non-zero fallback inflates recency scores for years
+                // outside the recency_probabilities file, diverging from GPU.
                 double prob = recency_probs_map.count(ydiff) ? recency_probs_map.at(ydiff) : 0.0;
                 unique_year_sum += prob;
             }
@@ -541,7 +537,7 @@ public:
         for (int i = 0; i < old_pop; i++) {
             int ydiff = current_year - h_papers[i].state.year;
             double prob = recency_probs_map.count(ydiff) ? recency_probs_map.at(ydiff) : 0.0;
-            int    cnt  = year_count.count(ydiff)        ? year_count[ydiff]            : 1;
+            int    cnt  = year_count.count(ydiff)        ? year_count.at(ydiff)         : 1;
             h_rec[i] = static_cast<float>(prob / cnt / unique_year_sum);
         }
         cudaMemcpy(d_recency_arr, h_rec.data(), old_pop * sizeof(float), cudaMemcpyHostToDevice);
@@ -647,7 +643,7 @@ public:
 
         float h_rec[51];
         for (int i = 0; i < 51; i++)
-            h_rec[i] = recency_probs_map.count(i) ? recency_probs_map.at(i) : 0.0f;
+            h_rec[i] = recency_probs_map.count(i) ? recency_probs_map[i] : 0.01f;
         cudaMemcpy(d_recency_probs, h_rec, 51 * sizeof(float), cudaMemcpyHostToDevice);
 
         int bs = 256, gs = (max_population + bs - 1) / bs;
@@ -717,7 +713,7 @@ public:
     // =========================================================================
     // addNewPapers
     // =========================================================================
-    std::vector<int> addNewPapers(int num_new, const std::vector<bool>& same_year_flags) {
+    std::vector<int> addNewPapers(int num_new) {
         if (current_population + num_new > max_population) {
             std::cerr << "ERROR: would exceed max_population!\n"; return {};
         }
@@ -767,9 +763,6 @@ public:
             p.state.generator_node      = -1;
             p.state.citations_made      = 0;
             p.state.is_new              = true;
-            // Deterministic same-year flag: mirrors GPU FillSameYearSourceNodes which
-            // selects exactly floor(num_new * proportion) indices uniformly at random.
-            p.state.is_same_year_source = (i < (int)same_year_flags.size()) && same_year_flags[i];
 
             new_papers.push_back(p);
             new_indices.push_back(current_population + i);
@@ -817,32 +810,12 @@ public:
         // ── Step 2: Add ALL new papers at once ────────────────────────────────
         const int num_new = static_cast<int>(std::ceil(current_population * config.growth_rate));
         std::cout << "  Adding " << num_new << " new papers\n";
-
-        // Build deterministic same-year flags — mirrors GPU FillSameYearSourceNodes:
-        //   selects exactly floor(num_new * same_year_proportion) papers by shuffling
-        //   indices [0, num_new) and marking the first num_same_year of them.
-        // The Bernoulli approach used before gave wrong expected counts for small batches.
-        {
-            // scope to limit idx_pool lifetime
-        }
-        const int num_same_year = static_cast<int>(
-            std::floor(num_new * config.same_year_proportion));
-        std::vector<bool> same_year_flags(num_new, false);
-        if (num_same_year > 0) {
-            std::vector<int> idx_pool(num_new);
-            std::iota(idx_pool.begin(), idx_pool.end(), 0);
-            std::shuffle(idx_pool.begin(), idx_pool.end(), rng);
-            for (int i = 0; i < num_same_year; i++)
-                same_year_flags[idx_pool[i]] = true;
-        }
-
-        const std::vector<int> new_indices = addNewPapers(num_new, same_year_flags);
+        const std::vector<int> new_indices = addNewPapers(num_new);
         if (new_indices.empty()) { current_year++; return; }
 
-        // ── Step 3: Generator selection — must draw from OLD population only ──
-        // GPU calls getGeneratorNode(graph) BEFORE new nodes are appended, so
-        // generator indices are in [0, prev_population).  Passing current_population
-        // here would allow new papers to become their own generators.
+        // ── Step 3: Generator selection over new papers only ─────────────────
+        // old_population = prev_population: generator must be an OLD node so BFS
+        // starts from a connected vertex and finds a meaningful neighbourhood.
         gs = (current_population + bs - 1) / bs;
         selectGeneratorKernel<<<gs, bs>>>(d_papers, current_population, prev_population, d_rand_states);
         cudaDeviceSynchronize();
@@ -899,6 +872,7 @@ public:
                 d_fit_arr_norm,
                 d_recency_arr,
                 config.fully_random_citations,
+                config.same_year_proportion,
                 d_rand_states);
             cudaDeviceSynchronize();
             {
@@ -1136,14 +1110,8 @@ int main(int argc, char** argv) {
 
     std::chrono::steady_clock::time_point t1 = std::chrono::steady_clock::now();
     auto durationE2E = std::chrono::duration_cast<std::chrono::milliseconds>(t1 - t0);
-    std::ostringstream msg;
+    std::cout << "\nE2E Time for num_cycles = "<< num_cycles << " with growth_rate = "<< (100*growth_rate) << " % = " << durationE2E.count()/1000 << " seconds." << std::endl;
 
-    msg << "\nMASS_CUDA: E2E Time for num_cycles = " << cfg.num_cycles
-        << " with growth_rate = " << (100 * cfg.growth_rate)
-        << " is: " << durationE2E.count() / 1000
-        << " seconds.";
-
-    std::cout << msg.str() << std::endl;
     std::cout << "\nDone.\n";
     return 0;
 }
