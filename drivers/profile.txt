@@ -1,0 +1,19 @@
+make with -lineinfo
+
+nsys profile -o profile_report  ./abm --edgelist sj_edgelist --nodelist sj_nodelist --out-degree-bag tcen_at_least_five --recency-probabilities sj_recprob --same-year-proportion 0.12 --alpha 0.5 --preferential-weight 0.33 --recency-weight 0.33 --fitness-weight 0.33 --growth-rate 0.01 --auxiliary-information-file dummy2-1.aux --num-cycles 2 --output-file output/res2-1.aux --log-file output/output2-1.log --num-processors 1 --log-level 1
+
+
+module load cuda/12.3
+
+The following have been reloaded with a version change:
+  1) cuda/11.5 => cuda/12.3
+
+(base) newton 58 $ which nsys
+/p/cuda-12.3/bin/nsys
+(base) newton 59 $ cat drivers/run10y3p.sh 
+#!/bin/sh
+
+
+$ nsys profile --trace=cuda,nvtx,osrt -o my_profile10y3p ./abm --edgelist sj_edgelist --nodelist sj_nodelist --out-degree-bag tcen_at_least_five --recency-probabilities sj_recprob --same-year-proportion 0.12 --alpha 0.5 --preferential-weight 0.33 --recency-weight 0.33 --fitness-weight 0.33 --growth-rate 0.03 --auxiliary-information-file output/dummy10-3.aux --num-cycles 10 --output-file output/res10-3.out --log-file output/output10-3.log --num-processors 1 --log-level 1
+
+$ ncu -o profile10y3p ./abm --edgelist sj_edgelist --nodelist sj_nodelist --out-degree-bag tcen_at_least_five --recency-probabilities sj_recprob --same-year-proportion 0.12 --alpha 0.5 --preferential-weight 0.33 --recency-weight 0.33 --fitness-weight 0.33 --growth-rate 0.03 --auxiliary-information-file output/dummy10-3.aux --num-cycles 10 --output-file output/res10-3.out --log-file output/output10-3.log --num-processors 1 --log-level 1

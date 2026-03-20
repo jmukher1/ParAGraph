@@ -3,7 +3,7 @@ NVCC = nvcc #-g -G
 CXXFLAGS = -O3 -std=c++20 -dc -x cu
 NVCCFLAGS= -rdc=true -dc
 #CUDAFLAGS= -DDEBUG_MEMCHECK -std=c++20 -arch=sm_60 --expt-extended-lambda
-CUDAFLAGS= -std=c++20 -arch=sm_60 --expt-extended-lambda
+CUDAFLAGS= -std=c++20 -arch=sm_60 --expt-extended-lambda -lineinfo
 NVCCLINKFLAGS= -arch=sm_60 -dlink
 LIBS= -lcudart -lcublas
 EXPERIMENTAL= --expt-relaxed-constexpr
