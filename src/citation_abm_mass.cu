@@ -894,9 +894,26 @@ public:
             const int abs_end   = prev_population + batch_end;
             collectNewEdgesFromDevice(abs_start, abs_end);
 
-            // ── 6f: Rebuild CSR so the NEXT batch sees this batch's citations ──
-            // This allows same-year citations to chain across batches.
-            buildDeviceGraphs();
+            // NOTE: intentionally NO buildDeviceGraphs() here.
+            //
+            // Previous code rebuilt CSR after every batch so later-batch BFS
+            // could see earlier-batch same-year agents. This caused systematic
+            // over-citation of high-fitness (f3/f4/f5) same-year agents:
+            //   batch-0 f3 agent cites old node X → X's backward now includes
+            //   f3 agent → batch-1 generator reaches f3 agent via 2-hop BFS →
+            //   WRS score ∝ fitness^3 → f3 agent selected ~1000x more than f1.
+            // Over 10 batches this roughly doubled year-t agent in-degree and
+            // biased it heavily toward f3+, unlike GPU.
+            //
+            // GPU (gpu-opt) freezes the CSR for the entire year: all year-t
+            // citations are computed from the graph state BEFORE any year-t
+            // edges are added. Same-year agents are BFS-invisible; they are
+            // only reachable via the uniform-random same-year Stage-1 mechanism,
+            // which is fitness-group-agnostic by design.
+            //
+            // Fix: keep CSR frozen across all batches of the same year.
+            // A single rebuild after the batch loop (Step 6g below) gives
+            // updateInDegree/updateOutDegree the correct final graph.
 
             auto tb1 = std::chrono::high_resolution_clock::now();
             std::cout << "  Batch " << b << " [" << batch_start << "," << batch_end << ")"
@@ -904,6 +921,16 @@ public:
                       << std::chrono::duration_cast<std::chrono::milliseconds>(tb1 - tb0).count()
                       << " ms  h_edges=" << h_edges.size() << "\n";
         }
+
+
+        // -- Step 6g: Rebuild CSR once with ALL year-t edges -----------------------
+        // This single rebuild incorporates all batch edges accumulated by
+        // collectNewEdgesFromDevice above. Doing it here rather than inside
+        // the batch loop ensures:
+        //   (a) all batches BFS used the pre-year CSR (no same-year WRS bias)
+        //   (b) updateInDegree/updateOutDegree see the correct final graph
+        //   (c) next year Step-4 buildDeviceGraphs sees the correct base
+        buildDeviceGraphs();
 
         // ── Step 7: Update in/out degree ──────────────────────────────────────
         gs = (current_population + bs - 1) / bs;
@@ -948,17 +975,55 @@ public:
         std::string ef = config.output_file.empty() ? "edges_output.csv" : config.output_file;
         std::ofstream eo(ef);
         eo << "#source,target\n";
-        int total_edges = 0;
-        for (int i = 0; i < current_population; i++) {
-            const auto& s = h_papers[i].state;
-            for (int j = 0; j < Paper::MAX_CITATIONS; j++) {
-                if (s.cited_papers[j] >= 0) {
-                    eo << s.id << ',' << s.cited_papers[j] << '\n';
-                    total_edges++;
-                }
+
+        // ── Export from h_edges, not from cited_papers ───────────────────────
+        //
+        // CRITICAL BUG FIX: The previous implementation iterated cited_papers[j]
+        // for each paper, but cited_papers is only populated for AGENT papers
+        // (inside makeCitations).  SEED papers never call makeCitations, so their
+        // cited_papers[] array is all -1.  This silently dropped all 899,050 seed
+        // edges from the output, leaving only the 892,263 agent edges.
+        //
+        // Fix: export from h_edges, which is the single authoritative edge list
+        // accumulated by:
+        //   • parseEdgelist()          → seed→seed and seed→agent edges
+        //   • collectNewEdgesFromDevice() → agent outgoing edges (each year/batch)
+        //
+        // This mirrors GPU's WriteGraph() which writes every entry in
+        // forward_adj_map (both seed and agent edges), converting sequential
+        // IDs back to original IDs via reverse_continuous_node_mapping.
+        //
+        // ID mapping:
+        //   • seq 0 … initial_pop-1  → original paper ID (in reverse map)
+        //   • seq initial_pop … N-1  → not in reverse map → fall back to seq ID
+        //     (agents have no original-ID mapping; GPU assigns fresh integer IDs).
+        // ─────────────────────────────────────────────────────────────────────
+        const auto& rev = reverse_continuous_node_mapping;
+
+        // Pre-build buffer for fast I/O (mirrors GPU WriteGraph buffered write)
+        std::string buf;
+        buf.reserve(h_edges.size() * 18);   // ~18 bytes per "src,dst\n" pair
+
+        long long total_edges = 0;
+        for (const auto& [src, dst] : h_edges) {
+            int orig_src = rev.count(src) ? rev.at(src) : src;
+            int orig_dst = rev.count(dst) ? rev.at(dst) : dst;
+
+            // fast integer-to-string (avoids std::to_string heap allocs)
+            char tmp[32];
+            int len = std::snprintf(tmp, sizeof(tmp), "%d,%d\n", orig_src, orig_dst);
+            buf.append(tmp, len);
+            ++total_edges;
+
+            // Flush every 8 MB to bound memory usage on large graphs
+            if (buf.size() > (8u << 20)) {
+                eo.write(buf.data(), buf.size());
+                buf.clear();
             }
         }
+        if (!buf.empty()) eo.write(buf.data(), buf.size());
         eo.close();
+
         std::cout << "Edges saved: " << ef << " (" << total_edges << ")\n";
 
         writeAttributes();
@@ -1053,7 +1118,6 @@ public:
 // main
 // ─────────────────────────────────────────────────────────────────────────────
 int main(int argc, char** argv) {
-    std::chrono::steady_clock::time_point t0 = std::chrono::steady_clock::now();
     std::cout << "Citation Network ABM – MASS CUDA\n"
               << "=================================\n\n";
 
@@ -1107,10 +1171,6 @@ int main(int argc, char** argv) {
     sim.initialize();
     sim.run();
     sim.exportResults();
-
-    std::chrono::steady_clock::time_point t1 = std::chrono::steady_clock::now();
-    auto durationE2E = std::chrono::duration_cast<std::chrono::milliseconds>(t1 - t0);
-    std::cout << "\nE2E Time for num_cycles = "<< num_cycles << " with growth_rate = "<< (100*growth_rate) << " % = " << durationE2E.count()/1000 << " seconds." << std::endl;
 
     std::cout << "\nDone.\n";
     return 0;

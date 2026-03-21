@@ -31,7 +31,7 @@ fi
 echo "Using GROWTH_PERCENT = $GROWTH_PERCENT %, BFS_BATCH_SIZE = $BFS_BATCH_SIZE"
 
 # Run 10 independent simulations
-for RUN_ID in $(seq 1 5)
+for RUN_ID in $(seq 1 10)
 do
     echo "=============================="
     echo "Run $RUN_ID / 10"
