@@ -4,7 +4,7 @@ mkdir -p output
 mkdir -p errors
 
 NUM_THREADS=1
-NUM_CYCLES=3
+NUM_CYCLES=10
 
 INPUT_EDGELIST="sj_edgelist"
 INPUT_NODELIST="sj_nodelist"

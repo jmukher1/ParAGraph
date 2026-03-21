@@ -267,6 +267,52 @@ __global__ void resetNewStatusKernel(Paper* papers, int n) {
 }
 
 // ─────────────────────────────────────────────────────────────────────────────
+// reassignFitnessKernel
+//
+// Mirrors GPU execute() which calls AssignPeakFitnessValues(graph, new_nodes_vec)
+// AFTER citations are generated each year, using its own freshly-seeded RNG.
+// This means the fit_peak_value stored in the aux file is a POST-citation
+// re-sample — it did NOT influence which papers were cited during that year.
+//
+// MASS previously only assigned fitness once in addNewPapers (before citations),
+// so the stored fpv was the PRE-citation value.  Adding this post-citation
+// re-sample makes the aux output semantically match GPU's.
+//
+// The power-law sampler matches AssignPeakFitnessValues exactly:
+//   p(i) ∝ scale_factor * constant * i^exponent,  i ∈ [1, 1000]
+//   scale_factor=6.3742991333, constant=0.072, exponent=-1.634
+// ─────────────────────────────────────────────────────────────────────────────
+__global__ void reassignFitnessKernel(Paper* papers, int start_idx, int n,
+                                       curandState* rand_states,
+                                       const float* d_fitness_cdf,
+                                       int num_fitness_vals)
+{
+    int local = blockIdx.x * blockDim.x + threadIdx.x;
+    if (local >= n) return;
+    int idx = start_idx + local;
+
+    Paper& p = papers[idx];
+    if (!p.state.is_new) return;   // only re-assign for this year's new agents
+
+    // Inverse-CDF sampling from the pre-built fitness CDF
+    float u = curand_uniform(&rand_states[idx]);
+    // Binary search in CDF
+    int lo = 0, hi = num_fitness_vals - 1;
+    while (lo < hi) {
+        int mid = (lo + hi) >> 1;
+        if (d_fitness_cdf[mid] < u) lo = mid + 1;
+        else                        hi = mid;
+    }
+    p.state.fitness_peak_value = lo + 1;   // 1-indexed (values 1..1000)
+
+    // lag and peak duration remain at their defaults (0 and 1000) — same as
+    // GPU's AssignFitnessLagDuration and AssignFitnessPeakDuration which
+    // hard-code those values.
+    p.state.fitness_lag_duration  = 0;
+    p.state.fitness_peak_duration = 1000;
+}
+
+// ─────────────────────────────────────────────────────────────────────────────
 // CitationABM  –  simulation manager
 // ─────────────────────────────────────────────────────────────────────────────
 class CitationABM {
@@ -285,6 +331,7 @@ private:
     float*       d_pa_arr_norm    = nullptr;
     float*       d_fit_arr_norm   = nullptr;
     curandState* d_rand_states    = nullptr;
+    float*       d_fitness_cdf    = nullptr;   // pre-built CDF for post-citation fitness re-assignment
 
     DeviceGraph* d_fwd_graph      = nullptr;
     DeviceGraph* d_bwd_graph      = nullptr;
@@ -641,6 +688,24 @@ public:
         cudaMalloc(&d_fit_arr_norm,  max_population * sizeof(float));
         cudaMalloc(&d_rand_states,   max_population * sizeof(curandState));
 
+        // Build and upload the fitness power-law CDF (values 1..1000).
+        // Matches AssignPeakFitnessValues: p(i) ∝ 6.3742991333 * 0.072 * i^-1.634
+        {
+            constexpr int N = 1000;
+            constexpr double scale = 6.3742991333, constant = 0.072, exponent = -1.634;
+            std::vector<float> h_cdf(N);
+            double sum = 0.0;
+            for (int i = 1; i <= N; i++)
+                sum += scale * constant * std::pow((double)i, exponent);
+            double cum = 0.0;
+            for (int i = 1; i <= N; i++) {
+                cum += scale * constant * std::pow((double)i, exponent);
+                h_cdf[i - 1] = static_cast<float>(cum / sum);
+            }
+            cudaMalloc(&d_fitness_cdf, N * sizeof(float));
+            cudaMemcpy(d_fitness_cdf, h_cdf.data(), N * sizeof(float), cudaMemcpyHostToDevice);
+        }
+
         float h_rec[51];
         for (int i = 0; i < 51; i++)
             h_rec[i] = recency_probs_map.count(i) ? recency_probs_map[i] : 0.01f;
@@ -932,6 +997,27 @@ public:
         //   (c) next year Step-4 buildDeviceGraphs sees the correct base
         buildDeviceGraphs();
 
+
+        // -- Step 6h: Re-assign fitness_peak_value for all new agents (POST-citation) --
+        // Mirrors GPU execute() which calls AssignPeakFitnessValues(graph, new_nodes_vec)
+        // AFTER all citations are generated each year.  GPU then calls
+        // AssignFitnessLagDuration (hard-coded 0) and AssignFitnessPeakDuration
+        // (hard-coded 1000) -- already the defaults in Paper::State, so no action needed.
+        //
+        // Effect: the fit_peak_value stored in the aux file matches GPU semantics:
+        // it is a fresh independent sample drawn AFTER citations, exactly as gpu-opt.
+        {
+            const int num_new = (int)new_indices.size();
+            const int start   = prev_population;   // first new-agent sequential index
+            gs = (num_new + bs - 1) / bs;
+            reassignFitnessKernel<<<gs, bs>>>(
+                d_papers, start, num_new,
+                d_rand_states,
+                d_fitness_cdf,
+                1000);   // fitness values drawn from 1..1000
+            cudaDeviceSynchronize();
+        }
+
         // ── Step 7: Update in/out degree ──────────────────────────────────────
         gs = (current_population + bs - 1) / bs;
         updateInDegreeFromCSRKernel <<<gs, bs>>>(d_papers, current_population, d_bwd_graph);
@@ -1105,6 +1191,7 @@ public:
         if (d_pa_arr_norm)   { cudaFree(d_pa_arr_norm);   d_pa_arr_norm   = nullptr; }
         if (d_fit_arr_norm)  { cudaFree(d_fit_arr_norm);  d_fit_arr_norm  = nullptr; }
         if (d_rand_states)   { cudaFree(d_rand_states);   d_rand_states   = nullptr; }
+        if (d_fitness_cdf)   { cudaFree(d_fitness_cdf);   d_fitness_cdf   = nullptr; }
         if (d_fwd_offsets)   { cudaFree(d_fwd_offsets);   d_fwd_offsets   = nullptr; }
         if (d_fwd_edges)     { cudaFree(d_fwd_edges);     d_fwd_edges     = nullptr; }
         if (d_bwd_offsets)   { cudaFree(d_bwd_offsets);   d_bwd_offsets   = nullptr; }
