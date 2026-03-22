@@ -1,36 +1,55 @@
 # Compiler settings
-CC = g++
-OMPFLAGS=-fopenmp
-CXXFLAGS = -O3 -std=c++20  
-INCDIRS = -I.
-LIBS= -lpthread -lcudart -lcublas
+NVCC = nvcc #-g -G
+CXXFLAGS = -O3 -std=c++20 -dc -x cu
+NVCCFLAGS= -rdc=true -dc
+CUDAFLAGS= -std=c++20 -arch=sm_60 -O3 -use_fast_math --maxrregcount=128 --expt-extended-lambda
+NVCCLINKFLAGS= -arch=sm_60 -dlink
+LIBS= -lcudart -lcublas
+EXPERIMENTAL= --expt-relaxed-constexpr
 LIBDIRS=-L$(CUDA_HOME)/lib64
 LPFLAGS = -lstdc++
-NVLINKFLAGS= -lcudadevrt -lcudart
+NVLINKFLAGS= --expt-extended-lambda -lcudadevrt -lcudart
 SRC_DIR = src
 BUILD_DIR = build
 INC_DIR = ./includes
-INCDIRS=-I$(CUDA_HOME)/include -I$(INC_DIR)
+INCDIRS=-I$(INC_DIR) -I$(SRC_DIR) -I$(CUCO_HOME)/include -I $(CCCL_HOME)/libcudacxx -I $(CCCL_HOME)/thrust -I $(CCCL_HOME)
+INCDIRS=-I$(INC_DIR) -I$(SRC_DIR) -I$(CUCO_HOME)/include -I $(CUCO_HOME)/build/_deps/cccl-src/libcudacxx -I $(CUCO_HOME)/build/_deps/cccl-src/libcudacxx/include -I $(CUCO_HOME)/build/_deps/cccl-src/thrust -I $(CUCO_HOME)/build/_deps/cccl-src/cub
 
 
 # Default target
 TARGET = abm
 
 # Files
-OBJS = $(BUILD_DIR)/main.o $(BUILD_DIR)/abm.o $(BUILD_DIR)/graph.o 
+LINK_OBJS = $(BUILD_DIR)/utils.o $(BUILD_DIR)/kernel_erdos_renyi.o $(BUILD_DIR)/graph.o $(BUILD_DIR)/abm.o $(BUILD_DIR)/kernel.o  $(BUILD_DIR)/main.o    
+OBJS = $(LINK_OBJS) #$(LINKED_OBJ)
 
 $(TARGET): $(OBJS)
-	$(CC) $(CXXFLAGS) $(OMPFLAGS) $^ $(LIBDIRS) $(INCDIRS) $(LIBS) -o $@ $(NVLINKFLAGS)
+	$(NVCC) $(NVCC_GEN_FLAGS) $(CUDAFLAGS) $^ $(LIBDIRS) $(INCDIRS) $(LIBS) -o $@ $(NVLINKFLAGS) $(EXPERIMENTAL)
 
-$(BUILD_DIR)/graph.o: $(SRC_DIR)/graph.cpp $(INC_DIR)/graph.h
-	$(CC) $(CXXFLAGS) -c $(INCDIRS) $< -o $@
+$(BUILD_DIR)/utils.o: $(SRC_DIR)/utils.cu $(INC_DIR)/utils.cuh
+	$(NVCC) $(CUDAFLAGS) $(NVCCFLAGS) -c $(INCDIRS) $< -o $@ $(EXPERIMENTAL)
 
-$(BUILD_DIR)/abm.o: $(SRC_DIR)/abm.cpp $(INC_DIR)/abm.h
-	$(CC) $(CXXFLAGS) $(OMPFLAGS) -c $(INCDIRS) $< -o $@
+$(BUILD_DIR)/kernel_erdos_renyi.o: $(SRC_DIR)/kernel_erdos_renyi.cu $(INC_DIR)/kernel_erdos_renyi.cuh
+	$(NVCC) $(CUDAFLAGS) $(NVCCFLAGS) -c $(INCDIRS) $< -o $@ $(EXPERIMENTAL)
+
+#$(BUILD_DIR)/kernel_erdos_renyi_builder.o: $(SRC_DIR)/kernel_erdos_renyi_builder.cu $(INC_DIR)/kernel_erdos_renyi.cuh $(INC_DIR)/kernel_dispatcher.cuh
+#	$(NVCC) $(CUDAFLAGS) $(NVCCFLAGS) -c $(INCDIRS) $< -o $@ $(EXPERIMENTAL)
+
+$(BUILD_DIR)/graph.o: $(SRC_DIR)/graph.cu $(INC_DIR)/graph.cuh $(INC_DIR)/node.cuh  
+	$(NVCC) $(CUDAFLAGS) $(NVCCFLAGS) -c $(INCDIRS) $< -o $@ $(EXPERIMENTAL)
+
+$(BUILD_DIR)/abm.o: $(SRC_DIR)/abm.cu $(INC_DIR)/abm.cuh
+	$(NVCC) $(CUDAFLAGS) $(NVCCFLAGS) -c $(INCDIRS) $< -o $@ $(EXPERIMENTAL)
+
+$(BUILD_DIR)/kernel.o: $(SRC_DIR)/kernel.cu $(SRC_DIR)/kernel_erdos_renyi.cu $(SRC_DIR)/kernel_erdos_renyi_builder.cu \
+                       $(INC_DIR)/utils.cuh $(INC_DIR)/int2.cuh $(INC_DIR)/abm.cuh \
+                       $(INC_DIR)/kernel_erdos_renyi.cuh $(INC_DIR)/kernel_dispatcher.cuh
+	$(NVCC) $(CUDAFLAGS) $(NVCCFLAGS) -c $(INCDIRS) $< -o $@ $(EXPERIMENTAL)
 
 # Compile CUDA files
-$(BUILD_DIR)/main.o: $(SRC_DIR)/main.cpp $(INC_DIR)/abm.h $(INC_DIR)/argparse.h
-	$(CC) $(CXXFLAGS) $(OMPFLAGS) -c $(INCDIRS) $< -o $@
+$(BUILD_DIR)/main.o: $(SRC_DIR)/main.cu $(INC_DIR)/abm.cuh $(INC_DIR)/argparse.h
+	$(NVCC) $(CUDAFLAGS) $(NVCCFLAGS) -c $(INCDIRS) $< -o $@
+
 
 clean:
 	rm -rf $(TARGET) $(BUILD_DIR)/*.o
