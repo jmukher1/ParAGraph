@@ -195,7 +195,7 @@ class ABM {
             double growth_rate, int num_cycles, double same_year_proportion, 
             std::string output_file, std::string auxiliary_information_file, 
             std::string log_file, int num_processors, int log_level,
-            std::string network_model, double er_edge_probability, int er_edges_per_node) : edgelist(edgelist), nodelist(nodelist), 
+            std::string model, double er_edge_probability, int er_edges_per_node) : edgelist(edgelist), nodelist(nodelist), 
                         out_degree_bag(out_degree_bag), recency_probabilities(recency_probabilities), 
                         planted_nodes(planted_nodes), alpha(alpha), fully_random_citations(fully_random_citations), 
                         preferential_weight(preferential_weight), recency_weight(recency_weight), 
@@ -203,7 +203,7 @@ class ABM {
                         same_year_proportion(same_year_proportion), output_file(output_file), 
                         auxiliary_information_file(auxiliary_information_file), log_file(log_file), 
                         num_processors(num_processors), log_level(log_level),
-                        network_model(network_model), er_edge_probability(er_edge_probability), 
+                        model(model), er_edge_probability(er_edge_probability), 
                         er_edges_per_node(er_edges_per_node) {
             if(this->log_level > -1) {
                 this->start_time = std::chrono::steady_clock::now();
@@ -215,19 +215,22 @@ class ABM {
             this->ReadPlantedNodes();
             
             // Validate network model
-            if (network_model != "PA" && network_model != "ER") {
-                std::cerr << "Error: --network-model must be either 'PA' or 'ER'" << std::endl;
+            if (model != "pa" && model != "er" && model != "er-gnp") {
+                std::cerr << "Error: --network-model must be either 'pa' or 'er' or 'er-gnp'" << std::endl;
                 exit(1);
             }
             
             // Validate ER parameters
-            if (network_model == "ER") {
-                if (er_edge_probability > 0.0 && er_edges_per_node > 0) {
-                    std::cerr << "Error: Specify either --er-edge-probability or --er-edges-per-node, not both" << std::endl;
+            if (model == "er") {
+                if (er_edges_per_node <= 0) {
+                    std::cerr << "Error: For model er (with fixed edges), please specify --er-edges-per-node only" << std::endl;
                     exit(1);
                 }
-                if (er_edge_probability == 0.0 && er_edges_per_node == 0) {
-                    std::cerr << "Error: For ER model, specify either --er-edge-probability or --er-edges-per-node" << std::endl;
+            }
+
+            if (model == "er-gnp") {
+                if (er_edge_probability <= 0.0) {
+                    std::cerr << "Error: For er-gnp model, please specify --er-probability" << std::endl;
                     exit(1);
                 }
             }
@@ -513,7 +516,7 @@ class ABM {
         __host__ __device__ double get_same_year_proportion() const { return same_year_proportion; }
         
         // Network model getters
-        __host__ std::string get_network_model() const { return network_model; }
+        __host__ std::string get_model() const { return model; }
         __host__ __device__ double get_er_edge_probability() const { return er_edge_probability; }
         __host__ __device__ int get_er_edges_per_node() const { return er_edges_per_node; }
 
@@ -547,7 +550,7 @@ class ABM {
         int num_calls_to_log_write;
         
         // Network model parameters
-        std::string network_model;  // "PA" or "ER"
+        std::string model;  // "pa" or "er" or "er-gnp"
         double er_edge_probability;  // For G(n,p) ER model
         int er_edges_per_node;       // For fixed-k ER model
         

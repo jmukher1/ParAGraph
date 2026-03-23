@@ -51,7 +51,7 @@ void buildErdosRenyiConnections(ABM* abm, Graph* graph,
     int estimated_edges_per_node;
     if (abm->get_er_edge_probability() > 0.0) {
         // G(n,p): expected edges = p * current_graph_size
-        estimated_edges_per_node = (int)(abm->get_er_edge_probability() * current_graph_size * 1.5);
+        estimated_edges_per_node = (int)(abm->get_er_edge_probability() * current_graph_size);
     } else {
         // Fixed-k: k edges per node
         estimated_edges_per_node = abm->get_er_edges_per_node() * 2;

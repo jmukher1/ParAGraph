@@ -19,22 +19,29 @@ RECENCY_PROBABILITIES="sj_recprob"
 
 SAME_YEAR_PROPORTION="0.12"
 FULLY_RANDOM_CITATIONS="0.05"
+ER_PROBABILITY="0.001"
 LOG_LEVEL="1"
+MODEL="er-gnp"
 
-for GROWTH_PERCENT in $(seq 1 1)
+for GROWTH_PERCENT in 1 3 5 6
 do
-    GROWTH_RATE=$(echo "scale=2; $GROWTH_PERCENT/100" | bc)
+    GROWTH_RATE=$(echo "scale=4; $GROWTH_PERCENT/100" | bc -l)
+    GROWTH_LABEL=$(echo "$GROWTH_PERCENT" | sed 's/0\./dot/; s/\./dot/') 
 
-    OUTPUT_FILE="./output/cpu-static-output-${NUM_CYCLES}y-${GROWTH_PERCENT}p.edgelist"
-    OUTPUT_LOG="./output/cpu-static-output-${NUM_CYCLES}y-${GROWTH_PERCENT}p-${NUM_THREADS}t.log"
-    OUTPUT_AUX="./output/cpu-static-output-${NUM_CYCLES}y-${GROWTH_PERCENT}p.aux"
-    OUT_FILE="./output/cpu-static-${NUM_CYCLES}y-${GROWTH_PERCENT}p-${NUM_THREADS}t-abm.out"
+    ER_PROBABILITY_LABEL=$(awk "BEGIN {printf \"%.1f\", 100 * $ER_PROBABILITY}")
 
-    echo "Running growth rate ${GROWTH_PERCENT}% with ${NUM_THREADS} thread"
+    OUTPUT_FILE="./output/gpu-opt-static-model-${MODEL}-${NUM_CYCLES}y-${GROWTH_LABEL}p-${ER_PROBABILITY_LABEL}p.edgelist"
+    OUTPUT_LOG="./output/gpu-opt-static-model-${MODEL}-${NUM_CYCLES}y-${GROWTH_LABEL}p-${ER_PROBABILITY_LABEL}p-${NUM_THREADS}t.log"
+    OUTPUT_AUX="./output/gpu-opt-static-model-${MODEL}-${NUM_CYCLES}y-${GROWTH_LABEL}p-${ER_PROBABILITY_LABEL}p.aux"
+    OUT_FILE="./output/gpu-opt-static-model-${MODEL}-${NUM_CYCLES}y-${GROWTH_LABEL}p-${ER_PROBABILITY_LABEL}p-${NUM_THREADS}t.out"
+
+    echo "Running growth rate = ${GROWTH_RATE} = ${GROWTH_PERCENT}% with ${NUM_THREADS} thread"
     echo $OUTPUT_FILE
     echo $OUTPUT_AUX
 
     time ./abm \
+    --model er-gnp \
+    --er-probability ${ER_PROBABILITY} \
     --edgelist ${INPUT_EDGELIST} \
     --nodelist ${INPUT_NODELIST} \
     --out-degree-bag ${OUTDEGREE_BAG} \

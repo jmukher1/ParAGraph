@@ -987,9 +987,9 @@ int execute(ABM* abm) {
                  
                 try {
                         // Dispatch to PA or ER model based on configuration
-                        std::string network_model = abm->get_network_model();
+                        std::string model = abm->get_model();
                         
-                        if (network_model == "PA") {
+                        if (model == "pa") {
                                 std::cout << "\n[PA Model] Building connections using Preferential Attachment\n";
                                 buildOneNodeConnections(abm, graph,
                                         new_nodes_vec,
@@ -1005,7 +1005,7 @@ int execute(ABM* abm) {
                                         initial_graph_size,
                                         final_graph_size,
                                         max_batch_size);
-                        } else if (network_model == "ER") {
+                        } else if (model == "er-gnp" || model == "er") {
                                 std::cout << "\n[ER Model] Building connections using Erdos-Renyi\n";
                                 buildErdosRenyiConnections(abm, graph,
                                         new_nodes_vec,
@@ -1013,7 +1013,7 @@ int execute(ABM* abm) {
                                         current_graph_size,
                                         current_year);
                         } else {
-                                std::cerr << "Unknown network model: " << network_model << std::endl;
+                                std::cerr << "Unknown network model: " << model << std::endl;
                                 return 1;
                         }
                 } catch (const std::runtime_error& e) {
