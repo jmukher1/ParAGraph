@@ -1,9 +1,0 @@
-========================================
-Citation Network Growth Simulation
-========================================
-Model: Erdős-Rényi Fixed-k
-  - Each new node cites k neighbors uniformly at random
-Growth rate: 0.03
-Num cycles: 3
-Output: ./output/cpu-static-output-er-3y-3p.edgelist
-========================================

@@ -20,24 +20,22 @@ enum Log {info, debug, error = -1};
 
 class ABM {
     public:
-        ABM(std::string edgelist, std::string nodelist, std::string out_degree_bag, 
-            std::string recency_probabilities, std::string planted_nodes, double alpha, 
-            double fully_random_citations, double preferential_weight, double recency_weight, 
-            double fitness_weight, double growth_rate, int num_cycles, double same_year_proportion, 
-            std::string output_file, std::string auxiliary_information_file, 
+        ABM(std::string edgelist, std::string nodelist, std::string out_degree_bag,
+            std::string recency_probabilities, std::string planted_nodes, double alpha,
+            double fully_random_citations, double preferential_weight, double recency_weight,
+            double fitness_weight, double growth_rate, int num_cycles, double same_year_proportion,
+            std::string output_file, std::string auxiliary_information_file,
             std::string log_file, int num_processors, int log_level,
-            std::string model_name = "pa", double er_probability = 0.01) : edgelist(edgelist), 
-                nodelist(nodelist), out_degree_bag(out_degree_bag), 
-                recency_probabilities(recency_probabilities), 
-                planted_nodes(planted_nodes), alpha(alpha), 
-                fully_random_citations(fully_random_citations), 
-                preferential_weight(preferential_weight), 
-                recency_weight(recency_weight), fitness_weight(fitness_weight), 
-                growth_rate(growth_rate), num_cycles(num_cycles), 
-                same_year_proportion(same_year_proportion), 
-                output_file(output_file), auxiliary_information_file(auxiliary_information_file), 
-                log_file(log_file), num_processors(num_processors), 
-                log_level(log_level), model_name(model_name), er_probability(er_probability){
+            std::string model_name = "pa", double er_probability = 0.01)
+            : edgelist(edgelist), nodelist(nodelist), out_degree_bag(out_degree_bag),
+              recency_probabilities(recency_probabilities), planted_nodes(planted_nodes),
+              alpha(alpha), fully_random_citations(fully_random_citations),
+              preferential_weight(preferential_weight), recency_weight(recency_weight),
+              fitness_weight(fitness_weight), growth_rate(growth_rate), num_cycles(num_cycles),
+              same_year_proportion(same_year_proportion), output_file(output_file),
+              auxiliary_information_file(auxiliary_information_file), log_file(log_file),
+              num_processors(num_processors), log_level(log_level),
+              model_name(model_name), er_probability(er_probability) {
             if(this->log_level > -1) {
                 this->start_time = std::chrono::steady_clock::now();
                 this->log_file_handle.open(this->log_file);
@@ -46,13 +44,11 @@ class ABM {
             this->ReadOutDegreeBag();
             this->ReadRecencyProbabilities();
             this->ReadPlantedNodes();
-	    omp_set_num_threads(this->num_processors);
+            omp_set_num_threads(this->num_processors);
         };
 
         ~ABM() {
-            if(this->log_level > -1) {
-                this->log_file_handle.close();
-            }
+            if(this->log_level > -1) this->log_file_handle.close();
         }
 
         int main();
@@ -81,7 +77,11 @@ class ABM {
         int MakeCitations(Graph* graph, const std::map<int, int>& continuous_node_mapping, int current_year, const std::vector<int>& candidate_nodes, int* citations, double* pa_arr, double* recency_arr, double* fit_arr, double pa_weight, double rec_weight, double fit_weight, int current_graph_size, int num_citations);
         void FillSameYearSourceNodes(std::set<int>& same_year_source_nodes, int current_year_new_nodes);
         int MakeUniformRandomCitations(Graph* graph, const std::map<int, int>& reverse_continuous_node_mapping, std::vector<int>& generator_nodes, int* citations, int num_cited_so_far, int num_citations);
-        int MakeERGNPCitations(Graph* graph, const std::map<int, int>& reverse_continuous_node_mapping, int* citations, double p);
+        int SampleKNodes(Graph* graph, int current_graph_size, const std::map<int, int>& reverse_continuous_node_mapping, int* citations, int k);
+        // FIX: added current_graph_size parameter so only pre-existing nodes are
+        // eligible targets; buffer overflow from the old 250-slot stack array is
+        // also eliminated because the caller sizes the buffer to current_graph_size+1.
+        int MakeERGNPCitations(Graph* graph, const std::map<int, int>& reverse_continuous_node_mapping, int* citations, double p, int current_graph_size);
         int MakeSameYearCitations(int num_new_nodes, const std::map<int, int>& reverse_continuous_node_mapping, int* citations, int current_graph_size);
         void UpdateGraphAttributesWeights(Graph* graph, int next_node_id, double* pa_weight_arr, double* rec_weight_arr, double* fit_weight_arr, int len);
         void UpdateGraphAttributesAlphas(Graph* graph, int next_node_id, double* alpha_arr, int len);
@@ -91,9 +91,7 @@ class ABM {
         template<typename T>
         void AssignFitnessLagDuration(Graph* graph, const T& container) {
             for(auto const& node : container) {
-                std::random_device rand_dev;
-                std::minstd_rand generator{rand_dev()};
-                int fitness_lag_uniform = 0; // MARK: hard coded to be static fitness
+                int fitness_lag_uniform = 0; // hard coded to be static fitness
                 graph->SetIntAttribute("fitness_lag_duration", node, fitness_lag_uniform);
             }
         }
@@ -101,9 +99,7 @@ class ABM {
         template<typename T>
         void AssignFitnessPeakDuration(Graph* graph, const T& container) {
             for(auto const& node : container) {
-                std::random_device rand_dev;
-                std::minstd_rand generator{rand_dev()};
-                int fitness_peak_uniform = 1000; // MARK: hard coded to be static fitness
+                int fitness_peak_uniform = 1000; // hard coded to be static fitness
                 graph->SetIntAttribute("fitness_peak_duration", node, fitness_peak_uniform);
             }
         }
@@ -111,37 +107,34 @@ class ABM {
         template<typename T>
         void AssignPeakFitnessValues(Graph* graph, const T& container) {
             std::vector<double> fitness_probabilities;
-            for(int i = this->fitness_value_min; i <  this->fitness_value_max + 1; i ++) {
-                double scale_factor = 6.3742991333;
-                double constant = 0.072;
-                double exponent = -1.634;
-                fitness_probabilities.push_back(scale_factor * constant * pow(i, exponent));
+            for(int i = this->fitness_value_min; i < this->fitness_value_max + 1; i++) {
+                fitness_probabilities.push_back(6.3742991333 * 0.072 * pow(i, -1.634));
             }
             std::random_device rand_dev;
             std::minstd_rand generator{rand_dev()};
-            std::discrete_distribution<int> int_discrete_distribution(fitness_probabilities.begin(), fitness_probabilities.end());
-            for(auto const& node : container) {
-                int current_fitness = int_discrete_distribution(generator) + 1;
-                graph->SetIntAttribute("fitness_peak_value", node, current_fitness);
-            }
+            std::discrete_distribution<int> int_discrete_distribution(
+                fitness_probabilities.begin(), fitness_probabilities.end());
+            for(auto const& node : container)
+                graph->SetIntAttribute("fitness_peak_value", node,
+                                       int_discrete_distribution(generator) + 1);
         }
 
         void PlantNodes(Graph* graph, std::vector<int> new_nodes_vec, int current_year) {
             int planted_so_far = 0;
-            if (this->planted_nodes_map.count(current_year)) {
-                std::map<int, std::map<std::string, int>> current_year_map = this->planted_nodes_map.at(current_year);
-                for(auto const& [line_no, line_map] : current_year_map) {
-                    int current_node_type_count = line_map.at("count");
-                    int current_fitness_lag_duration = line_map.at("fitness_lag_duration");
-                    int current_fitness_peak_value = line_map.at("fitness_peak_value");
-                    int current_fitness_peak_duration = line_map.at("fitness_peak_duration");
-                    for(int i = planted_so_far; i < planted_so_far + current_node_type_count; i ++) {
-                        graph->SetIntAttribute("fitness_lag_duration", new_nodes_vec.at(i), current_fitness_lag_duration);
-                        graph->SetIntAttribute("fitness_peak_value", new_nodes_vec.at(i), current_fitness_peak_value);
-                        graph->SetIntAttribute("fitness_peak_duration", new_nodes_vec.at(i), current_fitness_peak_duration);
-                        graph->SetIntAttribute("planted_nodes_line_number", new_nodes_vec.at(i), line_no);
+            if(this->planted_nodes_map.count(current_year)) {
+                auto& cur_year_map = this->planted_nodes_map.at(current_year);
+                for(auto const& [line_no, line_map] : cur_year_map) {
+                    int cnt  = line_map.at("count");
+                    int lag  = line_map.at("fitness_lag_duration");
+                    int peak = line_map.at("fitness_peak_value");
+                    int dur  = line_map.at("fitness_peak_duration");
+                    for(int i = planted_so_far; i < planted_so_far + cnt; i++) {
+                        graph->SetIntAttribute("fitness_lag_duration",       new_nodes_vec.at(i), lag);
+                        graph->SetIntAttribute("fitness_peak_value",         new_nodes_vec.at(i), peak);
+                        graph->SetIntAttribute("fitness_peak_duration",      new_nodes_vec.at(i), dur);
+                        graph->SetIntAttribute("planted_nodes_line_number",  new_nodes_vec.at(i), line_no);
                     }
-                    planted_so_far += current_node_type_count;
+                    planted_so_far += cnt;
                 }
             }
         }
@@ -160,8 +153,9 @@ class ABM {
         double fitness_weight;
         double growth_rate;
         int num_cycles;
+        // Model selection
         std::string model_name     = "pa";   // "pa" | "er" | "er-gnp"
-        double      er_probability = 0.01;   // used only for --model er-gnp
+        double      er_probability = 0.01;   // used only with --model er-gnp
         double same_year_proportion;
         std::string output_file;
         std::string auxiliary_information_file;

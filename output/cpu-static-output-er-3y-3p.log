@@ -1,9 +1,0 @@
-[INFO][0-0:0:4](t=4s) loaded graph
-[INFO][0-0:0:6](t=6s) final graph size is 537112
-[INFO][0-0:0:6](t=6s) current year is: 1983 and the graph is 491532 nodes large
-[INFO][0-0:0:6](t=6s) making 14746 nodes this year
-[INFO][0-0:0:7](t=7s) current year is: 1984 and the graph is 506278 nodes large
-[INFO][0-0:0:7](t=7s) making 15189 nodes this year
-[INFO][0-0:0:8](t=8s) current year is: 1985 and the graph is 521467 nodes large
-[INFO][0-0:0:8](t=8s) making 15645 nodes this year
-[INFO][0-0:0:9](t=9s) finished sim

@@ -1,5 +1,12 @@
+build/
 output/
-error/
+errors/
 abm
-
+sj_edgelist
+cpu-models
+sj_nodelist
+tcen_at_least_five
+cpu-models.tar  
+IMPLEMENTATION.md  
+sj_recprob
 
