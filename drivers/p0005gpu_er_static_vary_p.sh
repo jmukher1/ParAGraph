@@ -1,5 +1,5 @@
 #!/bin/sh
-# Vary growth rate from 1% to 10%
+# ER Probability from 0.01% to 3%
 # 3 years simulation
 # 1 thread
 
@@ -19,21 +19,23 @@ RECENCY_PROBABILITIES="sj_recprob"
 
 SAME_YEAR_PROPORTION="0.12"
 FULLY_RANDOM_CITATIONS="0.05"
-ER_PROBABILITY="0.001"
 LOG_LEVEL="1"
 MODEL="er-gnp"
 
-for GROWTH_PERCENT in 1 3 5 6
+ER_PROBABILITY="0.0005"
+for GROWTH_PERCENT in 1 3 6
 do
     GROWTH_RATE=$(echo "scale=4; $GROWTH_PERCENT/100" | bc -l)
     GROWTH_LABEL=$(echo "$GROWTH_PERCENT" | sed 's/0\./dot/; s/\./dot/') 
 
     ER_PROBABILITY_LABEL=$(awk "BEGIN {printf \"%.1f\", 100 * $ER_PROBABILITY}")
 
-    OUTPUT_FILE="./output/gpu-opt-static-model-${MODEL}-${NUM_CYCLES}y-${GROWTH_LABEL}p-${ER_PROBABILITY_LABEL}p.edgelist"
-    OUTPUT_LOG="./output/gpu-opt-static-model-${MODEL}-${NUM_CYCLES}y-${GROWTH_LABEL}p-${ER_PROBABILITY_LABEL}p-${NUM_THREADS}t.log"
-    OUTPUT_AUX="./output/gpu-opt-static-model-${MODEL}-${NUM_CYCLES}y-${GROWTH_LABEL}p-${ER_PROBABILITY_LABEL}p.aux"
-    OUT_FILE="./output/gpu-opt-static-model-${MODEL}-${NUM_CYCLES}y-${GROWTH_LABEL}p-${ER_PROBABILITY_LABEL}p-${NUM_THREADS}t.out"
+    mkdir -p output/${ER_PROBABILITY_LABEL}
+
+    OUTPUT_FILE="./output/${ER_PROBABILITY_LABEL}/gpu-opt-static-model-${MODEL}-${NUM_CYCLES}y-${GROWTH_LABEL}p-${ER_PROBABILITY_LABEL}p.edgelist"
+    OUTPUT_LOG="./output/${ER_PROBABILITY_LABEL}/gpu-opt-static-model-${MODEL}-${NUM_CYCLES}y-${GROWTH_LABEL}p-${ER_PROBABILITY_LABEL}p-${NUM_THREADS}t.log"
+    OUTPUT_AUX="./output/${ER_PROBABILITY_LABEL}/gpu-opt-static-model-${MODEL}-${NUM_CYCLES}y-${GROWTH_LABEL}p-${ER_PROBABILITY_LABEL}p.aux"
+    OUT_FILE="./output/${ER_PROBABILITY_LABEL}/gpu-opt-static-model-${MODEL}-${NUM_CYCLES}y-${GROWTH_LABEL}p-${ER_PROBABILITY_LABEL}p-${NUM_THREADS}t.out"
 
     echo "Running growth rate = ${GROWTH_RATE} = ${GROWTH_PERCENT}% with ${NUM_THREADS} thread"
     echo $OUTPUT_FILE
