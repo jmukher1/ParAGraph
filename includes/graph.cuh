@@ -5,7 +5,7 @@
 #include <set>
 #include <map>
 #include <vector>
-
+#include <omp.h>
 #include <stdexcept>
 #include <string>
 #include <iostream>
@@ -68,8 +68,8 @@ class Graph {
         void ParseNodelist();
         void ParseEdgelist();
         void updateNodeInDegreeOutDegree();
-        void updateNodeInDegreeOutDegree(std::vector<int> new_nodes_vec,
-                                        std::set<int> updated_destination_nodes,
+        void updateNodeInDegreeOutDegree(const std::vector<int>& new_nodes_vec,
+        				const std::unordered_set<int>& updated_destination_nodes,
                                         int year);
         void PrintFinalGraphStatistics();
         //void PrintAdvancedGraphStatistics();

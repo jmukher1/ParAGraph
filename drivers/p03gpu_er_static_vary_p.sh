@@ -9,7 +9,7 @@ mkdir -p errors
 OUTPUT=$(readlink -f ./output)/
 ERRORS=$(readlink -f ./errors)/
 
-NUM_THREADS=1
+NUM_THREADS=16
 NUM_CYCLES=3
 
 INPUT_EDGELIST="sj_edgelist"

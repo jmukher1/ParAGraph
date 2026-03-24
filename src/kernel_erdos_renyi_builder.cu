@@ -51,16 +51,16 @@ void buildErdosRenyiConnections(ABM* abm, Graph* graph,
     int estimated_edges_per_node;
     if (abm->get_er_edge_probability() > 0.0) {
         // G(n,p): expected edges = p * current_graph_size
-        estimated_edges_per_node = (int)(abm->get_er_edge_probability() * current_graph_size);
+        estimated_edges_per_node = (int)(abm->get_er_edge_probability() * current_graph_size * 2);
     } else {
         // Fixed-k: k edges per node
-        estimated_edges_per_node = abm->get_er_edges_per_node() * 2;
+        estimated_edges_per_node = abm->get_er_edges_per_node();
     }
     estimated_edges_per_node = std::max(10, estimated_edges_per_node);
     
     int* per_thread_capacities = new int[num_new_nodes];
     for (int i = 0; i < num_new_nodes; i++) {
-        per_thread_capacities[i] = 2 * estimated_edges_per_node;
+        per_thread_capacities[i] = estimated_edges_per_node;
     }
     
     std::cout << "\ncreate_thread_vectors_bulk<int2>(num_new_nodes, per_thread_capacities.";

@@ -10,6 +10,6 @@
 #SBATCH --gres=gpu:h100:1
 
 # Load necessary modules (e.g., CUDA)
-module load cuda/12.8
+module load cuda/12.6
 
 ./drivers/p03gpu_er_static_vary_p.sh 

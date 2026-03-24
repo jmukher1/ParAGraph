@@ -2,13 +2,13 @@
 NVCC = nvcc #-g -G
 CXXFLAGS = -O3 -std=c++20 -dc -x cu
 NVCCFLAGS= -rdc=true -dc
-CUDAFLAGS= -std=c++20 -arch=sm_90 -O3 -use_fast_math --maxrregcount=128 --expt-extended-lambda
+CUDAFLAGS= -std=c++20 -arch=sm_90 -O3 -use_fast_math --maxrregcount=128 --expt-extended-lambda -Xcompiler -fopenmp
 NVCCLINKFLAGS= -arch=sm_90 -dlink
 LIBS= -lcudart -lcublas
 EXPERIMENTAL= --expt-relaxed-constexpr
 LIBDIRS=-L$(CUDA_HOME)/lib64
 LPFLAGS = -lstdc++
-NVLINKFLAGS= --expt-extended-lambda -lcudadevrt -lcudart
+NVLINKFLAGS= --expt-extended-lambda -lcudadevrt -lcudart -Xcompiler -fopenmp -lgomp
 SRC_DIR = src
 BUILD_DIR = build
 INC_DIR = ./includes

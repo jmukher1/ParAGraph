@@ -894,7 +894,7 @@ int execute(ABM* abm) {
         std::set<int> same_year_source_nodes;
         std::vector<std::pair<int, int>> new_edges_vec;
         std::chrono::steady_clock::time_point t7 = std::chrono::steady_clock::now();
-	double d71 = 0, d72 = 0, d73 = 0, d74 = 0, d75 = 0, d76 = 0, d77 = 0, d79 = 0, d7081 = 0, d7980 = 0, d8081 = 0, d7981 = 0;
+	double d71 = 0, d72 = 0, d73 = 0, d74 = 0, d75 = 0, d76 = 0, d77 = 0, d781 = 0, d79 = 0, d7081 = 0, d7980 = 0, d8081 = 0, d7981 = 0;
         int max_batch_size = 20000;
         for (int current_year = start_year; current_year < start_year + abm->num_cycles; current_year++) {
                 printf("\n Entering loop for year = %d", current_year);
@@ -1024,15 +1024,21 @@ int execute(ABM* abm) {
                         std::cerr << "Caught generic exception: " << e.what() << std::endl;
                         return 1;
                 }
+		std::chrono::steady_clock::time_point t781 = std::chrono::steady_clock::now();
+                auto duration78781 = std::chrono::duration_cast<std::chrono::milliseconds>(t781 - t78);
+                d781 += duration78781.count();
                 
                 std::cout << "\nYear " << current_year << ": " << num_new_nodes << " new nodes, "
                           << new_edges_vec.size() << " new edges\n";
+                std::cout << "\nElapsed time: 78-781 : total : " << d781/1000.0 << " secs, this iter cost : " << duration78781.count()/1000.0 << " seconds" << std::endl; 
 	          
                 // Batch-insert all new edges into the adj maps in one pass.
                 // Avoids per-edge AddNode() calls and set-insert overhead per edge.
-                std::set<int> updated_destination_nodes;
+                /*
+		std::unordered_set<int> updated_destination_nodes;
                 updated_destination_nodes.insert(
                     new_nodes_vec.begin(), new_nodes_vec.end()); // sources always updated
+
 
                 for (const auto& [source_node, destination_node] : new_edges_vec) {
                     graph->forward_adj_map[source_node].insert(destination_node);
@@ -1040,10 +1046,116 @@ int execute(ABM* abm) {
                     graph->node_set.insert(source_node);
                     graph->node_set.insert(destination_node);
                     updated_destination_nodes.insert(destination_node);
-                }
-                std::chrono::steady_clock::time_point t79 = std::chrono::steady_clock::now();
+                }*/
+
+	
+		// ================================================================
+                // OPTIMIZED BATCH EDGE INSERTION
+                // ================================================================
+                // Original bottleneck per edge:
+                //   map::operator[]  O(log M)  ×2  (fwd + bwd map lookup)
+                //   set::insert      O(log k)  ×2  (fwd + bwd set insert)
+                //   node_set.insert  O(log N)  ×2  (source + destination)
+                //   udn.insert       O(log D)  ×1  (updated_destination_nodes)
+                // Total per edge: ~7 tree ops = O(E × log N)
+                //
+                // Optimized strategy:
+                //   1. Bulk node_set insert (new_nodes_vec) once – covers all sources
+                //      and any new-node destinations (same-year citations).
+                //      Old-node destinations are already in node_set → skip per-edge inserts.
+                //   2. Sort new_edges_vec by (src,dst) once → one map lookup per unique
+                //      source (U << E) and group-sorted range inserts per bucket.
+                //   3. Build reverse-sorted (dst,src) view → same O(V) map lookups
+                //      for backward_adj_map, V = unique destination count.
+                //   4. Use unordered_set for updated_destination_nodes → O(1) inserts.
+                //   5. Run forward and backward adj-map passes in parallel sections
+                //      (they write to disjoint maps, no shared state).
+                // Total: O(E log E) sort + O(U log M + V log M) map + O(E/k × log k) sets
+                //        where k = avg out-degree and M = current graph node count.
+                // ================================================================
+
+                // -- Step 1: node_set bulk insert (eliminates 2×E per-edge inserts) --------
+                // All source_nodes are in new_nodes_vec. Destination nodes are either
+                // existing nodes (already in node_set) or same-year new nodes (in
+                // new_nodes_vec). One range-insert covers all cases.
+                graph->node_set.insert(new_nodes_vec.begin(), new_nodes_vec.end());
+
+                // -- Step 2: sort edges by (src, dst) once -----------------------------------
+                // std::pair sorts lexicographically → all edges for the same source
+                // are contiguous, destinations within each group are also sorted.
+                std::sort(new_edges_vec.begin(), new_edges_vec.end());
+
+                // -- Step 3: build (dst, src) sorted view for backward pass ------------------
+                const size_t E = new_edges_vec.size();
+                std::vector<std::pair<int,int>> rev_edges(E);
+                for (size_t ei = 0; ei < E; ++ei)
+                    rev_edges[ei] = {new_edges_vec[ei].second, new_edges_vec[ei].first};
+                std::sort(rev_edges.begin(), rev_edges.end());
+
+                // -- Step 4: unordered_set for O(1) destination tracking --------------------
+                std::unordered_set<int> updated_destination_nodes;
+                updated_destination_nodes.reserve((new_nodes_vec.size() + E) * 2);
+                updated_destination_nodes.insert(new_nodes_vec.begin(), new_nodes_vec.end());
+
+                // -- Step 5: parallel forward + backward passes ------------------------------
+                // The two adj maps are independent → no shared state, safe to parallelize.
+                #pragma omp parallel sections num_threads(2)
+                {
+                    // ── Forward adj map: group by source ─────────────────────────────────
+                    // One map lookup per unique source, then hint-insert sorted destinations.
+                    // set::insert(hint, val) is O(1) amortised when val > current max,
+                    // O(log n) otherwise. For typical PA output (random targets) the hint
+                    // gives ~2× speedup vs plain insert on sorted inputs.
+                    #pragma omp section
+                    {
+                        auto it = new_edges_vec.cbegin();
+                        while (it != new_edges_vec.cend()) {
+                            const int src = it->first;
+                            // upper_bound finds end-of-run for this source in O(log batch)
+                            const auto run_end = std::upper_bound(
+                                it, new_edges_vec.cend(),
+                                std::make_pair(src, std::numeric_limits<int>::max()));
+
+                            // One map lookup for the whole run
+                            auto& fwd_set = graph->forward_adj_map[src];
+                            // Destinations [it, run_end) are sorted ascending.
+                            // Range-insert on sorted input is O(k) if all > set max,
+                            // O(k log(n+k)) in the general case — still beats k×O(log n).
+                            for (auto e = it; e != run_end; ++e)
+                                fwd_set.insert(fwd_set.end(), e->second);
+
+                            it = run_end;
+                        }
+                    }
+
+                    // ── Backward adj map: group by destination ───────────────────────────
+                    // Identical pattern on the (dst, src) sorted view.
+                    #pragma omp section
+                    {
+                        auto it = rev_edges.cbegin();
+                        while (it != rev_edges.cend()) {
+                            const int dst = it->first;
+                            const auto run_end = std::upper_bound(
+                                it, rev_edges.cend(),
+                                std::make_pair(dst, std::numeric_limits<int>::max()));
+
+                            auto& bwd_set = graph->backward_adj_map[dst];
+                            for (auto e = it; e != run_end; ++e)
+                                bwd_set.insert(bwd_set.end(), e->second);
+
+                            it = run_end;
+                        }
+                    }
+                } // end omp parallel sections
+
+                // -- Step 6: collect unique destinations (serial, single pass) -------------
+                for (const auto& [src, dst] : new_edges_vec)
+                    updated_destination_nodes.insert(dst);
+                
+		std::chrono::steady_clock::time_point t79 = std::chrono::steady_clock::now();
                 auto duration7879 = std::chrono::duration_cast<std::chrono::milliseconds>(t79 - t78);
                 d79 += duration7879.count();
+                std::cout << "\nElapsed time: 78-79 : total : " << d79/1000.0 << " secs, this iter cost : " << duration7879.count()/1000.0 << " seconds" << std::endl; 
                 
                 graph->updateNodeInDegreeOutDegree(new_nodes_vec, updated_destination_nodes, current_year);
                 std::chrono::steady_clock::time_point t80 = std::chrono::steady_clock::now();

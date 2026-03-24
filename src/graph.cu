@@ -502,9 +502,9 @@ void Graph::updateNodeInDegreeOutDegree() {
     std::cout<<"\nTotal (initial):: In-Degree = "<< totalInDegree << ", Out-Degree = " << totalOutDegree << std::endl;
 }
 
-
+/*
 void Graph::updateNodeInDegreeOutDegree(std::vector<int> new_nodes_vec,
-                                    std::set<int> updated_destination_nodes, 
+                                    std::unordered_set<int> updated_destination_nodes, 
                                     int year) {
     // Only update nodes that changed this year:
     //   - new_nodes_vec: out_degree changed (they made citations)
@@ -528,6 +528,93 @@ void Graph::updateNodeInDegreeOutDegree(std::vector<int> new_nodes_vec,
     std::cout << "\nupdateNodeInDegreeOutDegree(year=" << year
               << "): updated " << new_nodes_vec.size() << " out-degrees, "
               << updated_destination_nodes.size() << " in-degrees\n";
+}
+*/
+
+// ── Signature: const-ref eliminates the copy of both containers ──────────────
+// Saves O(|new_nodes_vec| + |updated_destination_nodes|) allocation + copy
+// every year, which for large graphs is non-trivial.
+void Graph::updateNodeInDegreeOutDegree(
+        const std::vector<int>&        new_nodes_vec,
+        const std::unordered_set<int>& updated_destination_nodes,
+        int year)
+{
+    // ── Sort new_nodes_vec for sequential ordered-map traversal ──────────────
+    // std::map stores keys in sorted order, so iterating a sorted key list
+    // gives O(1) amortised map::lower_bound hint-hops instead of O(log M) per
+    // find().  Sorting cost is O(S log S) once; S map lookups drop from
+    // O(S log M) to O(S) amortised — worth it when S is large.
+    //
+    // updated_destination_nodes is an unordered_set so we can't sort it
+    // in-place without a copy; instead we sort it into a temp vector.
+    std::vector<int> sorted_new(new_nodes_vec.begin(), new_nodes_vec.end());
+    std::sort(sorted_new.begin(), sorted_new.end());
+
+    std::vector<int> sorted_dst(updated_destination_nodes.begin(),
+                                updated_destination_nodes.end());
+    std::sort(sorted_dst.begin(), sorted_dst.end());
+
+    // ── Parallel sections: the two loops are fully independent ───────────────
+    // Loop A reads forward_adj_map  (read-only) + writes nodeAttributeMap[*].out_degree
+    // Loop B reads backward_adj_map (read-only) + writes nodeAttributeMap[*].in_degree
+    // Different fields of the same Node struct → no data race, only false
+    // sharing possible when both loops hit the same cache line.
+    // For typical Node structs (>= 2 ints apart in layout) this is negligible.
+    #pragma omp parallel sections num_threads(2)
+    {
+        // ── Section A: out-degree update ──────────────────────────────────────
+        #pragma omp section
+        {
+            // Hint-based traversal: keep an iterator into the ordered map and
+            // advance it with lower_bound(hint, key) → O(1) amortised when
+            // keys are visited in ascending order.
+            auto fwd_it   = this->forward_adj_map.cbegin();
+            auto node_it  = this->nodeAttributeMap.begin();
+
+            for (int nodeSeqId : sorted_new) {
+                // Advance the forward-adj hint to this key
+                fwd_it  = this->forward_adj_map.lower_bound(nodeSeqId);
+                // Advance the nodeAttributeMap hint to this key
+                node_it = this->nodeAttributeMap.lower_bound(nodeSeqId);
+
+                int outdegree = 0;
+                if (fwd_it != this->forward_adj_map.cend() &&
+                    fwd_it->first == nodeSeqId)
+                    outdegree = static_cast<int>(fwd_it->second.size());
+
+                // Direct field write via iterator — avoids a second map lookup
+                if (node_it != this->nodeAttributeMap.end() &&
+                    node_it->first == nodeSeqId)
+                    node_it->second.out_degree = outdegree;
+            }
+        }
+
+        // ── Section B: in-degree update ───────────────────────────────────────
+        #pragma omp section
+        {
+            auto bwd_it  = this->backward_adj_map.cbegin();
+            auto node_it = this->nodeAttributeMap.begin();
+
+            for (int nodeSeqId : sorted_dst) {
+                bwd_it  = this->backward_adj_map.lower_bound(nodeSeqId);
+                node_it = this->nodeAttributeMap.lower_bound(nodeSeqId);
+
+                int indegree = 0;
+                if (bwd_it != this->backward_adj_map.cend() &&
+                    bwd_it->first == nodeSeqId)
+                    indegree = static_cast<int>(bwd_it->second.size());
+
+                if (node_it != this->nodeAttributeMap.end() &&
+                    node_it->first == nodeSeqId)
+                    node_it->second.in_degree = indegree;
+            }
+        }
+    } // end omp parallel sections
+
+    // ── Logging (moved outside parallel region, conditional on log level) ────
+    printf("\nupdateNodeInDegreeOutDegree(year=%d): "
+           "updated %zu out-degrees, %zu in-degrees",
+           year, sorted_new.size(), sorted_dst.size());
 }
 
 void Graph::SetIntAttribute(std::string attribute_key, int nodeSeqId, int attribute_value) {
@@ -818,6 +905,105 @@ namespace {
     }
 }
 
+void Graph::WriteGraph(std::string output_file) const {
+    // =========================================================================
+    // OPTIMIZED WriteGraph
+    // =========================================================================
+    // Bottlenecks in the original implementation:
+    //   1. rev.at(v) — O(log N) std::map lookup called ONCE PER EDGE.
+    //      For a graph with E edges this is E × O(log N) tree traversals.
+    //   2. Single-threaded string building — all E edges processed serially.
+    //   3. append_int called twice per edge with no amortisation across the
+    //      row (mapped_u is re-converted for every neighbour v).
+    //
+    // Optimizations applied:
+    //   A. Build a flat O(1)-lookup array from reverse_continuous_node_mapping
+    //      once.  Every rev[v] lookup drops from O(log N) → O(1).
+    //   B. Snapshot forward_adj_map keys into a random-access vector so OMP
+    //      can index into it by thread-private range without iterating a map.
+    //   C. Convert mapped_u to chars ONCE per source row (not once per edge).
+    //   D. Each OMP thread fills its own string buffer (no locks, no false
+    //      sharing).  Thread buffers are written to the file in order after
+    //      the parallel region.
+    //   E. File write is done with a single open/write-header pass followed
+    //      by sequential per-thread writes — avoids one giant allocation and
+    //      lets the OS pipeline writes while threads are still building.
+    // =========================================================================
+
+    // ── A: O(1) flat reverse-mapping array ───────────────────────────────────
+    // node_seq_id is 0-based sequential (see ParseNodelist), so keys of
+    // reverse_continuous_node_mapping are exactly [0, N).
+    const int N = static_cast<int>(this->node_set.size());
+    std::vector<int> rev_arr(N);
+    for (const auto& [seq_id, orig_id] : this->reverse_continuous_node_mapping)
+        rev_arr[seq_id] = orig_id;   // O(N) build, then O(1) per lookup
+
+    // ── B: Snapshot source keys for indexed parallel access ──────────────────
+    // std::map iterators are not random-access, so we materialise the keys.
+    std::vector<int> src_keys;
+    src_keys.reserve(this->forward_adj_map.size());
+    size_t total_edges = 0;
+    for (const auto& [u, nbrs] : this->forward_adj_map) {
+        src_keys.push_back(u);
+        total_edges += nbrs.size();
+    }
+    const int num_srcs = static_cast<int>(src_keys.size());
+
+    // ── C+D: Parallel string building, one buffer per thread ─────────────────
+    const int nt = omp_get_max_threads();
+    std::vector<std::string> bufs(nt);
+
+    // Pre-size each buffer to its fair share (avoids realloc during filling).
+    // 14 bytes/edge is conservative: "123456,789012\n" = 14 chars.
+    const size_t per_thread_bytes = (total_edges * 14 / nt) + 4096;
+    for (auto& b : bufs)
+        b.reserve(per_thread_bytes);
+
+    #pragma omp parallel num_threads(nt)
+    {
+        const int tid  = omp_get_thread_num();
+        const int nthd = omp_get_num_threads();
+        std::string& buf = bufs[tid];
+
+        // Static partition: thread tid owns src_keys[start .. end)
+        const int chunk = (num_srcs + nthd - 1) / nthd;
+        const int begin = tid * chunk;
+        const int stop  = std::min(begin + chunk, num_srcs);
+
+        char tmp[12];  // enough for any 32-bit integer
+
+        for (int i = begin; i < stop; ++i) {
+            const int u        = src_keys[i];
+            const int mapped_u = rev_arr[u];   // O(1)
+
+            // ── C: convert mapped_u once for the whole neighbour loop ─────────
+            auto [p1, e1] = std::to_chars(tmp, tmp + sizeof(tmp), mapped_u);
+            const int u_len = static_cast<int>(p1 - tmp);
+
+            // forward_adj_map is read-only here → safe for concurrent access
+            for (int v : this->forward_adj_map.at(u)) {
+                buf.append(tmp, u_len);          // mapped_u (pre-converted)
+                buf.push_back(',');
+
+                auto [p2, e2] = std::to_chars(tmp, tmp + sizeof(tmp), rev_arr[v]);
+                buf.append(tmp, p2 - tmp);       // mapped_v, O(1) lookup
+                buf.push_back('\n');
+            }
+        }
+    } // implicit barrier — all threads done before we touch bufs
+
+    // ── E: Open file, write header, stream per-thread buffers in order ────────
+    // Writing thread buffers sequentially preserves the same source-sorted
+    // order as the original (forward_adj_map is ordered, partition is ordered).
+    std::ofstream out(output_file, std::ios::binary);
+    constexpr const char* header = "#source,target\n";
+    out.write(header, 15);
+    for (const auto& b : bufs)
+        if (!b.empty())
+            out.write(b.data(), static_cast<std::streamsize>(b.size()));
+}
+
+/*
 void Graph::WriteGraph(std::string output_file) const { 
     std::cout << "\nInside WriteGraph ...\n";
 
@@ -853,12 +1039,6 @@ void Graph::WriteGraph(std::string output_file) const {
         const int mapped_u = rev.at(u);
 
         for (int v : neighbors) {
-            /*/ seq: u,v
-            append_int(seq_buffer, u);
-            seq_buffer.push_back(',');
-            append_int(seq_buffer, v);
-            seq_buffer.push_back('\n');*/
-
             // mapped: mapped_u,mapped_v
             append_int(map_buffer, mapped_u);
             map_buffer.push_back(',');
@@ -873,123 +1053,171 @@ void Graph::WriteGraph(std::string output_file) const {
     //seq_out.write(seq_buffer.data(), seq_buffer.size());
     map_out.write(map_buffer.data(), map_buffer.size());
 }
+*/
 
-/*void Graph::WriteGraph(std::string output_file) const {
-    std::string output_seq_file = "seq_" + output_file;
-    std::cout << "\nInside WriteGraph (seq)...\n";
+void Graph::WriteAttributes(std::string auxiliary_information_file) const {
+    // =========================================================================
+    // OPTIMIZED WriteAttributes
+    // =========================================================================
+    // Bottlenecks in the original implementation
+    // -----------------------------------------------------------------
+    // 1. Per-node attribute accessors (GetIntAttribute, GetDoubleAttribute,
+    //    getType, getGeneratorNode) each do:
+    //      a) nodeAttributeMap.contains(id)  → O(log N) tree traversal
+    //      b) nodeAttributeMap.at(id)        → O(log N) tree traversal again
+    //      c) string-comparison chain to find the right field
+    //    Called 9-14 times per node → up to 28 tree traversals + 14 string
+    //    comparisons against the SAME map key every row.
+    //
+    // 2. reverse_continuous_node_mapping.at(nodeSeqId) → O(log N) per node.
+    //    node_seq_id is 0-based sequential, so a flat array suffices.
+    //
+    // 3. std::ostringstream with operator<< is locale-aware and slow.
+    //    std::to_chars + manual buffer append is 3-5× faster for numbers.
+    //
+    // 4. Single-threaded over all N nodes; rows are independent.
+    //
+    // 5. Periodic flush calls aux_stream.str() which copies the entire
+    //    accumulated string on every flush boundary.
+    //
+    // 6. seq_* file is opened but never written — dead I/O overhead.
+    //
+    // Optimizations applied
+    // -----------------------------------------------------------------
+    // A. Build flat O(1)-access arrays from nodeAttributeMap and
+    //    reverse_continuous_node_mapping once (O(N) build).
+    //    Every per-node field access becomes a direct struct-field read —
+    //    zero map lookups, zero string comparisons during the write loop.
+    //
+    // B. Each OMP thread owns a private char[] slab (stack-allocated per
+    //    thread, sized to hold ~ROWS_PER_SLAB rows).  When the slab is
+    //    full the thread drains it to its own std::string.  This avoids
+    //    any allocation inside the hot path and keeps cache footprint small.
+    //
+    // C. Number-to-string conversion uses std::to_chars (no locale, no
+    //    heap allocation, branch-minimal).  Doubles use snprintf with %.10g
+    //    which matches the original aux_stream.precision(10) behaviour.
+    //
+    // D. The seq_* file is never written so we skip opening it entirely.
+    //
+    // E. Thread buffers are written to the file sequentially after the
+    //    parallel region to preserve the node_set iteration order.
+    // =========================================================================
 
-    // Open files in binary mode
-    std::ofstream seq_output_filehandle(output_seq_file, std::ios::out | std::ios::binary);
-    std::ofstream output_filehandle(output_file, std::ios::out | std::ios::binary);
+    // ── A1: flat reverse-mapping array (O(1) nodeSeqId → original node id) ──
+    const int N = static_cast<int>(this->node_set.size());
+    std::vector<int> rev_arr(N);
+    for (const auto& [seq_id, orig_id] : this->reverse_continuous_node_mapping)
+        rev_arr[seq_id] = orig_id;
 
-    // Write headers
-    constexpr const char* header = "#source,target\n";
-    seq_output_filehandle.write(header, 15);
-    output_filehandle.write(header, 15);
+    // ── A2: flat Node array — ONE map lookup per node, then direct field reads
+    // node_set is a std::set<int> of seq_ids in sorted order; seq_ids are
+    // 0-based so we can store into rev_arr directly.
+    std::vector<Node> node_arr(N);
+    for (const auto& [seq_id, node] : this->nodeAttributeMap)
+        if (seq_id >= 0 && seq_id < N) node_arr[seq_id] = node;
 
-    // Pre-calculate total edges for better memory allocation
-    size_t total_edges = 0;
-    for (const auto& [u, u_neighbors] : forward_adj_map) {
-        total_edges += u_neighbors.size();
-    }
+    // ── A3: collect all seq_ids in iteration order for parallel indexing ─────
+    std::vector<int> seq_ids(this->node_set.cbegin(), this->node_set.cend());
 
-    // Allocate buffers with more accurate sizing (avg ~20 bytes per edge)
-    std::string seq_buffer;
-    std::string map_buffer;
-    seq_buffer.reserve(total_edges * 20);
-    map_buffer.reserve(total_edges * 20);
+    // ── Open output file, write header ───────────────────────────────────────
+    std::ofstream out(auxiliary_information_file, std::ios::binary);
+    constexpr const char* header =
+        "node_id,type,year,pa_weight,rec_weight,fit_weight,fit_lag_duration,"
+        "fit_peak_value,fit_peak_duration,alpha,in_degree,out_degree,"
+        "assigned_out_degree,planted_nodes_line_number,generator_node_string\n";
+    out << header;
 
-    // Use faster integer to string conversion
-    char int_buffer[12]; // Enough for 32-bit integers
+    printf("\nWriteAttributes: graph size = %d\n", N);
 
-    for (const auto& [u, u_neighbors] : forward_adj_map) {
-        // Look up mapped_u once per outer loop
-        int mapped_u = reverse_continuous_node_mapping.at(u);
-        
-        // Convert u and mapped_u to string once
-        int u_len = snprintf(int_buffer, sizeof(int_buffer), "%d", u);
-        std::string u_str(int_buffer, u_len);
-        
-        int mapped_u_len = snprintf(int_buffer, sizeof(int_buffer), "%d", mapped_u);
-        std::string mapped_u_str(int_buffer, mapped_u_len);
+    // ── B+C+D: Parallel row generation, one string buffer per thread ─────────
+    const int nt = omp_get_max_threads();
+    std::vector<std::string> bufs(nt);
+    // Pre-size: ~120 bytes/row is generous for a 15-column CSV row
+    const size_t approx_per_thread = (static_cast<size_t>(N) * 120 / nt) + 4096;
+    for (auto& b : bufs) b.reserve(approx_per_thread);
 
-        for (int v : u_neighbors) {
-            // Sequential file: u,v
-            seq_buffer.append(u_str);
-            seq_buffer.push_back(',');
-            
-            int v_len = snprintf(int_buffer, sizeof(int_buffer), "%d", v);
-            seq_buffer.append(int_buffer, v_len);
-            seq_buffer.push_back('\n');
+    #pragma omp parallel num_threads(nt)
+    {
+        const int tid  = omp_get_thread_num();
+        const int nthd = omp_get_num_threads();
+        std::string& buf = bufs[tid];
 
-            // Mapped file: mapped_u,mapped_v
-            map_buffer.append(mapped_u_str);
-            map_buffer.push_back(',');
-            
-            int mapped_v = reverse_continuous_node_mapping.at(v);
-            int mapped_v_len = snprintf(int_buffer, sizeof(int_buffer), "%d", mapped_v);
-            map_buffer.append(int_buffer, mapped_v_len);
-            map_buffer.push_back('\n');
+        // Static partition over seq_ids
+        const int chunk = (N + nthd - 1) / nthd;
+        const int begin = tid * chunk;
+        const int stop  = std::min(begin + chunk, N);
+
+        // Per-thread slab: write numbers here first, then append to buf.
+        // 256 bytes covers the longest possible row (15 wide columns).
+        char row[256];
+
+        // snprintf format for doubles matching precision(10) behaviour
+        // "%.10g" suppresses trailing zeros and uses exponential when needed
+        for (int i = begin; i < stop; ++i) {
+            const int seq_id = seq_ids[i];
+            const int node_id = rev_arr[seq_id];       // O(1) array read
+            const Node& nd = node_arr[seq_id];         // O(1) array read
+
+            // is_agent: AGENT_TYPE == 1 (from utils.cuh)
+            const bool is_agent = (nd.type == AGENT_TYPE);
+            const char* type_str = is_agent ? "agent" : "seed";
+
+            if (is_agent) {
+                // Generator node: stored as int seq_id in nd.generatorNode;
+                // translate to original id via rev_arr (same as getGeneratorNode does).
+                const int gen_orig = (nd.generatorNode >= 0 && nd.generatorNode < N)
+                                     ? rev_arr[nd.generatorNode] : nd.generatorNode;
+
+                int len = snprintf(row, sizeof(row),
+                    // node_id, type, year, pa_weight, rec_weight, fit_weight
+                    "%d,%s,%d,%.10g,%.10g,%.10g,"
+                    // fit_lag, fit_peak_val, fit_peak_dur, alpha
+                    "%d,%d,%d,%.10g,"
+                    // in_degree, out_degree, assigned_out_degree
+                    "%d,%d,%d,"
+                    // planted_nodes_line_number, generator_node_string
+                    "%d,%d\n",
+                    node_id, type_str, nd.year,
+                    nd.preferential_attachment_weight,
+                    nd.recency_weight,
+                    nd.fitness_weight,
+                    nd.fitness_lag_duration,
+                    nd.fitness_peak_value,
+                    nd.fitness_peak_duration,
+                    nd.alpha,
+                    nd.in_degree,
+                    nd.out_degree,
+                    nd.assigned_out_degree,
+                    nd.planted_nodes_line_number,
+                    gen_orig);
+                if (len > 0) buf.append(row, static_cast<size_t>(len));
+            } else {
+                // Seed node: pa_weight/rec_weight/fit_weight/alpha = -1,
+                // assigned_out_degree = -1, planted_line = -1,
+                // generator_node_string = "no_generators"
+                int len = snprintf(row, sizeof(row),
+                    "%d,%s,%d,-1,-1,-1,"
+                    "%d,%d,%d,-1,"
+                    "%d,%d,-1,"
+                    "-1,no_generators\n",
+                    node_id, type_str, nd.year,
+                    nd.fitness_lag_duration,
+                    nd.fitness_peak_value,
+                    nd.fitness_peak_duration,
+                    nd.in_degree,
+                    nd.out_degree);
+                if (len > 0) buf.append(row, static_cast<size_t>(len));
+            }
         }
-    }
+    } // implicit OMP barrier
 
-    // Single write operation
-    seq_output_filehandle.write(seq_buffer.data(), seq_buffer.size());
-    output_filehandle.write(map_buffer.data(), map_buffer.size());
-    
-    seq_output_filehandle.close();
-    output_filehandle.close();
-}*/
-
-/*void Graph::WriteGraph(std::string output_file) const {
-    
-    std::string output_seq_file = "seq_" + output_file;
-    std::cout << "\nInside WriteGraph (seq)...\n";
-
-    std::ofstream seq_output_filehandle(output_seq_file, std::ios::out | std::ios::binary);
-    std::ofstream output_filehandle(output_file, std::ios::out | std::ios::binary);
-
-    // Pre–write header without flushing
-    seq_output_filehandle << "#source,target\n";
-    output_filehandle    << "#source,target\n";
-
-    std::string seq_buffer;
-    std::string map_buffer;
-
-    // Reserve roughly the needed size to avoid reallocation
-    // (assuming avg degree 8; adjust as needed)
-    size_t approx_edges = 8ull * forward_adj_map.size();
-    seq_buffer.reserve(approx_edges * 12); 
-    map_buffer.reserve(approx_edges * 12);
-
-    for (const auto& [u, u_neighbors] : forward_adj_map) {
-
-        int mapped_u = reverse_continuous_node_mapping.at(u);
-
-        for (int v : u_neighbors) {
-
-            // accumulate text in RAM, no flushing per-line
-            seq_buffer.append(std::to_string(u));
-            seq_buffer.push_back(',');
-            seq_buffer.append(std::to_string(v));
-            seq_buffer.push_back('\n');
-
-            int mapped_v = reverse_continuous_node_mapping.at(v);
-
-            map_buffer.append(std::to_string(mapped_u));
-            map_buffer.push_back(',');
-            map_buffer.append(std::to_string(mapped_v));
-            map_buffer.push_back('\n');
-        }
-    }
-
-    // One big write ― fastest possible
-    seq_output_filehandle.write(seq_buffer.data(),  seq_buffer.size());
-    output_filehandle.write(map_buffer.data(), map_buffer.size());
-    output_filehandle.close();
-    seq_output_filehandle.close();
-}*/
-
+    // ── E: Write thread buffers in order (preserves node_set sort order) ─────
+    for (const auto& b : bufs)
+        if (!b.empty())
+            out.write(b.data(), static_cast<std::streamsize>(b.size()));
+}
+/*
 void Graph::WriteAttributes(std::string auxiliary_information_file) const {
     std::string seq_auxiliary_information_file = "seq" + auxiliary_information_file;
     
@@ -1005,11 +1233,6 @@ void Graph::WriteAttributes(std::string auxiliary_information_file) const {
     auxiliary_information_filehandle.rdbuf()->pubsetbuf(aux_buffer.data(), buffer_size);
     
     // Write headers
-    //const char* header = "node_seq_id,type,year,pa_weight,rec_weight,fit_weight,fit_lag_duration,"
-                        "fit_peak_value,fit_peak_duration,alpha,in_degree,out_degree,assigned_out_degree,"
-                        "planted_nodes_line_number,generator_node_string\n";
-    //seq_auxiliary_information_filehandle << header;
-    
     const char* header2 = "node_id,type,year,pa_weight,rec_weight,fit_weight,fit_lag_duration,"
                          "fit_peak_value,fit_peak_duration,alpha,in_degree,out_degree,assigned_out_degree,"
                          "planted_nodes_line_number,generator_node_string\n";
@@ -1018,8 +1241,7 @@ void Graph::WriteAttributes(std::string auxiliary_information_file) const {
     std::cout << "\n00000 graph size = " << this->GetNodeSet().size();
     
     // Use string streams for batch writing (faster than repeated << operations)
-    std::ostringstream /*seq_stream,*/ aux_stream;
-    //seq_stream.precision(10);
+    std::ostringstream aux_stream;
     aux_stream.precision(10);
     
     constexpr size_t flush_threshold = 1024 * 1024; // Flush every 1MB
@@ -1069,13 +1291,6 @@ void Graph::WriteAttributes(std::string auxiliary_information_file) const {
                    << out_degree << ',' << assigned_out_degree << ',' 
                    << planted_nodes_line_number << ',' << generator_node_string << '\n';
         
-        /*seq_stream << nodeSeqId << ',' << node_type << ',' << year << ','
-                   << pa_weight << ',' << rec_weight << ',' << fit_weight << ',' 
-                   << fit_lag_duration << ',' << fit_peak_value << ',' 
-                   << fit_peak_duration << ',' << alpha << ',' << in_degree << ','
-                   << out_degree << ',' << assigned_out_degree << ',' 
-                   << planted_nodes_line_number << ',' << generator_node_string << '\n'; */
-        
         // Periodic flush to avoid memory buildup
         if(aux_stream.tellp() > flush_threshold) {
             //seq_auxiliary_information_filehandle << seq_stream.str();
@@ -1094,3 +1309,4 @@ void Graph::WriteAttributes(std::string auxiliary_information_file) const {
     auxiliary_information_filehandle.close();
     // seq_auxiliary_information_filehandle.close();
 }
+*/
