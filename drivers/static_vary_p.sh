@@ -21,6 +21,7 @@ SAME_YEAR_PROPORTION="0.12"
 FULLY_RANDOM_CITATIONS="0.05"
 LOG_LEVEL="1"
 
+mkdir -p output/${NUM_CYCLES}y
 #growth_percents="1 3 5 7 9 11 15 20 25 50 75 100"
 growth_percents="1 3 5 6"
 
@@ -28,10 +29,10 @@ for GROWTH_PERCENT in $growth_percents
 do
     GROWTH_RATE=$(echo "scale=2; $GROWTH_PERCENT/100" | bc)
 
-    OUTPUT_FILE="./output/gpu-opt-static-output-${NUM_CYCLES}y-${GROWTH_PERCENT}p.edgelist"
-    OUTPUT_LOG="./output/gpu-opt-static-output-${NUM_CYCLES}y-${GROWTH_PERCENT}p.log"
-    OUTPUT_AUX="./output/gpu-opt-static-output-${NUM_CYCLES}y-${GROWTH_PERCENT}p.aux"
-    OUT_FILE="./output/gpu-opt-static-${NUM_CYCLES}y-${GROWTH_PERCENT}p-abm.out"
+    OUTPUT_FILE="./output/${NUM_CYCLES}y/gpu-opt-static-output-${NUM_CYCLES}y-${GROWTH_PERCENT}p.edgelist"
+    OUTPUT_LOG="./output/${NUM_CYCLES}y/gpu-opt-static-output-${NUM_CYCLES}y-${GROWTH_PERCENT}p.log"
+    OUTPUT_AUX="./output/${NUM_CYCLES}y/gpu-opt-static-output-${NUM_CYCLES}y-${GROWTH_PERCENT}p.aux"
+    OUT_FILE="./output/${NUM_CYCLES}y/gpu-opt-static-${NUM_CYCLES}y-${GROWTH_PERCENT}p-abm.out"
 
     echo "Running growth rate ${GROWTH_PERCENT}% for ${NUM_CYCLES} years."
     echo $OUTPUT_FILE
@@ -61,14 +62,16 @@ do
 done
 
 NUM_CYCLES=30
+mkdir -p output/${NUM_CYCLES}y
+
 for GROWTH_PERCENT in $growth_percents
 do
     GROWTH_RATE=$(echo "scale=2; $GROWTH_PERCENT/100" | bc)
 
-    OUTPUT_FILE="./output/gpu-opt-static-output-${NUM_CYCLES}y-${GROWTH_PERCENT}p.edgelist"
-    OUTPUT_LOG="./output/gpu-opt-static-output-${NUM_CYCLES}y-${GROWTH_PERCENT}p.log"
-    OUTPUT_AUX="./output/gpu-opt-static-output-${NUM_CYCLES}y-${GROWTH_PERCENT}p.aux"
-    OUT_FILE="./output/gpu-opt-static-${NUM_CYCLES}y-${GROWTH_PERCENT}p-abm.out"
+    OUTPUT_FILE="./output/${NUM_CYCLES}y/gpu-opt-static-output-${NUM_CYCLES}y-${GROWTH_PERCENT}p.edgelist"
+    OUTPUT_LOG="./output/${NUM_CYCLES}y/gpu-opt-static-output-${NUM_CYCLES}y-${GROWTH_PERCENT}p.log"
+    OUTPUT_AUX="./output/${NUM_CYCLES}y/gpu-opt-static-output-${NUM_CYCLES}y-${GROWTH_PERCENT}p.aux"
+    OUT_FILE="./output/${NUM_CYCLES}y/gpu-opt-static-${NUM_CYCLES}y-${GROWTH_PERCENT}p-abm.out"
 
     echo "Running growth rate ${GROWTH_PERCENT}% for ${NUM_CYCLES} years."
     echo $OUTPUT_FILE
