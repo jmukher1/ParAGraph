@@ -22,11 +22,11 @@ FULLY_RANDOM_CITATIONS="0.05"
 LOG_LEVEL="1"
 MODEL="er-gnp"
 
-ER_PROBABILITY="0.01"
+ER_PROBABILITY="0.005"
 ER_PROBABILITY_LABEL=$(awk "BEGIN {printf \"%.1f\", 100 * $ER_PROBABILITY}")
 mkdir -p output/${NUM_CYCLES}y/${ER_PROBABILITY_LABEL}
 
-for GROWTH_PERCENT in 1 3 6
+for GROWTH_PERCENT in 6
 do
     GROWTH_RATE=$(echo "scale=4; $GROWTH_PERCENT/100" | bc -l)
     GROWTH_LABEL=$(echo "$GROWTH_PERCENT" | sed 's/0\./dot/; s/\./dot/') 
