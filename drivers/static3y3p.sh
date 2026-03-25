@@ -7,7 +7,7 @@ mkdir -p errors
 OUTPUT=$(readlink -f ./output)/
 ERRORS=$(readlink -f ./errors)/
 
-NUM_THREADS=64
+NUM_THREADS=16
 GROWTH_RATE=0.03
 NUM_CYCLES=3
 
