@@ -1,0 +1,10 @@
+Running growth rate = .0100 = 1% with 1 thread
+./output/3.0/gpu-opt-static-model-er-gnp-3y-1p-3.0p.edgelist
+./output/3.0/gpu-opt-static-model-er-gnp-3y-1p-3.0p.aux
+
+real	13m7.840s
+user	12m36.157s
+sys	0m29.801s
+Running growth rate = .0300 = 3% with 1 thread
+./output/3.0/gpu-opt-static-model-er-gnp-3y-3p-3.0p.edgelist
+./output/3.0/gpu-opt-static-model-er-gnp-3y-3p-3.0p.aux

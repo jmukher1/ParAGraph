@@ -110,6 +110,10 @@ struct State {
     int cited_papers[100];
 };
 ```
+Compile (to male mass library):
+
+cd $MASS_HOME/ubuntu
+make
 
 ## Algorithm Flow
 

@@ -1,0 +1,1137 @@
+Running growth rate 9% for 30 years.
+./output/gpu-opt-static-output-30y-9p.edgelist
+./output/gpu-opt-static-output-30y-9p.aux
+
+Start ABM....
+parse_args....
+edgelist....
+num-cycles....
+output-file....
+log-file = ./output/gpu-opt-static-output-30y-9p.log....
+num-processors = 1....
+log-level = 0
+Init ABM....
+Exec ABM....
+Start execute.Init Graph
+Inside  Graph ParseNodelist.....
+Populating the continuous_node mappings..
+Elapsed time: ParseNodelist : 2247 millisecs = 2 seconds
+
+Inside Graph ParseEdgelist.....
+Elapsed time: ParseEdgelist : 2718 millisecs = 2 seconds
+
+In updateNodeInDegreeOutDegree: Update Outdegree first:
+In updateNodeInDegreeOutDegree: Update Indegree:
+Total (initial):: In-Degree = 899050, Out-Degree = 899050
+Elapsed time: 0-1 : 2 seconds
+Elapsed time: 1-2 : 2 seconds
+Elapsed time: 2-3 : 0 seconds
+
+Initialized Graph. Let us update the indegree and out-degrees... 
+Graph init done...
+calling InitializeFitness...
+final graph size is 6521558 from initial_graph_size of 491532.
+ populated out degree array.
+ Entering loop for year = 1983
+Elapsed time: 70-71: total : 0.349 secs, iter cost : 0 seconds
+
+Elapsed time: 71-72: total : 0.479 secs, iter cost : 0 seconds
+
+Elapsed time: 72-73: total : 13 millisecs, iter cost : 13 mseconds
+
+num_new_nodes = 44238, current_graph_size = 491532, growth rate = 0.090000 
+Elapsed time: 73-74: total : 0 millisecs, iter cost : 0 mseconds
+
+Elapsed time: 74-75: total : 131 millisecs, iter cost : 131 mseconds
+
+all new nodes initialized with years and mapped. FillSameYearSourceNodes with new_nodes_vec.size() = 44238
+checking same_year_source_nodes size.
+Elapsed time: 75-76: total : 2 millisecs, iter cost : 2 mseconds
+
+new_nodes_vec.size() b4 : 44238
+
+updated  updateGraphAttributesGeneratorNode .... 
+Elapsed time: 76-77: total : 120 millisecs, iter cost : 120 mseconds
+
+continuous_node_mapping.size() b5 : 535770, reverse_continuous_node_mapping size = 535770
+
+Inside optimized buildOneNodeConnections...
+Initial Free: 23929.4 MB / 24164.2 MB
+
+[prepareGraph] num_vertices = 491532
+
+[prepareGraph] edges = 899050, offsets = 491533 (should be V+1 = 491533)
+
+[prepareGraph] num_vertices = 491532
+
+[prepareGraph] edges = 899050, offsets = 491533 (should be V+1 = 491533)
+
+Year 1983: 44238 new nodes, 869713 new edges
+
+updateNodeInDegreeOutDegree(year=1983): updated 44238 out-degrees, 374442 in-degrees
+
+Elapsed time: 79-81 : total : 0.566 secs, this iter cost : 0 seconds
+
+Elapsed time: 79-80 : total : 0.306 secs, this iter cost : 0 seconds
+
+Elapsed time: 80-81 : total : 0.26 secs, this iter cost : 0 seconds
+
+Elapsed time: 70-81 : total : 16.695 secs, this iter cost : 16 seconds
+
+ Entering loop for year = 1984
+Elapsed time: 70-71: total : 0.735 secs, iter cost : 0 seconds
+
+Elapsed time: 71-72: total : 1.077 secs, iter cost : 0 seconds
+
+Elapsed time: 72-73: total : 26 millisecs, iter cost : 13 mseconds
+
+num_new_nodes = 48220, current_graph_size = 535770, growth rate = 0.090000 
+Elapsed time: 73-74: total : 0 millisecs, iter cost : 0 mseconds
+
+Elapsed time: 74-75: total : 294 millisecs, iter cost : 163 mseconds
+
+all new nodes initialized with years and mapped. FillSameYearSourceNodes with new_nodes_vec.size() = 48220
+checking same_year_source_nodes size.
+Elapsed time: 75-76: total : 2 millisecs, iter cost : 0 mseconds
+
+new_nodes_vec.size() b4 : 48220
+
+updated  updateGraphAttributesGeneratorNode .... 
+Elapsed time: 76-77: total : 251 millisecs, iter cost : 131 mseconds
+
+continuous_node_mapping.size() b5 : 583990, reverse_continuous_node_mapping size = 583990
+
+Inside optimized buildOneNodeConnections...
+Initial Free: 23699.4 MB / 24164.2 MB
+
+[prepareGraph] num_vertices = 535770
+
+[prepareGraph] edges = 1768763, offsets = 535771 (should be V+1 = 535771)
+
+[prepareGraph] num_vertices = 535770
+
+[prepareGraph] edges = 1768763, offsets = 535771 (should be V+1 = 535771)
+
+Year 1984: 48220 new nodes, 947909 new edges
+
+updateNodeInDegreeOutDegree(year=1984): updated 48220 out-degrees, 398400 in-degrees
+
+Elapsed time: 79-81 : total : 1.19 secs, this iter cost : 0 seconds
+
+Elapsed time: 79-80 : total : 0.647 secs, this iter cost : 0 seconds
+
+Elapsed time: 80-81 : total : 0.542 secs, this iter cost : 0 seconds
+
+Elapsed time: 70-81 : total : 37.776 secs, this iter cost : 21 seconds
+
+ Entering loop for year = 1985
+Elapsed time: 70-71: total : 1.158 secs, iter cost : 0 seconds
+
+Elapsed time: 71-72: total : 1.736 secs, iter cost : 0 seconds
+
+Elapsed time: 72-73: total : 41 millisecs, iter cost : 15 mseconds
+
+num_new_nodes = 52560, current_graph_size = 583990, growth rate = 0.090000 
+Elapsed time: 73-74: total : 0 millisecs, iter cost : 0 mseconds
+
+Elapsed time: 74-75: total : 475 millisecs, iter cost : 181 mseconds
+
+all new nodes initialized with years and mapped. FillSameYearSourceNodes with new_nodes_vec.size() = 52560
+checking same_year_source_nodes size.
+Elapsed time: 75-76: total : 2 millisecs, iter cost : 0 mseconds
+
+new_nodes_vec.size() b4 : 52560
+
+updated  updateGraphAttributesGeneratorNode .... 
+Elapsed time: 76-77: total : 394 millisecs, iter cost : 143 mseconds
+
+continuous_node_mapping.size() b5 : 636550, reverse_continuous_node_mapping size = 636550
+
+Inside optimized buildOneNodeConnections...
+Initial Free: 23647.4 MB / 24164.2 MB
+
+[prepareGraph] num_vertices = 583990
+
+[prepareGraph] edges = 2716672, offsets = 583991 (should be V+1 = 583991)
+
+[prepareGraph] num_vertices = 583990
+
+[prepareGraph] edges = 2716672, offsets = 583991 (should be V+1 = 583991)
+
+Year 1985: 52560 new nodes, 1032872 new edges
+
+updateNodeInDegreeOutDegree(year=1985): updated 52560 out-degrees, 423231 in-degrees
+
+Elapsed time: 79-81 : total : 1.87 secs, this iter cost : 0 seconds
+
+Elapsed time: 79-80 : total : 1.019 secs, this iter cost : 0 seconds
+
+Elapsed time: 80-81 : total : 0.849 secs, this iter cost : 0 seconds
+
+Elapsed time: 70-81 : total : 61.499 secs, this iter cost : 23 seconds
+
+ Entering loop for year = 1986
+Elapsed time: 70-71: total : 1.624 secs, iter cost : 0 seconds
+
+Elapsed time: 71-72: total : 2.39 secs, iter cost : 0 seconds
+
+Elapsed time: 72-73: total : 57 millisecs, iter cost : 16 mseconds
+
+num_new_nodes = 57290, current_graph_size = 636550, growth rate = 0.090000 
+Elapsed time: 73-74: total : 0 millisecs, iter cost : 0 mseconds
+
+Elapsed time: 74-75: total : 674 millisecs, iter cost : 199 mseconds
+
+all new nodes initialized with years and mapped. FillSameYearSourceNodes with new_nodes_vec.size() = 57290
+checking same_year_source_nodes size.
+Elapsed time: 75-76: total : 2 millisecs, iter cost : 0 mseconds
+
+new_nodes_vec.size() b4 : 57290
+
+updated  updateGraphAttributesGeneratorNode .... 
+Elapsed time: 76-77: total : 550 millisecs, iter cost : 156 mseconds
+
+continuous_node_mapping.size() b5 : 693840, reverse_continuous_node_mapping size = 693840
+
+Inside optimized buildOneNodeConnections...
+Initial Free: 23593.4 MB / 24164.2 MB
+
+[prepareGraph] num_vertices = 636550
+
+[prepareGraph] edges = 3749544, offsets = 636551 (should be V+1 = 636551)
+
+[prepareGraph] num_vertices = 636550
+
+[prepareGraph] edges = 3749544, offsets = 636551 (should be V+1 = 636551)
+
+Year 1986: 57290 new nodes, 1124537 new edges
+
+updateNodeInDegreeOutDegree(year=1986): updated 57290 out-degrees, 447773 in-degrees
+
+Elapsed time: 79-81 : total : 2.606 secs, this iter cost : 0 seconds
+
+Elapsed time: 79-80 : total : 1.421 secs, this iter cost : 0 seconds
+
+Elapsed time: 80-81 : total : 1.183 secs, this iter cost : 0 seconds
+
+Elapsed time: 70-81 : total : 87.952 secs, this iter cost : 26 seconds
+
+ Entering loop for year = 1987
+Elapsed time: 70-71: total : 2.135 secs, iter cost : 0 seconds
+
+Elapsed time: 71-72: total : 3.105 secs, iter cost : 0 seconds
+
+Elapsed time: 72-73: total : 75 millisecs, iter cost : 18 mseconds
+
+num_new_nodes = 62446, current_graph_size = 693840, growth rate = 0.090000 
+Elapsed time: 73-74: total : 0 millisecs, iter cost : 0 mseconds
+
+Elapsed time: 74-75: total : 893 millisecs, iter cost : 219 mseconds
+
+all new nodes initialized with years and mapped. FillSameYearSourceNodes with new_nodes_vec.size() = 62446
+checking same_year_source_nodes size.
+Elapsed time: 75-76: total : 2 millisecs, iter cost : 0 mseconds
+
+new_nodes_vec.size() b4 : 62446
+
+updated  updateGraphAttributesGeneratorNode .... 
+Elapsed time: 76-77: total : 720 millisecs, iter cost : 170 mseconds
+
+continuous_node_mapping.size() b5 : 756286, reverse_continuous_node_mapping size = 756286
+
+Inside optimized buildOneNodeConnections...
+Initial Free: 23501.4 MB / 24164.2 MB
+
+[prepareGraph] num_vertices = 693840
+
+[prepareGraph] edges = 4874081, offsets = 693841 (should be V+1 = 693841)
+
+[prepareGraph] num_vertices = 693840
+
+[prepareGraph] edges = 4874081, offsets = 693841 (should be V+1 = 693841)
+
+Year 1987: 62446 new nodes, 1226753 new edges
+
+updateNodeInDegreeOutDegree(year=1987): updated 62446 out-degrees, 475139 in-degrees
+
+Elapsed time: 79-81 : total : 3.446 secs, this iter cost : 0 seconds
+
+Elapsed time: 79-80 : total : 1.897 secs, this iter cost : 0 seconds
+
+Elapsed time: 80-81 : total : 1.547 secs, this iter cost : 0 seconds
+
+Elapsed time: 70-81 : total : 120.592 secs, this iter cost : 32 seconds
+
+ Entering loop for year = 1988
+Elapsed time: 70-71: total : 2.703 secs, iter cost : 0 seconds
+
+Elapsed time: 71-72: total : 3.886 secs, iter cost : 0 seconds
+
+Elapsed time: 72-73: total : 94 millisecs, iter cost : 19 mseconds
+
+num_new_nodes = 68066, current_graph_size = 756286, growth rate = 0.090000 
+Elapsed time: 73-74: total : 0 millisecs, iter cost : 0 mseconds
+
+Elapsed time: 74-75: total : 1137 millisecs, iter cost : 244 mseconds
+
+all new nodes initialized with years and mapped. FillSameYearSourceNodes with new_nodes_vec.size() = 68066
+checking same_year_source_nodes size.
+Elapsed time: 75-76: total : 2 millisecs, iter cost : 0 mseconds
+
+new_nodes_vec.size() b4 : 68066
+
+updated  updateGraphAttributesGeneratorNode .... 
+Elapsed time: 76-77: total : 906 millisecs, iter cost : 186 mseconds
+
+continuous_node_mapping.size() b5 : 824352, reverse_continuous_node_mapping size = 824352
+
+Inside optimized buildOneNodeConnections...
+Initial Free: 23469.4 MB / 24164.2 MB
+
+[prepareGraph] num_vertices = 756286
+
+[prepareGraph] edges = 6100834, offsets = 756287 (should be V+1 = 756287)
+
+[prepareGraph] num_vertices = 756286
+
+[prepareGraph] edges = 6100834, offsets = 756287 (should be V+1 = 756287)
+
+Year 1988: 68066 new nodes, 1336090 new edges
+
+updateNodeInDegreeOutDegree(year=1988): updated 68066 out-degrees, 505817 in-degrees
+
+Elapsed time: 79-81 : total : 4.323 secs, this iter cost : 0 seconds
+
+Elapsed time: 79-80 : total : 2.375 secs, this iter cost : 0 seconds
+
+Elapsed time: 80-81 : total : 1.946 secs, this iter cost : 0 seconds
+
+Elapsed time: 70-81 : total : 156.783 secs, this iter cost : 36 seconds
+
+ Entering loop for year = 1989
+Elapsed time: 70-71: total : 3.325 secs, iter cost : 0 seconds
+
+Elapsed time: 71-72: total : 4.747 secs, iter cost : 0 seconds
+
+Elapsed time: 72-73: total : 115 millisecs, iter cost : 21 mseconds
+
+num_new_nodes = 74192, current_graph_size = 824352, growth rate = 0.090000 
+Elapsed time: 73-74: total : 0 millisecs, iter cost : 0 mseconds
+
+Elapsed time: 74-75: total : 1410 millisecs, iter cost : 273 mseconds
+
+all new nodes initialized with years and mapped. FillSameYearSourceNodes with new_nodes_vec.size() = 74192
+checking same_year_source_nodes size.
+Elapsed time: 75-76: total : 2 millisecs, iter cost : 0 mseconds
+
+new_nodes_vec.size() b4 : 74192
+
+updated  updateGraphAttributesGeneratorNode .... 
+Elapsed time: 76-77: total : 1109 millisecs, iter cost : 203 mseconds
+
+continuous_node_mapping.size() b5 : 898544, reverse_continuous_node_mapping size = 898544
+
+Inside optimized buildOneNodeConnections...
+Initial Free: 23363.4 MB / 24164.2 MB
+
+[prepareGraph] num_vertices = 824352
+
+[prepareGraph] edges = 7436924, offsets = 824353 (should be V+1 = 824353)
+
+[prepareGraph] num_vertices = 824352
+
+[prepareGraph] edges = 7436924, offsets = 824353 (should be V+1 = 824353)
+
+Year 1989: 74192 new nodes, 1457613 new edges
+
+updateNodeInDegreeOutDegree(year=1989): updated 74192 out-degrees, 539953 in-degrees
+
+Elapsed time: 79-81 : total : 5.32 secs, this iter cost : 0 seconds
+
+Elapsed time: 79-80 : total : 2.937 secs, this iter cost : 0 seconds
+
+Elapsed time: 80-81 : total : 2.381 secs, this iter cost : 0 seconds
+
+Elapsed time: 70-81 : total : 201.534 secs, this iter cost : 44 seconds
+
+ Entering loop for year = 1990
+Elapsed time: 70-71: total : 4.02 secs, iter cost : 0 seconds
+
+Elapsed time: 71-72: total : 5.703 secs, iter cost : 0 seconds
+
+Elapsed time: 72-73: total : 138 millisecs, iter cost : 23 mseconds
+
+num_new_nodes = 80869, current_graph_size = 898544, growth rate = 0.090000 
+Elapsed time: 73-74: total : 0 millisecs, iter cost : 0 mseconds
+
+Elapsed time: 74-75: total : 1705 millisecs, iter cost : 295 mseconds
+
+all new nodes initialized with years and mapped. FillSameYearSourceNodes with new_nodes_vec.size() = 80869
+checking same_year_source_nodes size.
+Elapsed time: 75-76: total : 2 millisecs, iter cost : 0 mseconds
+
+new_nodes_vec.size() b4 : 80869
+
+updated  updateGraphAttributesGeneratorNode .... 
+Elapsed time: 76-77: total : 1330 millisecs, iter cost : 221 mseconds
+
+continuous_node_mapping.size() b5 : 979413, reverse_continuous_node_mapping size = 979413
+
+Inside optimized buildOneNodeConnections...
+Initial Free: 23281.4 MB / 24164.2 MB
+
+[prepareGraph] num_vertices = 898544
+
+[prepareGraph] edges = 8894537, offsets = 898545 (should be V+1 = 898545)
+
+[prepareGraph] num_vertices = 898544
+
+[prepareGraph] edges = 8894537, offsets = 898545 (should be V+1 = 898545)
+
+Year 1990: 80869 new nodes, 1583944 new edges
+
+updateNodeInDegreeOutDegree(year=1990): updated 80869 out-degrees, 580177 in-degrees
+
+Elapsed time: 79-81 : total : 6.391 secs, this iter cost : 1 seconds
+
+Elapsed time: 79-80 : total : 3.534 secs, this iter cost : 0 seconds
+
+Elapsed time: 80-81 : total : 2.855 secs, this iter cost : 0 seconds
+
+Elapsed time: 70-81 : total : 251.534 secs, this iter cost : 50 seconds
+
+ Entering loop for year = 1991
+Elapsed time: 70-71: total : 4.772 secs, iter cost : 0 seconds
+
+Elapsed time: 71-72: total : 6.755 secs, iter cost : 1 seconds
+
+Elapsed time: 72-73: total : 163 millisecs, iter cost : 25 mseconds
+
+num_new_nodes = 88148, current_graph_size = 979413, growth rate = 0.090000 
+Elapsed time: 73-74: total : 0 millisecs, iter cost : 0 mseconds
+
+Elapsed time: 74-75: total : 2031 millisecs, iter cost : 326 mseconds
+
+all new nodes initialized with years and mapped. FillSameYearSourceNodes with new_nodes_vec.size() = 88148
+checking same_year_source_nodes size.
+Elapsed time: 75-76: total : 3 millisecs, iter cost : 1 mseconds
+
+new_nodes_vec.size() b4 : 88148
+
+updated  updateGraphAttributesGeneratorNode .... 
+Elapsed time: 76-77: total : 1571 millisecs, iter cost : 241 mseconds
+
+continuous_node_mapping.size() b5 : 1067561, reverse_continuous_node_mapping size = 1067561
+
+Inside optimized buildOneNodeConnections...
+Initial Free: 21211.4 MB / 24164.2 MB
+
+[prepareGraph] num_vertices = 979413
+
+[prepareGraph] edges = 10478481, offsets = 979414 (should be V+1 = 979414)
+
+[prepareGraph] num_vertices = 979413
+
+[prepareGraph] edges = 10478481, offsets = 979414 (should be V+1 = 979414)
+
+Year 1991: 88148 new nodes, 1723399 new edges
+
+updateNodeInDegreeOutDegree(year=1991): updated 88148 out-degrees, 623322 in-degrees
+
+Elapsed time: 79-81 : total : 7.535 secs, this iter cost : 1 seconds
+
+Elapsed time: 79-80 : total : 4.158 secs, this iter cost : 0 seconds
+
+Elapsed time: 80-81 : total : 3.374 secs, this iter cost : 0 seconds
+
+Elapsed time: 70-81 : total : 314.38 secs, this iter cost : 62 seconds
+
+ Entering loop for year = 1992
+Elapsed time: 70-71: total : 5.6 secs, iter cost : 0 seconds
+
+Elapsed time: 71-72: total : 7.914 secs, iter cost : 1 seconds
+
+Elapsed time: 72-73: total : 191 millisecs, iter cost : 28 mseconds
+
+num_new_nodes = 96081, current_graph_size = 1067561, growth rate = 0.090000 
+Elapsed time: 73-74: total : 0 millisecs, iter cost : 0 mseconds
+
+Elapsed time: 74-75: total : 2401 millisecs, iter cost : 370 mseconds
+
+all new nodes initialized with years and mapped. FillSameYearSourceNodes with new_nodes_vec.size() = 96081
+checking same_year_source_nodes size.
+Elapsed time: 75-76: total : 4 millisecs, iter cost : 1 mseconds
+
+new_nodes_vec.size() b4 : 96081
+
+updated  updateGraphAttributesGeneratorNode .... 
+Elapsed time: 76-77: total : 1834 millisecs, iter cost : 263 mseconds
+
+continuous_node_mapping.size() b5 : 1163642, reverse_continuous_node_mapping size = 1163642
+
+Inside optimized buildOneNodeConnections...
+Initial Free: 21129.4 MB / 24164.2 MB
+
+[prepareGraph] num_vertices = 1067561
+
+[prepareGraph] edges = 12201880, offsets = 1067562 (should be V+1 = 1067562)
+
+[prepareGraph] num_vertices = 1067561
+
+[prepareGraph] edges = 12201880, offsets = 1067562 (should be V+1 = 1067562)
+
+Year 1992: 96081 new nodes, 1879718 new edges
+
+updateNodeInDegreeOutDegree(year=1992): updated 96081 out-degrees, 674356 in-degrees
+
+Elapsed time: 79-81 : total : 8.806 secs, this iter cost : 1 seconds
+
+Elapsed time: 79-80 : total : 4.863 secs, this iter cost : 0 seconds
+
+Elapsed time: 80-81 : total : 3.94 secs, this iter cost : 0 seconds
+
+Elapsed time: 70-81 : total : 389.579 secs, this iter cost : 75 seconds
+
+ Entering loop for year = 1993
+Elapsed time: 70-71: total : 6.566 secs, iter cost : 0 seconds
+
+Elapsed time: 71-72: total : 9.195 secs, iter cost : 1 seconds
+
+Elapsed time: 72-73: total : 222 millisecs, iter cost : 31 mseconds
+
+num_new_nodes = 104728, current_graph_size = 1163642, growth rate = 0.090000 
+Elapsed time: 73-74: total : 0 millisecs, iter cost : 0 mseconds
+
+Elapsed time: 74-75: total : 2803 millisecs, iter cost : 402 mseconds
+
+all new nodes initialized with years and mapped. FillSameYearSourceNodes with new_nodes_vec.size() = 104728
+checking same_year_source_nodes size.
+Elapsed time: 75-76: total : 5 millisecs, iter cost : 1 mseconds
+
+new_nodes_vec.size() b4 : 104728
+
+updated  updateGraphAttributesGeneratorNode .... 
+Elapsed time: 76-77: total : 2121 millisecs, iter cost : 287 mseconds
+
+continuous_node_mapping.size() b5 : 1268370, reverse_continuous_node_mapping size = 1268370
+
+Inside optimized buildOneNodeConnections...
+Initial Free: 19263.4 MB / 24164.2 MB
+
+[prepareGraph] num_vertices = 1163642
+
+[prepareGraph] edges = 14081598, offsets = 1163643 (should be V+1 = 1163643)
+
+[prepareGraph] num_vertices = 1163642
+
+[prepareGraph] edges = 14081598, offsets = 1163643 (should be V+1 = 1163643)
+
+Year 1993: 104728 new nodes, 2045328 new edges
+
+updateNodeInDegreeOutDegree(year=1993): updated 104728 out-degrees, 730365 in-degrees
+
+Elapsed time: 79-81 : total : 10.23 secs, this iter cost : 1 seconds
+
+Elapsed time: 79-80 : total : 5.67 secs, this iter cost : 0 seconds
+
+Elapsed time: 80-81 : total : 4.557 secs, this iter cost : 0 seconds
+
+Elapsed time: 70-81 : total : 481.911 secs, this iter cost : 92 seconds
+
+ Entering loop for year = 1994
+Elapsed time: 70-71: total : 7.571 secs, iter cost : 1 seconds
+
+Elapsed time: 71-72: total : 10.641 secs, iter cost : 1 seconds
+
+Elapsed time: 72-73: total : 256 millisecs, iter cost : 34 mseconds
+
+num_new_nodes = 114154, current_graph_size = 1268370, growth rate = 0.090000 
+Elapsed time: 73-74: total : 0 millisecs, iter cost : 0 mseconds
+
+Elapsed time: 74-75: total : 3251 millisecs, iter cost : 448 mseconds
+
+all new nodes initialized with years and mapped. FillSameYearSourceNodes with new_nodes_vec.size() = 114154
+checking same_year_source_nodes size.
+Elapsed time: 75-76: total : 6 millisecs, iter cost : 1 mseconds
+
+new_nodes_vec.size() b4 : 114154
+
+updated  updateGraphAttributesGeneratorNode .... 
+Elapsed time: 76-77: total : 2433 millisecs, iter cost : 312 mseconds
+
+continuous_node_mapping.size() b5 : 1382524, reverse_continuous_node_mapping size = 1382524
+
+Inside optimized buildOneNodeConnections...
+Initial Free: 19209.4 MB / 24164.2 MB
+
+[prepareGraph] num_vertices = 1268370
+
+[prepareGraph] edges = 16126926, offsets = 1268371 (should be V+1 = 1268371)
+
+[prepareGraph] num_vertices = 1268370
+
+[prepareGraph] edges = 16126926, offsets = 1268371 (should be V+1 = 1268371)
+
+Year 1994: 114154 new nodes, 2231695 new edges
+
+updateNodeInDegreeOutDegree(year=1994): updated 114154 out-degrees, 795189 in-degrees
+
+Elapsed time: 79-81 : total : 11.791 secs, this iter cost : 1 seconds
+
+Elapsed time: 79-80 : total : 6.561 secs, this iter cost : 0 seconds
+
+Elapsed time: 80-81 : total : 5.227 secs, this iter cost : 0 seconds
+
+Elapsed time: 70-81 : total : 582.457 secs, this iter cost : 100 seconds
+
+ Entering loop for year = 1995
+Elapsed time: 70-71: total : 8.666 secs, iter cost : 1 seconds
+
+Elapsed time: 71-72: total : 12.21 secs, iter cost : 1 seconds
+
+Elapsed time: 72-73: total : 293 millisecs, iter cost : 37 mseconds
+
+num_new_nodes = 124428, current_graph_size = 1382524, growth rate = 0.090000 
+Elapsed time: 73-74: total : 0 millisecs, iter cost : 0 mseconds
+
+Elapsed time: 74-75: total : 3739 millisecs, iter cost : 488 mseconds
+
+all new nodes initialized with years and mapped. FillSameYearSourceNodes with new_nodes_vec.size() = 124428
+checking same_year_source_nodes size.
+Elapsed time: 75-76: total : 7 millisecs, iter cost : 1 mseconds
+
+new_nodes_vec.size() b4 : 124428
+
+updated  updateGraphAttributesGeneratorNode .... 
+Elapsed time: 76-77: total : 2774 millisecs, iter cost : 341 mseconds
+
+continuous_node_mapping.size() b5 : 1506952, reverse_continuous_node_mapping size = 1506952
+
+Inside optimized buildOneNodeConnections...
+Initial Free: 19183.4 MB / 24164.2 MB
+
+[prepareGraph] num_vertices = 1382524
+
+[prepareGraph] edges = 18358621, offsets = 1382525 (should be V+1 = 1382525)
+
+[prepareGraph] num_vertices = 1382524
+
+[prepareGraph] edges = 18358621, offsets = 1382525 (should be V+1 = 1382525)
+
+Year 1995: 124428 new nodes, 2432884 new edges
+
+updateNodeInDegreeOutDegree(year=1995): updated 124428 out-degrees, 864915 in-degrees
+
+Elapsed time: 79-81 : total : 13.474 secs, this iter cost : 1 seconds
+
+Elapsed time: 79-80 : total : 7.509 secs, this iter cost : 0 seconds
+
+Elapsed time: 80-81 : total : 5.962 secs, this iter cost : 0 seconds
+
+Elapsed time: 70-81 : total : 706.927 secs, this iter cost : 124 seconds
+
+ Entering loop for year = 1996
+Elapsed time: 70-71: total : 9.878 secs, iter cost : 1 seconds
+
+Elapsed time: 71-72: total : 13.97 secs, iter cost : 1 seconds
+
+Elapsed time: 72-73: total : 334 millisecs, iter cost : 41 mseconds
+
+num_new_nodes = 135626, current_graph_size = 1506952, growth rate = 0.090000 
+Elapsed time: 73-74: total : 0 millisecs, iter cost : 0 mseconds
+
+Elapsed time: 74-75: total : 4275 millisecs, iter cost : 536 mseconds
+
+all new nodes initialized with years and mapped. FillSameYearSourceNodes with new_nodes_vec.size() = 135626
+checking same_year_source_nodes size.
+Elapsed time: 75-76: total : 8 millisecs, iter cost : 1 mseconds
+
+new_nodes_vec.size() b4 : 135626
+
+updated  updateGraphAttributesGeneratorNode .... 
+Elapsed time: 76-77: total : 3147 millisecs, iter cost : 373 mseconds
+
+continuous_node_mapping.size() b5 : 1642578, reverse_continuous_node_mapping size = 1642578
+
+Inside optimized buildOneNodeConnections...
+Initial Free: 19149.4 MB / 24164.2 MB
+
+[prepareGraph] num_vertices = 1506952
+
+[prepareGraph] edges = 20791505, offsets = 1506953 (should be V+1 = 1506953)
+
+[prepareGraph] num_vertices = 1506952
+
+[prepareGraph] edges = 20791505, offsets = 1506953 (should be V+1 = 1506953)
+
+Year 1996: 135626 new nodes, 2652651 new edges
+
+updateNodeInDegreeOutDegree(year=1996): updated 135626 out-degrees, 942803 in-degrees
+
+Elapsed time: 79-81 : total : 15.327 secs, this iter cost : 1 seconds
+
+Elapsed time: 79-80 : total : 8.557 secs, this iter cost : 1 seconds
+
+Elapsed time: 80-81 : total : 6.767 secs, this iter cost : 0 seconds
+
+Elapsed time: 70-81 : total : 859.882 secs, this iter cost : 152 seconds
+
+ Entering loop for year = 1997
+Elapsed time: 70-71: total : 11.257 secs, iter cost : 1 seconds
+
+Elapsed time: 71-72: total : 15.898 secs, iter cost : 1 seconds
+
+Elapsed time: 72-73: total : 378 millisecs, iter cost : 44 mseconds
+
+num_new_nodes = 147833, current_graph_size = 1642578, growth rate = 0.090000 
+Elapsed time: 73-74: total : 0 millisecs, iter cost : 0 mseconds
+
+Elapsed time: 74-75: total : 4865 millisecs, iter cost : 590 mseconds
+
+all new nodes initialized with years and mapped. FillSameYearSourceNodes with new_nodes_vec.size() = 147833
+checking same_year_source_nodes size.
+Elapsed time: 75-76: total : 10 millisecs, iter cost : 2 mseconds
+
+new_nodes_vec.size() b4 : 147833
+
+updated  updateGraphAttributesGeneratorNode .... 
+Elapsed time: 76-77: total : 3554 millisecs, iter cost : 407 mseconds
+
+continuous_node_mapping.size() b5 : 1790411, reverse_continuous_node_mapping size = 1790411
+
+Inside optimized buildOneNodeConnections...
+Initial Free: 18997.4 MB / 24164.2 MB
+
+[prepareGraph] num_vertices = 1642578
+
+[prepareGraph] edges = 23444156, offsets = 1642579 (should be V+1 = 1642579)
+
+[prepareGraph] num_vertices = 1642578
+
+[prepareGraph] edges = 23444156, offsets = 1642579 (should be V+1 = 1642579)
+
+Year 1997: 147833 new nodes, 2896669 new edges
+
+updateNodeInDegreeOutDegree(year=1997): updated 147833 out-degrees, 1032492 in-degrees
+
+Elapsed time: 79-81 : total : 17.375 secs, this iter cost : 2 seconds
+
+Elapsed time: 79-80 : total : 9.728 secs, this iter cost : 1 seconds
+
+Elapsed time: 80-81 : total : 7.644 secs, this iter cost : 0 seconds
+
+Elapsed time: 70-81 : total : 1040.77 secs, this iter cost : 180 seconds
+
+ Entering loop for year = 1998
+Elapsed time: 70-71: total : 12.76 secs, iter cost : 1 seconds
+
+Elapsed time: 71-72: total : 18.049 secs, iter cost : 2 seconds
+
+Elapsed time: 72-73: total : 426 millisecs, iter cost : 48 mseconds
+
+num_new_nodes = 161137, current_graph_size = 1790411, growth rate = 0.090000 
+Elapsed time: 73-74: total : 0 millisecs, iter cost : 0 mseconds
+
+Elapsed time: 74-75: total : 5513 millisecs, iter cost : 648 mseconds
+
+all new nodes initialized with years and mapped. FillSameYearSourceNodes with new_nodes_vec.size() = 161137
+checking same_year_source_nodes size.
+Elapsed time: 75-76: total : 12 millisecs, iter cost : 2 mseconds
+
+new_nodes_vec.size() b4 : 161137
+
+updated  updateGraphAttributesGeneratorNode .... 
+Elapsed time: 76-77: total : 3999 millisecs, iter cost : 445 mseconds
+
+continuous_node_mapping.size() b5 : 1951548, reverse_continuous_node_mapping size = 1951548
+
+Inside optimized buildOneNodeConnections...
+Initial Free: 18171.4 MB / 24164.2 MB
+
+[prepareGraph] num_vertices = 1790411
+
+[prepareGraph] edges = 26340825, offsets = 1790412 (should be V+1 = 1790412)
+
+[prepareGraph] num_vertices = 1790411
+
+[prepareGraph] edges = 26340825, offsets = 1790412 (should be V+1 = 1790412)
+
+Year 1998: 161137 new nodes, 3153813 new edges
+
+updateNodeInDegreeOutDegree(year=1998): updated 161137 out-degrees, 1126010 in-degrees
+
+Elapsed time: 79-81 : total : 19.627 secs, this iter cost : 2 seconds
+
+Elapsed time: 79-80 : total : 11.023 secs, this iter cost : 1 seconds
+
+Elapsed time: 80-81 : total : 8.601 secs, this iter cost : 0 seconds
+
+Elapsed time: 70-81 : total : 1263.23 secs, this iter cost : 222 seconds
+
+ Entering loop for year = 1999
+Elapsed time: 70-71: total : 14.373 secs, iter cost : 1 seconds
+
+Elapsed time: 71-72: total : 20.422 secs, iter cost : 2 seconds
+
+Elapsed time: 72-73: total : 479 millisecs, iter cost : 53 mseconds
+
+num_new_nodes = 175640, current_graph_size = 1951548, growth rate = 0.090000 
+Elapsed time: 73-74: total : 0 millisecs, iter cost : 0 mseconds
+
+Elapsed time: 74-75: total : 6222 millisecs, iter cost : 709 mseconds
+
+all new nodes initialized with years and mapped. FillSameYearSourceNodes with new_nodes_vec.size() = 175640
+checking same_year_source_nodes size.
+Elapsed time: 75-76: total : 14 millisecs, iter cost : 2 mseconds
+
+new_nodes_vec.size() b4 : 175640
+
+updated  updateGraphAttributesGeneratorNode .... 
+Elapsed time: 76-77: total : 4485 millisecs, iter cost : 486 mseconds
+
+continuous_node_mapping.size() b5 : 2127188, reverse_continuous_node_mapping size = 2127188
+
+Inside optimized buildOneNodeConnections...
+Initial Free: 16557.4 MB / 24164.2 MB
+
+[prepareGraph] num_vertices = 1951548
+
+[prepareGraph] edges = 29494638, offsets = 1951549 (should be V+1 = 1951549)
+
+[prepareGraph] num_vertices = 1951548
+
+[prepareGraph] edges = 29494638, offsets = 1951549 (should be V+1 = 1951549)
+
+Year 1999: 175640 new nodes, 3433742 new edges
+
+updateNodeInDegreeOutDegree(year=1999): updated 175640 out-degrees, 1230156 in-degrees
+
+Elapsed time: 79-81 : total : 22.105 secs, this iter cost : 2 seconds
+
+Elapsed time: 79-80 : total : 12.456 secs, this iter cost : 1 seconds
+
+Elapsed time: 80-81 : total : 9.645 secs, this iter cost : 1 seconds
+
+Elapsed time: 70-81 : total : 1544.02 secs, this iter cost : 280 seconds
+
+ Entering loop for year = 2000
+Elapsed time: 70-71: total : 16.166 secs, iter cost : 1 seconds
+
+Elapsed time: 71-72: total : 23.033 secs, iter cost : 2 seconds
+
+Elapsed time: 72-73: total : 537 millisecs, iter cost : 58 mseconds
+
+num_new_nodes = 191447, current_graph_size = 2127188, growth rate = 0.090000 
+Elapsed time: 73-74: total : 0 millisecs, iter cost : 0 mseconds
+
+Elapsed time: 74-75: total : 7012 millisecs, iter cost : 790 mseconds
+
+all new nodes initialized with years and mapped. FillSameYearSourceNodes with new_nodes_vec.size() = 191447
+checking same_year_source_nodes size.
+Elapsed time: 75-76: total : 16 millisecs, iter cost : 2 mseconds
+
+new_nodes_vec.size() b4 : 191447
+
+updated  updateGraphAttributesGeneratorNode .... 
+Elapsed time: 76-77: total : 5013 millisecs, iter cost : 528 mseconds
+
+continuous_node_mapping.size() b5 : 2318635, reverse_continuous_node_mapping size = 2318635
+
+Inside optimized buildOneNodeConnections...
+Initial Free: 16515.4 MB / 24164.2 MB
+
+[prepareGraph] num_vertices = 2127188
+
+[prepareGraph] edges = 32928380, offsets = 2127189 (should be V+1 = 2127189)
+
+[prepareGraph] num_vertices = 2127188
+
+[prepareGraph] edges = 32928380, offsets = 2127189 (should be V+1 = 2127189)
+
+Year 2000: 191447 new nodes, 3743785 new edges
+
+updateNodeInDegreeOutDegree(year=2000): updated 191447 out-degrees, 1344930 in-degrees
+
+Elapsed time: 79-81 : total : 24.798 secs, this iter cost : 2 seconds
+
+Elapsed time: 79-80 : total : 14.012 secs, this iter cost : 1 seconds
+
+Elapsed time: 80-81 : total : 10.782 secs, this iter cost : 1 seconds
+
+Elapsed time: 70-81 : total : 1879.97 secs, this iter cost : 335 seconds
+
+ Entering loop for year = 2001
+Elapsed time: 70-71: total : 18.127 secs, iter cost : 1 seconds
+
+Elapsed time: 71-72: total : 25.952 secs, iter cost : 2 seconds
+
+Elapsed time: 72-73: total : 600 millisecs, iter cost : 63 mseconds
+
+num_new_nodes = 208678, current_graph_size = 2318635, growth rate = 0.090000 
+Elapsed time: 73-74: total : 0 millisecs, iter cost : 0 mseconds
+
+Elapsed time: 74-75: total : 7958 millisecs, iter cost : 946 mseconds
+
+all new nodes initialized with years and mapped. FillSameYearSourceNodes with new_nodes_vec.size() = 208678
+checking same_year_source_nodes size.
+Elapsed time: 75-76: total : 18 millisecs, iter cost : 2 mseconds
+
+new_nodes_vec.size() b4 : 208678
+
+updated  updateGraphAttributesGeneratorNode .... 
+Elapsed time: 76-77: total : 5589 millisecs, iter cost : 576 mseconds
+
+continuous_node_mapping.size() b5 : 2527313, reverse_continuous_node_mapping size = 2527313
+
+Inside optimized buildOneNodeConnections...
+Initial Free: 16439.4 MB / 24164.2 MB
+
+[prepareGraph] num_vertices = 2318635
+
+[prepareGraph] edges = 36672165, offsets = 2318636 (should be V+1 = 2318636)
+
+[prepareGraph] num_vertices = 2318635
+
+[prepareGraph] edges = 36672165, offsets = 2318636 (should be V+1 = 2318636)
+
+Year 2001: 208678 new nodes, 4078995 new edges
+
+updateNodeInDegreeOutDegree(year=2001): updated 208678 out-degrees, 1469988 in-degrees
+
+Elapsed time: 79-81 : total : 27.791 secs, this iter cost : 2 seconds
+
+Elapsed time: 79-80 : total : 15.766 secs, this iter cost : 1 seconds
+
+Elapsed time: 80-81 : total : 12.021 secs, this iter cost : 1 seconds
+
+Elapsed time: 70-81 : total : 2292.82 secs, this iter cost : 412 seconds
+
+ Entering loop for year = 2002
+Elapsed time: 70-71: total : 20.243 secs, iter cost : 2 seconds
+
+Elapsed time: 71-72: total : 29.04 secs, iter cost : 3 seconds
+
+Elapsed time: 72-73: total : 670 millisecs, iter cost : 70 mseconds
+
+num_new_nodes = 227459, current_graph_size = 2527313, growth rate = 0.090000 
+Elapsed time: 73-74: total : 0 millisecs, iter cost : 0 mseconds
+
+Elapsed time: 74-75: total : 8916 millisecs, iter cost : 958 mseconds
+
+all new nodes initialized with years and mapped. FillSameYearSourceNodes with new_nodes_vec.size() = 227459
+checking same_year_source_nodes size.
+Elapsed time: 75-76: total : 21 millisecs, iter cost : 3 mseconds
+
+new_nodes_vec.size() b4 : 227459
+
+updated  updateGraphAttributesGeneratorNode .... 
+Elapsed time: 76-77: total : 6215 millisecs, iter cost : 626 mseconds
+
+continuous_node_mapping.size() b5 : 2754772, reverse_continuous_node_mapping size = 2754772
+
+Inside optimized buildOneNodeConnections...
+Initial Free: 15331.4 MB / 24164.2 MB
+
+[prepareGraph] num_vertices = 2527313
+
+[prepareGraph] edges = 40751160, offsets = 2527314 (should be V+1 = 2527314)
+
+[prepareGraph] num_vertices = 2527313
+
+[prepareGraph] edges = 40751160, offsets = 2527314 (should be V+1 = 2527314)
+
+Year 2002: 227459 new nodes, 4446123 new edges
+
+updateNodeInDegreeOutDegree(year=2002): updated 227459 out-degrees, 1607126 in-degrees
+
+Elapsed time: 79-81 : total : 31.067 secs, this iter cost : 3 seconds
+
+Elapsed time: 79-80 : total : 17.694 secs, this iter cost : 1 seconds
+
+Elapsed time: 80-81 : total : 13.369 secs, this iter cost : 1 seconds
+
+Elapsed time: 70-81 : total : 2799.61 secs, this iter cost : 506 seconds
+
+ Entering loop for year = 2003
+Elapsed time: 70-71: total : 22.61 secs, iter cost : 2 seconds
+
+Elapsed time: 71-72: total : 32.438 secs, iter cost : 3 seconds
+
+Elapsed time: 72-73: total : 745 millisecs, iter cost : 75 mseconds
+
+num_new_nodes = 247930, current_graph_size = 2754772, growth rate = 0.090000 
+Elapsed time: 73-74: total : 0 millisecs, iter cost : 0 mseconds
+
+Elapsed time: 74-75: total : 9964 millisecs, iter cost : 1048 mseconds
+
+all new nodes initialized with years and mapped. FillSameYearSourceNodes with new_nodes_vec.size() = 247930
+checking same_year_source_nodes size.
+Elapsed time: 75-76: total : 25 millisecs, iter cost : 4 mseconds
+
+new_nodes_vec.size() b4 : 247930
+
+updated  updateGraphAttributesGeneratorNode .... 
+Elapsed time: 76-77: total : 6899 millisecs, iter cost : 684 mseconds
+
+continuous_node_mapping.size() b5 : 3002702, reverse_continuous_node_mapping size = 3002702
+
+Inside optimized buildOneNodeConnections...
+Initial Free: 15147.4 MB / 24164.2 MB
+
+[prepareGraph] num_vertices = 2754772
+
+[prepareGraph] edges = 45197283, offsets = 2754773 (should be V+1 = 2754773)
+
+[prepareGraph] num_vertices = 2754772
+
+[prepareGraph] edges = 45197283, offsets = 2754773 (should be V+1 = 2754773)
+
+Year 2003: 247930 new nodes, 4845408 new edges
+
+updateNodeInDegreeOutDegree(year=2003): updated 247930 out-degrees, 1754015 in-degrees
+
+Elapsed time: 79-81 : total : 34.667 secs, this iter cost : 3 seconds
+
+Elapsed time: 79-80 : total : 19.822 secs, this iter cost : 2 seconds
+
+Elapsed time: 80-81 : total : 14.84 secs, this iter cost : 1 seconds
+
+Elapsed time: 70-81 : total : 3430.64 secs, this iter cost : 631 seconds
+
+ Entering loop for year = 2004
+Elapsed time: 70-71: total : 25.189 secs, iter cost : 2 seconds
+
+Elapsed time: 71-72: total : 36.224 secs, iter cost : 3 seconds
+
+Elapsed time: 72-73: total : 827 millisecs, iter cost : 82 mseconds
+
+num_new_nodes = 270244, current_graph_size = 3002702, growth rate = 0.090000 
+Elapsed time: 73-74: total : 0 millisecs, iter cost : 0 mseconds
+
+Elapsed time: 74-75: total : 11139 millisecs, iter cost : 1175 mseconds
+
+all new nodes initialized with years and mapped. FillSameYearSourceNodes with new_nodes_vec.size() = 270244
+checking same_year_source_nodes size.
+Elapsed time: 75-76: total : 29 millisecs, iter cost : 4 mseconds
+
+new_nodes_vec.size() b4 : 270244
+
+updated  updateGraphAttributesGeneratorNode .... 
+Elapsed time: 76-77: total : 7655 millisecs, iter cost : 756 mseconds
+
+continuous_node_mapping.size() b5 : 3272946, reverse_continuous_node_mapping size = 3272946
+
+Inside optimized buildOneNodeConnections...
+Initial Free: 14603.4 MB / 24164.2 MB
+
+[prepareGraph] num_vertices = 3002702
+
+[prepareGraph] edges = 50042691, offsets = 3002703 (should be V+1 = 3002703)
+
+[prepareGraph] num_vertices = 3002702
+
+[prepareGraph] edges = 50042691, offsets = 3002703 (should be V+1 = 3002703)
+
+Year 2004: 270244 new nodes, 5288272 new edges
+
+updateNodeInDegreeOutDegree(year=2004): updated 270244 out-degrees, 1919215 in-degrees
+
+Elapsed time: 79-81 : total : 38.57 secs, this iter cost : 3 seconds
+
+Elapsed time: 79-80 : total : 22.112 secs, this iter cost : 2 seconds
+
+Elapsed time: 80-81 : total : 16.453 secs, this iter cost : 1 seconds
+
+Elapsed time: 70-81 : total : 4204.98 secs, this iter cost : 774 seconds
+
+ Entering loop for year = 2005
+Elapsed time: 70-71: total : 27.969 secs, iter cost : 2 seconds
+
+Elapsed time: 71-72: total : 40.403 secs, iter cost : 4 seconds
+
+Elapsed time: 72-73: total : 917 millisecs, iter cost : 90 mseconds
+
+num_new_nodes = 294566, current_graph_size = 3272946, growth rate = 0.090000 
+Elapsed time: 73-74: total : 0 millisecs, iter cost : 0 mseconds
+
+Elapsed time: 74-75: total : 12495 millisecs, iter cost : 1356 mseconds
+
+all new nodes initialized with years and mapped. FillSameYearSourceNodes with new_nodes_vec.size() = 294566
+checking same_year_source_nodes size.
+Elapsed time: 75-76: total : 33 millisecs, iter cost : 4 mseconds
+
+new_nodes_vec.size() b4 : 294566
+
+updated  updateGraphAttributesGeneratorNode .... 
+Elapsed time: 76-77: total : 8473 millisecs, iter cost : 818 mseconds
+
+continuous_node_mapping.size() b5 : 3567512, reverse_continuous_node_mapping size = 3567512
+
+Inside optimized buildOneNodeConnections...
+Initial Free: 13647.4 MB / 24164.2 MB
+
+[prepareGraph] num_vertices = 3272946
+
+[prepareGraph] edges = 55330963, offsets = 3272947 (should be V+1 = 3272947)
+
+[prepareGraph] num_vertices = 3272946
+
+[prepareGraph] edges = 55330963, offsets = 3272947 (should be V+1 = 3272947)
+
+Year 2005: 294566 new nodes, 5767608 new edges
+
+updateNodeInDegreeOutDegree(year=2005): updated 294566 out-degrees, 2095695 in-degrees
+
+Elapsed time: 79-81 : total : 42.866 secs, this iter cost : 4 seconds
+
+Elapsed time: 79-80 : total : 24.654 secs, this iter cost : 2 seconds
+
+Elapsed time: 80-81 : total : 18.206 secs, this iter cost : 1 seconds
+
+Elapsed time: 70-81 : total : 5140.45 secs, this iter cost : 935 seconds
+
+ Entering loop for year = 2006
+Elapsed time: 70-71: total : 31.123 secs, iter cost : 3 seconds
+
+Elapsed time: 71-72: total : 44.911 secs, iter cost : 4 seconds
+
+Elapsed time: 72-73: total : 1015 millisecs, iter cost : 98 mseconds
+
+num_new_nodes = 321077, current_graph_size = 3567512, growth rate = 0.090000 
+Elapsed time: 73-74: total : 0 millisecs, iter cost : 0 mseconds
+
+Elapsed time: 74-75: total : 13908 millisecs, iter cost : 1413 mseconds
+
+all new nodes initialized with years and mapped. FillSameYearSourceNodes with new_nodes_vec.size() = 321077
+checking same_year_source_nodes size.
+Elapsed time: 75-76: total : 38 millisecs, iter cost : 5 mseconds
+
+new_nodes_vec.size() b4 : 321077
+
+updated  updateGraphAttributesGeneratorNode .... 
+Elapsed time: 76-77: total : 9365 millisecs, iter cost : 892 mseconds
+
+continuous_node_mapping.size() b5 : 3888589, reverse_continuous_node_mapping size = 3888589
+CUDA error at src/kernel.cu:516: invalid argument
+
+Inside optimized buildOneNodeConnections...
+Initial Free: 12501.4 MB / 24164.2 MB
+
+[prepareGraph] num_vertices = 3567512
+
+[prepareGraph] edges = 61098571, offsets = 3567513 (should be V+1 = 3567513)
+
+[prepareGraph] num_vertices = 3567512
+
+[prepareGraph] edges = 61098571, offsets = 3567513 (should be V+1 = 3567513)
+Caught CUDA exception in buildOneNodeConnections: invalid argument
+
+E2E Time for num_cycles = 30 with growth_rate = 9 % = 5212 seconds.
+
+real	86m53.733s
+user	85m38.313s
+sys	1m2.110s
+
+real	86m53.749s
+user	85m38.317s
+sys	1m2.119s

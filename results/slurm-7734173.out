@@ -1,0 +1,25 @@
+
+The following have been reloaded with a version change:
+  1) cuda/12.8 => cuda/12.6
+
+Running growth rate = .0100 = 1% with 16 thread
+./output/3y/1.00/gpu-opt-static-model-er-gnp-3y-1p-1.00p.edgelist
+./output/3y/1.00/gpu-opt-static-model-er-gnp-3y-1p-1.00p.aux
+
+real	0m28.933s
+user	0m27.864s
+sys	0m4.893s
+Running growth rate = .0300 = 3% with 16 thread
+./output/3y/1.00/gpu-opt-static-model-er-gnp-3y-3p-1.00p.edgelist
+./output/3y/1.00/gpu-opt-static-model-er-gnp-3y-3p-1.00p.aux
+
+real	1m12.871s
+user	1m11.760s
+sys	0m14.220s
+Running growth rate = .0600 = 6% with 16 thread
+./output/3y/1.00/gpu-opt-static-model-er-gnp-3y-6p-1.00p.edgelist
+./output/3y/1.00/gpu-opt-static-model-er-gnp-3y-6p-1.00p.aux
+
+real	2m43.960s
+user	3m0.222s
+sys	0m32.843s

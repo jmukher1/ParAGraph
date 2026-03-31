@@ -1,0 +1,24 @@
+Running growth rate = .0100 = 1% with 1 thread
+./output/3.0/gpu-opt-static-model-er-gnp-3y-1p-3.0p.edgelist
+./output/3.0/gpu-opt-static-model-er-gnp-3y-1p-3.0p.aux
+
+real	13m10.018s
+user	12m38.236s
+sys	0m29.732s
+Running growth rate = .0300 = 3% with 1 thread
+./output/3.0/gpu-opt-static-model-er-gnp-3y-3p-3.0p.edgelist
+./output/3.0/gpu-opt-static-model-er-gnp-3y-3p-3.0p.aux
+./drivers/p03gpu_er_static_vary_p.sh: line 26: 2487177 Killed                  ./abm --model er-gnp --er-probability ${ER_PROBABILITY} --edgelist ${INPUT_EDGELIST} --nodelist ${INPUT_NODELIST} --out-degree-bag ${OUTDEGREE_BAG} --recency-probabilities ${RECENCY_PROBABILITIES} --alpha 0.5 --preferential-weight 0.33 --recency-weight 0.33 --fitness-weight 0.33 --growth-rate ${GROWTH_RATE} --fully-random-citations ${FULLY_RANDOM_CITATIONS} --num-cycles ${NUM_CYCLES} --same-year-proportion ${SAME_YEAR_PROPORTION} --output-file ${OUTPUT_FILE} --auxiliary-information-file ${OUTPUT_AUX} --log-file ${OUTPUT_LOG} --num-processors ${NUM_THREADS} --log-level ${LOG_LEVEL} 2> ${ERRORS}/abm-${GROWTH_PERCENT}p.err > ${OUT_FILE}
+
+real	41m45.036s
+user	39m37.963s
+sys	2m1.916s
+Running growth rate = .0600 = 6% with 1 thread
+./output/3.0/gpu-opt-static-model-er-gnp-3y-6p-3.0p.edgelist
+./output/3.0/gpu-opt-static-model-er-gnp-3y-6p-3.0p.aux
+./drivers/p03gpu_er_static_vary_p.sh: line 26: 2497708 Killed                  ./abm --model er-gnp --er-probability ${ER_PROBABILITY} --edgelist ${INPUT_EDGELIST} --nodelist ${INPUT_NODELIST} --out-degree-bag ${OUTDEGREE_BAG} --recency-probabilities ${RECENCY_PROBABILITIES} --alpha 0.5 --preferential-weight 0.33 --recency-weight 0.33 --fitness-weight 0.33 --growth-rate ${GROWTH_RATE} --fully-random-citations ${FULLY_RANDOM_CITATIONS} --num-cycles ${NUM_CYCLES} --same-year-proportion ${SAME_YEAR_PROPORTION} --output-file ${OUTPUT_FILE} --auxiliary-information-file ${OUTPUT_AUX} --log-file ${OUTPUT_LOG} --num-processors ${NUM_THREADS} --log-level ${LOG_LEVEL} 2> ${ERRORS}/abm-${GROWTH_PERCENT}p.err > ${OUT_FILE}
+
+real	39m17.859s
+user	37m16.143s
+sys	1m56.092s
+[2026-03-23T19:37:47.339] error: Detected 2 oom_kill events in StepId=7700697.batch. Some of the step tasks have been OOM Killed.

@@ -1,6 +1,7 @@
 output/
 build/
 errors/
+results/
 sj_edgelist
 sj_nodelist
 sj_recprob

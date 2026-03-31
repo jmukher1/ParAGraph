@@ -4,13 +4,14 @@
 MASS_DIR = ./../mass_cpp_core
 MASS_INCLUDE = $(MASS_DIR)/source
 MASS_LIB = $(MASS_DIR)/ubuntu
+SSH_LIB = $(MASS_LIB)/ssh2/lib
 
 # Compiler settings
 NVCC = nvcc
 CXX = g++
 
 # CUDA architecture (adjust for your GPU)
-CUDA_ARCH = -arch=sm_60 -gencode=arch=compute_60,code=sm_60 \
+CUDA_ARCH = -arch=sm_80 -gencode=arch=compute_60,code=sm_80 \
             -gencode=arch=compute_80,code=sm_80 -gencode=arch=compute_86,code=sm_86
 
 # Compilation flags
@@ -18,7 +19,7 @@ NVCC_FLAGS = -std=c++20 --extended-lambda --expt-relaxed-constexpr -O3 \
              -Xcompiler -fPIC -I$(MASS_INCLUDE)
 
 CUDA_LIBS = -lcudart -lcurand
-MASS_LIBS = -L$(MASS_LIB) -lmass
+MASS_LIBS = -L$(MASS_LIB) -L$(SSH_LIB) -lmass -lssh2
 
 # Directories
 BUILD_DIR = build
