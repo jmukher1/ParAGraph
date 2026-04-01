@@ -1,0 +1,24 @@
+\begin{table}[t]
+\centering
+\caption{Session-level GPU profiling metrics collected with NVIDIA Nsight Systems~\cite{nsightsystems} (\texttt{--trace=cuda,nvtx}) on Tesla P100-PCIE-16GB (732\,GB/s peak bandwidth). GPU util.\ = kernel time $\div$ session time; Memcpy ovh.\ = memcpy time $\div$ kernel time; Eff.\ BW = total data $\div$ total memcpy duration.}
+\label{tab:pa_P100_vary_years-nsys-session}
+\resizebox{\columnwidth}{!}{%
+\begin{tabular}{lrrrrrrrr}
+\toprule
+\textbf{Run} & \textbf{Session (s)} & \textbf{Kernel (s)} & \textbf{GPU util.\%} & \textbf{Memcpy ovh.\%} & \textbf{Data (MB)} & \textbf{Eff.\ BW (GB/s)} & \textbf{BW\%} & \textbf{Launches} \\
+\midrule
+  3y/1% & 26.07 & 6.110 & 23.4 & 2.9 & 227.1 & 1.298 & 0.177 & 14,929 \\
+  3y/3% & 39.83 & 6.751 & 16.9 & 7.3 & 275.5 & 0.562 & 0.077 & 45,613 \\
+  3y/5% & 60.84 & 14.997 & 24.6 & 5.4 & 318.1 & 0.393 & 0.054 & 77,530 \\
+  3y/6% & 67.84 & 14.105 & 20.8 & 6.9 & 345.2 & 0.353 & 0.048 & 93,943 \\
+  10y/1% & 68.34 & 21.622 & 31.6 & 2.8 & 825.2 & 1.353 & 0.185 & 51,540 \\
+  10y/3% & 134.61 & 31.382 & 23.3 & 5.8 & 1143.4 & 0.626 & 0.086 & 169,161 \\
+  10y/5% & 248.64 & 80.371 & 32.3 & 4.1 & 1506.8 & 0.459 & 0.063 & 309,316 \\
+  10y/6% & 310.41 & 105.573 & 34.0 & 3.9 & 1725.8 & 0.420 & 0.057 & 388,944 \\
+  30y/1% & 234.39 & 78.569 & 33.5 & 2.7 & 3143.6 & 1.497 & 0.204 & 171,325 \\
+  30y/3% & 821.06 & 360.717 & 43.9 & 2.2 & 6247.7 & 0.785 & 0.107 & 702,032 \\
+  30y/5% & 3311.52 & 2282.492 & 68.9 & 0.8 & 11294.4 & 0.624 & 0.085 & 1,633,905 \\
+  30y/6% & 4272.77 & 3122.994 & 73.1 & 0.7 & 12999.8 & 0.616 & 0.084 & 1,879,995 \\
+\bottomrule
+\end{{tabular}}}
+\end{{table}}
