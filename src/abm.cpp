@@ -329,39 +329,116 @@ int ABM::MakeERGNPCitations(Graph* graph,
 }
 
 int ABM::MakeCitations(Graph* graph, const std::map<int, int>& continuous_node_mapping, int current_year, const std::vector<int>& candidate_nodes, int* citations, double* pa_arr, double* recency_arr, double* fit_arr, double pa_weight, double rec_weight, double fit_weight, int current_graph_size, int num_citations) {
-    if(num_citations <= 0 || candidate_nodes.empty()) return 0;
-    constexpr float EPS = 1e-8f;
-    int actual = (candidate_nodes.size() < (size_t)num_citations) ? (int)candidate_nodes.size() : num_citations;
-
+    if (num_citations <= 0) {
+        return 0;
+    }
+    if (candidate_nodes.size() <= 0) {
+        return 0;
+    }
     float* current_scores = new float[candidate_nodes.size() + 1];
-    current_scores[candidate_nodes.size()] = 0.0f;
-    for(size_t i = 0; i < candidate_nodes.size(); i++) {
-        int cid = continuous_node_mapping.at(candidate_nodes.at(i));
-        current_scores[i] = ((float)pa_arr[cid] * pa_weight)
-                          + ((float)recency_arr[cid] * rec_weight)
-                          + ((float)fit_arr[cid] * fit_weight);
+    current_scores[candidate_nodes.size()] = 0.0;
+    /* int local_continuous_node_id = 0; */
+    // Mark: removed for node-level
+    // Clamp inputs
+    constexpr float EPS = 1e-8f;
+
+    for(size_t i = 0; i < candidate_nodes.size(); i ++) {
+        int continuous_node_id = continuous_node_mapping.at(candidate_nodes.at(i));
+        float current_pa = pa_arr[continuous_node_id];
+        float current_rec = recency_arr[continuous_node_id];
+        float current_fit = fit_arr[continuous_node_id];
+
+        // original compound score - used in log (as referred as jay_score 1
+        current_scores[i] = (current_pa * pa_weight) + (current_rec * rec_weight) + (current_fit * fit_weight);
+        /** jay_score 2
+        // log products
+        float x1 = logf(fmaxf(current_pa, EPS)) + logf(fmaxf(pa_weight, EPS));
+        float x2 = logf(fmaxf(current_rec, EPS)) + logf(fmaxf(rec_weight, EPS));
+        float x3 = logf(fmaxf(current_fit, EPS)) + logf(fmaxf(fit_weight, EPS));
+
+        // log-sum-exp
+        float m = fmaxf(x1, fmaxf(x2, x3));
+
+        current_scores[i] = m + logf(
+            expf(x1 - m) +
+            expf(x2 - m) +
+            expf(x3 - m)
+        ); */
     }
 
+    int actual_num_cited = num_citations;
+    if (candidate_nodes.size() < (size_t)num_citations) {
+        actual_num_cited = candidate_nodes.size();
+    }
+
+    /* std::random_device rand_dev; */
+    /* std::minstd_rand generator{rand_dev()}; */
     float* random_weight_arr = new float[candidate_nodes.size()];
+    /* random_weight_arr[candidate_nodes.size()] = 0.0; */
+    /* std::uniform_real_distribution<double> wrs_uniform_distribution{std::numeric_limits<double>::min(), 1}; */
+    /* #pragma omp parallel for */
     std::random_device rand_dev;
-    std::vector<std::minstd_rand> gen_vec;
-    for(int i = 0; i < this->num_processors; i++) gen_vec.push_back(std::minstd_rand(rand_dev()));
-    std::minstd_rand gen{rand_dev()};
-    for(size_t i = 0; i < candidate_nodes.size(); i++) {
-        std::uniform_real_distribution<double> wrs_dist{std::numeric_limits<double>::min(), 1};
-        float u = fmaxf((float)wrs_dist(gen_vec.at(omp_get_thread_num())), EPS);
-        random_weight_arr[i] = logf(u) * expf(-current_scores[i]);
+    std::vector<std::minstd_rand> generator_vec;
+    // num processors should be the same as omp max num
+    for (int i = 0; i < this->num_processors; i ++) {
+        generator_vec.push_back(std::minstd_rand(rand_dev()));
     }
 
-    std::vector<std::pair<double, int>> eiv(candidate_nodes.size());
-    for(size_t i = 0; i < candidate_nodes.size(); i++) eiv[i] = {random_weight_arr[i], candidate_nodes.at(i)};
-    std::partial_sort(eiv.begin(), eiv.begin() + actual, eiv.end(),
-                      [](auto& l, auto& r){ return l.first > r.first; });
-    for(int i = 0; i < actual; i++) citations[i] = eiv[i].second;
+    float min_positive = std::numeric_limits<float>::min();
 
+    // Mark: removed for node-level
+    /* #pragma omp parallel for simd */
+    /* std::random_device rand_dev; */
+    std::minstd_rand generator{rand_dev()};
+    for(size_t i = 0; i < candidate_nodes.size(); i ++) {
+        std::uniform_real_distribution<double> wrs_uniform_distribution{std::numeric_limits<double>::min(), 1};
+        float wrs_uniform = wrs_uniform_distribution(generator_vec.at(omp_get_thread_num()));
+        /**  jay_score 2 * /
+        wrs_uniform = fmaxf(wrs_uniform, EPS);
+        random_weight_arr[i] = logf(wrs_uniform) * expf(-current_scores[i]);
+        */
+        /** jay_score 1 */
+        if (current_scores[i] != 0) {
+            random_weight_arr[i] = log(wrs_uniform) / current_scores[i]; // pow(wrs_uniform, 1.0/current_scores[i]);
+        } else {
+            random_weight_arr[i] = min_positive;
+        }
+    }
+
+    // TODO: probably omp parallel it
+    std::vector<std::pair<double, int>> element_index_vec(candidate_nodes.size());
+    // Mark: removed for node-level
+    /* #pragma omp parallel for simd */
+    for (size_t i = 0; i < candidate_nodes.size(); i ++) {
+        /* element_index_vec.push_back({random_weight_arr[i], candidate_nodes.at(i)}); */
+        element_index_vec[i] = {random_weight_arr[i], candidate_nodes.at(i)};
+    }
+    /* std::cout << "before sorted citing" << std::endl; */
+    /* std::cout << "num cited should be " << actual_num_cited << std::endl; */
+    /* for (size_t i = 0; i < candidate_nodes.size(); i ++) { */
+    /*     std::cout << element_index_vec.at(i).first << ":" << element_index_vec.at(i).second << std::endl; */
+    /* } */
+    /* std::partial_sort(random_weight_arr, random_weight_arr + actual_num_cited, random_weight_arr + candidate_nodes.size(), std::greater<std::pair<int, int>>()); */
+    std::partial_sort(element_index_vec.begin(), element_index_vec.begin() + actual_num_cited, element_index_vec.end(), [](auto& left, auto& right){
+        return left.first > right.first;
+    });
+
+    /* std::cout << "after sorted citing" << std::endl; */
+    /* for (size_t i = 0; i < candidate_nodes.size(); i ++) { */
+    /*     std::cout << element_index_vec.at(i).first << ":" << element_index_vec.at(i).second << std::endl; */
+    /* } */
+    /* std::partial_sort(random_weight_arr, element_index_vec.end(), [](auto& left, auto& right) { */
+    /*     return left.first < right.first; */
+    /* }); */
+    for (int i = 0; i < actual_num_cited; i ++) {
+        citations[i] = element_index_vec[i].second;
+    }
+    /* return actual_num_cited; */
+
+    // end
     delete[] current_scores;
     delete[] random_weight_arr;
-    return actual;
+    return actual_num_cited;
 }
 
 std::vector<int> ABM::GetComplement(Graph* graph, const std::vector<int>& base_vec, const std::map<int, int>& reverse_continuous_node_mapping) {
