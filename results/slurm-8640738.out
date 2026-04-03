@@ -1,0 +1,1114 @@
+
+Due to MODULEPATH changes, the following have been reloaded:
+  1) openmpi/5.0.5     2) xalt/3.1.4
+
+The following have been reloaded with a version change:
+  1) cuda/12.6.0 => cuda/12.6.1     3) modtree/cpu => modtree/gpu
+  2) gcc/14.1.0 => gcc/11.4.1
+
+=== FILE CHECK ===
+OK   sj_edgelist
+OK   sj_nodelist
+OK   tcen_at_least_five
+OK   sj_recprob
+MISSING 
+nsys: /apps/spack/gautschi-gpu/apps/cuda/12.6.1-gcc-11.4.1-jtjtgkd/bin/nsys  NVIDIA Nsight Systems version 2024.4.2.133-244234382004v0
+================================
+Running growth rate 3% for 3 years.
+./output/3y/ncu-gpu-pa-3y-3p.edgelist
+./output/3y/ncu-gpu-pa-3y-3p.aux
+
+usage: nsys stats [<args>] <input-file>
+Try 'nsys stats --help' for more information.
+
+Start ABM....
+parse_args....
+edgelist....
+num-cycles....
+output-file....
+log-file = ./output/3y/ncu-gpu-pa-3y-3p.log....
+num-processors = 14....
+log-level = 0
+er_probability = 0.000000
+model = pa
+Init ABM....
+Exec ABM....
+Start execute.Init Graph
+Inside  Graph ParseNodelist.....
+Populating the continuous_node mappings..
+Elapsed time: ParseNodelist : 808 millisecs = 0 seconds
+
+Inside Graph ParseEdgelist.....
+Elapsed time: ParseEdgelist : 2338 millisecs = 2 seconds
+
+In updateNodeInDegreeOutDegree: Update Outdegree first:
+In updateNodeInDegreeOutDegree: Update Indegree:
+Total (initial):: In-Degree = 899050, Out-Degree = 899050
+Elapsed time: 0-1 : 0 seconds
+Elapsed time: 1-2 : 2 seconds
+Elapsed time: 2-3 : 0 seconds
+
+Initialized Graph. Let us update the indegree and out-degrees... 
+Graph init done...
+calling InitializeFitness...
+final graph size is 537112 from initial_graph_size of 491532.
+ populated out degree array.
+ Entering loop for year = 1983
+Elapsed time: 70-71: total : 0.267 secs, iter cost : 0 seconds
+
+Elapsed time: 71-72: total : 0.299 secs, iter cost : 0 seconds
+
+Elapsed time: 72-73: total : 0 millisecs, iter cost : 0 mseconds
+
+num_new_nodes = 14746, current_graph_size = 491532, growth rate = 0.030000 
+Elapsed time: 73-74: total : 0 millisecs, iter cost : 0 mseconds
+
+Elapsed time: 74-75: total : 9 millisecs, iter cost : 9 mseconds
+
+all new nodes initialized with years and mapped. FillSameYearSourceNodes with new_nodes_vec.size() = 14746
+checking same_year_source_nodes size.
+Elapsed time: 75-76: total : 0 millisecs, iter cost : 0 mseconds
+
+new_nodes_vec.size() b4 : 14746
+
+updated  updateGraphAttributesGeneratorNode .... 
+Elapsed time: 76-77: total : 37 millisecs, iter cost : 37 mseconds
+
+continuous_node_mapping.size() b5 : 506278, reverse_continuous_node_mapping size = 506278
+
+[PA Model] Building connections using Preferential Attachment
+
+Inside optimized buildOneNodeConnections...
+Initial Free: 80554.6 MB / 81079.4 MB
+
+[prepareGraph] num_vertices = 491532
+
+[prepareGraph] edges = 899050, offsets = 491533 (should be V+1 = 491533)
+
+[prepareGraph] num_vertices = 491532
+
+[prepareGraph] edges = 899050, offsets = 491533 (should be V+1 = 491533)
+
+Year 1983: 14746 new nodes, 280330 new edges
+
+Elapsed time: 78-781 : total : 5.323 secs, this iter cost : 5.323 seconds
+
+Elapsed time: 78-79 : total : 5.457 secs, this iter cost : 5.457 seconds
+
+updateNodeInDegreeOutDegree(year=1983): updated 14746 out-degrees, 175979 in-degrees
+Elapsed time: 79-81 : total : 0.171 secs, this iter cost : 0 seconds
+
+Elapsed time: 79-80 : total : 0.097 secs, this iter cost : 0 seconds
+
+Elapsed time: 80-81 : total : 0.074 secs, this iter cost : 0 seconds
+
+Elapsed time: 70-81 : total : 6.244 secs, this iter cost : 6 seconds
+
+ Entering loop for year = 1984
+Elapsed time: 70-71: total : 0.54 secs, iter cost : 0 seconds
+
+Elapsed time: 71-72: total : 0.604 secs, iter cost : 0 seconds
+
+Elapsed time: 72-73: total : 1 millisecs, iter cost : 1 mseconds
+
+num_new_nodes = 15189, current_graph_size = 506278, growth rate = 0.030000 
+Elapsed time: 73-74: total : 0 millisecs, iter cost : 0 mseconds
+
+Elapsed time: 74-75: total : 16 millisecs, iter cost : 7 mseconds
+
+all new nodes initialized with years and mapped. FillSameYearSourceNodes with new_nodes_vec.size() = 15189
+checking same_year_source_nodes size.
+Elapsed time: 75-76: total : 0 millisecs, iter cost : 0 mseconds
+
+new_nodes_vec.size() b4 : 15189
+
+updated  updateGraphAttributesGeneratorNode .... 
+Elapsed time: 76-77: total : 74 millisecs, iter cost : 37 mseconds
+
+continuous_node_mapping.size() b5 : 521467, reverse_continuous_node_mapping size = 521467
+
+[PA Model] Building connections using Preferential Attachment
+
+Inside optimized buildOneNodeConnections...
+Initial Free: 80340.6 MB / 81079.4 MB
+
+[prepareGraph] num_vertices = 506278
+
+[prepareGraph] edges = 1179380, offsets = 506279 (should be V+1 = 506279)
+
+[prepareGraph] num_vertices = 506278
+
+[prepareGraph] edges = 1179380, offsets = 506279 (should be V+1 = 506279)
+
+Year 1984: 15189 new nodes, 288891 new edges
+
+Elapsed time: 78-781 : total : 10.532 secs, this iter cost : 5.209 seconds
+
+Elapsed time: 78-79 : total : 10.785 secs, this iter cost : 5.328 seconds
+
+updateNodeInDegreeOutDegree(year=1984): updated 15189 out-degrees, 178741 in-degrees
+Elapsed time: 79-81 : total : 0.323 secs, this iter cost : 0 seconds
+
+Elapsed time: 79-80 : total : 0.173 secs, this iter cost : 0 seconds
+
+Elapsed time: 80-81 : total : 0.149 secs, this iter cost : 0 seconds
+
+Elapsed time: 70-81 : total : 12.349 secs, this iter cost : 6 seconds
+
+ Entering loop for year = 1985
+Elapsed time: 70-71: total : 0.812 secs, iter cost : 0 seconds
+
+Elapsed time: 71-72: total : 0.91 secs, iter cost : 0 seconds
+
+Elapsed time: 72-73: total : 1 millisecs, iter cost : 0 mseconds
+
+num_new_nodes = 15645, current_graph_size = 521467, growth rate = 0.030000 
+Elapsed time: 73-74: total : 0 millisecs, iter cost : 0 mseconds
+
+Elapsed time: 74-75: total : 23 millisecs, iter cost : 7 mseconds
+
+all new nodes initialized with years and mapped. FillSameYearSourceNodes with new_nodes_vec.size() = 15645
+checking same_year_source_nodes size.
+Elapsed time: 75-76: total : 0 millisecs, iter cost : 0 mseconds
+
+new_nodes_vec.size() b4 : 15645
+
+updated  updateGraphAttributesGeneratorNode .... 
+Elapsed time: 76-77: total : 113 millisecs, iter cost : 39 mseconds
+
+continuous_node_mapping.size() b5 : 537112, reverse_continuous_node_mapping size = 537112
+
+[PA Model] Building connections using Preferential Attachment
+
+Inside optimized buildOneNodeConnections...
+Initial Free: 80318.6 MB / 81079.4 MB
+
+[prepareGraph] num_vertices = 521467
+
+[prepareGraph] edges = 1468271, offsets = 521468 (should be V+1 = 521468)
+
+[prepareGraph] num_vertices = 521467
+
+[prepareGraph] edges = 1468271, offsets = 521468 (should be V+1 = 521468)
+
+Year 1985: 15645 new nodes, 297615 new edges
+
+Elapsed time: 78-781 : total : 16.315 secs, this iter cost : 5.783 seconds
+
+Elapsed time: 78-79 : total : 16.715 secs, this iter cost : 5.93 seconds
+
+updateNodeInDegreeOutDegree(year=1985): updated 15645 out-degrees, 179679 in-degrees
+Elapsed time: 79-81 : total : 0.503 secs, this iter cost : 0 seconds
+
+Elapsed time: 79-80 : total : 0.275 secs, this iter cost : 0 seconds
+
+Elapsed time: 80-81 : total : 0.227 secs, this iter cost : 0 seconds
+
+Elapsed time: 70-81 : total : 19.088 secs, this iter cost : 6 seconds
+
+Elapsed time: 7-8 :  19 seconds
+
+compute done:: graph size = 537112
+Elapsed time: 8-8.1 :  0 seconds
+
+Writing Graph to file: ./output/3y/ncu-gpu-pa-3y-3p.edgelist
+
+Elapsed time: 8.1-9 :  0 seconds
+
+Elapsed time: 9-10 :  0 seconds
+
+ graph size = 537112
+WriteAttributes: graph size = 537112
+
+Elapsed time: 0-1 : 3 seconds
+
+Elapsed time: 1-4 : 0 seconds
+
+Elapsed time: 4-7 : 0 seconds
+
+Elapsed time: 70-71: total : 0.812 seconds.
+
+Elapsed time: 71-72: total : 0.91 seconds.
+
+Elapsed time: 72-73: total : 0.001 seconds.
+
+Elapsed time: 73-74: total : 0 seconds.
+
+Elapsed time: 74-75: total : 0.023 seconds.
+
+Elapsed time: 75-76: total : 0 seconds.
+
+Elapsed time: 76-77: total : 0.113 seconds.
+
+Elapsed time: 77-79: total : 16.715 seconds.
+
+Elapsed time: 79-81 : total : 0.503 seconds.
+
+Elapsed time: 79-80 : total : 0.275 seconds.
+
+Elapsed time: 80-81 : total : 0.227 seconds.
+
+Elapsed time: 70-81 : total : 19.088 seconds.
+
+Elapsed time: 7-8 : 19 seconds
+
+Elapsed time: 8-8.1 :  0 seconds
+
+Elapsed time: 8.1-9 :  0 seconds
+
+Elapsed time: 9-10 : 0 seconds
+
+Elapsed time: 11-12 : 0 seconds
+
+Elapsed time: 10-12 : 0 seconds
+
+Elapsed time: 0-7 : 4 seconds
+
+Elapsed time: 7-8 : 19 seconds
+
+Elapsed time: 8-12 : 0 seconds
+
+E2E Time for num_cycles = 3 with growth_rate = 3 % = 25 seconds.
+
+usage: nsys stats [<args>] <input-file>
+Try 'nsys stats --help' for more information.
+
+Start ABM....
+parse_args....
+edgelist....
+num-cycles....
+output-file....
+log-file = ./output/3y/ncu-gpu-pa-3y-3p.log....
+num-processors = 14....
+log-level = 0
+er_probability = 0.000000
+model = pa
+Init ABM....
+Exec ABM....
+Start execute.Init Graph
+Inside  Graph ParseNodelist.....
+Populating the continuous_node mappings..
+Elapsed time: ParseNodelist : 799 millisecs = 0 seconds
+
+Inside Graph ParseEdgelist.....
+Elapsed time: ParseEdgelist : 2278 millisecs = 2 seconds
+
+In updateNodeInDegreeOutDegree: Update Outdegree first:
+In updateNodeInDegreeOutDegree: Update Indegree:
+Total (initial):: In-Degree = 899050, Out-Degree = 899050
+Elapsed time: 0-1 : 0 seconds
+Elapsed time: 1-2 : 2 seconds
+Elapsed time: 2-3 : 0 seconds
+
+Initialized Graph. Let us update the indegree and out-degrees... 
+Graph init done...
+calling InitializeFitness...
+final graph size is 537112 from initial_graph_size of 491532.
+ populated out degree array.
+ Entering loop for year = 1983
+Elapsed time: 70-71: total : 0.267 secs, iter cost : 0 seconds
+
+Elapsed time: 71-72: total : 0.296 secs, iter cost : 0 seconds
+
+Elapsed time: 72-73: total : 0 millisecs, iter cost : 0 mseconds
+
+num_new_nodes = 14746, current_graph_size = 491532, growth rate = 0.030000 
+Elapsed time: 73-74: total : 0 millisecs, iter cost : 0 mseconds
+
+Elapsed time: 74-75: total : 9 millisecs, iter cost : 9 mseconds
+
+all new nodes initialized with years and mapped. FillSameYearSourceNodes with new_nodes_vec.size() = 14746
+checking same_year_source_nodes size.
+Elapsed time: 75-76: total : 0 millisecs, iter cost : 0 mseconds
+
+new_nodes_vec.size() b4 : 14746
+
+updated  updateGraphAttributesGeneratorNode .... 
+Elapsed time: 76-77: total : 37 millisecs, iter cost : 37 mseconds
+
+continuous_node_mapping.size() b5 : 506278, reverse_continuous_node_mapping size = 506278
+
+[PA Model] Building connections using Preferential Attachment
+
+Inside optimized buildOneNodeConnections...
+Initial Free: 80554.6 MB / 81079.4 MB
+
+[prepareGraph] num_vertices = 491532
+
+[prepareGraph] edges = 899050, offsets = 491533 (should be V+1 = 491533)
+
+[prepareGraph] num_vertices = 491532
+
+[prepareGraph] edges = 899050, offsets = 491533 (should be V+1 = 491533)
+
+Year 1983: 14746 new nodes, 286282 new edges
+
+Elapsed time: 78-781 : total : 5.46 secs, this iter cost : 5.46 seconds
+
+Elapsed time: 78-79 : total : 5.612 secs, this iter cost : 5.612 seconds
+
+updateNodeInDegreeOutDegree(year=1983): updated 14746 out-degrees, 180033 in-degrees
+Elapsed time: 79-81 : total : 0.172 secs, this iter cost : 0 seconds
+
+Elapsed time: 79-80 : total : 0.096 secs, this iter cost : 0 seconds
+
+Elapsed time: 80-81 : total : 0.075 secs, this iter cost : 0 seconds
+
+Elapsed time: 70-81 : total : 6.397 secs, this iter cost : 6 seconds
+
+ Entering loop for year = 1984
+Elapsed time: 70-71: total : 0.539 secs, iter cost : 0 seconds
+
+Elapsed time: 71-72: total : 0.598 secs, iter cost : 0 seconds
+
+Elapsed time: 72-73: total : 1 millisecs, iter cost : 1 mseconds
+
+num_new_nodes = 15189, current_graph_size = 506278, growth rate = 0.030000 
+Elapsed time: 73-74: total : 0 millisecs, iter cost : 0 mseconds
+
+Elapsed time: 74-75: total : 16 millisecs, iter cost : 7 mseconds
+
+all new nodes initialized with years and mapped. FillSameYearSourceNodes with new_nodes_vec.size() = 15189
+checking same_year_source_nodes size.
+Elapsed time: 75-76: total : 0 millisecs, iter cost : 0 mseconds
+
+new_nodes_vec.size() b4 : 15189
+
+updated  updateGraphAttributesGeneratorNode .... 
+Elapsed time: 76-77: total : 75 millisecs, iter cost : 38 mseconds
+
+continuous_node_mapping.size() b5 : 521467, reverse_continuous_node_mapping size = 521467
+
+[PA Model] Building connections using Preferential Attachment
+
+Inside optimized buildOneNodeConnections...
+Initial Free: 80340.6 MB / 81079.4 MB
+
+[prepareGraph] num_vertices = 506278
+
+[prepareGraph] edges = 1185332, offsets = 506279 (should be V+1 = 506279)
+
+[prepareGraph] num_vertices = 506278
+
+[prepareGraph] edges = 1185332, offsets = 506279 (should be V+1 = 506279)
+
+Year 1984: 15189 new nodes, 293870 new edges
+
+Elapsed time: 78-781 : total : 10.627 secs, this iter cost : 5.167 seconds
+
+Elapsed time: 78-79 : total : 10.891 secs, this iter cost : 5.279 seconds
+
+updateNodeInDegreeOutDegree(year=1984): updated 15189 out-degrees, 181054 in-degrees
+Elapsed time: 79-81 : total : 0.326 secs, this iter cost : 0 seconds
+
+Elapsed time: 79-80 : total : 0.172 secs, this iter cost : 0 seconds
+
+Elapsed time: 80-81 : total : 0.152 secs, this iter cost : 0 seconds
+
+Elapsed time: 70-81 : total : 12.452 secs, this iter cost : 6 seconds
+
+ Entering loop for year = 1985
+Elapsed time: 70-71: total : 0.811 secs, iter cost : 0 seconds
+
+Elapsed time: 71-72: total : 0.903 secs, iter cost : 0 seconds
+
+Elapsed time: 72-73: total : 1 millisecs, iter cost : 0 mseconds
+
+num_new_nodes = 15645, current_graph_size = 521467, growth rate = 0.030000 
+Elapsed time: 73-74: total : 0 millisecs, iter cost : 0 mseconds
+
+Elapsed time: 74-75: total : 24 millisecs, iter cost : 8 mseconds
+
+all new nodes initialized with years and mapped. FillSameYearSourceNodes with new_nodes_vec.size() = 15645
+checking same_year_source_nodes size.
+Elapsed time: 75-76: total : 0 millisecs, iter cost : 0 mseconds
+
+new_nodes_vec.size() b4 : 15645
+
+updated  updateGraphAttributesGeneratorNode .... 
+Elapsed time: 76-77: total : 114 millisecs, iter cost : 39 mseconds
+
+continuous_node_mapping.size() b5 : 537112, reverse_continuous_node_mapping size = 537112
+
+[PA Model] Building connections using Preferential Attachment
+
+Inside optimized buildOneNodeConnections...
+Initial Free: 80320.6 MB / 81079.4 MB
+
+[prepareGraph] num_vertices = 521467
+
+[prepareGraph] edges = 1479202, offsets = 521468 (should be V+1 = 521468)
+
+[prepareGraph] num_vertices = 521467
+
+[prepareGraph] edges = 1479202, offsets = 521468 (should be V+1 = 521468)
+
+Year 1985: 15645 new nodes, 303095 new edges
+
+Elapsed time: 78-781 : total : 16.444 secs, this iter cost : 5.817 seconds
+
+Elapsed time: 78-79 : total : 16.837 secs, this iter cost : 5.946 seconds
+
+updateNodeInDegreeOutDegree(year=1985): updated 15645 out-degrees, 182591 in-degrees
+Elapsed time: 79-81 : total : 0.492 secs, this iter cost : 0 seconds
+
+Elapsed time: 79-80 : total : 0.258 secs, this iter cost : 0 seconds
+
+Elapsed time: 80-81 : total : 0.232 secs, this iter cost : 0 seconds
+
+Elapsed time: 70-81 : total : 19.191 secs, this iter cost : 6 seconds
+
+Elapsed time: 7-8 :  19 seconds
+
+compute done:: graph size = 537112
+Elapsed time: 8-8.1 :  0 seconds
+
+Writing Graph to file: ./output/3y/ncu-gpu-pa-3y-3p.edgelist
+
+Elapsed time: 8.1-9 :  0 seconds
+
+Elapsed time: 9-10 :  0 seconds
+
+ graph size = 537112
+WriteAttributes: graph size = 537112
+
+Elapsed time: 0-1 : 3 seconds
+
+Elapsed time: 1-4 : 0 seconds
+
+Elapsed time: 4-7 : 0 seconds
+
+Elapsed time: 70-71: total : 0.811 seconds.
+
+Elapsed time: 71-72: total : 0.903 seconds.
+
+Elapsed time: 72-73: total : 0.001 seconds.
+
+Elapsed time: 73-74: total : 0 seconds.
+
+Elapsed time: 74-75: total : 0.024 seconds.
+
+Elapsed time: 75-76: total : 0 seconds.
+
+Elapsed time: 76-77: total : 0.114 seconds.
+
+Elapsed time: 77-79: total : 16.837 seconds.
+
+Elapsed time: 79-81 : total : 0.492 seconds.
+
+Elapsed time: 79-80 : total : 0.258 seconds.
+
+Elapsed time: 80-81 : total : 0.232 seconds.
+
+Elapsed time: 70-81 : total : 19.191 seconds.
+
+Elapsed time: 7-8 : 19 seconds
+
+Elapsed time: 8-8.1 :  0 seconds
+
+Elapsed time: 8.1-9 :  0 seconds
+
+Elapsed time: 9-10 : 0 seconds
+
+Elapsed time: 11-12 : 0 seconds
+
+Elapsed time: 10-12 : 0 seconds
+
+Elapsed time: 0-7 : 3 seconds
+
+Elapsed time: 7-8 : 19 seconds
+
+Elapsed time: 8-12 : 0 seconds
+
+E2E Time for num_cycles = 3 with growth_rate = 3 % = 25 seconds.
+
+usage: nsys stats [<args>] <input-file>
+Try 'nsys stats --help' for more information.
+
+Start ABM....
+parse_args....Maximum number of positional arguments exceeded
+Usage: abm [--help] [--version] --edgelist VAR --nodelist VAR --out-degree-bag VAR --recency-probabilities VAR [--planted-nodes VAR] [--preferential-weight VAR] [--recency-weight VAR] [--fitness-weight VAR] [--alpha VAR] [--fully-random-citations VAR] --growth-rate VAR --num-cycles VAR --same-year-proportion VAR --output-file VAR --auxiliary-information-file VAR --log-file VAR [--num-processors VAR] [--log-level VAR] [--model VAR] [--er-probability VAR] [--er-edges-per-node VAR]
+
+Agent Based Modelling
+
+Optional arguments:
+  -h, --help                    shows help message and exits 
+  -v, --version                 prints version information and exits 
+  --edgelist                    Input edgelist (source, target) [required]
+  --nodelist                    Input nodelist (node, year) [required]
+  --out-degree-bag              Input out-degree bag (, out-degree) [required]
+  --recency-probabilities       Input recency bag (year, probability) [required]
+  --planted-nodes               Planted nodes file (year, fitness lag duration, fitness peak value, fitess peak duration, count) [default: ""]
+  --preferential-weight         Preferential attachment weight [default: -1]
+  --recency-weight              Recency weight [default: -1]
+  --fitness-weight              Fitness weight [default: -1]
+  --alpha                       Neighborhood alpha [default: -1]
+  --fully-random-citations      Constant percentage for radom citations [default: 0.05]
+  --growth-rate                 Growth rate [required]
+  --num-cycles                  Number of years [required]
+  --same-year-proportion        Growth rate [required]
+  --output-file                 Output clustering file [required]
+  --auxiliary-information-file  Auxillary information file [required]
+  --log-file                    Output log file [required]
+  --num-processors              Number of processors [default: 1]
+  --log-level                   Log level where 0 = silent, 1 = info, 2 = verbose [default: 1]
+  --model                       Network model: pa (Preferential Attachment) or ER (Erdos-Renyi) [default: "pa"]
+  --er-probability              Erdos-Renyi: edge probability p for G(n,p) model [default: 0]
+  --er-edges-per-node           Erdos-Renyi: average edges per new node (alternative to edge probability) [default: 0]
+/var/spool/slurm/job8640738/slurm_script: line 125: --preferential-weight: command not found
+Failed to process command line 
+
+terminate called after throwing an instance of 'boost::wrapexcept<QuadDCommon::LogicException>'
+  what():  LogicException
+Failed to probe the process (sync). Timeout: 2 sec
+/var/spool/slurm/job8640738/slurm_script: line 167: kill: (3139656) - No such process
+Failed to find any metric to display
+Running growth rate 6% for 3 years.
+./output/3y/ncu-gpu-pa-3y-6p.edgelist
+./output/3y/ncu-gpu-pa-3y-6p.aux
+
+usage: nsys stats [<args>] <input-file>
+Try 'nsys stats --help' for more information.
+
+Start ABM....
+parse_args....
+edgelist....
+num-cycles....
+output-file....
+log-file = ./output/3y/ncu-gpu-pa-3y-6p.log....
+num-processors = 14....
+log-level = 0
+er_probability = 0.000000
+model = pa
+Init ABM....
+Exec ABM....
+Start execute.Init Graph
+Inside  Graph ParseNodelist.....
+Populating the continuous_node mappings..
+Elapsed time: ParseNodelist : 797 millisecs = 0 seconds
+
+Inside Graph ParseEdgelist.....
+Elapsed time: ParseEdgelist : 2217 millisecs = 2 seconds
+
+In updateNodeInDegreeOutDegree: Update Outdegree first:
+In updateNodeInDegreeOutDegree: Update Indegree:
+Total (initial):: In-Degree = 899050, Out-Degree = 899050
+Elapsed time: 0-1 : 0 seconds
+Elapsed time: 1-2 : 2 seconds
+Elapsed time: 2-3 : 0 seconds
+
+Initialized Graph. Let us update the indegree and out-degrees... 
+Graph init done...
+calling InitializeFitness...
+final graph size is 537112 from initial_graph_size of 491532.
+ populated out degree array.
+ Entering loop for year = 1983
+Elapsed time: 70-71: total : 0.264 secs, iter cost : 0 seconds
+
+Elapsed time: 71-72: total : 0.293 secs, iter cost : 0 seconds
+
+Elapsed time: 72-73: total : 0 millisecs, iter cost : 0 mseconds
+
+num_new_nodes = 14746, current_graph_size = 491532, growth rate = 0.030000 
+Elapsed time: 73-74: total : 0 millisecs, iter cost : 0 mseconds
+
+Elapsed time: 74-75: total : 9 millisecs, iter cost : 9 mseconds
+
+all new nodes initialized with years and mapped. FillSameYearSourceNodes with new_nodes_vec.size() = 14746
+checking same_year_source_nodes size.
+Elapsed time: 75-76: total : 0 millisecs, iter cost : 0 mseconds
+
+new_nodes_vec.size() b4 : 14746
+
+updated  updateGraphAttributesGeneratorNode .... 
+Elapsed time: 76-77: total : 36 millisecs, iter cost : 36 mseconds
+
+continuous_node_mapping.size() b5 : 506278, reverse_continuous_node_mapping size = 506278
+
+[PA Model] Building connections using Preferential Attachment
+
+Inside optimized buildOneNodeConnections...
+Initial Free: 80554.6 MB / 81079.4 MB
+
+[prepareGraph] num_vertices = 491532
+
+[prepareGraph] edges = 899050, offsets = 491533 (should be V+1 = 491533)
+
+[prepareGraph] num_vertices = 491532
+
+[prepareGraph] edges = 899050, offsets = 491533 (should be V+1 = 491533)
+
+Year 1983: 14746 new nodes, 285535 new edges
+
+Elapsed time: 78-781 : total : 5.444 secs, this iter cost : 5.444 seconds
+
+Elapsed time: 78-79 : total : 5.58 secs, this iter cost : 5.58 seconds
+
+updateNodeInDegreeOutDegree(year=1983): updated 14746 out-degrees, 179637 in-degrees
+Elapsed time: 79-81 : total : 0.17 secs, this iter cost : 0 seconds
+
+Elapsed time: 79-80 : total : 0.097 secs, this iter cost : 0 seconds
+
+Elapsed time: 80-81 : total : 0.073 secs, this iter cost : 0 seconds
+
+Elapsed time: 70-81 : total : 6.356 secs, this iter cost : 6 seconds
+
+ Entering loop for year = 1984
+Elapsed time: 70-71: total : 0.534 secs, iter cost : 0 seconds
+
+Elapsed time: 71-72: total : 0.591 secs, iter cost : 0 seconds
+
+Elapsed time: 72-73: total : 1 millisecs, iter cost : 1 mseconds
+
+num_new_nodes = 15189, current_graph_size = 506278, growth rate = 0.030000 
+Elapsed time: 73-74: total : 0 millisecs, iter cost : 0 mseconds
+
+Elapsed time: 74-75: total : 16 millisecs, iter cost : 7 mseconds
+
+all new nodes initialized with years and mapped. FillSameYearSourceNodes with new_nodes_vec.size() = 15189
+checking same_year_source_nodes size.
+Elapsed time: 75-76: total : 0 millisecs, iter cost : 0 mseconds
+
+new_nodes_vec.size() b4 : 15189
+
+updated  updateGraphAttributesGeneratorNode .... 
+Elapsed time: 76-77: total : 73 millisecs, iter cost : 37 mseconds
+
+continuous_node_mapping.size() b5 : 521467, reverse_continuous_node_mapping size = 521467
+
+[PA Model] Building connections using Preferential Attachment
+
+Inside optimized buildOneNodeConnections...
+Initial Free: 80340.6 MB / 81079.4 MB
+
+[prepareGraph] num_vertices = 506278
+
+[prepareGraph] edges = 1184585, offsets = 506279 (should be V+1 = 506279)
+
+[prepareGraph] num_vertices = 506278
+
+[prepareGraph] edges = 1184585, offsets = 506279 (should be V+1 = 506279)
+
+Year 1984: 15189 new nodes, 295084 new edges
+
+Elapsed time: 78-781 : total : 10.525 secs, this iter cost : 5.081 seconds
+
+Elapsed time: 78-79 : total : 10.781 secs, this iter cost : 5.201 seconds
+
+updateNodeInDegreeOutDegree(year=1984): updated 15189 out-degrees, 182391 in-degrees
+Elapsed time: 79-81 : total : 0.322 secs, this iter cost : 0 seconds
+
+Elapsed time: 79-80 : total : 0.173 secs, this iter cost : 0 seconds
+
+Elapsed time: 80-81 : total : 0.148 secs, this iter cost : 0 seconds
+
+Elapsed time: 70-81 : total : 12.324 secs, this iter cost : 5 seconds
+
+ Entering loop for year = 1985
+Elapsed time: 70-71: total : 0.805 secs, iter cost : 0 seconds
+
+Elapsed time: 71-72: total : 0.892 secs, iter cost : 0 seconds
+
+Elapsed time: 72-73: total : 1 millisecs, iter cost : 0 mseconds
+
+num_new_nodes = 15645, current_graph_size = 521467, growth rate = 0.030000 
+Elapsed time: 73-74: total : 0 millisecs, iter cost : 0 mseconds
+
+Elapsed time: 74-75: total : 23 millisecs, iter cost : 7 mseconds
+
+all new nodes initialized with years and mapped. FillSameYearSourceNodes with new_nodes_vec.size() = 15645
+checking same_year_source_nodes size.
+Elapsed time: 75-76: total : 0 millisecs, iter cost : 0 mseconds
+
+new_nodes_vec.size() b4 : 15645
+
+updated  updateGraphAttributesGeneratorNode .... 
+Elapsed time: 76-77: total : 111 millisecs, iter cost : 38 mseconds
+
+continuous_node_mapping.size() b5 : 537112, reverse_continuous_node_mapping size = 537112
+
+[PA Model] Building connections using Preferential Attachment
+
+Inside optimized buildOneNodeConnections...
+Initial Free: 80318.6 MB / 81079.4 MB
+
+[prepareGraph] num_vertices = 521467
+
+[prepareGraph] edges = 1479669, offsets = 521468 (should be V+1 = 521468)
+
+[prepareGraph] num_vertices = 521467
+
+[prepareGraph] edges = 1479669, offsets = 521468 (should be V+1 = 521468)
+
+Year 1985: 15645 new nodes, 303485 new edges
+
+Elapsed time: 78-781 : total : 16.249 secs, this iter cost : 5.724 seconds
+
+Elapsed time: 78-79 : total : 16.665 secs, this iter cost : 5.884 seconds
+
+updateNodeInDegreeOutDegree(year=1985): updated 15645 out-degrees, 181786 in-degrees
+Elapsed time: 79-81 : total : 0.501 secs, this iter cost : 0 seconds
+
+Elapsed time: 79-80 : total : 0.275 secs, this iter cost : 0 seconds
+
+Elapsed time: 80-81 : total : 0.225 secs, this iter cost : 0 seconds
+
+Elapsed time: 70-81 : total : 19.008 secs, this iter cost : 6 seconds
+
+Elapsed time: 7-8 :  19 seconds
+
+compute done:: graph size = 537112
+Elapsed time: 8-8.1 :  0 seconds
+
+Writing Graph to file: ./output/3y/ncu-gpu-pa-3y-6p.edgelist
+
+Elapsed time: 8.1-9 :  0 seconds
+
+Elapsed time: 9-10 :  0 seconds
+
+ graph size = 537112
+WriteAttributes: graph size = 537112
+
+Elapsed time: 0-1 : 3 seconds
+
+Elapsed time: 1-4 : 0 seconds
+
+Elapsed time: 4-7 : 0 seconds
+
+Elapsed time: 70-71: total : 0.805 seconds.
+
+Elapsed time: 71-72: total : 0.892 seconds.
+
+Elapsed time: 72-73: total : 0.001 seconds.
+
+Elapsed time: 73-74: total : 0 seconds.
+
+Elapsed time: 74-75: total : 0.023 seconds.
+
+Elapsed time: 75-76: total : 0 seconds.
+
+Elapsed time: 76-77: total : 0.111 seconds.
+
+Elapsed time: 77-79: total : 16.665 seconds.
+
+Elapsed time: 79-81 : total : 0.501 seconds.
+
+Elapsed time: 79-80 : total : 0.275 seconds.
+
+Elapsed time: 80-81 : total : 0.225 seconds.
+
+Elapsed time: 70-81 : total : 19.008 seconds.
+
+Elapsed time: 7-8 : 19 seconds
+
+Elapsed time: 8-8.1 :  0 seconds
+
+Elapsed time: 8.1-9 :  0 seconds
+
+Elapsed time: 9-10 : 0 seconds
+
+Elapsed time: 11-12 : 0 seconds
+
+Elapsed time: 10-12 : 0 seconds
+
+Elapsed time: 0-7 : 3 seconds
+
+Elapsed time: 7-8 : 19 seconds
+
+Elapsed time: 8-12 : 0 seconds
+
+E2E Time for num_cycles = 3 with growth_rate = 3 % = 25 seconds.
+
+usage: nsys stats [<args>] <input-file>
+Try 'nsys stats --help' for more information.
+
+Start ABM....
+parse_args....
+edgelist....
+num-cycles....
+output-file....
+log-file = ./output/3y/ncu-gpu-pa-3y-6p.log....
+num-processors = 14....
+log-level = 0
+er_probability = 0.000000
+model = pa
+Init ABM....
+Exec ABM....
+Start execute.Init Graph
+Inside  Graph ParseNodelist.....
+Populating the continuous_node mappings..
+Elapsed time: ParseNodelist : 794 millisecs = 0 seconds
+
+Inside Graph ParseEdgelist.....
+Elapsed time: ParseEdgelist : 2240 millisecs = 2 seconds
+
+In updateNodeInDegreeOutDegree: Update Outdegree first:
+In updateNodeInDegreeOutDegree: Update Indegree:
+Total (initial):: In-Degree = 899050, Out-Degree = 899050
+Elapsed time: 0-1 : 0 seconds
+Elapsed time: 1-2 : 2 seconds
+Elapsed time: 2-3 : 0 seconds
+
+Initialized Graph. Let us update the indegree and out-degrees... 
+Graph init done...
+calling InitializeFitness...
+final graph size is 537112 from initial_graph_size of 491532.
+ populated out degree array.
+ Entering loop for year = 1983
+Elapsed time: 70-71: total : 0.263 secs, iter cost : 0 seconds
+
+Elapsed time: 71-72: total : 0.293 secs, iter cost : 0 seconds
+
+Elapsed time: 72-73: total : 0 millisecs, iter cost : 0 mseconds
+
+num_new_nodes = 14746, current_graph_size = 491532, growth rate = 0.030000 
+Elapsed time: 73-74: total : 0 millisecs, iter cost : 0 mseconds
+
+Elapsed time: 74-75: total : 9 millisecs, iter cost : 9 mseconds
+
+all new nodes initialized with years and mapped. FillSameYearSourceNodes with new_nodes_vec.size() = 14746
+checking same_year_source_nodes size.
+Elapsed time: 75-76: total : 0 millisecs, iter cost : 0 mseconds
+
+new_nodes_vec.size() b4 : 14746
+
+updated  updateGraphAttributesGeneratorNode .... 
+Elapsed time: 76-77: total : 37 millisecs, iter cost : 37 mseconds
+
+continuous_node_mapping.size() b5 : 506278, reverse_continuous_node_mapping size = 506278
+
+[PA Model] Building connections using Preferential Attachment
+
+Inside optimized buildOneNodeConnections...
+Initial Free: 80554.6 MB / 81079.4 MB
+
+[prepareGraph] num_vertices = 491532
+
+[prepareGraph] edges = 899050, offsets = 491533 (should be V+1 = 491533)
+
+[prepareGraph] num_vertices = 491532
+
+[prepareGraph] edges = 899050, offsets = 491533 (should be V+1 = 491533)
+
+Year 1983: 14746 new nodes, 287824 new edges
+
+Elapsed time: 78-781 : total : 5.346 secs, this iter cost : 5.346 seconds
+
+Elapsed time: 78-79 : total : 5.484 secs, this iter cost : 5.484 seconds
+
+updateNodeInDegreeOutDegree(year=1983): updated 14746 out-degrees, 180764 in-degrees
+Elapsed time: 79-81 : total : 0.172 secs, this iter cost : 0 seconds
+
+Elapsed time: 79-80 : total : 0.097 secs, this iter cost : 0 seconds
+
+Elapsed time: 80-81 : total : 0.074 secs, this iter cost : 0 seconds
+
+Elapsed time: 70-81 : total : 6.261 secs, this iter cost : 6 seconds
+
+ Entering loop for year = 1984
+Elapsed time: 70-71: total : 0.534 secs, iter cost : 0 seconds
+
+Elapsed time: 71-72: total : 0.591 secs, iter cost : 0 seconds
+
+Elapsed time: 72-73: total : 1 millisecs, iter cost : 1 mseconds
+
+num_new_nodes = 15189, current_graph_size = 506278, growth rate = 0.030000 
+Elapsed time: 73-74: total : 0 millisecs, iter cost : 0 mseconds
+
+Elapsed time: 74-75: total : 16 millisecs, iter cost : 7 mseconds
+
+all new nodes initialized with years and mapped. FillSameYearSourceNodes with new_nodes_vec.size() = 15189
+checking same_year_source_nodes size.
+Elapsed time: 75-76: total : 0 millisecs, iter cost : 0 mseconds
+
+new_nodes_vec.size() b4 : 15189
+
+updated  updateGraphAttributesGeneratorNode .... 
+Elapsed time: 76-77: total : 75 millisecs, iter cost : 38 mseconds
+
+continuous_node_mapping.size() b5 : 521467, reverse_continuous_node_mapping size = 521467
+
+[PA Model] Building connections using Preferential Attachment
+
+Inside optimized buildOneNodeConnections...
+Initial Free: 80340.6 MB / 81079.4 MB
+
+[prepareGraph] num_vertices = 506278
+
+[prepareGraph] edges = 1186874, offsets = 506279 (should be V+1 = 506279)
+
+[prepareGraph] num_vertices = 506278
+
+[prepareGraph] edges = 1186874, offsets = 506279 (should be V+1 = 506279)
+
+Year 1984: 15189 new nodes, 296531 new edges
+
+Elapsed time: 78-781 : total : 10.407 secs, this iter cost : 5.061 seconds
+
+Elapsed time: 78-79 : total : 10.665 secs, this iter cost : 5.181 seconds
+
+updateNodeInDegreeOutDegree(year=1984): updated 15189 out-degrees, 181991 in-degrees
+Elapsed time: 79-81 : total : 0.325 secs, this iter cost : 0 seconds
+
+Elapsed time: 79-80 : total : 0.174 secs, this iter cost : 0 seconds
+
+Elapsed time: 80-81 : total : 0.15 secs, this iter cost : 0 seconds
+
+Elapsed time: 70-81 : total : 12.213 secs, this iter cost : 5 seconds
+
+ Entering loop for year = 1985
+Elapsed time: 70-71: total : 0.807 secs, iter cost : 0 seconds
+
+Elapsed time: 71-72: total : 0.892 secs, iter cost : 0 seconds
+
+Elapsed time: 72-73: total : 1 millisecs, iter cost : 0 mseconds
+
+num_new_nodes = 15645, current_graph_size = 521467, growth rate = 0.030000 
+Elapsed time: 73-74: total : 0 millisecs, iter cost : 0 mseconds
+
+Elapsed time: 74-75: total : 23 millisecs, iter cost : 7 mseconds
+
+all new nodes initialized with years and mapped. FillSameYearSourceNodes with new_nodes_vec.size() = 15645
+checking same_year_source_nodes size.
+Elapsed time: 75-76: total : 0 millisecs, iter cost : 0 mseconds
+
+new_nodes_vec.size() b4 : 15645
+
+updated  updateGraphAttributesGeneratorNode .... 
+Elapsed time: 76-77: total : 114 millisecs, iter cost : 39 mseconds
+
+continuous_node_mapping.size() b5 : 537112, reverse_continuous_node_mapping size = 537112
+
+[PA Model] Building connections using Preferential Attachment
+
+Inside optimized buildOneNodeConnections...
+Initial Free: 80318.6 MB / 81079.4 MB
+
+[prepareGraph] num_vertices = 521467
+
+[prepareGraph] edges = 1483405, offsets = 521468 (should be V+1 = 521468)
+
+[prepareGraph] num_vertices = 521467
+
+[prepareGraph] edges = 1483405, offsets = 521468 (should be V+1 = 521468)
+
+Year 1985: 15645 new nodes, 306545 new edges
+
+Elapsed time: 78-781 : total : 16.108 secs, this iter cost : 5.701 seconds
+
+Elapsed time: 78-79 : total : 16.526 secs, this iter cost : 5.861 seconds
+
+updateNodeInDegreeOutDegree(year=1985): updated 15645 out-degrees, 184218 in-degrees
+Elapsed time: 79-81 : total : 0.488 secs, this iter cost : 0 seconds
+
+Elapsed time: 79-80 : total : 0.259 secs, this iter cost : 0 seconds
+
+Elapsed time: 80-81 : total : 0.228 secs, this iter cost : 0 seconds
+
+Elapsed time: 70-81 : total : 18.859 secs, this iter cost : 6 seconds
+
+Elapsed time: 7-8 :  18 seconds
+
+compute done:: graph size = 537112
+Elapsed time: 8-8.1 :  0 seconds
+
+Writing Graph to file: ./output/3y/ncu-gpu-pa-3y-6p.edgelist
+
+Elapsed time: 8.1-9 :  0 seconds
+
+Elapsed time: 9-10 :  0 seconds
+
+ graph size = 537112
+WriteAttributes: graph size = 537112
+
+Elapsed time: 0-1 : 3 seconds
+
+Elapsed time: 1-4 : 0 seconds
+
+Elapsed time: 4-7 : 0 seconds
+
+Elapsed time: 70-71: total : 0.807 seconds.
+
+Elapsed time: 71-72: total : 0.892 seconds.
+
+Elapsed time: 72-73: total : 0.001 seconds.
+
+Elapsed time: 73-74: total : 0 seconds.
+
+Elapsed time: 74-75: total : 0.023 seconds.
+
+Elapsed time: 75-76: total : 0 seconds.
+
+Elapsed time: 76-77: total : 0.114 seconds.
+
+Elapsed time: 77-79: total : 16.526 seconds.
+
+Elapsed time: 79-81 : total : 0.488 seconds.
+
+Elapsed time: 79-80 : total : 0.259 seconds.
+
+Elapsed time: 80-81 : total : 0.228 seconds.
+
+Elapsed time: 70-81 : total : 18.859 seconds.
+
+Elapsed time: 7-8 : 18 seconds
+
+Elapsed time: 8-8.1 :  0 seconds
+
+Elapsed time: 8.1-9 :  0 seconds
+
+Elapsed time: 9-10 : 0 seconds
+
+Elapsed time: 11-12 : 0 seconds
+
+Elapsed time: 10-12 : 0 seconds
+
+Elapsed time: 0-7 : 3 seconds
+
+Elapsed time: 7-8 : 18 seconds
+
+Elapsed time: 8-12 : 0 seconds
+
+E2E Time for num_cycles = 3 with growth_rate = 3 % = 24 seconds.
+
+usage: nsys stats [<args>] <input-file>
+Try 'nsys stats --help' for more information.
+
+Start ABM....
+parse_args....Maximum number of positional arguments exceeded
+Usage: abm [--help] [--version] --edgelist VAR --nodelist VAR --out-degree-bag VAR --recency-probabilities VAR [--planted-nodes VAR] [--preferential-weight VAR] [--recency-weight VAR] [--fitness-weight VAR] [--alpha VAR] [--fully-random-citations VAR] --growth-rate VAR --num-cycles VAR --same-year-proportion VAR --output-file VAR --auxiliary-information-file VAR --log-file VAR [--num-processors VAR] [--log-level VAR] [--model VAR] [--er-probability VAR] [--er-edges-per-node VAR]
+
+Agent Based Modelling
+
+Optional arguments:
+  -h, --help                    shows help message and exits 
+  -v, --version                 prints version information and exits 
+  --edgelist                    Input edgelist (source, target) [required]
+  --nodelist                    Input nodelist (node, year) [required]
+  --out-degree-bag              Input out-degree bag (, out-degree) [required]
+  --recency-probabilities       Input recency bag (year, probability) [required]
+  --planted-nodes               Planted nodes file (year, fitness lag duration, fitness peak value, fitess peak duration, count) [default: ""]
+  --preferential-weight         Preferential attachment weight [default: -1]
+  --recency-weight              Recency weight [default: -1]
+  --fitness-weight              Fitness weight [default: -1]
+  --alpha                       Neighborhood alpha [default: -1]
+  --fully-random-citations      Constant percentage for radom citations [default: 0.05]
+  --growth-rate                 Growth rate [required]
+  --num-cycles                  Number of years [required]
+  --same-year-proportion        Growth rate [required]
+  --output-file                 Output clustering file [required]
+  --auxiliary-information-file  Auxillary information file [required]
+  --log-file                    Output log file [required]
+  --num-processors              Number of processors [default: 1]
+  --log-level                   Log level where 0 = silent, 1 = info, 2 = verbose [default: 1]
+  --model                       Network model: pa (Preferential Attachment) or ER (Erdos-Renyi) [default: "pa"]
+  --er-probability              Erdos-Renyi: edge probability p for G(n,p) model [default: 0]
+  --er-edges-per-node           Erdos-Renyi: average edges per new node (alternative to edge probability) [default: 0]
+/var/spool/slurm/job8640738/slurm_script: line 125: --preferential-weight: command not found
+Failed to process command line 
+
+terminate called after throwing an instance of 'boost::wrapexcept<QuadDCommon::LogicException>'
+  what():  LogicException
+Failed to probe the process (sync). Timeout: 2 sec
+/var/spool/slurm/job8640738/slurm_script: line 167: kill: (3139999) - No such process
+Failed to find any metric to display

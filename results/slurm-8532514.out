@@ -1,0 +1,23 @@
+Running growth rate = .0100 = 1% with 16 thread
+./output/10y/0.5/gpu-opt-static-model-er-gnp-10y-1p-0.5p.edgelist
+./output/10y/0.5/gpu-opt-static-model-er-gnp-10y-1p-0.5p.aux
+
+real	1m2.504s
+user	1m7.735s
+sys	0m10.205s
+Running growth rate = .0300 = 3% with 16 thread
+./output/10y/0.5/gpu-opt-static-model-er-gnp-10y-3p-0.5p.edgelist
+./output/10y/0.5/gpu-opt-static-model-er-gnp-10y-3p-0.5p.aux
+
+real	2m57.328s
+user	3m18.082s
+sys	0m36.384s
+Running growth rate = .0600 = 6% with 16 thread
+./output/10y/0.5/gpu-opt-static-model-er-gnp-10y-6p-0.5p.edgelist
+./output/10y/0.5/gpu-opt-static-model-er-gnp-10y-6p-0.5p.aux
+./drivers/p005gpu_er_static_vary_p.sh: line 29: 3762468 Killed                  ./abm --model er-gnp --er-probability ${ER_PROBABILITY} --edgelist ${INPUT_EDGELIST} --nodelist ${INPUT_NODELIST} --out-degree-bag ${OUTDEGREE_BAG} --recency-probabilities ${RECENCY_PROBABILITIES} --alpha 0.5 --preferential-weight 0.33 --recency-weight 0.33 --fitness-weight 0.33 --growth-rate ${GROWTH_RATE} --fully-random-citations ${FULLY_RANDOM_CITATIONS} --num-cycles ${NUM_CYCLES} --same-year-proportion ${SAME_YEAR_PROPORTION} --output-file ${OUTPUT_FILE} --auxiliary-information-file ${OUTPUT_AUX} --log-file ${OUTPUT_LOG} --num-processors ${NUM_THREADS} --log-level ${LOG_LEVEL} 2> ${ERRORS}/abm-${GROWTH_PERCENT}p.err > ${OUT_FILE}
+
+real	3m6.845s
+user	3m5.470s
+sys	0m38.040s
+[2026-03-24T20:01:38.837] error: Detected 1 oom_kill event in StepId=8532514.batch. Some of the step tasks have been OOM Killed.

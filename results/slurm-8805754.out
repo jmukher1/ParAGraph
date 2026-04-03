@@ -1,0 +1,1280 @@
+Running growth rate 1% for 3 years.
+Profile output: profile/nsys-pa-3y-1p.nsys-rep
+CMD: nsys profile --trace=cuda,nvtx --stats=true --force-overwrite=true -o profile/nsys-pa-3y-1p ./abm --edgelist sj_edgelist --nodelist sj_nodelist --out-degree-bag tcen_at_least_five --recency-probabilities sj_recprob --alpha 0.5 --preferential-weight 0.33 --recency-weight 0.33 --fitness-weight 0.33 --growth-rate .01 --fully-random-citations 0.05 --num-cycles 3 --same-year-proportion 0.12 --output-file ./output/3y/gpu-opt-static-output-3y-1p.edgelist --auxiliary-information-file ./output/3y/gpu-opt-static-output-3y-1p.aux --log-file ./output/3y/nsys-gpu-opt-static-pa-3y-1p.log --num-processors 14 --log-level 1
+
+Start ABM....
+parse_args....
+edgelist....
+num-cycles....
+output-file....
+log-file = ./output/3y/nsys-gpu-opt-static-pa-3y-1p.log....
+num-processors = 14....
+log-level = 0
+Init ABM....
+Exec ABM....
+Start execute.Init Graph
+Inside  Graph ParseNodelist.....
+Populating the continuous_node mappings..
+Elapsed time: ParseNodelist : 1123 millisecs = 1 seconds
+
+Inside Graph ParseEdgelist.....
+Elapsed time: ParseEdgelist : 1643 millisecs = 1 seconds
+
+In updateNodeInDegreeOutDegree: Update Outdegree first:
+In updateNodeInDegreeOutDegree: Update Indegree:
+Total (initial):: In-Degree = 899050, Out-Degree = 899050
+Elapsed time: 0-1 : 1 seconds
+Elapsed time: 1-2 : 1 seconds
+Elapsed time: 2-3 : 0 seconds
+
+Initialized Graph. Let us update the indegree and out-degrees... 
+Graph init done...
+calling InitializeFitness...
+final graph size is 506428 from initial_graph_size of 491532.
+ populated out degree array.
+ Entering loop for year = 1983
+Elapsed time: 70-71: total : 0.244 secs, iter cost : 0 seconds
+
+Elapsed time: 71-72: total : 0.294 secs, iter cost : 0 seconds
+
+Elapsed time: 72-73: total : 12 millisecs, iter cost : 12 mseconds
+
+num_new_nodes = 4916, current_graph_size = 491532, growth rate = 0.010000 
+Elapsed time: 73-74: total : 0 millisecs, iter cost : 0 mseconds
+
+Elapsed time: 74-75: total : 6 millisecs, iter cost : 6 mseconds
+
+all new nodes initialized with years and mapped. FillSameYearSourceNodes with new_nodes_vec.size() = 4916
+checking same_year_source_nodes size.
+Elapsed time: 75-76: total : 0 millisecs, iter cost : 0 mseconds
+
+new_nodes_vec.size() b4 : 4916
+
+updated  updateGraphAttributesGeneratorNode .... 
+Elapsed time: 76-77: total : 12 millisecs, iter cost : 12 mseconds
+
+continuous_node_mapping.size() b5 : 496448, reverse_continuous_node_mapping size = 496448
+
+Inside optimized buildOneNodeConnections...
+Initial Free: 80526.5 MB / 81079.4 MB
+
+[prepareGraph] num_vertices = 491532
+
+[prepareGraph] edges = 899050, offsets = 491533 (should be V+1 = 491533)
+
+[prepareGraph] num_vertices = 491532
+
+[prepareGraph] edges = 899050, offsets = 491533 (should be V+1 = 491533)
+
+Year 1983: 4916 new nodes, 97716 new edges
+
+Elapsed time: 78-781 : total : 5.299 secs,  this iter cost : 5.299 seconds
+
+Elapsed time: 78-79 : total : 5.372 secs, this iter cost : 5.372 seconds
+
+updateNodeInDegreeOutDegree(year=1983): updated 4916 out-degrees, 74068 in-degrees
+Elapsed time: 79-81 : total : 0.09 secs, this iter cost : 0 seconds
+
+Elapsed time: 79-80 : total : 0.065 secs, this iter cost : 0 seconds
+
+Elapsed time: 80-81 : total : 0.024 secs, this iter cost : 0 seconds
+
+Elapsed time: 70-81 : total : 6.034 secs, this iter cost : 6 seconds
+
+ Entering loop for year = 1984
+Elapsed time: 70-71: total : 0.526 secs, iter cost : 0 seconds
+
+Elapsed time: 71-72: total : 0.601 secs, iter cost : 0 seconds
+
+Elapsed time: 72-73: total : 24 millisecs, iter cost : 12 mseconds
+
+num_new_nodes = 4965, current_graph_size = 496448, growth rate = 0.010000 
+Elapsed time: 73-74: total : 0 millisecs, iter cost : 0 mseconds
+
+Elapsed time: 74-75: total : 10 millisecs, iter cost : 4 mseconds
+
+all new nodes initialized with years and mapped. FillSameYearSourceNodes with new_nodes_vec.size() = 4965
+checking same_year_source_nodes size.
+Elapsed time: 75-76: total : 0 millisecs, iter cost : 0 mseconds
+
+new_nodes_vec.size() b4 : 4965
+
+updated  updateGraphAttributesGeneratorNode .... 
+Elapsed time: 76-77: total : 24 millisecs, iter cost : 12 mseconds
+
+continuous_node_mapping.size() b5 : 501413, reverse_continuous_node_mapping size = 501413
+
+Inside optimized buildOneNodeConnections...
+Initial Free: 80296.5 MB / 81079.4 MB
+
+[prepareGraph] num_vertices = 496448
+
+[prepareGraph] edges = 996766, offsets = 496449 (should be V+1 = 496449)
+
+[prepareGraph] num_vertices = 496448
+
+[prepareGraph] edges = 996766, offsets = 496449 (should be V+1 = 496449)
+
+Year 1984: 4965 new nodes, 99013 new edges
+
+Elapsed time: 78-781 : total : 8.271 secs,  this iter cost : 2.972 seconds
+
+Elapsed time: 78-79 : total : 8.413 secs, this iter cost : 3.041 seconds
+
+updateNodeInDegreeOutDegree(year=1984): updated 4965 out-degrees, 73911 in-degrees
+Elapsed time: 79-81 : total : 0.162 secs, this iter cost : 0 seconds
+
+Elapsed time: 79-80 : total : 0.113 secs, this iter cost : 0 seconds
+
+Elapsed time: 80-81 : total : 0.048 secs, this iter cost : 0 seconds
+
+Elapsed time: 70-81 : total : 9.767 secs, this iter cost : 3 seconds
+
+ Entering loop for year = 1985
+Elapsed time: 70-71: total : 0.81 secs, iter cost : 0 seconds
+
+Elapsed time: 71-72: total : 0.904 secs, iter cost : 0 seconds
+
+Elapsed time: 72-73: total : 35 millisecs, iter cost : 11 mseconds
+
+num_new_nodes = 5015, current_graph_size = 501413, growth rate = 0.010000 
+Elapsed time: 73-74: total : 0 millisecs, iter cost : 0 mseconds
+
+Elapsed time: 74-75: total : 13 millisecs, iter cost : 3 mseconds
+
+all new nodes initialized with years and mapped. FillSameYearSourceNodes with new_nodes_vec.size() = 5015
+checking same_year_source_nodes size.
+Elapsed time: 75-76: total : 0 millisecs, iter cost : 0 mseconds
+
+new_nodes_vec.size() b4 : 5015
+
+updated  updateGraphAttributesGeneratorNode .... 
+Elapsed time: 76-77: total : 36 millisecs, iter cost : 12 mseconds
+
+continuous_node_mapping.size() b5 : 506428, reverse_continuous_node_mapping size = 506428
+
+Inside optimized buildOneNodeConnections...
+Initial Free: 80292.5 MB / 81079.4 MB
+
+[prepareGraph] num_vertices = 501413
+
+[prepareGraph] edges = 1095779, offsets = 501414 (should be V+1 = 501414)
+
+[prepareGraph] num_vertices = 501413
+
+[prepareGraph] edges = 1095779, offsets = 501414 (should be V+1 = 501414)
+
+Year 1985: 5015 new nodes, 99986 new edges
+
+Elapsed time: 78-781 : total : 11.282 secs,  this iter cost : 3.011 seconds
+
+Elapsed time: 78-79 : total : 11.473 secs, this iter cost : 3.06 seconds
+
+updateNodeInDegreeOutDegree(year=1985): updated 5015 out-degrees, 73505 in-degrees
+Elapsed time: 79-81 : total : 0.235 secs, this iter cost : 0 seconds
+
+Elapsed time: 79-80 : total : 0.161 secs, this iter cost : 0 seconds
+
+Elapsed time: 80-81 : total : 0.072 secs, this iter cost : 0 seconds
+
+Elapsed time: 70-81 : total : 13.516 secs, this iter cost : 3 seconds
+
+Elapsed time: 7-8 :  13 seconds
+
+compute done:: graph size = 506428
+Elapsed time: 8-8.1 :  0 seconds
+
+Writing Graph to file: ./output/3y/gpu-opt-static-output-3y-1p.edgelist
+
+Elapsed time: 8.1-9 :  0 seconds
+
+Elapsed time: 9-10 :  0 seconds
+
+ graph size = 506428
+WriteAttributes: graph size = 506428
+
+Elapsed time: 0-1 : 3 seconds
+
+Elapsed time: 1-4 : 0 seconds
+
+Elapsed time: 4-7 : 0 seconds
+
+Elapsed time: 70-71: total : 0.81 seconds.
+
+Elapsed time: 71-72: total : 0.904 seconds.
+
+Elapsed time: 72-73: total : 0.035 seconds.
+
+Elapsed time: 73-74: total : 0 seconds.
+
+Elapsed time: 74-75: total : 0.013 seconds.
+
+Elapsed time: 75-76: total : 0 seconds.
+
+Elapsed time: 76-77: total : 0.036 seconds.
+
+Elapsed time: 77-79: total : 11.473 seconds.
+
+Elapsed time: 79-81 : total : 0.235 seconds.
+
+Elapsed time: 79-80 : total : 0.161 seconds.
+
+Elapsed time: 80-81 : total : 0.072 seconds.
+
+Elapsed time: 70-81 : total : 13.516 seconds.
+
+Elapsed time: 7-8 : 13 seconds
+
+Elapsed time: 8-8.1 :  0 seconds
+
+Elapsed time: 8.1-9 :  0 seconds
+
+Elapsed time: 9-10 : 0 seconds
+
+Elapsed time: 11-12 : 0 seconds
+
+Elapsed time: 10-12 : 0 seconds
+
+Elapsed time: 0-7 : 3 seconds
+
+Elapsed time: 7-8 : 13 seconds
+
+Elapsed time: 8-12 : 1 seconds
+
+E2E Time for num_cycles = 3 with growth_rate = 1 % = 20 seconds.
+Generating '/tmp/nsys-report-1b66.qdstrm'
+[1/7] [0%                          ] nsys-pa-3y-1p.nsys-rep[1/7] [0%                          ] nsys-pa-3y-1p.nsys-rep[1/7] [8%                          ] nsys-pa-3y-1p.nsys-rep[1/7] [7%                          ] nsys-pa-3y-1p.nsys-rep[1/7] [12%                         ] nsys-pa-3y-1p.nsys-rep[1/7] [11%                         ] nsys-pa-3y-1p.nsys-rep[1/7] [10%                         ] nsys-pa-3y-1p.nsys-rep[1/7] [12%                         ] nsys-pa-3y-1p.nsys-rep[1/7] [11%                         ] nsys-pa-3y-1p.nsys-rep[1/7] [10%                         ] nsys-pa-3y-1p.nsys-rep[1/7] [9%                          ] nsys-pa-3y-1p.nsys-rep[1/7] [8%                          ] nsys-pa-3y-1p.nsys-rep[1/7] [7%                          ] nsys-pa-3y-1p.nsys-rep[1/7] [6%                          ] nsys-pa-3y-1p.nsys-rep[1/7] [5%                          ] nsys-pa-3y-1p.nsys-rep[1/7] [5%                          ] nsys-pa-3y-1p.nsys-rep[1/7] [6%                          ] nsys-pa-3y-1p.nsys-rep[1/7] [8%                          ] nsys-pa-3y-1p.nsys-rep[1/7] [9%                          ] nsys-pa-3y-1p.nsys-rep[1/7] [11%                         ] nsys-pa-3y-1p.nsys-rep[1/7] [12%                         ] nsys-pa-3y-1p.nsys-rep[1/7] [13%                         ] nsys-pa-3y-1p.nsys-rep[1/7] [14%                         ] nsys-pa-3y-1p.nsys-rep[1/7] [=16%                        ] nsys-pa-3y-1p.nsys-rep[1/7] [==18%                       ] nsys-pa-3y-1p.nsys-rep[1/7] [==19%                       ] nsys-pa-3y-1p.nsys-rep[1/7] [==20%                       ] nsys-pa-3y-1p.nsys-rep[1/7] [===22%                      ] nsys-pa-3y-1p.nsys-rep[1/7] [===23%                      ] nsys-pa-3y-1p.nsys-rep[1/7] [===24%                      ] nsys-pa-3y-1p.nsys-rep[1/7] [====26%                     ] nsys-pa-3y-1p.nsys-rep[1/7] [====28%                     ] nsys-pa-3y-1p.nsys-rep[1/7] [=====29%                    ] nsys-pa-3y-1p.nsys-rep[1/7] [=====31%                    ] nsys-pa-3y-1p.nsys-rep[1/7] [=====32%                    ] nsys-pa-3y-1p.nsys-rep[1/7] [======33%                   ] nsys-pa-3y-1p.nsys-rep[1/7] [======35%                   ] nsys-pa-3y-1p.nsys-rep[1/7] [=======36%                  ] nsys-pa-3y-1p.nsys-rep[1/7] [=======38%                  ] nsys-pa-3y-1p.nsys-rep[1/7] [=======39%                  ] nsys-pa-3y-1p.nsys-rep[1/7] [========40%                 ] nsys-pa-3y-1p.nsys-rep[1/7] [========42%                 ] nsys-pa-3y-1p.nsys-rep[1/7] [=========43%                ] nsys-pa-3y-1p.nsys-rep[1/7] [=========45%                ] nsys-pa-3y-1p.nsys-rep[1/7] [=========46%                ] nsys-pa-3y-1p.nsys-rep[1/7] [==========48%               ] nsys-pa-3y-1p.nsys-rep[1/7] [==========49%               ] nsys-pa-3y-1p.nsys-rep[1/7] [===========50%              ] nsys-pa-3y-1p.nsys-rep[1/7] [===========51%              ] nsys-pa-3y-1p.nsys-rep[1/7] [===========53%              ] nsys-pa-3y-1p.nsys-rep[1/7] [============55%             ] nsys-pa-3y-1p.nsys-rep[1/7] [============56%             ] nsys-pa-3y-1p.nsys-rep[1/7] [=============58%            ] nsys-pa-3y-1p.nsys-rep[1/7] [=============59%            ] nsys-pa-3y-1p.nsys-rep[1/7] [=============60%            ] nsys-pa-3y-1p.nsys-rep[1/7] [==============62%           ] nsys-pa-3y-1p.nsys-rep[1/7] [==============63%           ] nsys-pa-3y-1p.nsys-rep[1/7] [===============65%          ] nsys-pa-3y-1p.nsys-rep[1/7] [===============66%          ] nsys-pa-3y-1p.nsys-rep[1/7] [===============67%          ] nsys-pa-3y-1p.nsys-rep[1/7] [================69%         ] nsys-pa-3y-1p.nsys-rep[1/7] [================70%         ] nsys-pa-3y-1p.nsys-rep[1/7] [================71%         ] nsys-pa-3y-1p.nsys-rep[1/7] [=================73%        ] nsys-pa-3y-1p.nsys-rep[1/7] [=================74%        ] nsys-pa-3y-1p.nsys-rep[1/7] [==================76%       ] nsys-pa-3y-1p.nsys-rep[1/7] [==================77%       ] nsys-pa-3y-1p.nsys-rep[1/7] [==================78%       ] nsys-pa-3y-1p.nsys-rep[1/7] [===================80%      ] nsys-pa-3y-1p.nsys-rep[1/7] [===================82%      ] nsys-pa-3y-1p.nsys-rep[1/7] [====================83%     ] nsys-pa-3y-1p.nsys-rep[1/7] [====================85%     ] nsys-pa-3y-1p.nsys-rep[1/7] [========================100%] nsys-pa-3y-1p.nsys-rep[1/7] [========================100%] nsys-pa-3y-1p.nsys-rep
+[2/7] [0%                          ] nsys-pa-3y-1p.sqlite[2/7] [1%                          ] nsys-pa-3y-1p.sqlite[2/7] [2%                          ] nsys-pa-3y-1p.sqlite[2/7] [3%                          ] nsys-pa-3y-1p.sqlite[2/7] [4%                          ] nsys-pa-3y-1p.sqlite[2/7] [5%                          ] nsys-pa-3y-1p.sqlite[2/7] [6%                          ] nsys-pa-3y-1p.sqlite[2/7] [7%                          ] nsys-pa-3y-1p.sqlite[2/7] [8%                          ] nsys-pa-3y-1p.sqlite[2/7] [9%                          ] nsys-pa-3y-1p.sqlite[2/7] [10%                         ] nsys-pa-3y-1p.sqlite[2/7] [11%                         ] nsys-pa-3y-1p.sqlite[2/7] [12%                         ] nsys-pa-3y-1p.sqlite[2/7] [13%                         ] nsys-pa-3y-1p.sqlite[2/7] [14%                         ] nsys-pa-3y-1p.sqlite[2/7] [=15%                        ] nsys-pa-3y-1p.sqlite[2/7] [=16%                        ] nsys-pa-3y-1p.sqlite[2/7] [=17%                        ] nsys-pa-3y-1p.sqlite[2/7] [==18%                       ] nsys-pa-3y-1p.sqlite[2/7] [==19%                       ] nsys-pa-3y-1p.sqlite[2/7] [==20%                       ] nsys-pa-3y-1p.sqlite[2/7] [==21%                       ] nsys-pa-3y-1p.sqlite[2/7] [===22%                      ] nsys-pa-3y-1p.sqlite[2/7] [===23%                      ] nsys-pa-3y-1p.sqlite[2/7] [===24%                      ] nsys-pa-3y-1p.sqlite[2/7] [====25%                     ] nsys-pa-3y-1p.sqlite[2/7] [====26%                     ] nsys-pa-3y-1p.sqlite[2/7] [====27%                     ] nsys-pa-3y-1p.sqlite[2/7] [====28%                     ] nsys-pa-3y-1p.sqlite[2/7] [=====29%                    ] nsys-pa-3y-1p.sqlite[2/7] [=====30%                    ] nsys-pa-3y-1p.sqlite[2/7] [=====31%                    ] nsys-pa-3y-1p.sqlite[2/7] [=====32%                    ] nsys-pa-3y-1p.sqlite[2/7] [======33%                   ] nsys-pa-3y-1p.sqlite[2/7] [======34%                   ] nsys-pa-3y-1p.sqlite[2/7] [======35%                   ] nsys-pa-3y-1p.sqlite[2/7] [=======36%                  ] nsys-pa-3y-1p.sqlite[2/7] [=======37%                  ] nsys-pa-3y-1p.sqlite[2/7] [=======38%                  ] nsys-pa-3y-1p.sqlite[2/7] [=======39%                  ] nsys-pa-3y-1p.sqlite[2/7] [========40%                 ] nsys-pa-3y-1p.sqlite[2/7] [========41%                 ] nsys-pa-3y-1p.sqlite[2/7] [========42%                 ] nsys-pa-3y-1p.sqlite[2/7] [=========43%                ] nsys-pa-3y-1p.sqlite[2/7] [=========44%                ] nsys-pa-3y-1p.sqlite[2/7] [=========45%                ] nsys-pa-3y-1p.sqlite[2/7] [=========46%                ] nsys-pa-3y-1p.sqlite[2/7] [==========47%               ] nsys-pa-3y-1p.sqlite[2/7] [==========48%               ] nsys-pa-3y-1p.sqlite[2/7] [==========49%               ] nsys-pa-3y-1p.sqlite[2/7] [===========50%              ] nsys-pa-3y-1p.sqlite[2/7] [===========51%              ] nsys-pa-3y-1p.sqlite[2/7] [===========52%              ] nsys-pa-3y-1p.sqlite[2/7] [===========53%              ] nsys-pa-3y-1p.sqlite[2/7] [============54%             ] nsys-pa-3y-1p.sqlite[2/7] [============55%             ] nsys-pa-3y-1p.sqlite[2/7] [============56%             ] nsys-pa-3y-1p.sqlite[2/7] [============57%             ] nsys-pa-3y-1p.sqlite[2/7] [=============58%            ] nsys-pa-3y-1p.sqlite[2/7] [=============59%            ] nsys-pa-3y-1p.sqlite[2/7] [=============60%            ] nsys-pa-3y-1p.sqlite[2/7] [==============61%           ] nsys-pa-3y-1p.sqlite[2/7] [==============62%           ] nsys-pa-3y-1p.sqlite[2/7] [==============63%           ] nsys-pa-3y-1p.sqlite[2/7] [==============64%           ] nsys-pa-3y-1p.sqlite[2/7] [===============65%          ] nsys-pa-3y-1p.sqlite[2/7] [===============66%          ] nsys-pa-3y-1p.sqlite[2/7] [===============67%          ] nsys-pa-3y-1p.sqlite[2/7] [================68%         ] nsys-pa-3y-1p.sqlite[2/7] [================69%         ] nsys-pa-3y-1p.sqlite[2/7] [================70%         ] nsys-pa-3y-1p.sqlite[2/7] [================71%         ] nsys-pa-3y-1p.sqlite[2/7] [=================72%        ] nsys-pa-3y-1p.sqlite[2/7] [=================73%        ] nsys-pa-3y-1p.sqlite[2/7] [=================74%        ] nsys-pa-3y-1p.sqlite[2/7] [==================75%       ] nsys-pa-3y-1p.sqlite[2/7] [==================76%       ] nsys-pa-3y-1p.sqlite[2/7] [==================77%       ] nsys-pa-3y-1p.sqlite[2/7] [==================78%       ] nsys-pa-3y-1p.sqlite[2/7] [===================79%      ] nsys-pa-3y-1p.sqlite[2/7] [===================80%      ] nsys-pa-3y-1p.sqlite[2/7] [===================81%      ] nsys-pa-3y-1p.sqlite[2/7] [===================82%      ] nsys-pa-3y-1p.sqlite[2/7] [====================83%     ] nsys-pa-3y-1p.sqlite[2/7] [====================84%     ] nsys-pa-3y-1p.sqlite[2/7] [====================85%     ] nsys-pa-3y-1p.sqlite[2/7] [=====================86%    ] nsys-pa-3y-1p.sqlite[2/7] [=====================87%    ] nsys-pa-3y-1p.sqlite[2/7] [=====================88%    ] nsys-pa-3y-1p.sqlite[2/7] [=====================89%    ] nsys-pa-3y-1p.sqlite[2/7] [======================90%   ] nsys-pa-3y-1p.sqlite[2/7] [======================91%   ] nsys-pa-3y-1p.sqlite[2/7] [======================92%   ] nsys-pa-3y-1p.sqlite[2/7] [=======================93%  ] nsys-pa-3y-1p.sqlite[2/7] [=======================94%  ] nsys-pa-3y-1p.sqlite[2/7] [=======================95%  ] nsys-pa-3y-1p.sqlite[2/7] [=======================96%  ] nsys-pa-3y-1p.sqlite[2/7] [========================97% ] nsys-pa-3y-1p.sqlite[2/7] [========================98% ] nsys-pa-3y-1p.sqlite[2/7] [========================99% ] nsys-pa-3y-1p.sqlite[2/7] [========================100%] nsys-pa-3y-1p.sqlite[2/7] [========================100%] nsys-pa-3y-1p.sqlite
+[3/7] Executing 'nvtx_sum' stats report
+
+ Time (%)  Total Time (ns)  Instances  Avg (ns)  Med (ns)  Min (ns)  Max (ns)  StdDev (ns)   Style              Range            
+ --------  ---------------  ---------  --------  --------  --------  --------  -----------  -------  ----------------------------
+     99.6       74,780,611     14,902   5,018.2   4,459.0     4,100   376,851      5,356.1  PushPop  CCCL:cub::DeviceFor::Bulk   
+      0.2          120,134          6  20,022.3  19,449.5    18,130    23,964      2,141.6  PushPop  CCCL:thrust::copy           
+      0.1           86,255          3  28,751.7  29,554.0    26,470    30,231      2,004.8  PushPop  CCCL:uninitialized_fill_n   
+      0.1           61,010          3  20,336.7  19,022.0    18,831    23,157      2,444.3  PushPop  CCCL:thrust::two_system_copy
+
+[4/7] Executing 'cuda_api_sum' stats report
+
+ Time (%)  Total Time (ns)  Num Calls    Avg (ns)      Med (ns)    Min (ns)    Max (ns)      StdDev (ns)                Name             
+ --------  ---------------  ---------  -------------  -----------  --------  -------------  -------------  ------------------------------
+     37.3    3,479,507,519         21  165,690,834.2  1,052,014.0     5,392  1,060,171,817  362,872,582.0  cudaStreamSynchronize         
+     21.6    2,011,246,589     14,929      134,720.8      2,680.0     2,382  1,961,466,884   16,053,340.6  cudaLaunchKernel              
+     15.0    1,402,300,932    238,408        5,881.9      3,393.0     2,418      3,458,238       13,416.1  cudaMemcpy                    
+     11.2    1,044,162,381    178,872        5,837.5      4,479.0     3,546     26,756,417       87,244.2  cudaFree                      
+      9.5      888,785,327    208,661        4,259.5      3,286.0     1,902     41,422,035      102,254.8  cudaMalloc                    
+      2.4      225,287,195         36    6,257,977.6     44,804.5     8,726     80,644,894   20,677,305.9  cudaMemcpyAsync               
+      1.5      138,674,313          3   46,224,771.0     49,883.0    40,714    138,583,716   79,985,192.8  cudaMemGetInfo                
+      0.9       86,911,197     29,816        2,914.9      2,758.0     2,395         37,195          798.8  cudaMemset                    
+      0.4       38,203,381     14,908        2,562.6        765.0       650     25,014,348      204,863.8  cudaMallocAsync_v11020        
+      0.2       16,055,515     14,902        1,077.4        827.0       643      1,360,147       11,170.4  cudaFreeAsync_v11020          
+      0.0          373,729         12       31,144.1     19,789.5    12,759         76,567       24,980.3  cudaMallocManaged             
+      0.0          327,398          6       54,566.3     53,571.5     6,788        106,096       48,902.4  cudaDeviceSynchronize         
+      0.0          179,611          3       59,870.3     25,689.0    23,419        130,503       61,180.2  cudaStreamCreate              
+      0.0           87,956          6       14,659.3     14,326.5     8,307         23,972        6,366.3  cudaMemsetAsync               
+      0.0           49,325          3       16,441.7     15,529.0    13,198         20,598        3,783.5  cudaStreamDestroy             
+      0.0            3,184          3        1,061.3      1,043.0       998          1,143           74.2  cuStreamSynchronize           
+      0.0            2,003          1        2,003.0      2,003.0     2,003          2,003            0.0  cudaGetDriverEntryPoint_v11030
+      0.0            1,721          2          860.5        860.5       725            996          191.6  cuGetProcAddress_v2           
+      0.0            1,598          1        1,598.0      1,598.0     1,598          1,598            0.0  cuInit                        
+      0.0            1,392          1        1,392.0      1,392.0     1,392          1,392            0.0  cuModuleGetLoadingMode        
+
+[5/7] Executing 'cuda_gpu_kern_sum' stats report
+
+ Time (%)  Total Time (ns)  Instances     Avg (ns)         Med (ns)       Min (ns)      Max (ns)     StdDev (ns)                                                   Name                                                
+ --------  ---------------  ---------  ---------------  ---------------  -----------  -------------  ------------  ----------------------------------------------------------------------------------------------------
+     82.8    3,079,856,271          3  1,026,618,757.0  1,037,835,926.0  981,867,427  1,060,152,918  40,330,177.1  kernelCallStage1(int, int, int, ABM *, Graph *, DeviceGraph *, DeviceGraph *, device_map<int, Node>…
+      9.8      365,135,022          3    121,711,674.0    124,425,432.0  115,633,830    125,075,760   5,273,601.5  kernelCallStage3(int, int, int, ABM *, Graph *, int, device_map<int, Node>::device_view, ABMStageSt…
+      5.9      221,109,994          3     73,703,331.3     70,633,231.0   69,842,444     80,634,319   6,015,420.1  void cuco::legacy::detail::insert<(unsigned long)128, (unsigned int)4, cuco::pair<int, int> *, cuda…
+      0.8       31,197,845          3     10,399,281.7     10,210,599.0    8,167,685     12,819,561   2,331,670.7  kernelCallStage2(int, int, int, ABM *, Graph *, cuco::static_set_ref<int, (cuda::std::__4::thread_s…
+      0.5       18,165,602     14,899          1,219.2          1,280.0        1,088          1,632          94.7  void cub::CUB_300103_SM_600::detail::for_each::static_kernel<cub::CUB_300103_SM_600::detail::for_ea…
+      0.1        3,140,898          3      1,046,966.0      1,048,353.0    1,009,408      1,083,137      36,884.1  kernelCallStage4(int, int, int, ABM *, Graph *, int, device_map<int, Node>::device_view, ABMStageSt…
+      0.0          303,072          6         50,512.0         46,880.0        4,544        102,816      49,962.2  kernel_extract_vector_sizes(device_vector *, int *, int)                                            
+      0.0          110,976          3         36,992.0         34,592.0       33,856         42,528       4,808.4  void cuco::detail::open_addressing_ns::insert_if_n<(int)1, (int)128, int *, thrust::THRUST_300103_S…
+      0.0            9,536          3          3,178.7          3,168.0        3,040          3,328         144.3  void cuco::legacy::detail::initialize<(unsigned long)256, cuda::__4::atomic<int, (cuda::std::__4::t…
+      0.0            4,256          3          1,418.7          1,472.0        1,280          1,504         121.2  void cub::CUB_300103_SM_600::detail::for_each::static_kernel<cub::CUB_300103_SM_600::detail::for_ea…
+
+[6/7] Executing 'cuda_gpu_mem_time_sum' stats report
+
+ Time (%)  Total Time (ns)   Count   Avg (ns)  Med (ns)  Min (ns)  Max (ns)   StdDev (ns)               Operation              
+ --------  ---------------  -------  --------  --------  --------  ---------  -----------  ------------------------------------
+     44.8      151,426,506  178,833     846.7     768.0       703  3,345,858     13,441.5  [CUDA memcpy Host-to-Device]        
+     42.4      143,513,163   59,611   2,407.5   2,400.0     1,888      7,968        114.1  [CUDA memcpy Device-to-Host]        
+     12.6       42,533,387   29,822   1,426.2   1,472.0       736    100,704      1,668.4  [CUDA memset]                       
+      0.1          425,156      142   2,994.1   2,463.0     2,207     11,968      1,251.8  [CUDA memcpy Unified Host-to-Device]
+      0.1          218,713       69   3,169.8   2,719.0     2,399      5,024        713.5  [CUDA memcpy Unified Device-to-Host]
+
+[7/7] Executing 'cuda_gpu_mem_size_sum' stats report
+
+ Total (MB)   Count   Avg (MB)  Med (MB)  Min (MB)  Max (MB)  StdDev (MB)               Operation              
+ ----------  -------  --------  --------  --------  --------  -----------  ------------------------------------
+  4,640.678   29,822     0.156     0.062     0.000   314.340        5.353  [CUDA memset]                       
+    215.479  178,833     0.001     0.000     0.000    40.514        0.170  [CUDA memcpy Host-to-Device]        
+      4.719      142     0.033     0.008     0.004     0.242        0.054  [CUDA memcpy Unified Host-to-Device]
+      4.519   59,611     0.000     0.000     0.000     0.160        0.002  [CUDA memcpy Device-to-Host]        
+      2.556       69     0.037     0.004     0.004     0.127        0.039  [CUDA memcpy Unified Device-to-Host]
+
+Generated:
+    /home/jmukher/workspace/uiuc/citation_abm/profile/nsys-pa-3y-1p.nsys-rep
+    /home/jmukher/workspace/uiuc/citation_abm/profile/nsys-pa-3y-1p.sqlite
+SUCCESS: 512 → profile/nsys-pa-3y-1p.nsys-rep
+Running growth rate 3% for 3 years.
+Profile output: profile/nsys-pa-3y-3p.nsys-rep
+CMD: nsys profile --trace=cuda,nvtx --stats=true --force-overwrite=true -o profile/nsys-pa-3y-3p ./abm --edgelist sj_edgelist --nodelist sj_nodelist --out-degree-bag tcen_at_least_five --recency-probabilities sj_recprob --alpha 0.5 --preferential-weight 0.33 --recency-weight 0.33 --fitness-weight 0.33 --growth-rate .03 --fully-random-citations 0.05 --num-cycles 3 --same-year-proportion 0.12 --output-file ./output/3y/gpu-opt-static-output-3y-3p.edgelist --auxiliary-information-file ./output/3y/gpu-opt-static-output-3y-3p.aux --log-file ./output/3y/nsys-gpu-opt-static-pa-3y-3p.log --num-processors 14 --log-level 1
+
+Start ABM....
+parse_args....
+edgelist....
+num-cycles....
+output-file....
+log-file = ./output/3y/nsys-gpu-opt-static-pa-3y-3p.log....
+num-processors = 14....
+log-level = 0
+Init ABM....
+Exec ABM....
+Start execute.Init Graph
+Inside  Graph ParseNodelist.....
+Populating the continuous_node mappings..
+Elapsed time: ParseNodelist : 1115 millisecs = 1 seconds
+
+Inside Graph ParseEdgelist.....
+Elapsed time: ParseEdgelist : 1662 millisecs = 1 seconds
+
+In updateNodeInDegreeOutDegree: Update Outdegree first:
+In updateNodeInDegreeOutDegree: Update Indegree:
+Total (initial):: In-Degree = 899050, Out-Degree = 899050
+Elapsed time: 0-1 : 1 seconds
+Elapsed time: 1-2 : 1 seconds
+Elapsed time: 2-3 : 0 seconds
+
+Initialized Graph. Let us update the indegree and out-degrees... 
+Graph init done...
+calling InitializeFitness...
+final graph size is 537112 from initial_graph_size of 491532.
+ populated out degree array.
+ Entering loop for year = 1983
+Elapsed time: 70-71: total : 0.309 secs, iter cost : 0 seconds
+
+Elapsed time: 71-72: total : 0.315 secs, iter cost : 0 seconds
+
+Elapsed time: 72-73: total : 12 millisecs, iter cost : 12 mseconds
+
+num_new_nodes = 14746, current_graph_size = 491532, growth rate = 0.030000 
+Elapsed time: 73-74: total : 0 millisecs, iter cost : 0 mseconds
+
+Elapsed time: 74-75: total : 15 millisecs, iter cost : 15 mseconds
+
+all new nodes initialized with years and mapped. FillSameYearSourceNodes with new_nodes_vec.size() = 14746
+checking same_year_source_nodes size.
+Elapsed time: 75-76: total : 0 millisecs, iter cost : 0 mseconds
+
+new_nodes_vec.size() b4 : 14746
+
+updated  updateGraphAttributesGeneratorNode .... 
+Elapsed time: 76-77: total : 38 millisecs, iter cost : 38 mseconds
+
+continuous_node_mapping.size() b5 : 506278, reverse_continuous_node_mapping size = 506278
+
+Inside optimized buildOneNodeConnections...
+Initial Free: 80526.5 MB / 81079.4 MB
+
+[prepareGraph] num_vertices = 491532
+
+[prepareGraph] edges = 899050, offsets = 491533 (should be V+1 = 491533)
+
+[prepareGraph] num_vertices = 491532
+
+[prepareGraph] edges = 899050, offsets = 491533 (should be V+1 = 491533)
+
+Year 1983: 14746 new nodes, 285410 new edges
+
+Elapsed time: 78-781 : total : 5.634 secs,  this iter cost : 5.634 seconds
+
+Elapsed time: 78-79 : total : 5.764 secs, this iter cost : 5.764 seconds
+
+updateNodeInDegreeOutDegree(year=1983): updated 14746 out-degrees, 180536 in-degrees
+Elapsed time: 79-81 : total : 0.163 secs, this iter cost : 0 seconds
+
+Elapsed time: 79-80 : total : 0.09 secs, this iter cost : 0 seconds
+
+Elapsed time: 80-81 : total : 0.073 secs, this iter cost : 0 seconds
+
+Elapsed time: 70-81 : total : 6.618 secs, this iter cost : 6 seconds
+
+ Entering loop for year = 1984
+Elapsed time: 70-71: total : 0.589 secs, iter cost : 0 seconds
+
+Elapsed time: 71-72: total : 0.631 secs, iter cost : 0 seconds
+
+Elapsed time: 72-73: total : 24 millisecs, iter cost : 12 mseconds
+
+num_new_nodes = 15189, current_graph_size = 506278, growth rate = 0.030000 
+Elapsed time: 73-74: total : 0 millisecs, iter cost : 0 mseconds
+
+Elapsed time: 74-75: total : 25 millisecs, iter cost : 10 mseconds
+
+all new nodes initialized with years and mapped. FillSameYearSourceNodes with new_nodes_vec.size() = 15189
+checking same_year_source_nodes size.
+Elapsed time: 75-76: total : 0 millisecs, iter cost : 0 mseconds
+
+new_nodes_vec.size() b4 : 15189
+
+updated  updateGraphAttributesGeneratorNode .... 
+Elapsed time: 76-77: total : 75 millisecs, iter cost : 37 mseconds
+
+continuous_node_mapping.size() b5 : 521467, reverse_continuous_node_mapping size = 521467
+
+Inside optimized buildOneNodeConnections...
+Initial Free: 80284.5 MB / 81079.4 MB
+
+[prepareGraph] num_vertices = 506278
+
+[prepareGraph] edges = 1184460, offsets = 506279 (should be V+1 = 506279)
+
+[prepareGraph] num_vertices = 506278
+
+[prepareGraph] edges = 1184460, offsets = 506279 (should be V+1 = 506279)
+
+Year 1984: 15189 new nodes, 294776 new edges
+
+Elapsed time: 78-781 : total : 11.202 secs,  this iter cost : 5.568 seconds
+
+Elapsed time: 78-79 : total : 11.495 secs, this iter cost : 5.731 seconds
+
+updateNodeInDegreeOutDegree(year=1984): updated 15189 out-degrees, 181822 in-degrees
+Elapsed time: 79-81 : total : 0.344 secs, this iter cost : 0 seconds
+
+Elapsed time: 79-80 : total : 0.196 secs, this iter cost : 0 seconds
+
+Elapsed time: 80-81 : total : 0.148 secs, this iter cost : 0 seconds
+
+Elapsed time: 70-81 : total : 13.188 secs, this iter cost : 6 seconds
+
+ Entering loop for year = 1985
+Elapsed time: 70-71: total : 0.881 secs, iter cost : 0 seconds
+
+Elapsed time: 71-72: total : 0.954 secs, iter cost : 0 seconds
+
+Elapsed time: 72-73: total : 37 millisecs, iter cost : 13 mseconds
+
+num_new_nodes = 15645, current_graph_size = 521467, growth rate = 0.030000 
+Elapsed time: 73-74: total : 0 millisecs, iter cost : 0 mseconds
+
+Elapsed time: 74-75: total : 35 millisecs, iter cost : 10 mseconds
+
+all new nodes initialized with years and mapped. FillSameYearSourceNodes with new_nodes_vec.size() = 15645
+checking same_year_source_nodes size.
+Elapsed time: 75-76: total : 0 millisecs, iter cost : 0 mseconds
+
+new_nodes_vec.size() b4 : 15645
+
+updated  updateGraphAttributesGeneratorNode .... 
+Elapsed time: 76-77: total : 113 millisecs, iter cost : 38 mseconds
+
+continuous_node_mapping.size() b5 : 537112, reverse_continuous_node_mapping size = 537112
+
+Inside optimized buildOneNodeConnections...
+Initial Free: 80268.5 MB / 81079.4 MB
+
+[prepareGraph] num_vertices = 521467
+
+[prepareGraph] edges = 1479236, offsets = 521468 (should be V+1 = 521468)
+
+[prepareGraph] num_vertices = 521467
+
+[prepareGraph] edges = 1479236, offsets = 521468 (should be V+1 = 521468)
+
+Year 1985: 15645 new nodes, 303840 new edges
+
+Elapsed time: 78-781 : total : 17.34 secs,  this iter cost : 6.138 seconds
+
+Elapsed time: 78-79 : total : 17.754 secs, this iter cost : 6.259 seconds
+
+updateNodeInDegreeOutDegree(year=1985): updated 15645 out-degrees, 183071 in-degrees
+Elapsed time: 79-81 : total : 0.537 secs, this iter cost : 0 seconds
+
+Elapsed time: 79-80 : total : 0.311 secs, this iter cost : 0 seconds
+
+Elapsed time: 80-81 : total : 0.225 secs, this iter cost : 0 seconds
+
+Elapsed time: 70-81 : total : 20.319 secs, this iter cost : 7 seconds
+
+Elapsed time: 7-8 :  20 seconds
+
+compute done:: graph size = 537112
+Elapsed time: 8-8.1 :  0 seconds
+
+Writing Graph to file: ./output/3y/gpu-opt-static-output-3y-3p.edgelist
+
+Elapsed time: 8.1-9 :  0 seconds
+
+Elapsed time: 9-10 :  0 seconds
+
+ graph size = 537112
+WriteAttributes: graph size = 537112
+
+Elapsed time: 0-1 : 3 seconds
+
+Elapsed time: 1-4 : 0 seconds
+
+Elapsed time: 4-7 : 0 seconds
+
+Elapsed time: 70-71: total : 0.881 seconds.
+
+Elapsed time: 71-72: total : 0.954 seconds.
+
+Elapsed time: 72-73: total : 0.037 seconds.
+
+Elapsed time: 73-74: total : 0 seconds.
+
+Elapsed time: 74-75: total : 0.035 seconds.
+
+Elapsed time: 75-76: total : 0 seconds.
+
+Elapsed time: 76-77: total : 0.113 seconds.
+
+Elapsed time: 77-79: total : 17.754 seconds.
+
+Elapsed time: 79-81 : total : 0.537 seconds.
+
+Elapsed time: 79-80 : total : 0.311 seconds.
+
+Elapsed time: 80-81 : total : 0.225 seconds.
+
+Elapsed time: 70-81 : total : 20.319 seconds.
+
+Elapsed time: 7-8 : 20 seconds
+
+Elapsed time: 8-8.1 :  0 seconds
+
+Elapsed time: 8.1-9 :  0 seconds
+
+Elapsed time: 9-10 : 0 seconds
+
+Elapsed time: 11-12 : 0 seconds
+
+Elapsed time: 10-12 : 1 seconds
+
+Elapsed time: 0-7 : 3 seconds
+
+Elapsed time: 7-8 : 20 seconds
+
+Elapsed time: 8-12 : 1 seconds
+
+E2E Time for num_cycles = 3 with growth_rate = 3 % = 27 seconds.
+Generating '/tmp/nsys-report-fc6a.qdstrm'
+[1/7] [0%                          ] nsys-pa-3y-3p.nsys-rep[1/7] [0%                          ] nsys-pa-3y-3p.nsys-rep[1/7] [0%                          ] nsys-pa-3y-3p.nsys-rep[1/7] [9%                          ] nsys-pa-3y-3p.nsys-rep[1/7] [8%                          ] nsys-pa-3y-3p.nsys-rep[1/7] [12%                         ] nsys-pa-3y-3p.nsys-rep[1/7] [13%                         ] nsys-pa-3y-3p.nsys-rep[1/7] [12%                         ] nsys-pa-3y-3p.nsys-rep[1/7] [11%                         ] nsys-pa-3y-3p.nsys-rep[1/7] [10%                         ] nsys-pa-3y-3p.nsys-rep[1/7] [9%                          ] nsys-pa-3y-3p.nsys-rep[1/7] [8%                          ] nsys-pa-3y-3p.nsys-rep[1/7] [7%                          ] nsys-pa-3y-3p.nsys-rep[1/7] [6%                          ] nsys-pa-3y-3p.nsys-rep[1/7] [5%                          ] nsys-pa-3y-3p.nsys-rep[1/7] [5%                          ] nsys-pa-3y-3p.nsys-rep[1/7] [6%                          ] nsys-pa-3y-3p.nsys-rep[1/7] [7%                          ] nsys-pa-3y-3p.nsys-rep[1/7] [8%                          ] nsys-pa-3y-3p.nsys-rep[1/7] [9%                          ] nsys-pa-3y-3p.nsys-rep[1/7] [10%                         ] nsys-pa-3y-3p.nsys-rep[1/7] [11%                         ] nsys-pa-3y-3p.nsys-rep[1/7] [12%                         ] nsys-pa-3y-3p.nsys-rep[1/7] [13%                         ] nsys-pa-3y-3p.nsys-rep[1/7] [14%                         ] nsys-pa-3y-3p.nsys-rep[1/7] [=15%                        ] nsys-pa-3y-3p.nsys-rep[1/7] [=16%                        ] nsys-pa-3y-3p.nsys-rep[1/7] [=17%                        ] nsys-pa-3y-3p.nsys-rep[1/7] [==18%                       ] nsys-pa-3y-3p.nsys-rep[1/7] [==19%                       ] nsys-pa-3y-3p.nsys-rep[1/7] [==20%                       ] nsys-pa-3y-3p.nsys-rep[1/7] [==21%                       ] nsys-pa-3y-3p.nsys-rep[1/7] [===22%                      ] nsys-pa-3y-3p.nsys-rep[1/7] [===23%                      ] nsys-pa-3y-3p.nsys-rep[1/7] [===24%                      ] nsys-pa-3y-3p.nsys-rep[1/7] [====25%                     ] nsys-pa-3y-3p.nsys-rep[1/7] [====26%                     ] nsys-pa-3y-3p.nsys-rep[1/7] [====27%                     ] nsys-pa-3y-3p.nsys-rep[1/7] [====28%                     ] nsys-pa-3y-3p.nsys-rep[1/7] [=====29%                    ] nsys-pa-3y-3p.nsys-rep[1/7] [=====30%                    ] nsys-pa-3y-3p.nsys-rep[1/7] [=====31%                    ] nsys-pa-3y-3p.nsys-rep[1/7] [=====32%                    ] nsys-pa-3y-3p.nsys-rep[1/7] [======33%                   ] nsys-pa-3y-3p.nsys-rep[1/7] [======34%                   ] nsys-pa-3y-3p.nsys-rep[1/7] [======35%                   ] nsys-pa-3y-3p.nsys-rep[1/7] [=======36%                  ] nsys-pa-3y-3p.nsys-rep[1/7] [=======37%                  ] nsys-pa-3y-3p.nsys-rep[1/7] [=======38%                  ] nsys-pa-3y-3p.nsys-rep[1/7] [=======39%                  ] nsys-pa-3y-3p.nsys-rep[1/7] [========40%                 ] nsys-pa-3y-3p.nsys-rep[1/7] [========41%                 ] nsys-pa-3y-3p.nsys-rep[1/7] [========42%                 ] nsys-pa-3y-3p.nsys-rep[1/7] [=========43%                ] nsys-pa-3y-3p.nsys-rep[1/7] [=========44%                ] nsys-pa-3y-3p.nsys-rep[1/7] [=========45%                ] nsys-pa-3y-3p.nsys-rep[1/7] [=========46%                ] nsys-pa-3y-3p.nsys-rep[1/7] [==========47%               ] nsys-pa-3y-3p.nsys-rep[1/7] [==========48%               ] nsys-pa-3y-3p.nsys-rep[1/7] [==========49%               ] nsys-pa-3y-3p.nsys-rep[1/7] [===========50%              ] nsys-pa-3y-3p.nsys-rep[1/7] [===========51%              ] nsys-pa-3y-3p.nsys-rep[1/7] [===========52%              ] nsys-pa-3y-3p.nsys-rep[1/7] [===========53%              ] nsys-pa-3y-3p.nsys-rep[1/7] [============54%             ] nsys-pa-3y-3p.nsys-rep[1/7] [============55%             ] nsys-pa-3y-3p.nsys-rep[1/7] [============56%             ] nsys-pa-3y-3p.nsys-rep[1/7] [============57%             ] nsys-pa-3y-3p.nsys-rep[1/7] [=============58%            ] nsys-pa-3y-3p.nsys-rep[1/7] [=============59%            ] nsys-pa-3y-3p.nsys-rep[1/7] [=============60%            ] nsys-pa-3y-3p.nsys-rep[1/7] [==============61%           ] nsys-pa-3y-3p.nsys-rep[1/7] [==============62%           ] nsys-pa-3y-3p.nsys-rep[1/7] [==============63%           ] nsys-pa-3y-3p.nsys-rep[1/7] [==============64%           ] nsys-pa-3y-3p.nsys-rep[1/7] [===============65%          ] nsys-pa-3y-3p.nsys-rep[1/7] [===============66%          ] nsys-pa-3y-3p.nsys-rep[1/7] [===============67%          ] nsys-pa-3y-3p.nsys-rep[1/7] [================68%         ] nsys-pa-3y-3p.nsys-rep[1/7] [================69%         ] nsys-pa-3y-3p.nsys-rep[1/7] [================70%         ] nsys-pa-3y-3p.nsys-rep[1/7] [================71%         ] nsys-pa-3y-3p.nsys-rep[1/7] [=================72%        ] nsys-pa-3y-3p.nsys-rep[1/7] [=================73%        ] nsys-pa-3y-3p.nsys-rep[1/7] [=================74%        ] nsys-pa-3y-3p.nsys-rep[1/7] [==================75%       ] nsys-pa-3y-3p.nsys-rep[1/7] [==================76%       ] nsys-pa-3y-3p.nsys-rep[1/7] [==================77%       ] nsys-pa-3y-3p.nsys-rep[1/7] [==================78%       ] nsys-pa-3y-3p.nsys-rep[1/7] [===================79%      ] nsys-pa-3y-3p.nsys-rep[1/7] [===================80%      ] nsys-pa-3y-3p.nsys-rep[1/7] [===================81%      ] nsys-pa-3y-3p.nsys-rep[1/7] [===================82%      ] nsys-pa-3y-3p.nsys-rep[1/7] [====================83%     ] nsys-pa-3y-3p.nsys-rep[1/7] [====================84%     ] nsys-pa-3y-3p.nsys-rep[1/7] [====================85%     ] nsys-pa-3y-3p.nsys-rep[1/7] [========================100%] nsys-pa-3y-3p.nsys-rep[1/7] [========================100%] nsys-pa-3y-3p.nsys-rep
+[2/7] [0%                          ] nsys-pa-3y-3p.sqlite[2/7] [1%                          ] nsys-pa-3y-3p.sqlite[2/7] [2%                          ] nsys-pa-3y-3p.sqlite[2/7] [3%                          ] nsys-pa-3y-3p.sqlite[2/7] [4%                          ] nsys-pa-3y-3p.sqlite[2/7] [5%                          ] nsys-pa-3y-3p.sqlite[2/7] [6%                          ] nsys-pa-3y-3p.sqlite[2/7] [7%                          ] nsys-pa-3y-3p.sqlite[2/7] [8%                          ] nsys-pa-3y-3p.sqlite[2/7] [9%                          ] nsys-pa-3y-3p.sqlite[2/7] [10%                         ] nsys-pa-3y-3p.sqlite[2/7] [11%                         ] nsys-pa-3y-3p.sqlite[2/7] [12%                         ] nsys-pa-3y-3p.sqlite[2/7] [13%                         ] nsys-pa-3y-3p.sqlite[2/7] [14%                         ] nsys-pa-3y-3p.sqlite[2/7] [=15%                        ] nsys-pa-3y-3p.sqlite[2/7] [=16%                        ] nsys-pa-3y-3p.sqlite[2/7] [=17%                        ] nsys-pa-3y-3p.sqlite[2/7] [==18%                       ] nsys-pa-3y-3p.sqlite[2/7] [==19%                       ] nsys-pa-3y-3p.sqlite[2/7] [==20%                       ] nsys-pa-3y-3p.sqlite[2/7] [==21%                       ] nsys-pa-3y-3p.sqlite[2/7] [===22%                      ] nsys-pa-3y-3p.sqlite[2/7] [===23%                      ] nsys-pa-3y-3p.sqlite[2/7] [===24%                      ] nsys-pa-3y-3p.sqlite[2/7] [====25%                     ] nsys-pa-3y-3p.sqlite[2/7] [====26%                     ] nsys-pa-3y-3p.sqlite[2/7] [====27%                     ] nsys-pa-3y-3p.sqlite[2/7] [====28%                     ] nsys-pa-3y-3p.sqlite[2/7] [=====29%                    ] nsys-pa-3y-3p.sqlite[2/7] [=====30%                    ] nsys-pa-3y-3p.sqlite[2/7] [=====31%                    ] nsys-pa-3y-3p.sqlite[2/7] [=====32%                    ] nsys-pa-3y-3p.sqlite[2/7] [======33%                   ] nsys-pa-3y-3p.sqlite[2/7] [======34%                   ] nsys-pa-3y-3p.sqlite[2/7] [======35%                   ] nsys-pa-3y-3p.sqlite[2/7] [=======36%                  ] nsys-pa-3y-3p.sqlite[2/7] [=======37%                  ] nsys-pa-3y-3p.sqlite[2/7] [=======38%                  ] nsys-pa-3y-3p.sqlite[2/7] [=======39%                  ] nsys-pa-3y-3p.sqlite[2/7] [========40%                 ] nsys-pa-3y-3p.sqlite[2/7] [========41%                 ] nsys-pa-3y-3p.sqlite[2/7] [========42%                 ] nsys-pa-3y-3p.sqlite[2/7] [=========43%                ] nsys-pa-3y-3p.sqlite[2/7] [=========44%                ] nsys-pa-3y-3p.sqlite[2/7] [=========45%                ] nsys-pa-3y-3p.sqlite[2/7] [=========46%                ] nsys-pa-3y-3p.sqlite[2/7] [==========47%               ] nsys-pa-3y-3p.sqlite[2/7] [==========48%               ] nsys-pa-3y-3p.sqlite[2/7] [==========49%               ] nsys-pa-3y-3p.sqlite[2/7] [===========50%              ] nsys-pa-3y-3p.sqlite[2/7] [===========51%              ] nsys-pa-3y-3p.sqlite[2/7] [===========52%              ] nsys-pa-3y-3p.sqlite[2/7] [===========53%              ] nsys-pa-3y-3p.sqlite[2/7] [============54%             ] nsys-pa-3y-3p.sqlite[2/7] [============55%             ] nsys-pa-3y-3p.sqlite[2/7] [============56%             ] nsys-pa-3y-3p.sqlite[2/7] [============57%             ] nsys-pa-3y-3p.sqlite[2/7] [=============58%            ] nsys-pa-3y-3p.sqlite[2/7] [=============59%            ] nsys-pa-3y-3p.sqlite[2/7] [=============60%            ] nsys-pa-3y-3p.sqlite[2/7] [==============61%           ] nsys-pa-3y-3p.sqlite[2/7] [==============62%           ] nsys-pa-3y-3p.sqlite[2/7] [==============63%           ] nsys-pa-3y-3p.sqlite[2/7] [==============64%           ] nsys-pa-3y-3p.sqlite[2/7] [===============65%          ] nsys-pa-3y-3p.sqlite[2/7] [===============66%          ] nsys-pa-3y-3p.sqlite[2/7] [===============67%          ] nsys-pa-3y-3p.sqlite[2/7] [================68%         ] nsys-pa-3y-3p.sqlite[2/7] [================69%         ] nsys-pa-3y-3p.sqlite[2/7] [================70%         ] nsys-pa-3y-3p.sqlite[2/7] [================71%         ] nsys-pa-3y-3p.sqlite[2/7] [=================72%        ] nsys-pa-3y-3p.sqlite[2/7] [=================73%        ] nsys-pa-3y-3p.sqlite[2/7] [=================74%        ] nsys-pa-3y-3p.sqlite[2/7] [==================75%       ] nsys-pa-3y-3p.sqlite[2/7] [==================76%       ] nsys-pa-3y-3p.sqlite[2/7] [==================77%       ] nsys-pa-3y-3p.sqlite[2/7] [==================78%       ] nsys-pa-3y-3p.sqlite[2/7] [===================79%      ] nsys-pa-3y-3p.sqlite[2/7] [===================80%      ] nsys-pa-3y-3p.sqlite[2/7] [===================81%      ] nsys-pa-3y-3p.sqlite[2/7] [===================82%      ] nsys-pa-3y-3p.sqlite[2/7] [====================83%     ] nsys-pa-3y-3p.sqlite[2/7] [====================84%     ] nsys-pa-3y-3p.sqlite[2/7] [====================85%     ] nsys-pa-3y-3p.sqlite[2/7] [=====================86%    ] nsys-pa-3y-3p.sqlite[2/7] [=====================87%    ] nsys-pa-3y-3p.sqlite[2/7] [=====================88%    ] nsys-pa-3y-3p.sqlite[2/7] [=====================89%    ] nsys-pa-3y-3p.sqlite[2/7] [======================90%   ] nsys-pa-3y-3p.sqlite[2/7] [======================91%   ] nsys-pa-3y-3p.sqlite[2/7] [======================92%   ] nsys-pa-3y-3p.sqlite[2/7] [=======================93%  ] nsys-pa-3y-3p.sqlite[2/7] [=======================94%  ] nsys-pa-3y-3p.sqlite[2/7] [=======================95%  ] nsys-pa-3y-3p.sqlite[2/7] [=======================96%  ] nsys-pa-3y-3p.sqlite[2/7] [========================97% ] nsys-pa-3y-3p.sqlite[2/7] [========================98% ] nsys-pa-3y-3p.sqlite[2/7] [========================99% ] nsys-pa-3y-3p.sqlite[2/7] [========================100%] nsys-pa-3y-3p.sqlite[2/7] [========================100%] nsys-pa-3y-3p.sqlite
+[3/7] Executing 'nvtx_sum' stats report
+
+ Time (%)  Total Time (ns)  Instances  Avg (ns)  Med (ns)  Min (ns)  Max (ns)   StdDev (ns)   Style              Range            
+ --------  ---------------  ---------  --------  --------  --------  ---------  -----------  -------  ----------------------------
+     99.9      214,277,347     45,586   4,700.5   4,531.0     4,132  1,243,777      6,198.4  PushPop  CCCL:cub::DeviceFor::Bulk   
+      0.1          143,089          6  23,848.2  22,443.0    20,571     29,269      3,353.4  PushPop  CCCL:thrust::copy           
+      0.0          103,687          3  34,562.3  30,550.0    30,029     43,108      7,405.3  PushPop  CCCL:uninitialized_fill_n   
+      0.0           71,226          3  23,742.0  22,434.0    21,092     27,700      3,492.8  PushPop  CCCL:thrust::two_system_copy
+
+[4/7] Executing 'cuda_api_sum' stats report
+
+ Time (%)  Total Time (ns)  Num Calls    Avg (ns)      Med (ns)    Min (ns)    Max (ns)      StdDev (ns)                Name             
+ --------  ---------------  ---------  -------------  -----------  --------  -------------  -------------  ------------------------------
+     29.0    4,333,992,527    729,352        5,942.3      3,425.0     2,430      4,458,930       12,083.4  cudaMemcpy                    
+     25.1    3,744,289,814         21  178,299,515.0  1,246,019.0     5,464  1,375,733,497  396,863,950.3  cudaStreamSynchronize         
+     20.1    2,996,822,267    547,080        5,477.9      4,668.0     3,723     12,930,559       20,719.9  cudaFree                      
+     19.4    2,902,201,082    638,237        4,547.2      3,738.0     1,901     19,575,804       30,633.2  cudaMalloc                    
+      1.8      273,013,652     91,184        2,994.1      2,813.0     2,420      1,492,842        5,033.3  cudaMemset                    
+      1.6      231,415,964         36    6,428,221.2    120,291.0    12,728     86,055,519   21,190,599.8  cudaMemcpyAsync               
+      1.4      205,054,560     45,613        4,495.5      2,705.0     2,367     67,883,359      318,461.2  cudaLaunchKernel              
+      0.9      133,448,977          3   44,482,992.3     51,963.0    50,342    133,346,672   76,958,204.1  cudaMemGetInfo                
+      0.4       62,588,536     45,592        1,372.8        786.0       666     22,563,350      105,668.3  cudaMallocAsync_v11020        
+      0.3       42,558,267     45,586          933.6        884.0       671         47,307          420.4  cudaFreeAsync_v11020          
+      0.0          961,360          6      160,226.7    147,444.5    10,032        333,459      164,432.8  cudaDeviceSynchronize         
+      0.0          393,425         12       32,785.4     20,451.5    10,629         80,060       23,618.9  cudaMallocManaged             
+      0.0          172,658          3       57,552.7     22,162.0    20,537        129,959       62,711.0  cudaStreamCreate              
+      0.0           92,073          6       15,345.5     14,855.0     8,933         22,251        5,292.5  cudaMemsetAsync               
+      0.0           56,133          3       18,711.0     19,308.0    16,431         20,394        2,047.8  cudaStreamDestroy             
+      0.0            3,291          3        1,097.0      1,086.0     1,027          1,178           76.1  cuStreamSynchronize           
+      0.0            1,942          1        1,942.0      1,942.0     1,942          1,942            0.0  cudaGetDriverEntryPoint_v11030
+      0.0            1,707          2          853.5        853.5       848            859            7.8  cuGetProcAddress_v2           
+      0.0            1,355          1        1,355.0      1,355.0     1,355          1,355            0.0  cuInit                        
+      0.0            1,261          1        1,261.0      1,261.0     1,261          1,261            0.0  cuModuleGetLoadingMode        
+
+[5/7] Executing 'cuda_gpu_kern_sum' stats report
+
+ Time (%)  Total Time (ns)  Instances     Avg (ns)         Med (ns)       Min (ns)      Max (ns)      StdDev (ns)                                                   Name                                                
+ --------  ---------------  ---------  ---------------  ---------------  -----------  -------------  -------------  ----------------------------------------------------------------------------------------------------
+     82.1    3,306,500,906          3  1,102,166,968.7  1,029,936,419.0  900,846,336  1,375,718,151  245,537,674.1  kernelCallStage1(int, int, int, ABM *, Graph *, DeviceGraph *, DeviceGraph *, device_map<int, Node>…
+      9.8      395,240,980          3    131,746,993.3    130,333,487.0  128,993,174    135,914,319    3,670,703.2  kernelCallStage3(int, int, int, ABM *, Graph *, int, device_map<int, Node>::device_view, ABMStageSt…
+      5.6      225,908,979          3     75,302,993.0     72,471,470.0   67,395,302     86,042,207    9,640,534.7  void cuco::legacy::detail::insert<(unsigned long)128, (unsigned int)4, cuco::pair<int, int> *, cuda…
+      1.4       55,562,661     45,583          1,218.9          1,279.0        1,087          1,696           94.7  void cub::CUB_300103_SM_600::detail::for_each::static_kernel<cub::CUB_300103_SM_600::detail::for_ea…
+      1.0       38,689,755          3     12,896,585.0     13,398,377.0    8,635,077     16,656,301    4,034,086.6  kernelCallStage2(int, int, int, ABM *, Graph *, cuco::static_set_ref<int, (cuda::std::__4::thread_s…
+      0.1        3,713,442          3      1,237,814.0      1,243,169.0    1,207,745      1,262,528       27,781.3  kernelCallStage4(int, int, int, ABM *, Graph *, int, device_map<int, Node>::device_view, ABMStageSt…
+      0.0          936,834          6        156,139.0        143,040.5        5,280        329,088      164,542.5  kernel_extract_vector_sizes(device_vector *, int *, int)                                            
+      0.0          375,168          3        125,056.0        123,007.0       89,536        162,625       36,587.6  void cuco::detail::open_addressing_ns::insert_if_n<(int)1, (int)128, int *, thrust::THRUST_300103_S…
+      0.0            9,056          3          3,018.7          2,944.0        2,912          3,200          157.9  void cuco::legacy::detail::initialize<(unsigned long)256, cuda::__4::atomic<int, (cuda::std::__4::t…
+      0.0            4,192          3          1,397.3          1,440.0        1,280          1,472          102.9  void cub::CUB_300103_SM_600::detail::for_each::static_kernel<cub::CUB_300103_SM_600::detail::for_ea…
+
+[6/7] Executing 'cuda_gpu_mem_time_sum' stats report
+
+ Time (%)  Total Time (ns)   Count   Avg (ns)  Med (ns)  Min (ns)  Max (ns)   StdDev (ns)               Operation              
+ --------  ---------------  -------  --------  --------  --------  ---------  -----------  ------------------------------------
+     43.7      438,975,906  182,347   2,407.4   2,400.0     1,888     12,608        124.9  [CUDA memcpy Device-to-Host]        
+     43.1      432,845,243  547,041     791.2     768.0       703  3,449,410      7,933.2  [CUDA memcpy Host-to-Device]        
+     13.0      130,642,459   91,190   1,432.6   1,440.0       736    314,944      2,942.4  [CUDA memset]                       
+      0.2        1,845,161      660   2,795.7   2,463.0     2,207     26,624      1,614.2  [CUDA memcpy Unified Host-to-Device]
+      0.0          409,809       91   4,503.4   3,007.0     2,367     20,768      3,792.1  [CUDA memcpy Unified Device-to-Host]
+
+[7/7] Executing 'cuda_gpu_mem_size_sum' stats report
+
+ Total (MB)   Count   Avg (MB)  Med (MB)  Min (MB)  Max (MB)   StdDev (MB)               Operation              
+ ----------  -------  --------  --------  --------  ---------  -----------  ------------------------------------
+ 14,491.212   91,190     0.159     0.063     0.000  1,019.804        9.571  [CUDA memset]                       
+    237.903  547,041     0.000     0.000     0.000     42.969        0.101  [CUDA memcpy Host-to-Device]        
+     14.156      660     0.021     0.004     0.004      1.020        0.080  [CUDA memcpy Unified Host-to-Device]
+     13.636  182,347     0.000     0.000     0.000      0.501        0.003  [CUDA memcpy Device-to-Host]        
+      9.830       91     0.108     0.033     0.004      0.979        0.203  [CUDA memcpy Unified Device-to-Host]
+
+Generated:
+    /home/jmukher/workspace/uiuc/citation_abm/profile/nsys-pa-3y-3p.nsys-rep
+    /home/jmukher/workspace/uiuc/citation_abm/profile/nsys-pa-3y-3p.sqlite
+SUCCESS: 29M → profile/nsys-pa-3y-3p.nsys-rep
+Running growth rate 5% for 3 years.
+Profile output: profile/nsys-pa-3y-5p.nsys-rep
+CMD: nsys profile --trace=cuda,nvtx --stats=true --force-overwrite=true -o profile/nsys-pa-3y-5p ./abm --edgelist sj_edgelist --nodelist sj_nodelist --out-degree-bag tcen_at_least_five --recency-probabilities sj_recprob --alpha 0.5 --preferential-weight 0.33 --recency-weight 0.33 --fitness-weight 0.33 --growth-rate .05 --fully-random-citations 0.05 --num-cycles 3 --same-year-proportion 0.12 --output-file ./output/3y/gpu-opt-static-output-3y-5p.edgelist --auxiliary-information-file ./output/3y/gpu-opt-static-output-3y-5p.aux --log-file ./output/3y/nsys-gpu-opt-static-pa-3y-5p.log --num-processors 14 --log-level 1
+
+Start ABM....
+parse_args....
+edgelist....
+num-cycles....
+output-file....
+log-file = ./output/3y/nsys-gpu-opt-static-pa-3y-5p.log....
+num-processors = 14....
+log-level = 0
+Init ABM....
+Exec ABM....
+Start execute.Init Graph
+Inside  Graph ParseNodelist.....
+Populating the continuous_node mappings..
+Elapsed time: ParseNodelist : 1104 millisecs = 1 seconds
+
+Inside Graph ParseEdgelist.....
+Elapsed time: ParseEdgelist : 1577 millisecs = 1 seconds
+
+In updateNodeInDegreeOutDegree: Update Outdegree first:
+In updateNodeInDegreeOutDegree: Update Indegree:
+Total (initial):: In-Degree = 899050, Out-Degree = 899050
+Elapsed time: 0-1 : 1 seconds
+Elapsed time: 1-2 : 1 seconds
+Elapsed time: 2-3 : 0 seconds
+
+Initialized Graph. Let us update the indegree and out-degrees... 
+Graph init done...
+calling InitializeFitness...
+final graph size is 569011 from initial_graph_size of 491532.
+ populated out degree array.
+ Entering loop for year = 1983
+Elapsed time: 70-71: total : 0.244 secs, iter cost : 0 seconds
+
+Elapsed time: 71-72: total : 0.299 secs, iter cost : 0 seconds
+
+Elapsed time: 72-73: total : 12 millisecs, iter cost : 12 mseconds
+
+num_new_nodes = 24577, current_graph_size = 491532, growth rate = 0.050000 
+Elapsed time: 73-74: total : 0 millisecs, iter cost : 0 mseconds
+
+Elapsed time: 74-75: total : 23 millisecs, iter cost : 23 mseconds
+
+all new nodes initialized with years and mapped. FillSameYearSourceNodes with new_nodes_vec.size() = 24577
+checking same_year_source_nodes size.
+Elapsed time: 75-76: total : 0 millisecs, iter cost : 0 mseconds
+
+new_nodes_vec.size() b4 : 24577
+
+updated  updateGraphAttributesGeneratorNode .... 
+Elapsed time: 76-77: total : 62 millisecs, iter cost : 62 mseconds
+
+continuous_node_mapping.size() b5 : 516109, reverse_continuous_node_mapping size = 516109
+
+Inside optimized buildOneNodeConnections...
+Initial Free: 80526.5 MB / 81079.4 MB
+
+[prepareGraph] num_vertices = 491532
+
+[prepareGraph] edges = 899050, offsets = 491533 (should be V+1 = 491533)
+
+[prepareGraph] num_vertices = 491532
+
+[prepareGraph] edges = 899050, offsets = 491533 (should be V+1 = 491533)
+
+Year 1983: 24577 new nodes, 480689 new edges
+
+Elapsed time: 78-781 : total : 9.586 secs,  this iter cost : 9.586 seconds
+
+Elapsed time: 78-79 : total : 9.786 secs, this iter cost : 9.786 seconds
+
+updateNodeInDegreeOutDegree(year=1983): updated 24577 out-degrees, 260080 in-degrees
+Elapsed time: 79-81 : total : 0.251 secs, this iter cost : 0 seconds
+
+Elapsed time: 79-80 : total : 0.128 secs, this iter cost : 0 seconds
+
+Elapsed time: 80-81 : total : 0.123 secs, this iter cost : 0 seconds
+
+Elapsed time: 70-81 : total : 10.68 secs, this iter cost : 10 seconds
+
+ Entering loop for year = 1984
+Elapsed time: 70-71: total : 0.523 secs, iter cost : 0 seconds
+
+Elapsed time: 71-72: total : 0.593 secs, iter cost : 0 seconds
+
+Elapsed time: 72-73: total : 24 millisecs, iter cost : 12 mseconds
+
+num_new_nodes = 25806, current_graph_size = 516109, growth rate = 0.050000 
+Elapsed time: 73-74: total : 0 millisecs, iter cost : 0 mseconds
+
+Elapsed time: 74-75: total : 40 millisecs, iter cost : 17 mseconds
+
+all new nodes initialized with years and mapped. FillSameYearSourceNodes with new_nodes_vec.size() = 25806
+checking same_year_source_nodes size.
+Elapsed time: 75-76: total : 0 millisecs, iter cost : 0 mseconds
+
+new_nodes_vec.size() b4 : 25806
+
+updated  updateGraphAttributesGeneratorNode .... 
+Elapsed time: 76-77: total : 126 millisecs, iter cost : 64 mseconds
+
+continuous_node_mapping.size() b5 : 541915, reverse_continuous_node_mapping size = 541915
+
+Inside optimized buildOneNodeConnections...
+Initial Free: 80276.5 MB / 81079.4 MB
+
+[prepareGraph] num_vertices = 516109
+
+[prepareGraph] edges = 1379739, offsets = 516110 (should be V+1 = 516110)
+
+[prepareGraph] num_vertices = 516109
+
+[prepareGraph] edges = 1379739, offsets = 516110 (should be V+1 = 516110)
+
+Year 1984: 25806 new nodes, 505190 new edges
+
+Elapsed time: 78-781 : total : 19.572 secs,  this iter cost : 9.986 seconds
+
+Elapsed time: 78-79 : total : 19.971 secs, this iter cost : 10.185 seconds
+
+updateNodeInDegreeOutDegree(year=1984): updated 25806 out-degrees, 267770 in-degrees
+Elapsed time: 79-81 : total : 0.498 secs, this iter cost : 0 seconds
+
+Elapsed time: 79-80 : total : 0.246 secs, this iter cost : 0 seconds
+
+Elapsed time: 80-81 : total : 0.252 secs, this iter cost : 0 seconds
+
+Elapsed time: 70-81 : total : 21.782 secs, this iter cost : 11 seconds
+
+ Entering loop for year = 1985
+Elapsed time: 70-71: total : 0.811 secs, iter cost : 0 seconds
+
+Elapsed time: 71-72: total : 0.899 secs, iter cost : 0 seconds
+
+Elapsed time: 72-73: total : 36 millisecs, iter cost : 12 mseconds
+
+num_new_nodes = 27096, current_graph_size = 541915, growth rate = 0.050000 
+Elapsed time: 73-74: total : 0 millisecs, iter cost : 0 mseconds
+
+Elapsed time: 74-75: total : 58 millisecs, iter cost : 18 mseconds
+
+all new nodes initialized with years and mapped. FillSameYearSourceNodes with new_nodes_vec.size() = 27096
+checking same_year_source_nodes size.
+Elapsed time: 75-76: total : 0 millisecs, iter cost : 0 mseconds
+
+new_nodes_vec.size() b4 : 27096
+
+updated  updateGraphAttributesGeneratorNode .... 
+Elapsed time: 76-77: total : 193 millisecs, iter cost : 67 mseconds
+
+continuous_node_mapping.size() b5 : 569011, reverse_continuous_node_mapping size = 569011
+
+Inside optimized buildOneNodeConnections...
+Initial Free: 80250.5 MB / 81079.4 MB
+
+[prepareGraph] num_vertices = 541915
+
+[prepareGraph] edges = 1884929, offsets = 541916 (should be V+1 = 541916)
+
+[prepareGraph] num_vertices = 541915
+
+[prepareGraph] edges = 1884929, offsets = 541916 (should be V+1 = 541916)
+
+Year 1985: 27096 new nodes, 530461 new edges
+
+Elapsed time: 78-781 : total : 30.177 secs,  this iter cost : 10.605 seconds
+
+Elapsed time: 78-79 : total : 30.76 secs, this iter cost : 10.789 seconds
+
+updateNodeInDegreeOutDegree(year=1985): updated 27096 out-degrees, 272991 in-degrees
+Elapsed time: 79-81 : total : 0.754 secs, this iter cost : 0 seconds
+
+Elapsed time: 79-80 : total : 0.366 secs, this iter cost : 0 seconds
+
+Elapsed time: 80-81 : total : 0.387 secs, this iter cost : 0 seconds
+
+Elapsed time: 70-81 : total : 33.521 secs, this iter cost : 11 seconds
+
+Elapsed time: 7-8 :  33 seconds
+
+compute done:: graph size = 569011
+Elapsed time: 8-8.1 :  0 seconds
+
+Writing Graph to file: ./output/3y/gpu-opt-static-output-3y-5p.edgelist
+
+Elapsed time: 8.1-9 :  0 seconds
+
+Elapsed time: 9-10 :  0 seconds
+
+ graph size = 569011
+WriteAttributes: graph size = 569011
+
+Elapsed time: 0-1 : 3 seconds
+
+Elapsed time: 1-4 : 0 seconds
+
+Elapsed time: 4-7 : 0 seconds
+
+Elapsed time: 70-71: total : 0.811 seconds.
+
+Elapsed time: 71-72: total : 0.899 seconds.
+
+Elapsed time: 72-73: total : 0.036 seconds.
+
+Elapsed time: 73-74: total : 0 seconds.
+
+Elapsed time: 74-75: total : 0.058 seconds.
+
+Elapsed time: 75-76: total : 0 seconds.
+
+Elapsed time: 76-77: total : 0.193 seconds.
+
+Elapsed time: 77-79: total : 30.76 seconds.
+
+Elapsed time: 79-81 : total : 0.754 seconds.
+
+Elapsed time: 79-80 : total : 0.366 seconds.
+
+Elapsed time: 80-81 : total : 0.387 seconds.
+
+Elapsed time: 70-81 : total : 33.521 seconds.
+
+Elapsed time: 7-8 : 33 seconds
+
+Elapsed time: 8-8.1 :  0 seconds
+
+Elapsed time: 8.1-9 :  0 seconds
+
+Elapsed time: 9-10 : 0 seconds
+
+Elapsed time: 11-12 : 0 seconds
+
+Elapsed time: 10-12 : 0 seconds
+
+Elapsed time: 0-7 : 3 seconds
+
+Elapsed time: 7-8 : 33 seconds
+
+Elapsed time: 8-12 : 1 seconds
+
+E2E Time for num_cycles = 3 with growth_rate = 5 % = 40 seconds.
+Generating '/tmp/nsys-report-1c87.qdstrm'
+[1/7] [0%                          ] nsys-pa-3y-5p.nsys-rep[1/7] [0%                          ] nsys-pa-3y-5p.nsys-rep[1/7] [9%                          ] nsys-pa-3y-5p.nsys-rep[1/7] [8%                          ] nsys-pa-3y-5p.nsys-rep[1/7] [12%                         ] nsys-pa-3y-5p.nsys-rep[1/7] [=15%                        ] nsys-pa-3y-5p.nsys-rep[1/7] [14%                         ] nsys-pa-3y-5p.nsys-rep[1/7] [13%                         ] nsys-pa-3y-5p.nsys-rep[1/7] [12%                         ] nsys-pa-3y-5p.nsys-rep[1/7] [=16%                        ] nsys-pa-3y-5p.nsys-rep[1/7] [=15%                        ] nsys-pa-3y-5p.nsys-rep[1/7] [14%                         ] nsys-pa-3y-5p.nsys-rep[1/7] [=15%                        ] nsys-pa-3y-5p.nsys-rep[1/7] [14%                         ] nsys-pa-3y-5p.nsys-rep[1/7] [13%                         ] nsys-pa-3y-5p.nsys-rep[1/7] [12%                         ] nsys-pa-3y-5p.nsys-rep[1/7] [11%                         ] nsys-pa-3y-5p.nsys-rep[1/7] [10%                         ] nsys-pa-3y-5p.nsys-rep[1/7] [9%                          ] nsys-pa-3y-5p.nsys-rep[1/7] [8%                          ] nsys-pa-3y-5p.nsys-rep[1/7] [7%                          ] nsys-pa-3y-5p.nsys-rep[1/7] [6%                          ] nsys-pa-3y-5p.nsys-rep[1/7] [5%                          ] nsys-pa-3y-5p.nsys-rep[1/7] [5%                          ] nsys-pa-3y-5p.nsys-rep[1/7] [6%                          ] nsys-pa-3y-5p.nsys-rep[1/7] [7%                          ] nsys-pa-3y-5p.nsys-rep[1/7] [8%                          ] nsys-pa-3y-5p.nsys-rep[1/7] [9%                          ] nsys-pa-3y-5p.nsys-rep[1/7] [10%                         ] nsys-pa-3y-5p.nsys-rep[1/7] [11%                         ] nsys-pa-3y-5p.nsys-rep[1/7] [12%                         ] nsys-pa-3y-5p.nsys-rep[1/7] [13%                         ] nsys-pa-3y-5p.nsys-rep[1/7] [14%                         ] nsys-pa-3y-5p.nsys-rep[1/7] [=15%                        ] nsys-pa-3y-5p.nsys-rep[1/7] [=16%                        ] nsys-pa-3y-5p.nsys-rep[1/7] [=17%                        ] nsys-pa-3y-5p.nsys-rep[1/7] [==18%                       ] nsys-pa-3y-5p.nsys-rep[1/7] [==19%                       ] nsys-pa-3y-5p.nsys-rep[1/7] [==20%                       ] nsys-pa-3y-5p.nsys-rep[1/7] [==21%                       ] nsys-pa-3y-5p.nsys-rep[1/7] [===22%                      ] nsys-pa-3y-5p.nsys-rep[1/7] [===23%                      ] nsys-pa-3y-5p.nsys-rep[1/7] [===24%                      ] nsys-pa-3y-5p.nsys-rep[1/7] [====25%                     ] nsys-pa-3y-5p.nsys-rep[1/7] [====26%                     ] nsys-pa-3y-5p.nsys-rep[1/7] [====27%                     ] nsys-pa-3y-5p.nsys-rep[1/7] [====28%                     ] nsys-pa-3y-5p.nsys-rep[1/7] [=====29%                    ] nsys-pa-3y-5p.nsys-rep[1/7] [=====30%                    ] nsys-pa-3y-5p.nsys-rep[1/7] [=====31%                    ] nsys-pa-3y-5p.nsys-rep[1/7] [=====32%                    ] nsys-pa-3y-5p.nsys-rep[1/7] [======33%                   ] nsys-pa-3y-5p.nsys-rep[1/7] [======34%                   ] nsys-pa-3y-5p.nsys-rep[1/7] [======35%                   ] nsys-pa-3y-5p.nsys-rep[1/7] [=======36%                  ] nsys-pa-3y-5p.nsys-rep[1/7] [=======37%                  ] nsys-pa-3y-5p.nsys-rep[1/7] [=======38%                  ] nsys-pa-3y-5p.nsys-rep[1/7] [=======39%                  ] nsys-pa-3y-5p.nsys-rep[1/7] [========40%                 ] nsys-pa-3y-5p.nsys-rep[1/7] [========41%                 ] nsys-pa-3y-5p.nsys-rep[1/7] [========42%                 ] nsys-pa-3y-5p.nsys-rep[1/7] [=========43%                ] nsys-pa-3y-5p.nsys-rep[1/7] [=========44%                ] nsys-pa-3y-5p.nsys-rep[1/7] [=========45%                ] nsys-pa-3y-5p.nsys-rep[1/7] [=========46%                ] nsys-pa-3y-5p.nsys-rep[1/7] [==========47%               ] nsys-pa-3y-5p.nsys-rep[1/7] [==========48%               ] nsys-pa-3y-5p.nsys-rep[1/7] [==========49%               ] nsys-pa-3y-5p.nsys-rep[1/7] [===========50%              ] nsys-pa-3y-5p.nsys-rep[1/7] [===========51%              ] nsys-pa-3y-5p.nsys-rep[1/7] [===========52%              ] nsys-pa-3y-5p.nsys-rep[1/7] [===========53%              ] nsys-pa-3y-5p.nsys-rep[1/7] [============54%             ] nsys-pa-3y-5p.nsys-rep[1/7] [============55%             ] nsys-pa-3y-5p.nsys-rep[1/7] [============56%             ] nsys-pa-3y-5p.nsys-rep[1/7] [============57%             ] nsys-pa-3y-5p.nsys-rep[1/7] [=============58%            ] nsys-pa-3y-5p.nsys-rep[1/7] [=============59%            ] nsys-pa-3y-5p.nsys-rep[1/7] [=============60%            ] nsys-pa-3y-5p.nsys-rep[1/7] [==============61%           ] nsys-pa-3y-5p.nsys-rep[1/7] [==============62%           ] nsys-pa-3y-5p.nsys-rep[1/7] [==============63%           ] nsys-pa-3y-5p.nsys-rep[1/7] [==============64%           ] nsys-pa-3y-5p.nsys-rep[1/7] [===============65%          ] nsys-pa-3y-5p.nsys-rep[1/7] [===============66%          ] nsys-pa-3y-5p.nsys-rep[1/7] [===============67%          ] nsys-pa-3y-5p.nsys-rep[1/7] [================68%         ] nsys-pa-3y-5p.nsys-rep[1/7] [================69%         ] nsys-pa-3y-5p.nsys-rep[1/7] [================70%         ] nsys-pa-3y-5p.nsys-rep[1/7] [================71%         ] nsys-pa-3y-5p.nsys-rep[1/7] [=================72%        ] nsys-pa-3y-5p.nsys-rep[1/7] [=================73%        ] nsys-pa-3y-5p.nsys-rep[1/7] [=================74%        ] nsys-pa-3y-5p.nsys-rep[1/7] [==================75%       ] nsys-pa-3y-5p.nsys-rep[1/7] [==================76%       ] nsys-pa-3y-5p.nsys-rep[1/7] [==================77%       ] nsys-pa-3y-5p.nsys-rep[1/7] [==================78%       ] nsys-pa-3y-5p.nsys-rep[1/7] [===================79%      ] nsys-pa-3y-5p.nsys-rep[1/7] [===================80%      ] nsys-pa-3y-5p.nsys-rep[1/7] [===================81%      ] nsys-pa-3y-5p.nsys-rep[1/7] [===================82%      ] nsys-pa-3y-5p.nsys-rep[1/7] [====================83%     ] nsys-pa-3y-5p.nsys-rep[1/7] [====================84%     ] nsys-pa-3y-5p.nsys-rep[1/7] [====================85%     ] nsys-pa-3y-5p.nsys-rep[1/7] [========================100%] nsys-pa-3y-5p.nsys-rep[1/7] [========================100%] nsys-pa-3y-5p.nsys-rep
+[2/7] [0%                          ] nsys-pa-3y-5p.sqlite[2/7] [1%                          ] nsys-pa-3y-5p.sqlite[2/7] [2%                          ] nsys-pa-3y-5p.sqlite[2/7] [3%                          ] nsys-pa-3y-5p.sqlite[2/7] [4%                          ] nsys-pa-3y-5p.sqlite[2/7] [5%                          ] nsys-pa-3y-5p.sqlite[2/7] [6%                          ] nsys-pa-3y-5p.sqlite[2/7] [7%                          ] nsys-pa-3y-5p.sqlite[2/7] [8%                          ] nsys-pa-3y-5p.sqlite[2/7] [9%                          ] nsys-pa-3y-5p.sqlite[2/7] [10%                         ] nsys-pa-3y-5p.sqlite[2/7] [11%                         ] nsys-pa-3y-5p.sqlite[2/7] [12%                         ] nsys-pa-3y-5p.sqlite[2/7] [13%                         ] nsys-pa-3y-5p.sqlite[2/7] [14%                         ] nsys-pa-3y-5p.sqlite[2/7] [=15%                        ] nsys-pa-3y-5p.sqlite[2/7] [=16%                        ] nsys-pa-3y-5p.sqlite[2/7] [=17%                        ] nsys-pa-3y-5p.sqlite[2/7] [==18%                       ] nsys-pa-3y-5p.sqlite[2/7] [==19%                       ] nsys-pa-3y-5p.sqlite[2/7] [==20%                       ] nsys-pa-3y-5p.sqlite[2/7] [==21%                       ] nsys-pa-3y-5p.sqlite[2/7] [===22%                      ] nsys-pa-3y-5p.sqlite[2/7] [===23%                      ] nsys-pa-3y-5p.sqlite[2/7] [===24%                      ] nsys-pa-3y-5p.sqlite[2/7] [====25%                     ] nsys-pa-3y-5p.sqlite[2/7] [====26%                     ] nsys-pa-3y-5p.sqlite[2/7] [====27%                     ] nsys-pa-3y-5p.sqlite[2/7] [====28%                     ] nsys-pa-3y-5p.sqlite[2/7] [=====29%                    ] nsys-pa-3y-5p.sqlite[2/7] [=====30%                    ] nsys-pa-3y-5p.sqlite[2/7] [=====31%                    ] nsys-pa-3y-5p.sqlite[2/7] [=====32%                    ] nsys-pa-3y-5p.sqlite[2/7] [======33%                   ] nsys-pa-3y-5p.sqlite[2/7] [======34%                   ] nsys-pa-3y-5p.sqlite[2/7] [======35%                   ] nsys-pa-3y-5p.sqlite[2/7] [=======36%                  ] nsys-pa-3y-5p.sqlite[2/7] [=======37%                  ] nsys-pa-3y-5p.sqlite[2/7] [=======38%                  ] nsys-pa-3y-5p.sqlite[2/7] [=======39%                  ] nsys-pa-3y-5p.sqlite[2/7] [========40%                 ] nsys-pa-3y-5p.sqlite[2/7] [========41%                 ] nsys-pa-3y-5p.sqlite[2/7] [========42%                 ] nsys-pa-3y-5p.sqlite[2/7] [=========43%                ] nsys-pa-3y-5p.sqlite[2/7] [=========44%                ] nsys-pa-3y-5p.sqlite[2/7] [=========45%                ] nsys-pa-3y-5p.sqlite[2/7] [=========46%                ] nsys-pa-3y-5p.sqlite[2/7] [==========47%               ] nsys-pa-3y-5p.sqlite[2/7] [==========48%               ] nsys-pa-3y-5p.sqlite[2/7] [==========49%               ] nsys-pa-3y-5p.sqlite[2/7] [===========50%              ] nsys-pa-3y-5p.sqlite[2/7] [===========51%              ] nsys-pa-3y-5p.sqlite[2/7] [===========52%              ] nsys-pa-3y-5p.sqlite[2/7] [===========53%              ] nsys-pa-3y-5p.sqlite[2/7] [============54%             ] nsys-pa-3y-5p.sqlite[2/7] [============55%             ] nsys-pa-3y-5p.sqlite[2/7] [============56%             ] nsys-pa-3y-5p.sqlite[2/7] [============57%             ] nsys-pa-3y-5p.sqlite[2/7] [=============58%            ] nsys-pa-3y-5p.sqlite[2/7] [=============59%            ] nsys-pa-3y-5p.sqlite[2/7] [=============60%            ] nsys-pa-3y-5p.sqlite[2/7] [==============61%           ] nsys-pa-3y-5p.sqlite[2/7] [==============62%           ] nsys-pa-3y-5p.sqlite[2/7] [==============63%           ] nsys-pa-3y-5p.sqlite[2/7] [==============64%           ] nsys-pa-3y-5p.sqlite[2/7] [===============65%          ] nsys-pa-3y-5p.sqlite[2/7] [===============66%          ] nsys-pa-3y-5p.sqlite[2/7] [===============67%          ] nsys-pa-3y-5p.sqlite[2/7] [================68%         ] nsys-pa-3y-5p.sqlite[2/7] [================69%         ] nsys-pa-3y-5p.sqlite[2/7] [================70%         ] nsys-pa-3y-5p.sqlite[2/7] [================71%         ] nsys-pa-3y-5p.sqlite[2/7] [=================72%        ] nsys-pa-3y-5p.sqlite[2/7] [=================73%        ] nsys-pa-3y-5p.sqlite[2/7] [=================74%        ] nsys-pa-3y-5p.sqlite[2/7] [==================75%       ] nsys-pa-3y-5p.sqlite[2/7] [==================76%       ] nsys-pa-3y-5p.sqlite[2/7] [==================77%       ] nsys-pa-3y-5p.sqlite[2/7] [==================78%       ] nsys-pa-3y-5p.sqlite[2/7] [===================79%      ] nsys-pa-3y-5p.sqlite[2/7] [===================80%      ] nsys-pa-3y-5p.sqlite[2/7] [===================81%      ] nsys-pa-3y-5p.sqlite[2/7] [===================82%      ] nsys-pa-3y-5p.sqlite[2/7] [====================83%     ] nsys-pa-3y-5p.sqlite[2/7] [====================84%     ] nsys-pa-3y-5p.sqlite[2/7] [====================85%     ] nsys-pa-3y-5p.sqlite[2/7] [=====================86%    ] nsys-pa-3y-5p.sqlite[2/7] [=====================87%    ] nsys-pa-3y-5p.sqlite[2/7] [=====================88%    ] nsys-pa-3y-5p.sqlite[2/7] [=====================89%    ] nsys-pa-3y-5p.sqlite[2/7] [======================90%   ] nsys-pa-3y-5p.sqlite[2/7] [======================91%   ] nsys-pa-3y-5p.sqlite[2/7] [======================92%   ] nsys-pa-3y-5p.sqlite[2/7] [=======================93%  ] nsys-pa-3y-5p.sqlite[2/7] [=======================94%  ] nsys-pa-3y-5p.sqlite[2/7] [=======================95%  ] nsys-pa-3y-5p.sqlite[2/7] [=======================96%  ] nsys-pa-3y-5p.sqlite[2/7] [========================97% ] nsys-pa-3y-5p.sqlite[2/7] [========================98% ] nsys-pa-3y-5p.sqlite[2/7] [========================99% ] nsys-pa-3y-5p.sqlite[2/7] [========================100%] nsys-pa-3y-5p.sqlite[2/7] [========================100%] nsys-pa-3y-5p.sqlite
+[3/7] Executing 'nvtx_sum' stats report
+
+ Time (%)  Total Time (ns)  Instances  Avg (ns)  Med (ns)  Min (ns)  Max (ns)  StdDev (ns)   Style              Range            
+ --------  ---------------  ---------  --------  --------  --------  --------  -----------  -------  ----------------------------
+     99.9      390,546,538     77,485   5,040.3   4,916.0     4,476   221,487      1,797.2  PushPop  CCCL:cub::DeviceFor::Bulk   
+      0.0          149,025          6  24,837.5  24,938.0    20,958    27,533      2,370.5  PushPop  CCCL:thrust::copy           
+      0.0          101,232          3  33,744.0  31,481.0    31,195    38,556      4,169.8  PushPop  CCCL:uninitialized_fill_n   
+      0.0           72,639          3  24,213.0  24,350.0    22,389    25,900      1,759.5  PushPop  CCCL:thrust::two_system_copy
+
+[4/7] Executing 'cuda_api_sum' stats report
+
+ Time (%)  Total Time (ns)  Num Calls    Avg (ns)       Med (ns)    Min (ns)    Max (ns)      StdDev (ns)                Name             
+ --------  ---------------  ---------  -------------  ------------  --------  -------------  -------------  ------------------------------
+     29.1    7,959,685,469         33  241,202,590.0  10,111,127.0     5,395  1,378,134,798  456,213,096.0  cudaStreamSynchronize         
+     28.9    7,879,717,966  1,239,760        6,355.8       3,739.0     2,835      3,951,159        8,812.7  cudaMemcpy                    
+     19.2    5,236,359,425    929,919        5,631.0       4,882.0     3,834      3,421,257       11,149.8  cudaFree                      
+     17.8    4,852,949,156  1,084,871        4,473.3       3,788.0     1,849      4,973,612       15,550.8  cudaMalloc                    
+      1.9      512,655,533    155,003        3,307.4       3,174.0     2,814        269,315        1,154.3  cudaMemset                    
+      1.2      326,596,292     77,530        4,212.5       3,109.0     2,749     68,138,276      245,561.5  cudaLaunchKernel              
+      0.9      246,579,485         36    6,849,430.1     101,110.0    10,977     81,944,251   22,365,243.7  cudaMemcpyAsync               
+      0.5      134,640,903          3   44,880,301.0      54,716.0    50,742    134,535,445   77,643,632.3  cudaMemGetInfo                
+      0.3       90,163,427     77,491        1,163.5         799.0       603     23,610,230       84,814.8  cudaMallocAsync_v11020        
+      0.2       68,082,202     77,485          878.7         824.0       662        294,495        1,177.9  cudaFreeAsync_v11020          
+      0.0          774,757         24       32,281.5      21,592.0     8,472         84,733       22,546.4  cudaMallocManaged             
+      0.0          744,124         12       62,010.3      33,152.0     5,828        164,702       61,726.3  cudaDeviceSynchronize         
+      0.0          183,569          3       61,189.7      23,310.0    23,088        137,171       65,801.9  cudaStreamCreate              
+      0.0          100,011          6       16,668.5      14,666.0     8,994         30,639        7,962.2  cudaMemsetAsync               
+      0.0           57,532          3       19,177.3      20,658.0    14,972         21,902        3,694.7  cudaStreamDestroy             
+      0.0            3,245          3        1,081.7       1,043.0     1,028          1,174           80.3  cuStreamSynchronize           
+      0.0            1,830          1        1,830.0       1,830.0     1,830          1,830            0.0  cudaGetDriverEntryPoint_v11030
+      0.0            1,532          1        1,532.0       1,532.0     1,532          1,532            0.0  cuInit                        
+      0.0            1,422          1        1,422.0       1,422.0     1,422          1,422            0.0  cuModuleGetLoadingMode        
+      0.0            1,013          2          506.5         506.5       453            560           75.7  cuGetProcAddress_v2           
+
+[5/7] Executing 'cuda_gpu_kern_sum' stats report
+
+ Time (%)  Total Time (ns)  Instances     Avg (ns)         Med (ns)       Min (ns)      Max (ns)      StdDev (ns)                                                   Name                                                
+ --------  ---------------  ---------  ---------------  ---------------  -----------  -------------  -------------  ----------------------------------------------------------------------------------------------------
+     85.3    7,078,923,437          6  1,179,820,572.8  1,168,150,518.5  975,101,328  1,378,124,024  156,466,072.9  kernelCallStage1(int, int, int, ABM *, Graph *, DeviceGraph *, DeviceGraph *, device_map<int, Node>…
+      9.5      786,935,304          6    131,155,884.0    131,380,763.0  114,846,500    145,080,669   11,849,638.8  kernelCallStage3(int, int, int, ABM *, Graph *, int, device_map<int, Node>::device_view, ABMStageSt…
+      2.9      239,874,011          3     79,958,003.7     80,263,753.0   77,677,854     81,932,404    2,143,691.0  void cuco::legacy::detail::insert<(unsigned long)128, (unsigned int)4, cuco::pair<int, int> *, cuda…
+      1.1       94,480,122     77,482          1,219.4          1,279.0        1,088          1,697           94.8  void cub::CUB_300103_SM_600::detail::for_each::static_kernel<cub::CUB_300103_SM_600::detail::for_ea…
+      1.0       86,085,461          6     14,347,576.8     15,827,489.0    7,185,894     18,606,161    4,734,773.3  kernelCallStage2(int, int, int, ABM *, Graph *, cuco::static_set_ref<int, (cuda::std::__4::thread_s…
+      0.1        7,405,000          6      1,234,166.7      1,251,809.5    1,003,873      1,443,969      201,695.6  kernelCallStage4(int, int, int, ABM *, Graph *, int, device_map<int, Node>::device_view, ABMStageSt…
+      0.0          698,945         12         58,245.4         29,424.0        3,104        161,504       62,138.5  kernel_extract_vector_sizes(device_vector *, int *, int)                                            
+      0.0          680,545          3        226,848.3        208,128.0       81,504        390,913      155,551.7  void cuco::detail::open_addressing_ns::insert_if_n<(int)1, (int)128, int *, thrust::THRUST_300103_S…
+      0.0            9,824          3          3,274.7          3,200.0        3,200          3,424          129.3  void cuco::legacy::detail::initialize<(unsigned long)256, cuda::__4::atomic<int, (cuda::std::__4::t…
+      0.0            4,320          3          1,440.0          1,504.0        1,312          1,504          110.9  void cub::CUB_300103_SM_600::detail::for_each::static_kernel<cub::CUB_300103_SM_600::detail::for_ea…
+
+[6/7] Executing 'cuda_gpu_mem_time_sum' stats report
+
+ Time (%)  Total Time (ns)   Count   Avg (ns)  Med (ns)  Min (ns)  Max (ns)   StdDev (ns)               Operation              
+ --------  ---------------  -------  --------  --------  --------  ---------  -----------  ------------------------------------
+     44.7      766,903,197  309,952   2,474.3   2,464.0     2,080     20,097        117.4  [CUDA memcpy Device-to-Host]        
+     42.3      725,878,878  929,844     780.6     768.0       703  3,639,427      6,292.6  [CUDA memcpy Host-to-Device]        
+     12.9      221,435,685  155,009   1,428.5   1,440.0       736    455,392      3,433.0  [CUDA memset]                       
+      0.1        1,606,140      496   3,238.2   2,655.0     2,303     19,071      2,086.9  [CUDA memcpy Unified Host-to-Device]
+      0.0          595,151      158   3,766.8   2,879.0     2,367     24,896      2,544.2  [CUDA memcpy Unified Device-to-Host]
+
+[7/7] Executing 'cuda_gpu_mem_size_sum' stats report
+
+ Total (MB)   Count   Avg (MB)  Med (MB)  Min (MB)  Max (MB)   StdDev (MB)               Operation              
+ ----------  -------  --------  --------  --------  ---------  -----------  ------------------------------------
+ 25,147.481  155,009     0.162     0.065     0.000  1,481.135       11.187  [CUDA memset]                       
+    261.193  929,844     0.000     0.000     0.000     45.521        0.081  [CUDA memcpy Host-to-Device]        
+     23.288  309,952     0.000     0.000     0.000      0.867        0.004  [CUDA memcpy Device-to-Host]        
+     19.857      496     0.040     0.008     0.004      0.918        0.114  [CUDA memcpy Unified Host-to-Device]
+      9.896      158     0.063     0.023     0.004      0.520        0.108  [CUDA memcpy Unified Device-to-Host]
+
+Generated:
+    /home/jmukher/workspace/uiuc/citation_abm/profile/nsys-pa-3y-5p.nsys-rep
+    /home/jmukher/workspace/uiuc/citation_abm/profile/nsys-pa-3y-5p.sqlite
+SUCCESS: 49M → profile/nsys-pa-3y-5p.nsys-rep
+Running growth rate 6% for 3 years.
+Profile output: profile/nsys-pa-3y-6p.nsys-rep
+CMD: nsys profile --trace=cuda,nvtx --stats=true --force-overwrite=true -o profile/nsys-pa-3y-6p ./abm --edgelist sj_edgelist --nodelist sj_nodelist --out-degree-bag tcen_at_least_five --recency-probabilities sj_recprob --alpha 0.5 --preferential-weight 0.33 --recency-weight 0.33 --fitness-weight 0.33 --growth-rate .06 --fully-random-citations 0.05 --num-cycles 3 --same-year-proportion 0.12 --output-file ./output/3y/gpu-opt-static-output-3y-6p.edgelist --auxiliary-information-file ./output/3y/gpu-opt-static-output-3y-6p.aux --log-file ./output/3y/nsys-gpu-opt-static-pa-3y-6p.log --num-processors 14 --log-level 1
+
+Start ABM....
+parse_args....
+edgelist....
+num-cycles....
+output-file....
+log-file = ./output/3y/nsys-gpu-opt-static-pa-3y-6p.log....
+num-processors = 14....
+log-level = 0
+Init ABM....
+Exec ABM....
+Start execute.Init Graph
+Inside  Graph ParseNodelist.....
+Populating the continuous_node mappings..
+Elapsed time: ParseNodelist : 1102 millisecs = 1 seconds
+
+Inside Graph ParseEdgelist.....
+Elapsed time: ParseEdgelist : 1568 millisecs = 1 seconds
+
+In updateNodeInDegreeOutDegree: Update Outdegree first:
+In updateNodeInDegreeOutDegree: Update Indegree:
+Total (initial):: In-Degree = 899050, Out-Degree = 899050
+Elapsed time: 0-1 : 1 seconds
+Elapsed time: 1-2 : 1 seconds
+Elapsed time: 2-3 : 0 seconds
+
+Initialized Graph. Let us update the indegree and out-degrees... 
+Graph init done...
+calling InitializeFitness...
+final graph size is 585424 from initial_graph_size of 491532.
+ populated out degree array.
+ Entering loop for year = 1983
+Elapsed time: 70-71: total : 0.239 secs, iter cost : 0 seconds
+
+Elapsed time: 71-72: total : 0.297 secs, iter cost : 0 seconds
+
+Elapsed time: 72-73: total : 12 millisecs, iter cost : 12 mseconds
+
+num_new_nodes = 29492, current_graph_size = 491532, growth rate = 0.060000 
+Elapsed time: 73-74: total : 0 millisecs, iter cost : 0 mseconds
+
+Elapsed time: 74-75: total : 27 millisecs, iter cost : 27 mseconds
+
+all new nodes initialized with years and mapped. FillSameYearSourceNodes with new_nodes_vec.size() = 29492
+checking same_year_source_nodes size.
+Elapsed time: 75-76: total : 0 millisecs, iter cost : 0 mseconds
+
+new_nodes_vec.size() b4 : 29492
+
+updated  updateGraphAttributesGeneratorNode .... 
+Elapsed time: 76-77: total : 72 millisecs, iter cost : 72 mseconds
+
+continuous_node_mapping.size() b5 : 521024, reverse_continuous_node_mapping size = 521024
+
+Inside optimized buildOneNodeConnections...
+Initial Free: 80526.5 MB / 81079.4 MB
+
+[prepareGraph] num_vertices = 491532
+
+[prepareGraph] edges = 899050, offsets = 491533 (should be V+1 = 491533)
+
+[prepareGraph] num_vertices = 491532
+
+[prepareGraph] edges = 899050, offsets = 491533 (should be V+1 = 491533)
+
+Year 1983: 29492 new nodes, 571900 new edges
+
+Elapsed time: 78-781 : total : 10.777 secs,  this iter cost : 10.777 seconds
+
+Elapsed time: 78-79 : total : 11.018 secs, this iter cost : 11.018 seconds
+
+updateNodeInDegreeOutDegree(year=1983): updated 29492 out-degrees, 292050 in-degrees
+Elapsed time: 79-81 : total : 0.285 secs, this iter cost : 0 seconds
+
+Elapsed time: 79-80 : total : 0.138 secs, this iter cost : 0 seconds
+
+Elapsed time: 80-81 : total : 0.146 secs, this iter cost : 0 seconds
+
+Elapsed time: 70-81 : total : 11.953 secs, this iter cost : 11 seconds
+
+ Entering loop for year = 1984
+Elapsed time: 70-71: total : 0.53 secs, iter cost : 0 seconds
+
+Elapsed time: 71-72: total : 0.596 secs, iter cost : 0 seconds
+
+Elapsed time: 72-73: total : 25 millisecs, iter cost : 13 mseconds
+
+num_new_nodes = 31262, current_graph_size = 521024, growth rate = 0.060000 
+Elapsed time: 73-74: total : 0 millisecs, iter cost : 0 mseconds
+
+Elapsed time: 74-75: total : 49 millisecs, iter cost : 22 mseconds
+
+all new nodes initialized with years and mapped. FillSameYearSourceNodes with new_nodes_vec.size() = 31262
+checking same_year_source_nodes size.
+Elapsed time: 75-76: total : 0 millisecs, iter cost : 0 mseconds
+
+new_nodes_vec.size() b4 : 31262
+
+updated  updateGraphAttributesGeneratorNode .... 
+Elapsed time: 76-77: total : 149 millisecs, iter cost : 77 mseconds
+
+continuous_node_mapping.size() b5 : 552286, reverse_continuous_node_mapping size = 552286
+
+Inside optimized buildOneNodeConnections...
+Initial Free: 80272.5 MB / 81079.4 MB
+
+[prepareGraph] num_vertices = 521024
+
+[prepareGraph] edges = 1470950, offsets = 521025 (should be V+1 = 521025)
+
+[prepareGraph] num_vertices = 521024
+
+[prepareGraph] edges = 1470950, offsets = 521025 (should be V+1 = 521025)
+
+Year 1984: 31262 new nodes, 607746 new edges
+
+Elapsed time: 78-781 : total : 21.826 secs,  this iter cost : 11.049 seconds
+
+Elapsed time: 78-79 : total : 22.28 secs, this iter cost : 11.262 seconds
+
+updateNodeInDegreeOutDegree(year=1984): updated 31262 out-degrees, 303602 in-degrees
+Elapsed time: 79-81 : total : 0.568 secs, this iter cost : 0 seconds
+
+Elapsed time: 79-80 : total : 0.266 secs, this iter cost : 0 seconds
+
+Elapsed time: 80-81 : total : 0.3 secs, this iter cost : 0 seconds
+
+Elapsed time: 70-81 : total : 24.202 secs, this iter cost : 12 seconds
+
+ Entering loop for year = 1985
+Elapsed time: 70-71: total : 0.818 secs, iter cost : 0 seconds
+
+Elapsed time: 71-72: total : 0.903 secs, iter cost : 0 seconds
+
+Elapsed time: 72-73: total : 37 millisecs, iter cost : 12 mseconds
+
+num_new_nodes = 33138, current_graph_size = 552286, growth rate = 0.060000 
+Elapsed time: 73-74: total : 0 millisecs, iter cost : 0 mseconds
+
+Elapsed time: 74-75: total : 68 millisecs, iter cost : 19 mseconds
+
+all new nodes initialized with years and mapped. FillSameYearSourceNodes with new_nodes_vec.size() = 33138
+checking same_year_source_nodes size.
+Elapsed time: 75-76: total : 0 millisecs, iter cost : 0 mseconds
+
+new_nodes_vec.size() b4 : 33138
+
+updated  updateGraphAttributesGeneratorNode .... 
+Elapsed time: 76-77: total : 229 millisecs, iter cost : 80 mseconds
+
+continuous_node_mapping.size() b5 : 585424, reverse_continuous_node_mapping size = 585424
+
+Inside optimized buildOneNodeConnections...
+Initial Free: 80240.5 MB / 81079.4 MB
+
+[prepareGraph] num_vertices = 552286
+
+[prepareGraph] edges = 2078696, offsets = 552287 (should be V+1 = 552287)
+
+[prepareGraph] num_vertices = 552286
+
+[prepareGraph] edges = 2078696, offsets = 552287 (should be V+1 = 552287)
+
+Year 1985: 33138 new nodes, 644083 new edges
+
+Elapsed time: 78-781 : total : 33.076 secs,  this iter cost : 11.25 seconds
+
+Elapsed time: 78-79 : total : 33.787 secs, this iter cost : 11.507 seconds
+
+updateNodeInDegreeOutDegree(year=1985): updated 33138 out-degrees, 313592 in-degrees
+Elapsed time: 79-81 : total : 0.883 secs, this iter cost : 0 seconds
+
+Elapsed time: 79-80 : total : 0.419 secs, this iter cost : 0 seconds
+
+Elapsed time: 80-81 : total : 0.462 secs, this iter cost : 0 seconds
+
+Elapsed time: 70-81 : total : 36.735 secs, this iter cost : 12 seconds
+
+Elapsed time: 7-8 :  36 seconds
+
+compute done:: graph size = 585424
+Elapsed time: 8-8.1 :  0 seconds
+
+Writing Graph to file: ./output/3y/gpu-opt-static-output-3y-6p.edgelist
+
+Elapsed time: 8.1-9 :  0 seconds
+
+Elapsed time: 9-10 :  0 seconds
+
+ graph size = 585424
+WriteAttributes: graph size = 585424
+
+Elapsed time: 0-1 : 3 seconds
+
+Elapsed time: 1-4 : 0 seconds
+
+Elapsed time: 4-7 : 0 seconds
+
+Elapsed time: 70-71: total : 0.818 seconds.
+
+Elapsed time: 71-72: total : 0.903 seconds.
+
+Elapsed time: 72-73: total : 0.037 seconds.
+
+Elapsed time: 73-74: total : 0 seconds.
+
+Elapsed time: 74-75: total : 0.068 seconds.
+
+Elapsed time: 75-76: total : 0 seconds.
+
+Elapsed time: 76-77: total : 0.229 seconds.
+
+Elapsed time: 77-79: total : 33.787 seconds.
+
+Elapsed time: 79-81 : total : 0.883 seconds.
+
+Elapsed time: 79-80 : total : 0.419 seconds.
+
+Elapsed time: 80-81 : total : 0.462 seconds.
+
+Elapsed time: 70-81 : total : 36.735 seconds.
+
+Elapsed time: 7-8 : 36 seconds
+
+Elapsed time: 8-8.1 :  0 seconds
+
+Elapsed time: 8.1-9 :  0 seconds
+
+Elapsed time: 9-10 : 0 seconds
+
+Elapsed time: 11-12 : 0 seconds
+
+Elapsed time: 10-12 : 0 seconds
+
+Elapsed time: 0-7 : 3 seconds
+
+Elapsed time: 7-8 : 36 seconds
+
+Elapsed time: 8-12 : 1 seconds
+
+E2E Time for num_cycles = 3 with growth_rate = 6 % = 43 seconds.
+Generating '/tmp/nsys-report-0cb6.qdstrm'
+[1/7] [0%                          ] nsys-pa-3y-6p.nsys-rep[1/7] [0%                          ] nsys-pa-3y-6p.nsys-rep[1/7] [9%                          ] nsys-pa-3y-6p.nsys-rep[1/7] [8%                          ] nsys-pa-3y-6p.nsys-rep[1/7] [12%                         ] nsys-pa-3y-6p.nsys-rep[1/7] [11%                         ] nsys-pa-3y-6p.nsys-rep[1/7] [=15%                        ] nsys-pa-3y-6p.nsys-rep[1/7] [14%                         ] nsys-pa-3y-6p.nsys-rep[1/7] [13%                         ] nsys-pa-3y-6p.nsys-rep[1/7] [=16%                        ] nsys-pa-3y-6p.nsys-rep[1/7] [=15%                        ] nsys-pa-3y-6p.nsys-rep[1/7] [=16%                        ] nsys-pa-3y-6p.nsys-rep[1/7] [=15%                        ] nsys-pa-3y-6p.nsys-rep[1/7] [14%                         ] nsys-pa-3y-6p.nsys-rep[1/7] [13%                         ] nsys-pa-3y-6p.nsys-rep[1/7] [12%                         ] nsys-pa-3y-6p.nsys-rep[1/7] [11%                         ] nsys-pa-3y-6p.nsys-rep[1/7] [10%                         ] nsys-pa-3y-6p.nsys-rep[1/7] [9%                          ] nsys-pa-3y-6p.nsys-rep[1/7] [8%                          ] nsys-pa-3y-6p.nsys-rep[1/7] [7%                          ] nsys-pa-3y-6p.nsys-rep[1/7] [6%                          ] nsys-pa-3y-6p.nsys-rep[1/7] [5%                          ] nsys-pa-3y-6p.nsys-rep[1/7] [5%                          ] nsys-pa-3y-6p.nsys-rep[1/7] [6%                          ] nsys-pa-3y-6p.nsys-rep[1/7] [7%                          ] nsys-pa-3y-6p.nsys-rep[1/7] [8%                          ] nsys-pa-3y-6p.nsys-rep[1/7] [9%                          ] nsys-pa-3y-6p.nsys-rep[1/7] [10%                         ] nsys-pa-3y-6p.nsys-rep[1/7] [11%                         ] nsys-pa-3y-6p.nsys-rep[1/7] [12%                         ] nsys-pa-3y-6p.nsys-rep[1/7] [13%                         ] nsys-pa-3y-6p.nsys-rep[1/7] [14%                         ] nsys-pa-3y-6p.nsys-rep[1/7] [=15%                        ] nsys-pa-3y-6p.nsys-rep[1/7] [=16%                        ] nsys-pa-3y-6p.nsys-rep[1/7] [=17%                        ] nsys-pa-3y-6p.nsys-rep[1/7] [==18%                       ] nsys-pa-3y-6p.nsys-rep[1/7] [==19%                       ] nsys-pa-3y-6p.nsys-rep[1/7] [==20%                       ] nsys-pa-3y-6p.nsys-rep[1/7] [==21%                       ] nsys-pa-3y-6p.nsys-rep[1/7] [===22%                      ] nsys-pa-3y-6p.nsys-rep[1/7] [===23%                      ] nsys-pa-3y-6p.nsys-rep[1/7] [===24%                      ] nsys-pa-3y-6p.nsys-rep[1/7] [====25%                     ] nsys-pa-3y-6p.nsys-rep[1/7] [====26%                     ] nsys-pa-3y-6p.nsys-rep[1/7] [====27%                     ] nsys-pa-3y-6p.nsys-rep[1/7] [====28%                     ] nsys-pa-3y-6p.nsys-rep[1/7] [=====29%                    ] nsys-pa-3y-6p.nsys-rep[1/7] [=====30%                    ] nsys-pa-3y-6p.nsys-rep[1/7] [=====31%                    ] nsys-pa-3y-6p.nsys-rep[1/7] [=====32%                    ] nsys-pa-3y-6p.nsys-rep[1/7] [======33%                   ] nsys-pa-3y-6p.nsys-rep[1/7] [======34%                   ] nsys-pa-3y-6p.nsys-rep[1/7] [======35%                   ] nsys-pa-3y-6p.nsys-rep[1/7] [=======36%                  ] nsys-pa-3y-6p.nsys-rep[1/7] [=======37%                  ] nsys-pa-3y-6p.nsys-rep[1/7] [=======38%                  ] nsys-pa-3y-6p.nsys-rep[1/7] [=======39%                  ] nsys-pa-3y-6p.nsys-rep[1/7] [========40%                 ] nsys-pa-3y-6p.nsys-rep[1/7] [========41%                 ] nsys-pa-3y-6p.nsys-rep[1/7] [========42%                 ] nsys-pa-3y-6p.nsys-rep[1/7] [=========43%                ] nsys-pa-3y-6p.nsys-rep[1/7] [=========44%                ] nsys-pa-3y-6p.nsys-rep[1/7] [=========45%                ] nsys-pa-3y-6p.nsys-rep[1/7] [=========46%                ] nsys-pa-3y-6p.nsys-rep[1/7] [==========47%               ] nsys-pa-3y-6p.nsys-rep[1/7] [==========48%               ] nsys-pa-3y-6p.nsys-rep[1/7] [==========49%               ] nsys-pa-3y-6p.nsys-rep[1/7] [===========50%              ] nsys-pa-3y-6p.nsys-rep[1/7] [===========51%              ] nsys-pa-3y-6p.nsys-rep[1/7] [===========52%              ] nsys-pa-3y-6p.nsys-rep[1/7] [===========53%              ] nsys-pa-3y-6p.nsys-rep[1/7] [============54%             ] nsys-pa-3y-6p.nsys-rep[1/7] [============55%             ] nsys-pa-3y-6p.nsys-rep[1/7] [============56%             ] nsys-pa-3y-6p.nsys-rep[1/7] [============57%             ] nsys-pa-3y-6p.nsys-rep[1/7] [=============58%            ] nsys-pa-3y-6p.nsys-rep[1/7] [=============59%            ] nsys-pa-3y-6p.nsys-rep[1/7] [=============60%            ] nsys-pa-3y-6p.nsys-rep[1/7] [==============61%           ] nsys-pa-3y-6p.nsys-rep[1/7] [==============62%           ] nsys-pa-3y-6p.nsys-rep[1/7] [==============63%           ] nsys-pa-3y-6p.nsys-rep[1/7] [==============64%           ] nsys-pa-3y-6p.nsys-rep[1/7] [===============65%          ] nsys-pa-3y-6p.nsys-rep[1/7] [===============66%          ] nsys-pa-3y-6p.nsys-rep[1/7] [===============67%          ] nsys-pa-3y-6p.nsys-rep[1/7] [================68%         ] nsys-pa-3y-6p.nsys-rep[1/7] [================69%         ] nsys-pa-3y-6p.nsys-rep[1/7] [================70%         ] nsys-pa-3y-6p.nsys-rep[1/7] [================71%         ] nsys-pa-3y-6p.nsys-rep[1/7] [=================72%        ] nsys-pa-3y-6p.nsys-rep[1/7] [=================73%        ] nsys-pa-3y-6p.nsys-rep[1/7] [=================74%        ] nsys-pa-3y-6p.nsys-rep[1/7] [==================75%       ] nsys-pa-3y-6p.nsys-rep[1/7] [==================76%       ] nsys-pa-3y-6p.nsys-rep[1/7] [==================77%       ] nsys-pa-3y-6p.nsys-rep[1/7] [==================78%       ] nsys-pa-3y-6p.nsys-rep[1/7] [===================79%      ] nsys-pa-3y-6p.nsys-rep[1/7] [===================80%      ] nsys-pa-3y-6p.nsys-rep[1/7] [===================81%      ] nsys-pa-3y-6p.nsys-rep[1/7] [===================82%      ] nsys-pa-3y-6p.nsys-rep[1/7] [====================83%     ] nsys-pa-3y-6p.nsys-rep[1/7] [====================84%     ] nsys-pa-3y-6p.nsys-rep[1/7] [====================85%     ] nsys-pa-3y-6p.nsys-rep[1/7] [========================100%] nsys-pa-3y-6p.nsys-rep[1/7] [========================100%] nsys-pa-3y-6p.nsys-rep
+[2/7] [0%                          ] nsys-pa-3y-6p.sqlite[2/7] [1%                          ] nsys-pa-3y-6p.sqlite[2/7] [2%                          ] nsys-pa-3y-6p.sqlite[2/7] [3%                          ] nsys-pa-3y-6p.sqlite[2/7] [4%                          ] nsys-pa-3y-6p.sqlite[2/7] [5%                          ] nsys-pa-3y-6p.sqlite[2/7] [6%                          ] nsys-pa-3y-6p.sqlite[2/7] [7%                          ] nsys-pa-3y-6p.sqlite[2/7] [8%                          ] nsys-pa-3y-6p.sqlite[2/7] [9%                          ] nsys-pa-3y-6p.sqlite[2/7] [10%                         ] nsys-pa-3y-6p.sqlite[2/7] [11%                         ] nsys-pa-3y-6p.sqlite[2/7] [12%                         ] nsys-pa-3y-6p.sqlite[2/7] [13%                         ] nsys-pa-3y-6p.sqlite[2/7] [14%                         ] nsys-pa-3y-6p.sqlite[2/7] [=15%                        ] nsys-pa-3y-6p.sqlite[2/7] [=16%                        ] nsys-pa-3y-6p.sqlite[2/7] [=17%                        ] nsys-pa-3y-6p.sqlite[2/7] [==18%                       ] nsys-pa-3y-6p.sqlite[2/7] [==19%                       ] nsys-pa-3y-6p.sqlite[2/7] [==20%                       ] nsys-pa-3y-6p.sqlite[2/7] [==21%                       ] nsys-pa-3y-6p.sqlite[2/7] [===22%                      ] nsys-pa-3y-6p.sqlite[2/7] [===23%                      ] nsys-pa-3y-6p.sqlite[2/7] [===24%                      ] nsys-pa-3y-6p.sqlite[2/7] [====25%                     ] nsys-pa-3y-6p.sqlite[2/7] [====26%                     ] nsys-pa-3y-6p.sqlite[2/7] [====27%                     ] nsys-pa-3y-6p.sqlite[2/7] [====28%                     ] nsys-pa-3y-6p.sqlite[2/7] [=====29%                    ] nsys-pa-3y-6p.sqlite[2/7] [=====30%                    ] nsys-pa-3y-6p.sqlite[2/7] [=====31%                    ] nsys-pa-3y-6p.sqlite[2/7] [=====32%                    ] nsys-pa-3y-6p.sqlite[2/7] [======33%                   ] nsys-pa-3y-6p.sqlite[2/7] [======34%                   ] nsys-pa-3y-6p.sqlite[2/7] [======35%                   ] nsys-pa-3y-6p.sqlite[2/7] [=======36%                  ] nsys-pa-3y-6p.sqlite[2/7] [=======37%                  ] nsys-pa-3y-6p.sqlite[2/7] [=======38%                  ] nsys-pa-3y-6p.sqlite[2/7] [=======39%                  ] nsys-pa-3y-6p.sqlite[2/7] [========40%                 ] nsys-pa-3y-6p.sqlite[2/7] [========41%                 ] nsys-pa-3y-6p.sqlite[2/7] [========42%                 ] nsys-pa-3y-6p.sqlite[2/7] [=========43%                ] nsys-pa-3y-6p.sqlite[2/7] [=========44%                ] nsys-pa-3y-6p.sqlite[2/7] [=========45%                ] nsys-pa-3y-6p.sqlite[2/7] [=========46%                ] nsys-pa-3y-6p.sqlite[2/7] [==========47%               ] nsys-pa-3y-6p.sqlite[2/7] [==========48%               ] nsys-pa-3y-6p.sqlite[2/7] [==========49%               ] nsys-pa-3y-6p.sqlite[2/7] [===========50%              ] nsys-pa-3y-6p.sqlite[2/7] [===========51%              ] nsys-pa-3y-6p.sqlite[2/7] [===========52%              ] nsys-pa-3y-6p.sqlite[2/7] [===========53%              ] nsys-pa-3y-6p.sqlite[2/7] [============54%             ] nsys-pa-3y-6p.sqlite[2/7] [============55%             ] nsys-pa-3y-6p.sqlite[2/7] [============56%             ] nsys-pa-3y-6p.sqlite[2/7] [============57%             ] nsys-pa-3y-6p.sqlite[2/7] [=============58%            ] nsys-pa-3y-6p.sqlite[2/7] [=============59%            ] nsys-pa-3y-6p.sqlite[2/7] [=============60%            ] nsys-pa-3y-6p.sqlite[2/7] [==============61%           ] nsys-pa-3y-6p.sqlite[2/7] [==============62%           ] nsys-pa-3y-6p.sqlite[2/7] [==============63%           ] nsys-pa-3y-6p.sqlite[2/7] [==============64%           ] nsys-pa-3y-6p.sqlite[2/7] [===============65%          ] nsys-pa-3y-6p.sqlite[2/7] [===============66%          ] nsys-pa-3y-6p.sqlite[2/7] [===============67%          ] nsys-pa-3y-6p.sqlite[2/7] [================68%         ] nsys-pa-3y-6p.sqlite[2/7] [================69%         ] nsys-pa-3y-6p.sqlite[2/7] [================70%         ] nsys-pa-3y-6p.sqlite[2/7] [================71%         ] nsys-pa-3y-6p.sqlite[2/7] [=================72%        ] nsys-pa-3y-6p.sqlite[2/7] [=================73%        ] nsys-pa-3y-6p.sqlite[2/7] [=================74%        ] nsys-pa-3y-6p.sqlite[2/7] [==================75%       ] nsys-pa-3y-6p.sqlite[2/7] [==================76%       ] nsys-pa-3y-6p.sqlite[2/7] [==================77%       ] nsys-pa-3y-6p.sqlite[2/7] [==================78%       ] nsys-pa-3y-6p.sqlite[2/7] [===================79%      ] nsys-pa-3y-6p.sqlite[2/7] [===================80%      ] nsys-pa-3y-6p.sqlite[2/7] [===================81%      ] nsys-pa-3y-6p.sqlite[2/7] [===================82%      ] nsys-pa-3y-6p.sqlite[2/7] [====================83%     ] nsys-pa-3y-6p.sqlite[2/7] [====================84%     ] nsys-pa-3y-6p.sqlite[2/7] [====================85%     ] nsys-pa-3y-6p.sqlite[2/7] [=====================86%    ] nsys-pa-3y-6p.sqlite[2/7] [=====================87%    ] nsys-pa-3y-6p.sqlite[2/7] [=====================88%    ] nsys-pa-3y-6p.sqlite[2/7] [=====================89%    ] nsys-pa-3y-6p.sqlite[2/7] [======================90%   ] nsys-pa-3y-6p.sqlite[2/7] [======================91%   ] nsys-pa-3y-6p.sqlite[2/7] [======================92%   ] nsys-pa-3y-6p.sqlite[2/7] [=======================93%  ] nsys-pa-3y-6p.sqlite[2/7] [=======================94%  ] nsys-pa-3y-6p.sqlite[2/7] [=======================95%  ] nsys-pa-3y-6p.sqlite[2/7] [=======================96%  ] nsys-pa-3y-6p.sqlite[2/7] [========================97% ] nsys-pa-3y-6p.sqlite[2/7] [========================98% ] nsys-pa-3y-6p.sqlite[2/7] [========================99% ] nsys-pa-3y-6p.sqlite[2/7] [========================100%] nsys-pa-3y-6p.sqlite[2/7] [========================100%] nsys-pa-3y-6p.sqlite
+[3/7] Executing 'nvtx_sum' stats report
+
+ Time (%)  Total Time (ns)  Instances  Avg (ns)  Med (ns)  Min (ns)  Max (ns)   StdDev (ns)   Style              Range            
+ --------  ---------------  ---------  --------  --------  --------  ---------  -----------  -------  ----------------------------
+     99.9      439,336,170     93,898   4,678.9   4,462.0     4,094  5,345,899     19,116.3  PushPop  CCCL:cub::DeviceFor::Bulk   
+      0.0          147,614          6  24,602.3  24,239.5    22,368     27,738      1,814.5  PushPop  CCCL:thrust::copy           
+      0.0          100,983          3  33,661.0  31,499.0    30,295     39,189      4,825.1  PushPop  CCCL:uninitialized_fill_n   
+      0.0           73,015          3  24,338.3  24,356.0    23,013     25,646      1,316.6  PushPop  CCCL:thrust::two_system_copy
+
+[4/7] Executing 'cuda_api_sum' stats report
+
+ Time (%)  Total Time (ns)  Num Calls    Avg (ns)       Med (ns)    Min (ns)    Max (ns)      StdDev (ns)                Name             
+ --------  ---------------  ---------  -------------  ------------  --------  -------------  -------------  ------------------------------
+     29.4    8,829,215,484  1,502,368        5,876.9       3,338.0     2,397      4,159,326        9,822.4  cudaMemcpy                    
+     24.9    7,475,413,592         33  226,527,684.6  11,521,835.0     5,245  1,258,109,057  423,406,553.4  cudaStreamSynchronize         
+     20.9    6,286,135,633  1,126,875        5,578.4       4,844.0     3,795      2,858,767       10,037.7  cudaFree                      
+     19.8    5,958,357,519  1,314,653        4,532.3       3,858.0     1,931      5,195,974       15,281.6  cudaMalloc                    
+      1.8      552,854,910    187,829        2,943.4       2,809.0     2,436        139,581        1,056.9  cudaMemset                    
+      1.1      339,826,097     93,943        3,617.4       2,658.0     2,370     67,557,838      221,447.0  cudaLaunchKernel              
+      0.9      258,707,554         36    7,186,320.9     217,811.5    14,165     87,689,465   23,370,531.1  cudaMemcpyAsync               
+      0.4      129,402,122          3   43,134,040.7      89,010.0    62,404    129,250,708   74,579,222.8  cudaMemGetInfo                
+      0.3      104,357,799     93,904        1,111.3         798.0       673     22,793,234       74,388.4  cudaMallocAsync_v11020        
+      0.3       82,832,737     93,898          882.2         824.0       668        314,525        1,297.0  cudaFreeAsync_v11020          
+      0.0          736,587         24       30,691.1      20,527.5     9,685         81,654       21,173.9  cudaMallocManaged             
+      0.0          709,927         12       59,160.6      33,090.0    10,348        141,983       54,159.9  cudaDeviceSynchronize         
+      0.0          192,265          3       64,088.3      42,974.0    26,690        122,601       51,323.4  cudaStreamCreate              
+      0.0           93,345          6       15,557.5      15,400.0     9,779         21,235        5,144.8  cudaMemsetAsync               
+      0.0           55,263          3       18,421.0      18,212.0    14,799         22,252        3,730.9  cudaStreamDestroy             
+      0.0            7,305          3        2,435.0       1,133.0     1,011          5,161        2,361.6  cuStreamSynchronize           
+      0.0            1,997          1        1,997.0       1,997.0     1,997          1,997            0.0  cudaGetDriverEntryPoint_v11030
+      0.0            1,649          2          824.5         824.5       758            891           94.0  cuGetProcAddress_v2           
+      0.0            1,494          1        1,494.0       1,494.0     1,494          1,494            0.0  cuInit                        
+      0.0            1,490          1        1,490.0       1,490.0     1,490          1,490            0.0  cuModuleGetLoadingMode        
+
+[5/7] Executing 'cuda_gpu_kern_sum' stats report
+
+ Time (%)  Total Time (ns)  Instances     Avg (ns)         Med (ns)       Min (ns)      Max (ns)      StdDev (ns)                                                   Name                                                
+ --------  ---------------  ---------  ---------------  ---------------  -----------  -------------  -------------  ----------------------------------------------------------------------------------------------------
+     83.8    6,573,949,554          6  1,095,658,259.0  1,093,948,448.0  852,896,658  1,258,089,318  152,828,362.6  kernelCallStage1(int, int, int, ABM *, Graph *, DeviceGraph *, DeviceGraph *, device_map<int, Node>…
+     10.3      805,848,098          6    134,308,016.3    136,581,261.0  120,724,918    144,098,236    9,904,961.3  kernelCallStage3(int, int, int, ABM *, Graph *, int, device_map<int, Node>::device_view, ABMStageSt…
+      3.2      250,633,947          3     83,544,649.0     82,474,829.0   80,480,950     87,678,168    3,715,961.9  void cuco::legacy::detail::insert<(unsigned long)128, (unsigned int)4, cuco::pair<int, int> *, cuda…
+      1.5      114,499,061     93,895          1,219.4          1,279.0        1,088          1,856           94.8  void cub::CUB_300103_SM_600::detail::for_each::static_kernel<cub::CUB_300103_SM_600::detail::for_ea…
+      1.1       87,693,211          6     14,615,535.2     15,372,223.5   10,122,794     17,853,780    3,156,128.4  kernelCallStage2(int, int, int, ABM *, Graph *, cuco::static_set_ref<int, (cuda::std::__4::thread_s…
+      0.1        7,569,897          6      1,261,649.5      1,264,913.5    1,145,314      1,361,090       85,288.0  kernelCallStage4(int, int, int, ABM *, Graph *, int, device_map<int, Node>::device_view, ABMStageSt…
+      0.0          950,337          3        316,779.0        281,601.0      181,504        487,232      155,870.2  void cuco::detail::open_addressing_ns::insert_if_n<(int)1, (int)128, int *, thrust::THRUST_300103_S…
+      0.0          659,843         12         54,986.9         28,624.0        5,185        139,425       54,780.8  kernel_extract_vector_sizes(device_vector *, int *, int)                                            
+      0.0            9,792          3          3,264.0          3,264.0        3,200          3,328           64.0  void cuco::legacy::detail::initialize<(unsigned long)256, cuda::__4::atomic<int, (cuda::std::__4::t…
+      0.0            4,448          3          1,482.7          1,504.0        1,312          1,632          161.1  void cub::CUB_300103_SM_600::detail::for_each::static_kernel<cub::CUB_300103_SM_600::detail::for_ea…
+
+[6/7] Executing 'cuda_gpu_mem_time_sum' stats report
+
+ Time (%)  Total Time (ns)    Count    Avg (ns)  Med (ns)  Min (ns)  Max (ns)   StdDev (ns)               Operation              
+ --------  ---------------  ---------  --------  --------  --------  ---------  -----------  ------------------------------------
+     44.7      925,785,211    375,604   2,464.8   2,464.0     1,952     25,760        129.0  [CUDA memcpy Device-to-Host]        
+     42.3      876,143,279  1,126,800     777.5     768.0       703  3,652,099      5,735.2  [CUDA memcpy Host-to-Device]        
+     13.0      268,705,935    187,835   1,430.5   1,440.0       736    458,977      3,359.2  [CUDA memset]                       
+      0.1        1,997,004        651   3,067.6   2,527.0     2,206     19,264      2,037.3  [CUDA memcpy Unified Host-to-Device]
+      0.0          666,308        174   3,829.4   3,071.5     2,367     12,544      2,164.5  [CUDA memcpy Unified Device-to-Host]
+
+[7/7] Executing 'cuda_gpu_mem_size_sum' stats report
+
+ Total (MB)    Count    Avg (MB)  Med (MB)  Min (MB)  Max (MB)   StdDev (MB)               Operation              
+ ----------  ---------  --------  --------  --------  ---------  -----------  ------------------------------------
+ 30,794.454    187,835     0.164     0.065     0.000  1,494.008       10.922  [CUDA memset]                       
+    272.953  1,126,800     0.000     0.000     0.000     46.834        0.076  [CUDA memcpy Host-to-Device]        
+     28.110    375,604     0.000     0.000     0.000      1.060        0.005  [CUDA memcpy Device-to-Host]        
+     24.248        651     0.037     0.008     0.004      0.934        0.111  [CUDA memcpy Unified Host-to-Device]
+     12.255        174     0.070     0.031     0.004      0.520        0.115  [CUDA memcpy Unified Device-to-Host]
+
+Generated:
+    /home/jmukher/workspace/uiuc/citation_abm/profile/nsys-pa-3y-6p.nsys-rep
+    /home/jmukher/workspace/uiuc/citation_abm/profile/nsys-pa-3y-6p.sqlite
+SUCCESS: 58M → profile/nsys-pa-3y-6p.nsys-rep

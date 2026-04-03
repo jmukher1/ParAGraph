@@ -1,0 +1,21 @@
+Running growth rate = .0100 = 1% ER_PROBABILITY_LABEL = 0.03% with 16 thread
+./output/10y/0.03/gpu-opt-static-model-er-gnp-10y-1p-0.03p.edgelist
+./output/10y/0.03/gpu-opt-static-model-er-gnp-10y-1p-0.03p.aux
+
+real	0m22.555s
+user	0m24.198s
+sys	0m2.155s
+Running growth rate = .0300 = 3% ER_PROBABILITY_LABEL = 0.03% with 16 thread
+./output/10y/0.03/gpu-opt-static-model-er-gnp-10y-3p-0.03p.edgelist
+./output/10y/0.03/gpu-opt-static-model-er-gnp-10y-3p-0.03p.aux
+
+real	0m34.674s
+user	0m39.820s
+sys	0m3.328s
+Running growth rate = .0600 = 6% ER_PROBABILITY_LABEL = 0.03% with 16 thread
+./output/10y/0.03/gpu-opt-static-model-er-gnp-10y-6p-0.03p.edgelist
+./output/10y/0.03/gpu-opt-static-model-er-gnp-10y-6p-0.03p.aux
+
+real	1m3.589s
+user	1m13.846s
+sys	0m6.805s

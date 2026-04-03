@@ -1,0 +1,15 @@
+mkdir: cannot create directory ‘/var/spool/slurm/job8633094/output’: Permission denied
+mkdir: cannot create directory ‘/var/spool/slurm/job8633094/errors’: Permission denied
+=== FILE CHECK ===
+MISSING /var/spool/slurm/job8633094/sj_edgelist
+MISSING /var/spool/slurm/job8633094/sj_nodelist
+MISSING /var/spool/slurm/job8633094/tcen_at_least_five
+MISSING /var/spool/slurm/job8633094/sj_recprob
+MISSING /var/spool/slurm/job8633094/abm
+nsys: /apps/gautschi/cuda/12.6/bin/nsys  NVIDIA Nsight Systems version 2024.4.2.133-244234382004v0
+================================
+mkdir: cannot create directory ‘/var/spool/slurm/job8633094/output’: Permission denied
+=== Growth 3% — output: /home/jmukher/workspace/uiuc/citation_abm/profile/nsys_er-gnp_3y_3p.nsys-rep ===
+/var/spool/slurm/job8633094/slurm_script: line 64: /var/spool/slurm/job8633094/errors/nsys-abm-3p.err: No such file or directory
+FAILED — stderr output:
+cat: /var/spool/slurm/job8633094/errors/nsys-abm-3p.err: No such file or directory

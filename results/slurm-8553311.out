@@ -1,0 +1,28 @@
+Running growth rate 1% for 30 years.
+./output/30y/gpu-opt-static-output-30y-1p.edgelist
+./output/30y/gpu-opt-static-output-30y-1p.aux
+
+real	2m28.136s
+user	2m36.933s
+sys	0m4.983s
+Running growth rate 3% for 30 years.
+./output/30y/gpu-opt-static-output-30y-3p.edgelist
+./output/30y/gpu-opt-static-output-30y-3p.aux
+
+real	6m23.330s
+user	6m17.531s
+sys	0m21.061s
+Running growth rate 5% for 30 years.
+./output/30y/gpu-opt-static-output-30y-5p.edgelist
+./output/30y/gpu-opt-static-output-30y-5p.aux
+
+real	14m47.514s
+user	14m11.950s
+sys	0m51.376s
+Running growth rate 6% for 30 years.
+./output/30y/gpu-opt-static-output-30y-6p.edgelist
+./output/30y/gpu-opt-static-output-30y-6p.aux
+
+real	22m32.004s
+user	21m52.975s
+sys	1m6.981s
