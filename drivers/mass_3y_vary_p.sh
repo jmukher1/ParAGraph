@@ -22,7 +22,7 @@ FULLY_RANDOM_CITATIONS="0.05"
 LOG_LEVEL="1"
 
 growth_percents="1 3 5 6"
-BFS_BATCH_SIZE=10
+BFS_BATCH_SIZE=25
 
 mkdir -p ./output/${NUM_CYCLES}y
 
@@ -33,10 +33,10 @@ do
     GROWTH_RATE=$(echo "scale=2; $GROWTH_PERCENT/100" | bc)
      
     if [ "$GROWTH_PERCENT" -eq 5 ]; then
-        BFS_BATCH_SIZE=20
+        BFS_BATCH_SIZE=50
         echo "For GROWTH_PERCENT = $GROWTH_PERCENT %, BFS_BATCH_SIZE = $BFS_BATCH_SIZE."
     elif [ "$GROWTH_PERCENT" -ge 6 ]; then
-        BFS_BATCH_SIZE=30
+        BFS_BATCH_SIZE=60
         echo "For GROWTH_PERCENT = $GROWTH_PERCENT %, BFS_BATCH_SIZE = $BFS_BATCH_SIZE."
     fi
 
