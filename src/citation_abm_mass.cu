@@ -11,6 +11,7 @@
 #include "MASS_base.h"
 #include "Paper.h"
 #include "argparse.h"
+#include "er_kernels.cuh"
 #include <iostream>
 #include <fstream>
 #include <sstream>
@@ -58,12 +59,21 @@ struct ABMConfig {
     int num_processors;
     int log_level;
 
+    // ── Network model ─────────────────────────────────────────────────────────
+    // "pa"     : preferential-attachment (default, original behaviour)
+    // "er"     : Erdos-Renyi fixed-k  (--er-edges-per-node required)
+    // "er-gnp" : Erdos-Renyi G(n,p)   (--er-probability required)
+    std::string network_model;
+    double er_edge_probability;  // G(n,p) edge probability
+    int    er_edges_per_node;    // fixed-k edges per new node
+
     ABMConfig()
         : initial_population(1000), num_cycles(30), growth_rate(0.05f),
           alpha(0.7f), fully_random_citations(0.05f), same_year_proportion(0.1f),
           preferential_weight(-1.0f), recency_weight(-1.0f), fitness_weight(-1.0f),
           bfs_num_batches(10),
-          num_processors(1), log_level(1) {}
+          num_processors(1), log_level(1),
+          network_model("pa"), er_edge_probability(0.0), er_edges_per_node(0) {}
 };
 
 // ─────────────────────────────────────────────────────────────────────────────
@@ -1037,12 +1047,121 @@ public:
     }
 
     // =========================================================================
+    // simulateOneYearER  –  Erdős-Rényi growth model
+    //
+    // Replaces the BFS + PA citation kernel with GPU-parallel ER edge
+    // generation.  Each new paper independently draws edges to OLD nodes
+    // (seed papers + all papers published before this year) according to
+    // either the G(n,p) or fixed-k model.
+    //
+    // Steps:
+    //   1. Update fitness for all current papers           (same as PA)
+    //   2. Add num_new = ceil(pop * growth_rate) new nodes (same as PA)
+    //   3. Launch ER GPU kernel over all new nodes
+    //   4. Append generated edges to h_edges
+    //   5. Rebuild CSR so next year sees the new edges     (same as PA)
+    //   6. Re-assign fitness_peak_value post-citation      (same as PA)
+    //   7. Update in/out degree                            (same as PA)
+    //   8. Clear is_new flags                              (same as PA)
+    // =========================================================================
+    void simulateOneYearER() {
+        const int prev_population = current_population;
+        int bs = 256, gs;
+
+        std::cout << "\n--- Year " << current_year
+                  << " [ER:" << config.network_model
+                  << "] (pop: " << current_population << ") ---\n";
+        auto t0 = std::chrono::high_resolution_clock::now();
+
+        // ── Step 1: Update fitness ────────────────────────────────────────────
+        gs = (current_population + bs - 1) / bs;
+        updateFitnessKernel<<<gs, bs>>>(d_papers, current_population, current_year);
+        cudaDeviceSynchronize();
+
+        // ── Step 2: Add new papers ────────────────────────────────────────────
+        const int num_new = static_cast<int>(std::ceil(current_population * config.growth_rate));
+        std::cout << "  Adding " << num_new << " new papers\n";
+        const std::vector<int> new_indices = addNewPapers(num_new);
+        if (new_indices.empty()) { current_year++; return; }
+
+        // The ER model does not use generator nodes or BFS, but we still call
+        // selectGeneratorKernel so Paper::State::generator_node is set to a
+        // valid value (some output utilities read it).
+        gs = (current_population + bs - 1) / bs;
+        selectGeneratorKernel<<<gs, bs>>>(d_papers, current_population,
+                                           prev_population, d_rand_states);
+        cudaDeviceSynchronize();
+
+        // ── Step 3: ER kernel over all new nodes ──────────────────────────────
+        // new_indices[i] is the *global* paper index of the i-th new paper.
+        // Old (citable) nodes occupy [0, prev_population).
+        {
+            std::cout << "  Launching ER kernel (" << num_new << " new nodes, "
+                      << prev_population << " citable old nodes)";
+            if (config.network_model == "er-gnp")
+                std::cout << "  p=" << config.er_edge_probability << "\n";
+            else
+                std::cout << "  k=" << config.er_edges_per_node << "\n";
+
+            launchERKernel(
+                new_indices.data(),      // host array of global paper indices
+                num_new,
+                prev_population,         // only OLD nodes are citation targets
+                config.er_edge_probability,
+                config.er_edges_per_node,
+                current_year,
+                h_edges);
+
+            std::cout << "  ER generated " << h_edges.size() << " total edges so far\n";
+        }
+
+        // ── Step 4: Rebuild CSR with all new edges ────────────────────────────
+        buildDeviceGraphs();
+
+        // ── Step 5: Re-assign fitness_peak_value post-citation ────────────────
+        {
+            const int start = prev_population;
+            gs = (num_new + bs - 1) / bs;
+            reassignFitnessKernel<<<gs, bs>>>(
+                d_papers, start, num_new,
+                d_rand_states, d_fitness_cdf, 1000);
+            cudaDeviceSynchronize();
+        }
+
+        // ── Step 6: Update in/out degree ─────────────────────────────────────
+        gs = (current_population + bs - 1) / bs;
+        updateInDegreeFromCSRKernel <<<gs, bs>>>(d_papers, current_population, d_bwd_graph);
+        updateOutDegreeFromCSRKernel<<<gs, bs>>>(d_papers, current_population, d_fwd_graph);
+        cudaDeviceSynchronize();
+
+        // ── Step 7: Clear is_new flags ────────────────────────────────────────
+        resetNewStatusKernel<<<gs, bs>>>(d_papers, current_population);
+        cudaDeviceSynchronize();
+
+        auto t1 = std::chrono::high_resolution_clock::now();
+        std::cout << "  Year " << current_year << " total: "
+                  << std::chrono::duration_cast<std::chrono::milliseconds>(t1 - t0).count()
+                  << " ms  (pop: " << current_population << ")\n";
+
+        current_year++;
+    }
+
+    // =========================================================================
     // run
     // =========================================================================
     void run() {
-        std::cout << "\n=== Simulation Start ===\n";
+        const bool use_er = (config.network_model == "er" ||
+                             config.network_model == "er-gnp");
+
+        std::cout << "\n=== Simulation Start  [model: "
+                  << config.network_model << "] ===\n";
         auto t0 = std::chrono::high_resolution_clock::now();
-        for (int c = 0; c < config.num_cycles; c++) simulateOneYear();
+
+        for (int c = 0; c < config.num_cycles; c++) {
+            if (use_er) simulateOneYearER();
+            else        simulateOneYear();
+        }
+
         auto t1 = std::chrono::high_resolution_clock::now();
         std::cout << "\n=== Simulation Complete ===\n"
                   << "Total: " << std::chrono::duration_cast<std::chrono::seconds>(t1-t0).count()
@@ -1227,6 +1346,16 @@ int main(int argc, char** argv) {
     prog.add_argument("--log-file").default_value(std::string("simulation.log"));
     prog.add_argument("--num-processors").default_value(1).scan<'i', int>();
     prog.add_argument("--log-level").default_value(1).scan<'i', int>();
+    // ── ER model arguments ────────────────────────────────────────────────────
+    prog.add_argument("--network-model")
+        .default_value(std::string("pa"))
+        .help("Network growth model: pa | er | er-gnp");
+    prog.add_argument("--er-probability")
+        .default_value(0.0).scan<'g', double>()
+        .help("Edge probability for ER G(n,p) model (--network-model er-gnp)");
+    prog.add_argument("--er-edges-per-node")
+        .default_value(0).scan<'i', int>()
+        .help("Fixed edges per new node for ER fixed-k model (--network-model er)");
 
     try {
         prog.parse_args(argc, argv);
@@ -1253,6 +1382,25 @@ int main(int argc, char** argv) {
     cfg.log_file                   = prog.get<std::string>("--log-file");
     cfg.num_processors             = prog.get<int>("--num-processors");
     cfg.log_level                  = prog.get<int>("--log-level") - 1;
+    // ── ER model ──────────────────────────────────────────────────────────────
+    cfg.network_model       = prog.get<std::string>("--network-model");
+    cfg.er_edge_probability = prog.get<double>("--er-probability");
+    cfg.er_edges_per_node   = prog.get<int>("--er-edges-per-node");
+
+    // Validate ER parameters
+    if (cfg.network_model == "er" && cfg.er_edges_per_node <= 0) {
+        std::cerr << "Error: --network-model er requires --er-edges-per-node > 0\n";
+        return 1;
+    }
+    if (cfg.network_model == "er-gnp" && cfg.er_edge_probability <= 0.0) {
+        std::cerr << "Error: --network-model er-gnp requires --er-probability > 0\n";
+        return 1;
+    }
+    if (cfg.network_model != "pa" && cfg.network_model != "er" && cfg.network_model != "er-gnp") {
+        std::cerr << "Error: --network-model must be pa | er | er-gnp\n";
+        return 1;
+    }
+    }
 
     CitationABM sim(cfg);
     sim.initialize();

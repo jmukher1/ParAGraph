@@ -11,8 +11,8 @@ NVCC = nvcc
 CXX = g++
 
 # CUDA architecture (adjust for your GPU)
-CUDA_ARCH = -arch=sm_80 -gencode=arch=compute_60,code=sm_80 \
-            -gencode=arch=compute_80,code=sm_80 -gencode=arch=compute_86,code=sm_86
+CUDA_ARCH = -arch=sm_60 -gencode=arch=compute_60,code=sm_60 \
+            -gencode=arch=compute_60,code=sm_60 -gencode=arch=compute_86,code=sm_86
 
 # Compilation flags
 NVCC_FLAGS = -std=c++20 --extended-lambda --expt-relaxed-constexpr -O3 \
