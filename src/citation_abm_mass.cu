@@ -1347,15 +1347,15 @@ int main(int argc, char** argv) {
     prog.add_argument("--num-processors").default_value(1).scan<'i', int>();
     prog.add_argument("--log-level").default_value(1).scan<'i', int>();
     // ── ER model arguments ────────────────────────────────────────────────────
-    prog.add_argument("--network-model")
+    prog.add_argument("--model")
         .default_value(std::string("pa"))
         .help("Network growth model: pa | er | er-gnp");
     prog.add_argument("--er-probability")
         .default_value(0.0).scan<'g', double>()
-        .help("Edge probability for ER G(n,p) model (--network-model er-gnp)");
+        .help("Edge probability for ER G(n,p) model (--model er-gnp)");
     prog.add_argument("--er-edges-per-node")
         .default_value(0).scan<'i', int>()
-        .help("Fixed edges per new node for ER fixed-k model (--network-model er)");
+        .help("Fixed edges per new node for ER fixed-k model (--model er)");
 
     try {
         prog.parse_args(argc, argv);
@@ -1383,23 +1383,22 @@ int main(int argc, char** argv) {
     cfg.num_processors             = prog.get<int>("--num-processors");
     cfg.log_level                  = prog.get<int>("--log-level") - 1;
     // ── ER model ──────────────────────────────────────────────────────────────
-    cfg.network_model       = prog.get<std::string>("--network-model");
+    cfg.network_model       = prog.get<std::string>("--model");
     cfg.er_edge_probability = prog.get<double>("--er-probability");
     cfg.er_edges_per_node   = prog.get<int>("--er-edges-per-node");
 
     // Validate ER parameters
     if (cfg.network_model == "er" && cfg.er_edges_per_node <= 0) {
-        std::cerr << "Error: --network-model er requires --er-edges-per-node > 0\n";
+        std::cerr << "Error: --model er requires --er-edges-per-node > 0\n";
         return 1;
     }
     if (cfg.network_model == "er-gnp" && cfg.er_edge_probability <= 0.0) {
-        std::cerr << "Error: --network-model er-gnp requires --er-probability > 0\n";
+        std::cerr << "Error: --model er-gnp requires --er-probability > 0\n";
         return 1;
     }
     if (cfg.network_model != "pa" && cfg.network_model != "er" && cfg.network_model != "er-gnp") {
-        std::cerr << "Error: --network-model must be pa | er | er-gnp\n";
+        std::cerr << "Error: --model must be pa | er | er-gnp\n";
         return 1;
-    }
     }
 
     CitationABM sim(cfg);
