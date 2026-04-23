@@ -8,7 +8,8 @@
 //                GetOneAndTwoHopNeighborhood, MakePopulateCitations, run loop
 // ─────────────────────────────────────────────────────────────────────────────
 
-#include "MASS_base.h"
+#include "Mass.h"
+#include "Agent.h"
 #include "Paper.h"
 #include "argparse.h"
 #include <iostream>
