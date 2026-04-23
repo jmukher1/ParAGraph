@@ -11,7 +11,9 @@
 //               ABMKernelStage2/3/4 pipeline
 // ─────────────────────────────────────────────────────────────────────────────
 
-#include "MASS_base.h"
+#include "Mass.h"
+#include "Agent.h"
+using mass::Agent;
 #include <vector>
 #include <cmath>
 #include <cuda_runtime.h>
@@ -233,7 +235,7 @@ void GetOneAndTwoHopNeighborhood(
 // ═════════════════════════════════════════════════════════════════════════════
 // Paper agent
 // ═════════════════════════════════════════════════════════════════════════════
-class Paper : public Agent {
+class Paper : public mass::Agent {
 public:
     int id;
     int year;
@@ -286,14 +288,14 @@ public:
 
     State state;
 
-    __host__ __device__ Paper() : Agent(nullptr) {
+    __host__ __device__ Paper() : mass::Agent(0) {
         id = 0; year = 0; citations = 0; quality = 0.0f; age = 0;
     }
     __host__ __device__ Paper(int paper_id, int pub_year, float q)
-        : Agent(nullptr) {
+        : mass::Agent(paper_id) {
         id = paper_id; year = pub_year; citations = 0; quality = q; age = 0;
     }
-    __host__ __device__ Paper(const Paper& o) : Agent(nullptr) {
+    __host__ __device__ Paper(const Paper& o) : mass::Agent(o.id) {
         id = o.id; year = o.year; citations = o.citations;
         quality = o.quality; age = o.age; rand_state = o.rand_state;
         state = o.state;
@@ -306,15 +308,15 @@ public:
         }
         return *this;
     }
-    __host__ virtual ~Paper() {}
+    __host__ __device__ virtual ~Paper() {}
 
-    virtual void* callMethod(int functionId, void* argument) {
-        switch (functionId) {
+    // virtual void* callMethod(int functionId, void* argument) {
+    __device__ virtual void callMethod(int functionId, void* argument) override {
+    	switch (functionId) {
             case 0: updateAge();   break;
             case 2: addCitation(); break;
             default: break;
         }
-        return nullptr;
     }
     __device__ void callMethodDevice(int functionId) {
         switch (functionId) {

@@ -1,0 +1,678 @@
+Using GROWTH_PERCENT = 3 %, BFS_BATCH_SIZE = 10
+0.0001
+Running growth rate 1% for 3 years.
+Citation Network ABM – MASS CUDA
+=================================
+
+Out-degree bag: 3980408 entries
+Recency probs:  355 entries
+BFS batches:    10 per year
+
+=== Initializing Citation ABM ===
+
+Inside parseNodelist...
+Populating continuous node mappings (491532 nodes)...
+parseNodelist done in 957 ms (491532 nodes)
+
+Inside parseEdgelist...
+parseEdgelist done in 421 ms (899050 edges)
+Seed max year: 1982  → simulation starts at 1983
+Max population: 508428
+Seed population: 491532 papers
+  DeviceGraph: fwd=899050 bwd=899050 edges
+Initialization complete
+
+
+=== Simulation Start  [model: er-gnp] ===
+
+--- Year 1983 [ER:er-gnp] (pop: 491532) ---
+  Adding 4916 new papers
+  Launching ER kernel (4916 new nodes, 491532 citable old nodes)  p=0.0001
+  ER generated 1140503 total edges so far
+  DeviceGraph: fwd=1140503 bwd=1140503 edges
+  Year 1983 total: 1992 ms  (pop: 496448)
+
+--- Year 1984 [ER:er-gnp] (pop: 496448) ---
+  Adding 4965 new papers
+  Launching ER kernel (4965 new nodes, 496448 citable old nodes)  p=0.0001
+  ER generated 1387172 total edges so far
+  DeviceGraph: fwd=1387172 bwd=1387172 edges
+  Year 1984 total: 2365 ms  (pop: 501413)
+
+--- Year 1985 [ER:er-gnp] (pop: 501413) ---
+  Adding 5015 new papers
+  Launching ER kernel (5015 new nodes, 501413 citable old nodes)  p=0.0001
+  ER generated 1639017 total edges so far
+  DeviceGraph: fwd=1639017 bwd=1639017 edges
+  Year 1985 total: 2719 ms  (pop: 506428)
+
+=== Simulation Complete ===
+Total: 7 s  Final pop: 506428
+
+=== Exporting Results ===
+Edges saved: ./output/0.0001/mass-er-gnp_cuda-static-output-3y-1p.edgelist (1639017)
+Attributes saved: ./output/0.0001/mass-er-gnp_cuda-static-output-3y-1p.aux (506428 rows)
+
+Done.
+14.58user 1.26system 0:16.31elapsed 97%CPU (0avgtext+0avgdata 1163300maxresident)k
+125576inputs+113904outputs (10major+673942minor)pagefaults 0swaps
+Running growth rate 3% for 3 years.
+Citation Network ABM – MASS CUDA
+=================================
+
+Out-degree bag: 3980408 entries
+Recency probs:  355 entries
+BFS batches:    10 per year
+
+=== Initializing Citation ABM ===
+
+Inside parseNodelist...
+Populating continuous node mappings (491532 nodes)...
+parseNodelist done in 895 ms (491532 nodes)
+
+Inside parseEdgelist...
+parseEdgelist done in 291 ms (899050 edges)
+Seed max year: 1982  → simulation starts at 1983
+Max population: 539112
+Seed population: 491532 papers
+  DeviceGraph: fwd=899050 bwd=899050 edges
+Initialization complete
+
+
+=== Simulation Start  [model: er-gnp] ===
+
+--- Year 1983 [ER:er-gnp] (pop: 491532) ---
+  Adding 14746 new papers
+  Launching ER kernel (14746 new nodes, 491532 citable old nodes)  p=0.0001
+  ER generated 1623677 total edges so far
+  DeviceGraph: fwd=1623677 bwd=1623677 edges
+  Year 1983 total: 3161 ms  (pop: 506278)
+
+--- Year 1984 [ER:er-gnp] (pop: 506278) ---
+  Adding 15189 new papers
+  Launching ER kernel (15189 new nodes, 506278 citable old nodes)  p=0.0001
+  ER generated 2391914 total edges so far
+  DeviceGraph: fwd=2391914 bwd=2391914 edges
+  Year 1984 total: 4253 ms  (pop: 521467)
+
+--- Year 1985 [ER:er-gnp] (pop: 521467) ---
+  Adding 15645 new papers
+  Launching ER kernel (15645 new nodes, 521467 citable old nodes)  p=0.0001
+  ER generated 3207833 total edges so far
+  DeviceGraph: fwd=3207833 bwd=3207833 edges
+  Year 1985 total: 5274 ms  (pop: 537112)
+
+=== Simulation Complete ===
+Total: 12 s  Final pop: 537112
+
+=== Exporting Results ===
+Edges saved: ./output/0.0001/mass-er-gnp_cuda-static-output-3y-3p.edgelist (3207833)
+Attributes saved: ./output/0.0001/mass-er-gnp_cuda-static-output-3y-3p.aux (537112 rows)
+
+Done.
+22.05user 1.46system 0:23.56elapsed 99%CPU (0avgtext+0avgdata 1359492maxresident)k
+0inputs+165840outputs (0major+921461minor)pagefaults 0swaps
+For GROWTH_PERCENT = 6 %, BFS_BATCH_SIZE = 30.
+Running growth rate 6% for 3 years.
+Citation Network ABM – MASS CUDA
+=================================
+
+Out-degree bag: 3980408 entries
+Recency probs:  355 entries
+BFS batches:    30 per year
+
+=== Initializing Citation ABM ===
+
+Inside parseNodelist...
+Populating continuous node mappings (491532 nodes)...
+parseNodelist done in 861 ms (491532 nodes)
+
+Inside parseEdgelist...
+parseEdgelist done in 264 ms (899050 edges)
+Seed max year: 1982  → simulation starts at 1983
+Max population: 587424
+Seed population: 491532 papers
+  DeviceGraph: fwd=899050 bwd=899050 edges
+Initialization complete
+
+
+=== Simulation Start  [model: er-gnp] ===
+
+--- Year 1983 [ER:er-gnp] (pop: 491532) ---
+  Adding 29492 new papers
+  Launching ER kernel (29492 new nodes, 491532 citable old nodes)  p=0.0001
+  ER generated 2349039 total edges so far
+  DeviceGraph: fwd=2349039 bwd=2349039 edges
+  Year 1983 total: 4849 ms  (pop: 521024)
+
+--- Year 1984 [ER:er-gnp] (pop: 521024) ---
+  Adding 31262 new papers
+  Launching ER kernel (31262 new nodes, 521024 citable old nodes)  p=0.0001
+  ER generated 3977731 total edges so far
+  DeviceGraph: fwd=3977731 bwd=3977731 edges
+  Year 1984 total: 6967 ms  (pop: 552286)
+
+--- Year 1985 [ER:er-gnp] (pop: 552286) ---
+  Adding 33138 new papers
+  Launching ER kernel (33138 new nodes, 552286 citable old nodes)  p=0.0001
+  ER generated 5808606 total edges so far
+  DeviceGraph: fwd=5808606 bwd=5808606 edges
+  Year 1985 total: 9510 ms  (pop: 585424)
+
+=== Simulation Complete ===
+Total: 21 s  Final pop: 585424
+
+=== Exporting Results ===
+Edges saved: ./output/0.0001/mass-er-gnp_cuda-static-output-3y-6p.edgelist (5808606)
+Attributes saved: ./output/0.0001/mass-er-gnp_cuda-static-output-3y-6p.aux (585424 rows)
+
+Done.
+33.26user 1.83system 0:35.13elapsed 99%CPU (0avgtext+0avgdata 1739636maxresident)k
+0inputs+251592outputs (0major+1103501minor)pagefaults 0swaps
+Running growth rate 1% for 3 years.
+Citation Network ABM – MASS CUDA
+=================================
+
+Out-degree bag: 3980408 entries
+Recency probs:  355 entries
+BFS batches:    30 per year
+
+=== Initializing Citation ABM ===
+
+Inside parseNodelist...
+Populating continuous node mappings (491532 nodes)...
+parseNodelist done in 917 ms (491532 nodes)
+
+Inside parseEdgelist...
+parseEdgelist done in 264 ms (899050 edges)
+Seed max year: 1982  → simulation starts at 1983
+Max population: 508428
+Seed population: 491532 papers
+  DeviceGraph: fwd=899050 bwd=899050 edges
+Initialization complete
+
+
+=== Simulation Start  [model: er-gnp] ===
+
+--- Year 1983 [ER:er-gnp] (pop: 491532) ---
+  Adding 4916 new papers
+  Launching ER kernel (4916 new nodes, 491532 citable old nodes)  p=0.0003
+  ER generated 1624477 total edges so far
+  DeviceGraph: fwd=1624477 bwd=1624477 edges
+  Year 1983 total: 2572 ms  (pop: 496448)
+
+--- Year 1984 [ER:er-gnp] (pop: 496448) ---
+  Adding 4965 new papers
+  Launching ER kernel (4965 new nodes, 496448 citable old nodes)  p=0.0003
+  ER generated 2364453 total edges so far
+  DeviceGraph: fwd=2364453 bwd=2364453 edges
+  Year 1984 total: 3580 ms  (pop: 501413)
+
+--- Year 1985 [ER:er-gnp] (pop: 501413) ---
+  Adding 5015 new papers
+  Launching ER kernel (5015 new nodes, 501413 citable old nodes)  p=0.0003
+  ER generated 3119790 total edges so far
+  DeviceGraph: fwd=3119790 bwd=3119790 edges
+  Year 1985 total: 4534 ms  (pop: 506428)
+
+=== Simulation Complete ===
+Total: 10 s  Final pop: 506428
+
+=== Exporting Results ===
+Edges saved: ./output/0.0003/mass-er-gnp_cuda-static-output-3y-1p.edgelist (3119790)
+Attributes saved: ./output/0.0003/mass-er-gnp_cuda-static-output-3y-1p.aux (506428 rows)
+
+Done.
+19.80user 1.35system 0:21.18elapsed 99%CPU (0avgtext+0avgdata 1316452maxresident)k
+0inputs+158112outputs (0major+801074minor)pagefaults 0swaps
+Running growth rate 3% for 3 years.
+Citation Network ABM – MASS CUDA
+=================================
+
+Out-degree bag: 3980408 entries
+Recency probs:  355 entries
+BFS batches:    30 per year
+
+=== Initializing Citation ABM ===
+
+Inside parseNodelist...
+Populating continuous node mappings (491532 nodes)...
+parseNodelist done in 880 ms (491532 nodes)
+
+Inside parseEdgelist...
+parseEdgelist done in 270 ms (899050 edges)
+Seed max year: 1982  → simulation starts at 1983
+Max population: 539112
+Seed population: 491532 papers
+  DeviceGraph: fwd=899050 bwd=899050 edges
+Initialization complete
+
+
+=== Simulation Start  [model: er-gnp] ===
+
+--- Year 1983 [ER:er-gnp] (pop: 491532) ---
+  Adding 14746 new papers
+  Launching ER kernel (14746 new nodes, 491532 citable old nodes)  p=0.0003
+  ER generated 3073228 total edges so far
+  DeviceGraph: fwd=3073228 bwd=3073228 edges
+  Year 1983 total: 5166 ms  (pop: 506278)
+
+--- Year 1984 [ER:er-gnp] (pop: 506278) ---
+  Adding 15189 new papers
+  Launching ER kernel (15189 new nodes, 506278 citable old nodes)  p=0.0003
+  ER generated 5379062 total edges so far
+  DeviceGraph: fwd=5379062 bwd=5379062 edges
+  Year 1984 total: 8091 ms  (pop: 521467)
+
+--- Year 1985 [ER:er-gnp] (pop: 521467) ---
+  Adding 15645 new papers
+  Launching ER kernel (15645 new nodes, 521467 citable old nodes)  p=0.0003
+  ER generated 7825716 total edges so far
+  DeviceGraph: fwd=7825716 bwd=7825716 edges
+  Year 1985 total: 11565 ms  (pop: 537112)
+
+=== Simulation Complete ===
+Total: 24 s  Final pop: 537112
+
+=== Exporting Results ===
+Edges saved: ./output/0.0003/mass-er-gnp_cuda-static-output-3y-3p.edgelist (7825716)
+Attributes saved: ./output/0.0003/mass-er-gnp_cuda-static-output-3y-3p.aux (537112 rows)
+
+Done.
+38.77user 2.11system 0:40.92elapsed 99%CPU (0avgtext+0avgdata 1918208maxresident)k
+0inputs+304192outputs (0major+1303955minor)pagefaults 0swaps
+For GROWTH_PERCENT = 6 %, BFS_BATCH_SIZE = 30.
+Running growth rate 6% for 3 years.
+Citation Network ABM – MASS CUDA
+=================================
+
+Out-degree bag: 3980408 entries
+Recency probs:  355 entries
+BFS batches:    30 per year
+
+=== Initializing Citation ABM ===
+
+Inside parseNodelist...
+Populating continuous node mappings (491532 nodes)...
+parseNodelist done in 883 ms (491532 nodes)
+
+Inside parseEdgelist...
+parseEdgelist done in 268 ms (899050 edges)
+Seed max year: 1982  → simulation starts at 1983
+Max population: 587424
+Seed population: 491532 papers
+  DeviceGraph: fwd=899050 bwd=899050 edges
+Initialization complete
+
+
+=== Simulation Start  [model: er-gnp] ===
+
+--- Year 1983 [ER:er-gnp] (pop: 491532) ---
+  Adding 29492 new papers
+  Launching ER kernel (29492 new nodes, 491532 citable old nodes)  p=0.0003
+  ER generated 5248549 total edges so far
+  DeviceGraph: fwd=5248549 bwd=5248549 edges
+  Year 1983 total: 8684 ms  (pop: 521024)
+
+--- Year 1984 [ER:er-gnp] (pop: 521024) ---
+  Adding 31262 new papers
+  Launching ER kernel (31262 new nodes, 521024 citable old nodes)  p=0.0003
+  ER generated 10135375 total edges so far
+  DeviceGraph: fwd=10135375 bwd=10135375 edges
+  Year 1984 total: 15744 ms  (pop: 552286)
+
+--- Year 1985 [ER:er-gnp] (pop: 552286) ---
+  Adding 33138 new papers
+  Launching ER kernel (33138 new nodes, 552286 citable old nodes)  p=0.0003
+  ER generated 15625880 total edges so far
+  DeviceGraph: fwd=15625880 bwd=15625880 edges
+  Year 1985 total: 23849 ms  (pop: 585424)
+
+=== Simulation Complete ===
+Total: 48 s  Final pop: 585424
+
+=== Exporting Results ===
+Edges saved: ./output/0.0003/mass-er-gnp_cuda-static-output-3y-6p.edgelist (15625880)
+Attributes saved: ./output/0.0003/mass-er-gnp_cuda-static-output-3y-6p.aux (585424 rows)
+
+Done.
+69.72user 3.30system 1:13.06elapsed 99%CPU (0avgtext+0avgdata 2876772maxresident)k
+0inputs+543792outputs (0major+2348455minor)pagefaults 0swaps
+Running growth rate 1% for 3 years.
+Citation Network ABM – MASS CUDA
+=================================
+
+Out-degree bag: 3980408 entries
+Recency probs:  355 entries
+BFS batches:    30 per year
+
+=== Initializing Citation ABM ===
+
+Inside parseNodelist...
+Populating continuous node mappings (491532 nodes)...
+parseNodelist done in 869 ms (491532 nodes)
+
+Inside parseEdgelist...
+parseEdgelist done in 268 ms (899050 edges)
+Seed max year: 1982  → simulation starts at 1983
+Max population: 508428
+Seed population: 491532 papers
+  DeviceGraph: fwd=899050 bwd=899050 edges
+Initialization complete
+
+
+=== Simulation Start  [model: er-gnp] ===
+
+--- Year 1983 [ER:er-gnp] (pop: 491532) ---
+  Adding 4916 new papers
+  Launching ER kernel (4916 new nodes, 491532 citable old nodes)  p=0.0005
+  ER generated 2108367 total edges so far
+  DeviceGraph: fwd=2108367 bwd=2108367 edges
+  Year 1983 total: 3216 ms  (pop: 496448)
+
+--- Year 1984 [ER:er-gnp] (pop: 496448) ---
+  Adding 4965 new papers
+  Launching ER kernel (4965 new nodes, 496448 citable old nodes)  p=0.0005
+  ER generated 3339916 total edges so far
+  DeviceGraph: fwd=3339916 bwd=3339916 edges
+  Year 1984 total: 4878 ms  (pop: 501413)
+
+--- Year 1985 [ER:er-gnp] (pop: 501413) ---
+  Adding 5015 new papers
+  Launching ER kernel (5015 new nodes, 501413 citable old nodes)  p=0.0005
+  ER generated 4597766 total edges so far
+  DeviceGraph: fwd=4597766 bwd=4597766 edges
+  Year 1985 total: 6374 ms  (pop: 506428)
+
+=== Simulation Complete ===
+Total: 14 s  Final pop: 506428
+
+=== Exporting Results ===
+Edges saved: ./output/0.0005/mass-er-gnp_cuda-static-output-3y-1p.edgelist (4597766)
+Attributes saved: ./output/0.0005/mass-er-gnp_cuda-static-output-3y-1p.aux (506428 rows)
+
+Done.
+25.09user 1.55system 0:26.68elapsed 99%CPU (0avgtext+0avgdata 1468268maxresident)k
+0inputs+202392outputs (0major+899916minor)pagefaults 0swaps
+Running growth rate 3% for 3 years.
+Citation Network ABM – MASS CUDA
+=================================
+
+Out-degree bag: 3980408 entries
+Recency probs:  355 entries
+BFS batches:    30 per year
+
+=== Initializing Citation ABM ===
+
+Inside parseNodelist...
+Populating continuous node mappings (491532 nodes)...
+parseNodelist done in 886 ms (491532 nodes)
+
+Inside parseEdgelist...
+parseEdgelist done in 276 ms (899050 edges)
+Seed max year: 1982  → simulation starts at 1983
+Max population: 539112
+Seed population: 491532 papers
+  DeviceGraph: fwd=899050 bwd=899050 edges
+Initialization complete
+
+
+=== Simulation Start  [model: er-gnp] ===
+
+--- Year 1983 [ER:er-gnp] (pop: 491532) ---
+  Adding 14746 new papers
+  Launching ER kernel (14746 new nodes, 491532 citable old nodes)  p=0.0005
+  ER generated 4523825 total edges so far
+  DeviceGraph: fwd=4523825 bwd=4523825 edges
+  Year 1983 total: 6977 ms  (pop: 506278)
+
+--- Year 1984 [ER:er-gnp] (pop: 506278) ---
+  Adding 15189 new papers
+  Launching ER kernel (15189 new nodes, 506278 citable old nodes)  p=0.0005
+  ER generated 8366961 total edges so far
+  DeviceGraph: fwd=8366961 bwd=8366961 edges
+  Year 1984 total: 12264 ms  (pop: 521467)
+
+--- Year 1985 [ER:er-gnp] (pop: 521467) ---
+  Adding 15645 new papers
+  Launching ER kernel (15645 new nodes, 521467 citable old nodes)  p=0.0005
+  ER generated 12445445 total edges so far
+  DeviceGraph: fwd=12445445 bwd=12445445 edges
+  Year 1985 total: 17948 ms  (pop: 537112)
+
+=== Simulation Complete ===
+Total: 37 s  Final pop: 537112
+
+=== Exporting Results ===
+Edges saved: ./output/0.0005/mass-er-gnp_cuda-static-output-3y-3p.edgelist (12445445)
+Attributes saved: ./output/0.0005/mass-er-gnp_cuda-static-output-3y-3p.aux (537112 rows)
+
+Done.
+56.22user 2.61system 0:58.86elapsed 99%CPU (0avgtext+0avgdata 2413544maxresident)k
+0inputs+441808outputs (0major+1883146minor)pagefaults 0swaps
+For GROWTH_PERCENT = 6 %, BFS_BATCH_SIZE = 30.
+Running growth rate 6% for 3 years.
+Citation Network ABM – MASS CUDA
+=================================
+
+Out-degree bag: 3980408 entries
+Recency probs:  355 entries
+BFS batches:    30 per year
+
+=== Initializing Citation ABM ===
+
+Inside parseNodelist...
+Populating continuous node mappings (491532 nodes)...
+parseNodelist done in 869 ms (491532 nodes)
+
+Inside parseEdgelist...
+parseEdgelist done in 278 ms (899050 edges)
+Seed max year: 1982  → simulation starts at 1983
+Max population: 587424
+Seed population: 491532 papers
+  DeviceGraph: fwd=899050 bwd=899050 edges
+Initialization complete
+
+
+=== Simulation Start  [model: er-gnp] ===
+
+--- Year 1983 [ER:er-gnp] (pop: 491532) ---
+  Adding 29492 new papers
+  Launching ER kernel (29492 new nodes, 491532 citable old nodes)  p=0.0005
+  ER generated 8149111 total edges so far
+  DeviceGraph: fwd=8149111 bwd=8149111 edges
+  Year 1983 total: 12826 ms  (pop: 521024)
+
+--- Year 1984 [ER:er-gnp] (pop: 521024) ---
+  Adding 31262 new papers
+  Launching ER kernel (31262 new nodes, 521024 citable old nodes)  p=0.0005
+  ER generated 16291031 total edges so far
+  DeviceGraph: fwd=16291031 bwd=16291031 edges
+  Year 1984 total: 24976 ms  (pop: 552286)
+
+--- Year 1985 [ER:er-gnp] (pop: 552286) ---
+  Adding 33138 new papers
+  Launching ER kernel (33138 new nodes, 552286 citable old nodes)  p=0.0005
+  ER generated 25442982 total edges so far
+  DeviceGraph: fwd=25442982 bwd=25442982 edges
+  Year 1985 total: 38095 ms  (pop: 585424)
+
+=== Simulation Complete ===
+Total: 75 s  Final pop: 585424
+
+=== Exporting Results ===
+Edges saved: ./output/0.0005/mass-er-gnp_cuda-static-output-3y-6p.edgelist (25442982)
+Attributes saved: ./output/0.0005/mass-er-gnp_cuda-static-output-3y-6p.aux (585424 rows)
+
+Done.
+107.47user 4.29system 1:52.73elapsed 99%CPU (0avgtext+0avgdata 3969700maxresident)k
+0inputs+835256outputs (0major+3029368minor)pagefaults 0swaps
+Running growth rate 1% for 3 years.
+Citation Network ABM – MASS CUDA
+=================================
+
+Out-degree bag: 3980408 entries
+Recency probs:  355 entries
+BFS batches:    30 per year
+
+=== Initializing Citation ABM ===
+
+Inside parseNodelist...
+Populating continuous node mappings (491532 nodes)...
+parseNodelist done in 870 ms (491532 nodes)
+
+Inside parseEdgelist...
+parseEdgelist done in 266 ms (899050 edges)
+Seed max year: 1982  → simulation starts at 1983
+Max population: 508428
+Seed population: 491532 papers
+  DeviceGraph: fwd=899050 bwd=899050 edges
+Initialization complete
+
+
+=== Simulation Start  [model: er-gnp] ===
+
+--- Year 1983 [ER:er-gnp] (pop: 491532) ---
+  Adding 4916 new papers
+  Launching ER kernel (4916 new nodes, 491532 citable old nodes)  p=0.001
+  ER generated 3316709 total edges so far
+  DeviceGraph: fwd=3316709 bwd=3316709 edges
+  Year 1983 total: 4751 ms  (pop: 496448)
+
+--- Year 1984 [ER:er-gnp] (pop: 496448) ---
+  Adding 4965 new papers
+  Launching ER kernel (4965 new nodes, 496448 citable old nodes)  p=0.001
+  ER generated 5782528 total edges so far
+  DeviceGraph: fwd=5782528 bwd=5782528 edges
+  Year 1984 total: 8033 ms  (pop: 501413)
+
+--- Year 1985 [ER:er-gnp] (pop: 501413) ---
+  Adding 5015 new papers
+  Launching ER kernel (5015 new nodes, 501413 citable old nodes)  p=0.001
+  ER generated 8297545 total edges so far
+  DeviceGraph: fwd=8297545 bwd=8297545 edges
+  Year 1985 total: 11443 ms  (pop: 506428)
+
+=== Simulation Complete ===
+Total: 24 s  Final pop: 506428
+
+=== Exporting Results ===
+Edges saved: ./output/0.0010/mass-er-gnp_cuda-static-output-3y-1p.edgelist (8297545)
+Attributes saved: ./output/0.0010/mass-er-gnp_cuda-static-output-3y-1p.aux (506428 rows)
+
+Done.
+38.32user 1.95system 0:40.31elapsed 99%CPU (0avgtext+0avgdata 1886860maxresident)k
+0inputs+313336outputs (0major+1273873minor)pagefaults 0swaps
+Running growth rate 3% for 3 years.
+Citation Network ABM – MASS CUDA
+=================================
+
+Out-degree bag: 3980408 entries
+Recency probs:  355 entries
+BFS batches:    30 per year
+
+=== Initializing Citation ABM ===
+
+Inside parseNodelist...
+Populating continuous node mappings (491532 nodes)...
+parseNodelist done in 870 ms (491532 nodes)
+
+Inside parseEdgelist...
+parseEdgelist done in 284 ms (899050 edges)
+Seed max year: 1982  → simulation starts at 1983
+Max population: 539112
+Seed population: 491532 papers
+  DeviceGraph: fwd=899050 bwd=899050 edges
+Initialization complete
+
+
+=== Simulation Start  [model: er-gnp] ===
+
+--- Year 1983 [ER:er-gnp] (pop: 491532) ---
+  Adding 14746 new papers
+  Launching ER kernel (14746 new nodes, 491532 citable old nodes)  p=0.001
+  ER generated 8146466 total edges so far
+  DeviceGraph: fwd=8146466 bwd=8146466 edges
+  Year 1983 total: 11954 ms  (pop: 506278)
+
+--- Year 1984 [ER:er-gnp] (pop: 506278) ---
+  Adding 15189 new papers
+  Launching ER kernel (15189 new nodes, 506278 citable old nodes)  p=0.001
+  ER generated 15835901 total edges so far
+  DeviceGraph: fwd=15835901 bwd=15835901 edges
+  Year 1984 total: 23071 ms  (pop: 521467)
+
+--- Year 1985 [ER:er-gnp] (pop: 521467) ---
+  Adding 15645 new papers
+  Launching ER kernel (15645 new nodes, 521467 citable old nodes)  p=0.001
+  ER generated 23994300 total edges so far
+  DeviceGraph: fwd=23994300 bwd=23994300 edges
+  Year 1985 total: 34147 ms  (pop: 537112)
+
+=== Simulation Complete ===
+Total: 69 s  Final pop: 537112
+
+=== Exporting Results ===
+Edges saved: ./output/0.0010/mass-er-gnp_cuda-static-output-3y-3p.edgelist (23994300)
+Attributes saved: ./output/0.0010/mass-er-gnp_cuda-static-output-3y-3p.aux (537112 rows)
+
+Done.
+97.87user 4.21system 1:42.12elapsed 99%CPU (0avgtext+0avgdata 3651748maxresident)k
+0inputs+785544outputs (0major+2840720minor)pagefaults 0swaps
+For GROWTH_PERCENT = 6 %, BFS_BATCH_SIZE = 30.
+Running growth rate 6% for 3 years.
+Citation Network ABM – MASS CUDA
+=================================
+
+Out-degree bag: 3980408 entries
+Recency probs:  355 entries
+BFS batches:    30 per year
+
+=== Initializing Citation ABM ===
+
+Inside parseNodelist...
+Populating continuous node mappings (491532 nodes)...
+parseNodelist done in 891 ms (491532 nodes)
+
+Inside parseEdgelist...
+parseEdgelist done in 265 ms (899050 edges)
+Seed max year: 1982  → simulation starts at 1983
+Max population: 587424
+Seed population: 491532 papers
+  DeviceGraph: fwd=899050 bwd=899050 edges
+Initialization complete
+
+
+=== Simulation Start  [model: er-gnp] ===
+
+--- Year 1983 [ER:er-gnp] (pop: 491532) ---
+  Adding 29492 new papers
+  Launching ER kernel (29492 new nodes, 491532 citable old nodes)  p=0.001
+  ER generated 15398355 total edges so far
+  DeviceGraph: fwd=15398355 bwd=15398355 edges
+  Year 1983 total: 23604 ms  (pop: 521024)
+
+--- Year 1984 [ER:er-gnp] (pop: 521024) ---
+  Adding 31262 new papers
+  Launching ER kernel (31262 new nodes, 521024 citable old nodes)  p=0.001
+  ER generated 31688381 total edges so far
+  DeviceGraph: fwd=31688381 bwd=31688381 edges
+  Year 1984 total: 48113 ms  (pop: 552286)
+
+--- Year 1985 [ER:er-gnp] (pop: 552286) ---
+  Adding 33138 new papers
+  Launching ER kernel (33138 new nodes, 552286 citable old nodes)  p=0.001
+  ER generated 49989904 total edges so far
+  DeviceGraph: fwd=49989904 bwd=49989904 edges
+  Year 1985 total: 75136 ms  (pop: 585424)
+
+=== Simulation Complete ===
+Total: 146 s  Final pop: 585424
+
+=== Exporting Results ===
+Edges saved: ./output/0.0010/mass-er-gnp_cuda-static-output-3y-6p.edgelist (49989904)
+Attributes saved: ./output/0.0010/mass-er-gnp_cuda-static-output-3y-6p.aux (585424 rows)
+
+Done.
+207.83user 7.61system 3:35.97elapsed 99%CPU (0avgtext+0avgdata 6669784maxresident)k
+0inputs+1564288outputs (0major+5524857minor)pagefaults 0swaps

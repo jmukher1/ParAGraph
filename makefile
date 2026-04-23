@@ -1,10 +1,10 @@
 # Makefile for Citation ABM with MASS CUDA
 
 # MASS Library Configuration
-MASS_DIR = ./../mass_cpp_core
-MASS_INCLUDE = $(MASS_DIR)/source
-MASS_LIB = $(MASS_DIR)/ubuntu
-SSH_LIB = $(MASS_LIB)/ssh2/lib
+MASS_DIR = ./../mass_cuda_core
+MASS_INCLUDE = $(MASS_DIR)/src
+MASS_LIB = $(MASS_DIR)/lib/mass
+#SSH_LIB = $(MASS_LIB)/ssh2/lib
 
 # Compiler settings
 NVCC = nvcc
@@ -12,14 +12,16 @@ CXX = g++
 
 # CUDA architecture (adjust for your GPU)
 CUDA_ARCH = -arch=sm_60 -gencode=arch=compute_60,code=sm_60 \
-            -gencode=arch=compute_60,code=sm_60 -gencode=arch=compute_86,code=sm_86
+            -gencode=arch=compute_60,code=sm_60 
 
 # Compilation flags
-NVCC_FLAGS = -std=c++20 --extended-lambda --expt-relaxed-constexpr -O3 \
+NVCC_FLAGS = -std=c++20 --extended-lambda --expt-relaxed-constexpr -O3 -DBOOST_LOG_DYN_LINK \
              -Xcompiler -fPIC -I$(MASS_INCLUDE)
+LDFLAGS += -lboost_log -lboost_log_setup -lboost_thread -lboost_system -lpthread
+CXXFLAGS += -DBOOST_LOG_DYN_LINK
 
 CUDA_LIBS = -lcudart -lcurand
-MASS_LIBS = -L$(MASS_LIB) -L$(SSH_LIB) -lmass -lssh2
+MASS_LIBS = -L$(MASS_LIB) -lmass_cuda # -L$(SSH_LIB) -lssh2
 
 # Directories
 BUILD_DIR = build
@@ -41,7 +43,7 @@ directories:
 
 # Build main executable
 $(TARGET): $(SOURCES) $(HEADERS)
-	$(NVCC) $(NVCC_FLAGS) $(CUDA_ARCH) -I$(INC_DIR) -o $@ $(SOURCES) $(CUDA_LIBS) $(MASS_LIBS)
+	$(NVCC) $(NVCC_FLAGS) $(CUDA_ARCH) -I$(INC_DIR) -I$(MASS_INCLUDE) -o $@ $(SOURCES) $(CUDA_LIBS) $(MASS_LIBS) $(LDFLAGS)
 	@echo "Built successfully: $(TARGET)"
 
 # Run simulation
