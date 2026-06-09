@@ -1,0 +1,22 @@
+\begin{table}[t]
+\centering
+\caption{Per-kernel timing and launch configuration profiled on NVIDIA H100 80GB HBM3 (30y/6% run). Th.\ Occ = theoretical occupancy (\%) computed from launch configuration; Lim.\ = binding occupancy limiter (\textbf{reg}=register file, \textbf{shmem}=shared memory, \textbf{thr}=thread count, \textbf{block}=block size); \%GPU = fraction of total kernel time.}
+\label{tab:pa_H100_vary_years-nsys-kernel}
+\resizebox{\columnwidth}{!}{%
+\begin{tabular}{lrrrrrrrrl}
+\toprule
+\textbf{Kernel} & \textbf{Launches} & \textbf{Total (ms)} & \textbf{Avg (ms)} & \textbf{Min (ms)} & \textbf{Max (ms)} & \textbf{Block} & \textbf{Regs} & \textbf{Th.\ Occ\%} & \textbf{Lim.} \\
+\midrule
+  \texttt{Stage1} & 226 & 1433553.293 & 6343.1562 & 785.4192 & 15439.3616 & 16 & 110 & 28.1 & reg \\
+  \texttt{Stage3} & 226 & 296789.394 & 1313.2274 & 117.2398 & 2522.2882 & 16 & 118 & 26.6 & reg \\
+  \texttt{Stage2} & 226 & 14925.156 & 66.0405 & 8.2341 & 190.3904 & 16 & 118 & 26.6 & reg \\
+  \texttt{cuco::insert} & 30 & 6667.768 & 222.2589 & 79.6033 & 461.1717 & 128 & 36 & 75.0 & shmem \\
+  \texttt{cuco::init} & 2,331,637 & 2821.209 & 0.0012 & 0.0011 & 0.0020 & 256 & 16 & 100.0 & thr \\
+  \texttt{Stage4} & 226 & 242.032 & 1.0709 & 0.6129 & 1.5737 & 16 & 107 & 28.1 & reg \\
+  \texttt{ExtractSizes} & 452 & 31.842 & 0.0704 & 0.0028 & 0.3661 & 256 & 32 & 100.0 & thr \\
+  \texttt{cuco::insert_if} & 30 & 17.447 & 0.5816 & 0.1306 & 1.2396 & 128 & 37 & 75.0 & shmem \\
+  \texttt{cuco::init} & 30 & 0.164 & 0.0055 & 0.0030 & 0.0097 & 256 & 24 & 100.0 & thr \\
+  \texttt{cub::ForEach} & 30 & 0.044 & 0.0015 & 0.0013 & 0.0016 & 256 & 16 & 100.0 & thr \\
+\bottomrule
+\end{{tabular}}}
+\end{{table}}

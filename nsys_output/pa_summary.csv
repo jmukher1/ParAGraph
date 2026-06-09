@@ -1,0 +1,2 @@
+Label,Session_ms,Kernel_ms,Memcpy_ms,GPU_util_pct,Memcpy_ovh_pct,Total_MB,EffBW_GBs,BW_pct,Kernel_launches,Sync_ms,Profiler_ovh_ms
+3y/1%,20759.839,3719.033,295.584,17.91,7.95,227.273,0.7690,0.02290,14929,3479.799,163.106

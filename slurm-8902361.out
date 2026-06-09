@@ -1,0 +1,2850 @@
+The following modules were not unloaded:
+  (Use "module --force purge" to unload all):
+
+  1) xalt/3.1.4
+Running growth rate 1% for 10 years.
+Profile output: profile/nsys-pa-10y-1p.nsys-rep
+CMD: nsys profile --trace=nvtx,cuda,osrt --gpu-metrics-device=all --gpu-metrics-frequency=10000 --stats=true --force-overwrite=true -o profile/nsys-pa-10y-1p ./abm --edgelist sj_edgelist --nodelist sj_nodelist --out-degree-bag tcen_at_least_five --recency-probabilities sj_recprob --alpha 0.5 --preferential-weight 0.33 --recency-weight 0.33 --fitness-weight 0.33 --growth-rate .01 --fully-random-citations 0.05 --num-cycles 10 --same-year-proportion 0.12 --output-file ./output/10y/gpu-opt-static-output-10y-1p.edgelist --auxiliary-information-file ./output/10y/gpu-opt-static-output-10y-1p.aux --log-file ./output/10y/nsys-gpu-opt-static-pa-10y-1p.log --num-processors 14 --log-level 1
+
+Start ABM....
+parse_args....
+edgelist....
+num-cycles....
+output-file....
+log-file = ./output/10y/nsys-gpu-opt-static-pa-10y-1p.log....
+num-processors = 14....
+log-level = 0
+er_probability = 0.000000
+model = pa
+Init ABM....
+Exec ABM....
+Start execute.Init Graph
+Inside  Graph ParseNodelist.....
+Populating the continuous_node mappings..
+Elapsed time: ParseNodelist : 1108 millisecs = 1 seconds
+
+Inside Graph ParseEdgelist.....
+Elapsed time: ParseEdgelist : 1706 millisecs = 1 seconds
+
+In updateNodeInDegreeOutDegree: Update Outdegree first:
+In updateNodeInDegreeOutDegree: Update Indegree:
+Total (initial):: In-Degree = 899050, Out-Degree = 899050
+Elapsed time: 0-1 : 1 seconds
+Elapsed time: 1-2 : 1 seconds
+Elapsed time: 2-3 : 0 seconds
+
+Initialized Graph. Let us update the indegree and out-degrees... 
+Graph init done...
+calling InitializeFitness...
+final graph size is 542962 from initial_graph_size of 491532.
+ populated out degree array.
+ Entering loop for year = 1983
+Elapsed time: 70-71: total : 0.267 secs, iter cost : 0 seconds
+
+Elapsed time: 71-72: total : 0.319 secs, iter cost : 0 seconds
+
+Elapsed time: 72-73: total : 28 millisecs, iter cost : 28 mseconds
+
+num_new_nodes = 4916, current_graph_size = 491532, growth rate = 0.010000 
+Elapsed time: 73-74: total : 0 millisecs, iter cost : 0 mseconds
+
+Elapsed time: 74-75: total : 6 millisecs, iter cost : 6 mseconds
+
+all new nodes initialized with years and mapped. FillSameYearSourceNodes with new_nodes_vec.size() = 4916
+checking same_year_source_nodes size.
+Elapsed time: 75-76: total : 0 millisecs, iter cost : 0 mseconds
+
+new_nodes_vec.size() b4 : 4916
+
+updated  updateGraphAttributesGeneratorNode .... 
+Elapsed time: 76-77: total : 12 millisecs, iter cost : 12 mseconds
+
+continuous_node_mapping.size() b5 : 496448, reverse_continuous_node_mapping size = 496448
+
+[PA Model] Building connections using Preferential Attachment
+
+Inside optimized buildOneNodeConnections...
+Initial Free: 80526.5 MB / 81079.4 MB
+
+[prepareGraph] num_vertices = 491532
+
+[prepareGraph] edges = 899050, offsets = 491533 (should be V+1 = 491533)
+
+[prepareGraph] num_vertices = 491532
+
+[prepareGraph] edges = 899050, offsets = 491533 (should be V+1 = 491533)
+
+Year 1983: 4916 new nodes, 94140 new edges
+
+Elapsed time: 78-781 : total : 3.445 secs, this iter cost : 3.445 seconds
+
+Elapsed time: 78-79 : total : 3.518 secs, this iter cost : 3.518 seconds
+
+updateNodeInDegreeOutDegree(year=1983): updated 4916 out-degrees, 71532 in-degrees
+Elapsed time: 79-81 : total : 0.09 secs, this iter cost : 0 seconds
+
+Elapsed time: 79-80 : total : 0.064 secs, this iter cost : 0 seconds
+
+Elapsed time: 80-81 : total : 0.025 secs, this iter cost : 0 seconds
+
+Elapsed time: 70-81 : total : 4.244 secs, this iter cost : 4 seconds
+
+ Entering loop for year = 1984
+Elapsed time: 70-71: total : 0.543 secs, iter cost : 0 seconds
+
+Elapsed time: 71-72: total : 0.642 secs, iter cost : 0 seconds
+
+Elapsed time: 72-73: total : 47 millisecs, iter cost : 19 mseconds
+
+num_new_nodes = 4965, current_graph_size = 496448, growth rate = 0.010000 
+Elapsed time: 73-74: total : 4 millisecs, iter cost : 4 mseconds
+
+Elapsed time: 74-75: total : 10 millisecs, iter cost : 4 mseconds
+
+all new nodes initialized with years and mapped. FillSameYearSourceNodes with new_nodes_vec.size() = 4965
+checking same_year_source_nodes size.
+Elapsed time: 75-76: total : 0 millisecs, iter cost : 0 mseconds
+
+new_nodes_vec.size() b4 : 4965
+
+updated  updateGraphAttributesGeneratorNode .... 
+Elapsed time: 76-77: total : 24 millisecs, iter cost : 12 mseconds
+
+continuous_node_mapping.size() b5 : 501413, reverse_continuous_node_mapping size = 501413
+
+[PA Model] Building connections using Preferential Attachment
+
+Inside optimized buildOneNodeConnections...
+Initial Free: 80320.5 MB / 81079.4 MB
+
+[prepareGraph] num_vertices = 496448
+
+[prepareGraph] edges = 993190, offsets = 496449 (should be V+1 = 496449)
+
+[prepareGraph] num_vertices = 496448
+
+[prepareGraph] edges = 993190, offsets = 496449 (should be V+1 = 496449)
+
+Year 1984: 4965 new nodes, 95104 new edges
+
+Elapsed time: 78-781 : total : 7.08 secs, this iter cost : 3.635 seconds
+
+Elapsed time: 78-79 : total : 7.196 secs, this iter cost : 3.678 seconds
+
+updateNodeInDegreeOutDegree(year=1984): updated 4965 out-degrees, 72269 in-degrees
+Elapsed time: 79-81 : total : 0.158 secs, this iter cost : 0 seconds
+
+Elapsed time: 79-80 : total : 0.108 secs, this iter cost : 0 seconds
+
+Elapsed time: 80-81 : total : 0.049 secs, this iter cost : 0 seconds
+
+Elapsed time: 70-81 : total : 8.632 secs, this iter cost : 4 seconds
+
+ Entering loop for year = 1985
+Elapsed time: 70-71: total : 0.815 secs, iter cost : 0 seconds
+
+Elapsed time: 71-72: total : 0.956 secs, iter cost : 0 seconds
+
+Elapsed time: 72-73: total : 68 millisecs, iter cost : 21 mseconds
+
+num_new_nodes = 5015, current_graph_size = 501413, growth rate = 0.010000 
+Elapsed time: 73-74: total : 4 millisecs, iter cost : 0 mseconds
+
+Elapsed time: 74-75: total : 14 millisecs, iter cost : 4 mseconds
+
+all new nodes initialized with years and mapped. FillSameYearSourceNodes with new_nodes_vec.size() = 5015
+checking same_year_source_nodes size.
+Elapsed time: 75-76: total : 0 millisecs, iter cost : 0 mseconds
+
+new_nodes_vec.size() b4 : 5015
+
+updated  updateGraphAttributesGeneratorNode .... 
+Elapsed time: 76-77: total : 36 millisecs, iter cost : 12 mseconds
+
+continuous_node_mapping.size() b5 : 506428, reverse_continuous_node_mapping size = 506428
+
+[PA Model] Building connections using Preferential Attachment
+
+Inside optimized buildOneNodeConnections...
+Initial Free: 80310.5 MB / 81079.4 MB
+
+[prepareGraph] num_vertices = 501413
+
+[prepareGraph] edges = 1088294, offsets = 501414 (should be V+1 = 501414)
+
+[prepareGraph] num_vertices = 501413
+
+[prepareGraph] edges = 1088294, offsets = 501414 (should be V+1 = 501414)
+
+Year 1985: 5015 new nodes, 96075 new edges
+
+Elapsed time: 78-781 : total : 11.827 secs, this iter cost : 4.747 seconds
+
+Elapsed time: 78-79 : total : 12.016 secs, this iter cost : 4.82 seconds
+
+updateNodeInDegreeOutDegree(year=1985): updated 5015 out-degrees, 70485 in-degrees
+Elapsed time: 79-81 : total : 0.248 secs, this iter cost : 0 seconds
+
+Elapsed time: 79-80 : total : 0.173 secs, this iter cost : 0 seconds
+
+Elapsed time: 80-81 : total : 0.074 secs, this iter cost : 0 seconds
+
+Elapsed time: 70-81 : total : 14.168 secs, this iter cost : 5 seconds
+
+ Entering loop for year = 1986
+Elapsed time: 70-71: total : 1.096 secs, iter cost : 0 seconds
+
+Elapsed time: 71-72: total : 1.298 secs, iter cost : 0 seconds
+
+Elapsed time: 72-73: total : 96 millisecs, iter cost : 28 mseconds
+
+num_new_nodes = 5065, current_graph_size = 506428, growth rate = 0.010000 
+Elapsed time: 73-74: total : 4 millisecs, iter cost : 0 mseconds
+
+Elapsed time: 74-75: total : 17 millisecs, iter cost : 3 mseconds
+
+all new nodes initialized with years and mapped. FillSameYearSourceNodes with new_nodes_vec.size() = 5065
+checking same_year_source_nodes size.
+Elapsed time: 75-76: total : 0 millisecs, iter cost : 0 mseconds
+
+new_nodes_vec.size() b4 : 5065
+
+updated  updateGraphAttributesGeneratorNode .... 
+Elapsed time: 76-77: total : 48 millisecs, iter cost : 12 mseconds
+
+continuous_node_mapping.size() b5 : 511493, reverse_continuous_node_mapping size = 511493
+
+[PA Model] Building connections using Preferential Attachment
+
+Inside optimized buildOneNodeConnections...
+Initial Free: 80300.5 MB / 81079.4 MB
+
+[prepareGraph] num_vertices = 506428
+
+[prepareGraph] edges = 1184369, offsets = 506429 (should be V+1 = 506429)
+
+[prepareGraph] num_vertices = 506428
+
+[prepareGraph] edges = 1184369, offsets = 506429 (should be V+1 = 506429)
+
+Year 1986: 5065 new nodes, 97211 new edges
+
+Elapsed time: 78-781 : total : 15.201 secs, this iter cost : 3.374 seconds
+
+Elapsed time: 78-79 : total : 15.445 secs, this iter cost : 3.429 seconds
+
+updateNodeInDegreeOutDegree(year=1986): updated 5065 out-degrees, 70179 in-degrees
+Elapsed time: 79-81 : total : 0.316 secs, this iter cost : 0 seconds
+
+Elapsed time: 79-80 : total : 0.216 secs, this iter cost : 0 seconds
+
+Elapsed time: 80-81 : total : 0.099 secs, this iter cost : 0 seconds
+
+Elapsed time: 70-81 : total : 18.334 secs, this iter cost : 4 seconds
+
+ Entering loop for year = 1987
+Elapsed time: 70-71: total : 1.373 secs, iter cost : 0 seconds
+
+Elapsed time: 71-72: total : 1.644 secs, iter cost : 0 seconds
+
+Elapsed time: 72-73: total : 119 millisecs, iter cost : 23 mseconds
+
+num_new_nodes = 5115, current_graph_size = 511493, growth rate = 0.010000 
+Elapsed time: 73-74: total : 4 millisecs, iter cost : 0 mseconds
+
+Elapsed time: 74-75: total : 20 millisecs, iter cost : 3 mseconds
+
+all new nodes initialized with years and mapped. FillSameYearSourceNodes with new_nodes_vec.size() = 5115
+checking same_year_source_nodes size.
+Elapsed time: 75-76: total : 0 millisecs, iter cost : 0 mseconds
+
+new_nodes_vec.size() b4 : 5115
+
+updated  updateGraphAttributesGeneratorNode .... 
+Elapsed time: 76-77: total : 60 millisecs, iter cost : 12 mseconds
+
+continuous_node_mapping.size() b5 : 516608, reverse_continuous_node_mapping size = 516608
+
+[PA Model] Building connections using Preferential Attachment
+
+Inside optimized buildOneNodeConnections...
+Initial Free: 80292.5 MB / 81079.4 MB
+
+[prepareGraph] num_vertices = 511493
+
+[prepareGraph] edges = 1281580, offsets = 511494 (should be V+1 = 511494)
+
+[prepareGraph] num_vertices = 511493
+
+[prepareGraph] edges = 1281580, offsets = 511494 (should be V+1 = 511494)
+
+Year 1987: 5115 new nodes, 98063 new edges
+
+Elapsed time: 78-781 : total : 18.467 secs, this iter cost : 3.266 seconds
+
+Elapsed time: 78-79 : total : 18.766 secs, this iter cost : 3.321 seconds
+
+updateNodeInDegreeOutDegree(year=1987): updated 5115 out-degrees, 70722 in-degrees
+Elapsed time: 79-81 : total : 0.386 secs, this iter cost : 0 seconds
+
+Elapsed time: 79-80 : total : 0.261 secs, this iter cost : 0 seconds
+
+Elapsed time: 80-81 : total : 0.124 secs, this iter cost : 0 seconds
+
+Elapsed time: 70-81 : total : 22.389 secs, this iter cost : 4 seconds
+
+ Entering loop for year = 1988
+Elapsed time: 70-71: total : 1.662 secs, iter cost : 0 seconds
+
+Elapsed time: 71-72: total : 1.979 secs, iter cost : 0 seconds
+
+Elapsed time: 72-73: total : 138 millisecs, iter cost : 19 mseconds
+
+num_new_nodes = 5167, current_graph_size = 516608, growth rate = 0.010000 
+Elapsed time: 73-74: total : 4 millisecs, iter cost : 0 mseconds
+
+Elapsed time: 74-75: total : 23 millisecs, iter cost : 3 mseconds
+
+all new nodes initialized with years and mapped. FillSameYearSourceNodes with new_nodes_vec.size() = 5167
+checking same_year_source_nodes size.
+Elapsed time: 75-76: total : 0 millisecs, iter cost : 0 mseconds
+
+new_nodes_vec.size() b4 : 5167
+
+updated  updateGraphAttributesGeneratorNode .... 
+Elapsed time: 76-77: total : 72 millisecs, iter cost : 12 mseconds
+
+continuous_node_mapping.size() b5 : 521775, reverse_continuous_node_mapping size = 521775
+
+[PA Model] Building connections using Preferential Attachment
+
+Inside optimized buildOneNodeConnections...
+Initial Free: 80282.5 MB / 81079.4 MB
+
+[prepareGraph] num_vertices = 516608
+
+[prepareGraph] edges = 1379643, offsets = 516609 (should be V+1 = 516609)
+
+[prepareGraph] num_vertices = 516608
+
+[prepareGraph] edges = 1379643, offsets = 516609 (should be V+1 = 516609)
+
+Year 1988: 5167 new nodes, 99654 new edges
+
+Elapsed time: 78-781 : total : 21.568 secs, this iter cost : 3.101 seconds
+
+Elapsed time: 78-79 : total : 21.911 secs, this iter cost : 3.145 seconds
+
+updateNodeInDegreeOutDegree(year=1988): updated 5167 out-degrees, 70625 in-degrees
+Elapsed time: 79-81 : total : 0.457 secs, this iter cost : 0 seconds
+
+Elapsed time: 79-80 : total : 0.307 secs, this iter cost : 0 seconds
+
+Elapsed time: 80-81 : total : 0.149 secs, this iter cost : 0 seconds
+
+Elapsed time: 70-81 : total : 26.266 secs, this iter cost : 3 seconds
+
+ Entering loop for year = 1989
+Elapsed time: 70-71: total : 1.941 secs, iter cost : 0 seconds
+
+Elapsed time: 71-72: total : 2.334 secs, iter cost : 0 seconds
+
+Elapsed time: 72-73: total : 159 millisecs, iter cost : 21 mseconds
+
+num_new_nodes = 5218, current_graph_size = 521775, growth rate = 0.010000 
+Elapsed time: 73-74: total : 4 millisecs, iter cost : 0 mseconds
+
+Elapsed time: 74-75: total : 26 millisecs, iter cost : 3 mseconds
+
+all new nodes initialized with years and mapped. FillSameYearSourceNodes with new_nodes_vec.size() = 5218
+checking same_year_source_nodes size.
+Elapsed time: 75-76: total : 0 millisecs, iter cost : 0 mseconds
+
+new_nodes_vec.size() b4 : 5218
+
+updated  updateGraphAttributesGeneratorNode .... 
+Elapsed time: 76-77: total : 85 millisecs, iter cost : 13 mseconds
+
+continuous_node_mapping.size() b5 : 526993, reverse_continuous_node_mapping size = 526993
+
+[PA Model] Building connections using Preferential Attachment
+
+Inside optimized buildOneNodeConnections...
+Initial Free: 80272.5 MB / 81079.4 MB
+
+[prepareGraph] num_vertices = 521775
+
+[prepareGraph] edges = 1479297, offsets = 521776 (should be V+1 = 521776)
+
+[prepareGraph] num_vertices = 521775
+
+[prepareGraph] edges = 1479297, offsets = 521776 (should be V+1 = 521776)
+
+Year 1989: 5218 new nodes, 100421 new edges
+
+Elapsed time: 78-781 : total : 25.127 secs, this iter cost : 3.559 seconds
+
+Elapsed time: 78-79 : total : 25.55 secs, this iter cost : 3.639 seconds
+
+updateNodeInDegreeOutDegree(year=1989): updated 5218 out-degrees, 70741 in-degrees
+Elapsed time: 79-81 : total : 0.555 secs, this iter cost : 0 seconds
+
+Elapsed time: 79-80 : total : 0.379 secs, this iter cost : 0 seconds
+
+Elapsed time: 80-81 : total : 0.174 secs, this iter cost : 0 seconds
+
+Elapsed time: 70-81 : total : 30.677 secs, this iter cost : 4 seconds
+
+ Entering loop for year = 1990
+Elapsed time: 70-71: total : 2.263 secs, iter cost : 0 seconds
+
+Elapsed time: 71-72: total : 2.686 secs, iter cost : 0 seconds
+
+Elapsed time: 72-73: total : 178 millisecs, iter cost : 19 mseconds
+
+num_new_nodes = 5270, current_graph_size = 526993, growth rate = 0.010000 
+Elapsed time: 73-74: total : 4 millisecs, iter cost : 0 mseconds
+
+Elapsed time: 74-75: total : 29 millisecs, iter cost : 3 mseconds
+
+all new nodes initialized with years and mapped. FillSameYearSourceNodes with new_nodes_vec.size() = 5270
+checking same_year_source_nodes size.
+Elapsed time: 75-76: total : 0 millisecs, iter cost : 0 mseconds
+
+new_nodes_vec.size() b4 : 5270
+
+updated  updateGraphAttributesGeneratorNode .... 
+Elapsed time: 76-77: total : 97 millisecs, iter cost : 12 mseconds
+
+continuous_node_mapping.size() b5 : 532263, reverse_continuous_node_mapping size = 532263
+
+[PA Model] Building connections using Preferential Attachment
+
+Inside optimized buildOneNodeConnections...
+Initial Free: 80262.5 MB / 81079.4 MB
+
+[prepareGraph] num_vertices = 526993
+
+[prepareGraph] edges = 1579718, offsets = 526994 (should be V+1 = 526994)
+
+[prepareGraph] num_vertices = 526993
+
+[prepareGraph] edges = 1579718, offsets = 526994 (should be V+1 = 526994)
+
+Year 1990: 5270 new nodes, 101263 new edges
+
+Elapsed time: 78-781 : total : 28.509 secs, this iter cost : 3.382 seconds
+
+Elapsed time: 78-79 : total : 29.021 secs, this iter cost : 3.471 seconds
+
+updateNodeInDegreeOutDegree(year=1990): updated 5270 out-degrees, 69984 in-degrees
+Elapsed time: 79-81 : total : 0.65 secs, this iter cost : 0 seconds
+
+Elapsed time: 79-80 : total : 0.448 secs, this iter cost : 0 seconds
+
+Elapsed time: 80-81 : total : 0.199 secs, this iter cost : 0 seconds
+
+Elapsed time: 70-81 : total : 34.955 secs, this iter cost : 4 seconds
+
+ Entering loop for year = 1991
+Elapsed time: 70-71: total : 2.592 secs, iter cost : 0 seconds
+
+Elapsed time: 71-72: total : 3.035 secs, iter cost : 0 seconds
+
+Elapsed time: 72-73: total : 197 millisecs, iter cost : 19 mseconds
+
+num_new_nodes = 5323, current_graph_size = 532263, growth rate = 0.010000 
+Elapsed time: 73-74: total : 4 millisecs, iter cost : 0 mseconds
+
+Elapsed time: 74-75: total : 32 millisecs, iter cost : 3 mseconds
+
+all new nodes initialized with years and mapped. FillSameYearSourceNodes with new_nodes_vec.size() = 5323
+checking same_year_source_nodes size.
+Elapsed time: 75-76: total : 0 millisecs, iter cost : 0 mseconds
+
+new_nodes_vec.size() b4 : 5323
+
+updated  updateGraphAttributesGeneratorNode .... 
+Elapsed time: 76-77: total : 110 millisecs, iter cost : 13 mseconds
+
+continuous_node_mapping.size() b5 : 537586, reverse_continuous_node_mapping size = 537586
+
+[PA Model] Building connections using Preferential Attachment
+
+Inside optimized buildOneNodeConnections...
+Initial Free: 80250.5 MB / 81079.4 MB
+
+[prepareGraph] num_vertices = 532263
+
+[prepareGraph] edges = 1680981, offsets = 532264 (should be V+1 = 532264)
+
+[prepareGraph] num_vertices = 532263
+
+[prepareGraph] edges = 1680981, offsets = 532264 (should be V+1 = 532264)
+
+Year 1991: 5323 new nodes, 102526 new edges
+
+Elapsed time: 78-781 : total : 32.241 secs, this iter cost : 3.732 seconds
+
+Elapsed time: 78-79 : total : 32.847 secs, this iter cost : 3.826 seconds
+
+updateNodeInDegreeOutDegree(year=1991): updated 5323 out-degrees, 70340 in-degrees
+Elapsed time: 79-81 : total : 0.764 secs, this iter cost : 0 seconds
+
+Elapsed time: 79-80 : total : 0.536 secs, this iter cost : 0 seconds
+
+Elapsed time: 80-81 : total : 0.225 secs, this iter cost : 0 seconds
+
+Elapsed time: 70-81 : total : 39.612 secs, this iter cost : 4 seconds
+
+ Entering loop for year = 1992
+Elapsed time: 70-71: total : 2.89 secs, iter cost : 0 seconds
+
+Elapsed time: 71-72: total : 3.418 secs, iter cost : 0 seconds
+
+Elapsed time: 72-73: total : 216 millisecs, iter cost : 19 mseconds
+
+num_new_nodes = 5376, current_graph_size = 537586, growth rate = 0.010000 
+Elapsed time: 73-74: total : 4 millisecs, iter cost : 0 mseconds
+
+Elapsed time: 74-75: total : 35 millisecs, iter cost : 3 mseconds
+
+all new nodes initialized with years and mapped. FillSameYearSourceNodes with new_nodes_vec.size() = 5376
+checking same_year_source_nodes size.
+Elapsed time: 75-76: total : 0 millisecs, iter cost : 0 mseconds
+
+new_nodes_vec.size() b4 : 5376
+
+updated  updateGraphAttributesGeneratorNode .... 
+Elapsed time: 76-77: total : 123 millisecs, iter cost : 13 mseconds
+
+continuous_node_mapping.size() b5 : 542962, reverse_continuous_node_mapping size = 542962
+
+[PA Model] Building connections using Preferential Attachment
+
+Inside optimized buildOneNodeConnections...
+Initial Free: 80238.5 MB / 81079.4 MB
+
+[prepareGraph] num_vertices = 537586
+
+[prepareGraph] edges = 1783507, offsets = 537587 (should be V+1 = 537587)
+
+[prepareGraph] num_vertices = 537586
+
+[prepareGraph] edges = 1783507, offsets = 537587 (should be V+1 = 537587)
+
+Year 1992: 5376 new nodes, 103735 new edges
+
+Elapsed time: 78-781 : total : 36.147 secs, this iter cost : 3.906 seconds
+
+Elapsed time: 78-79 : total : 36.939 secs, this iter cost : 4.092 seconds
+
+updateNodeInDegreeOutDegree(year=1992): updated 5376 out-degrees, 70830 in-degrees
+Elapsed time: 79-81 : total : 0.911 secs, this iter cost : 0 seconds
+
+Elapsed time: 79-80 : total : 0.657 secs, this iter cost : 0 seconds
+
+Elapsed time: 80-81 : total : 0.251 secs, this iter cost : 0 seconds
+
+Elapsed time: 70-81 : total : 44.57 secs, this iter cost : 4 seconds
+
+Elapsed time: 7-8 :  44 seconds
+
+compute done:: graph size = 542962
+Elapsed time: 8-8.1 :  0 seconds
+
+Writing Graph to file: ./output/10y/gpu-opt-static-output-10y-1p.edgelist
+
+Elapsed time: 8.1-9 :  0 seconds
+
+Elapsed time: 9-10 :  0 seconds
+
+ graph size = 542962
+WriteAttributes: graph size = 542962
+
+Elapsed time: 0-1 : 3 seconds
+
+Elapsed time: 1-4 : 0 seconds
+
+Elapsed time: 4-7 : 0 seconds
+
+Elapsed time: 70-71: total : 2.89 seconds.
+
+Elapsed time: 71-72: total : 3.418 seconds.
+
+Elapsed time: 72-73: total : 0.216 seconds.
+
+Elapsed time: 73-74: total : 0.004 seconds.
+
+Elapsed time: 74-75: total : 0.035 seconds.
+
+Elapsed time: 75-76: total : 0 seconds.
+
+Elapsed time: 76-77: total : 0.123 seconds.
+
+Elapsed time: 77-79: total : 36.939 seconds.
+
+Elapsed time: 79-81 : total : 0.911 seconds.
+
+Elapsed time: 79-80 : total : 0.657 seconds.
+
+Elapsed time: 80-81 : total : 0.251 seconds.
+
+Elapsed time: 70-81 : total : 44.57 seconds.
+
+Elapsed time: 7-8 : 44 seconds
+
+Elapsed time: 8-8.1 :  0 seconds
+
+Elapsed time: 8.1-9 :  0 seconds
+
+Elapsed time: 9-10 : 0 seconds
+
+Elapsed time: 11-12 : 0 seconds
+
+Elapsed time: 10-12 : 0 seconds
+
+Elapsed time: 0-7 : 3 seconds
+
+Elapsed time: 7-8 : 44 seconds
+
+Elapsed time: 8-12 : 1 seconds
+
+E2E Time for num_cycles = 10 with growth_rate = 1 % = 51 seconds.
+GPU 0: General Metrics for NVIDIA GH100 (any frequency)
+Generating '/tmp/nsys-report-50a3.qdstrm'
+[1/8] [0%                          ] nsys-pa-10y-1p.nsys-rep[1/8] [0%                          ] nsys-pa-10y-1p.nsys-rep[1/8] [9%                          ] nsys-pa-10y-1p.nsys-rep[1/8] [8%                          ] nsys-pa-10y-1p.nsys-rep[1/8] [9%                          ] nsys-pa-10y-1p.nsys-rep[1/8] [8%                          ] nsys-pa-10y-1p.nsys-rep[1/8] [7%                          ] nsys-pa-10y-1p.nsys-rep[1/8] [6%                          ] nsys-pa-10y-1p.nsys-rep[1/8] [8%                          ] nsys-pa-10y-1p.nsys-rep[1/8] [9%                          ] nsys-pa-10y-1p.nsys-rep[1/8] [8%                          ] nsys-pa-10y-1p.nsys-rep[1/8] [9%                          ] nsys-pa-10y-1p.nsys-rep[1/8] [8%                          ] nsys-pa-10y-1p.nsys-rep[1/8] [9%                          ] nsys-pa-10y-1p.nsys-rep[1/8] [10%                         ] nsys-pa-10y-1p.nsys-rep[1/8] [9%                          ] nsys-pa-10y-1p.nsys-rep[1/8] [10%                         ] nsys-pa-10y-1p.nsys-rep[1/8] [11%                         ] nsys-pa-10y-1p.nsys-rep[1/8] [10%                         ] nsys-pa-10y-1p.nsys-rep[1/8] [11%                         ] nsys-pa-10y-1p.nsys-rep[1/8] [10%                         ] nsys-pa-10y-1p.nsys-rep[1/8] [11%                         ] nsys-pa-10y-1p.nsys-rep[1/8] [10%                         ] nsys-pa-10y-1p.nsys-rep[1/8] [11%                         ] nsys-pa-10y-1p.nsys-rep[1/8] [10%                         ] nsys-pa-10y-1p.nsys-rep[1/8] [9%                          ] nsys-pa-10y-1p.nsys-rep[1/8] [8%                          ] nsys-pa-10y-1p.nsys-rep[1/8] [7%                          ] nsys-pa-10y-1p.nsys-rep[1/8] [8%                          ] nsys-pa-10y-1p.nsys-rep[1/8] [9%                          ] nsys-pa-10y-1p.nsys-rep[1/8] [10%                         ] nsys-pa-10y-1p.nsys-rep[1/8] [11%                         ] nsys-pa-10y-1p.nsys-rep[1/8] [12%                         ] nsys-pa-10y-1p.nsys-rep[1/8] [13%                         ] nsys-pa-10y-1p.nsys-rep[1/8] [14%                         ] nsys-pa-10y-1p.nsys-rep[1/8] [=15%                        ] nsys-pa-10y-1p.nsys-rep[1/8] [=16%                        ] nsys-pa-10y-1p.nsys-rep[1/8] [=17%                        ] nsys-pa-10y-1p.nsys-rep[1/8] [==18%                       ] nsys-pa-10y-1p.nsys-rep[1/8] [==19%                       ] nsys-pa-10y-1p.nsys-rep[1/8] [==20%                       ] nsys-pa-10y-1p.nsys-rep[1/8] [==21%                       ] nsys-pa-10y-1p.nsys-rep[1/8] [===22%                      ] nsys-pa-10y-1p.nsys-rep[1/8] [===23%                      ] nsys-pa-10y-1p.nsys-rep[1/8] [===24%                      ] nsys-pa-10y-1p.nsys-rep[1/8] [====25%                     ] nsys-pa-10y-1p.nsys-rep[1/8] [====26%                     ] nsys-pa-10y-1p.nsys-rep[1/8] [====27%                     ] nsys-pa-10y-1p.nsys-rep[1/8] [====28%                     ] nsys-pa-10y-1p.nsys-rep[1/8] [=====29%                    ] nsys-pa-10y-1p.nsys-rep[1/8] [=====30%                    ] nsys-pa-10y-1p.nsys-rep[1/8] [=====31%                    ] nsys-pa-10y-1p.nsys-rep[1/8] [=====32%                    ] nsys-pa-10y-1p.nsys-rep[1/8] [======33%                   ] nsys-pa-10y-1p.nsys-rep[1/8] [======34%                   ] nsys-pa-10y-1p.nsys-rep[1/8] [======35%                   ] nsys-pa-10y-1p.nsys-rep[1/8] [=======36%                  ] nsys-pa-10y-1p.nsys-rep[1/8] [=======37%                  ] nsys-pa-10y-1p.nsys-rep[1/8] [=======38%                  ] nsys-pa-10y-1p.nsys-rep[1/8] [=======39%                  ] nsys-pa-10y-1p.nsys-rep[1/8] [========40%                 ] nsys-pa-10y-1p.nsys-rep[1/8] [========41%                 ] nsys-pa-10y-1p.nsys-rep[1/8] [========42%                 ] nsys-pa-10y-1p.nsys-rep[1/8] [=========43%                ] nsys-pa-10y-1p.nsys-rep[1/8] [=========44%                ] nsys-pa-10y-1p.nsys-rep[1/8] [=========45%                ] nsys-pa-10y-1p.nsys-rep[1/8] [=========46%                ] nsys-pa-10y-1p.nsys-rep[1/8] [==========47%               ] nsys-pa-10y-1p.nsys-rep[1/8] [==========48%               ] nsys-pa-10y-1p.nsys-rep[1/8] [==========49%               ] nsys-pa-10y-1p.nsys-rep[1/8] [===========50%              ] nsys-pa-10y-1p.nsys-rep[1/8] [===========51%              ] nsys-pa-10y-1p.nsys-rep[1/8] [===========52%              ] nsys-pa-10y-1p.nsys-rep[1/8] [===========53%              ] nsys-pa-10y-1p.nsys-rep[1/8] [============54%             ] nsys-pa-10y-1p.nsys-rep[1/8] [============55%             ] nsys-pa-10y-1p.nsys-rep[1/8] [============56%             ] nsys-pa-10y-1p.nsys-rep[1/8] [============57%             ] nsys-pa-10y-1p.nsys-rep[1/8] [=============58%            ] nsys-pa-10y-1p.nsys-rep[1/8] [=============59%            ] nsys-pa-10y-1p.nsys-rep[1/8] [=============60%            ] nsys-pa-10y-1p.nsys-rep[1/8] [==============61%           ] nsys-pa-10y-1p.nsys-rep[1/8] [==============62%           ] nsys-pa-10y-1p.nsys-rep[1/8] [==============63%           ] nsys-pa-10y-1p.nsys-rep[1/8] [==============64%           ] nsys-pa-10y-1p.nsys-rep[1/8] [===============65%          ] nsys-pa-10y-1p.nsys-rep[1/8] [===============66%          ] nsys-pa-10y-1p.nsys-rep[1/8] [===============67%          ] nsys-pa-10y-1p.nsys-rep[1/8] [================68%         ] nsys-pa-10y-1p.nsys-rep[1/8] [================69%         ] nsys-pa-10y-1p.nsys-rep[1/8] [================70%         ] nsys-pa-10y-1p.nsys-rep[1/8] [================71%         ] nsys-pa-10y-1p.nsys-rep[1/8] [=================72%        ] nsys-pa-10y-1p.nsys-rep[1/8] [=================73%        ] nsys-pa-10y-1p.nsys-rep[1/8] [=================74%        ] nsys-pa-10y-1p.nsys-rep[1/8] [==================75%       ] nsys-pa-10y-1p.nsys-rep[1/8] [==================76%       ] nsys-pa-10y-1p.nsys-rep[1/8] [==================77%       ] nsys-pa-10y-1p.nsys-rep[1/8] [==================78%       ] nsys-pa-10y-1p.nsys-rep[1/8] [===================79%      ] nsys-pa-10y-1p.nsys-rep[1/8] [===================80%      ] nsys-pa-10y-1p.nsys-rep[1/8] [===================81%      ] nsys-pa-10y-1p.nsys-rep[1/8] [========================100%] nsys-pa-10y-1p.nsys-rep[1/8] [========================100%] nsys-pa-10y-1p.nsys-rep
+[2/8] [0%                          ] nsys-pa-10y-1p.sqlite[2/8] [1%                          ] nsys-pa-10y-1p.sqlite[2/8] [2%                          ] nsys-pa-10y-1p.sqlite[2/8] [3%                          ] nsys-pa-10y-1p.sqlite[2/8] [4%                          ] nsys-pa-10y-1p.sqlite[2/8] [5%                          ] nsys-pa-10y-1p.sqlite[2/8] [6%                          ] nsys-pa-10y-1p.sqlite[2/8] [7%                          ] nsys-pa-10y-1p.sqlite[2/8] [8%                          ] nsys-pa-10y-1p.sqlite[2/8] [9%                          ] nsys-pa-10y-1p.sqlite[2/8] [10%                         ] nsys-pa-10y-1p.sqlite[2/8] [11%                         ] nsys-pa-10y-1p.sqlite[2/8] [12%                         ] nsys-pa-10y-1p.sqlite[2/8] [13%                         ] nsys-pa-10y-1p.sqlite[2/8] [14%                         ] nsys-pa-10y-1p.sqlite[2/8] [=15%                        ] nsys-pa-10y-1p.sqlite[2/8] [=16%                        ] nsys-pa-10y-1p.sqlite[2/8] [=17%                        ] nsys-pa-10y-1p.sqlite[2/8] [==18%                       ] nsys-pa-10y-1p.sqlite[2/8] [==19%                       ] nsys-pa-10y-1p.sqlite[2/8] [==20%                       ] nsys-pa-10y-1p.sqlite[2/8] [==21%                       ] nsys-pa-10y-1p.sqlite[2/8] [===22%                      ] nsys-pa-10y-1p.sqlite[2/8] [===23%                      ] nsys-pa-10y-1p.sqlite[2/8] [===24%                      ] nsys-pa-10y-1p.sqlite[2/8] [====25%                     ] nsys-pa-10y-1p.sqlite[2/8] [====26%                     ] nsys-pa-10y-1p.sqlite[2/8] [====27%                     ] nsys-pa-10y-1p.sqlite[2/8] [====28%                     ] nsys-pa-10y-1p.sqlite[2/8] [=====29%                    ] nsys-pa-10y-1p.sqlite[2/8] [=====30%                    ] nsys-pa-10y-1p.sqlite[2/8] [=====31%                    ] nsys-pa-10y-1p.sqlite[2/8] [=====32%                    ] nsys-pa-10y-1p.sqlite[2/8] [======33%                   ] nsys-pa-10y-1p.sqlite[2/8] [======34%                   ] nsys-pa-10y-1p.sqlite[2/8] [======35%                   ] nsys-pa-10y-1p.sqlite[2/8] [=======36%                  ] nsys-pa-10y-1p.sqlite[2/8] [=======37%                  ] nsys-pa-10y-1p.sqlite[2/8] [=======38%                  ] nsys-pa-10y-1p.sqlite[2/8] [=======39%                  ] nsys-pa-10y-1p.sqlite[2/8] [========40%                 ] nsys-pa-10y-1p.sqlite[2/8] [========41%                 ] nsys-pa-10y-1p.sqlite[2/8] [========42%                 ] nsys-pa-10y-1p.sqlite[2/8] [=========43%                ] nsys-pa-10y-1p.sqlite[2/8] [=========44%                ] nsys-pa-10y-1p.sqlite[2/8] [=========45%                ] nsys-pa-10y-1p.sqlite[2/8] [=========46%                ] nsys-pa-10y-1p.sqlite[2/8] [==========47%               ] nsys-pa-10y-1p.sqlite[2/8] [==========48%               ] nsys-pa-10y-1p.sqlite[2/8] [==========49%               ] nsys-pa-10y-1p.sqlite[2/8] [===========50%              ] nsys-pa-10y-1p.sqlite[2/8] [===========51%              ] nsys-pa-10y-1p.sqlite[2/8] [===========52%              ] nsys-pa-10y-1p.sqlite[2/8] [===========53%              ] nsys-pa-10y-1p.sqlite[2/8] [============54%             ] nsys-pa-10y-1p.sqlite[2/8] [============55%             ] nsys-pa-10y-1p.sqlite[2/8] [============56%             ] nsys-pa-10y-1p.sqlite[2/8] [============57%             ] nsys-pa-10y-1p.sqlite[2/8] [=============58%            ] nsys-pa-10y-1p.sqlite[2/8] [=============59%            ] nsys-pa-10y-1p.sqlite[2/8] [=============60%            ] nsys-pa-10y-1p.sqlite[2/8] [==============61%           ] nsys-pa-10y-1p.sqlite[2/8] [==============62%           ] nsys-pa-10y-1p.sqlite[2/8] [==============63%           ] nsys-pa-10y-1p.sqlite[2/8] [==============64%           ] nsys-pa-10y-1p.sqlite[2/8] [===============65%          ] nsys-pa-10y-1p.sqlite[2/8] [===============66%          ] nsys-pa-10y-1p.sqlite[2/8] [===============67%          ] nsys-pa-10y-1p.sqlite[2/8] [================68%         ] nsys-pa-10y-1p.sqlite[2/8] [================69%         ] nsys-pa-10y-1p.sqlite[2/8] [================70%         ] nsys-pa-10y-1p.sqlite[2/8] [================71%         ] nsys-pa-10y-1p.sqlite[2/8] [=================72%        ] nsys-pa-10y-1p.sqlite[2/8] [=================73%        ] nsys-pa-10y-1p.sqlite[2/8] [=================74%        ] nsys-pa-10y-1p.sqlite[2/8] [==================75%       ] nsys-pa-10y-1p.sqlite[2/8] [==================76%       ] nsys-pa-10y-1p.sqlite[2/8] [==================77%       ] nsys-pa-10y-1p.sqlite[2/8] [==================78%       ] nsys-pa-10y-1p.sqlite[2/8] [===================79%      ] nsys-pa-10y-1p.sqlite[2/8] [===================80%      ] nsys-pa-10y-1p.sqlite[2/8] [===================81%      ] nsys-pa-10y-1p.sqlite[2/8] [===================82%      ] nsys-pa-10y-1p.sqlite[2/8] [====================83%     ] nsys-pa-10y-1p.sqlite[2/8] [====================84%     ] nsys-pa-10y-1p.sqlite[2/8] [====================85%     ] nsys-pa-10y-1p.sqlite[2/8] [=====================86%    ] nsys-pa-10y-1p.sqlite[2/8] [=====================87%    ] nsys-pa-10y-1p.sqlite[2/8] [=====================88%    ] nsys-pa-10y-1p.sqlite[2/8] [=====================89%    ] nsys-pa-10y-1p.sqlite[2/8] [======================90%   ] nsys-pa-10y-1p.sqlite[2/8] [======================91%   ] nsys-pa-10y-1p.sqlite[2/8] [======================92%   ] nsys-pa-10y-1p.sqlite[2/8] [=======================93%  ] nsys-pa-10y-1p.sqlite[2/8] [=======================94%  ] nsys-pa-10y-1p.sqlite[2/8] [=======================95%  ] nsys-pa-10y-1p.sqlite[2/8] [=======================96%  ] nsys-pa-10y-1p.sqlite[2/8] [========================97% ] nsys-pa-10y-1p.sqlite[2/8] [========================98% ] nsys-pa-10y-1p.sqlite[2/8] [========================99% ] nsys-pa-10y-1p.sqlite[2/8] [========================100%] nsys-pa-10y-1p.sqlite[2/8] [========================100%] nsys-pa-10y-1p.sqlite
+[3/8] Executing 'nvtx_sum' stats report
+
+ Time (%)  Total Time (ns)  Instances  Avg (ns)  Med (ns)  Min (ns)  Max (ns)   StdDev (ns)   Style             Range          
+ --------  ---------------  ---------  --------  --------  --------  ---------  -----------  -------  -------------------------
+    100.0      249,076,991     51,450   4,841.1   4,613.0     4,202  1,143,851      5,638.7  PushPop  CCCL:cub::DeviceFor::Bulk
+
+[4/8] Executing 'osrt_sum' stats report
+
+ Time (%)  Total Time (ns)  Num Calls    Avg (ns)      Med (ns)    Min (ns)   Max (ns)    StdDev (ns)            Name         
+ --------  ---------------  ---------  ------------  ------------  --------  -----------  ------------  ----------------------
+     95.7   83,366,502,453      4,217  19,769,149.3  10,061,653.0     1,793  176,350,987  28,061,086.0  poll                  
+      4.1    3,555,910,558     24,809     143,331.5      19,307.0     1,023  275,538,829   3,079,442.8  ioctl                 
+      0.1       53,387,369        267     199,952.7     192,685.0   139,067      695,215      56,090.7  pthread_create        
+      0.1       50,053,489         52     962,567.1     722,831.0   234,903    3,967,573     847,194.9  writev                
+      0.0       14,349,133        107     134,104.0       5,032.0     1,009    4,558,703     748,122.1  fflush                
+      0.0       11,426,976      5,972       1,913.4       1,564.0     1,019    1,914,442      24,754.2  read                  
+      0.0       10,149,298        123      82,514.6      27,482.0    17,209      561,012     103,829.6  pthread_rwlock_wrlock 
+      0.0        7,515,371          9     835,041.2     302,806.0    55,666    3,247,070   1,142,690.3  fopen64               
+      0.0        2,326,621        110      21,151.1      20,394.0     1,359       45,438       9,335.9  pthread_rwlock_rdlock 
+      0.0        2,145,238         91      23,574.0      13,853.0     1,767      123,781      30,621.3  mmap                  
+      0.0        1,352,740         30      45,091.3       6,677.5     3,745      891,550     161,131.5  mmap64                
+      0.0          884,521         36      24,570.0      15,350.5     1,608      365,568      61,164.5  write                 
+      0.0          740,783         11      67,343.9      26,983.0    19,138      470,052     133,727.2  sem_timedwait         
+      0.0          729,441         15      48,629.4       3,458.0     1,054      276,164      95,866.2  fclose                
+      0.0          663,195        107       6,198.1       5,137.0     1,210       21,591       4,290.5  munmap                
+      0.0          167,619         41       4,088.3       2,223.0     1,361       19,130       4,359.2  fopen                 
+      0.0          151,585         53       2,860.1       2,120.0     1,036        9,832       1,875.6  open64                
+      0.0          117,083          1     117,083.0     117,083.0   117,083      117,083           0.0  pthread_cond_wait     
+      0.0           42,255         25       1,690.2       1,689.0     1,044        2,747         500.4  fwrite                
+      0.0           33,992          1      33,992.0      33,992.0    33,992       33,992           0.0  fgets                 
+      0.0           21,913          6       3,652.2       3,612.0     1,225        5,790       1,842.8  open                  
+      0.0           16,670          3       5,556.7       6,522.0     2,117        8,031       3,072.9  pipe2                 
+      0.0           16,451          1      16,451.0      16,451.0    16,451       16,451           0.0  connect               
+      0.0           15,701          2       7,850.5       7,850.5     5,532       10,169       3,278.9  socket                
+      0.0            3,460          1       3,460.0       3,460.0     3,460        3,460           0.0  pthread_cond_broadcast
+      0.0            2,612          2       1,306.0       1,306.0     1,216        1,396         127.3  pthread_mutex_lock    
+      0.0            2,368          2       1,184.0       1,184.0     1,045        1,323         196.6  fcntl                 
+      0.0            1,747          1       1,747.0       1,747.0     1,747        1,747           0.0  pthread_mutex_trylock 
+      0.0            1,568          1       1,568.0       1,568.0     1,568        1,568           0.0  bind                  
+      0.0            1,253          1       1,253.0       1,253.0     1,253        1,253           0.0  listen                
+
+[5/8] Executing 'cuda_api_sum' stats report
+
+ Time (%)  Total Time (ns)  Num Calls    Avg (ns)     Med (ns)   Min (ns)    Max (ns)      StdDev (ns)            Name         
+ --------  ---------------  ---------  -------------  ---------  --------  -------------  -------------  ----------------------
+     43.7   12,356,754,284         80  154,459,428.6  490,204.5       856  1,388,559,818  365,572,788.2  cudaStreamSynchronize 
+     17.7    5,008,029,450    771,880        6,488.1    3,404.0     1,939    143,569,888      365,648.1  cudaMalloc            
+     17.7    4,994,708,392    823,120        6,068.0    3,487.0     2,558      4,258,103       13,957.3  cudaMemcpy            
+     15.7    4,420,878,381    669,010        6,608.1    4,690.0     3,481    276,027,145      466,033.8  cudaFree              
+      2.9      821,409,394        120    6,845,078.3   68,175.0     7,469     98,736,474   22,122,258.5  cudaMemcpyAsync       
+      1.1      321,658,236    102,940        3,124.7    2,886.0     2,529      4,496,897       18,869.7  cudaMemset            
+      0.7      186,051,677     51,540        3,609.9    2,762.0     2,445     28,875,510      128,142.8  cudaLaunchKernel      
+      0.5      133,808,998         10   13,380,899.8   54,324.0    40,716    132,523,956   41,863,379.0  cudaMemGetInfo        
+      0.0        1,567,770         40       39,194.3   17,656.0     6,509        146,581       41,524.8  cudaMallocManaged     
+      0.0        1,127,948         20       56,397.4   43,163.5     5,079        138,298       51,411.1  cudaDeviceSynchronize 
+      0.0          534,721         10       53,472.1   36,632.5    23,006        134,476       38,263.6  cudaStreamCreate      
+      0.0          255,706         20       12,785.3   12,645.5     6,612         20,102        4,823.8  cudaMemsetAsync       
+      0.0          149,041         10       14,904.1   14,415.0    10,766         19,240        3,693.7  cudaStreamDestroy     
+      0.0            1,684          1        1,684.0    1,684.0     1,684          1,684            0.0  cuModuleGetLoadingMode
+
+[6/8] Executing 'cuda_gpu_kern_sum' stats report
+
+ Time (%)  Total Time (ns)  Instances     Avg (ns)         Med (ns)       Min (ns)      Max (ns)      StdDev (ns)                                                   Name                                                
+ --------  ---------------  ---------  ---------------  ---------------  -----------  -------------  -------------  ----------------------------------------------------------------------------------------------------
+     83.2   10,996,394,975         10  1,099,639,497.5  1,088,771,442.0  859,386,298  1,388,523,988  157,613,737.5  kernelCallStage1(int, int, int, ABM *, Graph *, DeviceGraph *, DeviceGraph *, device_map<int, Node>…
+      9.2    1,216,743,815         10    121,674,381.5    122,330,425.0  112,763,878    131,399,784    7,097,964.7  kernelCallStage3(int, int, int, ABM *, Graph *, int, device_map<int, Node>::device_view, ABMStageSt…
+      6.0      793,967,945         10     79,396,794.5     78,624,721.5   66,590,152     98,730,304    9,370,833.2  void cuco::legacy::detail::insert<(unsigned long)128, (unsigned int)4, cuco::pair<int, int> *, cuda…
+      1.0      132,694,399         10     13,269,439.9     13,261,245.0    8,730,897     19,703,149    2,925,113.1  kernelCallStage2(int, int, int, ABM *, Graph *, cuco::static_set_ref<int, (cuda::std::__4::thread_s…
+      0.5       62,020,512     51,440          1,205.7          1,248.0        1,087          1,696           95.4  void cub::CUB_300002_SM_900::detail::for_each::static_kernel<cub::CUB_300002_SM_900::detail::for_ea…
+      0.1       10,370,935         10      1,037,093.5      1,019,074.5      972,802      1,128,994       58,759.1  kernelCallStage4(int, int, int, ABM *, Graph *, int, device_map<int, Node>::device_view, ABMStageSt…
+      0.0        1,080,928         20         54,046.4         39,920.0        3,040        136,384       52,438.1  kernel_extract_vector_sizes(device_vector *, int *, int)                                            
+      0.0          511,423         10         51,142.3         50,912.0       33,472         79,487       14,614.7  void cuco::detail::open_addressing_ns::insert_if_n<(int)1, (int)128, int *, thrust::THRUST_300002_S…
+      0.0           29,663         10          2,966.3          2,912.0        2,848          3,359          161.5  void cuco::legacy::detail::initialize<(unsigned long)256, cuda::__4::atomic<int, (cuda::std::__4::t…
+      0.0           13,984         10          1,398.4          1,456.0        1,280          1,504          103.5  void cub::CUB_300002_SM_900::detail::for_each::static_kernel<cub::CUB_300002_SM_900::detail::for_ea…
+
+[7/8] Executing 'cuda_gpu_mem_time_sum' stats report
+
+ Time (%)  Total Time (ns)   Count   Avg (ns)  Med (ns)  Min (ns)  Max (ns)   StdDev (ns)               Operation              
+ --------  ---------------  -------  --------  --------  --------  ---------  -----------  ------------------------------------
+     46.1      542,490,918  617,430     878.6     768.0       703  3,390,855     13,921.8  [CUDA memcpy Host-to-Device]        
+     41.3      486,247,704  205,810   2,362.6   2,368.0     1,760      8,993        112.8  [CUDA memcpy Device-to-Host]        
+     12.4      145,794,992  102,960   1,416.0   1,440.0       704    113,600      1,756.8  [CUDA memset]                       
+      0.1        1,359,365      447   3,041.1   2,591.0     2,175      6,783      1,020.6  [CUDA memcpy Unified Host-to-Device]
+      0.1          738,016      237   3,114.0   2,751.0     2,335      5,280        717.2  [CUDA memcpy Unified Device-to-Host]
+
+[8/8] Executing 'cuda_gpu_mem_size_sum' stats report
+
+ Total (MB)   Count   Avg (MB)  Med (MB)  Min (MB)  Max (MB)  StdDev (MB)               Operation              
+ ----------  -------  --------  --------  --------  --------  -----------  ------------------------------------
+ 16,606.773  102,960     0.161     0.065     0.000   361.267        5.656  [CUDA memset]                       
+    785.537  617,430     0.001     0.000     0.000    43.437        0.174  [CUDA memcpy Host-to-Device]        
+     15.729      447     0.035     0.012     0.004     0.238        0.053  [CUDA memcpy Unified Host-to-Device]
+     15.312  205,810     0.000     0.000     0.000     0.172        0.002  [CUDA memcpy Device-to-Host]        
+      8.520      237     0.036     0.012     0.004     0.127        0.038  [CUDA memcpy Unified Device-to-Host]
+
+Generated:
+    /home/jmukher/workspace/uiuc/citation_abm/profile/nsys-pa-10y-1p.nsys-rep
+    /home/jmukher/workspace/uiuc/citation_abm/profile/nsys-pa-10y-1p.sqlite
+SUCCESS: 70M → profile/nsys-pa-10y-1p.nsys-rep
+Running growth rate 3% for 10 years.
+Profile output: profile/nsys-pa-10y-3p.nsys-rep
+CMD: nsys profile --trace=nvtx,cuda,osrt --gpu-metrics-device=all --gpu-metrics-frequency=10000 --stats=true --force-overwrite=true -o profile/nsys-pa-10y-3p ./abm --edgelist sj_edgelist --nodelist sj_nodelist --out-degree-bag tcen_at_least_five --recency-probabilities sj_recprob --alpha 0.5 --preferential-weight 0.33 --recency-weight 0.33 --fitness-weight 0.33 --growth-rate .03 --fully-random-citations 0.05 --num-cycles 10 --same-year-proportion 0.12 --output-file ./output/10y/gpu-opt-static-output-10y-3p.edgelist --auxiliary-information-file ./output/10y/gpu-opt-static-output-10y-3p.aux --log-file ./output/10y/nsys-gpu-opt-static-pa-10y-3p.log --num-processors 14 --log-level 1
+
+Start ABM....
+parse_args....
+edgelist....
+num-cycles....
+output-file....
+log-file = ./output/10y/nsys-gpu-opt-static-pa-10y-3p.log....
+num-processors = 14....
+log-level = 0
+er_probability = 0.000000
+model = pa
+Init ABM....
+Exec ABM....
+Start execute.Init Graph
+Inside  Graph ParseNodelist.....
+Populating the continuous_node mappings..
+Elapsed time: ParseNodelist : 1100 millisecs = 1 seconds
+
+Inside Graph ParseEdgelist.....
+Elapsed time: ParseEdgelist : 1700 millisecs = 1 seconds
+
+In updateNodeInDegreeOutDegree: Update Outdegree first:
+In updateNodeInDegreeOutDegree: Update Indegree:
+Total (initial):: In-Degree = 899050, Out-Degree = 899050
+Elapsed time: 0-1 : 1 seconds
+Elapsed time: 1-2 : 1 seconds
+Elapsed time: 2-3 : 0 seconds
+
+Initialized Graph. Let us update the indegree and out-degrees... 
+Graph init done...
+calling InitializeFitness...
+final graph size is 660583 from initial_graph_size of 491532.
+ populated out degree array.
+ Entering loop for year = 1983
+Elapsed time: 70-71: total : 0.269 secs, iter cost : 0 seconds
+
+Elapsed time: 71-72: total : 0.324 secs, iter cost : 0 seconds
+
+Elapsed time: 72-73: total : 28 millisecs, iter cost : 28 mseconds
+
+num_new_nodes = 14746, current_graph_size = 491532, growth rate = 0.030000 
+Elapsed time: 73-74: total : 0 millisecs, iter cost : 0 mseconds
+
+Elapsed time: 74-75: total : 15 millisecs, iter cost : 15 mseconds
+
+all new nodes initialized with years and mapped. FillSameYearSourceNodes with new_nodes_vec.size() = 14746
+checking same_year_source_nodes size.
+Elapsed time: 75-76: total : 0 millisecs, iter cost : 0 mseconds
+
+new_nodes_vec.size() b4 : 14746
+
+updated  updateGraphAttributesGeneratorNode .... 
+Elapsed time: 76-77: total : 37 millisecs, iter cost : 37 mseconds
+
+continuous_node_mapping.size() b5 : 506278, reverse_continuous_node_mapping size = 506278
+
+[PA Model] Building connections using Preferential Attachment
+
+Inside optimized buildOneNodeConnections...
+Initial Free: 80526.5 MB / 81079.4 MB
+
+[prepareGraph] num_vertices = 491532
+
+[prepareGraph] edges = 899050, offsets = 491533 (should be V+1 = 491533)
+
+[prepareGraph] num_vertices = 491532
+
+[prepareGraph] edges = 899050, offsets = 491533 (should be V+1 = 491533)
+
+Year 1983: 14746 new nodes, 288734 new edges
+
+Elapsed time: 78-781 : total : 5.703 secs, this iter cost : 5.703 seconds
+
+Elapsed time: 78-79 : total : 5.839 secs, this iter cost : 5.839 seconds
+
+updateNodeInDegreeOutDegree(year=1983): updated 14746 out-degrees, 181076 in-degrees
+Elapsed time: 79-81 : total : 0.173 secs, this iter cost : 0 seconds
+
+Elapsed time: 79-80 : total : 0.098 secs, this iter cost : 0 seconds
+
+Elapsed time: 80-81 : total : 0.074 secs, this iter cost : 0 seconds
+
+Elapsed time: 70-81 : total : 6.688 secs, this iter cost : 6 seconds
+
+ Entering loop for year = 1984
+Elapsed time: 70-71: total : 0.547 secs, iter cost : 0 seconds
+
+Elapsed time: 71-72: total : 0.659 secs, iter cost : 0 seconds
+
+Elapsed time: 72-73: total : 47 millisecs, iter cost : 19 mseconds
+
+num_new_nodes = 15189, current_graph_size = 506278, growth rate = 0.030000 
+Elapsed time: 73-74: total : 0 millisecs, iter cost : 0 mseconds
+
+Elapsed time: 74-75: total : 25 millisecs, iter cost : 10 mseconds
+
+all new nodes initialized with years and mapped. FillSameYearSourceNodes with new_nodes_vec.size() = 15189
+checking same_year_source_nodes size.
+Elapsed time: 75-76: total : 0 millisecs, iter cost : 0 mseconds
+
+new_nodes_vec.size() b4 : 15189
+
+updated  updateGraphAttributesGeneratorNode .... 
+Elapsed time: 76-77: total : 81 millisecs, iter cost : 44 mseconds
+
+continuous_node_mapping.size() b5 : 521467, reverse_continuous_node_mapping size = 521467
+
+[PA Model] Building connections using Preferential Attachment
+
+Inside optimized buildOneNodeConnections...
+Initial Free: 80310.5 MB / 81079.4 MB
+
+[prepareGraph] num_vertices = 506278
+
+[prepareGraph] edges = 1187784, offsets = 506279 (should be V+1 = 506279)
+
+[prepareGraph] num_vertices = 506278
+
+[prepareGraph] edges = 1187784, offsets = 506279 (should be V+1 = 506279)
+
+Year 1984: 15189 new nodes, 298119 new edges
+
+Elapsed time: 78-781 : total : 12.373 secs, this iter cost : 6.67 seconds
+
+Elapsed time: 78-79 : total : 12.612 secs, this iter cost : 6.773 seconds
+
+updateNodeInDegreeOutDegree(year=1984): updated 15189 out-degrees, 183672 in-degrees
+Elapsed time: 79-81 : total : 0.333 secs, this iter cost : 0 seconds
+
+Elapsed time: 79-80 : total : 0.181 secs, this iter cost : 0 seconds
+
+Elapsed time: 80-81 : total : 0.151 secs, this iter cost : 0 seconds
+
+Elapsed time: 70-81 : total : 14.31 secs, this iter cost : 7 seconds
+
+ Entering loop for year = 1985
+Elapsed time: 70-71: total : 0.842 secs, iter cost : 0 seconds
+
+Elapsed time: 71-72: total : 1.017 secs, iter cost : 0 seconds
+
+Elapsed time: 72-73: total : 66 millisecs, iter cost : 19 mseconds
+
+num_new_nodes = 15645, current_graph_size = 521467, growth rate = 0.030000 
+Elapsed time: 73-74: total : 0 millisecs, iter cost : 0 mseconds
+
+Elapsed time: 74-75: total : 35 millisecs, iter cost : 10 mseconds
+
+all new nodes initialized with years and mapped. FillSameYearSourceNodes with new_nodes_vec.size() = 15645
+checking same_year_source_nodes size.
+Elapsed time: 75-76: total : 0 millisecs, iter cost : 0 mseconds
+
+new_nodes_vec.size() b4 : 15645
+
+updated  updateGraphAttributesGeneratorNode .... 
+Elapsed time: 76-77: total : 120 millisecs, iter cost : 39 mseconds
+
+continuous_node_mapping.size() b5 : 537112, reverse_continuous_node_mapping size = 537112
+
+[PA Model] Building connections using Preferential Attachment
+
+Inside optimized buildOneNodeConnections...
+Initial Free: 80288.5 MB / 81079.4 MB
+
+[prepareGraph] num_vertices = 521467
+
+[prepareGraph] edges = 1485903, offsets = 521468 (should be V+1 = 521468)
+
+[prepareGraph] num_vertices = 521467
+
+[prepareGraph] edges = 1485903, offsets = 521468 (should be V+1 = 521468)
+
+Year 1985: 15645 new nodes, 307562 new edges
+
+Elapsed time: 78-781 : total : 18.652 secs, this iter cost : 6.279 seconds
+
+Elapsed time: 78-79 : total : 19.025 secs, this iter cost : 6.413 seconds
+
+updateNodeInDegreeOutDegree(year=1985): updated 15645 out-degrees, 185044 in-degrees
+Elapsed time: 79-81 : total : 0.504 secs, this iter cost : 0 seconds
+
+Elapsed time: 79-80 : total : 0.272 secs, this iter cost : 0 seconds
+
+Elapsed time: 80-81 : total : 0.23 secs, this iter cost : 0 seconds
+
+Elapsed time: 70-81 : total : 21.618 secs, this iter cost : 7 seconds
+
+ Entering loop for year = 1986
+Elapsed time: 70-71: total : 1.126 secs, iter cost : 0 seconds
+
+Elapsed time: 71-72: total : 1.351 secs, iter cost : 0 seconds
+
+Elapsed time: 72-73: total : 85 millisecs, iter cost : 19 mseconds
+
+num_new_nodes = 16114, current_graph_size = 537112, growth rate = 0.030000 
+Elapsed time: 73-74: total : 0 millisecs, iter cost : 0 mseconds
+
+Elapsed time: 74-75: total : 45 millisecs, iter cost : 10 mseconds
+
+all new nodes initialized with years and mapped. FillSameYearSourceNodes with new_nodes_vec.size() = 16114
+checking same_year_source_nodes size.
+Elapsed time: 75-76: total : 0 millisecs, iter cost : 0 mseconds
+
+new_nodes_vec.size() b4 : 16114
+
+updated  updateGraphAttributesGeneratorNode .... 
+Elapsed time: 76-77: total : 160 millisecs, iter cost : 40 mseconds
+
+continuous_node_mapping.size() b5 : 553226, reverse_continuous_node_mapping size = 553226
+
+[PA Model] Building connections using Preferential Attachment
+
+Inside optimized buildOneNodeConnections...
+Initial Free: 80268.5 MB / 81079.4 MB
+
+[prepareGraph] num_vertices = 537112
+
+[prepareGraph] edges = 1793465, offsets = 537113 (should be V+1 = 537113)
+
+[prepareGraph] num_vertices = 537112
+
+[prepareGraph] edges = 1793465, offsets = 537113 (should be V+1 = 537113)
+
+Year 1986: 16114 new nodes, 316845 new edges
+
+Elapsed time: 78-781 : total : 25.063 secs, this iter cost : 6.411 seconds
+
+Elapsed time: 78-79 : total : 25.617 secs, this iter cost : 6.592 seconds
+
+updateNodeInDegreeOutDegree(year=1986): updated 16114 out-degrees, 185383 in-degrees
+Elapsed time: 79-81 : total : 0.691 secs, this iter cost : 0 seconds
+
+Elapsed time: 79-80 : total : 0.379 secs, this iter cost : 0 seconds
+
+Elapsed time: 80-81 : total : 0.309 secs, this iter cost : 0 seconds
+
+Elapsed time: 70-81 : total : 29.086 secs, this iter cost : 7 seconds
+
+ Entering loop for year = 1987
+Elapsed time: 70-71: total : 1.419 secs, iter cost : 0 seconds
+
+Elapsed time: 71-72: total : 1.693 secs, iter cost : 0 seconds
+
+Elapsed time: 72-73: total : 99 millisecs, iter cost : 14 mseconds
+
+num_new_nodes = 16597, current_graph_size = 553226, growth rate = 0.030000 
+Elapsed time: 73-74: total : 0 millisecs, iter cost : 0 mseconds
+
+Elapsed time: 74-75: total : 56 millisecs, iter cost : 11 mseconds
+
+all new nodes initialized with years and mapped. FillSameYearSourceNodes with new_nodes_vec.size() = 16597
+checking same_year_source_nodes size.
+Elapsed time: 75-76: total : 0 millisecs, iter cost : 0 mseconds
+
+new_nodes_vec.size() b4 : 16597
+
+updated  updateGraphAttributesGeneratorNode .... 
+Elapsed time: 76-77: total : 201 millisecs, iter cost : 41 mseconds
+
+continuous_node_mapping.size() b5 : 569823, reverse_continuous_node_mapping size = 569823
+
+[PA Model] Building connections using Preferential Attachment
+
+Inside optimized buildOneNodeConnections...
+Initial Free: 80246.5 MB / 81079.4 MB
+
+[prepareGraph] num_vertices = 553226
+
+[prepareGraph] edges = 2110310, offsets = 553227 (should be V+1 = 553227)
+
+[prepareGraph] num_vertices = 553226
+
+[prepareGraph] edges = 2110310, offsets = 553227 (should be V+1 = 553227)
+
+Year 1987: 16597 new nodes, 326249 new edges
+
+Elapsed time: 78-781 : total : 32.041 secs, this iter cost : 6.978 seconds
+
+Elapsed time: 78-79 : total : 32.78 secs, this iter cost : 7.163 seconds
+
+updateNodeInDegreeOutDegree(year=1987): updated 16597 out-degrees, 187396 in-degrees
+Elapsed time: 79-81 : total : 0.883 secs, this iter cost : 0 seconds
+
+Elapsed time: 79-80 : total : 0.487 secs, this iter cost : 0 seconds
+
+Elapsed time: 80-81 : total : 0.392 secs, this iter cost : 0 seconds
+
+Elapsed time: 70-81 : total : 37.146 secs, this iter cost : 8 seconds
+
+ Entering loop for year = 1988
+Elapsed time: 70-71: total : 1.73 secs, iter cost : 0 seconds
+
+Elapsed time: 71-72: total : 2.034 secs, iter cost : 0 seconds
+
+Elapsed time: 72-73: total : 127 millisecs, iter cost : 28 mseconds
+
+num_new_nodes = 17095, current_graph_size = 569823, growth rate = 0.030000 
+Elapsed time: 73-74: total : 0 millisecs, iter cost : 0 mseconds
+
+Elapsed time: 74-75: total : 65 millisecs, iter cost : 9 mseconds
+
+all new nodes initialized with years and mapped. FillSameYearSourceNodes with new_nodes_vec.size() = 17095
+checking same_year_source_nodes size.
+Elapsed time: 75-76: total : 0 millisecs, iter cost : 0 mseconds
+
+new_nodes_vec.size() b4 : 17095
+
+updated  updateGraphAttributesGeneratorNode .... 
+Elapsed time: 76-77: total : 244 millisecs, iter cost : 43 mseconds
+
+continuous_node_mapping.size() b5 : 586918, reverse_continuous_node_mapping size = 586918
+
+[PA Model] Building connections using Preferential Attachment
+
+Inside optimized buildOneNodeConnections...
+Initial Free: 80224.5 MB / 81079.4 MB
+
+[prepareGraph] num_vertices = 569823
+
+[prepareGraph] edges = 2436559, offsets = 569824 (should be V+1 = 569824)
+
+[prepareGraph] num_vertices = 569823
+
+[prepareGraph] edges = 2436559, offsets = 569824 (should be V+1 = 569824)
+
+Year 1988: 17095 new nodes, 336040 new edges
+
+Elapsed time: 78-781 : total : 39.126 secs, this iter cost : 7.085 seconds
+
+Elapsed time: 78-79 : total : 40.054 secs, this iter cost : 7.274 seconds
+
+updateNodeInDegreeOutDegree(year=1988): updated 17095 out-degrees, 188884 in-degrees
+Elapsed time: 79-81 : total : 1.08 secs, this iter cost : 0 seconds
+
+Elapsed time: 79-80 : total : 0.596 secs, this iter cost : 0 seconds
+
+Elapsed time: 80-81 : total : 0.48 secs, this iter cost : 0 seconds
+
+Elapsed time: 70-81 : total : 45.352 secs, this iter cost : 8 seconds
+
+ Entering loop for year = 1989
+Elapsed time: 70-71: total : 2.029 secs, iter cost : 0 seconds
+
+Elapsed time: 71-72: total : 2.385 secs, iter cost : 0 seconds
+
+Elapsed time: 72-73: total : 146 millisecs, iter cost : 19 mseconds
+
+num_new_nodes = 17608, current_graph_size = 586918, growth rate = 0.030000 
+Elapsed time: 73-74: total : 0 millisecs, iter cost : 0 mseconds
+
+Elapsed time: 74-75: total : 73 millisecs, iter cost : 8 mseconds
+
+all new nodes initialized with years and mapped. FillSameYearSourceNodes with new_nodes_vec.size() = 17608
+checking same_year_source_nodes size.
+Elapsed time: 75-76: total : 0 millisecs, iter cost : 0 mseconds
+
+new_nodes_vec.size() b4 : 17608
+
+updated  updateGraphAttributesGeneratorNode .... 
+Elapsed time: 76-77: total : 288 millisecs, iter cost : 44 mseconds
+
+continuous_node_mapping.size() b5 : 604526, reverse_continuous_node_mapping size = 604526
+
+[PA Model] Building connections using Preferential Attachment
+
+Inside optimized buildOneNodeConnections...
+Initial Free: 80202.5 MB / 81079.4 MB
+
+[prepareGraph] num_vertices = 586918
+
+[prepareGraph] edges = 2772599, offsets = 586919 (should be V+1 = 586919)
+
+[prepareGraph] num_vertices = 586918
+
+[prepareGraph] edges = 2772599, offsets = 586919 (should be V+1 = 586919)
+
+Year 1989: 17608 new nodes, 345681 new edges
+
+Elapsed time: 78-781 : total : 46.548 secs, this iter cost : 7.422 seconds
+
+Elapsed time: 78-79 : total : 47.664 secs, this iter cost : 7.61 seconds
+
+updateNodeInDegreeOutDegree(year=1989): updated 17608 out-degrees, 189842 in-degrees
+Elapsed time: 79-81 : total : 1.281 secs, this iter cost : 0 seconds
+
+Elapsed time: 79-80 : total : 0.705 secs, this iter cost : 0 seconds
+
+Elapsed time: 80-81 : total : 0.571 secs, this iter cost : 0 seconds
+
+Elapsed time: 70-81 : total : 53.887 secs, this iter cost : 8 seconds
+
+ Entering loop for year = 1990
+Elapsed time: 70-71: total : 2.336 secs, iter cost : 0 seconds
+
+Elapsed time: 71-72: total : 2.742 secs, iter cost : 0 seconds
+
+Elapsed time: 72-73: total : 177 millisecs, iter cost : 31 mseconds
+
+num_new_nodes = 18136, current_graph_size = 604526, growth rate = 0.030000 
+Elapsed time: 73-74: total : 0 millisecs, iter cost : 0 mseconds
+
+Elapsed time: 74-75: total : 82 millisecs, iter cost : 9 mseconds
+
+all new nodes initialized with years and mapped. FillSameYearSourceNodes with new_nodes_vec.size() = 18136
+checking same_year_source_nodes size.
+Elapsed time: 75-76: total : 0 millisecs, iter cost : 0 mseconds
+
+new_nodes_vec.size() b4 : 18136
+
+updated  updateGraphAttributesGeneratorNode .... 
+Elapsed time: 76-77: total : 333 millisecs, iter cost : 45 mseconds
+
+continuous_node_mapping.size() b5 : 622662, reverse_continuous_node_mapping size = 622662
+
+[PA Model] Building connections using Preferential Attachment
+
+Inside optimized buildOneNodeConnections...
+Initial Free: 80180.5 MB / 81079.4 MB
+
+[prepareGraph] num_vertices = 604526
+
+[prepareGraph] edges = 3118280, offsets = 604527 (should be V+1 = 604527)
+
+[prepareGraph] num_vertices = 604526
+
+[prepareGraph] edges = 3118280, offsets = 604527 (should be V+1 = 604527)
+
+Year 1990: 18136 new nodes, 356091 new edges
+
+Elapsed time: 78-781 : total : 54.403 secs, this iter cost : 7.855 seconds
+
+Elapsed time: 78-79 : total : 55.724 secs, this iter cost : 8.06 seconds
+
+updateNodeInDegreeOutDegree(year=1990): updated 18136 out-degrees, 192624 in-degrees
+Elapsed time: 79-81 : total : 1.483 secs, this iter cost : 0 seconds
+
+Elapsed time: 79-80 : total : 0.815 secs, this iter cost : 0 seconds
+
+Elapsed time: 80-81 : total : 0.662 secs, this iter cost : 0 seconds
+
+Elapsed time: 70-81 : total : 62.901 secs, this iter cost : 9 seconds
+
+ Entering loop for year = 1991
+Elapsed time: 70-71: total : 2.645 secs, iter cost : 0 seconds
+
+Elapsed time: 71-72: total : 3.122 secs, iter cost : 0 seconds
+
+Elapsed time: 72-73: total : 196 millisecs, iter cost : 19 mseconds
+
+num_new_nodes = 18680, current_graph_size = 622662, growth rate = 0.030000 
+Elapsed time: 73-74: total : 0 millisecs, iter cost : 0 mseconds
+
+Elapsed time: 74-75: total : 96 millisecs, iter cost : 14 mseconds
+
+all new nodes initialized with years and mapped. FillSameYearSourceNodes with new_nodes_vec.size() = 18680
+checking same_year_source_nodes size.
+Elapsed time: 75-76: total : 0 millisecs, iter cost : 0 mseconds
+
+new_nodes_vec.size() b4 : 18680
+
+updated  updateGraphAttributesGeneratorNode .... 
+Elapsed time: 76-77: total : 379 millisecs, iter cost : 46 mseconds
+
+continuous_node_mapping.size() b5 : 641342, reverse_continuous_node_mapping size = 641342
+
+[PA Model] Building connections using Preferential Attachment
+
+Inside optimized buildOneNodeConnections...
+Initial Free: 80156.5 MB / 81079.4 MB
+
+[prepareGraph] num_vertices = 622662
+
+[prepareGraph] edges = 3474371, offsets = 622663 (should be V+1 = 622663)
+
+[prepareGraph] num_vertices = 622662
+
+[prepareGraph] edges = 3474371, offsets = 622663 (should be V+1 = 622663)
+
+Year 1991: 18680 new nodes, 367049 new edges
+
+Elapsed time: 78-781 : total : 62.724 secs, this iter cost : 8.321 seconds
+
+Elapsed time: 78-79 : total : 64.257 secs, this iter cost : 8.533 seconds
+
+updateNodeInDegreeOutDegree(year=1991): updated 18680 out-degrees, 195759 in-degrees
+Elapsed time: 79-81 : total : 1.687 secs, this iter cost : 0 seconds
+
+Elapsed time: 79-80 : total : 0.928 secs, this iter cost : 0 seconds
+
+Elapsed time: 80-81 : total : 0.753 secs, this iter cost : 0 seconds
+
+Elapsed time: 70-81 : total : 72.41 secs, this iter cost : 9 seconds
+
+ Entering loop for year = 1992
+Elapsed time: 70-71: total : 2.965 secs, iter cost : 0 seconds
+
+Elapsed time: 71-72: total : 3.496 secs, iter cost : 0 seconds
+
+Elapsed time: 72-73: total : 215 millisecs, iter cost : 19 mseconds
+
+num_new_nodes = 19241, current_graph_size = 641342, growth rate = 0.030000 
+Elapsed time: 73-74: total : 0 millisecs, iter cost : 0 mseconds
+
+Elapsed time: 74-75: total : 105 millisecs, iter cost : 9 mseconds
+
+all new nodes initialized with years and mapped. FillSameYearSourceNodes with new_nodes_vec.size() = 19241
+checking same_year_source_nodes size.
+Elapsed time: 75-76: total : 0 millisecs, iter cost : 0 mseconds
+
+new_nodes_vec.size() b4 : 19241
+
+updated  updateGraphAttributesGeneratorNode .... 
+Elapsed time: 76-77: total : 427 millisecs, iter cost : 48 mseconds
+
+continuous_node_mapping.size() b5 : 660583, reverse_continuous_node_mapping size = 660583
+
+[PA Model] Building connections using Preferential Attachment
+
+Inside optimized buildOneNodeConnections...
+Initial Free: 79798.5 MB / 81079.4 MB
+
+[prepareGraph] num_vertices = 641342
+
+[prepareGraph] edges = 3841420, offsets = 641343 (should be V+1 = 641343)
+
+[prepareGraph] num_vertices = 641342
+
+[prepareGraph] edges = 3841420, offsets = 641343 (should be V+1 = 641343)
+
+Year 1992: 19241 new nodes, 378558 new edges
+
+Elapsed time: 78-781 : total : 70.965 secs, this iter cost : 8.241 seconds
+
+Elapsed time: 78-79 : total : 72.703 secs, this iter cost : 8.446 seconds
+
+updateNodeInDegreeOutDegree(year=1992): updated 19241 out-degrees, 199770 in-degrees
+Elapsed time: 79-81 : total : 1.895 secs, this iter cost : 0 seconds
+
+Elapsed time: 79-80 : total : 1.042 secs, this iter cost : 0 seconds
+
+Elapsed time: 80-81 : total : 0.847 secs, this iter cost : 0 seconds
+
+Elapsed time: 70-81 : total : 81.837 secs, this iter cost : 9 seconds
+
+Elapsed time: 7-8 :  81 seconds
+
+compute done:: graph size = 660583
+Elapsed time: 8-8.1 :  0 seconds
+
+Writing Graph to file: ./output/10y/gpu-opt-static-output-10y-3p.edgelist
+
+Elapsed time: 8.1-9 :  0 seconds
+
+Elapsed time: 9-10 :  0 seconds
+
+ graph size = 660583
+WriteAttributes: graph size = 660583
+
+Elapsed time: 0-1 : 3 seconds
+
+Elapsed time: 1-4 : 0 seconds
+
+Elapsed time: 4-7 : 0 seconds
+
+Elapsed time: 70-71: total : 2.965 seconds.
+
+Elapsed time: 71-72: total : 3.496 seconds.
+
+Elapsed time: 72-73: total : 0.215 seconds.
+
+Elapsed time: 73-74: total : 0 seconds.
+
+Elapsed time: 74-75: total : 0.105 seconds.
+
+Elapsed time: 75-76: total : 0 seconds.
+
+Elapsed time: 76-77: total : 0.427 seconds.
+
+Elapsed time: 77-79: total : 72.703 seconds.
+
+Elapsed time: 79-81 : total : 1.895 seconds.
+
+Elapsed time: 79-80 : total : 1.042 seconds.
+
+Elapsed time: 80-81 : total : 0.847 seconds.
+
+Elapsed time: 70-81 : total : 81.837 seconds.
+
+Elapsed time: 7-8 : 81 seconds
+
+Elapsed time: 8-8.1 :  0 seconds
+
+Elapsed time: 8.1-9 :  0 seconds
+
+Elapsed time: 9-10 : 0 seconds
+
+Elapsed time: 11-12 : 0 seconds
+
+Elapsed time: 10-12 : 0 seconds
+
+Elapsed time: 0-7 : 3 seconds
+
+Elapsed time: 7-8 : 81 seconds
+
+Elapsed time: 8-12 : 1 seconds
+
+E2E Time for num_cycles = 10 with growth_rate = 3 % = 89 seconds.
+GPU 0: General Metrics for NVIDIA GH100 (any frequency)
+Generating '/tmp/nsys-report-bb08.qdstrm'
+[1/8] [0%                          ] nsys-pa-10y-3p.nsys-rep[1/8] [0%                          ] nsys-pa-10y-3p.nsys-rep[1/8] [8%                          ] nsys-pa-10y-3p.nsys-rep[1/8] [7%                          ] nsys-pa-10y-3p.nsys-rep[1/8] [8%                          ] nsys-pa-10y-3p.nsys-rep[1/8] [7%                          ] nsys-pa-10y-3p.nsys-rep[1/8] [6%                          ] nsys-pa-10y-3p.nsys-rep[1/8] [5%                          ] nsys-pa-10y-3p.nsys-rep[1/8] [8%                          ] nsys-pa-10y-3p.nsys-rep[1/8] [7%                          ] nsys-pa-10y-3p.nsys-rep[1/8] [6%                          ] nsys-pa-10y-3p.nsys-rep[1/8] [8%                          ] nsys-pa-10y-3p.nsys-rep[1/8] [7%                          ] nsys-pa-10y-3p.nsys-rep[1/8] [8%                          ] nsys-pa-10y-3p.nsys-rep[1/8] [9%                          ] nsys-pa-10y-3p.nsys-rep[1/8] [8%                          ] nsys-pa-10y-3p.nsys-rep[1/8] [9%                          ] nsys-pa-10y-3p.nsys-rep[1/8] [10%                         ] nsys-pa-10y-3p.nsys-rep[1/8] [9%                          ] nsys-pa-10y-3p.nsys-rep[1/8] [10%                         ] nsys-pa-10y-3p.nsys-rep[1/8] [9%                          ] nsys-pa-10y-3p.nsys-rep[1/8] [10%                         ] nsys-pa-10y-3p.nsys-rep[1/8] [9%                          ] nsys-pa-10y-3p.nsys-rep[1/8] [8%                          ] nsys-pa-10y-3p.nsys-rep[1/8] [7%                          ] nsys-pa-10y-3p.nsys-rep[1/8] [6%                          ] nsys-pa-10y-3p.nsys-rep[1/8] [5%                          ] nsys-pa-10y-3p.nsys-rep[1/8] [5%                          ] nsys-pa-10y-3p.nsys-rep[1/8] [6%                          ] nsys-pa-10y-3p.nsys-rep[1/8] [7%                          ] nsys-pa-10y-3p.nsys-rep[1/8] [8%                          ] nsys-pa-10y-3p.nsys-rep[1/8] [9%                          ] nsys-pa-10y-3p.nsys-rep[1/8] [10%                         ] nsys-pa-10y-3p.nsys-rep[1/8] [11%                         ] nsys-pa-10y-3p.nsys-rep[1/8] [12%                         ] nsys-pa-10y-3p.nsys-rep[1/8] [13%                         ] nsys-pa-10y-3p.nsys-rep[1/8] [14%                         ] nsys-pa-10y-3p.nsys-rep[1/8] [=15%                        ] nsys-pa-10y-3p.nsys-rep[1/8] [=16%                        ] nsys-pa-10y-3p.nsys-rep[1/8] [=17%                        ] nsys-pa-10y-3p.nsys-rep[1/8] [==18%                       ] nsys-pa-10y-3p.nsys-rep[1/8] [==19%                       ] nsys-pa-10y-3p.nsys-rep[1/8] [==20%                       ] nsys-pa-10y-3p.nsys-rep[1/8] [==21%                       ] nsys-pa-10y-3p.nsys-rep[1/8] [===22%                      ] nsys-pa-10y-3p.nsys-rep[1/8] [===23%                      ] nsys-pa-10y-3p.nsys-rep[1/8] [===24%                      ] nsys-pa-10y-3p.nsys-rep[1/8] [====25%                     ] nsys-pa-10y-3p.nsys-rep[1/8] [====26%                     ] nsys-pa-10y-3p.nsys-rep[1/8] [====27%                     ] nsys-pa-10y-3p.nsys-rep[1/8] [====28%                     ] nsys-pa-10y-3p.nsys-rep[1/8] [=====29%                    ] nsys-pa-10y-3p.nsys-rep[1/8] [=====30%                    ] nsys-pa-10y-3p.nsys-rep[1/8] [=====31%                    ] nsys-pa-10y-3p.nsys-rep[1/8] [=====32%                    ] nsys-pa-10y-3p.nsys-rep[1/8] [======33%                   ] nsys-pa-10y-3p.nsys-rep[1/8] [======34%                   ] nsys-pa-10y-3p.nsys-rep[1/8] [======35%                   ] nsys-pa-10y-3p.nsys-rep[1/8] [=======36%                  ] nsys-pa-10y-3p.nsys-rep[1/8] [=======37%                  ] nsys-pa-10y-3p.nsys-rep[1/8] [=======38%                  ] nsys-pa-10y-3p.nsys-rep[1/8] [=======39%                  ] nsys-pa-10y-3p.nsys-rep[1/8] [========40%                 ] nsys-pa-10y-3p.nsys-rep[1/8] [========41%                 ] nsys-pa-10y-3p.nsys-rep[1/8] [========42%                 ] nsys-pa-10y-3p.nsys-rep[1/8] [=========43%                ] nsys-pa-10y-3p.nsys-rep[1/8] [=========44%                ] nsys-pa-10y-3p.nsys-rep[1/8] [=========45%                ] nsys-pa-10y-3p.nsys-rep[1/8] [=========46%                ] nsys-pa-10y-3p.nsys-rep[1/8] [==========47%               ] nsys-pa-10y-3p.nsys-rep[1/8] [==========48%               ] nsys-pa-10y-3p.nsys-rep[1/8] [==========49%               ] nsys-pa-10y-3p.nsys-rep[1/8] [===========50%              ] nsys-pa-10y-3p.nsys-rep[1/8] [===========51%              ] nsys-pa-10y-3p.nsys-rep[1/8] [===========52%              ] nsys-pa-10y-3p.nsys-rep[1/8] [===========53%              ] nsys-pa-10y-3p.nsys-rep[1/8] [============54%             ] nsys-pa-10y-3p.nsys-rep[1/8] [============55%             ] nsys-pa-10y-3p.nsys-rep[1/8] [============56%             ] nsys-pa-10y-3p.nsys-rep[1/8] [============57%             ] nsys-pa-10y-3p.nsys-rep[1/8] [=============58%            ] nsys-pa-10y-3p.nsys-rep[1/8] [=============59%            ] nsys-pa-10y-3p.nsys-rep[1/8] [=============60%            ] nsys-pa-10y-3p.nsys-rep[1/8] [==============61%           ] nsys-pa-10y-3p.nsys-rep[1/8] [==============62%           ] nsys-pa-10y-3p.nsys-rep[1/8] [==============63%           ] nsys-pa-10y-3p.nsys-rep[1/8] [==============64%           ] nsys-pa-10y-3p.nsys-rep[1/8] [===============65%          ] nsys-pa-10y-3p.nsys-rep[1/8] [===============66%          ] nsys-pa-10y-3p.nsys-rep[1/8] [===============67%          ] nsys-pa-10y-3p.nsys-rep[1/8] [================68%         ] nsys-pa-10y-3p.nsys-rep[1/8] [================69%         ] nsys-pa-10y-3p.nsys-rep[1/8] [================70%         ] nsys-pa-10y-3p.nsys-rep[1/8] [================71%         ] nsys-pa-10y-3p.nsys-rep[1/8] [=================72%        ] nsys-pa-10y-3p.nsys-rep[1/8] [=================73%        ] nsys-pa-10y-3p.nsys-rep[1/8] [=================74%        ] nsys-pa-10y-3p.nsys-rep[1/8] [==================75%       ] nsys-pa-10y-3p.nsys-rep[1/8] [==================76%       ] nsys-pa-10y-3p.nsys-rep[1/8] [==================77%       ] nsys-pa-10y-3p.nsys-rep[1/8] [==================78%       ] nsys-pa-10y-3p.nsys-rep[1/8] [===================79%      ] nsys-pa-10y-3p.nsys-rep[1/8] [===================80%      ] nsys-pa-10y-3p.nsys-rep[1/8] [===================81%      ] nsys-pa-10y-3p.nsys-rep[1/8] [===================82%      ] nsys-pa-10y-3p.nsys-rep[1/8] [====================83%     ] nsys-pa-10y-3p.nsys-rep[1/8] [========================100%] nsys-pa-10y-3p.nsys-rep[1/8] [========================100%] nsys-pa-10y-3p.nsys-rep
+[2/8] [0%                          ] nsys-pa-10y-3p.sqlite[2/8] [1%                          ] nsys-pa-10y-3p.sqlite[2/8] [2%                          ] nsys-pa-10y-3p.sqlite[2/8] [3%                          ] nsys-pa-10y-3p.sqlite[2/8] [4%                          ] nsys-pa-10y-3p.sqlite[2/8] [5%                          ] nsys-pa-10y-3p.sqlite[2/8] [6%                          ] nsys-pa-10y-3p.sqlite[2/8] [7%                          ] nsys-pa-10y-3p.sqlite[2/8] [8%                          ] nsys-pa-10y-3p.sqlite[2/8] [9%                          ] nsys-pa-10y-3p.sqlite[2/8] [10%                         ] nsys-pa-10y-3p.sqlite[2/8] [11%                         ] nsys-pa-10y-3p.sqlite[2/8] [12%                         ] nsys-pa-10y-3p.sqlite[2/8] [13%                         ] nsys-pa-10y-3p.sqlite[2/8] [14%                         ] nsys-pa-10y-3p.sqlite[2/8] [=15%                        ] nsys-pa-10y-3p.sqlite[2/8] [=16%                        ] nsys-pa-10y-3p.sqlite[2/8] [=17%                        ] nsys-pa-10y-3p.sqlite[2/8] [==18%                       ] nsys-pa-10y-3p.sqlite[2/8] [==19%                       ] nsys-pa-10y-3p.sqlite[2/8] [==20%                       ] nsys-pa-10y-3p.sqlite[2/8] [==21%                       ] nsys-pa-10y-3p.sqlite[2/8] [===22%                      ] nsys-pa-10y-3p.sqlite[2/8] [===23%                      ] nsys-pa-10y-3p.sqlite[2/8] [===24%                      ] nsys-pa-10y-3p.sqlite[2/8] [====25%                     ] nsys-pa-10y-3p.sqlite[2/8] [====26%                     ] nsys-pa-10y-3p.sqlite[2/8] [====27%                     ] nsys-pa-10y-3p.sqlite[2/8] [====28%                     ] nsys-pa-10y-3p.sqlite[2/8] [=====29%                    ] nsys-pa-10y-3p.sqlite[2/8] [=====30%                    ] nsys-pa-10y-3p.sqlite[2/8] [=====31%                    ] nsys-pa-10y-3p.sqlite[2/8] [=====32%                    ] nsys-pa-10y-3p.sqlite[2/8] [======33%                   ] nsys-pa-10y-3p.sqlite[2/8] [======34%                   ] nsys-pa-10y-3p.sqlite[2/8] [======35%                   ] nsys-pa-10y-3p.sqlite[2/8] [=======36%                  ] nsys-pa-10y-3p.sqlite[2/8] [=======37%                  ] nsys-pa-10y-3p.sqlite[2/8] [=======38%                  ] nsys-pa-10y-3p.sqlite[2/8] [=======39%                  ] nsys-pa-10y-3p.sqlite[2/8] [========40%                 ] nsys-pa-10y-3p.sqlite[2/8] [========41%                 ] nsys-pa-10y-3p.sqlite[2/8] [========42%                 ] nsys-pa-10y-3p.sqlite[2/8] [=========43%                ] nsys-pa-10y-3p.sqlite[2/8] [=========44%                ] nsys-pa-10y-3p.sqlite[2/8] [=========45%                ] nsys-pa-10y-3p.sqlite[2/8] [=========46%                ] nsys-pa-10y-3p.sqlite[2/8] [==========47%               ] nsys-pa-10y-3p.sqlite[2/8] [==========48%               ] nsys-pa-10y-3p.sqlite[2/8] [==========49%               ] nsys-pa-10y-3p.sqlite[2/8] [===========50%              ] nsys-pa-10y-3p.sqlite[2/8] [===========51%              ] nsys-pa-10y-3p.sqlite[2/8] [===========52%              ] nsys-pa-10y-3p.sqlite[2/8] [===========53%              ] nsys-pa-10y-3p.sqlite[2/8] [============54%             ] nsys-pa-10y-3p.sqlite[2/8] [============55%             ] nsys-pa-10y-3p.sqlite[2/8] [============56%             ] nsys-pa-10y-3p.sqlite[2/8] [============57%             ] nsys-pa-10y-3p.sqlite[2/8] [=============58%            ] nsys-pa-10y-3p.sqlite[2/8] [=============59%            ] nsys-pa-10y-3p.sqlite[2/8] [=============60%            ] nsys-pa-10y-3p.sqlite[2/8] [==============61%           ] nsys-pa-10y-3p.sqlite[2/8] [==============62%           ] nsys-pa-10y-3p.sqlite[2/8] [==============63%           ] nsys-pa-10y-3p.sqlite[2/8] [==============64%           ] nsys-pa-10y-3p.sqlite[2/8] [===============65%          ] nsys-pa-10y-3p.sqlite[2/8] [===============66%          ] nsys-pa-10y-3p.sqlite[2/8] [===============67%          ] nsys-pa-10y-3p.sqlite[2/8] [================68%         ] nsys-pa-10y-3p.sqlite[2/8] [================69%         ] nsys-pa-10y-3p.sqlite[2/8] [================70%         ] nsys-pa-10y-3p.sqlite[2/8] [================71%         ] nsys-pa-10y-3p.sqlite[2/8] [=================72%        ] nsys-pa-10y-3p.sqlite[2/8] [=================73%        ] nsys-pa-10y-3p.sqlite[2/8] [=================74%        ] nsys-pa-10y-3p.sqlite[2/8] [==================75%       ] nsys-pa-10y-3p.sqlite[2/8] [==================76%       ] nsys-pa-10y-3p.sqlite[2/8] [==================77%       ] nsys-pa-10y-3p.sqlite[2/8] [==================78%       ] nsys-pa-10y-3p.sqlite[2/8] [===================79%      ] nsys-pa-10y-3p.sqlite[2/8] [===================80%      ] nsys-pa-10y-3p.sqlite[2/8] [===================81%      ] nsys-pa-10y-3p.sqlite[2/8] [===================82%      ] nsys-pa-10y-3p.sqlite[2/8] [====================83%     ] nsys-pa-10y-3p.sqlite[2/8] [====================84%     ] nsys-pa-10y-3p.sqlite[2/8] [====================85%     ] nsys-pa-10y-3p.sqlite[2/8] [=====================86%    ] nsys-pa-10y-3p.sqlite[2/8] [=====================87%    ] nsys-pa-10y-3p.sqlite[2/8] [=====================88%    ] nsys-pa-10y-3p.sqlite[2/8] [=====================89%    ] nsys-pa-10y-3p.sqlite[2/8] [======================90%   ] nsys-pa-10y-3p.sqlite[2/8] [======================91%   ] nsys-pa-10y-3p.sqlite[2/8] [======================92%   ] nsys-pa-10y-3p.sqlite[2/8] [=======================93%  ] nsys-pa-10y-3p.sqlite[2/8] [=======================94%  ] nsys-pa-10y-3p.sqlite[2/8] [=======================95%  ] nsys-pa-10y-3p.sqlite[2/8] [=======================96%  ] nsys-pa-10y-3p.sqlite[2/8] [========================97% ] nsys-pa-10y-3p.sqlite[2/8] [========================98% ] nsys-pa-10y-3p.sqlite[2/8] [========================99% ] nsys-pa-10y-3p.sqlite[2/8] [========================100%] nsys-pa-10y-3p.sqlite[2/8] [========================100%] nsys-pa-10y-3p.sqlite
+[3/8] Executing 'nvtx_sum' stats report
+
+ Time (%)  Total Time (ns)  Instances  Avg (ns)  Med (ns)  Min (ns)  Max (ns)   StdDev (ns)   Style             Range          
+ --------  ---------------  ---------  --------  --------  --------  ---------  -----------  -------  -------------------------
+    100.0      828,471,672    169,071   4,900.1   4,644.0     4,193  4,170,714     10,338.2  PushPop  CCCL:cub::DeviceFor::Bulk
+
+[4/8] Executing 'osrt_sum' stats report
+
+ Time (%)  Total Time (ns)  Num Calls    Avg (ns)      Med (ns)    Min (ns)   Max (ns)    StdDev (ns)            Name         
+ --------  ---------------  ---------  ------------  ------------  --------  -----------  ------------  ----------------------
+     97.5  151,715,832,259      7,674  19,770,111.1  10,059,382.5     1,456  108,076,610  28,004,143.4  poll                  
+      2.4    3,662,311,500     84,172      43,509.9      19,740.0     1,011  119,874,292     768,212.9  ioctl                 
+      0.0       71,188,400         52   1,369,007.7     961,261.5   261,848    6,732,117   1,427,999.1  writev                
+      0.0       54,344,947        267     203,539.1     197,639.0   140,271      406,836      43,745.7  pthread_create        
+      0.0       25,578,976        407      62,847.6      28,254.0    17,721      450,837      69,717.8  pthread_rwlock_wrlock 
+      0.0       13,021,679      5,973       2,180.1       1,740.0     1,099    2,229,994      28,836.8  read                  
+      0.0        9,860,560          9   1,095,617.8     176,959.0    56,311    6,275,247   2,038,463.4  fopen64               
+      0.0        8,046,163        363      22,165.7      21,080.0     1,060      101,391      10,382.3  pthread_rwlock_rdlock 
+      0.0        5,658,217        446      12,686.6       8,950.0     1,625      134,576      17,880.8  mmap                  
+      0.0        3,832,343        760       5,042.6       4,063.5     1,235       56,608       4,279.1  munmap                
+      0.0        1,362,280         30      45,409.3       6,356.0     3,423      882,969     159,592.8  mmap64                
+      0.0          965,292        112       8,618.7       5,266.5     1,044       58,253      11,995.6  fflush                
+      0.0          852,436         36      23,678.8      13,512.5     1,508      272,806      48,230.9  write                 
+      0.0          644,754         13      49,596.5       4,159.0     1,001      244,716      89,104.5  fclose                
+      0.0          303,214         11      27,564.9      24,043.0    19,122       53,317       9,870.9  sem_timedwait         
+      0.0          197,404         56       3,525.1       2,495.0     1,003       20,040       3,035.0  open64                
+      0.0          178,203         41       4,346.4       1,842.0     1,220       24,767       5,102.5  fopen                 
+      0.0           79,340          1      79,340.0      79,340.0    79,340       79,340           0.0  pthread_cond_wait     
+      0.0           58,824         29       2,028.4       1,964.0     1,004        3,813         650.8  fwrite                
+      0.0           44,726         17       2,630.9       1,496.0     1,070       18,249       4,069.1  pthread_mutex_lock    
+      0.0           35,532          1      35,532.0      35,532.0    35,532       35,532           0.0  fgets                 
+      0.0           23,582          6       3,930.3       4,197.0     1,225        6,301       2,033.6  open                  
+      0.0           17,084          3       5,694.7       6,986.0     2,376        7,722       2,897.5  pipe2                 
+      0.0           15,604          2       7,802.0       7,802.0     4,773       10,831       4,283.7  socket                
+      0.0           12,120          1      12,120.0      12,120.0    12,120       12,120           0.0  connect               
+      0.0            5,031          2       2,515.5       2,515.5     1,591        3,440       1,307.4  pthread_cond_broadcast
+      0.0            2,383          1       2,383.0       2,383.0     2,383        2,383           0.0  bind                  
+      0.0            2,331          2       1,165.5       1,165.5     1,053        1,278         159.1  fcntl                 
+      0.0            1,547          1       1,547.0       1,547.0     1,547        1,547           0.0  pthread_mutex_trylock 
+
+[5/8] Executing 'cuda_api_sum' stats report
+
+ Time (%)  Total Time (ns)  Num Calls    Avg (ns)     Med (ns)   Min (ns)    Max (ns)      StdDev (ns)            Name         
+ --------  ---------------  ---------  -------------  ---------  --------  -------------  -------------  ----------------------
+     27.9   16,566,609,509  2,705,056        6,124.3    3,572.0     2,556      5,205,771       12,719.2  cudaMemcpy            
+     24.7   14,672,916,601         80  183,411,457.5  587,876.5       878  1,603,393,674  432,058,670.5  cudaStreamSynchronize 
+     22.4   13,316,667,691  2,198,083        6,058.3    4,895.0     3,734     79,863,469      112,815.9  cudaFree              
+     20.5   12,157,542,297  2,536,195        4,793.6    3,845.0     1,947    120,902,912      104,064.1  cudaMalloc            
+      1.8    1,044,155,896    338,182        3,087.6    2,942.0     2,496      2,196,748        5,508.7  cudaMemset            
+      1.5      919,104,421        120    7,659,203.5  439,169.0    10,475    102,461,366   24,251,011.5  cudaMemcpyAsync       
+      0.9      532,600,297    169,161        3,148.5    2,787.0     2,471     28,903,669       71,423.2  cudaLaunchKernel      
+      0.2      139,570,191         10   13,957,019.1   71,711.0    51,371    138,855,901   43,885,003.5  cudaMemGetInfo        
+      0.0        3,060,321         20      153,016.1  114,115.5     5,373        414,585      153,080.0  cudaDeviceSynchronize 
+      0.0        1,884,715         40       47,117.9   33,101.5     9,986        129,336       30,361.0  cudaMallocManaged     
+      0.0          423,444         10       42,344.4   27,476.0    22,780        156,412       40,835.5  cudaStreamCreate      
+      0.0          264,814         20       13,240.7   12,560.5     8,198         18,744        4,361.2  cudaMemsetAsync       
+      0.0          195,857         10       19,585.7   19,656.0    11,271         30,573        5,381.1  cudaStreamDestroy     
+      0.0            1,350          1        1,350.0    1,350.0     1,350          1,350            0.0  cuModuleGetLoadingMode
+
+[6/8] Executing 'cuda_gpu_kern_sum' stats report
+
+ Time (%)  Total Time (ns)  Instances     Avg (ns)         Med (ns)       Min (ns)      Max (ns)      StdDev (ns)                                                   Name                                                
+ --------  ---------------  ---------  ---------------  ---------------  -----------  -------------  -------------  ----------------------------------------------------------------------------------------------------
+     82.3   12,959,795,588         10  1,295,979,558.8  1,301,702,199.0  858,748,330  1,603,358,326  211,610,796.1  kernelCallStage1(int, int, int, ABM *, Graph *, DeviceGraph *, DeviceGraph *, device_map<int, Node>…
+      9.6    1,511,929,655         10    151,192,965.5    145,109,343.5  115,552,163    193,297,700   27,839,150.2  kernelCallStage3(int, int, int, ABM *, Graph *, int, device_map<int, Node>::device_view, ABMStageSt…
+      5.5      871,027,308         10     87,102,730.8     90,299,499.0   66,669,134    102,452,475   11,072,720.1  void cuco::legacy::detail::insert<(unsigned long)128, (unsigned int)4, cuco::pair<int, int> *, cuda…
+      1.3      204,040,855    169,061          1,206.9          1,248.0        1,087          1,728           95.3  void cub::CUB_300002_SM_900::detail::for_each::static_kernel<cub::CUB_300002_SM_900::detail::for_ea…
+      1.2      187,410,920         10     18,741,092.0     19,706,266.0    9,056,111     24,768,663    4,617,178.2  kernelCallStage2(int, int, int, ABM *, Graph *, cuco::static_set_ref<int, (cuda::std::__4::thread_s…
+      0.1       13,323,134         10      1,332,313.4      1,343,011.5    1,164,578      1,564,355      116,527.9  kernelCallStage4(int, int, int, ABM *, Graph *, int, device_map<int, Node>::device_view, ABMStageSt…
+      0.0        3,017,799         20        150,890.0        110,352.5        5,536        413,376      154,033.8  kernel_extract_vector_sizes(device_vector *, int *, int)                                            
+      0.0        1,488,898         10        148,889.8        166,833.0       77,695        226,368       50,160.3  void cuco::detail::open_addressing_ns::insert_if_n<(int)1, (int)128, int *, thrust::THRUST_300002_S…
+      0.0           31,392         10          3,139.2          3,184.0        2,848          3,328          162.8  void cuco::legacy::detail::initialize<(unsigned long)256, cuda::__4::atomic<int, (cuda::std::__4::t…
+      0.0           14,145         10          1,414.5          1,472.0        1,280          1,537          104.4  void cub::CUB_300002_SM_900::detail::for_each::static_kernel<cub::CUB_300002_SM_900::detail::for_ea…
+
+[7/8] Executing 'cuda_gpu_mem_time_sum' stats report
+
+ Time (%)  Total Time (ns)    Count    Avg (ns)  Med (ns)  Min (ns)  Max (ns)   StdDev (ns)               Operation              
+ --------  ---------------  ---------  --------  --------  --------  ---------  -----------  ------------------------------------
+     44.3    1,663,518,601  2,028,882     819.9     768.0       703  5,050,635      9,353.7  [CUDA memcpy Host-to-Device]        
+     42.7    1,601,164,108    676,294   2,367.6   2,368.0     1,824     20,448        139.1  [CUDA memcpy Device-to-Host]        
+     12.9      482,589,998    338,202   1,426.9   1,440.0       704    478,562      3,519.2  [CUDA memset]                       
+      0.1        5,133,590      1,792   2,864.7   2,527.0     2,271     20,960      1,552.7  [CUDA memcpy Unified Host-to-Device]
+      0.0        1,251,480        291   4,300.6   2,944.0     2,367     22,112      3,535.8  [CUDA memcpy Unified Device-to-Host]
+
+[8/8] Executing 'cuda_gpu_mem_size_sum' stats report
+
+ Total (MB)    Count    Avg (MB)  Med (MB)  Min (MB)  Max (MB)   StdDev (MB)               Operation              
+ ----------  ---------  --------  --------  --------  ---------  -----------  ------------------------------------
+ 60,177.523    338,202     0.178     0.071     0.000  1,542.512       11.456  [CUDA memset]                       
+  1,019.318  2,028,882     0.001     0.000     0.000     52.847        0.111  [CUDA memcpy Host-to-Device]        
+     50.911    676,294     0.000     0.000     0.000      0.616        0.004  [CUDA memcpy Device-to-Host]        
+     43.385      1,792     0.024     0.008     0.004      1.016        0.084  [CUDA memcpy Unified Host-to-Device]
+     28.639        291     0.098     0.029     0.004      1.044        0.193  [CUDA memcpy Unified Device-to-Host]
+
+Generated:
+    /home/jmukher/workspace/uiuc/citation_abm/profile/nsys-pa-10y-3p.nsys-rep
+    /home/jmukher/workspace/uiuc/citation_abm/profile/nsys-pa-10y-3p.sqlite
+SUCCESS: 213M → profile/nsys-pa-10y-3p.nsys-rep
+Running growth rate 5% for 10 years.
+Profile output: profile/nsys-pa-10y-5p.nsys-rep
+CMD: nsys profile --trace=nvtx,cuda,osrt --gpu-metrics-device=all --gpu-metrics-frequency=10000 --stats=true --force-overwrite=true -o profile/nsys-pa-10y-5p ./abm --edgelist sj_edgelist --nodelist sj_nodelist --out-degree-bag tcen_at_least_five --recency-probabilities sj_recprob --alpha 0.5 --preferential-weight 0.33 --recency-weight 0.33 --fitness-weight 0.33 --growth-rate .05 --fully-random-citations 0.05 --num-cycles 10 --same-year-proportion 0.12 --output-file ./output/10y/gpu-opt-static-output-10y-5p.edgelist --auxiliary-information-file ./output/10y/gpu-opt-static-output-10y-5p.aux --log-file ./output/10y/nsys-gpu-opt-static-pa-10y-5p.log --num-processors 14 --log-level 1
+
+Start ABM....
+parse_args....
+edgelist....
+num-cycles....
+output-file....
+log-file = ./output/10y/nsys-gpu-opt-static-pa-10y-5p.log....
+num-processors = 14....
+log-level = 0
+er_probability = 0.000000
+model = pa
+Init ABM....
+Exec ABM....
+Start execute.Init Graph
+Inside  Graph ParseNodelist.....
+Populating the continuous_node mappings..
+Elapsed time: ParseNodelist : 1092 millisecs = 1 seconds
+
+Inside Graph ParseEdgelist.....
+Elapsed time: ParseEdgelist : 1588 millisecs = 1 seconds
+
+In updateNodeInDegreeOutDegree: Update Outdegree first:
+In updateNodeInDegreeOutDegree: Update Indegree:
+Total (initial):: In-Degree = 899050, Out-Degree = 899050
+Elapsed time: 0-1 : 1 seconds
+Elapsed time: 1-2 : 1 seconds
+Elapsed time: 2-3 : 0 seconds
+
+Initialized Graph. Let us update the indegree and out-degrees... 
+Graph init done...
+calling InitializeFitness...
+final graph size is 800660 from initial_graph_size of 491532.
+ populated out degree array.
+ Entering loop for year = 1983
+Elapsed time: 70-71: total : 0.257 secs, iter cost : 0 seconds
+
+Elapsed time: 71-72: total : 0.308 secs, iter cost : 0 seconds
+
+Elapsed time: 72-73: total : 19 millisecs, iter cost : 19 mseconds
+
+num_new_nodes = 24577, current_graph_size = 491532, growth rate = 0.050000 
+Elapsed time: 73-74: total : 0 millisecs, iter cost : 0 mseconds
+
+Elapsed time: 74-75: total : 22 millisecs, iter cost : 22 mseconds
+
+all new nodes initialized with years and mapped. FillSameYearSourceNodes with new_nodes_vec.size() = 24577
+checking same_year_source_nodes size.
+Elapsed time: 75-76: total : 0 millisecs, iter cost : 0 mseconds
+
+new_nodes_vec.size() b4 : 24577
+
+updated  updateGraphAttributesGeneratorNode .... 
+Elapsed time: 76-77: total : 62 millisecs, iter cost : 62 mseconds
+
+continuous_node_mapping.size() b5 : 516109, reverse_continuous_node_mapping size = 516109
+
+[PA Model] Building connections using Preferential Attachment
+
+Inside optimized buildOneNodeConnections...
+Initial Free: 80526.5 MB / 81079.4 MB
+
+[prepareGraph] num_vertices = 491532
+
+[prepareGraph] edges = 899050, offsets = 491533 (should be V+1 = 491533)
+
+[prepareGraph] num_vertices = 491532
+
+[prepareGraph] edges = 899050, offsets = 491533 (should be V+1 = 491533)
+
+Year 1983: 24577 new nodes, 480803 new edges
+
+Elapsed time: 78-781 : total : 9.414 secs, this iter cost : 9.414 seconds
+
+Elapsed time: 78-79 : total : 9.603 secs, this iter cost : 9.603 seconds
+
+updateNodeInDegreeOutDegree(year=1983): updated 24577 out-degrees, 261661 in-degrees
+Elapsed time: 79-81 : total : 0.246 secs, this iter cost : 0 seconds
+
+Elapsed time: 79-80 : total : 0.119 secs, this iter cost : 0 seconds
+
+Elapsed time: 80-81 : total : 0.126 secs, this iter cost : 0 seconds
+
+Elapsed time: 70-81 : total : 10.52 secs, this iter cost : 10 seconds
+
+ Entering loop for year = 1984
+Elapsed time: 70-71: total : 0.53 secs, iter cost : 0 seconds
+
+Elapsed time: 71-72: total : 0.675 secs, iter cost : 0 seconds
+
+Elapsed time: 72-73: total : 41 millisecs, iter cost : 22 mseconds
+
+num_new_nodes = 25806, current_graph_size = 516109, growth rate = 0.050000 
+Elapsed time: 73-74: total : 0 millisecs, iter cost : 0 mseconds
+
+Elapsed time: 74-75: total : 39 millisecs, iter cost : 17 mseconds
+
+all new nodes initialized with years and mapped. FillSameYearSourceNodes with new_nodes_vec.size() = 25806
+checking same_year_source_nodes size.
+Elapsed time: 75-76: total : 0 millisecs, iter cost : 0 mseconds
+
+new_nodes_vec.size() b4 : 25806
+
+updated  updateGraphAttributesGeneratorNode .... 
+Elapsed time: 76-77: total : 127 millisecs, iter cost : 65 mseconds
+
+continuous_node_mapping.size() b5 : 541915, reverse_continuous_node_mapping size = 541915
+
+[PA Model] Building connections using Preferential Attachment
+
+Inside optimized buildOneNodeConnections...
+Initial Free: 80304.5 MB / 81079.4 MB
+
+[prepareGraph] num_vertices = 516109
+
+[prepareGraph] edges = 1379853, offsets = 516110 (should be V+1 = 516110)
+
+[prepareGraph] num_vertices = 516109
+
+[prepareGraph] edges = 1379853, offsets = 516110 (should be V+1 = 516110)
+
+Year 1984: 25806 new nodes, 505650 new edges
+
+Elapsed time: 78-781 : total : 20.021 secs, this iter cost : 10.607 seconds
+
+Elapsed time: 78-79 : total : 20.427 secs, this iter cost : 10.824 seconds
+
+updateNodeInDegreeOutDegree(year=1984): updated 25806 out-degrees, 269059 in-degrees
+Elapsed time: 79-81 : total : 0.503 secs, this iter cost : 0 seconds
+
+Elapsed time: 79-80 : total : 0.234 secs, this iter cost : 0 seconds
+
+Elapsed time: 80-81 : total : 0.267 secs, this iter cost : 0 seconds
+
+Elapsed time: 70-81 : total : 22.347 secs, this iter cost : 11 seconds
+
+ Entering loop for year = 1985
+Elapsed time: 70-71: total : 0.812 secs, iter cost : 0 seconds
+
+Elapsed time: 71-72: total : 0.998 secs, iter cost : 0 seconds
+
+Elapsed time: 72-73: total : 60 millisecs, iter cost : 19 mseconds
+
+num_new_nodes = 27096, current_graph_size = 541915, growth rate = 0.050000 
+Elapsed time: 73-74: total : 0 millisecs, iter cost : 0 mseconds
+
+Elapsed time: 74-75: total : 56 millisecs, iter cost : 17 mseconds
+
+all new nodes initialized with years and mapped. FillSameYearSourceNodes with new_nodes_vec.size() = 27096
+checking same_year_source_nodes size.
+Elapsed time: 75-76: total : 0 millisecs, iter cost : 0 mseconds
+
+new_nodes_vec.size() b4 : 27096
+
+updated  updateGraphAttributesGeneratorNode .... 
+Elapsed time: 76-77: total : 195 millisecs, iter cost : 68 mseconds
+
+continuous_node_mapping.size() b5 : 569011, reverse_continuous_node_mapping size = 569011
+
+[PA Model] Building connections using Preferential Attachment
+
+Inside optimized buildOneNodeConnections...
+Initial Free: 80274.5 MB / 81079.4 MB
+
+[prepareGraph] num_vertices = 541915
+
+[prepareGraph] edges = 1885503, offsets = 541916 (should be V+1 = 541916)
+
+[prepareGraph] num_vertices = 541915
+
+[prepareGraph] edges = 1885503, offsets = 541916 (should be V+1 = 541916)
+
+Year 1985: 27096 new nodes, 531839 new edges
+
+Elapsed time: 78-781 : total : 30.64 secs, this iter cost : 10.619 seconds
+
+Elapsed time: 78-79 : total : 31.272 secs, this iter cost : 10.845 seconds
+
+updateNodeInDegreeOutDegree(year=1985): updated 27096 out-degrees, 274896 in-degrees
+Elapsed time: 79-81 : total : 0.793 secs, this iter cost : 0 seconds
+
+Elapsed time: 79-80 : total : 0.375 secs, this iter cost : 0 seconds
+
+Elapsed time: 80-81 : total : 0.415 secs, this iter cost : 0 seconds
+
+Elapsed time: 70-81 : total : 34.194 secs, this iter cost : 11 seconds
+
+ Entering loop for year = 1986
+Elapsed time: 70-71: total : 1.103 secs, iter cost : 0 seconds
+
+Elapsed time: 71-72: total : 1.327 secs, iter cost : 0 seconds
+
+Elapsed time: 72-73: total : 79 millisecs, iter cost : 19 mseconds
+
+num_new_nodes = 28451, current_graph_size = 569011, growth rate = 0.050000 
+Elapsed time: 73-74: total : 0 millisecs, iter cost : 0 mseconds
+
+Elapsed time: 74-75: total : 71 millisecs, iter cost : 15 mseconds
+
+all new nodes initialized with years and mapped. FillSameYearSourceNodes with new_nodes_vec.size() = 28451
+checking same_year_source_nodes size.
+Elapsed time: 75-76: total : 0 millisecs, iter cost : 0 mseconds
+
+new_nodes_vec.size() b4 : 28451
+
+updated  updateGraphAttributesGeneratorNode .... 
+Elapsed time: 76-77: total : 266 millisecs, iter cost : 71 mseconds
+
+continuous_node_mapping.size() b5 : 597462, reverse_continuous_node_mapping size = 597462
+
+[PA Model] Building connections using Preferential Attachment
+
+Inside optimized buildOneNodeConnections...
+Initial Free: 80240.5 MB / 81079.4 MB
+
+[prepareGraph] num_vertices = 569011
+
+[prepareGraph] edges = 2417342, offsets = 569012 (should be V+1 = 569012)
+
+[prepareGraph] num_vertices = 569011
+
+[prepareGraph] edges = 2417342, offsets = 569012 (should be V+1 = 569012)
+
+Year 1986: 28451 new nodes, 555923 new edges
+
+Elapsed time: 78-781 : total : 42.417 secs, this iter cost : 11.777 seconds
+
+Elapsed time: 78-79 : total : 43.247 secs, this iter cost : 11.975 seconds
+
+updateNodeInDegreeOutDegree(year=1986): updated 28451 out-degrees, 280363 in-degrees
+Elapsed time: 79-81 : total : 1.058 secs, this iter cost : 0 seconds
+
+Elapsed time: 79-80 : total : 0.495 secs, this iter cost : 0 seconds
+
+Elapsed time: 80-81 : total : 0.56 secs, this iter cost : 0 seconds
+
+Elapsed time: 70-81 : total : 47.162 secs, this iter cost : 12 seconds
+
+ Entering loop for year = 1987
+Elapsed time: 70-71: total : 1.394 secs, iter cost : 0 seconds
+
+Elapsed time: 71-72: total : 1.667 secs, iter cost : 0 seconds
+
+Elapsed time: 72-73: total : 98 millisecs, iter cost : 19 mseconds
+
+num_new_nodes = 29874, current_graph_size = 597462, growth rate = 0.050000 
+Elapsed time: 73-74: total : 0 millisecs, iter cost : 0 mseconds
+
+Elapsed time: 74-75: total : 86 millisecs, iter cost : 15 mseconds
+
+all new nodes initialized with years and mapped. FillSameYearSourceNodes with new_nodes_vec.size() = 29874
+checking same_year_source_nodes size.
+Elapsed time: 75-76: total : 0 millisecs, iter cost : 0 mseconds
+
+new_nodes_vec.size() b4 : 29874
+
+updated  updateGraphAttributesGeneratorNode .... 
+Elapsed time: 76-77: total : 340 millisecs, iter cost : 74 mseconds
+
+continuous_node_mapping.size() b5 : 627336, reverse_continuous_node_mapping size = 627336
+
+[PA Model] Building connections using Preferential Attachment
+
+Inside optimized buildOneNodeConnections...
+Initial Free: 80206.5 MB / 81079.4 MB
+
+[prepareGraph] num_vertices = 597462
+
+[prepareGraph] edges = 2973265, offsets = 597463 (should be V+1 = 597463)
+
+[prepareGraph] num_vertices = 597462
+
+[prepareGraph] edges = 2973265, offsets = 597463 (should be V+1 = 597463)
+
+Year 1987: 29874 new nodes, 582842 new edges
+
+Elapsed time: 78-781 : total : 54.67 secs, this iter cost : 12.253 seconds
+
+Elapsed time: 78-79 : total : 55.751 secs, this iter cost : 12.504 seconds
+
+updateNodeInDegreeOutDegree(year=1987): updated 29874 out-degrees, 286014 in-degrees
+Elapsed time: 79-81 : total : 1.346 secs, this iter cost : 0 seconds
+
+Elapsed time: 79-80 : total : 0.632 secs, this iter cost : 0 seconds
+
+Elapsed time: 80-81 : total : 0.711 secs, this iter cost : 0 seconds
+
+Elapsed time: 70-81 : total : 60.697 secs, this iter cost : 13 seconds
+
+ Entering loop for year = 1988
+Elapsed time: 70-71: total : 1.701 secs, iter cost : 0 seconds
+
+Elapsed time: 71-72: total : 2.015 secs, iter cost : 0 seconds
+
+Elapsed time: 72-73: total : 117 millisecs, iter cost : 19 mseconds
+
+num_new_nodes = 31367, current_graph_size = 627336, growth rate = 0.050000 
+Elapsed time: 73-74: total : 0 millisecs, iter cost : 0 mseconds
+
+Elapsed time: 74-75: total : 101 millisecs, iter cost : 15 mseconds
+
+all new nodes initialized with years and mapped. FillSameYearSourceNodes with new_nodes_vec.size() = 31367
+checking same_year_source_nodes size.
+Elapsed time: 75-76: total : 0 millisecs, iter cost : 0 mseconds
+
+new_nodes_vec.size() b4 : 31367
+
+updated  updateGraphAttributesGeneratorNode .... 
+Elapsed time: 76-77: total : 418 millisecs, iter cost : 78 mseconds
+
+continuous_node_mapping.size() b5 : 658703, reverse_continuous_node_mapping size = 658703
+
+[PA Model] Building connections using Preferential Attachment
+
+Inside optimized buildOneNodeConnections...
+Initial Free: 80170.5 MB / 81079.4 MB
+
+[prepareGraph] num_vertices = 627336
+
+[prepareGraph] edges = 3556107, offsets = 627337 (should be V+1 = 627337)
+
+[prepareGraph] num_vertices = 627336
+
+[prepareGraph] edges = 3556107, offsets = 627337 (should be V+1 = 627337)
+
+Year 1988: 31367 new nodes, 611082 new edges
+
+Elapsed time: 78-781 : total : 67.516 secs, this iter cost : 12.846 seconds
+
+Elapsed time: 78-79 : total : 68.831 secs, this iter cost : 13.08 seconds
+
+updateNodeInDegreeOutDegree(year=1988): updated 31367 out-degrees, 293772 in-degrees
+Elapsed time: 79-81 : total : 1.625 secs, this iter cost : 0 seconds
+
+Elapsed time: 79-80 : total : 0.753 secs, this iter cost : 0 seconds
+
+Elapsed time: 80-81 : total : 0.869 secs, this iter cost : 0 seconds
+
+Elapsed time: 70-81 : total : 74.827 secs, this iter cost : 14 seconds
+
+ Entering loop for year = 1989
+Elapsed time: 70-71: total : 1.999 secs, iter cost : 0 seconds
+
+Elapsed time: 71-72: total : 2.372 secs, iter cost : 0 seconds
+
+Elapsed time: 72-73: total : 136 millisecs, iter cost : 19 mseconds
+
+num_new_nodes = 32936, current_graph_size = 658703, growth rate = 0.050000 
+Elapsed time: 73-74: total : 0 millisecs, iter cost : 0 mseconds
+
+Elapsed time: 74-75: total : 117 millisecs, iter cost : 16 mseconds
+
+all new nodes initialized with years and mapped. FillSameYearSourceNodes with new_nodes_vec.size() = 32936
+checking same_year_source_nodes size.
+Elapsed time: 75-76: total : 0 millisecs, iter cost : 0 mseconds
+
+new_nodes_vec.size() b4 : 32936
+
+updated  updateGraphAttributesGeneratorNode .... 
+Elapsed time: 76-77: total : 497 millisecs, iter cost : 79 mseconds
+
+continuous_node_mapping.size() b5 : 691639, reverse_continuous_node_mapping size = 691639
+
+[PA Model] Building connections using Preferential Attachment
+
+Inside optimized buildOneNodeConnections...
+Initial Free: 80130.5 MB / 81079.4 MB
+
+[prepareGraph] num_vertices = 658703
+
+[prepareGraph] edges = 4167189, offsets = 658704 (should be V+1 = 658704)
+
+[prepareGraph] num_vertices = 658703
+
+[prepareGraph] edges = 4167189, offsets = 658704 (should be V+1 = 658704)
+
+Year 1989: 32936 new nodes, 640033 new edges
+
+Elapsed time: 78-781 : total : 81.591 secs, this iter cost : 14.075 seconds
+
+Elapsed time: 78-79 : total : 83.151 secs, this iter cost : 14.32 seconds
+
+updateNodeInDegreeOutDegree(year=1989): updated 32936 out-degrees, 300462 in-degrees
+Elapsed time: 79-81 : total : 1.94 secs, this iter cost : 0 seconds
+
+Elapsed time: 79-80 : total : 0.897 secs, this iter cost : 0 seconds
+
+Elapsed time: 80-81 : total : 1.039 secs, this iter cost : 0 seconds
+
+Elapsed time: 70-81 : total : 90.234 secs, this iter cost : 15 seconds
+
+ Entering loop for year = 1990
+Elapsed time: 70-71: total : 2.31 secs, iter cost : 0 seconds
+
+Elapsed time: 71-72: total : 2.738 secs, iter cost : 0 seconds
+
+Elapsed time: 72-73: total : 155 millisecs, iter cost : 19 mseconds
+
+num_new_nodes = 34582, current_graph_size = 691639, growth rate = 0.050000 
+Elapsed time: 73-74: total : 0 millisecs, iter cost : 0 mseconds
+
+Elapsed time: 74-75: total : 133 millisecs, iter cost : 16 mseconds
+
+all new nodes initialized with years and mapped. FillSameYearSourceNodes with new_nodes_vec.size() = 34582
+checking same_year_source_nodes size.
+Elapsed time: 75-76: total : 0 millisecs, iter cost : 0 mseconds
+
+new_nodes_vec.size() b4 : 34582
+
+updated  updateGraphAttributesGeneratorNode .... 
+Elapsed time: 76-77: total : 580 millisecs, iter cost : 83 mseconds
+
+continuous_node_mapping.size() b5 : 726221, reverse_continuous_node_mapping size = 726221
+
+[PA Model] Building connections using Preferential Attachment
+
+Inside optimized buildOneNodeConnections...
+Initial Free: 80090.5 MB / 81079.4 MB
+
+[prepareGraph] num_vertices = 691639
+
+[prepareGraph] edges = 4807222, offsets = 691640 (should be V+1 = 691640)
+
+[prepareGraph] num_vertices = 691639
+
+[prepareGraph] edges = 4807222, offsets = 691640 (should be V+1 = 691640)
+
+Year 1990: 34582 new nodes, 671464 new edges
+
+Elapsed time: 78-781 : total : 98.55 secs, this iter cost : 16.959 seconds
+
+Elapsed time: 78-79 : total : 100.357 secs, this iter cost : 17.206 seconds
+
+updateNodeInDegreeOutDegree(year=1990): updated 34582 out-degrees, 311103 in-degrees
+Elapsed time: 79-81 : total : 2.245 secs, this iter cost : 0 seconds
+
+Elapsed time: 79-80 : total : 1.032 secs, this iter cost : 0 seconds
+
+Elapsed time: 80-81 : total : 1.208 secs, this iter cost : 0 seconds
+
+Elapsed time: 70-81 : total : 108.544 secs, this iter cost : 18 seconds
+
+ Entering loop for year = 1991
+Elapsed time: 70-71: total : 2.625 secs, iter cost : 0 seconds
+
+Elapsed time: 71-72: total : 3.105 secs, iter cost : 0 seconds
+
+Elapsed time: 72-73: total : 173 millisecs, iter cost : 18 mseconds
+
+num_new_nodes = 36312, current_graph_size = 726221, growth rate = 0.050000 
+Elapsed time: 73-74: total : 0 millisecs, iter cost : 0 mseconds
+
+Elapsed time: 74-75: total : 150 millisecs, iter cost : 17 mseconds
+
+all new nodes initialized with years and mapped. FillSameYearSourceNodes with new_nodes_vec.size() = 36312
+checking same_year_source_nodes size.
+Elapsed time: 75-76: total : 0 millisecs, iter cost : 0 mseconds
+
+new_nodes_vec.size() b4 : 36312
+
+updated  updateGraphAttributesGeneratorNode .... 
+Elapsed time: 76-77: total : 670 millisecs, iter cost : 90 mseconds
+
+continuous_node_mapping.size() b5 : 762533, reverse_continuous_node_mapping size = 762533
+
+[PA Model] Building connections using Preferential Attachment
+
+Inside optimized buildOneNodeConnections...
+Initial Free: 80048.5 MB / 81079.4 MB
+
+[prepareGraph] num_vertices = 726221
+
+[prepareGraph] edges = 5478686, offsets = 726222 (should be V+1 = 726222)
+
+[prepareGraph] num_vertices = 726221
+
+[prepareGraph] edges = 5478686, offsets = 726222 (should be V+1 = 726222)
+
+Year 1991: 36312 new nodes, 704978 new edges
+
+Elapsed time: 78-781 : total : 116.914 secs, this iter cost : 18.364 seconds
+
+Elapsed time: 78-79 : total : 119.064 secs, this iter cost : 18.707 seconds
+
+updateNodeInDegreeOutDegree(year=1991): updated 36312 out-degrees, 321787 in-degrees
+Elapsed time: 79-81 : total : 2.591 secs, this iter cost : 0 seconds
+
+Elapsed time: 79-80 : total : 1.191 secs, this iter cost : 0 seconds
+
+Elapsed time: 80-81 : total : 1.394 secs, this iter cost : 0 seconds
+
+Elapsed time: 70-81 : total : 128.407 secs, this iter cost : 19 seconds
+
+ Entering loop for year = 1992
+Elapsed time: 70-71: total : 2.953 secs, iter cost : 0 seconds
+
+Elapsed time: 71-72: total : 3.491 secs, iter cost : 0 seconds
+
+Elapsed time: 72-73: total : 192 millisecs, iter cost : 19 mseconds
+
+num_new_nodes = 38127, current_graph_size = 762533, growth rate = 0.050000 
+Elapsed time: 73-74: total : 0 millisecs, iter cost : 0 mseconds
+
+Elapsed time: 74-75: total : 168 millisecs, iter cost : 18 mseconds
+
+all new nodes initialized with years and mapped. FillSameYearSourceNodes with new_nodes_vec.size() = 38127
+checking same_year_source_nodes size.
+Elapsed time: 75-76: total : 0 millisecs, iter cost : 0 mseconds
+
+new_nodes_vec.size() b4 : 38127
+
+updated  updateGraphAttributesGeneratorNode .... 
+Elapsed time: 76-77: total : 764 millisecs, iter cost : 94 mseconds
+
+continuous_node_mapping.size() b5 : 800660, reverse_continuous_node_mapping size = 800660
+
+[PA Model] Building connections using Preferential Attachment
+
+Inside optimized buildOneNodeConnections...
+Initial Free: 80002.5 MB / 81079.4 MB
+
+[prepareGraph] num_vertices = 762533
+
+[prepareGraph] edges = 6183664, offsets = 762534 (should be V+1 = 762534)
+
+[prepareGraph] num_vertices = 762533
+
+[prepareGraph] edges = 6183664, offsets = 762534 (should be V+1 = 762534)
+
+Year 1992: 38127 new nodes, 741330 new edges
+
+Elapsed time: 78-781 : total : 136.945 secs, this iter cost : 20.031 seconds
+
+Elapsed time: 78-79 : total : 139.485 secs, this iter cost : 20.421 seconds
+
+updateNodeInDegreeOutDegree(year=1992): updated 38127 out-degrees, 334495 in-degrees
+Elapsed time: 79-81 : total : 2.949 secs, this iter cost : 0 seconds
+
+Elapsed time: 79-80 : total : 1.362 secs, this iter cost : 0 seconds
+
+Elapsed time: 80-81 : total : 1.581 secs, this iter cost : 0 seconds
+
+Elapsed time: 70-81 : total : 150.035 secs, this iter cost : 21 seconds
+
+Elapsed time: 7-8 :  150 seconds
+
+compute done:: graph size = 800660
+Elapsed time: 8-8.1 :  0 seconds
+
+Writing Graph to file: ./output/10y/gpu-opt-static-output-10y-5p.edgelist
+
+Elapsed time: 8.1-9 :  0 seconds
+
+Elapsed time: 9-10 :  0 seconds
+
+ graph size = 800660
+WriteAttributes: graph size = 800660
+
+Elapsed time: 0-1 : 3 seconds
+
+Elapsed time: 1-4 : 0 seconds
+
+Elapsed time: 4-7 : 0 seconds
+
+Elapsed time: 70-71: total : 2.953 seconds.
+
+Elapsed time: 71-72: total : 3.491 seconds.
+
+Elapsed time: 72-73: total : 0.192 seconds.
+
+Elapsed time: 73-74: total : 0 seconds.
+
+Elapsed time: 74-75: total : 0.168 seconds.
+
+Elapsed time: 75-76: total : 0 seconds.
+
+Elapsed time: 76-77: total : 0.764 seconds.
+
+Elapsed time: 77-79: total : 139.485 seconds.
+
+Elapsed time: 79-81 : total : 2.949 seconds.
+
+Elapsed time: 79-80 : total : 1.362 seconds.
+
+Elapsed time: 80-81 : total : 1.581 seconds.
+
+Elapsed time: 70-81 : total : 150.035 seconds.
+
+Elapsed time: 7-8 : 150 seconds
+
+Elapsed time: 8-8.1 :  0 seconds
+
+Elapsed time: 8.1-9 :  0 seconds
+
+Elapsed time: 9-10 : 0 seconds
+
+Elapsed time: 11-12 : 0 seconds
+
+Elapsed time: 10-12 : 1 seconds
+
+Elapsed time: 0-7 : 3 seconds
+
+Elapsed time: 7-8 : 150 seconds
+
+Elapsed time: 8-12 : 1 seconds
+
+E2E Time for num_cycles = 10 with growth_rate = 5 % = 157 seconds.
+GPU 0: General Metrics for NVIDIA GH100 (any frequency)
+Generating '/tmp/nsys-report-92a9.qdstrm'
+[1/8] [0%                          ] nsys-pa-10y-5p.nsys-rep[1/8] [0%                          ] nsys-pa-10y-5p.nsys-rep[1/8] [6%                          ] nsys-pa-10y-5p.nsys-rep[1/8] [7%                          ] nsys-pa-10y-5p.nsys-rep[1/8] [6%                          ] nsys-pa-10y-5p.nsys-rep[1/8] [5%                          ] nsys-pa-10y-5p.nsys-rep[1/8] [8%                          ] nsys-pa-10y-5p.nsys-rep[1/8] [7%                          ] nsys-pa-10y-5p.nsys-rep[1/8] [6%                          ] nsys-pa-10y-5p.nsys-rep[1/8] [8%                          ] nsys-pa-10y-5p.nsys-rep[1/8] [7%                          ] nsys-pa-10y-5p.nsys-rep[1/8] [8%                          ] nsys-pa-10y-5p.nsys-rep[1/8] [7%                          ] nsys-pa-10y-5p.nsys-rep[1/8] [8%                          ] nsys-pa-10y-5p.nsys-rep[1/8] [7%                          ] nsys-pa-10y-5p.nsys-rep[1/8] [8%                          ] nsys-pa-10y-5p.nsys-rep[1/8] [9%                          ] nsys-pa-10y-5p.nsys-rep[1/8] [8%                          ] nsys-pa-10y-5p.nsys-rep[1/8] [9%                          ] nsys-pa-10y-5p.nsys-rep[1/8] [10%                         ] nsys-pa-10y-5p.nsys-rep[1/8] [9%                          ] nsys-pa-10y-5p.nsys-rep[1/8] [10%                         ] nsys-pa-10y-5p.nsys-rep[1/8] [9%                          ] nsys-pa-10y-5p.nsys-rep[1/8] [10%                         ] nsys-pa-10y-5p.nsys-rep[1/8] [9%                          ] nsys-pa-10y-5p.nsys-rep[1/8] [10%                         ] nsys-pa-10y-5p.nsys-rep[1/8] [9%                          ] nsys-pa-10y-5p.nsys-rep[1/8] [8%                          ] nsys-pa-10y-5p.nsys-rep[1/8] [7%                          ] nsys-pa-10y-5p.nsys-rep[1/8] [6%                          ] nsys-pa-10y-5p.nsys-rep[1/8] [5%                          ] nsys-pa-10y-5p.nsys-rep[1/8] [5%                          ] nsys-pa-10y-5p.nsys-rep[1/8] [6%                          ] nsys-pa-10y-5p.nsys-rep[1/8] [7%                          ] nsys-pa-10y-5p.nsys-rep[1/8] [8%                          ] nsys-pa-10y-5p.nsys-rep[1/8] [9%                          ] nsys-pa-10y-5p.nsys-rep[1/8] [10%                         ] nsys-pa-10y-5p.nsys-rep[1/8] [11%                         ] nsys-pa-10y-5p.nsys-rep[1/8] [12%                         ] nsys-pa-10y-5p.nsys-rep[1/8] [13%                         ] nsys-pa-10y-5p.nsys-rep[1/8] [14%                         ] nsys-pa-10y-5p.nsys-rep[1/8] [=15%                        ] nsys-pa-10y-5p.nsys-rep[1/8] [=16%                        ] nsys-pa-10y-5p.nsys-rep[1/8] [=17%                        ] nsys-pa-10y-5p.nsys-rep[1/8] [==18%                       ] nsys-pa-10y-5p.nsys-rep[1/8] [==19%                       ] nsys-pa-10y-5p.nsys-rep[1/8] [==20%                       ] nsys-pa-10y-5p.nsys-rep[1/8] [==21%                       ] nsys-pa-10y-5p.nsys-rep[1/8] [===22%                      ] nsys-pa-10y-5p.nsys-rep[1/8] [===23%                      ] nsys-pa-10y-5p.nsys-rep[1/8] [===24%                      ] nsys-pa-10y-5p.nsys-rep[1/8] [====25%                     ] nsys-pa-10y-5p.nsys-rep[1/8] [====26%                     ] nsys-pa-10y-5p.nsys-rep[1/8] [====27%                     ] nsys-pa-10y-5p.nsys-rep[1/8] [====28%                     ] nsys-pa-10y-5p.nsys-rep[1/8] [=====29%                    ] nsys-pa-10y-5p.nsys-rep[1/8] [=====30%                    ] nsys-pa-10y-5p.nsys-rep[1/8] [=====31%                    ] nsys-pa-10y-5p.nsys-rep[1/8] [=====32%                    ] nsys-pa-10y-5p.nsys-rep[1/8] [======33%                   ] nsys-pa-10y-5p.nsys-rep[1/8] [======34%                   ] nsys-pa-10y-5p.nsys-rep[1/8] [======35%                   ] nsys-pa-10y-5p.nsys-rep[1/8] [=======36%                  ] nsys-pa-10y-5p.nsys-rep[1/8] [=======37%                  ] nsys-pa-10y-5p.nsys-rep[1/8] [=======38%                  ] nsys-pa-10y-5p.nsys-rep[1/8] [=======39%                  ] nsys-pa-10y-5p.nsys-rep[1/8] [========40%                 ] nsys-pa-10y-5p.nsys-rep[1/8] [========41%                 ] nsys-pa-10y-5p.nsys-rep[1/8] [========42%                 ] nsys-pa-10y-5p.nsys-rep[1/8] [=========43%                ] nsys-pa-10y-5p.nsys-rep[1/8] [=========44%                ] nsys-pa-10y-5p.nsys-rep[1/8] [=========45%                ] nsys-pa-10y-5p.nsys-rep[1/8] [=========46%                ] nsys-pa-10y-5p.nsys-rep[1/8] [==========47%               ] nsys-pa-10y-5p.nsys-rep[1/8] [==========48%               ] nsys-pa-10y-5p.nsys-rep[1/8] [==========49%               ] nsys-pa-10y-5p.nsys-rep[1/8] [===========50%              ] nsys-pa-10y-5p.nsys-rep[1/8] [===========51%              ] nsys-pa-10y-5p.nsys-rep[1/8] [===========52%              ] nsys-pa-10y-5p.nsys-rep[1/8] [===========53%              ] nsys-pa-10y-5p.nsys-rep[1/8] [============54%             ] nsys-pa-10y-5p.nsys-rep[1/8] [============55%             ] nsys-pa-10y-5p.nsys-rep[1/8] [============56%             ] nsys-pa-10y-5p.nsys-rep[1/8] [============57%             ] nsys-pa-10y-5p.nsys-rep[1/8] [=============58%            ] nsys-pa-10y-5p.nsys-rep[1/8] [=============59%            ] nsys-pa-10y-5p.nsys-rep[1/8] [=============60%            ] nsys-pa-10y-5p.nsys-rep[1/8] [==============61%           ] nsys-pa-10y-5p.nsys-rep[1/8] [==============62%           ] nsys-pa-10y-5p.nsys-rep[1/8] [==============63%           ] nsys-pa-10y-5p.nsys-rep[1/8] [==============64%           ] nsys-pa-10y-5p.nsys-rep[1/8] [===============65%          ] nsys-pa-10y-5p.nsys-rep[1/8] [===============66%          ] nsys-pa-10y-5p.nsys-rep[1/8] [===============67%          ] nsys-pa-10y-5p.nsys-rep[1/8] [================68%         ] nsys-pa-10y-5p.nsys-rep[1/8] [================69%         ] nsys-pa-10y-5p.nsys-rep[1/8] [================70%         ] nsys-pa-10y-5p.nsys-rep[1/8] [================71%         ] nsys-pa-10y-5p.nsys-rep[1/8] [=================72%        ] nsys-pa-10y-5p.nsys-rep[1/8] [=================73%        ] nsys-pa-10y-5p.nsys-rep[1/8] [=================74%        ] nsys-pa-10y-5p.nsys-rep[1/8] [==================75%       ] nsys-pa-10y-5p.nsys-rep[1/8] [==================76%       ] nsys-pa-10y-5p.nsys-rep[1/8] [==================77%       ] nsys-pa-10y-5p.nsys-rep[1/8] [==================78%       ] nsys-pa-10y-5p.nsys-rep[1/8] [===================79%      ] nsys-pa-10y-5p.nsys-rep[1/8] [===================80%      ] nsys-pa-10y-5p.nsys-rep[1/8] [===================81%      ] nsys-pa-10y-5p.nsys-rep[1/8] [===================82%      ] nsys-pa-10y-5p.nsys-rep[1/8] [====================83%     ] nsys-pa-10y-5p.nsys-rep[1/8] [========================100%] nsys-pa-10y-5p.nsys-rep[1/8] [========================100%] nsys-pa-10y-5p.nsys-rep
+[2/8] [0%                          ] nsys-pa-10y-5p.sqlite[2/8] [1%                          ] nsys-pa-10y-5p.sqlite[2/8] [2%                          ] nsys-pa-10y-5p.sqlite[2/8] [3%                          ] nsys-pa-10y-5p.sqlite[2/8] [4%                          ] nsys-pa-10y-5p.sqlite[2/8] [5%                          ] nsys-pa-10y-5p.sqlite[2/8] [6%                          ] nsys-pa-10y-5p.sqlite[2/8] [7%                          ] nsys-pa-10y-5p.sqlite[2/8] [8%                          ] nsys-pa-10y-5p.sqlite[2/8] [9%                          ] nsys-pa-10y-5p.sqlite[2/8] [10%                         ] nsys-pa-10y-5p.sqlite[2/8] [11%                         ] nsys-pa-10y-5p.sqlite[2/8] [12%                         ] nsys-pa-10y-5p.sqlite[2/8] [13%                         ] nsys-pa-10y-5p.sqlite[2/8] [14%                         ] nsys-pa-10y-5p.sqlite[2/8] [=15%                        ] nsys-pa-10y-5p.sqlite[2/8] [=16%                        ] nsys-pa-10y-5p.sqlite[2/8] [=17%                        ] nsys-pa-10y-5p.sqlite[2/8] [==18%                       ] nsys-pa-10y-5p.sqlite[2/8] [==19%                       ] nsys-pa-10y-5p.sqlite[2/8] [==20%                       ] nsys-pa-10y-5p.sqlite[2/8] [==21%                       ] nsys-pa-10y-5p.sqlite[2/8] [===22%                      ] nsys-pa-10y-5p.sqlite[2/8] [===23%                      ] nsys-pa-10y-5p.sqlite[2/8] [===24%                      ] nsys-pa-10y-5p.sqlite[2/8] [====25%                     ] nsys-pa-10y-5p.sqlite[2/8] [====26%                     ] nsys-pa-10y-5p.sqlite[2/8] [====27%                     ] nsys-pa-10y-5p.sqlite[2/8] [====28%                     ] nsys-pa-10y-5p.sqlite[2/8] [=====29%                    ] nsys-pa-10y-5p.sqlite[2/8] [=====30%                    ] nsys-pa-10y-5p.sqlite[2/8] [=====31%                    ] nsys-pa-10y-5p.sqlite[2/8] [=====32%                    ] nsys-pa-10y-5p.sqlite[2/8] [======33%                   ] nsys-pa-10y-5p.sqlite[2/8] [======34%                   ] nsys-pa-10y-5p.sqlite[2/8] [======35%                   ] nsys-pa-10y-5p.sqlite[2/8] [=======36%                  ] nsys-pa-10y-5p.sqlite[2/8] [=======37%                  ] nsys-pa-10y-5p.sqlite[2/8] [=======38%                  ] nsys-pa-10y-5p.sqlite[2/8] [=======39%                  ] nsys-pa-10y-5p.sqlite[2/8] [========40%                 ] nsys-pa-10y-5p.sqlite[2/8] [========41%                 ] nsys-pa-10y-5p.sqlite[2/8] [========42%                 ] nsys-pa-10y-5p.sqlite[2/8] [=========43%                ] nsys-pa-10y-5p.sqlite[2/8] [=========44%                ] nsys-pa-10y-5p.sqlite[2/8] [=========45%                ] nsys-pa-10y-5p.sqlite[2/8] [=========46%                ] nsys-pa-10y-5p.sqlite[2/8] [==========47%               ] nsys-pa-10y-5p.sqlite[2/8] [==========48%               ] nsys-pa-10y-5p.sqlite[2/8] [==========49%               ] nsys-pa-10y-5p.sqlite[2/8] [===========50%              ] nsys-pa-10y-5p.sqlite[2/8] [===========51%              ] nsys-pa-10y-5p.sqlite[2/8] [===========52%              ] nsys-pa-10y-5p.sqlite[2/8] [===========53%              ] nsys-pa-10y-5p.sqlite[2/8] [============54%             ] nsys-pa-10y-5p.sqlite[2/8] [============55%             ] nsys-pa-10y-5p.sqlite[2/8] [============56%             ] nsys-pa-10y-5p.sqlite[2/8] [============57%             ] nsys-pa-10y-5p.sqlite[2/8] [=============58%            ] nsys-pa-10y-5p.sqlite[2/8] [=============59%            ] nsys-pa-10y-5p.sqlite[2/8] [=============60%            ] nsys-pa-10y-5p.sqlite[2/8] [==============61%           ] nsys-pa-10y-5p.sqlite[2/8] [==============62%           ] nsys-pa-10y-5p.sqlite[2/8] [==============63%           ] nsys-pa-10y-5p.sqlite[2/8] [==============64%           ] nsys-pa-10y-5p.sqlite[2/8] [===============65%          ] nsys-pa-10y-5p.sqlite[2/8] [===============66%          ] nsys-pa-10y-5p.sqlite[2/8] [===============67%          ] nsys-pa-10y-5p.sqlite[2/8] [================68%         ] nsys-pa-10y-5p.sqlite[2/8] [================69%         ] nsys-pa-10y-5p.sqlite[2/8] [================70%         ] nsys-pa-10y-5p.sqlite[2/8] [================71%         ] nsys-pa-10y-5p.sqlite[2/8] [=================72%        ] nsys-pa-10y-5p.sqlite[2/8] [=================73%        ] nsys-pa-10y-5p.sqlite[2/8] [=================74%        ] nsys-pa-10y-5p.sqlite[2/8] [==================75%       ] nsys-pa-10y-5p.sqlite[2/8] [==================76%       ] nsys-pa-10y-5p.sqlite[2/8] [==================77%       ] nsys-pa-10y-5p.sqlite[2/8] [==================78%       ] nsys-pa-10y-5p.sqlite[2/8] [===================79%      ] nsys-pa-10y-5p.sqlite[2/8] [===================80%      ] nsys-pa-10y-5p.sqlite[2/8] [===================81%      ] nsys-pa-10y-5p.sqlite[2/8] [===================82%      ] nsys-pa-10y-5p.sqlite[2/8] [====================83%     ] nsys-pa-10y-5p.sqlite[2/8] [====================84%     ] nsys-pa-10y-5p.sqlite[2/8] [====================85%     ] nsys-pa-10y-5p.sqlite[2/8] [=====================86%    ] nsys-pa-10y-5p.sqlite[2/8] [=====================87%    ] nsys-pa-10y-5p.sqlite[2/8] [=====================88%    ] nsys-pa-10y-5p.sqlite[2/8] [=====================89%    ] nsys-pa-10y-5p.sqlite[2/8] [======================90%   ] nsys-pa-10y-5p.sqlite[2/8] [======================91%   ] nsys-pa-10y-5p.sqlite[2/8] [======================92%   ] nsys-pa-10y-5p.sqlite[2/8] [=======================93%  ] nsys-pa-10y-5p.sqlite[2/8] [=======================94%  ] nsys-pa-10y-5p.sqlite[2/8] [=======================95%  ] nsys-pa-10y-5p.sqlite[2/8] [=======================96%  ] nsys-pa-10y-5p.sqlite[2/8] [========================97% ] nsys-pa-10y-5p.sqlite[2/8] [========================98% ] nsys-pa-10y-5p.sqlite[2/8] [========================99% ] nsys-pa-10y-5p.sqlite[2/8] [========================100%] nsys-pa-10y-5p.sqlite[2/8] [========================100%] nsys-pa-10y-5p.sqlite
+[3/8] Executing 'nvtx_sum' stats report
+
+ Time (%)  Total Time (ns)  Instances  Avg (ns)  Med (ns)  Min (ns)  Max (ns)   StdDev (ns)   Style             Range          
+ --------  ---------------  ---------  --------  --------  --------  ---------  -----------  -------  -------------------------
+    100.0    1,470,528,940    309,148   4,756.7   4,538.0     4,146  5,868,759     12,578.7  PushPop  CCCL:cub::DeviceFor::Bulk
+
+[4/8] Executing 'osrt_sum' stats report
+
+ Time (%)  Total Time (ns)  Num Calls    Avg (ns)      Med (ns)    Min (ns)   Max (ns)    StdDev (ns)            Name         
+ --------  ---------------  ---------  ------------  ------------  --------  -----------  ------------  ----------------------
+     98.0  277,411,907,974     14,030  19,772,766.1  10,058,981.0     1,580  105,259,105  28,005,218.2  poll                  
+      1.9    5,444,610,844    167,122      32,578.7      19,123.0     1,004  216,735,558     719,581.2  ioctl                 
+      0.0       99,264,265         52   1,908,928.2   1,135,917.0   343,587    5,513,470   1,789,658.7  writev                
+      0.0       55,620,959        267     208,318.2     187,021.0   133,516    1,088,594     107,794.2  pthread_create        
+      0.0       39,662,949        742      53,454.1      26,729.0    16,091      399,055      50,451.7  pthread_rwlock_wrlock 
+      0.0       14,245,899          9   1,582,877.7     210,911.0    67,378    9,436,334   3,102,665.3  fopen64               
+      0.0       13,657,456        652      20,947.0      20,344.5     1,015       49,840       8,419.1  pthread_rwlock_rdlock 
+      0.0       12,794,401      5,974       2,141.7       1,700.0     1,050    2,163,570      27,978.7  read                  
+      0.0        8,602,317        667      12,897.0       8,749.0     1,582      140,467      19,553.6  mmap                  
+      0.0        5,254,335      1,122       4,683.0       4,087.0     1,019       54,793       2,960.8  munmap                
+      0.0        1,347,288         30      44,909.6       5,127.0     3,250      884,782     160,087.6  mmap64                
+      0.0          997,325         36      27,703.5      13,442.5     1,282      218,101      44,609.5  write                 
+      0.0          888,904        118       7,533.1       4,513.0     1,002       49,645      10,725.2  fflush                
+      0.0          714,360         14      51,025.7       3,927.5     1,070      286,547      97,252.2  fclose                
+      0.0          313,187         11      28,471.5      26,655.0    19,194       52,944       9,734.5  sem_timedwait         
+      0.0          158,400         41       3,863.4       1,809.0     1,244       16,849       4,081.2  fopen                 
+      0.0          157,683         55       2,867.0       2,242.0     1,031        9,408       1,798.9  open64                
+      0.0           61,993          1      61,993.0      61,993.0    61,993       61,993           0.0  pthread_cond_wait     
+      0.0           49,331         23       2,144.8       2,129.0     1,010        4,142         878.7  fwrite                
+      0.0           36,277          1      36,277.0      36,277.0    36,277       36,277           0.0  fgets                 
+      0.0           27,885          6       4,647.5       4,802.5     1,188        8,206       2,882.0  open                  
+      0.0           18,672         15       1,244.8       1,250.0     1,048        1,545         138.5  pthread_mutex_lock    
+      0.0           16,065          3       5,355.0       6,687.0     2,543        6,835       2,436.4  pipe2                 
+      0.0           14,970          2       7,485.0       7,485.0     4,695       10,275       3,945.7  socket                
+      0.0           13,465          1      13,465.0      13,465.0    13,465       13,465           0.0  connect               
+      0.0            5,134          2       2,567.0       2,567.0     1,628        3,506       1,327.9  pthread_cond_broadcast
+      0.0            2,480          1       2,480.0       2,480.0     2,480        2,480           0.0  bind                  
+      0.0            2,379          2       1,189.5       1,189.5     1,111        1,268         111.0  fcntl                 
+      0.0            1,690          1       1,690.0       1,690.0     1,690        1,690           0.0  pthread_mutex_trylock 
+
+[5/8] Executing 'cuda_api_sum' stats report
+
+ Time (%)  Total Time (ns)  Num Calls    Avg (ns)       Med (ns)    Min (ns)    Max (ns)      StdDev (ns)            Name         
+ --------  ---------------  ---------  -------------  ------------  --------  -------------  -------------  ----------------------
+     33.2   40,231,476,839        132  304,783,915.4  14,858,771.5     1,084  2,169,662,947  592,926,859.8  cudaStreamSynchronize 
+     25.0   30,278,477,628  4,946,392        6,121.3       3,633.0     2,646     11,783,819       12,308.6  cudaMemcpy            
+     20.3   24,675,658,597  4,019,305        6,139.3       5,088.0     3,767    216,830,362      146,706.3  cudaFree              
+     18.2   22,072,092,937  4,637,558        4,759.4       3,948.0     1,880      7,182,129       16,401.3  cudaMalloc            
+      1.6    1,920,047,109    618,427        3,104.7       2,932.0     2,540      4,069,119        6,903.5  cudaMemset            
+      0.9    1,066,784,376        120    8,889,869.8     565,238.0    10,602    120,171,957   28,098,511.1  cudaMemcpyAsync       
+      0.8      930,594,946    309,316        3,008.6       2,728.0     2,440     28,469,782       52,962.4  cudaLaunchKernel      
+      0.1      135,723,694         10   13,572,369.4      67,563.0    49,517    135,060,793   42,686,688.7  cudaMemGetInfo        
+      0.0        4,959,214         46      107,809.0      35,888.0     7,223        329,339      115,763.0  cudaDeviceSynchronize 
+      0.0        3,575,910         92       38,868.6      31,146.0     9,385        267,267       32,853.7  cudaMallocManaged     
+      0.0          345,998         10       34,599.8      24,130.5    22,656        126,708       32,399.8  cudaStreamCreate      
+      0.0          272,395         20       13,619.8      14,227.5     7,139         24,077        5,168.2  cudaMemsetAsync       
+      0.0          153,821         10       15,382.1      17,384.5    11,054         19,043        3,314.0  cudaStreamDestroy     
+      0.0            1,602          1        1,602.0       1,602.0     1,602          1,602            0.0  cuModuleGetLoadingMode
+
+[6/8] Executing 'cuda_gpu_kern_sum' stats report
+
+ Time (%)  Total Time (ns)  Instances     Avg (ns)         Med (ns)       Min (ns)      Max (ns)      StdDev (ns)                                                   Name                                                
+ --------  ---------------  ---------  ---------------  ---------------  -----------  -------------  -------------  ----------------------------------------------------------------------------------------------------
+     85.1   35,435,099,659         23  1,540,656,506.9  1,637,541,156.0  926,425,997  2,169,641,644  360,402,060.9  kernelCallStage1(int, int, int, ABM *, Graph *, DeviceGraph *, DeviceGraph *, device_map<int, Node>…
+     10.2    4,259,210,924         23    185,183,083.7    181,518,653.0  110,626,037    290,009,316   53,792,979.5  kernelCallStage3(int, int, int, ABM *, Graph *, int, device_map<int, Node>::device_view, ABMStageSt…
+      2.4    1,004,577,244         10    100,457,724.4    105,430,406.0   76,182,897    120,157,331   16,455,741.8  void cuco::legacy::detail::insert<(unsigned long)128, (unsigned int)4, cuco::pair<int, int> *, cuda…
+      1.2      512,132,018         23     22,266,609.5     21,789,302.0    7,774,348     36,928,154    6,813,182.4  kernelCallStage2(int, int, int, ABM *, Graph *, cuco::static_set_ref<int, (cuda::std::__4::thread_s…
+      0.9      372,695,755    309,138          1,205.6          1,248.0        1,087          1,632           95.2  void cub::CUB_300002_SM_900::detail::for_each::static_kernel<cub::CUB_300002_SM_900::detail::for_ea…
+      0.1       24,369,208         23      1,059,530.8      1,075,618.0      659,874      1,297,506      133,435.1  kernelCallStage4(int, int, int, ABM *, Graph *, int, device_map<int, Node>::device_view, ABMStageSt…
+      0.0        4,835,819         46        105,126.5         32,272.5        3,072        326,657      116,948.4  kernel_extract_vector_sizes(device_vector *, int *, int)                                            
+      0.0        2,399,270         10        239,927.0        221,040.5      104,736        528,258      130,021.4  void cuco::detail::open_addressing_ns::insert_if_n<(int)1, (int)128, int *, thrust::THRUST_300002_S…
+      0.0           33,984         10          3,398.4          3,408.0        3,008          3,840          296.3  void cuco::legacy::detail::initialize<(unsigned long)256, cuda::__4::atomic<int, (cuda::std::__4::t…
+      0.0           14,753         10          1,475.3          1,488.0        1,312          1,537           64.9  void cub::CUB_300002_SM_900::detail::for_each::static_kernel<cub::CUB_300002_SM_900::detail::for_ea…
+
+[7/8] Executing 'cuda_gpu_mem_time_sum' stats report
+
+ Time (%)  Total Time (ns)    Count    Avg (ns)  Med (ns)  Min (ns)  Max (ns)   StdDev (ns)               Operation              
+ --------  ---------------  ---------  --------  --------  --------  ---------  -----------  ------------------------------------
+     43.4    2,996,269,492  1,236,641   2,422.9   2,432.0     1,696     29,281        132.8  [CUDA memcpy Device-to-Host]        
+     43.3    2,986,456,592  3,709,871     805.0     768.0       703  5,181,390      7,915.0  [CUDA memcpy Host-to-Device]        
+     13.1      906,627,804    618,447   1,466.0   1,472.0       704    470,818      3,740.7  [CUDA memset]                       
+      0.1        8,412,978      2,908   2,893.0   2,495.0     2,175     20,896      1,543.2  [CUDA memcpy Unified Host-to-Device]
+      0.0        2,397,689        614   3,905.0   2,880.0     2,303     21,440      2,616.9  [CUDA memcpy Unified Device-to-Host]
+
+[8/8] Executing 'cuda_gpu_mem_size_sum' stats report
+
+ Total (MB)     Count    Avg (MB)  Med (MB)  Min (MB)  Max (MB)   StdDev (MB)               Operation              
+ -----------  ---------  --------  --------  --------  ---------  -----------  ------------------------------------
+ 122,179.758    618,447     0.198     0.078     0.000  1,518.352       12.176  [CUDA memset]                       
+   1,285.798  3,709,871     0.000     0.000     0.000     64.053        0.096  [CUDA memcpy Host-to-Device]        
+      92.723  1,236,641     0.000     0.000     0.000      1.220        0.005  [CUDA memcpy Device-to-Host]        
+      77.464      2,908     0.027     0.008     0.004      1.020        0.083  [CUDA memcpy Unified Host-to-Device]
+      47.120        614     0.077     0.025     0.004      1.044        0.142  [CUDA memcpy Unified Device-to-Host]
+
+Generated:
+    /home/jmukher/workspace/uiuc/citation_abm/profile/nsys-pa-10y-5p.nsys-rep
+    /home/jmukher/workspace/uiuc/citation_abm/profile/nsys-pa-10y-5p.sqlite
+SUCCESS: 386M → profile/nsys-pa-10y-5p.nsys-rep
+Running growth rate 6% for 10 years.
+Profile output: profile/nsys-pa-10y-6p.nsys-rep
+CMD: nsys profile --trace=nvtx,cuda,osrt --gpu-metrics-device=all --gpu-metrics-frequency=10000 --stats=true --force-overwrite=true -o profile/nsys-pa-10y-6p ./abm --edgelist sj_edgelist --nodelist sj_nodelist --out-degree-bag tcen_at_least_five --recency-probabilities sj_recprob --alpha 0.5 --preferential-weight 0.33 --recency-weight 0.33 --fitness-weight 0.33 --growth-rate .06 --fully-random-citations 0.05 --num-cycles 10 --same-year-proportion 0.12 --output-file ./output/10y/gpu-opt-static-output-10y-6p.edgelist --auxiliary-information-file ./output/10y/gpu-opt-static-output-10y-6p.aux --log-file ./output/10y/nsys-gpu-opt-static-pa-10y-6p.log --num-processors 14 --log-level 1
+
+Start ABM....
+parse_args....
+edgelist....
+num-cycles....
+output-file....
+log-file = ./output/10y/nsys-gpu-opt-static-pa-10y-6p.log....
+num-processors = 14....
+log-level = 0
+er_probability = 0.000000
+model = pa
+Init ABM....
+Exec ABM....
+Start execute.Init Graph
+Inside  Graph ParseNodelist.....
+Populating the continuous_node mappings..
+Elapsed time: ParseNodelist : 1095 millisecs = 1 seconds
+
+Inside Graph ParseEdgelist.....
+Elapsed time: ParseEdgelist : 1684 millisecs = 1 seconds
+
+In updateNodeInDegreeOutDegree: Update Outdegree first:
+In updateNodeInDegreeOutDegree: Update Indegree:
+Total (initial):: In-Degree = 899050, Out-Degree = 899050
+Elapsed time: 0-1 : 1 seconds
+Elapsed time: 1-2 : 1 seconds
+Elapsed time: 2-3 : 0 seconds
+
+Initialized Graph. Let us update the indegree and out-degrees... 
+Graph init done...
+calling InitializeFitness...
+final graph size is 880264 from initial_graph_size of 491532.
+ populated out degree array.
+ Entering loop for year = 1983
+Elapsed time: 70-71: total : 0.276 secs, iter cost : 0 seconds
+
+Elapsed time: 71-72: total : 0.327 secs, iter cost : 0 seconds
+
+Elapsed time: 72-73: total : 19 millisecs, iter cost : 19 mseconds
+
+num_new_nodes = 29492, current_graph_size = 491532, growth rate = 0.060000 
+Elapsed time: 73-74: total : 0 millisecs, iter cost : 0 mseconds
+
+Elapsed time: 74-75: total : 28 millisecs, iter cost : 28 mseconds
+
+all new nodes initialized with years and mapped. FillSameYearSourceNodes with new_nodes_vec.size() = 29492
+checking same_year_source_nodes size.
+Elapsed time: 75-76: total : 0 millisecs, iter cost : 0 mseconds
+
+new_nodes_vec.size() b4 : 29492
+
+updated  updateGraphAttributesGeneratorNode .... 
+Elapsed time: 76-77: total : 75 millisecs, iter cost : 75 mseconds
+
+continuous_node_mapping.size() b5 : 521024, reverse_continuous_node_mapping size = 521024
+
+[PA Model] Building connections using Preferential Attachment
+
+Inside optimized buildOneNodeConnections...
+Initial Free: 80526.5 MB / 81079.4 MB
+
+[prepareGraph] num_vertices = 491532
+
+[prepareGraph] edges = 899050, offsets = 491533 (should be V+1 = 491533)
+
+[prepareGraph] num_vertices = 491532
+
+[prepareGraph] edges = 899050, offsets = 491533 (should be V+1 = 491533)
+
+Year 1983: 29492 new nodes, 579435 new edges
+
+Elapsed time: 78-781 : total : 11.25 secs, this iter cost : 11.25 seconds
+
+Elapsed time: 78-79 : total : 11.461 secs, this iter cost : 11.461 seconds
+
+updateNodeInDegreeOutDegree(year=1983): updated 29492 out-degrees, 295467 in-degrees
+Elapsed time: 79-81 : total : 0.283 secs, this iter cost : 0 seconds
+
+Elapsed time: 79-80 : total : 0.13 secs, this iter cost : 0 seconds
+
+Elapsed time: 80-81 : total : 0.152 secs, this iter cost : 0 seconds
+
+Elapsed time: 70-81 : total : 12.472 secs, this iter cost : 12 seconds
+
+ Entering loop for year = 1984
+Elapsed time: 70-71: total : 0.556 secs, iter cost : 0 seconds
+
+Elapsed time: 71-72: total : 0.648 secs, iter cost : 0 seconds
+
+Elapsed time: 72-73: total : 38 millisecs, iter cost : 19 mseconds
+
+num_new_nodes = 31262, current_graph_size = 521024, growth rate = 0.060000 
+Elapsed time: 73-74: total : 0 millisecs, iter cost : 0 mseconds
+
+Elapsed time: 74-75: total : 50 millisecs, iter cost : 22 mseconds
+
+all new nodes initialized with years and mapped. FillSameYearSourceNodes with new_nodes_vec.size() = 31262
+checking same_year_source_nodes size.
+Elapsed time: 75-76: total : 0 millisecs, iter cost : 0 mseconds
+
+new_nodes_vec.size() b4 : 31262
+
+updated  updateGraphAttributesGeneratorNode .... 
+Elapsed time: 76-77: total : 155 millisecs, iter cost : 80 mseconds
+
+continuous_node_mapping.size() b5 : 552286, reverse_continuous_node_mapping size = 552286
+
+[PA Model] Building connections using Preferential Attachment
+
+Inside optimized buildOneNodeConnections...
+Initial Free: 80296.5 MB / 81079.4 MB
+
+[prepareGraph] num_vertices = 521024
+
+[prepareGraph] edges = 1478485, offsets = 521025 (should be V+1 = 521025)
+
+[prepareGraph] num_vertices = 521024
+
+[prepareGraph] edges = 1478485, offsets = 521025 (should be V+1 = 521025)
+
+Year 1984: 31262 new nodes, 615052 new edges
+
+Elapsed time: 78-781 : total : 22.882 secs, this iter cost : 11.632 seconds
+
+Elapsed time: 78-79 : total : 23.305 secs, this iter cost : 11.844 seconds
+
+updateNodeInDegreeOutDegree(year=1984): updated 31262 out-degrees, 306059 in-degrees
+Elapsed time: 79-81 : total : 0.593 secs, this iter cost : 0 seconds
+
+Elapsed time: 79-80 : total : 0.278 secs, this iter cost : 0 seconds
+
+Elapsed time: 80-81 : total : 0.314 secs, this iter cost : 0 seconds
+
+Elapsed time: 70-81 : total : 25.352 secs, this iter cost : 12 seconds
+
+ Entering loop for year = 1985
+Elapsed time: 70-71: total : 0.851 secs, iter cost : 0 seconds
+
+Elapsed time: 71-72: total : 0.999 secs, iter cost : 0 seconds
+
+Elapsed time: 72-73: total : 52 millisecs, iter cost : 14 mseconds
+
+num_new_nodes = 33138, current_graph_size = 552286, growth rate = 0.060000 
+Elapsed time: 73-74: total : 0 millisecs, iter cost : 0 mseconds
+
+Elapsed time: 74-75: total : 71 millisecs, iter cost : 21 mseconds
+
+all new nodes initialized with years and mapped. FillSameYearSourceNodes with new_nodes_vec.size() = 33138
+checking same_year_source_nodes size.
+Elapsed time: 75-76: total : 0 millisecs, iter cost : 0 mseconds
+
+new_nodes_vec.size() b4 : 33138
+
+updated  updateGraphAttributesGeneratorNode .... 
+Elapsed time: 76-77: total : 236 millisecs, iter cost : 81 mseconds
+
+continuous_node_mapping.size() b5 : 585424, reverse_continuous_node_mapping size = 585424
+
+[PA Model] Building connections using Preferential Attachment
+
+Inside optimized buildOneNodeConnections...
+Initial Free: 80258.5 MB / 81079.4 MB
+
+[prepareGraph] num_vertices = 552286
+
+[prepareGraph] edges = 2093537, offsets = 552287 (should be V+1 = 552287)
+
+[prepareGraph] num_vertices = 552286
+
+[prepareGraph] edges = 2093537, offsets = 552287 (should be V+1 = 552287)
+
+Year 1985: 33138 new nodes, 652102 new edges
+
+Elapsed time: 78-781 : total : 35.217 secs, this iter cost : 12.335 seconds
+
+Elapsed time: 78-79 : total : 35.895 secs, this iter cost : 12.59 seconds
+
+updateNodeInDegreeOutDegree(year=1985): updated 33138 out-degrees, 315852 in-degrees
+Elapsed time: 79-81 : total : 0.904 secs, this iter cost : 0 seconds
+
+Elapsed time: 79-80 : total : 0.424 secs, this iter cost : 0 seconds
+
+Elapsed time: 80-81 : total : 0.478 secs, this iter cost : 0 seconds
+
+Elapsed time: 70-81 : total : 39.017 secs, this iter cost : 13 seconds
+
+ Entering loop for year = 1986
+Elapsed time: 70-71: total : 1.148 secs, iter cost : 0 seconds
+
+Elapsed time: 71-72: total : 1.355 secs, iter cost : 0 seconds
+
+Elapsed time: 72-73: total : 82 millisecs, iter cost : 30 mseconds
+
+num_new_nodes = 35126, current_graph_size = 585424, growth rate = 0.060000 
+Elapsed time: 73-74: total : 0 millisecs, iter cost : 0 mseconds
+
+Elapsed time: 74-75: total : 91 millisecs, iter cost : 20 mseconds
+
+all new nodes initialized with years and mapped. FillSameYearSourceNodes with new_nodes_vec.size() = 35126
+checking same_year_source_nodes size.
+Elapsed time: 75-76: total : 0 millisecs, iter cost : 0 mseconds
+
+new_nodes_vec.size() b4 : 35126
+
+updated  updateGraphAttributesGeneratorNode .... 
+Elapsed time: 76-77: total : 321 millisecs, iter cost : 85 mseconds
+
+continuous_node_mapping.size() b5 : 620550, reverse_continuous_node_mapping size = 620550
+
+[PA Model] Building connections using Preferential Attachment
+
+Inside optimized buildOneNodeConnections...
+Initial Free: 80218.5 MB / 81079.4 MB
+
+[prepareGraph] num_vertices = 585424
+
+[prepareGraph] edges = 2745639, offsets = 585425 (should be V+1 = 585425)
+
+[prepareGraph] num_vertices = 585424
+
+[prepareGraph] edges = 2745639, offsets = 585425 (should be V+1 = 585425)
+
+Year 1986: 35126 new nodes, 691240 new edges
+
+Elapsed time: 78-781 : total : 48.847 secs, this iter cost : 13.63 seconds
+
+Elapsed time: 78-79 : total : 49.773 secs, this iter cost : 13.878 seconds
+
+updateNodeInDegreeOutDegree(year=1986): updated 35126 out-degrees, 327177 in-degrees
+Elapsed time: 79-81 : total : 1.214 secs, this iter cost : 0 seconds
+
+Elapsed time: 79-80 : total : 0.559 secs, this iter cost : 0 seconds
+
+Elapsed time: 80-81 : total : 0.652 secs, this iter cost : 0 seconds
+
+Elapsed time: 70-81 : total : 53.995 secs, this iter cost : 14 seconds
+
+ Entering loop for year = 1987
+Elapsed time: 70-71: total : 1.449 secs, iter cost : 0 seconds
+
+Elapsed time: 71-72: total : 1.718 secs, iter cost : 0 seconds
+
+Elapsed time: 72-73: total : 101 millisecs, iter cost : 19 mseconds
+
+num_new_nodes = 37233, current_graph_size = 620550, growth rate = 0.060000 
+Elapsed time: 73-74: total : 0 millisecs, iter cost : 0 mseconds
+
+Elapsed time: 74-75: total : 116 millisecs, iter cost : 25 mseconds
+
+all new nodes initialized with years and mapped. FillSameYearSourceNodes with new_nodes_vec.size() = 37233
+checking same_year_source_nodes size.
+Elapsed time: 75-76: total : 0 millisecs, iter cost : 0 mseconds
+
+new_nodes_vec.size() b4 : 37233
+
+updated  updateGraphAttributesGeneratorNode .... 
+Elapsed time: 76-77: total : 410 millisecs, iter cost : 89 mseconds
+
+continuous_node_mapping.size() b5 : 657783, reverse_continuous_node_mapping size = 657783
+
+[PA Model] Building connections using Preferential Attachment
+
+Inside optimized buildOneNodeConnections...
+Initial Free: 80178.5 MB / 81079.4 MB
+
+[prepareGraph] num_vertices = 620550
+
+[prepareGraph] edges = 3436879, offsets = 620551 (should be V+1 = 620551)
+
+[prepareGraph] num_vertices = 620550
+
+[prepareGraph] edges = 3436879, offsets = 620551 (should be V+1 = 620551)
+
+Year 1987: 37233 new nodes, 733056 new edges
+
+Elapsed time: 78-781 : total : 65.282 secs, this iter cost : 16.435 seconds
+
+Elapsed time: 78-79 : total : 66.485 secs, this iter cost : 16.712 seconds
+
+updateNodeInDegreeOutDegree(year=1987): updated 37233 out-degrees, 337416 in-degrees
+Elapsed time: 79-81 : total : 1.539 secs, this iter cost : 0 seconds
+
+Elapsed time: 79-80 : total : 0.701 secs, this iter cost : 0 seconds
+
+Elapsed time: 80-81 : total : 0.835 secs, this iter cost : 0 seconds
+
+Elapsed time: 70-81 : total : 71.832 secs, this iter cost : 17 seconds
+
+ Entering loop for year = 1988
+Elapsed time: 70-71: total : 1.756 secs, iter cost : 0 seconds
+
+Elapsed time: 71-72: total : 2.075 secs, iter cost : 0 seconds
+
+Elapsed time: 72-73: total : 122 millisecs, iter cost : 21 mseconds
+
+num_new_nodes = 39467, current_graph_size = 657783, growth rate = 0.060000 
+Elapsed time: 73-74: total : 0 millisecs, iter cost : 0 mseconds
+
+Elapsed time: 74-75: total : 136 millisecs, iter cost : 20 mseconds
+
+all new nodes initialized with years and mapped. FillSameYearSourceNodes with new_nodes_vec.size() = 39467
+checking same_year_source_nodes size.
+Elapsed time: 75-76: total : 0 millisecs, iter cost : 0 mseconds
+
+new_nodes_vec.size() b4 : 39467
+
+updated  updateGraphAttributesGeneratorNode .... 
+Elapsed time: 76-77: total : 506 millisecs, iter cost : 96 mseconds
+
+continuous_node_mapping.size() b5 : 697250, reverse_continuous_node_mapping size = 697250
+
+[PA Model] Building connections using Preferential Attachment
+
+Inside optimized buildOneNodeConnections...
+Initial Free: 79188.5 MB / 81079.4 MB
+
+[prepareGraph] num_vertices = 657783
+
+[prepareGraph] edges = 4169935, offsets = 657784 (should be V+1 = 657784)
+
+[prepareGraph] num_vertices = 657783
+
+[prepareGraph] edges = 4169935, offsets = 657784 (should be V+1 = 657784)
+
+Year 1988: 39467 new nodes, 776871 new edges
+
+Elapsed time: 78-781 : total : 82.696 secs, this iter cost : 17.414 seconds
+
+Elapsed time: 78-79 : total : 84.211 secs, this iter cost : 17.726 seconds
+
+updateNodeInDegreeOutDegree(year=1988): updated 39467 out-degrees, 348345 in-degrees
+Elapsed time: 79-81 : total : 1.928 secs, this iter cost : 0 seconds
+
+Elapsed time: 79-80 : total : 0.897 secs, this iter cost : 0 seconds
+
+Elapsed time: 80-81 : total : 1.028 secs, this iter cost : 0 seconds
+
+Elapsed time: 70-81 : total : 90.751 secs, this iter cost : 18 seconds
+
+ Entering loop for year = 1989
+Elapsed time: 70-71: total : 2.081 secs, iter cost : 0 seconds
+
+Elapsed time: 71-72: total : 2.447 secs, iter cost : 0 seconds
+
+Elapsed time: 72-73: total : 141 millisecs, iter cost : 19 mseconds
+
+num_new_nodes = 41835, current_graph_size = 697250, growth rate = 0.060000 
+Elapsed time: 73-74: total : 0 millisecs, iter cost : 0 mseconds
+
+Elapsed time: 74-75: total : 155 millisecs, iter cost : 19 mseconds
+
+all new nodes initialized with years and mapped. FillSameYearSourceNodes with new_nodes_vec.size() = 41835
+checking same_year_source_nodes size.
+Elapsed time: 75-76: total : 0 millisecs, iter cost : 0 mseconds
+
+new_nodes_vec.size() b4 : 41835
+
+updated  updateGraphAttributesGeneratorNode .... 
+Elapsed time: 76-77: total : 607 millisecs, iter cost : 101 mseconds
+
+continuous_node_mapping.size() b5 : 739085, reverse_continuous_node_mapping size = 739085
+
+[PA Model] Building connections using Preferential Attachment
+
+Inside optimized buildOneNodeConnections...
+Initial Free: 79148.5 MB / 81079.4 MB
+
+[prepareGraph] num_vertices = 697250
+
+[prepareGraph] edges = 4946806, offsets = 697251 (should be V+1 = 697251)
+
+[prepareGraph] num_vertices = 697250
+
+[prepareGraph] edges = 4946806, offsets = 697251 (should be V+1 = 697251)
+
+Year 1989: 41835 new nodes, 821929 new edges
+
+Elapsed time: 78-781 : total : 101.569 secs, this iter cost : 18.873 seconds
+
+Elapsed time: 78-79 : total : 103.374 secs, this iter cost : 19.163 seconds
+
+updateNodeInDegreeOutDegree(year=1989): updated 41835 out-degrees, 362096 in-degrees
+Elapsed time: 79-81 : total : 2.283 secs, this iter cost : 0 seconds
+
+Elapsed time: 79-80 : total : 1.047 secs, this iter cost : 0 seconds
+
+Elapsed time: 80-81 : total : 1.232 secs, this iter cost : 0 seconds
+
+Elapsed time: 70-81 : total : 111.109 secs, this iter cost : 20 seconds
+
+ Entering loop for year = 1990
+Elapsed time: 70-71: total : 2.411 secs, iter cost : 0 seconds
+
+Elapsed time: 71-72: total : 2.833 secs, iter cost : 0 seconds
+
+Elapsed time: 72-73: total : 156 millisecs, iter cost : 15 mseconds
+
+num_new_nodes = 44346, current_graph_size = 739085, growth rate = 0.060000 
+Elapsed time: 73-74: total : 0 millisecs, iter cost : 0 mseconds
+
+Elapsed time: 74-75: total : 175 millisecs, iter cost : 20 mseconds
+
+all new nodes initialized with years and mapped. FillSameYearSourceNodes with new_nodes_vec.size() = 44346
+checking same_year_source_nodes size.
+Elapsed time: 75-76: total : 0 millisecs, iter cost : 0 mseconds
+
+new_nodes_vec.size() b4 : 44346
+
+updated  updateGraphAttributesGeneratorNode .... 
+Elapsed time: 76-77: total : 716 millisecs, iter cost : 109 mseconds
+
+continuous_node_mapping.size() b5 : 783431, reverse_continuous_node_mapping size = 783431
+
+[PA Model] Building connections using Preferential Attachment
+
+Inside optimized buildOneNodeConnections...
+Initial Free: 78322.5 MB / 81079.4 MB
+
+[prepareGraph] num_vertices = 739085
+
+[prepareGraph] edges = 5768735, offsets = 739086 (should be V+1 = 739086)
+
+[prepareGraph] num_vertices = 739085
+
+[prepareGraph] edges = 5768735, offsets = 739086 (should be V+1 = 739086)
+
+Year 1990: 44346 new nodes, 870111 new edges
+
+Elapsed time: 78-781 : total : 122.03 secs, this iter cost : 20.461 seconds
+
+Elapsed time: 78-79 : total : 124.17 secs, this iter cost : 20.796 seconds
+
+updateNodeInDegreeOutDegree(year=1990): updated 44346 out-degrees, 377038 in-degrees
+Elapsed time: 79-81 : total : 2.671 secs, this iter cost : 0 seconds
+
+Elapsed time: 79-80 : total : 1.214 secs, this iter cost : 0 seconds
+
+Elapsed time: 80-81 : total : 1.453 secs, this iter cost : 0 seconds
+
+Elapsed time: 70-81 : total : 133.157 secs, this iter cost : 22 seconds
+
+ Entering loop for year = 1991
+Elapsed time: 70-71: total : 2.747 secs, iter cost : 0 seconds
+
+Elapsed time: 71-72: total : 3.22 secs, iter cost : 0 seconds
+
+Elapsed time: 72-73: total : 180 millisecs, iter cost : 24 mseconds
+
+num_new_nodes = 47006, current_graph_size = 783431, growth rate = 0.060000 
+Elapsed time: 73-74: total : 0 millisecs, iter cost : 0 mseconds
+
+Elapsed time: 74-75: total : 197 millisecs, iter cost : 22 mseconds
+
+all new nodes initialized with years and mapped. FillSameYearSourceNodes with new_nodes_vec.size() = 47006
+checking same_year_source_nodes size.
+Elapsed time: 75-76: total : 0 millisecs, iter cost : 0 mseconds
+
+new_nodes_vec.size() b4 : 47006
+
+updated  updateGraphAttributesGeneratorNode .... 
+Elapsed time: 76-77: total : 831 millisecs, iter cost : 115 mseconds
+
+continuous_node_mapping.size() b5 : 830437, reverse_continuous_node_mapping size = 830437
+
+[PA Model] Building connections using Preferential Attachment
+
+Inside optimized buildOneNodeConnections...
+Initial Free: 78312.5 MB / 81079.4 MB
+
+[prepareGraph] num_vertices = 783431
+
+[prepareGraph] edges = 6638846, offsets = 783432 (should be V+1 = 783432)
+
+[prepareGraph] num_vertices = 783431
+
+[prepareGraph] edges = 6638846, offsets = 783432 (should be V+1 = 783432)
+
+Year 1991: 47006 new nodes, 922114 new edges
+
+Elapsed time: 78-781 : total : 144.51 secs, this iter cost : 22.48 seconds
+
+Elapsed time: 78-79 : total : 147.009 secs, this iter cost : 22.839 seconds
+
+updateNodeInDegreeOutDegree(year=1991): updated 47006 out-degrees, 392284 in-degrees
+Elapsed time: 79-81 : total : 3.065 secs, this iter cost : 0 seconds
+
+Elapsed time: 79-80 : total : 1.373 secs, this iter cost : 0 seconds
+
+Elapsed time: 80-81 : total : 1.687 secs, this iter cost : 0 seconds
+
+Elapsed time: 70-81 : total : 157.276 secs, this iter cost : 24 seconds
+
+ Entering loop for year = 1992
+Elapsed time: 70-71: total : 3.089 secs, iter cost : 0 seconds
+
+Elapsed time: 71-72: total : 3.635 secs, iter cost : 0 seconds
+
+Elapsed time: 72-73: total : 204 millisecs, iter cost : 24 mseconds
+
+num_new_nodes = 49827, current_graph_size = 830437, growth rate = 0.060000 
+Elapsed time: 73-74: total : 0 millisecs, iter cost : 0 mseconds
+
+Elapsed time: 74-75: total : 221 millisecs, iter cost : 24 mseconds
+
+all new nodes initialized with years and mapped. FillSameYearSourceNodes with new_nodes_vec.size() = 49827
+checking same_year_source_nodes size.
+Elapsed time: 75-76: total : 0 millisecs, iter cost : 0 mseconds
+
+new_nodes_vec.size() b4 : 49827
+
+updated  updateGraphAttributesGeneratorNode .... 
+Elapsed time: 76-77: total : 952 millisecs, iter cost : 121 mseconds
+
+continuous_node_mapping.size() b5 : 880264, reverse_continuous_node_mapping size = 880264
+
+[PA Model] Building connections using Preferential Attachment
+
+Inside optimized buildOneNodeConnections...
+Initial Free: 78280.5 MB / 81079.4 MB
+
+[prepareGraph] num_vertices = 830437
+
+[prepareGraph] edges = 7560960, offsets = 830438 (should be V+1 = 830438)
+
+[prepareGraph] num_vertices = 830437
+
+[prepareGraph] edges = 7560960, offsets = 830438 (should be V+1 = 830438)
+
+Year 1992: 49827 new nodes, 978154 new edges
+
+Elapsed time: 78-781 : total : 171.685 secs, this iter cost : 27.175 seconds
+
+Elapsed time: 78-79 : total : 174.594 secs, this iter cost : 27.585 seconds
+
+updateNodeInDegreeOutDegree(year=1992): updated 49827 out-degrees, 411125 in-degrees
+Elapsed time: 79-81 : total : 3.507 secs, this iter cost : 0 seconds
+
+Elapsed time: 79-80 : total : 1.568 secs, this iter cost : 0 seconds
+
+Elapsed time: 80-81 : total : 1.933 secs, this iter cost : 0 seconds
+
+Elapsed time: 70-81 : total : 186.231 secs, this iter cost : 28 seconds
+
+Elapsed time: 7-8 :  186 seconds
+
+compute done:: graph size = 880264
+Elapsed time: 8-8.1 :  0 seconds
+
+Writing Graph to file: ./output/10y/gpu-opt-static-output-10y-6p.edgelist
+
+Elapsed time: 8.1-9 :  0 seconds
+
+Elapsed time: 9-10 :  0 seconds
+
+ graph size = 880264
+WriteAttributes: graph size = 880264
+
+Elapsed time: 0-1 : 3 seconds
+
+Elapsed time: 1-4 : 0 seconds
+
+Elapsed time: 4-7 : 0 seconds
+
+Elapsed time: 70-71: total : 3.089 seconds.
+
+Elapsed time: 71-72: total : 3.635 seconds.
+
+Elapsed time: 72-73: total : 0.204 seconds.
+
+Elapsed time: 73-74: total : 0 seconds.
+
+Elapsed time: 74-75: total : 0.221 seconds.
+
+Elapsed time: 75-76: total : 0 seconds.
+
+Elapsed time: 76-77: total : 0.952 seconds.
+
+Elapsed time: 77-79: total : 174.594 seconds.
+
+Elapsed time: 79-81 : total : 3.507 seconds.
+
+Elapsed time: 79-80 : total : 1.568 seconds.
+
+Elapsed time: 80-81 : total : 1.933 seconds.
+
+Elapsed time: 70-81 : total : 186.231 seconds.
+
+Elapsed time: 7-8 : 186 seconds
+
+Elapsed time: 8-8.1 :  0 seconds
+
+Elapsed time: 8.1-9 :  0 seconds
+
+Elapsed time: 9-10 : 0 seconds
+
+Elapsed time: 11-12 : 0 seconds
+
+Elapsed time: 10-12 : 1 seconds
+
+Elapsed time: 0-7 : 3 seconds
+
+Elapsed time: 7-8 : 186 seconds
+
+Elapsed time: 8-12 : 2 seconds
+
+E2E Time for num_cycles = 10 with growth_rate = 6 % = 194 seconds.
+GPU 0: General Metrics for NVIDIA GH100 (any frequency)
+Generating '/tmp/nsys-report-0cf1.qdstrm'
+[1/8] [0%                          ] nsys-pa-10y-6p.nsys-rep[1/8] [0%                          ] nsys-pa-10y-6p.nsys-rep[1/8] [7%                          ] nsys-pa-10y-6p.nsys-rep[1/8] [8%                          ] nsys-pa-10y-6p.nsys-rep[1/8] [7%                          ] nsys-pa-10y-6p.nsys-rep[1/8] [6%                          ] nsys-pa-10y-6p.nsys-rep[1/8] [5%                          ] nsys-pa-10y-6p.nsys-rep[1/8] [8%                          ] nsys-pa-10y-6p.nsys-rep[1/8] [7%                          ] nsys-pa-10y-6p.nsys-rep[1/8] [6%                          ] nsys-pa-10y-6p.nsys-rep[1/8] [8%                          ] nsys-pa-10y-6p.nsys-rep[1/8] [7%                          ] nsys-pa-10y-6p.nsys-rep[1/8] [6%                          ] nsys-pa-10y-6p.nsys-rep[1/8] [8%                          ] nsys-pa-10y-6p.nsys-rep[1/8] [7%                          ] nsys-pa-10y-6p.nsys-rep[1/8] [8%                          ] nsys-pa-10y-6p.nsys-rep[1/8] [7%                          ] nsys-pa-10y-6p.nsys-rep[1/8] [8%                          ] nsys-pa-10y-6p.nsys-rep[1/8] [7%                          ] nsys-pa-10y-6p.nsys-rep[1/8] [8%                          ] nsys-pa-10y-6p.nsys-rep[1/8] [7%                          ] nsys-pa-10y-6p.nsys-rep[1/8] [8%                          ] nsys-pa-10y-6p.nsys-rep[1/8] [7%                          ] nsys-pa-10y-6p.nsys-rep[1/8] [8%                          ] nsys-pa-10y-6p.nsys-rep[1/8] [7%                          ] nsys-pa-10y-6p.nsys-rep[1/8] [8%                          ] nsys-pa-10y-6p.nsys-rep[1/8] [7%                          ] nsys-pa-10y-6p.nsys-rep[1/8] [8%                          ] nsys-pa-10y-6p.nsys-rep[1/8] [7%                          ] nsys-pa-10y-6p.nsys-rep[1/8] [8%                          ] nsys-pa-10y-6p.nsys-rep[1/8] [7%                          ] nsys-pa-10y-6p.nsys-rep[1/8] [8%                          ] nsys-pa-10y-6p.nsys-rep[1/8] [7%                          ] nsys-pa-10y-6p.nsys-rep[1/8] [8%                          ] nsys-pa-10y-6p.nsys-rep[1/8] [7%                          ] nsys-pa-10y-6p.nsys-rep[1/8] [8%                          ] nsys-pa-10y-6p.nsys-rep[1/8] [7%                          ] nsys-pa-10y-6p.nsys-rep[1/8] [8%                          ] nsys-pa-10y-6p.nsys-rep[1/8] [7%                          ] nsys-pa-10y-6p.nsys-rep[1/8] [8%                          ] nsys-pa-10y-6p.nsys-rep[1/8] [7%                          ] nsys-pa-10y-6p.nsys-rep[1/8] [8%                          ] nsys-pa-10y-6p.nsys-rep[1/8] [7%                          ] nsys-pa-10y-6p.nsys-rep[1/8] [8%                          ] nsys-pa-10y-6p.nsys-rep[1/8] [7%                          ] nsys-pa-10y-6p.nsys-rep[1/8] [8%                          ] nsys-pa-10y-6p.nsys-rep[1/8] [7%                          ] nsys-pa-10y-6p.nsys-rep[1/8] [8%                          ] nsys-pa-10y-6p.nsys-rep[1/8] [7%                          ] nsys-pa-10y-6p.nsys-rep[1/8] [8%                          ] nsys-pa-10y-6p.nsys-rep[1/8] [9%                          ] nsys-pa-10y-6p.nsys-rep[1/8] [8%                          ] nsys-pa-10y-6p.nsys-rep[1/8] [9%                          ] nsys-pa-10y-6p.nsys-rep[1/8] [8%                          ] nsys-pa-10y-6p.nsys-rep[1/8] [9%                          ] nsys-pa-10y-6p.nsys-rep[1/8] [10%                         ] nsys-pa-10y-6p.nsys-rep[1/8] [9%                          ] nsys-pa-10y-6p.nsys-rep[1/8] [10%                         ] nsys-pa-10y-6p.nsys-rep[1/8] [9%                          ] nsys-pa-10y-6p.nsys-rep[1/8] [8%                          ] nsys-pa-10y-6p.nsys-rep[1/8] [7%                          ] nsys-pa-10y-6p.nsys-rep[1/8] [6%                          ] nsys-pa-10y-6p.nsys-rep[1/8] [5%                          ] nsys-pa-10y-6p.nsys-rep[1/8] [5%                          ] nsys-pa-10y-6p.nsys-rep[1/8] [6%                          ] nsys-pa-10y-6p.nsys-rep[1/8] [7%                          ] nsys-pa-10y-6p.nsys-rep[1/8] [8%                          ] nsys-pa-10y-6p.nsys-rep[1/8] [9%                          ] nsys-pa-10y-6p.nsys-rep[1/8] [10%                         ] nsys-pa-10y-6p.nsys-rep[1/8] [11%                         ] nsys-pa-10y-6p.nsys-rep[1/8] [12%                         ] nsys-pa-10y-6p.nsys-rep[1/8] [13%                         ] nsys-pa-10y-6p.nsys-rep[1/8] [14%                         ] nsys-pa-10y-6p.nsys-rep[1/8] [=15%                        ] nsys-pa-10y-6p.nsys-rep[1/8] [=16%                        ] nsys-pa-10y-6p.nsys-rep[1/8] [=17%                        ] nsys-pa-10y-6p.nsys-rep[1/8] [==18%                       ] nsys-pa-10y-6p.nsys-rep[1/8] [==19%                       ] nsys-pa-10y-6p.nsys-rep[1/8] [==20%                       ] nsys-pa-10y-6p.nsys-rep[1/8] [==21%                       ] nsys-pa-10y-6p.nsys-rep[1/8] [===22%                      ] nsys-pa-10y-6p.nsys-rep[1/8] [===23%                      ] nsys-pa-10y-6p.nsys-rep[1/8] [===24%                      ] nsys-pa-10y-6p.nsys-rep[1/8] [====25%                     ] nsys-pa-10y-6p.nsys-rep[1/8] [====26%                     ] nsys-pa-10y-6p.nsys-rep[1/8] [====27%                     ] nsys-pa-10y-6p.nsys-rep[1/8] [====28%                     ] nsys-pa-10y-6p.nsys-rep[1/8] [=====29%                    ] nsys-pa-10y-6p.nsys-rep[1/8] [=====30%                    ] nsys-pa-10y-6p.nsys-rep[1/8] [=====31%                    ] nsys-pa-10y-6p.nsys-rep[1/8] [=====32%                    ] nsys-pa-10y-6p.nsys-rep[1/8] [======33%                   ] nsys-pa-10y-6p.nsys-rep[1/8] [======34%                   ] nsys-pa-10y-6p.nsys-rep[1/8] [======35%                   ] nsys-pa-10y-6p.nsys-rep[1/8] [=======36%                  ] nsys-pa-10y-6p.nsys-rep[1/8] [=======37%                  ] nsys-pa-10y-6p.nsys-rep[1/8] [=======38%                  ] nsys-pa-10y-6p.nsys-rep[1/8] [=======39%                  ] nsys-pa-10y-6p.nsys-rep[1/8] [========40%                 ] nsys-pa-10y-6p.nsys-rep[1/8] [========41%                 ] nsys-pa-10y-6p.nsys-rep[1/8] [========42%                 ] nsys-pa-10y-6p.nsys-rep[1/8] [=========43%                ] nsys-pa-10y-6p.nsys-rep[1/8] [=========44%                ] nsys-pa-10y-6p.nsys-rep[1/8] [=========45%                ] nsys-pa-10y-6p.nsys-rep[1/8] [=========46%                ] nsys-pa-10y-6p.nsys-rep[1/8] [==========47%               ] nsys-pa-10y-6p.nsys-rep[1/8] [==========48%               ] nsys-pa-10y-6p.nsys-rep[1/8] [==========49%               ] nsys-pa-10y-6p.nsys-rep[1/8] [===========50%              ] nsys-pa-10y-6p.nsys-rep[1/8] [===========51%              ] nsys-pa-10y-6p.nsys-rep[1/8] [===========52%              ] nsys-pa-10y-6p.nsys-rep[1/8] [===========53%              ] nsys-pa-10y-6p.nsys-rep[1/8] [============54%             ] nsys-pa-10y-6p.nsys-rep[1/8] [============55%             ] nsys-pa-10y-6p.nsys-rep[1/8] [============56%             ] nsys-pa-10y-6p.nsys-rep[1/8] [============57%             ] nsys-pa-10y-6p.nsys-rep[1/8] [=============58%            ] nsys-pa-10y-6p.nsys-rep[1/8] [=============59%            ] nsys-pa-10y-6p.nsys-rep[1/8] [=============60%            ] nsys-pa-10y-6p.nsys-rep[1/8] [==============61%           ] nsys-pa-10y-6p.nsys-rep[1/8] [==============62%           ] nsys-pa-10y-6p.nsys-rep[1/8] [==============63%           ] nsys-pa-10y-6p.nsys-rep[1/8] [==============64%           ] nsys-pa-10y-6p.nsys-rep[1/8] [===============65%          ] nsys-pa-10y-6p.nsys-rep[1/8] [===============66%          ] nsys-pa-10y-6p.nsys-rep[1/8] [===============67%          ] nsys-pa-10y-6p.nsys-rep[1/8] [================68%         ] nsys-pa-10y-6p.nsys-rep[1/8] [================69%         ] nsys-pa-10y-6p.nsys-rep[1/8] [================70%         ] nsys-pa-10y-6p.nsys-rep[1/8] [================71%         ] nsys-pa-10y-6p.nsys-rep[1/8] [=================72%        ] nsys-pa-10y-6p.nsys-rep[1/8] [=================73%        ] nsys-pa-10y-6p.nsys-rep[1/8] [=================74%        ] nsys-pa-10y-6p.nsys-rep[1/8] [==================75%       ] nsys-pa-10y-6p.nsys-rep[1/8] [==================76%       ] nsys-pa-10y-6p.nsys-rep[1/8] [==================77%       ] nsys-pa-10y-6p.nsys-rep[1/8] [==================78%       ] nsys-pa-10y-6p.nsys-rep[1/8] [===================79%      ] nsys-pa-10y-6p.nsys-rep[1/8] [===================80%      ] nsys-pa-10y-6p.nsys-rep[1/8] [===================81%      ] nsys-pa-10y-6p.nsys-rep[1/8] [===================82%      ] nsys-pa-10y-6p.nsys-rep[1/8] [====================83%     ] nsys-pa-10y-6p.nsys-rep[1/8] [========================100%] nsys-pa-10y-6p.nsys-rep[1/8] [========================100%] nsys-pa-10y-6p.nsys-rep
+[2/8] [0%                          ] nsys-pa-10y-6p.sqlite[2/8] [1%                          ] nsys-pa-10y-6p.sqlite[2/8] [2%                          ] nsys-pa-10y-6p.sqlite[2/8] [3%                          ] nsys-pa-10y-6p.sqlite[2/8] [4%                          ] nsys-pa-10y-6p.sqlite[2/8] [5%                          ] nsys-pa-10y-6p.sqlite[2/8] [6%                          ] nsys-pa-10y-6p.sqlite[2/8] [7%                          ] nsys-pa-10y-6p.sqlite[2/8] [8%                          ] nsys-pa-10y-6p.sqlite[2/8] [9%                          ] nsys-pa-10y-6p.sqlite[2/8] [10%                         ] nsys-pa-10y-6p.sqlite[2/8] [11%                         ] nsys-pa-10y-6p.sqlite[2/8] [12%                         ] nsys-pa-10y-6p.sqlite[2/8] [13%                         ] nsys-pa-10y-6p.sqlite[2/8] [14%                         ] nsys-pa-10y-6p.sqlite[2/8] [=15%                        ] nsys-pa-10y-6p.sqlite[2/8] [=16%                        ] nsys-pa-10y-6p.sqlite[2/8] [=17%                        ] nsys-pa-10y-6p.sqlite[2/8] [==18%                       ] nsys-pa-10y-6p.sqlite[2/8] [==19%                       ] nsys-pa-10y-6p.sqlite[2/8] [==20%                       ] nsys-pa-10y-6p.sqlite[2/8] [==21%                       ] nsys-pa-10y-6p.sqlite[2/8] [===22%                      ] nsys-pa-10y-6p.sqlite[2/8] [===23%                      ] nsys-pa-10y-6p.sqlite[2/8] [===24%                      ] nsys-pa-10y-6p.sqlite[2/8] [====25%                     ] nsys-pa-10y-6p.sqlite[2/8] [====26%                     ] nsys-pa-10y-6p.sqlite[2/8] [====27%                     ] nsys-pa-10y-6p.sqlite[2/8] [====28%                     ] nsys-pa-10y-6p.sqlite[2/8] [=====29%                    ] nsys-pa-10y-6p.sqlite[2/8] [=====30%                    ] nsys-pa-10y-6p.sqlite[2/8] [=====31%                    ] nsys-pa-10y-6p.sqlite[2/8] [=====32%                    ] nsys-pa-10y-6p.sqlite[2/8] [======33%                   ] nsys-pa-10y-6p.sqlite[2/8] [======34%                   ] nsys-pa-10y-6p.sqlite[2/8] [======35%                   ] nsys-pa-10y-6p.sqlite[2/8] [=======36%                  ] nsys-pa-10y-6p.sqlite[2/8] [=======37%                  ] nsys-pa-10y-6p.sqlite[2/8] [=======38%                  ] nsys-pa-10y-6p.sqlite[2/8] [=======39%                  ] nsys-pa-10y-6p.sqlite[2/8] [========40%                 ] nsys-pa-10y-6p.sqlite[2/8] [========41%                 ] nsys-pa-10y-6p.sqlite[2/8] [========42%                 ] nsys-pa-10y-6p.sqlite[2/8] [=========43%                ] nsys-pa-10y-6p.sqlite[2/8] [=========44%                ] nsys-pa-10y-6p.sqlite[2/8] [=========45%                ] nsys-pa-10y-6p.sqlite[2/8] [=========46%                ] nsys-pa-10y-6p.sqlite[2/8] [==========47%               ] nsys-pa-10y-6p.sqlite[2/8] [==========48%               ] nsys-pa-10y-6p.sqlite[2/8] [==========49%               ] nsys-pa-10y-6p.sqlite[2/8] [===========50%              ] nsys-pa-10y-6p.sqlite[2/8] [===========51%              ] nsys-pa-10y-6p.sqlite[2/8] [===========52%              ] nsys-pa-10y-6p.sqlite[2/8] [===========53%              ] nsys-pa-10y-6p.sqlite[2/8] [============54%             ] nsys-pa-10y-6p.sqlite[2/8] [============55%             ] nsys-pa-10y-6p.sqlite[2/8] [============56%             ] nsys-pa-10y-6p.sqlite[2/8] [============57%             ] nsys-pa-10y-6p.sqlite[2/8] [=============58%            ] nsys-pa-10y-6p.sqlite[2/8] [=============59%            ] nsys-pa-10y-6p.sqlite[2/8] [=============60%            ] nsys-pa-10y-6p.sqlite[2/8] [==============61%           ] nsys-pa-10y-6p.sqlite[2/8] [==============62%           ] nsys-pa-10y-6p.sqlite[2/8] [==============63%           ] nsys-pa-10y-6p.sqlite[2/8] [==============64%           ] nsys-pa-10y-6p.sqlite[2/8] [===============65%          ] nsys-pa-10y-6p.sqlite[2/8] [===============66%          ] nsys-pa-10y-6p.sqlite[2/8] [===============67%          ] nsys-pa-10y-6p.sqlite[2/8] [================68%         ] nsys-pa-10y-6p.sqlite[2/8] [================69%         ] nsys-pa-10y-6p.sqlite[2/8] [================70%         ] nsys-pa-10y-6p.sqlite[2/8] [================71%         ] nsys-pa-10y-6p.sqlite[2/8] [=================72%        ] nsys-pa-10y-6p.sqlite[2/8] [=================73%        ] nsys-pa-10y-6p.sqlite[2/8] [=================74%        ] nsys-pa-10y-6p.sqlite[2/8] [==================75%       ] nsys-pa-10y-6p.sqlite[2/8] [==================76%       ] nsys-pa-10y-6p.sqlite[2/8] [==================77%       ] nsys-pa-10y-6p.sqlite[2/8] [==================78%       ] nsys-pa-10y-6p.sqlite[2/8] [===================79%      ] nsys-pa-10y-6p.sqlite[2/8] [===================80%      ] nsys-pa-10y-6p.sqlite[2/8] [===================81%      ] nsys-pa-10y-6p.sqlite[2/8] [===================82%      ] nsys-pa-10y-6p.sqlite[2/8] [====================83%     ] nsys-pa-10y-6p.sqlite[2/8] [====================84%     ] nsys-pa-10y-6p.sqlite[2/8] [====================85%     ] nsys-pa-10y-6p.sqlite[2/8] [=====================86%    ] nsys-pa-10y-6p.sqlite[2/8] [=====================87%    ] nsys-pa-10y-6p.sqlite[2/8] [=====================88%    ] nsys-pa-10y-6p.sqlite[2/8] [=====================89%    ] nsys-pa-10y-6p.sqlite[2/8] [======================90%   ] nsys-pa-10y-6p.sqlite[2/8] [======================91%   ] nsys-pa-10y-6p.sqlite[2/8] [======================92%   ] nsys-pa-10y-6p.sqlite[2/8] [=======================93%  ] nsys-pa-10y-6p.sqlite[2/8] [=======================94%  ] nsys-pa-10y-6p.sqlite[2/8] [=======================95%  ] nsys-pa-10y-6p.sqlite[2/8] [=======================96%  ] nsys-pa-10y-6p.sqlite[2/8] [========================97% ] nsys-pa-10y-6p.sqlite[2/8] [========================98% ] nsys-pa-10y-6p.sqlite[2/8] [========================99% ] nsys-pa-10y-6p.sqlite[2/8] [========================100%] nsys-pa-10y-6p.sqlite[2/8] [========================100%] nsys-pa-10y-6p.sqlite
+[3/8] Executing 'nvtx_sum' stats report
+
+ Time (%)  Total Time (ns)  Instances  Avg (ns)  Med (ns)  Min (ns)  Max (ns)   StdDev (ns)   Style             Range          
+ --------  ---------------  ---------  --------  --------  --------  ---------  -----------  -------  -------------------------
+    100.0    1,976,299,520    388,752   5,083.7   4,862.0     4,418  1,265,187      2,782.9  PushPop  CCCL:cub::DeviceFor::Bulk
+
+[4/8] Executing 'osrt_sum' stats report
+
+ Time (%)  Total Time (ns)  Num Calls    Avg (ns)      Med (ns)    Min (ns)   Max (ns)    StdDev (ns)            Name         
+ --------  ---------------  ---------  ------------  ------------  --------  -----------  ------------  ----------------------
+     98.8  344,307,856,272     17,402  19,785,533.6  10,061,920.0     1,174  100,720,785  28,016,447.4  poll                  
+      1.2    4,050,689,428    143,875      28,154.2      18,727.0     1,006  116,081,951     334,475.6  ioctl                 
+      0.0      126,481,244         52   2,432,331.6   1,446,913.5   410,732    7,006,177   2,163,044.7  writev                
+      0.0       60,665,676        267     227,212.3     193,704.0   138,706    1,078,218     129,452.8  pthread_create        
+      0.0       51,726,031        932      55,500.0      27,626.0    18,875      424,983      50,708.4  pthread_rwlock_wrlock 
+      0.0       19,068,394        852      22,380.7      21,128.5     1,067      117,560      10,699.7  pthread_rwlock_rdlock 
+      0.0       14,567,798      5,974       2,438.5       1,997.0     1,049    2,467,486      31,900.0  read                  
+      0.0       14,155,230         10   1,415,523.0     233,296.5     1,216    9,876,113   3,059,828.7  fopen64               
+      0.0        8,344,011        535      15,596.3       9,139.0     1,571      141,003      24,742.6  mmap                  
+      0.0        4,155,892        799       5,201.4       4,247.0     1,006       55,421       3,932.7  munmap                
+      0.0        1,355,455         30      45,181.8       6,499.5     3,287      823,608     149,134.5  mmap64                
+      0.0        1,308,900         36      36,358.3      14,637.0     1,492      317,309      61,799.7  write                 
+      0.0          760,081        113       6,726.4       4,896.0     1,007       63,149       9,339.9  fflush                
+      0.0          653,780         14      46,698.6       4,107.5     1,002      231,123      86,389.6  fclose                
+      0.0          359,566         11      32,687.8      30,518.0    18,832       65,437      12,626.3  sem_timedwait         
+      0.0          195,867         41       4,777.2       1,866.0     1,213       28,719       6,011.6  fopen                 
+      0.0          172,123         54       3,187.5       2,379.5     1,064       10,350       2,004.6  open64                
+      0.0           86,088          1      86,088.0      86,088.0    86,088       86,088           0.0  pthread_cond_wait     
+      0.0           56,345         24       2,347.7       2,093.0     1,028        5,709       1,251.3  fwrite                
+      0.0           39,226         16       2,451.6       1,234.0     1,033       20,855       4,908.7  pthread_mutex_lock    
+      0.0           36,695          1      36,695.0      36,695.0    36,695       36,695           0.0  fgets                 
+      0.0           25,718          6       4,286.3       4,994.0     1,108        6,863       2,291.5  open                  
+      0.0           15,849          3       5,283.0       6,854.0     2,123        6,872       2,736.7  pipe2                 
+      0.0           15,402          2       7,701.0       7,701.0     4,560       10,842       4,442.0  socket                
+      0.0           14,816          1      14,816.0      14,816.0    14,816       14,816           0.0  connect               
+      0.0            5,379          2       2,689.5       2,689.5     1,775        3,604       1,293.3  pthread_cond_broadcast
+      0.0            2,484          2       1,242.0       1,242.0     1,101        1,383         199.4  fcntl                 
+      0.0            2,374          1       2,374.0       2,374.0     2,374        2,374           0.0  bind                  
+      0.0            1,953          1       1,953.0       1,953.0     1,953        1,953           0.0  pthread_mutex_trylock 
+      0.0            1,089          1       1,089.0       1,089.0     1,089        1,089           0.0  listen                
+
+[5/8] Executing 'cuda_api_sum' stats report
+
+ Time (%)  Total Time (ns)  Num Calls    Avg (ns)       Med (ns)    Min (ns)    Max (ns)      StdDev (ns)            Name         
+ --------  ---------------  ---------  -------------  ------------  --------  -------------  -------------  ----------------------
+     32.9   50,654,456,296        148  342,259,839.8  19,994,161.5       894  2,553,625,782  647,659,619.9  cudaStreamSynchronize 
+     26.1   40,209,085,905  6,220,088        6,464.4       3,898.0     2,907      7,262,121       10,127.4  cudaMemcpy            
+     19.6   30,152,863,138  5,054,225        5,965.9       5,400.0     3,810     12,359,557       11,021.5  cudaFree              
+     18.0   27,732,684,937  5,831,682        4,755.5       4,101.0     1,887    116,706,508       53,985.9  cudaMalloc            
+      1.7    2,615,863,313    777,663        3,363.7       3,214.0     2,776      3,291,412        4,732.4  cudaMemset            
+      0.8    1,246,884,700    388,944        3,205.8       2,987.0     2,709     30,790,327       49,695.3  cudaLaunchKernel      
+      0.7    1,124,199,722        120    9,368,331.0     524,957.0    11,794    142,094,213   29,834,120.0  cudaMemcpyAsync       
+      0.1      138,757,757         10   13,875,775.7      63,311.5    47,175    138,225,929   43,692,190.9  cudaMemGetInfo        
+      0.0        6,875,828         54      127,330.1      50,974.5     8,457        397,490      133,621.0  cudaDeviceSynchronize 
+      0.0        6,116,271        108       56,632.1      26,393.5     9,732      1,365,614      139,491.2  cudaMallocManaged     
+      0.0          372,696         10       37,269.6      26,575.0    23,299        138,043       35,450.2  cudaStreamCreate      
+      0.0          282,421         20       14,121.1      15,143.5     7,560         21,934        5,236.6  cudaMemsetAsync       
+      0.0          164,588         10       16,458.8      17,643.5    12,496         20,602        3,197.2  cudaStreamDestroy     
+      0.0              942          1          942.0         942.0       942            942            0.0  cuModuleGetLoadingMode
+
+[6/8] Executing 'cuda_gpu_kern_sum' stats report
+
+ Time (%)  Total Time (ns)  Instances     Avg (ns)         Med (ns)       Min (ns)      Max (ns)      StdDev (ns)                                                   Name                                                
+ --------  ---------------  ---------  ---------------  ---------------  -----------  -------------  -------------  ----------------------------------------------------------------------------------------------------
+     84.6   44,154,951,461         27  1,635,368,572.6  1,624,781,353.0  998,479,665  2,553,618,319  454,663,004.7  kernelCallStage1(int, int, int, ABM *, Graph *, DeviceGraph *, DeviceGraph *, device_map<int, Node>…
+     11.2    5,822,110,713         27    215,633,730.1    210,121,813.0  113,962,786    348,537,325   73,651,250.4  kernelCallStage3(int, int, int, ABM *, Graph *, int, device_map<int, Node>::device_view, ABMStageSt…
+      2.0    1,058,446,247         10    105,844,624.7    103,791,992.0   77,915,551    142,080,599   21,943,314.8  void cuco::legacy::detail::insert<(unsigned long)128, (unsigned int)4, cuco::pair<int, int> *, cuda…
+      1.2      646,630,266         27     23,949,269.1     24,883,449.0    9,391,788     34,351,626    6,294,789.1  kernelCallStage2(int, int, int, ABM *, Graph *, cuco::static_set_ref<int, (cuda::std::__4::thread_s…
+      0.9      468,676,885    388,742          1,205.6          1,248.0        1,087          1,696           95.3  void cub::CUB_300002_SM_900::detail::for_each::static_kernel<cub::CUB_300002_SM_900::detail::for_ea…
+      0.1       30,063,392         27      1,113,459.0      1,130,274.0      842,722      1,325,795      105,884.6  kernelCallStage4(int, int, int, ABM *, Graph *, int, device_map<int, Node>::device_view, ABMStageSt…
+      0.0        6,693,776         54        123,958.8         46,192.0        4,864        400,801      134,461.0  kernel_extract_vector_sizes(device_vector *, int *, int)                                            
+      0.0        3,049,639         10        304,963.9        273,696.5      130,401        509,729      140,170.8  void cuco::detail::open_addressing_ns::insert_if_n<(int)1, (int)128, int *, thrust::THRUST_300002_S…
+      0.0           34,944         10          3,494.4          3,408.0        3,040          4,288          382.5  void cuco::legacy::detail::initialize<(unsigned long)256, cuda::__4::atomic<int, (cuda::std::__4::t…
+      0.0           14,112         10          1,411.2          1,392.0        1,344          1,600           84.6  void cub::CUB_300002_SM_900::detail::for_each::static_kernel<cub::CUB_300002_SM_900::detail::for_ea…
+
+[7/8] Executing 'cuda_gpu_mem_time_sum' stats report
+
+ Time (%)  Total Time (ns)    Count    Avg (ns)  Med (ns)  Min (ns)  Max (ns)   StdDev (ns)               Operation              
+ --------  ---------------  ---------  --------  --------  --------  ---------  -----------  ------------------------------------
+     43.5    3,768,808,909  1,555,069   2,423.6   2,432.0     1,824     35,904        138.3  [CUDA memcpy Device-to-Host]        
+     43.1    3,737,292,057  4,665,139     801.1     768.0       703  6,186,223      7,901.4  [CUDA memcpy Host-to-Device]        
+     13.3    1,149,750,776    777,683   1,478.4   1,472.0       704    487,777      3,955.2  [CUDA memset]                       
+      0.1       11,554,643      3,864   2,990.3   2,591.0     2,303     31,680      1,641.6  [CUDA memcpy Unified Host-to-Device]
+      0.0        3,217,853        800   4,022.3   2,927.5     2,367     22,177      3,010.4  [CUDA memcpy Unified Device-to-Host]
+
+[8/8] Executing 'cuda_gpu_mem_size_sum' stats report
+
+ Total (MB)     Count    Avg (MB)  Med (MB)  Min (MB)  Max (MB)   StdDev (MB)               Operation              
+ -----------  ---------  --------  --------  --------  ---------  -----------  ------------------------------------
+ 162,293.085    777,683     0.209     0.082     0.000  1,578.712       12.904  [CUDA memset]                       
+   1,435.360  4,665,139     0.000     0.000     0.000     70.421        0.093  [CUDA memcpy Host-to-Device]        
+     117.099  1,555,069     0.000     0.000     0.000      1.594        0.005  [CUDA memcpy Device-to-Host]        
+     103.416      3,864     0.027     0.008     0.004      0.995        0.085  [CUDA memcpy Unified Host-to-Device]
+      66.519        800     0.083     0.029     0.004      1.044        0.162  [CUDA memcpy Unified Device-to-Host]
+
+Generated:
+    /home/jmukher/workspace/uiuc/citation_abm/profile/nsys-pa-10y-6p.nsys-rep
+    /home/jmukher/workspace/uiuc/citation_abm/profile/nsys-pa-10y-6p.sqlite
+SUCCESS: 484M → profile/nsys-pa-10y-6p.nsys-rep
