@@ -43,3 +43,4 @@ sys	0m30.798s
 Running growth rate 5% with 16 thread
 ./output/cpu-parallel-static-output-30y-5p.edgelist
 ./output/cpu-parallel-static-output-30y-5p.aux
+[2026-06-10T02:38:26.003] error: *** JOB 12163729 ON h001 CANCELLED AT 2026-06-10T02:38:26 DUE TO TIME LIMIT ***

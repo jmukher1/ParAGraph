@@ -10,7 +10,7 @@ OUTPUT=$(readlink -f ./output)/
 ERRORS=$(readlink -f ./errors)/
 
 NUM_THREADS=16
-NUM_CYCLES=10
+NUM_CYCLES=3
 
 INPUT_EDGELIST="sj_edgelist"
 INPUT_NODELIST="sj_nodelist"
@@ -58,7 +58,7 @@ do
 done
 
 NUM_CYCLES=30
-for GROWTH_PERCENT in 1 3 5 6
+for GROWTH_PERCENT in 5 6
 do
     GROWTH_RATE=$(echo "scale=2; $GROWTH_PERCENT/100" | bc)
 
