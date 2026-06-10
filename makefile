@@ -3,10 +3,9 @@ CC = g++
 OMPFLAGS=-fopenmp
 CXXFLAGS = -O3 -std=c++20  
 INCDIRS = -I.
-LIBS= -lpthread -lcudart -lcublas
+LIBS= -lpthread
 LIBDIRS=-L$(CUDA_HOME)/lib64
 LPFLAGS = -lstdc++
-NVLINKFLAGS= -lcudadevrt -lcudart
 SRC_DIR = src
 BUILD_DIR = build
 INC_DIR = ./includes
@@ -20,7 +19,7 @@ TARGET = abm
 OBJS = $(BUILD_DIR)/main.o $(BUILD_DIR)/abm.o $(BUILD_DIR)/graph.o 
 
 $(TARGET): $(OBJS)
-	$(CC) $(CXXFLAGS) $(OMPFLAGS) $^ $(LIBDIRS) $(INCDIRS) $(LIBS) -o $@ $(NVLINKFLAGS)
+	$(CC) $(CXXFLAGS) $(OMPFLAGS) $^ $(LIBDIRS) $(INCDIRS) $(LIBS) -o $@ 
 
 $(BUILD_DIR)/graph.o: $(SRC_DIR)/graph.cpp $(INC_DIR)/graph.h
 	$(CC) $(CXXFLAGS) -c $(INCDIRS) $< -o $@

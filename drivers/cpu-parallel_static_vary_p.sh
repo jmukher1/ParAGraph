@@ -9,7 +9,7 @@ mkdir -p errors
 OUTPUT=$(readlink -f ./output)/
 ERRORS=$(readlink -f ./errors)/
 
-NUM_THREADS=1
+NUM_THREADS=16
 NUM_CYCLES=10
 
 INPUT_EDGELIST="sj_edgelist"
@@ -25,10 +25,10 @@ for GROWTH_PERCENT in 1 3 5 6
 do
     GROWTH_RATE=$(echo "scale=2; $GROWTH_PERCENT/100" | bc)
 
-    OUTPUT_FILE="./output/cpu-serial-static-output-${NUM_CYCLES}y-${GROWTH_PERCENT}p.edgelist"
-    OUTPUT_LOG="./output/cpu-serial-static-output-${NUM_CYCLES}y-${GROWTH_PERCENT}p-${NUM_THREADS}t.log"
-    OUTPUT_AUX="./output/cpu-serial-static-output-${NUM_CYCLES}y-${GROWTH_PERCENT}p.aux"
-    OUT_FILE="./output/cpu-serial-static-${NUM_CYCLES}y-${GROWTH_PERCENT}p-${NUM_THREADS}t-abm.out"
+    OUTPUT_FILE="./output/cpu-parallel-static-output-${NUM_CYCLES}y-${GROWTH_PERCENT}p.edgelist"
+    OUTPUT_LOG="./output/cpu-parallel-static-output-${NUM_CYCLES}y-${GROWTH_PERCENT}p-${NUM_THREADS}t.log"
+    OUTPUT_AUX="./output/cpu-parallel-static-output-${NUM_CYCLES}y-${GROWTH_PERCENT}p.aux"
+    OUT_FILE="./output/cpu-parallel-static-${NUM_CYCLES}y-${GROWTH_PERCENT}p-${NUM_THREADS}t-abm.out"
 
     echo "Running growth rate ${GROWTH_PERCENT}% with ${NUM_THREADS} thread"
     echo $OUTPUT_FILE
@@ -62,10 +62,10 @@ for GROWTH_PERCENT in 1 3 5 6
 do
     GROWTH_RATE=$(echo "scale=2; $GROWTH_PERCENT/100" | bc)
 
-    OUTPUT_FILE="./output/cpu-serial-static-output-${NUM_CYCLES}y-${GROWTH_PERCENT}p.edgelist"
-    OUTPUT_LOG="./output/cpu-serial-static-output-${NUM_CYCLES}y-${GROWTH_PERCENT}p-${NUM_THREADS}t.log"
-    OUTPUT_AUX="./output/cpu-serial-static-output-${NUM_CYCLES}y-${GROWTH_PERCENT}p.aux"
-    OUT_FILE="./output/cpu-serial-static-${NUM_CYCLES}y-${GROWTH_PERCENT}p-${NUM_THREADS}t-abm.out"
+    OUTPUT_FILE="./output/cpu-parallel-static-output-${NUM_CYCLES}y-${GROWTH_PERCENT}p.edgelist"
+    OUTPUT_LOG="./output/cpu-parallel-static-output-${NUM_CYCLES}y-${GROWTH_PERCENT}p-${NUM_THREADS}t.log"
+    OUTPUT_AUX="./output/cpu-parallel-static-output-${NUM_CYCLES}y-${GROWTH_PERCENT}p.aux"
+    OUT_FILE="./output/cpu-parallel-static-${NUM_CYCLES}y-${GROWTH_PERCENT}p-${NUM_THREADS}t-abm.out"
 
     echo "Running growth rate ${GROWTH_PERCENT}% with ${NUM_THREADS} thread"
     echo $OUTPUT_FILE
