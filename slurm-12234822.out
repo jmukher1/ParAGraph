@@ -1,0 +1,28 @@
+Running growth rate 1% with 16 thread
+./output/cpu-parallel-profile-static-output-3y-1p.edgelist
+./output/cpu-parallel-profile-static-output-3y-1p.aux
+
+real	0m23.072s
+user	2m14.162s
+sys	0m1.121s
+Running growth rate 3% with 16 thread
+./output/cpu-parallel-profile-static-output-3y-3p.edgelist
+./output/cpu-parallel-profile-static-output-3y-3p.aux
+
+real	0m46.270s
+user	6m46.160s
+sys	0m2.737s
+Running growth rate 5% with 16 thread
+./output/cpu-parallel-profile-static-output-3y-5p.edgelist
+./output/cpu-parallel-profile-static-output-3y-5p.aux
+
+real	1m12.906s
+user	12m12.572s
+sys	0m3.305s
+Running growth rate 6% with 16 thread
+./output/cpu-parallel-profile-static-output-3y-6p.edgelist
+./output/cpu-parallel-profile-static-output-3y-6p.aux
+
+real	1m26.440s
+user	14m35.128s
+sys	0m3.413s
