@@ -1,0 +1,4 @@
+Running growth rate 6% with 1 thread
+./output/cpu-serial-profile-static-output-3p6p-30y-6p.edgelist
+./output/cpu-serial-profile-static-output-3p6p-30y-6p.aux
+[2026-06-11T02:40:32.003] error: *** JOB 12225836 ON h009 CANCELLED AT 2026-06-11T02:40:32 DUE TO TIME LIMIT ***

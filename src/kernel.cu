@@ -1,5 +1,6 @@
 #include <iostream>
 
+#include "epoch_profiler.cuh"
 #include "abm.cuh"
 #include "device_map.cuh"
 #include "int2.cuh"
@@ -821,8 +822,570 @@ void buildOneNodeConnections(ABM* abm, Graph* graph,
                         << " MB out of " << (total_mem / (1024.0 * 1024.0)) << " MB\n"; */
 }
 
+// ─────────────────────────────────────────────────────────────────────────────
+//  Internal: instrumented buildOneNodeConnections
+//  Identical to original except:
+//    - Accepts EpochTiming* _ep_ptr (written to by timers)
+//    - GpuTimer/HostTimer wrappers around each stage
+// ─────────────────────────────────────────────────────────────────────────────
+static void buildOneNodeConnections_timed(
+    ABM* abm, Graph* graph,
+    std::vector<int>& new_nodes_vec,
+    int same_year_source_nodes_capacity,
+    std::set<int> same_year_source_nodes,
+    std::vector<std::pair<int,int>>& new_edges_vec,
+    int num_generator_node_citation,
+    double* pa_arr, double* recency_arr, double* fit_arr,
+    double* pa_weight_arr, double* rec_weight_arr,
+    double* fit_weight_arr, double* alpha_arr,
+    int* out_degree_arr,
+    int current_year, int current_graph_size,
+    int initial_graph_size, int final_graph_size,
+    int max_batch_size,
+    EpochTiming* _ep_ptr)           // <-- new param
+{
+    EpochTiming& _ep = *_ep_ptr;    // alias for macros
 
+    int per_thread_citations_vector_capacity = 250;
+    int per_thread_vector_capacity           = current_graph_size;
+    int per_thread_selected_set_capacity     = per_thread_citations_vector_capacity;
+    int num_new_nodes        = new_nodes_vec.size();
+    int growth_in_graph_size = final_graph_size - initial_graph_size;
+
+    cudaStream_t stream;
+    CUDA_CHECK(cudaStreamCreate(&stream));
+
+    // ── Allocate device arrays ────────────────────────────────────────────────
+    int* d_new_nodes_arr = nullptr;
+    CUDA_CHECK(cudaMalloc(&d_new_nodes_arr, num_new_nodes * sizeof(int)));
+
+    double *d_pa_arr, *d_recency_arr, *d_fit_arr;
+    double *d_pa_weight_arr, *d_rec_weight_arr, *d_fit_weight_arr, *d_alpha_arr;
+    int*    d_out_degree_arr;
+    CUDA_CHECK(cudaMalloc(&d_pa_arr,         final_graph_size * sizeof(double)));
+    CUDA_CHECK(cudaMalloc(&d_recency_arr,    final_graph_size * sizeof(double)));
+    CUDA_CHECK(cudaMalloc(&d_fit_arr,        final_graph_size * sizeof(double)));
+    CUDA_CHECK(cudaMalloc(&d_pa_weight_arr,  growth_in_graph_size * sizeof(double)));
+    CUDA_CHECK(cudaMalloc(&d_rec_weight_arr, growth_in_graph_size * sizeof(double)));
+    CUDA_CHECK(cudaMalloc(&d_fit_weight_arr, growth_in_graph_size * sizeof(double)));
+    CUDA_CHECK(cudaMalloc(&d_alpha_arr,      growth_in_graph_size * sizeof(double)));
+    CUDA_CHECK(cudaMalloc(&d_out_degree_arr, growth_in_graph_size * sizeof(int)));
+
+    // ── UPLOAD: score arrays + new-nodes → device (timed) ────────────────────
+    {
+        GpuTimer _gt; _gt.start(stream);
+        CUDA_CHECK(cudaMemcpyAsync(d_new_nodes_arr, new_nodes_vec.data(),
+            num_new_nodes*sizeof(int), cudaMemcpyHostToDevice, stream));
+        CUDA_CHECK(cudaMemcpyAsync(d_pa_arr,        pa_arr,        final_graph_size*sizeof(double), cudaMemcpyHostToDevice, stream));
+        CUDA_CHECK(cudaMemcpyAsync(d_recency_arr,   recency_arr,   final_graph_size*sizeof(double), cudaMemcpyHostToDevice, stream));
+        CUDA_CHECK(cudaMemcpyAsync(d_fit_arr,        fit_arr,       final_graph_size*sizeof(double), cudaMemcpyHostToDevice, stream));
+        CUDA_CHECK(cudaMemcpyAsync(d_pa_weight_arr, pa_weight_arr, growth_in_graph_size*sizeof(double), cudaMemcpyHostToDevice, stream));
+        CUDA_CHECK(cudaMemcpyAsync(d_rec_weight_arr,rec_weight_arr,growth_in_graph_size*sizeof(double), cudaMemcpyHostToDevice, stream));
+        CUDA_CHECK(cudaMemcpyAsync(d_fit_weight_arr,fit_weight_arr,growth_in_graph_size*sizeof(double), cudaMemcpyHostToDevice, stream));
+        CUDA_CHECK(cudaMemcpyAsync(d_alpha_arr,     alpha_arr,     growth_in_graph_size*sizeof(double), cudaMemcpyHostToDevice, stream));
+        CUDA_CHECK(cudaMemcpyAsync(d_out_degree_arr,out_degree_arr,growth_in_graph_size*sizeof(int),    cudaMemcpyHostToDevice, stream));
+        CUDA_CHECK(cudaStreamSynchronize(stream));
+        _ep.t_upload += _gt.stop(stream);
+    }
+
+    // ── CSR BUILD (timed) ─────────────────────────────────────────────────────
+    DeviceGraph* d_forward_adj_map_Graph;
+    DeviceGraph* d_backward_adj_map_Graph;
+    CUDA_CHECK(cudaMalloc(&d_forward_adj_map_Graph,  sizeof(DeviceGraph)));
+    CUDA_CHECK(cudaMalloc(&d_backward_adj_map_Graph, sizeof(DeviceGraph)));
+    {
+        HostTimer _ht; _ht.start();
+        prepareGraph(graph->getForwardAdjMap(),  d_forward_adj_map_Graph,  graph->getNodeSetSize());
+        prepareGraph(graph->getBackwardAdjMap(), d_backward_adj_map_Graph, graph->getNodeSetSize());
+        int nodeAttrMapSize = graph->getNodeAttributeMapSize();
+        device_map<int,Node>* d_nodeAttributeMap = new device_map<int,Node>(nodeAttrMapSize);
+        convertHostMapToDeviceMap<int,Node>(graph->getNodeAttributeMap(), d_nodeAttributeMap, nodeAttrMapSize);
+        _ep.t_csr_build += _ht.stop_ms();
+
+        // ── SAME-YEAR SET ─────────────────────────────────────────────────────
+        set_type* d_same_year_source_nodes_set =
+            new set_type(same_year_source_nodes_capacity, cuco::empty_key<int>{empty_key_sentinel});
+        convertStdSetToDeviceStaticSet(same_year_source_nodes, *d_same_year_source_nodes_set);
+        auto d_same_year_source_nodes_set_ref = d_same_year_source_nodes_set->ref(
+            cuco::op::insert, cuco::op::find, cuco::op::erase, cuco::op::contains);
+
+        // ── LAUNCH CONFIG ─────────────────────────────────────────────────────
+        int threadBlockSizeX = 16, threadBlockSizeY = 16;
+        dim3 threads_per_block(threadBlockSizeX, threadBlockSizeY);
+        int threadBlockSize = threadBlockSizeX * threadBlockSizeY;
+        int batch_size = std::min(max_batch_size, num_new_nodes);
+        _ep.batch_size = batch_size;   // record first-batch B
+        unsigned long long seed = static_cast<unsigned long long>(time(NULL));
+
+        curandState* deviceStates_pool = nullptr;
+        CUDA_CHECK(cudaMalloc(&deviceStates_pool, batch_size * sizeof(curandState)));
+
+        device_vector* one_hop_neighborhood_vectors;
+        device_vector* two_hop_neighborhood_vectors;
+        device_vector_generic<int2>* d_new_edges_vec_vectors;
+        create_thread_vectors_bulk<int2>(num_new_nodes, out_degree_arr, &d_new_edges_vec_vectors);
+
+        // ── MINI-BATCH LOOP ───────────────────────────────────────────────────
+        for (int start = 0; start < num_new_nodes; start += batch_size) {
+
+            int this_batch_size  = std::min(batch_size, num_new_nodes - start);
+            int blocks_for_batch = (this_batch_size + threadBlockSize - 1) / threadBlockSize;
+            int num_threads      = this_batch_size;
+            _ep.num_minibatch++;
+
+            ABMStageState* d_states = nullptr;
+            cudaMalloc(&d_states, num_threads * sizeof(ABMStageState));
+            cudaMemset(d_states, 0, num_threads * sizeof(ABMStageState));
+
+            create_thread_vectors_int(num_threads, per_thread_vector_capacity, &one_hop_neighborhood_vectors);
+            create_thread_vectors_int(num_threads, per_thread_vector_capacity, &two_hop_neighborhood_vectors);
+
+            // ── BFS SLAB ALLOC + MEMSET (timed) ──────────────────────────────
+            int    num_words  = ((current_graph_size) + 31) / 32;
+            size_t slab_bytes = (size_t)this_batch_size * num_words * sizeof(uint32_t);
+
+            uint32_t *d_visited_slab, *d_queue_curr_slab, *d_queue_next_slab;
+            {
+                GpuTimer _gt; _gt.start(stream);
+                cudaMalloc(&d_visited_slab,    slab_bytes);
+                cudaMalloc(&d_queue_curr_slab, slab_bytes);
+                cudaMalloc(&d_queue_next_slab, slab_bytes);
+                cudaMemset(d_visited_slab,    0, slab_bytes);
+                cudaMemset(d_queue_curr_slab, 0, slab_bytes);
+                cudaMemset(d_queue_next_slab, 0, slab_bytes);
+                cudaStreamSynchronize(stream);
+                _ep.t_slab_alloc += _gt.stop(stream);
+            }
+
+            // descriptor pool
+            CompactBFSState* h_bfs_pool = new CompactBFSState[this_batch_size];
+            for (int i = 0; i < this_batch_size; ++i) {
+                h_bfs_pool[i].max_vertices       = final_graph_size;
+                h_bfs_pool[i].bitmap_words       = num_words;
+                size_t offset                    = (size_t)i * num_words;
+                h_bfs_pool[i].d_visited_bitmap     = d_visited_slab    + offset;
+                h_bfs_pool[i].d_queue_bitmap_curr  = d_queue_curr_slab + offset;
+                h_bfs_pool[i].d_queue_bitmap_next  = d_queue_next_slab + offset;
+            }
+            CompactBFSState* d_bfs_pool;
+            cudaMalloc(&d_bfs_pool, this_batch_size * sizeof(CompactBFSState));
+            cudaMemcpy(d_bfs_pool, h_bfs_pool,
+                       this_batch_size * sizeof(CompactBFSState), cudaMemcpyHostToDevice);
+            delete[] h_bfs_pool;
+
+            // ── STAGE 1: BFS (timed) ──────────────────────────────────────────
+            {
+                GpuTimer _gt; _gt.start(stream);
+                kernelCallStage1<<<blocks_for_batch, threads_per_block, 0, stream>>>(
+                    start, this_batch_size, num_new_nodes,
+                    abm, graph,
+                    d_forward_adj_map_Graph, d_backward_adj_map_Graph,
+                    d_nodeAttributeMap->get_device_view(),
+                    d_states, d_new_nodes_arr,
+                    num_generator_node_citation,
+                    one_hop_neighborhood_vectors,
+                    two_hop_neighborhood_vectors,
+                    d_bfs_pool, graph->getNodeSetSize());
+                CUDA_CHECK(cudaGetLastError());
+                CUDA_CHECK(cudaStreamSynchronize(stream));
+                _ep.t_stage1_bfs += _gt.stop(stream);
+            }
+
+            // free BFS slabs (stage-local)
+            if (d_bfs_pool) { cudaFree(d_bfs_pool); d_bfs_pool=nullptr; }
+            CUDA_CHECK(cudaFree(d_visited_slab));
+            CUDA_CHECK(cudaFree(d_queue_curr_slab));
+            CUDA_CHECK(cudaFree(d_queue_next_slab));
+
+            curandState* deviceStates = deviceStates_pool;
+            int* one_hop_sizes = extract_vector_sizes(one_hop_neighborhood_vectors, num_threads);
+
+            device_vector_generic<int>* citations_vectors;
+            int* per_thread_citations_vector_capacities = new int[num_threads];
+            for (int i=0;i<num_threads;i++)
+                per_thread_citations_vector_capacities[i] = per_thread_citations_vector_capacity;
+            create_thread_vectors_bulk<int>(num_threads, per_thread_citations_vector_capacities, &citations_vectors);
+
+            device_vector_soa<float>* element_index_vec_vectors;
+            create_soa_vectors_bulk<float>(num_threads, one_hop_sizes, &element_index_vec_vectors);
+            DeviceHeapArray<float> one_hop_heaps =
+                allocate_device_heaps_host_only<float>(num_threads, per_thread_citations_vector_capacity);
+            delete[] one_hop_sizes;
+
+            // ── STAGE 2: WS1 1-hop sampling (timed) ──────────────────────────
+            {
+                GpuTimer _gt; _gt.start(stream);
+                kernelCallStage2<<<blocks_for_batch, threads_per_block, 0, stream>>>(
+                    start, this_batch_size, num_new_nodes,
+                    abm, graph,
+                    d_same_year_source_nodes_set_ref,
+                    d_states, deviceStates, seed,
+                    d_new_nodes_arr,
+                    one_hop_neighborhood_vectors,
+                    one_hop_heaps.d_heaps,
+                    citations_vectors,
+                    d_pa_arr, d_recency_arr, d_fit_arr,
+                    d_pa_weight_arr, d_rec_weight_arr, d_fit_weight_arr, d_alpha_arr,
+                    d_out_degree_arr,
+                    abm->get_fully_random_citations(),
+                    num_generator_node_citation,
+                    current_year, current_graph_size,
+                    initial_graph_size, final_graph_size);
+                CUDA_CHECK(cudaGetLastError());
+                CUDA_CHECK(cudaStreamSynchronize(stream));
+                _ep.t_stage2_ws1 += _gt.stop(stream);
+            }
+
+            // free 1-hop (stage-local)
+            destroy_thread_vectors_int(one_hop_neighborhood_vectors, num_threads);
+            one_hop_neighborhood_vectors = nullptr;
+            destroy_device_heaps<float>(one_hop_heaps);
+            for (int i=0;i<num_threads;i++) sort_soa_vector<float>(element_index_vec_vectors,i);
+
+            int* two_hop_sizes = extract_vector_sizes(two_hop_neighborhood_vectors, num_threads);
+            DeviceHeapArray<float> heaps =
+                allocate_device_heaps_host_only<float>(num_threads, per_thread_citations_vector_capacity);
+            delete[] two_hop_sizes;
+
+            ThreadSets* selected_citations_thread_sets = new ThreadSets();
+            create_thread_sets(num_threads, per_thread_selected_set_capacity, selected_citations_thread_sets);
+
+            // ── STAGE 3: WS2 2-hop sampling (timed) ──────────────────────────
+            {
+                GpuTimer _gt; _gt.start(stream);
+                kernelCallStage3<<<blocks_for_batch, threads_per_block, 0, stream>>>(
+                    start, this_batch_size, num_new_nodes,
+                    abm, graph, graph->getNodeSetSize(),
+                    d_nodeAttributeMap->get_device_view(),
+                    d_states, deviceStates,
+                    d_new_nodes_arr,
+                    two_hop_neighborhood_vectors,
+                    heaps.d_heaps,
+                    citations_vectors,
+                    selected_citations_thread_sets->set_refs,
+                    d_pa_arr, d_recency_arr, d_fit_arr,
+                    d_pa_weight_arr, d_rec_weight_arr, d_fit_weight_arr, d_alpha_arr,
+                    d_out_degree_arr,
+                    num_generator_node_citation,
+                    current_year, current_graph_size,
+                    initial_graph_size, final_graph_size);
+                CUDA_CHECK(cudaGetLastError());
+                CUDA_CHECK(cudaStreamSynchronize(stream));
+                _ep.t_stage3_ws2 += _gt.stop(stream);
+            }
+
+            destroy_device_heaps<float>(heaps);
+            destroy_thread_vectors_int(two_hop_neighborhood_vectors, num_threads);
+
+            // ── STAGE 4: random fill + edge write (timed) ────────────────────
+            {
+                GpuTimer _gt; _gt.start(stream);
+                kernelCallStage4<<<blocks_for_batch, threads_per_block, 0, stream>>>(
+                    start, this_batch_size, num_new_nodes,
+                    abm, graph, graph->getNodeSetSize(),
+                    d_nodeAttributeMap->get_device_view(),
+                    d_states, deviceStates,
+                    d_new_nodes_arr,
+                    citations_vectors,
+                    d_new_edges_vec_vectors,
+                    selected_citations_thread_sets->set_refs,
+                    d_out_degree_arr,
+                    num_generator_node_citation,
+                    current_year, current_graph_size,
+                    initial_graph_size, final_graph_size,
+                    per_thread_selected_set_capacity);
+                CUDA_CHECK(cudaGetLastError());
+                CUDA_CHECK(cudaStreamSynchronize(stream));
+                _ep.t_stage4_fill += _gt.stop(stream);
+            }
+
+            cleanup_vectors_bulk<int>(citations_vectors, num_threads);
+            destroy_thread_sets(selected_citations_thread_sets);
+            CUDA_CHECK(cudaFree(d_states));
+            delete[] per_thread_citations_vector_capacities;
+        }
+        // end mini-batch loop
+
+        CUDA_CHECK(cudaFree(deviceStates_pool));
+
+        // ── DOWNLOAD: edge buffer → host (timed) ─────────────────────────────
+        {
+            GpuTimer _gt; _gt.start(stream);
+            append_device_to_host<int2>(d_new_edges_vec_vectors, new_edges_vec,
+                                        num_new_nodes, out_degree_arr,
+                                        graph->getNodeSetSize());
+            CUDA_CHECK(cudaStreamSynchronize(stream));
+            _ep.t_download += _gt.stop(stream);
+        }
+
+        _ep.edges_out = (long long)new_edges_vec.size();
+
+        cleanup_vectors_bulk<int2>(d_new_edges_vec_vectors, num_new_nodes);
+        delete d_same_year_source_nodes_set;
+        freeDeviceMap(d_nodeAttributeMap);
+    } // end CSR scope
+
+    freeDeviceGraph(d_forward_adj_map_Graph);
+    freeDeviceGraph(d_backward_adj_map_Graph);
+    CUDA_CHECK(cudaFree(d_new_nodes_arr));
+    CUDA_CHECK(cudaFree(d_pa_arr));   CUDA_CHECK(cudaFree(d_recency_arr));
+    CUDA_CHECK(cudaFree(d_fit_arr));  CUDA_CHECK(cudaFree(d_pa_weight_arr));
+    CUDA_CHECK(cudaFree(d_rec_weight_arr)); CUDA_CHECK(cudaFree(d_fit_weight_arr));
+    CUDA_CHECK(cudaFree(d_alpha_arr)); CUDA_CHECK(cudaFree(d_out_degree_arr));
+    CUDA_CHECK(cudaStreamDestroy(stream));
+}
+
+
+// ─────────────────────────────────────────────────────────────────────────────
+//  Instrumented execute()  — drop-in replacement
+// ─────────────────────────────────────────────────────────────────────────────
 int execute(ABM* abm) {
+
+    HostTimer e2e_timer; e2e_timer.start();
+    std::chrono::steady_clock::time_point t0 = std::chrono::steady_clock::now();
+
+    std::vector<EpochTiming> all_epochs;   // <-- collects per-epoch data
+
+    // ── Graph load (unchanged) ────────────────────────────────────────────────
+    Graph* graph = new Graph(abm->edgelist, abm->nodelist);
+    abm->WriteToLogFile("loaded graph", Log::info);
+    abm->InitializeFitness(graph);
+    abm->WriteToLogFile("initialized fitness for the seed graph", Log::debug);
+
+    int start_year           = abm->GetMaxYear(graph) + 1;
+    int next_node_id         = abm->GetMaxNode(graph) + 1;
+    int initial_next_node_id = graph->getNodeSetSize();
+    int initial_graph_size   = graph->GetNodeSet().size();
+    int final_graph_size     = abm->GetFinalGraphSize(graph);
+    int growth_in_graph_size = final_graph_size - initial_graph_size;
+
+    int*    in_degree_arr     = new int   [final_graph_size];
+    int*    fitness_arr       = new int   [final_graph_size];
+    double* pa_arr            = new double[final_graph_size];
+    double* fit_arr           = new double[final_graph_size];
+    double* recency_arr       = new double[final_graph_size];
+    double* random_weight_arr = new double[final_graph_size];
+    double* current_score_arr = new double[final_graph_size];
+    double* pa_weight_arr     = new double[growth_in_graph_size];
+    double* rec_weight_arr    = new double[growth_in_graph_size];
+    double* fit_weight_arr    = new double[growth_in_graph_size];
+    double* alpha_arr         = new double[growth_in_graph_size];
+    int*    out_degree_arr    = new int   [growth_in_graph_size];
+
+    abm->PopulateWeightArrs(pa_weight_arr, rec_weight_arr, fit_weight_arr, growth_in_graph_size);
+    abm->PopulateAlphaArr(alpha_arr, growth_in_graph_size);
+    abm->PopulateOutDegreeArr(out_degree_arr, growth_in_graph_size);
+
+    std::vector<int> new_nodes_vec;
+    std::set<int>    same_year_source_nodes;
+    std::vector<std::pair<int,int>> new_edges_vec;
+    int max_batch_size = 23000;
+
+    // =========================================================================
+    //  EPOCH LOOP
+    // =========================================================================
+    for (int current_year = start_year;
+         current_year < start_year + abm->num_cycles;
+         current_year++)
+    {
+        int current_graph_size = graph->GetNodeSet().size();
+        int num_new_nodes      = (int)std::ceil(current_graph_size * abm->growth_rate);
+
+        // start new epoch record
+        EpochTiming _ep;
+        _ep.year = current_year;
+        _ep.N    = current_graph_size;
+        _ep.delta= num_new_nodes;
+
+        printf("\n[EP %d] N=%d delta=%d", current_year, current_graph_size, num_new_nodes);
+
+        // ── CPU pre: score arrays (timed) ─────────────────────────────────────
+        HOST_TIME(t_fill_indeg,   abm->FillInDegreeArr(graph, in_degree_arr));
+        HOST_TIME(t_fill_fitness, abm->FillFitnessArr(graph, current_year, fitness_arr));
+        HOST_TIME(t_fill_recency, abm->FillRecencyArr(graph, current_year, recency_arr));
+        {
+            HostTimer _ht; _ht.start();
+            abm->CalculateScores(in_degree_arr, pa_arr,  current_graph_size);
+            abm->CalculateScores(fitness_arr,   fit_arr, current_graph_size);
+            _ep.t_calc_scores += _ht.stop_ms();
+        }
+
+        // ── New-node init (timed) ─────────────────────────────────────────────
+        {
+            HostTimer _ht; _ht.start();
+            for (int i = 0; i < num_new_nodes; i++) {
+                int seq = current_graph_size + i;
+                graph->continuous_node_mapping[next_node_id]         = seq;
+                graph->reverse_continuous_node_mapping[seq]          = next_node_id;
+                new_nodes_vec.push_back(seq);
+                graph->SetIntAttribute("year", seq, current_year);
+                graph->setType(AGENT_TYPE, seq);
+                next_node_id++;
+            }
+            _ep.t_node_init += _ht.stop_ms();
+        }
+
+        // ── Same-year set (timed) ─────────────────────────────────────────────
+        HOST_TIME(t_same_year,
+            abm->FillSameYearSourceNodes(same_year_source_nodes, new_nodes_vec.size()));
+        int same_year_source_nodes_capacity = same_year_source_nodes.size();
+
+        // ── Generator-node assignment (timed) ────────────────────────────────
+        {
+            HostTimer _ht; _ht.start();
+            for (size_t i = 0; i < new_nodes_vec.size(); i++) {
+                int new_node        = new_nodes_vec[i];
+                int generatorNodeId = abm->getGeneratorNode(graph);
+                abm->updateGraphAttributesGeneratorNode(graph, new_node, generatorNodeId);
+            }
+            _ep.t_gen_assign += _ht.stop_ms();
+        }
+
+        int num_generator_node_citation = 1;
+
+        // ── GPU pipeline (all stages timed inside) ───────────────────────────
+        try {
+            buildOneNodeConnections_timed(
+                abm, graph,
+                new_nodes_vec, same_year_source_nodes_capacity,
+                same_year_source_nodes, new_edges_vec,
+                num_generator_node_citation,
+                pa_arr, recency_arr, fit_arr,
+                pa_weight_arr, rec_weight_arr, fit_weight_arr, alpha_arr,
+                out_degree_arr,
+                current_year, current_graph_size,
+                initial_graph_size, final_graph_size,
+                max_batch_size,
+                &_ep);
+        } catch (const std::exception& e) {
+            std::cerr << "Exception: " << e.what() << std::endl;
+            return 1;
+        }
+
+        // ── Host graph update: batch edge insertion (timed) ──────────────────
+        {
+            HostTimer _ht; _ht.start();
+            graph->node_set.insert(new_nodes_vec.begin(), new_nodes_vec.end());
+            std::sort(new_edges_vec.begin(), new_edges_vec.end());
+            const size_t E = new_edges_vec.size();
+            std::vector<std::pair<int,int>> rev_edges(E);
+            for (size_t ei=0;ei<E;++ei)
+                rev_edges[ei]={new_edges_vec[ei].second, new_edges_vec[ei].first};
+            std::sort(rev_edges.begin(), rev_edges.end());
+            std::unordered_set<int> udn;
+            udn.reserve((new_nodes_vec.size()+E)*2);
+            udn.insert(new_nodes_vec.begin(), new_nodes_vec.end());
+
+            #pragma omp parallel sections num_threads(2)
+            {
+                #pragma omp section
+                {
+                    auto it = new_edges_vec.cbegin();
+                    while (it != new_edges_vec.cend()) {
+                        const int src = it->first;
+                        const auto run_end = std::upper_bound(
+                            it, new_edges_vec.cend(),
+                            std::make_pair(src, std::numeric_limits<int>::max()));
+                        auto& fs = graph->forward_adj_map[src];
+                        for (auto e=it;e!=run_end;++e) fs.insert(fs.end(),e->second);
+                        it = run_end;
+                    }
+                }
+                #pragma omp section
+                {
+                    auto it = rev_edges.cbegin();
+                    while (it != rev_edges.cend()) {
+                        const int dst = it->first;
+                        const auto run_end = std::upper_bound(
+                            it, rev_edges.cend(),
+                            std::make_pair(dst, std::numeric_limits<int>::max()));
+                        auto& bs = graph->backward_adj_map[dst];
+                        for (auto e=it;e!=run_end;++e) bs.insert(bs.end(),e->second);
+                        it = run_end;
+                    }
+                }
+            }
+            for (const auto& [src,dst]:new_edges_vec) udn.insert(dst);
+            _ep.t_edge_insert += _ht.stop_ms();
+
+            // ── In-degree update (timed) ──────────────────────────────────────
+            HOST_TIME(t_indeg_update,
+                graph->updateNodeInDegreeOutDegree(new_nodes_vec, udn, current_year));
+        }
+
+        // ── Fitness assignment (timed) ────────────────────────────────────────
+        {
+            HostTimer _ht; _ht.start();
+            abm->AssignPeakFitnessValues(graph, new_nodes_vec);
+            abm->AssignFitnessLagDuration(graph, new_nodes_vec);
+            abm->AssignFitnessPeakDuration(graph, new_nodes_vec);
+            abm->PlantNodes(graph, new_nodes_vec, current_year - start_year + 1);
+            _ep.t_fitness_asgn += _ht.stop_ms();
+        }
+
+        // ── Adaptive batch size ───────────────────────────────────────────────
+        if ((int)new_nodes_vec.size() > max_batch_size)
+            max_batch_size = (int)std::ceil(max_batch_size * (1 - 0.5 * abm->growth_rate));
+
+        new_nodes_vec.clear();
+        new_edges_vec.clear();
+        same_year_source_nodes.clear();
+
+        // store epoch record and print compact line
+        all_epochs.push_back(_ep);
+        printf("  pre=%.0f csr=%.0f S1=%.0f S2=%.0f S3=%.0f S4=%.0f "
+               "xfer=%.0f upd=%.0f  total=%.0f ms  E/s=%.0f\n",
+            _ep.host_preproc(), _ep.t_csr_build,
+            (double)_ep.t_stage1_bfs, (double)_ep.t_stage2_ws1,
+            (double)_ep.t_stage3_ws2, (double)_ep.t_stage4_fill,
+            (double)_ep.transfers(), _ep.host_update(),
+            _ep.epoch_total(), _ep.edges_per_sec());
+
+    } // end epoch loop
+
+    // ── Output (unchanged) ───────────────────────────────────────────────────
+    abm->WriteToLogFile("finished sim", Log::info);
+    graph->WriteGraph(abm->output_file);
+    abm->UpdateGraphAttributesWeights(graph, initial_next_node_id,
+        pa_weight_arr, rec_weight_arr, fit_weight_arr, growth_in_graph_size);
+    abm->UpdateGraphAttributesAlphas(graph, initial_next_node_id,
+        alpha_arr, growth_in_graph_size);
+    abm->UpdateGraphAttributesOutDegrees(graph, initial_next_node_id,
+        out_degree_arr, growth_in_graph_size);
+    for (auto const& nid : graph->GetNodeSet()) {
+        graph->SetIntAttribute("in_degree",  nid, graph->GetInDegree(nid));
+        graph->SetIntAttribute("out_degree", nid, graph->GetOutDegree(nid));
+    }
+    graph->WriteAttributes(abm->auxiliary_information_file);
+
+    // ── E2E timing ────────────────────────────────────────────────────────────
+    std::chrono::steady_clock::time_point t1 = std::chrono::steady_clock::now();
+    double e2e_ms = std::chrono::duration_cast<std::chrono::milliseconds>(t1-t0).count();
+
+    std::ostringstream msg;
+    msg << "\nE2E Time, model: PA"
+        << "  num_cycles=" << abm->num_cycles
+        << "  growth_rate=" << (100.0*abm->growth_rate) << "%"
+        << "  threads=" << abm->num_processors
+        << "  elapsed=" << (long long)(e2e_ms/1000) << "s";
+    abm->WriteToLogFile(msg.str(), Log::info);
+    std::cout << msg.str() << std::endl;
+
+    // ── Print full epoch breakdown report ─────────────────────────────────────
+    print_epoch_report(all_epochs, e2e_ms, abm->num_processors,
+                       "PA", abm->growth_rate);
+
+    // ── Cleanup ───────────────────────────────────────────────────────────────
+    delete[] in_degree_arr;  delete[] fitness_arr;    delete[] pa_arr;
+    delete[] fit_arr;        delete[] recency_arr;    delete[] random_weight_arr;
+    delete[] current_score_arr;
+    delete[] pa_weight_arr;  delete[] rec_weight_arr; delete[] fit_weight_arr;
+    delete[] alpha_arr;      delete[] out_degree_arr;
+    delete graph;
+    return 0;
+}
+
+int execute2(ABM* abm) {
         std::chrono::steady_clock::time_point t0 = std::chrono::steady_clock::now();
         printf("\nStart execute."); 
 
