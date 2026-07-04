@@ -12,3 +12,44 @@ There are 6 different branches:
 6. mass_cuda: MASS_CUDA based mass_cuda based implemenation of Preferential Attachment model (similar to #1 and #2) and Erdos-Renyi model on GPU
 
 
+com-Amazon
+
+Amazon : Amazon product co-purchasing network and ground-truth communities
+
+
+https://snap.stanford.edu/data/com-Amazon.html
+
+
+Dataset statistics
+Nodes	334863
+Edges	925872
+Nodes in largest WCC	334863 (1.000)
+Edges in largest WCC	925872 (1.000)
+Nodes in largest SCC	334863 (1.000)
+Edges in largest SCC	925872 (1.000)
+Average clustering coefficient	0.3967
+Number of triangles	667129
+Fraction of closed triangles	0.07925
+Diameter (longest shortest path)	44
+90-percentile effective diameter	15
+
+
+https://snap.stanford.edu/data/com-Amazon.html
+com-Amazon
+
+python3 amazon_to_citation_seed.py --input ./com-amazon.ungraph.txt --out-prefix amz --start-year 1950 --end-year 2020  --recency-bins 356  --min-degree 0 --seed 4i2
+
+Reading edges from ./com-amazon.ungraph.txt ...
+  334,863 nodes, 925,872 edges (undirected)
+Assigning synthetic publication years [1950, 2020], growth_shape=3.0 ...
+Orienting edges by year (citing = later year, cited = earlier year) ...
+Building recency probability table (356 bins, peak=2.0, sigma=1.2) ...
+
+Wrote:
+  amz_nodelist  (334,863 nodes)
+  amz_edgelist  (925,872 directed edges)
+  amz_recprob  (356 bins, sums to 1.000000)
+
+amz_edgelist  amz_nodelist  amz_recprob
+
+
