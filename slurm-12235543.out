@@ -5,7 +5,7 @@ model		: 143
 model name	: Intel(R) Xeon(R) Platinum 8480+
 stepping	: 8
 microcode	: 0x2b000639
-cpu MHz		: 2984.148
+cpu MHz		: 3000.000
 cache size	: 107520 KB
 physical id	: 0
 siblings	: 56
@@ -33,7 +33,7 @@ model		: 143
 model name	: Intel(R) Xeon(R) Platinum 8480+
 stepping	: 8
 microcode	: 0x2b000639
-cpu MHz		: 3800.000
+cpu MHz		: 2989.699
 cache size	: 107520 KB
 physical id	: 1
 siblings	: 56
@@ -61,7 +61,7 @@ model		: 143
 model name	: Intel(R) Xeon(R) Platinum 8480+
 stepping	: 8
 microcode	: 0x2b000639
-cpu MHz		: 3000.000
+cpu MHz		: 3800.000
 cache size	: 107520 KB
 physical id	: 0
 siblings	: 56
@@ -117,7 +117,7 @@ model		: 143
 model name	: Intel(R) Xeon(R) Platinum 8480+
 stepping	: 8
 microcode	: 0x2b000639
-cpu MHz		: 2849.644
+cpu MHz		: 3800.000
 cache size	: 107520 KB
 physical id	: 0
 siblings	: 56
@@ -173,7 +173,7 @@ model		: 143
 model name	: Intel(R) Xeon(R) Platinum 8480+
 stepping	: 8
 microcode	: 0x2b000639
-cpu MHz		: 3800.000
+cpu MHz		: 2585.176
 cache size	: 107520 KB
 physical id	: 0
 siblings	: 56
@@ -201,7 +201,7 @@ model		: 143
 model name	: Intel(R) Xeon(R) Platinum 8480+
 stepping	: 8
 microcode	: 0x2b000639
-cpu MHz		: 2798.838
+cpu MHz		: 3800.000
 cache size	: 107520 KB
 physical id	: 1
 siblings	: 56
@@ -229,7 +229,7 @@ model		: 143
 model name	: Intel(R) Xeon(R) Platinum 8480+
 stepping	: 8
 microcode	: 0x2b000639
-cpu MHz		: 3800.000
+cpu MHz		: 2561.484
 cache size	: 107520 KB
 physical id	: 0
 siblings	: 56
@@ -313,7 +313,7 @@ model		: 143
 model name	: Intel(R) Xeon(R) Platinum 8480+
 stepping	: 8
 microcode	: 0x2b000639
-cpu MHz		: 3800.000
+cpu MHz		: 2962.575
 cache size	: 107520 KB
 physical id	: 1
 siblings	: 56
@@ -425,7 +425,7 @@ model		: 143
 model name	: Intel(R) Xeon(R) Platinum 8480+
 stepping	: 8
 microcode	: 0x2b000639
-cpu MHz		: 3800.000
+cpu MHz		: 2815.227
 cache size	: 107520 KB
 physical id	: 1
 siblings	: 56
@@ -509,7 +509,7 @@ model		: 143
 model name	: Intel(R) Xeon(R) Platinum 8480+
 stepping	: 8
 microcode	: 0x2b000639
-cpu MHz		: 3000.030
+cpu MHz		: 2569.042
 cache size	: 107520 KB
 physical id	: 0
 siblings	: 56
@@ -537,7 +537,7 @@ model		: 143
 model name	: Intel(R) Xeon(R) Platinum 8480+
 stepping	: 8
 microcode	: 0x2b000639
-cpu MHz		: 3000.000
+cpu MHz		: 3800.000
 cache size	: 107520 KB
 physical id	: 1
 siblings	: 56
@@ -565,7 +565,7 @@ model		: 143
 model name	: Intel(R) Xeon(R) Platinum 8480+
 stepping	: 8
 microcode	: 0x2b000639
-cpu MHz		: 3013.698
+cpu MHz		: 3800.000
 cache size	: 107520 KB
 physical id	: 0
 siblings	: 56
@@ -593,7 +593,7 @@ model		: 143
 model name	: Intel(R) Xeon(R) Platinum 8480+
 stepping	: 8
 microcode	: 0x2b000639
-cpu MHz		: 3800.000
+cpu MHz		: 2695.616
 cache size	: 107520 KB
 physical id	: 1
 siblings	: 56
@@ -621,7 +621,7 @@ model		: 143
 model name	: Intel(R) Xeon(R) Platinum 8480+
 stepping	: 8
 microcode	: 0x2b000639
-cpu MHz		: 2811.851
+cpu MHz		: 3800.000
 cache size	: 107520 KB
 physical id	: 0
 siblings	: 56
@@ -677,7 +677,7 @@ model		: 143
 model name	: Intel(R) Xeon(R) Platinum 8480+
 stepping	: 8
 microcode	: 0x2b000639
-cpu MHz		: 3800.000
+cpu MHz		: 2580.396
 cache size	: 107520 KB
 physical id	: 0
 siblings	: 56
@@ -705,7 +705,7 @@ model		: 143
 model name	: Intel(R) Xeon(R) Platinum 8480+
 stepping	: 8
 microcode	: 0x2b000639
-cpu MHz		: 3800.000
+cpu MHz		: 2662.831
 cache size	: 107520 KB
 physical id	: 1
 siblings	: 56
@@ -733,7 +733,7 @@ model		: 143
 model name	: Intel(R) Xeon(R) Platinum 8480+
 stepping	: 8
 microcode	: 0x2b000639
-cpu MHz		: 3800.000
+cpu MHz		: 3000.000
 cache size	: 107520 KB
 physical id	: 0
 siblings	: 56
@@ -761,7 +761,7 @@ model		: 143
 model name	: Intel(R) Xeon(R) Platinum 8480+
 stepping	: 8
 microcode	: 0x2b000639
-cpu MHz		: 3800.000
+cpu MHz		: 2615.151
 cache size	: 107520 KB
 physical id	: 1
 siblings	: 56
@@ -789,7 +789,7 @@ model		: 143
 model name	: Intel(R) Xeon(R) Platinum 8480+
 stepping	: 8
 microcode	: 0x2b000639
-cpu MHz		: 3800.000
+cpu MHz		: 2989.578
 cache size	: 107520 KB
 physical id	: 0
 siblings	: 56
@@ -817,7 +817,7 @@ model		: 143
 model name	: Intel(R) Xeon(R) Platinum 8480+
 stepping	: 8
 microcode	: 0x2b000639
-cpu MHz		: 3800.000
+cpu MHz		: 2602.296
 cache size	: 107520 KB
 physical id	: 1
 siblings	: 56
@@ -845,7 +845,7 @@ model		: 143
 model name	: Intel(R) Xeon(R) Platinum 8480+
 stepping	: 8
 microcode	: 0x2b000639
-cpu MHz		: 3800.000
+cpu MHz		: 2978.559
 cache size	: 107520 KB
 physical id	: 0
 siblings	: 56
@@ -873,7 +873,7 @@ model		: 143
 model name	: Intel(R) Xeon(R) Platinum 8480+
 stepping	: 8
 microcode	: 0x2b000639
-cpu MHz		: 3800.000
+cpu MHz		: 2545.346
 cache size	: 107520 KB
 physical id	: 1
 siblings	: 56
@@ -901,7 +901,7 @@ model		: 143
 model name	: Intel(R) Xeon(R) Platinum 8480+
 stepping	: 8
 microcode	: 0x2b000639
-cpu MHz		: 2540.380
+cpu MHz		: 2985.679
 cache size	: 107520 KB
 physical id	: 0
 siblings	: 56
@@ -929,7 +929,7 @@ model		: 143
 model name	: Intel(R) Xeon(R) Platinum 8480+
 stepping	: 8
 microcode	: 0x2b000639
-cpu MHz		: 3800.000
+cpu MHz		: 2750.491
 cache size	: 107520 KB
 physical id	: 1
 siblings	: 56
@@ -957,7 +957,7 @@ model		: 143
 model name	: Intel(R) Xeon(R) Platinum 8480+
 stepping	: 8
 microcode	: 0x2b000639
-cpu MHz		: 2608.829
+cpu MHz		: 2696.708
 cache size	: 107520 KB
 physical id	: 0
 siblings	: 56
@@ -985,7 +985,7 @@ model		: 143
 model name	: Intel(R) Xeon(R) Platinum 8480+
 stepping	: 8
 microcode	: 0x2b000639
-cpu MHz		: 2510.443
+cpu MHz		: 2633.653
 cache size	: 107520 KB
 physical id	: 1
 siblings	: 56
@@ -1013,7 +1013,7 @@ model		: 143
 model name	: Intel(R) Xeon(R) Platinum 8480+
 stepping	: 8
 microcode	: 0x2b000639
-cpu MHz		: 3000.000
+cpu MHz		: 2666.962
 cache size	: 107520 KB
 physical id	: 0
 siblings	: 56
@@ -1041,7 +1041,7 @@ model		: 143
 model name	: Intel(R) Xeon(R) Platinum 8480+
 stepping	: 8
 microcode	: 0x2b000639
-cpu MHz		: 2997.984
+cpu MHz		: 2561.059
 cache size	: 107520 KB
 physical id	: 1
 siblings	: 56
@@ -1097,7 +1097,7 @@ model		: 143
 model name	: Intel(R) Xeon(R) Platinum 8480+
 stepping	: 8
 microcode	: 0x2b000639
-cpu MHz		: 2606.404
+cpu MHz		: 2605.590
 cache size	: 107520 KB
 physical id	: 1
 siblings	: 56
@@ -1125,7 +1125,7 @@ model		: 143
 model name	: Intel(R) Xeon(R) Platinum 8480+
 stepping	: 8
 microcode	: 0x2b000639
-cpu MHz		: 3000.000
+cpu MHz		: 2722.303
 cache size	: 107520 KB
 physical id	: 0
 siblings	: 56
@@ -1153,7 +1153,7 @@ model		: 143
 model name	: Intel(R) Xeon(R) Platinum 8480+
 stepping	: 8
 microcode	: 0x2b000639
-cpu MHz		: 2645.557
+cpu MHz		: 2585.653
 cache size	: 107520 KB
 physical id	: 1
 siblings	: 56
@@ -1181,7 +1181,7 @@ model		: 143
 model name	: Intel(R) Xeon(R) Platinum 8480+
 stepping	: 8
 microcode	: 0x2b000639
-cpu MHz		: 3800.000
+cpu MHz		: 2771.619
 cache size	: 107520 KB
 physical id	: 0
 siblings	: 56
@@ -1209,7 +1209,7 @@ model		: 143
 model name	: Intel(R) Xeon(R) Platinum 8480+
 stepping	: 8
 microcode	: 0x2b000639
-cpu MHz		: 2688.216
+cpu MHz		: 2556.737
 cache size	: 107520 KB
 physical id	: 1
 siblings	: 56
@@ -1237,7 +1237,7 @@ model		: 143
 model name	: Intel(R) Xeon(R) Platinum 8480+
 stepping	: 8
 microcode	: 0x2b000639
-cpu MHz		: 3800.000
+cpu MHz		: 2556.192
 cache size	: 107520 KB
 physical id	: 0
 siblings	: 56
@@ -1265,7 +1265,7 @@ model		: 143
 model name	: Intel(R) Xeon(R) Platinum 8480+
 stepping	: 8
 microcode	: 0x2b000639
-cpu MHz		: 2511.718
+cpu MHz		: 2882.479
 cache size	: 107520 KB
 physical id	: 1
 siblings	: 56
@@ -1293,7 +1293,7 @@ model		: 143
 model name	: Intel(R) Xeon(R) Platinum 8480+
 stepping	: 8
 microcode	: 0x2b000639
-cpu MHz		: 3800.000
+cpu MHz		: 2733.706
 cache size	: 107520 KB
 physical id	: 0
 siblings	: 56
@@ -1321,7 +1321,7 @@ model		: 143
 model name	: Intel(R) Xeon(R) Platinum 8480+
 stepping	: 8
 microcode	: 0x2b000639
-cpu MHz		: 3000.000
+cpu MHz		: 2604.771
 cache size	: 107520 KB
 physical id	: 1
 siblings	: 56
@@ -1349,7 +1349,7 @@ model		: 143
 model name	: Intel(R) Xeon(R) Platinum 8480+
 stepping	: 8
 microcode	: 0x2b000639
-cpu MHz		: 3800.000
+cpu MHz		: 2584.415
 cache size	: 107520 KB
 physical id	: 0
 siblings	: 56
@@ -1377,7 +1377,7 @@ model		: 143
 model name	: Intel(R) Xeon(R) Platinum 8480+
 stepping	: 8
 microcode	: 0x2b000639
-cpu MHz		: 3000.030
+cpu MHz		: 2583.150
 cache size	: 107520 KB
 physical id	: 1
 siblings	: 56
@@ -1405,7 +1405,7 @@ model		: 143
 model name	: Intel(R) Xeon(R) Platinum 8480+
 stepping	: 8
 microcode	: 0x2b000639
-cpu MHz		: 2630.097
+cpu MHz		: 2575.657
 cache size	: 107520 KB
 physical id	: 0
 siblings	: 56
@@ -1433,7 +1433,7 @@ model		: 143
 model name	: Intel(R) Xeon(R) Platinum 8480+
 stepping	: 8
 microcode	: 0x2b000639
-cpu MHz		: 2542.682
+cpu MHz		: 2946.498
 cache size	: 107520 KB
 physical id	: 1
 siblings	: 56
@@ -1461,7 +1461,7 @@ model		: 143
 model name	: Intel(R) Xeon(R) Platinum 8480+
 stepping	: 8
 microcode	: 0x2b000639
-cpu MHz		: 3800.000
+cpu MHz		: 2584.257
 cache size	: 107520 KB
 physical id	: 0
 siblings	: 56
@@ -1489,7 +1489,7 @@ model		: 143
 model name	: Intel(R) Xeon(R) Platinum 8480+
 stepping	: 8
 microcode	: 0x2b000639
-cpu MHz		: 2533.088
+cpu MHz		: 2568.027
 cache size	: 107520 KB
 physical id	: 1
 siblings	: 56
@@ -1517,7 +1517,7 @@ model		: 143
 model name	: Intel(R) Xeon(R) Platinum 8480+
 stepping	: 8
 microcode	: 0x2b000639
-cpu MHz		: 3800.000
+cpu MHz		: 2577.605
 cache size	: 107520 KB
 physical id	: 0
 siblings	: 56
@@ -1545,7 +1545,7 @@ model		: 143
 model name	: Intel(R) Xeon(R) Platinum 8480+
 stepping	: 8
 microcode	: 0x2b000639
-cpu MHz		: 2533.582
+cpu MHz		: 2953.160
 cache size	: 107520 KB
 physical id	: 1
 siblings	: 56
@@ -1573,7 +1573,7 @@ model		: 143
 model name	: Intel(R) Xeon(R) Platinum 8480+
 stepping	: 8
 microcode	: 0x2b000639
-cpu MHz		: 2577.605
+cpu MHz		: 2729.978
 cache size	: 107520 KB
 physical id	: 0
 siblings	: 56
@@ -1601,7 +1601,7 @@ model		: 143
 model name	: Intel(R) Xeon(R) Platinum 8480+
 stepping	: 8
 microcode	: 0x2b000639
-cpu MHz		: 2969.343
+cpu MHz		: 2565.068
 cache size	: 107520 KB
 physical id	: 1
 siblings	: 56
@@ -1629,7 +1629,7 @@ model		: 143
 model name	: Intel(R) Xeon(R) Platinum 8480+
 stepping	: 8
 microcode	: 0x2b000639
-cpu MHz		: 2584.257
+cpu MHz		: 2669.868
 cache size	: 107520 KB
 physical id	: 0
 siblings	: 56
@@ -1657,7 +1657,7 @@ model		: 143
 model name	: Intel(R) Xeon(R) Platinum 8480+
 stepping	: 8
 microcode	: 0x2b000639
-cpu MHz		: 3800.000
+cpu MHz		: 2997.992
 cache size	: 107520 KB
 physical id	: 1
 siblings	: 56
@@ -1685,7 +1685,7 @@ model		: 143
 model name	: Intel(R) Xeon(R) Platinum 8480+
 stepping	: 8
 microcode	: 0x2b000639
-cpu MHz		: 2538.186
+cpu MHz		: 2625.748
 cache size	: 107520 KB
 physical id	: 0
 siblings	: 56
@@ -1713,7 +1713,7 @@ model		: 143
 model name	: Intel(R) Xeon(R) Platinum 8480+
 stepping	: 8
 microcode	: 0x2b000639
-cpu MHz		: 2583.333
+cpu MHz		: 2973.968
 cache size	: 107520 KB
 physical id	: 1
 siblings	: 56
@@ -1741,7 +1741,7 @@ model		: 143
 model name	: Intel(R) Xeon(R) Platinum 8480+
 stepping	: 8
 microcode	: 0x2b000639
-cpu MHz		: 3800.000
+cpu MHz		: 2828.378
 cache size	: 107520 KB
 physical id	: 0
 siblings	: 56
@@ -1769,7 +1769,7 @@ model		: 143
 model name	: Intel(R) Xeon(R) Platinum 8480+
 stepping	: 8
 microcode	: 0x2b000639
-cpu MHz		: 2952.834
+cpu MHz		: 2573.788
 cache size	: 107520 KB
 physical id	: 1
 siblings	: 56
@@ -1797,7 +1797,7 @@ model		: 143
 model name	: Intel(R) Xeon(R) Platinum 8480+
 stepping	: 8
 microcode	: 0x2b000639
-cpu MHz		: 3800.000
+cpu MHz		: 2697.619
 cache size	: 107520 KB
 physical id	: 0
 siblings	: 56
@@ -1825,7 +1825,7 @@ model		: 143
 model name	: Intel(R) Xeon(R) Platinum 8480+
 stepping	: 8
 microcode	: 0x2b000639
-cpu MHz		: 3800.000
+cpu MHz		: 2729.046
 cache size	: 107520 KB
 physical id	: 1
 siblings	: 56
@@ -1853,7 +1853,7 @@ model		: 143
 model name	: Intel(R) Xeon(R) Platinum 8480+
 stepping	: 8
 microcode	: 0x2b000639
-cpu MHz		: 3800.000
+cpu MHz		: 2968.394
 cache size	: 107520 KB
 physical id	: 0
 siblings	: 56
@@ -1881,7 +1881,7 @@ model		: 143
 model name	: Intel(R) Xeon(R) Platinum 8480+
 stepping	: 8
 microcode	: 0x2b000639
-cpu MHz		: 3800.000
+cpu MHz		: 2576.586
 cache size	: 107520 KB
 physical id	: 1
 siblings	: 56
@@ -1909,7 +1909,7 @@ model		: 143
 model name	: Intel(R) Xeon(R) Platinum 8480+
 stepping	: 8
 microcode	: 0x2b000639
-cpu MHz		: 3800.000
+cpu MHz		: 2748.670
 cache size	: 107520 KB
 physical id	: 0
 siblings	: 56
@@ -1937,7 +1937,7 @@ model		: 143
 model name	: Intel(R) Xeon(R) Platinum 8480+
 stepping	: 8
 microcode	: 0x2b000639
-cpu MHz		: 3800.000
+cpu MHz		: 2661.120
 cache size	: 107520 KB
 physical id	: 1
 siblings	: 56
@@ -1965,7 +1965,7 @@ model		: 143
 model name	: Intel(R) Xeon(R) Platinum 8480+
 stepping	: 8
 microcode	: 0x2b000639
-cpu MHz		: 2528.465
+cpu MHz		: 2989.742
 cache size	: 107520 KB
 physical id	: 0
 siblings	: 56
@@ -1993,7 +1993,7 @@ model		: 143
 model name	: Intel(R) Xeon(R) Platinum 8480+
 stepping	: 8
 microcode	: 0x2b000639
-cpu MHz		: 3800.000
+cpu MHz		: 2571.902
 cache size	: 107520 KB
 physical id	: 1
 siblings	: 56
@@ -2021,7 +2021,7 @@ model		: 143
 model name	: Intel(R) Xeon(R) Platinum 8480+
 stepping	: 8
 microcode	: 0x2b000639
-cpu MHz		: 3000.000
+cpu MHz		: 2588.552
 cache size	: 107520 KB
 physical id	: 0
 siblings	: 56
@@ -2049,7 +2049,7 @@ model		: 143
 model name	: Intel(R) Xeon(R) Platinum 8480+
 stepping	: 8
 microcode	: 0x2b000639
-cpu MHz		: 3800.000
+cpu MHz		: 2997.719
 cache size	: 107520 KB
 physical id	: 1
 siblings	: 56
@@ -2077,7 +2077,7 @@ model		: 143
 model name	: Intel(R) Xeon(R) Platinum 8480+
 stepping	: 8
 microcode	: 0x2b000639
-cpu MHz		: 2552.505
+cpu MHz		: 2612.016
 cache size	: 107520 KB
 physical id	: 0
 siblings	: 56
@@ -2105,7 +2105,7 @@ model		: 143
 model name	: Intel(R) Xeon(R) Platinum 8480+
 stepping	: 8
 microcode	: 0x2b000639
-cpu MHz		: 3800.000
+cpu MHz		: 2945.132
 cache size	: 107520 KB
 physical id	: 1
 siblings	: 56
@@ -2133,7 +2133,7 @@ model		: 143
 model name	: Intel(R) Xeon(R) Platinum 8480+
 stepping	: 8
 microcode	: 0x2b000639
-cpu MHz		: 2534.229
+cpu MHz		: 2656.593
 cache size	: 107520 KB
 physical id	: 0
 siblings	: 56
@@ -2161,7 +2161,7 @@ model		: 143
 model name	: Intel(R) Xeon(R) Platinum 8480+
 stepping	: 8
 microcode	: 0x2b000639
-cpu MHz		: 3800.000
+cpu MHz		: 2733.938
 cache size	: 107520 KB
 physical id	: 1
 siblings	: 56
@@ -2189,7 +2189,7 @@ model		: 143
 model name	: Intel(R) Xeon(R) Platinum 8480+
 stepping	: 8
 microcode	: 0x2b000639
-cpu MHz		: 2551.044
+cpu MHz		: 2592.077
 cache size	: 107520 KB
 physical id	: 0
 siblings	: 56
@@ -2217,7 +2217,7 @@ model		: 143
 model name	: Intel(R) Xeon(R) Platinum 8480+
 stepping	: 8
 microcode	: 0x2b000639
-cpu MHz		: 3800.000
+cpu MHz		: 2723.110
 cache size	: 107520 KB
 physical id	: 1
 siblings	: 56
@@ -2245,7 +2245,7 @@ model		: 143
 model name	: Intel(R) Xeon(R) Platinum 8480+
 stepping	: 8
 microcode	: 0x2b000639
-cpu MHz		: 3000.000
+cpu MHz		: 2570.938
 cache size	: 107520 KB
 physical id	: 0
 siblings	: 56
@@ -2273,7 +2273,7 @@ model		: 143
 model name	: Intel(R) Xeon(R) Platinum 8480+
 stepping	: 8
 microcode	: 0x2b000639
-cpu MHz		: 3800.000
+cpu MHz		: 2673.141
 cache size	: 107520 KB
 physical id	: 1
 siblings	: 56
@@ -2301,7 +2301,7 @@ model		: 143
 model name	: Intel(R) Xeon(R) Platinum 8480+
 stepping	: 8
 microcode	: 0x2b000639
-cpu MHz		: 2537.037
+cpu MHz		: 2615.151
 cache size	: 107520 KB
 physical id	: 0
 siblings	: 56
@@ -2329,7 +2329,7 @@ model		: 143
 model name	: Intel(R) Xeon(R) Platinum 8480+
 stepping	: 8
 microcode	: 0x2b000639
-cpu MHz		: 3800.000
+cpu MHz		: 2734.042
 cache size	: 107520 KB
 physical id	: 1
 siblings	: 56
@@ -2357,7 +2357,7 @@ model		: 143
 model name	: Intel(R) Xeon(R) Platinum 8480+
 stepping	: 8
 microcode	: 0x2b000639
-cpu MHz		: 2578.431
+cpu MHz		: 2593.275
 cache size	: 107520 KB
 physical id	: 0
 siblings	: 56
@@ -2385,7 +2385,7 @@ model		: 143
 model name	: Intel(R) Xeon(R) Platinum 8480+
 stepping	: 8
 microcode	: 0x2b000639
-cpu MHz		: 3800.000
+cpu MHz		: 2749.352
 cache size	: 107520 KB
 physical id	: 1
 siblings	: 56
@@ -2413,7 +2413,7 @@ model		: 143
 model name	: Intel(R) Xeon(R) Platinum 8480+
 stepping	: 8
 microcode	: 0x2b000639
-cpu MHz		: 2572.892
+cpu MHz		: 2935.279
 cache size	: 107520 KB
 physical id	: 0
 siblings	: 56
@@ -2441,7 +2441,7 @@ model		: 143
 model name	: Intel(R) Xeon(R) Platinum 8480+
 stepping	: 8
 microcode	: 0x2b000639
-cpu MHz		: 3800.000
+cpu MHz		: 2628.598
 cache size	: 107520 KB
 physical id	: 1
 siblings	: 56
@@ -2469,7 +2469,7 @@ model		: 143
 model name	: Intel(R) Xeon(R) Platinum 8480+
 stepping	: 8
 microcode	: 0x2b000639
-cpu MHz		: 3800.000
+cpu MHz		: 2858.047
 cache size	: 107520 KB
 physical id	: 0
 siblings	: 56
@@ -2497,7 +2497,7 @@ model		: 143
 model name	: Intel(R) Xeon(R) Platinum 8480+
 stepping	: 8
 microcode	: 0x2b000639
-cpu MHz		: 3800.000
+cpu MHz		: 2583.333
 cache size	: 107520 KB
 physical id	: 1
 siblings	: 56
@@ -2525,7 +2525,7 @@ model		: 143
 model name	: Intel(R) Xeon(R) Platinum 8480+
 stepping	: 8
 microcode	: 0x2b000639
-cpu MHz		: 2533.734
+cpu MHz		: 2581.318
 cache size	: 107520 KB
 physical id	: 0
 siblings	: 56
@@ -2553,7 +2553,7 @@ model		: 143
 model name	: Intel(R) Xeon(R) Platinum 8480+
 stepping	: 8
 microcode	: 0x2b000639
-cpu MHz		: 3800.000
+cpu MHz		: 2592.948
 cache size	: 107520 KB
 physical id	: 1
 siblings	: 56
@@ -2581,7 +2581,7 @@ model		: 143
 model name	: Intel(R) Xeon(R) Platinum 8480+
 stepping	: 8
 microcode	: 0x2b000639
-cpu MHz		: 3000.000
+cpu MHz		: 2685.402
 cache size	: 107520 KB
 physical id	: 0
 siblings	: 56
@@ -2609,7 +2609,7 @@ model		: 143
 model name	: Intel(R) Xeon(R) Platinum 8480+
 stepping	: 8
 microcode	: 0x2b000639
-cpu MHz		: 3800.000
+cpu MHz		: 2560.640
 cache size	: 107520 KB
 physical id	: 1
 siblings	: 56
@@ -2637,7 +2637,7 @@ model		: 143
 model name	: Intel(R) Xeon(R) Platinum 8480+
 stepping	: 8
 microcode	: 0x2b000639
-cpu MHz		: 3800.000
+cpu MHz		: 2723.110
 cache size	: 107520 KB
 physical id	: 0
 siblings	: 56
@@ -2665,7 +2665,7 @@ model		: 143
 model name	: Intel(R) Xeon(R) Platinum 8480+
 stepping	: 8
 microcode	: 0x2b000639
-cpu MHz		: 3800.000
+cpu MHz		: 3000.000
 cache size	: 107520 KB
 physical id	: 1
 siblings	: 56
@@ -2693,7 +2693,7 @@ model		: 143
 model name	: Intel(R) Xeon(R) Platinum 8480+
 stepping	: 8
 microcode	: 0x2b000639
-cpu MHz		: 2635.593
+cpu MHz		: 2578.431
 cache size	: 107520 KB
 physical id	: 0
 siblings	: 56
@@ -2721,7 +2721,7 @@ model		: 143
 model name	: Intel(R) Xeon(R) Platinum 8480+
 stepping	: 8
 microcode	: 0x2b000639
-cpu MHz		: 2999.969
+cpu MHz		: 2764.232
 cache size	: 107520 KB
 physical id	: 1
 siblings	: 56
@@ -2749,7 +2749,7 @@ model		: 143
 model name	: Intel(R) Xeon(R) Platinum 8480+
 stepping	: 8
 microcode	: 0x2b000639
-cpu MHz		: 2997.365
+cpu MHz		: 2837.526
 cache size	: 107520 KB
 physical id	: 0
 siblings	: 56
@@ -2777,7 +2777,7 @@ model		: 143
 model name	: Intel(R) Xeon(R) Platinum 8480+
 stepping	: 8
 microcode	: 0x2b000639
-cpu MHz		: 3000.000
+cpu MHz		: 2994.969
 cache size	: 107520 KB
 physical id	: 1
 siblings	: 56
@@ -2805,7 +2805,7 @@ model		: 143
 model name	: Intel(R) Xeon(R) Platinum 8480+
 stepping	: 8
 microcode	: 0x2b000639
-cpu MHz		: 2998.185
+cpu MHz		: 2999.969
 cache size	: 107520 KB
 physical id	: 0
 siblings	: 56
@@ -2833,7 +2833,7 @@ model		: 143
 model name	: Intel(R) Xeon(R) Platinum 8480+
 stepping	: 8
 microcode	: 0x2b000639
-cpu MHz		: 3000.030
+cpu MHz		: 2807.381
 cache size	: 107520 KB
 physical id	: 1
 siblings	: 56
@@ -2861,7 +2861,7 @@ model		: 143
 model name	: Intel(R) Xeon(R) Platinum 8480+
 stepping	: 8
 microcode	: 0x2b000639
-cpu MHz		: 3800.000
+cpu MHz		: 2607.216
 cache size	: 107520 KB
 physical id	: 0
 siblings	: 56
@@ -2889,7 +2889,7 @@ model		: 143
 model name	: Intel(R) Xeon(R) Platinum 8480+
 stepping	: 8
 microcode	: 0x2b000639
-cpu MHz		: 2997.256
+cpu MHz		: 3000.000
 cache size	: 107520 KB
 physical id	: 1
 siblings	: 56
@@ -2917,7 +2917,7 @@ model		: 143
 model name	: Intel(R) Xeon(R) Platinum 8480+
 stepping	: 8
 microcode	: 0x2b000639
-cpu MHz		: 3800.000
+cpu MHz		: 2998.623
 cache size	: 107520 KB
 physical id	: 0
 siblings	: 56
@@ -2945,7 +2945,7 @@ model		: 143
 model name	: Intel(R) Xeon(R) Platinum 8480+
 stepping	: 8
 microcode	: 0x2b000639
-cpu MHz		: 2995.033
+cpu MHz		: 3800.000
 cache size	: 107520 KB
 physical id	: 1
 siblings	: 56
@@ -3001,7 +3001,7 @@ model		: 143
 model name	: Intel(R) Xeon(R) Platinum 8480+
 stepping	: 8
 microcode	: 0x2b000639
-cpu MHz		: 3800.000
+cpu MHz		: 3000.030
 cache size	: 107520 KB
 physical id	: 1
 siblings	: 56
@@ -3029,7 +3029,7 @@ model		: 143
 model name	: Intel(R) Xeon(R) Platinum 8480+
 stepping	: 8
 microcode	: 0x2b000639
-cpu MHz		: 2998.386
+cpu MHz		: 3000.000
 cache size	: 107520 KB
 physical id	: 0
 siblings	: 56
@@ -3057,7 +3057,7 @@ model		: 143
 model name	: Intel(R) Xeon(R) Platinum 8480+
 stepping	: 8
 microcode	: 0x2b000639
-cpu MHz		: 2999.969
+cpu MHz		: 3000.000
 cache size	: 107520 KB
 physical id	: 1
 siblings	: 56
@@ -3085,7 +3085,7 @@ model		: 143
 model name	: Intel(R) Xeon(R) Platinum 8480+
 stepping	: 8
 microcode	: 0x2b000639
-cpu MHz		: 3800.000
+cpu MHz		: 3000.000
 cache size	: 107520 KB
 physical id	: 0
 siblings	: 56
@@ -3113,7 +3113,7 @@ model		: 143
 model name	: Intel(R) Xeon(R) Platinum 8480+
 stepping	: 8
 microcode	: 0x2b000639
-cpu MHz		: 3000.000
+cpu MHz		: 3800.000
 cache size	: 107520 KB
 physical id	: 1
 siblings	: 56
@@ -3134,17 +3134,31 @@ cache_alignment	: 64
 address sizes	: 46 bits physical, 57 bits virtual
 power management:
 
-Running growth rate 1% with 16 thread
-./output/cpu-parallel-profile-static-output-1p5p-30y-1p.edgelist
-./output/cpu-parallel-profile-static-output-1p5p-30y-1p.aux
+Running growth rate 1% with 1 thread
+./output/cpu-serial-profile-static-output-3y-1p.edgelist
+./output/cpu-serial-profile-static-output-3y-1p.aux
 
-real	4m0.795s
-user	38m31.415s
-sys	0m5.782s
-Running growth rate 5% with 16 thread
-./output/cpu-parallel-profile-static-output-1p5p-30y-5p.edgelist
-./output/cpu-parallel-profile-static-output-1p5p-30y-5p.aux
+real	1m58.552s
+user	1m56.780s
+sys	0m1.263s
+Running growth rate 3% with 1 thread
+./output/cpu-serial-profile-static-output-3y-3p.edgelist
+./output/cpu-serial-profile-static-output-3y-3p.aux
 
-real	503m0.713s
-user	6887m24.870s
-sys	39m8.710s
+real	6m15.374s
+user	6m11.910s
+sys	0m1.811s
+Running growth rate 5% with 1 thread
+./output/cpu-serial-profile-static-output-3y-5p.edgelist
+./output/cpu-serial-profile-static-output-3y-5p.aux
+
+real	11m54.416s
+user	11m48.721s
+sys	0m2.454s
+Running growth rate 6% with 1 thread
+./output/cpu-serial-profile-static-output-3y-6p.edgelist
+./output/cpu-serial-profile-static-output-3y-6p.aux
+
+real	14m11.726s
+user	14m5.127s
+sys	0m2.653s
