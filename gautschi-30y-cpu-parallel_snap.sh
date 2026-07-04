@@ -3,7 +3,7 @@
 #SBATCH --nodes=1
 #SBATCH --ntasks-per-node=1
 #SBATCH --cpus-per-task=14
-#SBATCH --job-name="cpu-sn3y"
+#SBATCH --job-name="cpu-sn30y"
 #SBATCH --account=ayg
 #SBATCH --partition=cpu
 #SBATCH --qos=standby
@@ -14,6 +14,5 @@ source ~/.bashrc
 cat /proc/cpuinfo
 
 export OMP_NUM_THREADS=16
-sh drivers/parallel_3y_profile_static_snap.sh
-#sh drivers/parallel_3y_profile_static.sh
-#sh drivers/cpu-parallel_static_vary_p.sh
+sh drivers/parallel_30y_profile_static_snap.sh
+#sh drivers/parallel_30y_profile_static_3p6p.sh

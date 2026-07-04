@@ -1,7 +1,7 @@
 #!/bin/sh
-# Vary growth rate from 1% to 10%
-# 3 years simulation
-# 1 thread
+# Vary growth rate from 1% to 6%
+# 3 - 30 years simulation: er-p = 0.0003
+# 16 thread
 
 mkdir -p output
 mkdir -p errors
@@ -9,8 +9,7 @@ mkdir -p errors
 OUTPUT=$(readlink -f ./output)/
 ERRORS=$(readlink -f ./errors)/
 
-NUM_THREADS=1
-NUM_CYCLES=10
+NUM_THREADS=16
 
 INPUT_EDGELIST="sj_edgelist"
 INPUT_NODELIST="sj_nodelist"
@@ -33,38 +32,41 @@ do
     echo ${ER_PROBABILITY_LABEL}
     mkdir -p output/${ER_PROBABILITY_LABEL}
 
-    OUTPUT_FILE="./output/${ER_PROBABILITY_LABEL}/cpu-static-model-${MODEL}-${NUM_CYCLES}y-${GROWTH_LABEL}p-${ER_PROBABILITY_LABEL}p.edgelist"
-    OUTPUT_LOG="./output/${ER_PROBABILITY_LABEL}/cpu-static-model-${MODEL}-${NUM_CYCLES}y-${GROWTH_LABEL}p-${ER_PROBABILITY_LABEL}p-${NUM_THREADS}t.log"
-    OUTPUT_AUX="./output/${ER_PROBABILITY_LABEL}/cpu-static-model-${MODEL}-${NUM_CYCLES}y-${GROWTH_LABEL}p-${ER_PROBABILITY_LABEL}p.aux"
-    OUT_FILE="./output/${ER_PROBABILITY_LABEL}/cpu-static-model-${MODEL}-${NUM_CYCLES}y-${GROWTH_LABEL}p-${ER_PROBABILITY_LABEL}p-${NUM_THREADS}t.out"
+    for NUM_CYCLES in 3 10 30
+    do
+        OUTPUT_FILE="./output/${ER_PROBABILITY_LABEL}/cpu-static-model-${MODEL}-${NUM_CYCLES}y-${GROWTH_LABEL}p-${ER_PROBABILITY_LABEL}p.edgelist"
+        OUTPUT_LOG="./output/${ER_PROBABILITY_LABEL}/cpu-static-model-${MODEL}-${NUM_CYCLES}y-${GROWTH_LABEL}p-${ER_PROBABILITY_LABEL}p-${NUM_THREADS}t.log"
+        OUTPUT_AUX="./output/${ER_PROBABILITY_LABEL}/cpu-static-model-${MODEL}-${NUM_CYCLES}y-${GROWTH_LABEL}p-${ER_PROBABILITY_LABEL}p.aux"
+        OUT_FILE="./output/${ER_PROBABILITY_LABEL}/cpu-static-model-${MODEL}-${NUM_CYCLES}y-${GROWTH_LABEL}p-${ER_PROBABILITY_LABEL}p-${NUM_THREADS}t.out"
 
-    echo "Running growth rate = ${GROWTH_RATE} = ${GROWTH_PERCENT}% with ${NUM_THREADS} thread"
-    echo $OUTPUT_FILE
-    echo $OUTPUT_AUX
+        echo "Running growth rate = ${GROWTH_RATE} = ${GROWTH_PERCENT}% with ${NUM_THREADS} thread"
+        echo $OUTPUT_FILE
+        echo $OUTPUT_AUX
 
-    time ./abm \
-    --model er-gnp \
-    --er-probability ${ER_PROBABILITY} \
-    --edgelist ${INPUT_EDGELIST} \
-    --nodelist ${INPUT_NODELIST} \
-    --out-degree-bag ${OUTDEGREE_BAG} \
-    --recency-probabilities ${RECENCY_PROBABILITIES} \
-    --alpha 0.5 \
-    --preferential-weight 0.33 \
-    --recency-weight 0.33 \
-    --fitness-weight 0.33 \
-    --growth-rate ${GROWTH_RATE} \
-    --fully-random-citations ${FULLY_RANDOM_CITATIONS} \
-    --num-cycles ${NUM_CYCLES} \
-    --same-year-proportion ${SAME_YEAR_PROPORTION} \
-    --output-file ${OUTPUT_FILE} \
-    --auxiliary-information-file ${OUTPUT_AUX} \
-    --log-file ${OUTPUT_LOG} \
-    --num-processors ${NUM_THREADS} \
-    --log-level ${LOG_LEVEL} \
-    2>${ERRORS}/abm-${GROWTH_PERCENT}p.err \
-    1>${OUT_FILE}
+        time ./cpp_abm \
+            --model ${MODEL} \
+            --er-probability ${ER_PROBABILITY} \
+            --edgelist ${INPUT_EDGELIST} \
+            --nodelist ${INPUT_NODELIST} \
+            --out-degree-bag ${OUTDEGREE_BAG} \
+            --recency-probabilities ${RECENCY_PROBABILITIES} \
+            --alpha 0.5 \
+            --preferential-weight 0.33 \
+            --recency-weight 0.33 \
+            --fitness-weight 0.33 \
+            --growth-rate ${GROWTH_RATE} \
+            --fully-random-citations ${FULLY_RANDOM_CITATIONS} \
+            --num-cycles ${NUM_CYCLES} \
+            --same-year-proportion ${SAME_YEAR_PROPORTION} \
+            --output-file ${OUTPUT_FILE} \
+            --auxiliary-information-file ${OUTPUT_AUX} \
+            --log-file ${OUTPUT_LOG} \
+            --num-processors ${NUM_THREADS} \
+            --log-level ${LOG_LEVEL} \
+            2>${ERRORS}/abm-${dataset}-${GROWTH_PERCENT}p.err \
+            1>${OUT_FILE}
 
+    done
 done
 
  

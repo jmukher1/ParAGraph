@@ -1,7 +1,7 @@
 #!/bin/sh
-# Vary growth rate from 1% to 6%
-# 3 - 30 years simulation: er-p = 0.001
-# 16 thread
+# Vary growth rate from 1% to 10%
+# 3 years simulation
+# 1 thread
 
 mkdir -p output
 mkdir -p errors
@@ -11,16 +11,15 @@ ERRORS=$(readlink -f ./errors)/
 
 NUM_THREADS=16
 
-INPUT_EDGELIST="sj_edgelist"
-INPUT_NODELIST="sj_nodelist"
 OUTDEGREE_BAG="tcen_at_least_five"
-RECENCY_PROBABILITIES="sj_recprob"
-
 SAME_YEAR_PROPORTION="0.12"
 FULLY_RANDOM_CITATIONS="0.05"
 LOG_LEVEL="1"
+
 MODEL="er-gnp"
+
 ER_PROBABILITY="0.001"
+datasets=("amz" "eu" "yutb" "twt")
 
 for GROWTH_PERCENT in 1 3 6
 do
@@ -34,16 +33,22 @@ do
 
     for NUM_CYCLES in 3 10 30
     do
-        OUTPUT_FILE="./output/${ER_PROBABILITY_LABEL}/cpu-static-model-${MODEL}-${NUM_CYCLES}y-${GROWTH_LABEL}p-${ER_PROBABILITY_LABEL}p.edgelist"
-        OUTPUT_LOG="./output/${ER_PROBABILITY_LABEL}/cpu-static-model-${MODEL}-${NUM_CYCLES}y-${GROWTH_LABEL}p-${ER_PROBABILITY_LABEL}p-${NUM_THREADS}t.log"
-        OUTPUT_AUX="./output/${ER_PROBABILITY_LABEL}/cpu-static-model-${MODEL}-${NUM_CYCLES}y-${GROWTH_LABEL}p-${ER_PROBABILITY_LABEL}p.aux"
-        OUT_FILE="./output/${ER_PROBABILITY_LABEL}/cpu-static-model-${MODEL}-${NUM_CYCLES}y-${GROWTH_LABEL}p-${ER_PROBABILITY_LABEL}p-${NUM_THREADS}t.out"
+        for dataset in "${datasets[@]}"
+        do
+            INPUT_EDGELIST="./seeds/${dataset}_edgelist"
+            INPUT_NODELIST="./seeds/${dataset}_nodelist"
+            RECENCY_PROBABILITIES="./seeds/${dataset}_recprob"
 
-        echo "Running growth rate = ${GROWTH_RATE} = ${GROWTH_PERCENT}% with ${NUM_THREADS} thread"
-        echo $OUTPUT_FILE
-        echo $OUTPUT_AUX
+            OUTPUT_FILE="./output/${ER_PROBABILITY_LABEL}/cpu-parallel-${dataset}-profile-static-output-${NUM_CYCLES}y-${GROWTH_PERCENT}p-${ER_PROBABILITY_LABEL}p.edgelist"
+            OUTPUT_LOG="./output/${ER_PROBABILITY_LABEL}/cpu-parallel-${dataset}-profile-static-output-${NUM_CYCLES}y-${GROWTH_PERCENT}p-${ER_PROBABILITY_LABEL}p-${NUM_THREADS}t.log"
+            OUTPUT_AUX="./output/${ER_PROBABILITY_LABEL}/cpu-parallel-${dataset}-profile-static-output-${NUM_CYCLES}y-${GROWTH_PERCENT}p-${ER_PROBABILITY_LABEL}p.aux"
+            OUT_FILE="./output/${ER_PROBABILITY_LABEL}/cpu-parallel-${dataset}-profile-static-output-${NUM_CYCLES}y-${GROWTH_PERCENT}p-${ER_PROBABILITY_LABEL}p-${NUM_THREADS}t.out"
 
-        time ./cpp_abm \
+            echo "Running dataset=${dataset} growth rate ${GROWTH_PERCENT}% with ${NUM_THREADS} thread"
+            echo $OUTPUT_FILE
+            echo $OUTPUT_AUX
+
+            time ./cpp_abm \
             --model ${MODEL} \
             --er-probability ${ER_PROBABILITY} \
             --edgelist ${INPUT_EDGELIST} \
@@ -65,7 +70,7 @@ do
             --log-level ${LOG_LEVEL} \
             2>${ERRORS}/abm-${dataset}-${GROWTH_PERCENT}p.err \
             1>${OUT_FILE}
-
+        done
     done
 done
 

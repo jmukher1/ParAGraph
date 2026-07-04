@@ -13,7 +13,7 @@ INCDIRS=-I$(CUDA_HOME)/include -I$(INC_DIR)
 
 
 # Default target
-TARGET = abm
+TARGET = cpp_abm
 
 # Files
 OBJS = $(BUILD_DIR)/main.o $(BUILD_DIR)/abm.o $(BUILD_DIR)/graph.o 
