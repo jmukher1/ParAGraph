@@ -12,5 +12,4 @@ source ~/.bashrc
 
 export OMP_NUM_THREADS=16
 cat /proc/cpuinfo
-
-./drivers/mass_3y_vary_p.sh 
+sh drivers/mass_cuda_multi_run.sh

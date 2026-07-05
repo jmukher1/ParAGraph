@@ -9,7 +9,7 @@ mkdir -p errors
 OUTPUT=$(readlink -f ./output)/
 ERRORS=$(readlink -f ./errors)/
 
-NUM_THREADS=1
+NUM_THREADS=16
 NUM_CYCLES=30
 
 INPUT_EDGELIST="sj_edgelist"
@@ -21,7 +21,7 @@ SAME_YEAR_PROPORTION="0.12"
 FULLY_RANDOM_CITATIONS="0.05"
 LOG_LEVEL="1"
 
-growth_percents="1 3 5 6"
+growth_percents="1 3 6"
 BFS_BATCH_SIZE=25
 
 mkdir -p ./output/${NUM_CYCLES}y

@@ -6,6 +6,18 @@
 //                updateNodeInDegreeOutDegree, WriteAttributes
 //   abm.cu    →  InitializeFitness, PopulateWeightArrs, selectGenerator,
 //                GetOneAndTwoHopNeighborhood, MakePopulateCitations, run loop
+//
+// FIX (this revision): removed the dead `d_recency_probs` array. It was
+// never read by any kernel -- only `d_recency_arr` (computed fresh each
+// year in computeAndUploadRecencyArr(), with the correct 0.0 fallback for
+// unmapped year-diffs) is actually used by makeCitations/MakePopulateCitations.
+// `d_recency_probs` carried a STALE 0.01f fallback that the surrounding
+// comments explicitly identify as diverging from GPU/CPU semantics. It was
+// inert (never wired into a kernel), but left in place it's a landmine: a
+// future edit that "helpfully" passes it into a kernel would silently
+// reintroduce the exact recency-fallback bug already fixed elsewhere.
+// Confirmed dead by inspecting every kernel signature in this file and in
+// Paper.h -- none accept a `d_recency_probs`-shaped parameter.
 // ─────────────────────────────────────────────────────────────────────────────
 
 #include "Mass.h"
@@ -327,7 +339,6 @@ private:
     std::vector<std::pair<int,int>> h_edges;
 
     Paper*       d_papers         = nullptr;
-    float*       d_recency_probs  = nullptr;
     float*       d_recency_arr    = nullptr;
     float*       d_pa_arr_norm    = nullptr;
     float*       d_fit_arr_norm   = nullptr;
@@ -683,7 +694,6 @@ public:
         std::cout << "Max population: " << max_population << "\n";
 
         cudaMalloc(&d_papers,        max_population * sizeof(Paper));
-        cudaMalloc(&d_recency_probs, 51 * sizeof(float));
         cudaMalloc(&d_recency_arr,   max_population * sizeof(float));
         cudaMalloc(&d_pa_arr_norm,   max_population * sizeof(float));
         cudaMalloc(&d_fit_arr_norm,  max_population * sizeof(float));
@@ -707,10 +717,14 @@ public:
             cudaMemcpy(d_fitness_cdf, h_cdf.data(), N * sizeof(float), cudaMemcpyHostToDevice);
         }
 
-        float h_rec[51];
-        for (int i = 0; i < 51; i++)
-            h_rec[i] = recency_probs_map.count(i) ? recency_probs_map[i] : 0.01f;
-        cudaMemcpy(d_recency_probs, h_rec, 51 * sizeof(float), cudaMemcpyHostToDevice);
+        // NOTE: the old `d_recency_probs` (51-entry, 0.01f-fallback) device
+        // array was removed here. It was never read by any kernel -- the
+        // actual recency signal used during citation sampling is
+        // `d_recency_arr`, recomputed fresh each year by
+        // computeAndUploadRecencyArr() with the correct 0.0 fallback for
+        // unmapped year-diffs. `recency_probs_map` (the host-side map) is
+        // still used directly by computeAndUploadRecencyArr(); only the
+        // redundant, stale device-side copy is gone.
 
         int bs = 256, gs = (max_population + bs - 1) / bs;
         initCurandKernel<<<gs, bs>>>(d_rand_states, max_population, (unsigned long long)time(NULL));
@@ -1187,7 +1201,6 @@ public:
     // =========================================================================
     void cleanup() {
         if (d_papers)        { cudaFree(d_papers);        d_papers        = nullptr; }
-        if (d_recency_probs) { cudaFree(d_recency_probs); d_recency_probs = nullptr; }
         if (d_recency_arr)   { cudaFree(d_recency_arr);   d_recency_arr   = nullptr; }
         if (d_pa_arr_norm)   { cudaFree(d_pa_arr_norm);   d_pa_arr_norm   = nullptr; }
         if (d_fit_arr_norm)  { cudaFree(d_fit_arr_norm);  d_fit_arr_norm  = nullptr; }
