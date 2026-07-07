@@ -16,7 +16,7 @@ LOG_LEVEL="1"
 
 # Fixed growth = 3%
 GROWTH_PERCENT=3
-GROWTH_RATE=$(echo "scale=2; $GROWTH_PERCENT/100" | bc) 
+GROWTH_RATE=$(echo "scale=2; $GROWTH_PERCENT/100" | bc)
 
 echo "Using GROWTH_PERCENT = $GROWTH_PERCENT %, BFS_BATCH_SIZE = $BFS_BATCH_SIZE"
 
@@ -27,10 +27,10 @@ do
     echo "Run $RUN_ID / 10"
     echo "=============================="
 
-    OUTPUT_FILE="./output/gpu-opt-run${RUN_ID}-${NUM_CYCLES}y-${GROWTH_PERCENT}p.edgelist"
-    OUTPUT_AUX="./output/gpu-opt-run${RUN_ID}-${NUM_CYCLES}y-${GROWTH_PERCENT}p.aux"
-    OUT_FILE="./output/gpu-opt-run${RUN_ID}-${NUM_CYCLES}y-${GROWTH_PERCENT}p.out" 
-    LOG_FILE="./output/gpu-opt-run${RUN_ID}-${NUM_CYCLES}y-${GROWTH_PERCENT}p.log" 
+    OUTPUT_FILE="./output/gpu-opt-pa-run${RUN_ID}-${NUM_CYCLES}y-${GROWTH_PERCENT}p.edgelist"
+    OUTPUT_AUX="./output/gpu-opt-pa-run${RUN_ID}-${NUM_CYCLES}y-${GROWTH_PERCENT}p.aux"
+    OUT_FILE="./output/gpu-opt-pa-run${RUN_ID}-${NUM_CYCLES}y-${GROWTH_PERCENT}p.out" 
+    LOG_FILE="./output/gpu-opt-pa-run${RUN_ID}-${NUM_CYCLES}y-${GROWTH_PERCENT}p.log" 
 
     time ./abm \
     --edgelist ${INPUT_EDGELIST} \

@@ -21,20 +21,20 @@ SAME_YEAR_PROPORTION="0.12"
 FULLY_RANDOM_CITATIONS="0.05"
 LOG_LEVEL="1"
 
-for GROWTH_PERCENT in 1 3 5 6
+for GROWTH_PERCENT in 1 3 6
 do
     GROWTH_RATE=$(echo "scale=2; $GROWTH_PERCENT/100" | bc)
 
-    OUTPUT_FILE="./output/cpu-parallel-static-output-${NUM_CYCLES}y-${GROWTH_PERCENT}p.edgelist"
-    OUTPUT_LOG="./output/cpu-parallel-static-output-${NUM_CYCLES}y-${GROWTH_PERCENT}p-${NUM_THREADS}t.log"
-    OUTPUT_AUX="./output/cpu-parallel-static-output-${NUM_CYCLES}y-${GROWTH_PERCENT}p.aux"
-    OUT_FILE="./output/cpu-parallel-static-output-${NUM_CYCLES}y-${GROWTH_PERCENT}p-${NUM_THREADS}t.out"
+    OUTPUT_FILE="./output/gpu-parallel-static-${NUM_CYCLES}y-${GROWTH_PERCENT}p.edgelist"
+    OUTPUT_LOG="./output/gpu-parallel-static-${NUM_CYCLES}y-${GROWTH_PERCENT}p-${NUM_THREADS}t.log"
+    OUTPUT_AUX="./output/gpu-parallel-static-${NUM_CYCLES}y-${GROWTH_PERCENT}p.aux"
+    OUT_FILE="./output/gpu-parallel-static-${NUM_CYCLES}y-${GROWTH_PERCENT}p-${NUM_THREADS}t.out"
 
     echo "Running growth rate ${GROWTH_PERCENT}% with ${NUM_THREADS} thread"
     echo $OUTPUT_FILE
     echo $OUTPUT_AUX
 
-    time ./abm \
+    ./abm \
     --edgelist ${INPUT_EDGELIST} \
     --nodelist ${INPUT_NODELIST} \
     --out-degree-bag ${OUTDEGREE_BAG} \

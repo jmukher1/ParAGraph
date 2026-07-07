@@ -3,11 +3,11 @@
 #SBATCH --nodes=1
 #SBATCH --ntasks-per-node=1
 #SBATCH --cpus-per-task=14
-#SBATCH --job-name="gpu-pr-30y"
+#SBATCH --job-name="gpu-30y_snap"
 #SBATCH --account=ayg
 #SBATCH --partition=ai
 #SBATCH --gres=gpu:h100:1
 
 export OMP_NUM_THREADS=16
 cat /proc/cpuinfo
-sh drivers/parallel_gpu_30y_static_9p10p.sh
+sh drivers/parallel_gpu_30y_static_snap.sh
