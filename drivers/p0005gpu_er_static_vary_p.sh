@@ -1,7 +1,7 @@
 #!/bin/sh
-# ER Probability 0.05%: Growth: 1%, 3%, 6%
-# 3 years simulation
-# 1 thread
+# ER Probability from 0.01% to 0.1%
+# 3 - 10 years simulation
+# 16 thread
 
 mkdir -p output
 mkdir -p errors
@@ -10,8 +10,6 @@ OUTPUT=$(readlink -f ./output)/
 ERRORS=$(readlink -f ./errors)/
 
 NUM_THREADS=16
-NUM_CYCLES=10
-
 INPUT_EDGELIST="sj_edgelist"
 INPUT_NODELIST="sj_nodelist"
 OUTDEGREE_BAG="tcen_at_least_five"
@@ -31,36 +29,40 @@ do
     GROWTH_RATE=$(echo "scale=4; $GROWTH_PERCENT/100" | bc -l)
     GROWTH_LABEL=$(echo "$GROWTH_PERCENT" | sed 's/0\./dot/; s/\./dot/') 
 
-    OUTPUT_FILE="./output/${NUM_CYCLES}y/${ER_PROBABILITY_LABEL}/gpu-opt-static-model-${MODEL}-${NUM_CYCLES}y-${GROWTH_LABEL}p-${ER_PROBABILITY_LABEL}p.edgelist"
-    OUTPUT_LOG="./output/${NUM_CYCLES}y/${ER_PROBABILITY_LABEL}/gpu-opt-static-model-${MODEL}-${NUM_CYCLES}y-${GROWTH_LABEL}p-${ER_PROBABILITY_LABEL}p-${NUM_THREADS}t.log"
-    OUTPUT_AUX="./output/${NUM_CYCLES}y/${ER_PROBABILITY_LABEL}/gpu-opt-static-model-${MODEL}-${NUM_CYCLES}y-${GROWTH_LABEL}p-${ER_PROBABILITY_LABEL}p.aux"
-    OUT_FILE="./output/${NUM_CYCLES}y/${ER_PROBABILITY_LABEL}/gpu-opt-static-model-${MODEL}-${NUM_CYCLES}y-${GROWTH_LABEL}p-${ER_PROBABILITY_LABEL}p-${NUM_THREADS}t.out"
+    for NUM_CYCLES in 3 10 30
+    do
+        mkdir -p output/${NUM_CYCLES}y/${ER_PROBABILITY_LABEL}
 
-    echo "Running growth rate = ${GROWTH_RATE} = ${GROWTH_PERCENT}% ER_PROBABILITY_LABEL = ${ER_PROBABILITY_LABEL}% with ${NUM_THREADS} thread"
-    echo $OUTPUT_FILE
-    echo $OUTPUT_AUX
+        OUTPUT_FILE="./output/${NUM_CYCLES}y/${ER_PROBABILITY_LABEL}/gpu-er-${dataset}-static-model-${MODEL}-${NUM_CYCLES}y-${GROWTH_LABEL}p-${ER_PROBABILITY_LABEL}p.edgelist"
+        OUTPUT_LOG="./output/${NUM_CYCLES}y/${ER_PROBABILITY_LABEL}/gpu-er-${dataset}-static-model-${MODEL}-${NUM_CYCLES}y-${GROWTH_LABEL}p-${ER_PROBABILITY_LABEL}p-${NUM_THREADS}t.log"
+        OUTPUT_AUX="./output/${NUM_CYCLES}y/${ER_PROBABILITY_LABEL}/gpu-er-${dataset}-static-model-${MODEL}-${NUM_CYCLES}y-${GROWTH_LABEL}p-${ER_PROBABILITY_LABEL}p.aux"
+        OUT_FILE="./output/${NUM_CYCLES}y/${ER_PROBABILITY_LABEL}/gpu-er-${dataset}-static-model-${MODEL}-${NUM_CYCLES}y-${GROWTH_LABEL}p-${ER_PROBABILITY_LABEL}p-${NUM_THREADS}t.out"
 
-    time ./abm \
-    --model er-gnp \
-    --er-probability ${ER_PROBABILITY} \
-    --edgelist ${INPUT_EDGELIST} \
-    --nodelist ${INPUT_NODELIST} \
-    --out-degree-bag ${OUTDEGREE_BAG} \
-    --recency-probabilities ${RECENCY_PROBABILITIES} \
-    --alpha 0.5 \
-    --preferential-weight 0.33 \
-    --recency-weight 0.33 \
-    --fitness-weight 0.33 \
-    --growth-rate ${GROWTH_RATE} \
-    --fully-random-citations ${FULLY_RANDOM_CITATIONS} \
-    --num-cycles ${NUM_CYCLES} \
-    --same-year-proportion ${SAME_YEAR_PROPORTION} \
-    --output-file ${OUTPUT_FILE} \
-    --auxiliary-information-file ${OUTPUT_AUX} \
-    --log-file ${OUTPUT_LOG} \
-    --num-processors ${NUM_THREADS} \
-    --log-level ${LOG_LEVEL} \
-    2>${ERRORS}/abm-${GROWTH_PERCENT}p.err \
-    1>${OUT_FILE}
+        echo "Running growth rate = ${GROWTH_RATE} = ${GROWTH_PERCENT}% with ${NUM_THREADS} thread"
+        echo $OUTPUT_FILE
+        echo $OUTPUT_AUX
 
-done
+        time ./abm_er \
+        --model er-gnp \
+        --er-probability ${ER_PROBABILITY} \
+        --edgelist ${INPUT_EDGELIST} \
+        --nodelist ${INPUT_NODELIST} \
+        --out-degree-bag ${OUTDEGREE_BAG} \
+        --recency-probabilities ${RECENCY_PROBABILITIES} \
+        --alpha 0.5 \
+        --preferential-weight 0.33 \
+        --recency-weight 0.33 \
+        --fitness-weight 0.33 \
+        --growth-rate ${GROWTH_RATE} \
+        --fully-random-citations ${FULLY_RANDOM_CITATIONS} \
+        --num-cycles ${NUM_CYCLES} \
+        --same-year-proportion ${SAME_YEAR_PROPORTION} \
+        --output-file ${OUTPUT_FILE} \
+        --auxiliary-information-file ${OUTPUT_AUX} \
+        --log-file ${OUTPUT_LOG} \
+        --num-processors ${NUM_THREADS} \
+        --log-level ${LOG_LEVEL} \
+        2>${ERRORS}/abm-${GROWTH_PERCENT}p.err \
+        1>${OUT_FILE}
+    done
+done 

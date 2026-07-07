@@ -1,7 +1,5 @@
 #!/bin/sh
 # ER Probability from 0.01% to 3%
-# 3 years simulation
-# 1 thread
 
 mkdir -p output
 mkdir -p errors
@@ -9,8 +7,8 @@ mkdir -p errors
 OUTPUT=$(readlink -f ./output)/
 ERRORS=$(readlink -f ./errors)/
 
-NUM_THREADS=64
-NUM_CYCLES=3
+NUM_THREADS=16
+NUM_CYCLES=30
 
 INPUT_EDGELIST="sj_edgelist"
 INPUT_NODELIST="sj_nodelist"
@@ -22,15 +20,14 @@ FULLY_RANDOM_CITATIONS="0.05"
 LOG_LEVEL="1"
 MODEL="er-gnp"
 
-ER_PROBABILITY="0.03"
+ER_PROBABILITY="0.0001"
+ER_PROBABILITY_LABEL=$(awk "BEGIN {printf \"%.2f\", 100 * $ER_PROBABILITY}")
+mkdir -p output/${NUM_CYCLES}y/${ER_PROBABILITY_LABEL}
+
 for GROWTH_PERCENT in 1 3 6
 do
     GROWTH_RATE=$(echo "scale=4; $GROWTH_PERCENT/100" | bc -l)
     GROWTH_LABEL=$(echo "$GROWTH_PERCENT" | sed 's/0\./dot/; s/\./dot/') 
-
-    ER_PROBABILITY_LABEL=$(awk "BEGIN {printf \"%.1f\", 100 * $ER_PROBABILITY}")
-
-    mkdir -p output/${ER_PROBABILITY_LABEL}
 
     OUTPUT_FILE="./output/${ER_PROBABILITY_LABEL}/gpu-opt-static-model-${MODEL}-${NUM_CYCLES}y-${GROWTH_LABEL}p-${ER_PROBABILITY_LABEL}p.edgelist"
     OUTPUT_LOG="./output/${ER_PROBABILITY_LABEL}/gpu-opt-static-model-${MODEL}-${NUM_CYCLES}y-${GROWTH_LABEL}p-${ER_PROBABILITY_LABEL}p-${NUM_THREADS}t.log"
@@ -41,7 +38,7 @@ do
     echo $OUTPUT_FILE
     echo $OUTPUT_AUX
 
-    time ./abm \
+    time ./abm_er \
     --model er-gnp \
     --er-probability ${ER_PROBABILITY} \
     --edgelist ${INPUT_EDGELIST} \

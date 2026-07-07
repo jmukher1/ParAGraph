@@ -1,5 +1,5 @@
 #!/bin/sh
-# ER Probability from 0.01% to 3%
+# ER Probability 0.05%: Growth: 1%, 3%, 6%
 # 3 years simulation
 # 1 thread
 
@@ -10,7 +10,7 @@ OUTPUT=$(readlink -f ./output)/
 ERRORS=$(readlink -f ./errors)/
 
 NUM_THREADS=16
-NUM_CYCLES=10
+NUM_CYCLES=30
 
 INPUT_EDGELIST="sj_edgelist"
 INPUT_NODELIST="sj_nodelist"
@@ -22,8 +22,8 @@ FULLY_RANDOM_CITATIONS="0.05"
 LOG_LEVEL="1"
 MODEL="er-gnp"
 
-ER_PROBABILITY="0.01"
-ER_PROBABILITY_LABEL=$(awk "BEGIN {printf \"%.1f\", 100 * $ER_PROBABILITY}")
+ER_PROBABILITY="0.0005"
+ER_PROBABILITY_LABEL=$(awk "BEGIN {printf \"%.2f\", 100 * $ER_PROBABILITY}")
 mkdir -p output/${NUM_CYCLES}y/${ER_PROBABILITY_LABEL}
 
 for GROWTH_PERCENT in 1 3 6
@@ -36,11 +36,11 @@ do
     OUTPUT_AUX="./output/${NUM_CYCLES}y/${ER_PROBABILITY_LABEL}/gpu-opt-static-model-${MODEL}-${NUM_CYCLES}y-${GROWTH_LABEL}p-${ER_PROBABILITY_LABEL}p.aux"
     OUT_FILE="./output/${NUM_CYCLES}y/${ER_PROBABILITY_LABEL}/gpu-opt-static-model-${MODEL}-${NUM_CYCLES}y-${GROWTH_LABEL}p-${ER_PROBABILITY_LABEL}p-${NUM_THREADS}t.out"
 
-    echo "Running growth rate = ${GROWTH_RATE} = ${GROWTH_PERCENT}% with ${NUM_THREADS} thread"
+    echo "Running growth rate = ${GROWTH_RATE} = ${GROWTH_PERCENT}% ER_PROBABILITY_LABEL = ${ER_PROBABILITY_LABEL}% with ${NUM_THREADS} thread"
     echo $OUTPUT_FILE
     echo $OUTPUT_AUX
 
-    time ./abm \
+    time ./abm_er \
     --model er-gnp \
     --er-probability ${ER_PROBABILITY} \
     --edgelist ${INPUT_EDGELIST} \

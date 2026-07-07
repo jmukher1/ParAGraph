@@ -1,10 +1,6 @@
-abm
+abm_er
 output/
 errors/
 build/
 results/
 output
-sj_edgelist
-sj_nodelist
-sj_recprob
-tcen_at_least_five

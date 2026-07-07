@@ -2,8 +2,8 @@
 NVCC = nvcc #-g -G
 CXXFLAGS = -O3 -std=c++20 -dc -x cu
 NVCCFLAGS= -rdc=true -dc
-CUDAFLAGS= -std=c++20 -arch=sm_60 -O3 -use_fast_math --maxrregcount=128 --expt-extended-lambda -Xcompiler -fopenmp #-lineinfo
-NVCCLINKFLAGS= -arch=sm_60 -dlink
+CUDAFLAGS= -std=c++20 -arch=sm_90 -O3 -use_fast_math --maxrregcount=128 --expt-extended-lambda -Xcompiler -fopenmp #-lineinfo
+NVCCLINKFLAGS= -arch=sm_90 -dlink
 LIBS= -lcudart -lcublas
 EXPERIMENTAL= --expt-relaxed-constexpr
 LIBDIRS=-L$(CUDA_HOME)/lib64
@@ -17,7 +17,7 @@ INCDIRS=-I$(INC_DIR) -I$(SRC_DIR) -I$(CUCO_HOME)/include -I $(CUCO_HOME)/build/_
 
 
 # Default target
-TARGET = abm
+TARGET = abm_er
 
 # Files
 LINK_OBJS = $(BUILD_DIR)/utils.o $(BUILD_DIR)/kernel_erdos_renyi.o $(BUILD_DIR)/graph.o $(BUILD_DIR)/abm.o $(BUILD_DIR)/kernel.o  $(BUILD_DIR)/main.o    

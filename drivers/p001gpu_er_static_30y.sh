@@ -1,7 +1,7 @@
 #!/bin/sh
-# ER Probability from 0.01% to 0.1%
-# 3 - 10 years simulation
-# 16 thread
+# ER Probability from 0.01% to 3%
+# 3 years simulation
+# 1 thread
 
 mkdir -p output
 mkdir -p errors
@@ -10,6 +10,8 @@ OUTPUT=$(readlink -f ./output)/
 ERRORS=$(readlink -f ./errors)/
 
 NUM_THREADS=16
+NUM_CYCLES=30
+
 INPUT_EDGELIST="sj_edgelist"
 INPUT_NODELIST="sj_nodelist"
 OUTDEGREE_BAG="tcen_at_least_five"
@@ -20,23 +22,26 @@ FULLY_RANDOM_CITATIONS="0.05"
 LOG_LEVEL="1"
 MODEL="er-gnp"
 
-ER_PROBABILITY="0.0003"
-ER_PROBABILITY_LABEL=$(awk "BEGIN {printf \"%.2f\", 100 * $ER_PROBABILITY}")
-mkdir -p output/${NUM_CYCLES}y/${ER_PROBABILITY_LABEL}
+ER_PROBABILITY="0.001"
 
 for GROWTH_PERCENT in 1 3 6
 do
     GROWTH_RATE=$(echo "scale=4; $GROWTH_PERCENT/100" | bc -l)
     GROWTH_LABEL=$(echo "$GROWTH_PERCENT" | sed 's/0\./dot/; s/\./dot/') 
 
-    for NUM_CYCLES in 3 10 30
+    ER_PROBABILITY_LABEL=$(awk "BEGIN {printf \"%.2f\", 100 * $ER_PROBABILITY}")
+
+    echo ${ER_PROBABILITY_LABEL}
+    mkdir -p output/${ER_PROBABILITY_LABEL}
+
+    for NUM_CYCLES in 30
     do
         mkdir -p output/${NUM_CYCLES}y/${ER_PROBABILITY_LABEL}
 
-        OUTPUT_FILE="./output/${NUM_CYCLES}y/${ER_PROBABILITY_LABEL}/gpu-er-${dataset}-static-model-${MODEL}-${NUM_CYCLES}y-${GROWTH_LABEL}p-${ER_PROBABILITY_LABEL}p.edgelist"
-        OUTPUT_LOG="./output/${NUM_CYCLES}y/${ER_PROBABILITY_LABEL}/gpu-er-${dataset}-static-model-${MODEL}-${NUM_CYCLES}y-${GROWTH_LABEL}p-${ER_PROBABILITY_LABEL}p-${NUM_THREADS}t.log"
-        OUTPUT_AUX="./output/${NUM_CYCLES}y/${ER_PROBABILITY_LABEL}/gpu-er-${dataset}-static-model-${MODEL}-${NUM_CYCLES}y-${GROWTH_LABEL}p-${ER_PROBABILITY_LABEL}p.aux"
-        OUT_FILE="./output/${NUM_CYCLES}y/${ER_PROBABILITY_LABEL}/gpu-er-${dataset}-static-model-${MODEL}-${NUM_CYCLES}y-${GROWTH_LABEL}p-${ER_PROBABILITY_LABEL}p-${NUM_THREADS}t.out"
+        OUTPUT_FILE="./output/${NUM_CYCLES}y/${ER_PROBABILITY_LABEL}/gpu-opt-static-model-${MODEL}-${NUM_CYCLES}y-${GROWTH_LABEL}p-${ER_PROBABILITY_LABEL}p.edgelist"
+        OUTPUT_LOG="./output/${NUM_CYCLES}y/${ER_PROBABILITY_LABEL}/gpu-opt-static-model-${MODEL}-${NUM_CYCLES}y-${GROWTH_LABEL}p-${ER_PROBABILITY_LABEL}p-${NUM_THREADS}t.log"
+        OUTPUT_AUX="./output/${NUM_CYCLES}y/${ER_PROBABILITY_LABEL}/gpu-opt-static-model-${MODEL}-${NUM_CYCLES}y-${GROWTH_LABEL}p-${ER_PROBABILITY_LABEL}p.aux"
+        OUT_FILE="./output/${NUM_CYCLES}y/${ER_PROBABILITY_LABEL}/gpu-opt-static-model-${MODEL}-${NUM_CYCLES}y-${GROWTH_LABEL}p-${ER_PROBABILITY_LABEL}p-${NUM_THREADS}t.out"
 
         echo "Running growth rate = ${GROWTH_RATE} = ${GROWTH_PERCENT}% with ${NUM_THREADS} thread"
         echo $OUTPUT_FILE
@@ -65,4 +70,7 @@ do
         2>${ERRORS}/abm-${GROWTH_PERCENT}p.err \
         1>${OUT_FILE}
     done
-done 
+done
+
+
+ 
