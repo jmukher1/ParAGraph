@@ -1,0 +1,2711 @@
+Running dataset=sj growth=1% cycles=3y er_prob=0.0001 (0.01%) threads=16
+./output/3y/0.01/mass-er-gnp_cuda-sj-output-3y-1p.edgelist
+./output/3y/0.01/mass-er-gnp_cuda-sj-static-output-3y-1p.aux
+Citation Network ABM – MASS CUDA
+=================================
+
+Out-degree bag: 3980408 entries
+Recency probs:  355 entries
+BFS batches:    10 per year
+
+=== Initializing Citation ABM ===
+
+Inside parseNodelist...
+Populating continuous node mappings (491532 nodes)...
+parseNodelist done in 621 ms (491532 nodes)
+
+Inside parseEdgelist...
+parseEdgelist done in 238 ms (899050 edges)
+Seed max year: 1982  → simulation starts at 1983
+Max population: 508428
+Seed population: 491532 papers
+  DeviceGraph: fwd=899050 bwd=899050 edges
+Initialization complete
+
+
+=== Simulation Start  [model: er-gnp] ===
+
+--- Year 1983 [ER:er-gnp] (pop: 491532) ---
+  Adding 4916 new papers
+  Launching ER kernel (4916 new nodes, 491532 citable old nodes)  p=0.0001
+  ER generated 1140503 total edges so far
+  DeviceGraph: fwd=1140503 bwd=1140503 edges
+  Year 1983 total: 1229 ms  (pop: 496448)
+
+--- Year 1984 [ER:er-gnp] (pop: 496448) ---
+  Adding 4965 new papers
+  Launching ER kernel (4965 new nodes, 496448 citable old nodes)  p=0.0001
+  ER generated 1387172 total edges so far
+  DeviceGraph: fwd=1387172 bwd=1387172 edges
+  Year 1984 total: 1462 ms  (pop: 501413)
+
+--- Year 1985 [ER:er-gnp] (pop: 501413) ---
+  Adding 5015 new papers
+  Launching ER kernel (5015 new nodes, 501413 citable old nodes)  p=0.0001
+  ER generated 1639017 total edges so far
+  DeviceGraph: fwd=1639017 bwd=1639017 edges
+  Year 1985 total: 1628 ms  (pop: 506428)
+
+=== Simulation Complete ===
+Total: 4 s  Final pop: 506428
+
+=== Exporting Results ===
+Edges saved: ./output/3y/0.01/mass-er-gnp_cuda-sj-output-3y-1p.edgelist (1639017)
+Attributes saved: ./output/3y/0.01/mass-er-gnp_cuda-sj-static-output-3y-1p.aux (506428 rows)
+
+Done.
+
+real	0m10.370s
+user	0m9.200s
+sys	0m1.007s
+Running dataset=sj growth=1% cycles=3y er_prob=0.0003 (0.03%) threads=16
+./output/3y/0.03/mass-er-gnp_cuda-sj-output-3y-1p.edgelist
+./output/3y/0.03/mass-er-gnp_cuda-sj-static-output-3y-1p.aux
+Citation Network ABM – MASS CUDA
+=================================
+
+Out-degree bag: 3980408 entries
+Recency probs:  355 entries
+BFS batches:    10 per year
+
+=== Initializing Citation ABM ===
+
+Inside parseNodelist...
+Populating continuous node mappings (491532 nodes)...
+parseNodelist done in 618 ms (491532 nodes)
+
+Inside parseEdgelist...
+parseEdgelist done in 170 ms (899050 edges)
+Seed max year: 1982  → simulation starts at 1983
+Max population: 508428
+Seed population: 491532 papers
+  DeviceGraph: fwd=899050 bwd=899050 edges
+Initialization complete
+
+
+=== Simulation Start  [model: er-gnp] ===
+
+--- Year 1983 [ER:er-gnp] (pop: 491532) ---
+  Adding 4916 new papers
+  Launching ER kernel (4916 new nodes, 491532 citable old nodes)  p=0.0003
+  ER generated 1624477 total edges so far
+  DeviceGraph: fwd=1624477 bwd=1624477 edges
+  Year 1983 total: 1610 ms  (pop: 496448)
+
+--- Year 1984 [ER:er-gnp] (pop: 496448) ---
+  Adding 4965 new papers
+  Launching ER kernel (4965 new nodes, 496448 citable old nodes)  p=0.0003
+  ER generated 2364453 total edges so far
+  DeviceGraph: fwd=2364453 bwd=2364453 edges
+  Year 1984 total: 2167 ms  (pop: 501413)
+
+--- Year 1985 [ER:er-gnp] (pop: 501413) ---
+  Adding 5015 new papers
+  Launching ER kernel (5015 new nodes, 501413 citable old nodes)  p=0.0003
+  ER generated 3119790 total edges so far
+  DeviceGraph: fwd=3119790 bwd=3119790 edges
+  Year 1985 total: 2722 ms  (pop: 506428)
+
+=== Simulation Complete ===
+Total: 6 s  Final pop: 506428
+
+=== Exporting Results ===
+Edges saved: ./output/3y/0.03/mass-er-gnp_cuda-sj-output-3y-1p.edgelist (3119790)
+Attributes saved: ./output/3y/0.03/mass-er-gnp_cuda-sj-static-output-3y-1p.aux (506428 rows)
+
+Done.
+
+real	0m13.773s
+user	0m12.655s
+sys	0m1.055s
+Running dataset=sj growth=1% cycles=3y er_prob=0.0005 (0.05%) threads=16
+./output/3y/0.05/mass-er-gnp_cuda-sj-output-3y-1p.edgelist
+./output/3y/0.05/mass-er-gnp_cuda-sj-static-output-3y-1p.aux
+Citation Network ABM – MASS CUDA
+=================================
+
+Out-degree bag: 3980408 entries
+Recency probs:  355 entries
+BFS batches:    10 per year
+
+=== Initializing Citation ABM ===
+
+Inside parseNodelist...
+Populating continuous node mappings (491532 nodes)...
+parseNodelist done in 616 ms (491532 nodes)
+
+Inside parseEdgelist...
+parseEdgelist done in 172 ms (899050 edges)
+Seed max year: 1982  → simulation starts at 1983
+Max population: 508428
+Seed population: 491532 papers
+  DeviceGraph: fwd=899050 bwd=899050 edges
+Initialization complete
+
+
+=== Simulation Start  [model: er-gnp] ===
+
+--- Year 1983 [ER:er-gnp] (pop: 491532) ---
+  Adding 4916 new papers
+  Launching ER kernel (4916 new nodes, 491532 citable old nodes)  p=0.0005
+  ER generated 2108367 total edges so far
+  DeviceGraph: fwd=2108367 bwd=2108367 edges
+  Year 1983 total: 2061 ms  (pop: 496448)
+
+--- Year 1984 [ER:er-gnp] (pop: 496448) ---
+  Adding 4965 new papers
+  Launching ER kernel (4965 new nodes, 496448 citable old nodes)  p=0.0005
+  ER generated 3339916 total edges so far
+  DeviceGraph: fwd=3339916 bwd=3339916 edges
+  Year 1984 total: 3026 ms  (pop: 501413)
+
+--- Year 1985 [ER:er-gnp] (pop: 501413) ---
+  Adding 5015 new papers
+  Launching ER kernel (5015 new nodes, 501413 citable old nodes)  p=0.0005
+  ER generated 4597766 total edges so far
+  DeviceGraph: fwd=4597766 bwd=4597766 edges
+  Year 1985 total: 4043 ms  (pop: 506428)
+
+=== Simulation Complete ===
+Total: 9 s  Final pop: 506428
+
+=== Exporting Results ===
+Edges saved: ./output/3y/0.05/mass-er-gnp_cuda-sj-output-3y-1p.edgelist (4597766)
+Attributes saved: ./output/3y/0.05/mass-er-gnp_cuda-sj-static-output-3y-1p.aux (506428 rows)
+
+Done.
+
+real	0m17.787s
+user	0m16.613s
+sys	0m1.105s
+Running dataset=sj growth=1% cycles=3y er_prob=0.001 (0.10%) threads=16
+./output/3y/0.10/mass-er-gnp_cuda-sj-output-3y-1p.edgelist
+./output/3y/0.10/mass-er-gnp_cuda-sj-static-output-3y-1p.aux
+Citation Network ABM – MASS CUDA
+=================================
+
+Out-degree bag: 3980408 entries
+Recency probs:  355 entries
+BFS batches:    10 per year
+
+=== Initializing Citation ABM ===
+
+Inside parseNodelist...
+Populating continuous node mappings (491532 nodes)...
+parseNodelist done in 614 ms (491532 nodes)
+
+Inside parseEdgelist...
+parseEdgelist done in 169 ms (899050 edges)
+Seed max year: 1982  → simulation starts at 1983
+Max population: 508428
+Seed population: 491532 papers
+  DeviceGraph: fwd=899050 bwd=899050 edges
+Initialization complete
+
+
+=== Simulation Start  [model: er-gnp] ===
+
+--- Year 1983 [ER:er-gnp] (pop: 491532) ---
+  Adding 4916 new papers
+  Launching ER kernel (4916 new nodes, 491532 citable old nodes)  p=0.001
+  ER generated 3316709 total edges so far
+  DeviceGraph: fwd=3316709 bwd=3316709 edges
+  Year 1983 total: 2984 ms  (pop: 496448)
+
+--- Year 1984 [ER:er-gnp] (pop: 496448) ---
+  Adding 4965 new papers
+  Launching ER kernel (4965 new nodes, 496448 citable old nodes)  p=0.001
+  ER generated 5782528 total edges so far
+  DeviceGraph: fwd=5782528 bwd=5782528 edges
+  Year 1984 total: 5215 ms  (pop: 501413)
+
+--- Year 1985 [ER:er-gnp] (pop: 501413) ---
+  Adding 5015 new papers
+  Launching ER kernel (5015 new nodes, 501413 citable old nodes)  p=0.001
+  ER generated 8297545 total edges so far
+  DeviceGraph: fwd=8297545 bwd=8297545 edges
+  Year 1985 total: 7867 ms  (pop: 506428)
+
+=== Simulation Complete ===
+Total: 16 s  Final pop: 506428
+
+=== Exporting Results ===
+Edges saved: ./output/3y/0.10/mass-er-gnp_cuda-sj-output-3y-1p.edgelist (8297545)
+Attributes saved: ./output/3y/0.10/mass-er-gnp_cuda-sj-static-output-3y-1p.aux (506428 rows)
+
+Done.
+
+real	0m27.860s
+user	0m26.494s
+sys	0m1.262s
+Running dataset=sj growth=1% cycles=10y er_prob=0.0001 (0.01%) threads=16
+./output/10y/0.01/mass-er-gnp_cuda-sj-output-10y-1p.edgelist
+./output/10y/0.01/mass-er-gnp_cuda-sj-static-output-10y-1p.aux
+Citation Network ABM – MASS CUDA
+=================================
+
+Out-degree bag: 3980408 entries
+Recency probs:  355 entries
+BFS batches:    10 per year
+
+=== Initializing Citation ABM ===
+
+Inside parseNodelist...
+Populating continuous node mappings (491532 nodes)...
+parseNodelist done in 626 ms (491532 nodes)
+
+Inside parseEdgelist...
+parseEdgelist done in 168 ms (899050 edges)
+Seed max year: 1982  → simulation starts at 1983
+Max population: 544962
+Seed population: 491532 papers
+  DeviceGraph: fwd=899050 bwd=899050 edges
+Initialization complete
+
+
+=== Simulation Start  [model: er-gnp] ===
+
+--- Year 1983 [ER:er-gnp] (pop: 491532) ---
+  Adding 4916 new papers
+  Launching ER kernel (4916 new nodes, 491532 citable old nodes)  p=0.0001
+  ER generated 1140503 total edges so far
+  DeviceGraph: fwd=1140503 bwd=1140503 edges
+  Year 1983 total: 1509 ms  (pop: 496448)
+
+--- Year 1984 [ER:er-gnp] (pop: 496448) ---
+  Adding 4965 new papers
+  Launching ER kernel (4965 new nodes, 496448 citable old nodes)  p=0.0001
+  ER generated 1387172 total edges so far
+  DeviceGraph: fwd=1387172 bwd=1387172 edges
+  Year 1984 total: 1580 ms  (pop: 501413)
+
+--- Year 1985 [ER:er-gnp] (pop: 501413) ---
+  Adding 5015 new papers
+  Launching ER kernel (5015 new nodes, 501413 citable old nodes)  p=0.0001
+  ER generated 1639017 total edges so far
+  DeviceGraph: fwd=1639017 bwd=1639017 edges
+  Year 1985 total: 1711 ms  (pop: 506428)
+
+--- Year 1986 [ER:er-gnp] (pop: 506428) ---
+  Adding 5065 new papers
+  Launching ER kernel (5065 new nodes, 506428 citable old nodes)  p=0.0001
+  ER generated 1895381 total edges so far
+  DeviceGraph: fwd=1895381 bwd=1895381 edges
+  Year 1986 total: 1917 ms  (pop: 511493)
+
+--- Year 1987 [ER:er-gnp] (pop: 511493) ---
+  Adding 5115 new papers
+  Launching ER kernel (5115 new nodes, 511493 citable old nodes)  p=0.0001
+  ER generated 2156933 total edges so far
+  DeviceGraph: fwd=2156933 bwd=2156933 edges
+  Year 1987 total: 2091 ms  (pop: 516608)
+
+--- Year 1988 [ER:er-gnp] (pop: 516608) ---
+  Adding 5167 new papers
+  Launching ER kernel (5167 new nodes, 516608 citable old nodes)  p=0.0001
+  ER generated 2424104 total edges so far
+  DeviceGraph: fwd=2424104 bwd=2424104 edges
+  Year 1988 total: 2240 ms  (pop: 521775)
+
+--- Year 1989 [ER:er-gnp] (pop: 521775) ---
+  Adding 5218 new papers
+  Launching ER kernel (5218 new nodes, 521775 citable old nodes)  p=0.0001
+  ER generated 2695470 total edges so far
+  DeviceGraph: fwd=2695470 bwd=2695470 edges
+  Year 1989 total: 2482 ms  (pop: 526993)
+
+--- Year 1990 [ER:er-gnp] (pop: 526993) ---
+  Adding 5270 new papers
+  Launching ER kernel (5270 new nodes, 526993 citable old nodes)  p=0.0001
+  ER generated 2973616 total edges so far
+  DeviceGraph: fwd=2973616 bwd=2973616 edges
+  Year 1990 total: 2616 ms  (pop: 532263)
+
+--- Year 1991 [ER:er-gnp] (pop: 532263) ---
+  Adding 5323 new papers
+  Launching ER kernel (5323 new nodes, 532263 citable old nodes)  p=0.0001
+  ER generated 3257178 total edges so far
+  DeviceGraph: fwd=3257178 bwd=3257178 edges
+  Year 1991 total: 2893 ms  (pop: 537586)
+
+--- Year 1992 [ER:er-gnp] (pop: 537586) ---
+  Adding 5376 new papers
+  Launching ER kernel (5376 new nodes, 537586 citable old nodes)  p=0.0001
+  ER generated 3545943 total edges so far
+  DeviceGraph: fwd=3545943 bwd=3545943 edges
+  Year 1992 total: 3057 ms  (pop: 542962)
+
+=== Simulation Complete ===
+Total: 22 s  Final pop: 542962
+
+=== Exporting Results ===
+Edges saved: ./output/10y/0.01/mass-er-gnp_cuda-sj-output-10y-1p.edgelist (3545943)
+Attributes saved: ./output/10y/0.01/mass-er-gnp_cuda-sj-static-output-10y-1p.aux (542962 rows)
+
+Done.
+
+real	0m29.764s
+user	0m28.115s
+sys	0m1.528s
+Running dataset=sj growth=1% cycles=10y er_prob=0.0003 (0.03%) threads=16
+./output/10y/0.03/mass-er-gnp_cuda-sj-output-10y-1p.edgelist
+./output/10y/0.03/mass-er-gnp_cuda-sj-static-output-10y-1p.aux
+Citation Network ABM – MASS CUDA
+=================================
+
+Out-degree bag: 3980408 entries
+Recency probs:  355 entries
+BFS batches:    10 per year
+
+=== Initializing Citation ABM ===
+
+Inside parseNodelist...
+Populating continuous node mappings (491532 nodes)...
+parseNodelist done in 628 ms (491532 nodes)
+
+Inside parseEdgelist...
+parseEdgelist done in 180 ms (899050 edges)
+Seed max year: 1982  → simulation starts at 1983
+Max population: 544962
+Seed population: 491532 papers
+  DeviceGraph: fwd=899050 bwd=899050 edges
+Initialization complete
+
+
+=== Simulation Start  [model: er-gnp] ===
+
+--- Year 1983 [ER:er-gnp] (pop: 491532) ---
+  Adding 4916 new papers
+  Launching ER kernel (4916 new nodes, 491532 citable old nodes)  p=0.0003
+  ER generated 1624477 total edges so far
+  DeviceGraph: fwd=1624477 bwd=1624477 edges
+  Year 1983 total: 1645 ms  (pop: 496448)
+
+--- Year 1984 [ER:er-gnp] (pop: 496448) ---
+  Adding 4965 new papers
+  Launching ER kernel (4965 new nodes, 496448 citable old nodes)  p=0.0003
+  ER generated 2364453 total edges so far
+  DeviceGraph: fwd=2364453 bwd=2364453 edges
+  Year 1984 total: 2229 ms  (pop: 501413)
+
+--- Year 1985 [ER:er-gnp] (pop: 501413) ---
+  Adding 5015 new papers
+  Launching ER kernel (5015 new nodes, 501413 citable old nodes)  p=0.0003
+  ER generated 3119790 total edges so far
+  DeviceGraph: fwd=3119790 bwd=3119790 edges
+  Year 1985 total: 2831 ms  (pop: 506428)
+
+--- Year 1986 [ER:er-gnp] (pop: 506428) ---
+  Adding 5065 new papers
+  Launching ER kernel (5065 new nodes, 506428 citable old nodes)  p=0.0003
+  ER generated 3889537 total edges so far
+  DeviceGraph: fwd=3889537 bwd=3889537 edges
+  Year 1986 total: 3451 ms  (pop: 511493)
+
+--- Year 1987 [ER:er-gnp] (pop: 511493) ---
+  Adding 5115 new papers
+  Launching ER kernel (5115 new nodes, 511493 citable old nodes)  p=0.0003
+  ER generated 4674895 total edges so far
+  DeviceGraph: fwd=4674895 bwd=4674895 edges
+  Year 1987 total: 4054 ms  (pop: 516608)
+
+--- Year 1988 [ER:er-gnp] (pop: 516608) ---
+  Adding 5167 new papers
+  Launching ER kernel (5167 new nodes, 516608 citable old nodes)  p=0.0003
+  ER generated 5475696 total edges so far
+  DeviceGraph: fwd=5475696 bwd=5475696 edges
+  Year 1988 total: 4786 ms  (pop: 521775)
+
+--- Year 1989 [ER:er-gnp] (pop: 521775) ---
+  Adding 5218 new papers
+  Launching ER kernel (5218 new nodes, 521775 citable old nodes)  p=0.0003
+  ER generated 6291341 total edges so far
+  DeviceGraph: fwd=6291341 bwd=6291341 edges
+  Year 1989 total: 5600 ms  (pop: 526993)
+
+--- Year 1990 [ER:er-gnp] (pop: 526993) ---
+  Adding 5270 new papers
+  Launching ER kernel (5270 new nodes, 526993 citable old nodes)  p=0.0003
+  ER generated 7125401 total edges so far
+  DeviceGraph: fwd=7125401 bwd=7125401 edges
+  Year 1990 total: 6320 ms  (pop: 532263)
+
+--- Year 1991 [ER:er-gnp] (pop: 532263) ---
+  Adding 5323 new papers
+  Launching ER kernel (5323 new nodes, 532263 citable old nodes)  p=0.0003
+  ER generated 7975608 total edges so far
+  DeviceGraph: fwd=7975608 bwd=7975608 edges
+  Year 1991 total: 7195 ms  (pop: 537586)
+
+--- Year 1992 [ER:er-gnp] (pop: 537586) ---
+  Adding 5376 new papers
+  Launching ER kernel (5376 new nodes, 537586 citable old nodes)  p=0.0003
+  ER generated 8842007 total edges so far
+  DeviceGraph: fwd=8842007 bwd=8842007 edges
+  Year 1992 total: 8211 ms  (pop: 542962)
+
+=== Simulation Complete ===
+Total: 46 s  Final pop: 542962
+
+=== Exporting Results ===
+Edges saved: ./output/10y/0.03/mass-er-gnp_cuda-sj-output-10y-1p.edgelist (8842007)
+Attributes saved: ./output/10y/0.03/mass-er-gnp_cuda-sj-static-output-10y-1p.aux (542962 rows)
+
+Done.
+
+real	0m58.948s
+user	0m57.331s
+sys	0m1.450s
+Running dataset=sj growth=1% cycles=10y er_prob=0.0005 (0.05%) threads=16
+./output/10y/0.05/mass-er-gnp_cuda-sj-output-10y-1p.edgelist
+./output/10y/0.05/mass-er-gnp_cuda-sj-static-output-10y-1p.aux
+Citation Network ABM – MASS CUDA
+=================================
+
+Out-degree bag: 3980408 entries
+Recency probs:  355 entries
+BFS batches:    10 per year
+
+=== Initializing Citation ABM ===
+
+Inside parseNodelist...
+Populating continuous node mappings (491532 nodes)...
+parseNodelist done in 618 ms (491532 nodes)
+
+Inside parseEdgelist...
+parseEdgelist done in 170 ms (899050 edges)
+Seed max year: 1982  → simulation starts at 1983
+Max population: 544962
+Seed population: 491532 papers
+  DeviceGraph: fwd=899050 bwd=899050 edges
+Initialization complete
+
+
+=== Simulation Start  [model: er-gnp] ===
+
+--- Year 1983 [ER:er-gnp] (pop: 491532) ---
+  Adding 4916 new papers
+  Launching ER kernel (4916 new nodes, 491532 citable old nodes)  p=0.0005
+  ER generated 2108367 total edges so far
+  DeviceGraph: fwd=2108367 bwd=2108367 edges
+  Year 1983 total: 2082 ms  (pop: 496448)
+
+--- Year 1984 [ER:er-gnp] (pop: 496448) ---
+  Adding 4965 new papers
+  Launching ER kernel (4965 new nodes, 496448 citable old nodes)  p=0.0005
+  ER generated 3339916 total edges so far
+  DeviceGraph: fwd=3339916 bwd=3339916 edges
+  Year 1984 total: 3041 ms  (pop: 501413)
+
+--- Year 1985 [ER:er-gnp] (pop: 501413) ---
+  Adding 5015 new papers
+  Launching ER kernel (5015 new nodes, 501413 citable old nodes)  p=0.0005
+  ER generated 4597766 total edges so far
+  DeviceGraph: fwd=4597766 bwd=4597766 edges
+  Year 1985 total: 4046 ms  (pop: 506428)
+
+--- Year 1986 [ER:er-gnp] (pop: 506428) ---
+  Adding 5065 new papers
+  Launching ER kernel (5065 new nodes, 506428 citable old nodes)  p=0.0005
+  ER generated 5880706 total edges so far
+  DeviceGraph: fwd=5880706 bwd=5880706 edges
+  Year 1986 total: 5341 ms  (pop: 511493)
+
+--- Year 1987 [ER:er-gnp] (pop: 511493) ---
+  Adding 5115 new papers
+  Launching ER kernel (5115 new nodes, 511493 citable old nodes)  p=0.0005
+  ER generated 7189164 total edges so far
+  DeviceGraph: fwd=7189164 bwd=7189164 edges
+  Year 1987 total: 6534 ms  (pop: 516608)
+
+--- Year 1988 [ER:er-gnp] (pop: 516608) ---
+  Adding 5167 new papers
+  Launching ER kernel (5167 new nodes, 516608 citable old nodes)  p=0.0005
+  ER generated 8523842 total edges so far
+  DeviceGraph: fwd=8523842 bwd=8523842 edges
+  Year 1988 total: 8061 ms  (pop: 521775)
+
+--- Year 1989 [ER:er-gnp] (pop: 521775) ---
+  Adding 5218 new papers
+  Launching ER kernel (5218 new nodes, 521775 citable old nodes)  p=0.0005
+  ER generated 9884532 total edges so far
+  DeviceGraph: fwd=9884532 bwd=9884532 edges
+  Year 1989 total: 9673 ms  (pop: 526993)
+
+--- Year 1990 [ER:er-gnp] (pop: 526993) ---
+  Adding 5270 new papers
+  Launching ER kernel (5270 new nodes, 526993 citable old nodes)  p=0.0005
+  ER generated 11273360 total edges so far
+  DeviceGraph: fwd=11273360 bwd=11273360 edges
+  Year 1990 total: 11139 ms  (pop: 532263)
+
+--- Year 1991 [ER:er-gnp] (pop: 532263) ---
+  Adding 5323 new papers
+  Launching ER kernel (5323 new nodes, 532263 citable old nodes)  p=0.0005
+  ER generated 12690544 total edges so far
+  DeviceGraph: fwd=12690544 bwd=12690544 edges
+  Year 1991 total: 12607 ms  (pop: 537586)
+
+--- Year 1992 [ER:er-gnp] (pop: 537586) ---
+  Adding 5376 new papers
+  Launching ER kernel (5376 new nodes, 537586 citable old nodes)  p=0.0005
+  ER generated 14136439 total edges so far
+  DeviceGraph: fwd=14136439 bwd=14136439 edges
+  Year 1992 total: 14378 ms  (pop: 542962)
+
+=== Simulation Complete ===
+Total: 76 s  Final pop: 542962
+
+=== Exporting Results ===
+Edges saved: ./output/10y/0.05/mass-er-gnp_cuda-sj-output-10y-1p.edgelist (14136439)
+Attributes saved: ./output/10y/0.05/mass-er-gnp_cuda-sj-static-output-10y-1p.aux (542962 rows)
+
+Done.
+
+real	1m34.570s
+user	1m32.066s
+sys	0m2.125s
+Running dataset=sj growth=1% cycles=10y er_prob=0.001 (0.10%) threads=16
+./output/10y/0.10/mass-er-gnp_cuda-sj-output-10y-1p.edgelist
+./output/10y/0.10/mass-er-gnp_cuda-sj-static-output-10y-1p.aux
+Citation Network ABM – MASS CUDA
+=================================
+
+Out-degree bag: 3980408 entries
+Recency probs:  355 entries
+BFS batches:    10 per year
+
+=== Initializing Citation ABM ===
+
+Inside parseNodelist...
+Populating continuous node mappings (491532 nodes)...
+parseNodelist done in 623 ms (491532 nodes)
+
+Inside parseEdgelist...
+parseEdgelist done in 171 ms (899050 edges)
+Seed max year: 1982  → simulation starts at 1983
+Max population: 544962
+Seed population: 491532 papers
+  DeviceGraph: fwd=899050 bwd=899050 edges
+Initialization complete
+
+
+=== Simulation Start  [model: er-gnp] ===
+
+--- Year 1983 [ER:er-gnp] (pop: 491532) ---
+  Adding 4916 new papers
+  Launching ER kernel (4916 new nodes, 491532 citable old nodes)  p=0.001
+  ER generated 3316709 total edges so far
+  DeviceGraph: fwd=3316709 bwd=3316709 edges
+  Year 1983 total: 3004 ms  (pop: 496448)
+
+--- Year 1984 [ER:er-gnp] (pop: 496448) ---
+  Adding 4965 new papers
+  Launching ER kernel (4965 new nodes, 496448 citable old nodes)  p=0.001
+  ER generated 5782528 total edges so far
+  DeviceGraph: fwd=5782528 bwd=5782528 edges
+  Year 1984 total: 5276 ms  (pop: 501413)
+
+--- Year 1985 [ER:er-gnp] (pop: 501413) ---
+  Adding 5015 new papers
+  Launching ER kernel (5015 new nodes, 501413 citable old nodes)  p=0.001
+  ER generated 8297545 total edges so far
+  DeviceGraph: fwd=8297545 bwd=8297545 edges
+  Year 1985 total: 7832 ms  (pop: 506428)
+
+--- Year 1986 [ER:er-gnp] (pop: 506428) ---
+  Adding 5065 new papers
+  Launching ER kernel (5065 new nodes, 506428 citable old nodes)  p=0.001
+  ER generated 10862881 total edges so far
+  DeviceGraph: fwd=10862881 bwd=10862881 edges
+  Year 1986 total: 10545 ms  (pop: 511493)
+
+--- Year 1987 [ER:er-gnp] (pop: 511493) ---
+  Adding 5115 new papers
+  Launching ER kernel (5115 new nodes, 511493 citable old nodes)  p=0.001
+  ER generated 13478958 total edges so far
+  DeviceGraph: fwd=13478958 bwd=13478958 edges
+  Year 1987 total: 13497 ms  (pop: 516608)
+
+--- Year 1988 [ER:er-gnp] (pop: 516608) ---
+  Adding 5167 new papers
+  Launching ER kernel (5167 new nodes, 516608 citable old nodes)  p=0.001
+  ER generated 16147679 total edges so far
+  DeviceGraph: fwd=16147679 bwd=16147679 edges
+  Year 1988 total: 17105 ms  (pop: 521775)
+
+--- Year 1989 [ER:er-gnp] (pop: 521775) ---
+  Adding 5218 new papers
+  Launching ER kernel (5218 new nodes, 521775 citable old nodes)  p=0.001
+  ER generated 18869087 total edges so far
+  DeviceGraph: fwd=18869087 bwd=18869087 edges
+  Year 1989 total: 20329 ms  (pop: 526993)
+
+--- Year 1990 [ER:er-gnp] (pop: 526993) ---
+  Adding 5270 new papers
+  Launching ER kernel (5270 new nodes, 526993 citable old nodes)  p=0.001
+  ER generated 21646112 total edges so far
+  DeviceGraph: fwd=21646112 bwd=21646112 edges
+  Year 1990 total: 23480 ms  (pop: 532263)
+
+--- Year 1991 [ER:er-gnp] (pop: 532263) ---
+  Adding 5323 new papers
+  Launching ER kernel (5323 new nodes, 532263 citable old nodes)  p=0.001
+  ER generated 24479064 total edges so far
+  DeviceGraph: fwd=24479064 bwd=24479064 edges
+  Year 1991 total: 26086 ms  (pop: 537586)
+
+--- Year 1992 [ER:er-gnp] (pop: 537586) ---
+  Adding 5376 new papers
+  Launching ER kernel (5376 new nodes, 537586 citable old nodes)  p=0.001
+  ER generated 27371928 total edges so far
+  DeviceGraph: fwd=27371928 bwd=27371928 edges
+  Year 1992 total: 29522 ms  (pop: 542962)
+
+=== Simulation Complete ===
+Total: 156 s  Final pop: 542962
+
+=== Exporting Results ===
+Edges saved: ./output/10y/0.10/mass-er-gnp_cuda-sj-output-10y-1p.edgelist (27371928)
+Attributes saved: ./output/10y/0.10/mass-er-gnp_cuda-sj-static-output-10y-1p.aux (542962 rows)
+
+Done.
+
+real	3m6.227s
+user	3m2.219s
+sys	0m3.371s
+Running dataset=sj growth=1% cycles=30y er_prob=0.0001 (0.01%) threads=16
+./output/30y/0.01/mass-er-gnp_cuda-sj-output-30y-1p.edgelist
+./output/30y/0.01/mass-er-gnp_cuda-sj-static-output-30y-1p.aux
+Citation Network ABM – MASS CUDA
+=================================
+
+Out-degree bag: 3980408 entries
+Recency probs:  355 entries
+BFS batches:    10 per year
+
+=== Initializing Citation ABM ===
+
+Inside parseNodelist...
+Populating continuous node mappings (491532 nodes)...
+parseNodelist done in 620 ms (491532 nodes)
+
+Inside parseEdgelist...
+parseEdgelist done in 171 ms (899050 edges)
+Seed max year: 1982  → simulation starts at 1983
+Max population: 664527
+Seed population: 491532 papers
+  DeviceGraph: fwd=899050 bwd=899050 edges
+Initialization complete
+
+
+=== Simulation Start  [model: er-gnp] ===
+
+--- Year 1983 [ER:er-gnp] (pop: 491532) ---
+  Adding 4916 new papers
+  Launching ER kernel (4916 new nodes, 491532 citable old nodes)  p=0.0001
+  ER generated 1140503 total edges so far
+  DeviceGraph: fwd=1140503 bwd=1140503 edges
+  Year 1983 total: 1256 ms  (pop: 496448)
+
+--- Year 1984 [ER:er-gnp] (pop: 496448) ---
+  Adding 4965 new papers
+  Launching ER kernel (4965 new nodes, 496448 citable old nodes)  p=0.0001
+  ER generated 1387172 total edges so far
+  DeviceGraph: fwd=1387172 bwd=1387172 edges
+  Year 1984 total: 1573 ms  (pop: 501413)
+
+--- Year 1985 [ER:er-gnp] (pop: 501413) ---
+  Adding 5015 new papers
+  Launching ER kernel (5015 new nodes, 501413 citable old nodes)  p=0.0001
+  ER generated 1639017 total edges so far
+  DeviceGraph: fwd=1639017 bwd=1639017 edges
+  Year 1985 total: 1953 ms  (pop: 506428)
+
+--- Year 1986 [ER:er-gnp] (pop: 506428) ---
+  Adding 5065 new papers
+  Launching ER kernel (5065 new nodes, 506428 citable old nodes)  p=0.0001
+  ER generated 1895381 total edges so far
+  DeviceGraph: fwd=1895381 bwd=1895381 edges
+  Year 1986 total: 1974 ms  (pop: 511493)
+
+--- Year 1987 [ER:er-gnp] (pop: 511493) ---
+  Adding 5115 new papers
+  Launching ER kernel (5115 new nodes, 511493 citable old nodes)  p=0.0001
+  ER generated 2156933 total edges so far
+  DeviceGraph: fwd=2156933 bwd=2156933 edges
+  Year 1987 total: 2131 ms  (pop: 516608)
+
+--- Year 1988 [ER:er-gnp] (pop: 516608) ---
+  Adding 5167 new papers
+  Launching ER kernel (5167 new nodes, 516608 citable old nodes)  p=0.0001
+  ER generated 2424104 total edges so far
+  DeviceGraph: fwd=2424104 bwd=2424104 edges
+  Year 1988 total: 2282 ms  (pop: 521775)
+
+--- Year 1989 [ER:er-gnp] (pop: 521775) ---
+  Adding 5218 new papers
+  Launching ER kernel (5218 new nodes, 521775 citable old nodes)  p=0.0001
+  ER generated 2695470 total edges so far
+  DeviceGraph: fwd=2695470 bwd=2695470 edges
+  Year 1989 total: 2444 ms  (pop: 526993)
+
+--- Year 1990 [ER:er-gnp] (pop: 526993) ---
+  Adding 5270 new papers
+  Launching ER kernel (5270 new nodes, 526993 citable old nodes)  p=0.0001
+  ER generated 2973616 total edges so far
+  DeviceGraph: fwd=2973616 bwd=2973616 edges
+  Year 1990 total: 2663 ms  (pop: 532263)
+
+--- Year 1991 [ER:er-gnp] (pop: 532263) ---
+  Adding 5323 new papers
+  Launching ER kernel (5323 new nodes, 532263 citable old nodes)  p=0.0001
+  ER generated 3257178 total edges so far
+  DeviceGraph: fwd=3257178 bwd=3257178 edges
+  Year 1991 total: 2932 ms  (pop: 537586)
+
+--- Year 1992 [ER:er-gnp] (pop: 537586) ---
+  Adding 5376 new papers
+  Launching ER kernel (5376 new nodes, 537586 citable old nodes)  p=0.0001
+  ER generated 3545943 total edges so far
+  DeviceGraph: fwd=3545943 bwd=3545943 edges
+  Year 1992 total: 3126 ms  (pop: 542962)
+
+--- Year 1993 [ER:er-gnp] (pop: 542962) ---
+  Adding 5430 new papers
+  Launching ER kernel (5430 new nodes, 542962 citable old nodes)  p=0.0001
+  ER generated 3841060 total edges so far
+  DeviceGraph: fwd=3841060 bwd=3841060 edges
+  Year 1993 total: 3377 ms  (pop: 548392)
+
+--- Year 1994 [ER:er-gnp] (pop: 548392) ---
+  Adding 5484 new papers
+  Launching ER kernel (5484 new nodes, 548392 citable old nodes)  p=0.0001
+  ER generated 4142068 total edges so far
+  DeviceGraph: fwd=4142068 bwd=4142068 edges
+  Year 1994 total: 3536 ms  (pop: 553876)
+
+--- Year 1995 [ER:er-gnp] (pop: 553876) ---
+  Adding 5539 new papers
+  Launching ER kernel (5539 new nodes, 553876 citable old nodes)  p=0.0001
+  ER generated 4449047 total edges so far
+  DeviceGraph: fwd=4449047 bwd=4449047 edges
+  Year 1995 total: 3775 ms  (pop: 559415)
+
+--- Year 1996 [ER:er-gnp] (pop: 559415) ---
+  Adding 5595 new papers
+  Launching ER kernel (5595 new nodes, 559415 citable old nodes)  p=0.0001
+  ER generated 4762597 total edges so far
+  DeviceGraph: fwd=4762597 bwd=4762597 edges
+  Year 1996 total: 4116 ms  (pop: 565010)
+
+--- Year 1997 [ER:er-gnp] (pop: 565010) ---
+  Adding 5651 new papers
+  Launching ER kernel (5651 new nodes, 565010 citable old nodes)  p=0.0001
+  ER generated 5081319 total edges so far
+  DeviceGraph: fwd=5081319 bwd=5081319 edges
+  Year 1997 total: 4333 ms  (pop: 570661)
+
+--- Year 1998 [ER:er-gnp] (pop: 570661) ---
+  Adding 5707 new papers
+  Launching ER kernel (5707 new nodes, 570661 citable old nodes)  p=0.0001
+  ER generated 5406443 total edges so far
+  DeviceGraph: fwd=5406443 bwd=5406443 edges
+  Year 1998 total: 4653 ms  (pop: 576368)
+
+--- Year 1999 [ER:er-gnp] (pop: 576368) ---
+  Adding 5764 new papers
+  Launching ER kernel (5764 new nodes, 576368 citable old nodes)  p=0.0001
+  ER generated 5738378 total edges so far
+  DeviceGraph: fwd=5738378 bwd=5738378 edges
+  Year 1999 total: 4956 ms  (pop: 582132)
+
+--- Year 2000 [ER:er-gnp] (pop: 582132) ---
+  Adding 5822 new papers
+  Launching ER kernel (5822 new nodes, 582132 citable old nodes)  p=0.0001
+  ER generated 6077494 total edges so far
+  DeviceGraph: fwd=6077494 bwd=6077494 edges
+  Year 2000 total: 5160 ms  (pop: 587954)
+
+--- Year 2001 [ER:er-gnp] (pop: 587954) ---
+  Adding 5880 new papers
+  Launching ER kernel (5880 new nodes, 587954 citable old nodes)  p=0.0001
+  ER generated 6423786 total edges so far
+  DeviceGraph: fwd=6423786 bwd=6423786 edges
+  Year 2001 total: 5512 ms  (pop: 593834)
+
+--- Year 2002 [ER:er-gnp] (pop: 593834) ---
+  Adding 5939 new papers
+  Launching ER kernel (5939 new nodes, 593834 citable old nodes)  p=0.0001
+  ER generated 6776425 total edges so far
+  DeviceGraph: fwd=6776425 bwd=6776425 edges
+  Year 2002 total: 5887 ms  (pop: 599773)
+
+--- Year 2003 [ER:er-gnp] (pop: 599773) ---
+  Adding 5998 new papers
+  Launching ER kernel (5998 new nodes, 599773 citable old nodes)  p=0.0001
+  ER generated 7135742 total edges so far
+  DeviceGraph: fwd=7135742 bwd=7135742 edges
+  Year 2003 total: 6237 ms  (pop: 605771)
+
+--- Year 2004 [ER:er-gnp] (pop: 605771) ---
+  Adding 6058 new papers
+  Launching ER kernel (6058 new nodes, 605771 citable old nodes)  p=0.0001
+  ER generated 7502978 total edges so far
+  DeviceGraph: fwd=7502978 bwd=7502978 edges
+  Year 2004 total: 6643 ms  (pop: 611829)
+
+--- Year 2005 [ER:er-gnp] (pop: 611829) ---
+  Adding 6119 new papers
+  Launching ER kernel (6119 new nodes, 611829 citable old nodes)  p=0.0001
+  ER generated 7877389 total edges so far
+  DeviceGraph: fwd=7877389 bwd=7877389 edges
+  Year 2005 total: 7024 ms  (pop: 617948)
+
+--- Year 2006 [ER:er-gnp] (pop: 617948) ---
+  Adding 6180 new papers
+  Launching ER kernel (6180 new nodes, 617948 citable old nodes)  p=0.0001
+  ER generated 8258686 total edges so far
+  DeviceGraph: fwd=8258686 bwd=8258686 edges
+  Year 2006 total: 7502 ms  (pop: 624128)
+
+--- Year 2007 [ER:er-gnp] (pop: 624128) ---
+  Adding 6242 new papers
+  Launching ER kernel (6242 new nodes, 624128 citable old nodes)  p=0.0001
+  ER generated 8648155 total edges so far
+  DeviceGraph: fwd=8648155 bwd=8648155 edges
+  Year 2007 total: 7988 ms  (pop: 630370)
+
+--- Year 2008 [ER:er-gnp] (pop: 630370) ---
+  Adding 6304 new papers
+  Launching ER kernel (6304 new nodes, 630370 citable old nodes)  p=0.0001
+  ER generated 9045957 total edges so far
+  DeviceGraph: fwd=9045957 bwd=9045957 edges
+  Year 2008 total: 8323 ms  (pop: 636674)
+
+--- Year 2009 [ER:er-gnp] (pop: 636674) ---
+  Adding 6367 new papers
+  Launching ER kernel (6367 new nodes, 636674 citable old nodes)  p=0.0001
+  ER generated 9452387 total edges so far
+  DeviceGraph: fwd=9452387 bwd=9452387 edges
+  Year 2009 total: 8858 ms  (pop: 643041)
+
+--- Year 2010 [ER:er-gnp] (pop: 643041) ---
+  Adding 6431 new papers
+  Launching ER kernel (6431 new nodes, 643041 citable old nodes)  p=0.0001
+  ER generated 9865449 total edges so far
+  DeviceGraph: fwd=9865449 bwd=9865449 edges
+  Year 2010 total: 9240 ms  (pop: 649472)
+
+--- Year 2011 [ER:er-gnp] (pop: 649472) ---
+  Adding 6495 new papers
+  Launching ER kernel (6495 new nodes, 649472 citable old nodes)  p=0.0001
+  ER generated 10288363 total edges so far
+  DeviceGraph: fwd=10288363 bwd=10288363 edges
+  Year 2011 total: 9718 ms  (pop: 655967)
+
+--- Year 2012 [ER:er-gnp] (pop: 655967) ---
+  Adding 6560 new papers
+  Launching ER kernel (6560 new nodes, 655967 citable old nodes)  p=0.0001
+  ER generated 10718056 total edges so far
+  DeviceGraph: fwd=10718056 bwd=10718056 edges
+  Year 2012 total: 10198 ms  (pop: 662527)
+
+=== Simulation Complete ===
+Total: 149 s  Final pop: 662527
+
+=== Exporting Results ===
+Edges saved: ./output/30y/0.01/mass-er-gnp_cuda-sj-output-30y-1p.edgelist (10718056)
+Attributes saved: ./output/30y/0.01/mass-er-gnp_cuda-sj-static-output-30y-1p.aux (662527 rows)
+
+Done.
+
+real	2m43.636s
+user	2m40.841s
+sys	0m2.328s
+Running dataset=sj growth=1% cycles=30y er_prob=0.0003 (0.03%) threads=16
+./output/30y/0.03/mass-er-gnp_cuda-sj-output-30y-1p.edgelist
+./output/30y/0.03/mass-er-gnp_cuda-sj-static-output-30y-1p.aux
+Citation Network ABM – MASS CUDA
+=================================
+
+Out-degree bag: 3980408 entries
+Recency probs:  355 entries
+BFS batches:    10 per year
+
+=== Initializing Citation ABM ===
+
+Inside parseNodelist...
+Populating continuous node mappings (491532 nodes)...
+parseNodelist done in 614 ms (491532 nodes)
+
+Inside parseEdgelist...
+parseEdgelist done in 170 ms (899050 edges)
+Seed max year: 1982  → simulation starts at 1983
+Max population: 664527
+Seed population: 491532 papers
+  DeviceGraph: fwd=899050 bwd=899050 edges
+Initialization complete
+
+
+=== Simulation Start  [model: er-gnp] ===
+
+--- Year 1983 [ER:er-gnp] (pop: 491532) ---
+  Adding 4916 new papers
+  Launching ER kernel (4916 new nodes, 491532 citable old nodes)  p=0.0003
+  ER generated 1624477 total edges so far
+  DeviceGraph: fwd=1624477 bwd=1624477 edges
+  Year 1983 total: 2178 ms  (pop: 496448)
+
+--- Year 1984 [ER:er-gnp] (pop: 496448) ---
+  Adding 4965 new papers
+  Launching ER kernel (4965 new nodes, 496448 citable old nodes)  p=0.0003
+  ER generated 2364453 total edges so far
+  DeviceGraph: fwd=2364453 bwd=2364453 edges
+  Year 1984 total: 2711 ms  (pop: 501413)
+
+--- Year 1985 [ER:er-gnp] (pop: 501413) ---
+  Adding 5015 new papers
+  Launching ER kernel (5015 new nodes, 501413 citable old nodes)  p=0.0003
+  ER generated 3119790 total edges so far
+  DeviceGraph: fwd=3119790 bwd=3119790 edges
+  Year 1985 total: 3593 ms  (pop: 506428)
+
+--- Year 1986 [ER:er-gnp] (pop: 506428) ---
+  Adding 5065 new papers
+  Launching ER kernel (5065 new nodes, 506428 citable old nodes)  p=0.0003
+  ER generated 3889537 total edges so far
+  DeviceGraph: fwd=3889537 bwd=3889537 edges
+  Year 1986 total: 4046 ms  (pop: 511493)
+
+--- Year 1987 [ER:er-gnp] (pop: 511493) ---
+  Adding 5115 new papers
+  Launching ER kernel (5115 new nodes, 511493 citable old nodes)  p=0.0003
+  ER generated 4674895 total edges so far
+  DeviceGraph: fwd=4674895 bwd=4674895 edges
+  Year 1987 total: 4199 ms  (pop: 516608)
+
+--- Year 1988 [ER:er-gnp] (pop: 516608) ---
+  Adding 5167 new papers
+  Launching ER kernel (5167 new nodes, 516608 citable old nodes)  p=0.0003
+  ER generated 5475696 total edges so far
+  DeviceGraph: fwd=5475696 bwd=5475696 edges
+  Year 1988 total: 4862 ms  (pop: 521775)
+
+--- Year 1989 [ER:er-gnp] (pop: 521775) ---
+  Adding 5218 new papers
+  Launching ER kernel (5218 new nodes, 521775 citable old nodes)  p=0.0003
+  ER generated 6291341 total edges so far
+  DeviceGraph: fwd=6291341 bwd=6291341 edges
+  Year 1989 total: 5676 ms  (pop: 526993)
+
+--- Year 1990 [ER:er-gnp] (pop: 526993) ---
+  Adding 5270 new papers
+  Launching ER kernel (5270 new nodes, 526993 citable old nodes)  p=0.0003
+  ER generated 7125401 total edges so far
+  DeviceGraph: fwd=7125401 bwd=7125401 edges
+  Year 1990 total: 6389 ms  (pop: 532263)
+
+--- Year 1991 [ER:er-gnp] (pop: 532263) ---
+  Adding 5323 new papers
+  Launching ER kernel (5323 new nodes, 532263 citable old nodes)  p=0.0003
+  ER generated 7975608 total edges so far
+  DeviceGraph: fwd=7975608 bwd=7975608 edges
+  Year 1991 total: 7537 ms  (pop: 537586)
+
+--- Year 1992 [ER:er-gnp] (pop: 537586) ---
+  Adding 5376 new papers
+  Launching ER kernel (5376 new nodes, 537586 citable old nodes)  p=0.0003
+  ER generated 8842007 total edges so far
+  DeviceGraph: fwd=8842007 bwd=8842007 edges
+  Year 1992 total: 8304 ms  (pop: 542962)
+
+--- Year 1993 [ER:er-gnp] (pop: 542962) ---
+  Adding 5430 new papers
+  Launching ER kernel (5430 new nodes, 542962 citable old nodes)  p=0.0003
+  ER generated 9728154 total edges so far
+  DeviceGraph: fwd=9728154 bwd=9728154 edges
+  Year 1993 total: 9371 ms  (pop: 548392)
+
+--- Year 1994 [ER:er-gnp] (pop: 548392) ---
+  Adding 5484 new papers
+  Launching ER kernel (5484 new nodes, 548392 citable old nodes)  p=0.0003
+  ER generated 10632115 total edges so far
+  DeviceGraph: fwd=10632115 bwd=10632115 edges
+  Year 1994 total: 10291 ms  (pop: 553876)
+
+--- Year 1995 [ER:er-gnp] (pop: 553876) ---
+  Adding 5539 new papers
+  Launching ER kernel (5539 new nodes, 553876 citable old nodes)  p=0.0003
+  ER generated 11552191 total edges so far
+  DeviceGraph: fwd=11552191 bwd=11552191 edges
+  Year 1995 total: 11347 ms  (pop: 559415)
+
+--- Year 1996 [ER:er-gnp] (pop: 559415) ---
+  Adding 5595 new papers
+  Launching ER kernel (5595 new nodes, 559415 citable old nodes)  p=0.0003
+  ER generated 12490702 total edges so far
+  DeviceGraph: fwd=12490702 bwd=12490702 edges
+  Year 1996 total: 12508 ms  (pop: 565010)
+
+--- Year 1997 [ER:er-gnp] (pop: 565010) ---
+  Adding 5651 new papers
+  Launching ER kernel (5651 new nodes, 565010 citable old nodes)  p=0.0003
+  ER generated 13448850 total edges so far
+  DeviceGraph: fwd=13448850 bwd=13448850 edges
+  Year 1997 total: 14335 ms  (pop: 570661)
+
+--- Year 1998 [ER:er-gnp] (pop: 570661) ---
+  Adding 5707 new papers
+  Launching ER kernel (5707 new nodes, 570661 citable old nodes)  p=0.0003
+  ER generated 14425487 total edges so far
+  DeviceGraph: fwd=14425487 bwd=14425487 edges
+  Year 1998 total: 15421 ms  (pop: 576368)
+
+--- Year 1999 [ER:er-gnp] (pop: 576368) ---
+  Adding 5764 new papers
+  Launching ER kernel (5764 new nodes, 576368 citable old nodes)  p=0.0003
+  ER generated 15422833 total edges so far
+  DeviceGraph: fwd=15422833 bwd=15422833 edges
+  Year 1999 total: 17807 ms  (pop: 582132)
+
+--- Year 2000 [ER:er-gnp] (pop: 582132) ---
+  Adding 5822 new papers
+  Launching ER kernel (5822 new nodes, 582132 citable old nodes)  p=0.0003
+  ER generated 16440226 total edges so far
+  DeviceGraph: fwd=16440226 bwd=16440226 edges
+  Year 2000 total: 19502 ms  (pop: 587954)
+
+--- Year 2001 [ER:er-gnp] (pop: 587954) ---
+  Adding 5880 new papers
+  Launching ER kernel (5880 new nodes, 587954 citable old nodes)  p=0.0003
+  ER generated 17478795 total edges so far
+  DeviceGraph: fwd=17478795 bwd=17478795 edges
+  Year 2001 total: 18855 ms  (pop: 593834)
+
+--- Year 2002 [ER:er-gnp] (pop: 593834) ---
+  Adding 5939 new papers
+  Launching ER kernel (5939 new nodes, 593834 citable old nodes)  p=0.0003
+  ER generated 18536927 total edges so far
+  DeviceGraph: fwd=18536927 bwd=18536927 edges
+  Year 2002 total: 20262 ms  (pop: 599773)
+
+--- Year 2003 [ER:er-gnp] (pop: 599773) ---
+  Adding 5998 new papers
+  Launching ER kernel (5998 new nodes, 599773 citable old nodes)  p=0.0003
+  ER generated 19615899 total edges so far
+  DeviceGraph: fwd=19615899 bwd=19615899 edges
+  Year 2003 total: 21519 ms  (pop: 605771)
+
+--- Year 2004 [ER:er-gnp] (pop: 605771) ---
+  Adding 6058 new papers
+  Launching ER kernel (6058 new nodes, 605771 citable old nodes)  p=0.0003
+  ER generated 20717600 total edges so far
+  DeviceGraph: fwd=20717600 bwd=20717600 edges
+  Year 2004 total: 24797 ms  (pop: 611829)
+
+--- Year 2005 [ER:er-gnp] (pop: 611829) ---
+  Adding 6119 new papers
+  Launching ER kernel (6119 new nodes, 611829 citable old nodes)  p=0.0003
+  ER generated 21841974 total edges so far
+  DeviceGraph: fwd=21841974 bwd=21841974 edges
+  Year 2005 total: 26654 ms  (pop: 617948)
+
+--- Year 2006 [ER:er-gnp] (pop: 617948) ---
+  Adding 6180 new papers
+  Launching ER kernel (6180 new nodes, 617948 citable old nodes)  p=0.0003
+  ER generated 22985666 total edges so far
+  DeviceGraph: fwd=22985666 bwd=22985666 edges
+  Year 2006 total: 27432 ms  (pop: 624128)
+
+--- Year 2007 [ER:er-gnp] (pop: 624128) ---
+  Adding 6242 new papers
+  Launching ER kernel (6242 new nodes, 624128 citable old nodes)  p=0.0003
+  ER generated 24153415 total edges so far
+  DeviceGraph: fwd=24153415 bwd=24153415 edges
+  Year 2007 total: 26329 ms  (pop: 630370)
+
+--- Year 2008 [ER:er-gnp] (pop: 630370) ---
+  Adding 6304 new papers
+  Launching ER kernel (6304 new nodes, 630370 citable old nodes)  p=0.0003
+  ER generated 25344882 total edges so far
+  DeviceGraph: fwd=25344882 bwd=25344882 edges
+  Year 2008 total: 27444 ms  (pop: 636674)
+
+--- Year 2009 [ER:er-gnp] (pop: 636674) ---
+  Adding 6367 new papers
+  Launching ER kernel (6367 new nodes, 636674 citable old nodes)  p=0.0003
+  ER generated 26561809 total edges so far
+  DeviceGraph: fwd=26561809 bwd=26561809 edges
+  Year 2009 total: 28798 ms  (pop: 643041)
+
+--- Year 2010 [ER:er-gnp] (pop: 643041) ---
+  Adding 6431 new papers
+  Launching ER kernel (6431 new nodes, 643041 citable old nodes)  p=0.0003
+  ER generated 27801964 total edges so far
+  DeviceGraph: fwd=27801964 bwd=27801964 edges
+  Year 2010 total: 31991 ms  (pop: 649472)
+
+--- Year 2011 [ER:er-gnp] (pop: 649472) ---
+  Adding 6495 new papers
+  Launching ER kernel (6495 new nodes, 649472 citable old nodes)  p=0.0003
+  ER generated 29068999 total edges so far
+  DeviceGraph: fwd=29068999 bwd=29068999 edges
+  Year 2011 total: 36828 ms  (pop: 655967)
+
+--- Year 2012 [ER:er-gnp] (pop: 655967) ---
+  Adding 6560 new papers
+  Launching ER kernel (6560 new nodes, 655967 citable old nodes)  p=0.0003
+  ER generated 30357919 total edges so far
+  DeviceGraph: fwd=30357919 bwd=30357919 edges
+  Year 2012 total: 35913 ms  (pop: 662527)
+
+=== Simulation Complete ===
+Total: 486 s  Final pop: 662527
+
+=== Exporting Results ===
+Edges saved: ./output/30y/0.03/mass-er-gnp_cuda-sj-output-30y-1p.edgelist (30357919)
+Attributes saved: ./output/30y/0.03/mass-er-gnp_cuda-sj-static-output-30y-1p.aux (662527 rows)
+
+Done.
+
+real	8m39.431s
+user	8m31.265s
+sys	0m5.689s
+Running dataset=sj growth=1% cycles=30y er_prob=0.0005 (0.05%) threads=16
+./output/30y/0.05/mass-er-gnp_cuda-sj-output-30y-1p.edgelist
+./output/30y/0.05/mass-er-gnp_cuda-sj-static-output-30y-1p.aux
+Citation Network ABM – MASS CUDA
+=================================
+
+Out-degree bag: 3980408 entries
+Recency probs:  355 entries
+BFS batches:    10 per year
+
+=== Initializing Citation ABM ===
+
+Inside parseNodelist...
+Populating continuous node mappings (491532 nodes)...
+parseNodelist done in 620 ms (491532 nodes)
+
+Inside parseEdgelist...
+parseEdgelist done in 169 ms (899050 edges)
+Seed max year: 1982  → simulation starts at 1983
+Max population: 664527
+Seed population: 491532 papers
+  DeviceGraph: fwd=899050 bwd=899050 edges
+Initialization complete
+
+
+=== Simulation Start  [model: er-gnp] ===
+
+--- Year 1983 [ER:er-gnp] (pop: 491532) ---
+  Adding 4916 new papers
+  Launching ER kernel (4916 new nodes, 491532 citable old nodes)  p=0.0005
+  ER generated 2108367 total edges so far
+  DeviceGraph: fwd=2108367 bwd=2108367 edges
+  Year 1983 total: 2090 ms  (pop: 496448)
+
+--- Year 1984 [ER:er-gnp] (pop: 496448) ---
+  Adding 4965 new papers
+  Launching ER kernel (4965 new nodes, 496448 citable old nodes)  p=0.0005
+  ER generated 3339916 total edges so far
+  DeviceGraph: fwd=3339916 bwd=3339916 edges
+  Year 1984 total: 3018 ms  (pop: 501413)
+
+--- Year 1985 [ER:er-gnp] (pop: 501413) ---
+  Adding 5015 new papers
+  Launching ER kernel (5015 new nodes, 501413 citable old nodes)  p=0.0005
+  ER generated 4597766 total edges so far
+  DeviceGraph: fwd=4597766 bwd=4597766 edges
+  Year 1985 total: 4034 ms  (pop: 506428)
+
+--- Year 1986 [ER:er-gnp] (pop: 506428) ---
+  Adding 5065 new papers
+  Launching ER kernel (5065 new nodes, 506428 citable old nodes)  p=0.0005
+  ER generated 5880706 total edges so far
+  DeviceGraph: fwd=5880706 bwd=5880706 edges
+  Year 1986 total: 5277 ms  (pop: 511493)
+
+--- Year 1987 [ER:er-gnp] (pop: 511493) ---
+  Adding 5115 new papers
+  Launching ER kernel (5115 new nodes, 511493 citable old nodes)  p=0.0005
+  ER generated 7189164 total edges so far
+  DeviceGraph: fwd=7189164 bwd=7189164 edges
+  Year 1987 total: 6514 ms  (pop: 516608)
+
+--- Year 1988 [ER:er-gnp] (pop: 516608) ---
+  Adding 5167 new papers
+  Launching ER kernel (5167 new nodes, 516608 citable old nodes)  p=0.0005
+  ER generated 8523842 total edges so far
+  DeviceGraph: fwd=8523842 bwd=8523842 edges
+  Year 1988 total: 7864 ms  (pop: 521775)
+
+--- Year 1989 [ER:er-gnp] (pop: 521775) ---
+  Adding 5218 new papers
+  Launching ER kernel (5218 new nodes, 521775 citable old nodes)  p=0.0005
+  ER generated 9884532 total edges so far
+  DeviceGraph: fwd=9884532 bwd=9884532 edges
+  Year 1989 total: 9581 ms  (pop: 526993)
+
+--- Year 1990 [ER:er-gnp] (pop: 526993) ---
+  Adding 5270 new papers
+  Launching ER kernel (5270 new nodes, 526993 citable old nodes)  p=0.0005
+  ER generated 11273360 total edges so far
+  DeviceGraph: fwd=11273360 bwd=11273360 edges
+  Year 1990 total: 10849 ms  (pop: 532263)
+
+--- Year 1991 [ER:er-gnp] (pop: 532263) ---
+  Adding 5323 new papers
+  Launching ER kernel (5323 new nodes, 532263 citable old nodes)  p=0.0005
+  ER generated 12690544 total edges so far
+  DeviceGraph: fwd=12690544 bwd=12690544 edges
+  Year 1991 total: 12418 ms  (pop: 537586)
+
+--- Year 1992 [ER:er-gnp] (pop: 537586) ---
+  Adding 5376 new papers
+  Launching ER kernel (5376 new nodes, 537586 citable old nodes)  p=0.0005
+  ER generated 14136439 total edges so far
+  DeviceGraph: fwd=14136439 bwd=14136439 edges
+  Year 1992 total: 14245 ms  (pop: 542962)
+
+--- Year 1993 [ER:er-gnp] (pop: 542962) ---
+  Adding 5430 new papers
+  Launching ER kernel (5430 new nodes, 542962 citable old nodes)  p=0.0005
+  ER generated 15612752 total edges so far
+  DeviceGraph: fwd=15612752 bwd=15612752 edges
+  Year 1993 total: 16050 ms  (pop: 548392)
+
+--- Year 1994 [ER:er-gnp] (pop: 548392) ---
+  Adding 5484 new papers
+  Launching ER kernel (5484 new nodes, 548392 citable old nodes)  p=0.0005
+  ER generated 17119114 total edges so far
+  DeviceGraph: fwd=17119114 bwd=17119114 edges
+  Year 1994 total: 18162 ms  (pop: 553876)
+
+--- Year 1995 [ER:er-gnp] (pop: 553876) ---
+  Adding 5539 new papers
+  Launching ER kernel (5539 new nodes, 553876 citable old nodes)  p=0.0005
+  ER generated 18652739 total edges so far
+  DeviceGraph: fwd=18652739 bwd=18652739 edges
+  Year 1995 total: 19872 ms  (pop: 559415)
+
+--- Year 1996 [ER:er-gnp] (pop: 559415) ---
+  Adding 5595 new papers
+  Launching ER kernel (5595 new nodes, 559415 citable old nodes)  p=0.0005
+  ER generated 20217605 total edges so far
+  DeviceGraph: fwd=20217605 bwd=20217605 edges
+  Year 1996 total: 21507 ms  (pop: 565010)
+
+--- Year 1997 [ER:er-gnp] (pop: 565010) ---
+  Adding 5651 new papers
+  Launching ER kernel (5651 new nodes, 565010 citable old nodes)  p=0.0005
+  ER generated 21814204 total edges so far
+  DeviceGraph: fwd=21814204 bwd=21814204 edges
+  Year 1997 total: 23603 ms  (pop: 570661)
+
+--- Year 1998 [ER:er-gnp] (pop: 570661) ---
+  Adding 5707 new papers
+  Launching ER kernel (5707 new nodes, 570661 citable old nodes)  p=0.0005
+  ER generated 23440653 total edges so far
+  DeviceGraph: fwd=23440653 bwd=23440653 edges
+  Year 1998 total: 25384 ms  (pop: 576368)
+
+--- Year 1999 [ER:er-gnp] (pop: 576368) ---
+  Adding 5764 new papers
+  Launching ER kernel (5764 new nodes, 576368 citable old nodes)  p=0.0005
+  ER generated 25101672 total edges so far
+  DeviceGraph: fwd=25101672 bwd=25101672 edges
+  Year 1999 total: 26934 ms  (pop: 582132)
+
+--- Year 2000 [ER:er-gnp] (pop: 582132) ---
+  Adding 5822 new papers
+  Launching ER kernel (5822 new nodes, 582132 citable old nodes)  p=0.0005
+  ER generated 26796889 total edges so far
+  DeviceGraph: fwd=26796889 bwd=26796889 edges
+  Year 2000 total: 29040 ms  (pop: 587954)
+
+--- Year 2001 [ER:er-gnp] (pop: 587954) ---
+  Adding 5880 new papers
+  Launching ER kernel (5880 new nodes, 587954 citable old nodes)  p=0.0005
+  ER generated 28526991 total edges so far
+  DeviceGraph: fwd=28526991 bwd=28526991 edges
+  Year 2001 total: 30900 ms  (pop: 593834)
+
+--- Year 2002 [ER:er-gnp] (pop: 593834) ---
+  Adding 5939 new papers
+  Launching ER kernel (5939 new nodes, 593834 citable old nodes)  p=0.0005
+  ER generated 30289038 total edges so far
+  DeviceGraph: fwd=30289038 bwd=30289038 edges
+  Year 2002 total: 34084 ms  (pop: 599773)
+
+--- Year 2003 [ER:er-gnp] (pop: 599773) ---
+  Adding 5998 new papers
+  Launching ER kernel (5998 new nodes, 599773 citable old nodes)  p=0.0005
+  ER generated 32086441 total edges so far
+  DeviceGraph: fwd=32086441 bwd=32086441 edges
+  Year 2003 total: 36427 ms  (pop: 605771)
+
+--- Year 2004 [ER:er-gnp] (pop: 605771) ---
+  Adding 6058 new papers
+  Launching ER kernel (6058 new nodes, 605771 citable old nodes)  p=0.0005
+  ER generated 33922579 total edges so far
+  DeviceGraph: fwd=33922579 bwd=33922579 edges
+  Year 2004 total: 39280 ms  (pop: 611829)
+
+--- Year 2005 [ER:er-gnp] (pop: 611829) ---
+  Adding 6119 new papers
+  Launching ER kernel (6119 new nodes, 611829 citable old nodes)  p=0.0005
+  ER generated 35795495 total edges so far
+  DeviceGraph: fwd=35795495 bwd=35795495 edges
+  Year 2005 total: 42074 ms  (pop: 617948)
+
+--- Year 2006 [ER:er-gnp] (pop: 617948) ---
+  Adding 6180 new papers
+  Launching ER kernel (6180 new nodes, 617948 citable old nodes)  p=0.0005
+  ER generated 37703223 total edges so far
+  DeviceGraph: fwd=37703223 bwd=37703223 edges
+  Year 2006 total: 44419 ms  (pop: 624128)
+
+--- Year 2007 [ER:er-gnp] (pop: 624128) ---
+  Adding 6242 new papers
+  Launching ER kernel (6242 new nodes, 624128 citable old nodes)  p=0.0005
+  ER generated 39650150 total edges so far
+  DeviceGraph: fwd=39650150 bwd=39650150 edges
+  Year 2007 total: 47002 ms  (pop: 630370)
+
+--- Year 2008 [ER:er-gnp] (pop: 630370) ---
+  Adding 6304 new papers
+  Launching ER kernel (6304 new nodes, 630370 citable old nodes)  p=0.0005
+  ER generated 41636290 total edges so far
+  DeviceGraph: fwd=41636290 bwd=41636290 edges
+  Year 2008 total: 49865 ms  (pop: 636674)
+
+--- Year 2009 [ER:er-gnp] (pop: 636674) ---
+  Adding 6367 new papers
+  Launching ER kernel (6367 new nodes, 636674 citable old nodes)  p=0.0005
+  ER generated 43663855 total edges so far
+  DeviceGraph: fwd=43663855 bwd=43663855 edges
+  Year 2009 total: 52358 ms  (pop: 643041)
+
+--- Year 2010 [ER:er-gnp] (pop: 643041) ---
+  Adding 6431 new papers
+  Launching ER kernel (6431 new nodes, 643041 citable old nodes)  p=0.0005
+  ER generated 45731471 total edges so far
+  DeviceGraph: fwd=45731471 bwd=45731471 edges
+  Year 2010 total: 54621 ms  (pop: 649472)
+
+--- Year 2011 [ER:er-gnp] (pop: 649472) ---
+  Adding 6495 new papers
+  Launching ER kernel (6495 new nodes, 649472 citable old nodes)  p=0.0005
+  ER generated 47840825 total edges so far
+  DeviceGraph: fwd=47840825 bwd=47840825 edges
+  Year 2011 total: 56680 ms  (pop: 655967)
+
+--- Year 2012 [ER:er-gnp] (pop: 655967) ---
+  Adding 6560 new papers
+  Launching ER kernel (6560 new nodes, 655967 citable old nodes)  p=0.0005
+  ER generated 49989540 total edges so far
+  DeviceGraph: fwd=49989540 bwd=49989540 edges
+  Year 2012 total: 59111 ms  (pop: 662527)
+
+=== Simulation Complete ===
+Total: 803 s  Final pop: 662527
+
+=== Exporting Results ===
+Edges saved: ./output/30y/0.05/mass-er-gnp_cuda-sj-output-30y-1p.edgelist (49989540)
+Attributes saved: ./output/30y/0.05/mass-er-gnp_cuda-sj-static-output-30y-1p.aux (662527 rows)
+
+Done.
+
+real	14m11.957s
+user	13m56.403s
+sys	0m12.759s
+Running dataset=sj growth=1% cycles=30y er_prob=0.001 (0.10%) threads=16
+./output/30y/0.10/mass-er-gnp_cuda-sj-output-30y-1p.edgelist
+./output/30y/0.10/mass-er-gnp_cuda-sj-static-output-30y-1p.aux
+Citation Network ABM – MASS CUDA
+=================================
+
+Out-degree bag: 3980408 entries
+Recency probs:  355 entries
+BFS batches:    10 per year
+
+=== Initializing Citation ABM ===
+
+Inside parseNodelist...
+Populating continuous node mappings (491532 nodes)...
+parseNodelist done in 623 ms (491532 nodes)
+
+Inside parseEdgelist...
+parseEdgelist done in 173 ms (899050 edges)
+Seed max year: 1982  → simulation starts at 1983
+Max population: 664527
+Seed population: 491532 papers
+  DeviceGraph: fwd=899050 bwd=899050 edges
+Initialization complete
+
+
+=== Simulation Start  [model: er-gnp] ===
+
+--- Year 1983 [ER:er-gnp] (pop: 491532) ---
+  Adding 4916 new papers
+  Launching ER kernel (4916 new nodes, 491532 citable old nodes)  p=0.001
+  ER generated 3316709 total edges so far
+  DeviceGraph: fwd=3316709 bwd=3316709 edges
+  Year 1983 total: 3006 ms  (pop: 496448)
+
+--- Year 1984 [ER:er-gnp] (pop: 496448) ---
+  Adding 4965 new papers
+  Launching ER kernel (4965 new nodes, 496448 citable old nodes)  p=0.001
+  ER generated 5782528 total edges so far
+  DeviceGraph: fwd=5782528 bwd=5782528 edges
+  Year 1984 total: 5304 ms  (pop: 501413)
+
+--- Year 1985 [ER:er-gnp] (pop: 501413) ---
+  Adding 5015 new papers
+  Launching ER kernel (5015 new nodes, 501413 citable old nodes)  p=0.001
+  ER generated 8297545 total edges so far
+  DeviceGraph: fwd=8297545 bwd=8297545 edges
+  Year 1985 total: 7904 ms  (pop: 506428)
+
+--- Year 1986 [ER:er-gnp] (pop: 506428) ---
+  Adding 5065 new papers
+  Launching ER kernel (5065 new nodes, 506428 citable old nodes)  p=0.001
+  ER generated 10862881 total edges so far
+  DeviceGraph: fwd=10862881 bwd=10862881 edges
+  Year 1986 total: 10485 ms  (pop: 511493)
+
+--- Year 1987 [ER:er-gnp] (pop: 511493) ---
+  Adding 5115 new papers
+  Launching ER kernel (5115 new nodes, 511493 citable old nodes)  p=0.001
+  ER generated 13478958 total edges so far
+  DeviceGraph: fwd=13478958 bwd=13478958 edges
+  Year 1987 total: 13350 ms  (pop: 516608)
+
+--- Year 1988 [ER:er-gnp] (pop: 516608) ---
+  Adding 5167 new papers
+  Launching ER kernel (5167 new nodes, 516608 citable old nodes)  p=0.001
+  ER generated 16147679 total edges so far
+  DeviceGraph: fwd=16147679 bwd=16147679 edges
+  Year 1988 total: 17127 ms  (pop: 521775)
+
+--- Year 1989 [ER:er-gnp] (pop: 521775) ---
+  Adding 5218 new papers
+  Launching ER kernel (5218 new nodes, 521775 citable old nodes)  p=0.001
+  ER generated 18869087 total edges so far
+  DeviceGraph: fwd=18869087 bwd=18869087 edges
+  Year 1989 total: 20281 ms  (pop: 526993)
+
+--- Year 1990 [ER:er-gnp] (pop: 526993) ---
+  Adding 5270 new papers
+  Launching ER kernel (5270 new nodes, 526993 citable old nodes)  p=0.001
+  ER generated 21646112 total edges so far
+  DeviceGraph: fwd=21646112 bwd=21646112 edges
+  Year 1990 total: 23543 ms  (pop: 532263)
+
+--- Year 1991 [ER:er-gnp] (pop: 532263) ---
+  Adding 5323 new papers
+  Launching ER kernel (5323 new nodes, 532263 citable old nodes)  p=0.001
+  ER generated 24479064 total edges so far
+  DeviceGraph: fwd=24479064 bwd=24479064 edges
+  Year 1991 total: 26541 ms  (pop: 537586)
+
+--- Year 1992 [ER:er-gnp] (pop: 537586) ---
+  Adding 5376 new papers
+  Launching ER kernel (5376 new nodes, 537586 citable old nodes)  p=0.001
+  ER generated 27371928 total edges so far
+  DeviceGraph: fwd=27371928 bwd=27371928 edges
+  Year 1992 total: 30067 ms  (pop: 542962)
+
+--- Year 1993 [ER:er-gnp] (pop: 542962) ---
+  Adding 5430 new papers
+  Launching ER kernel (5430 new nodes, 542962 citable old nodes)  p=0.001
+  ER generated 30321074 total edges so far
+  DeviceGraph: fwd=30321074 bwd=30321074 edges
+  Year 1993 total: 33683 ms  (pop: 548392)
+
+--- Year 1994 [ER:er-gnp] (pop: 548392) ---
+  Adding 5484 new papers
+  Launching ER kernel (5484 new nodes, 548392 citable old nodes)  p=0.001
+  ER generated 33331125 total edges so far
+  DeviceGraph: fwd=33331125 bwd=33331125 edges
+  Year 1994 total: 38848 ms  (pop: 553876)
+
+--- Year 1995 [ER:er-gnp] (pop: 553876) ---
+  Adding 5539 new papers
+  Launching ER kernel (5539 new nodes, 553876 citable old nodes)  p=0.001
+  ER generated 36398213 total edges so far
+  DeviceGraph: fwd=36398213 bwd=36398213 edges
+  Year 1995 total: 47155 ms  (pop: 559415)
+
+--- Year 1996 [ER:er-gnp] (pop: 559415) ---
+  Adding 5595 new papers
+  Launching ER kernel (5595 new nodes, 559415 citable old nodes)  p=0.001
+  ER generated 39528442 total edges so far
+  DeviceGraph: fwd=39528442 bwd=39528442 edges
+  Year 1996 total: 56421 ms  (pop: 565010)
+
+--- Year 1997 [ER:er-gnp] (pop: 565010) ---
+  Adding 5651 new papers
+  Launching ER kernel (5651 new nodes, 565010 citable old nodes)  p=0.001
+  ER generated 42718563 total edges so far
+  DeviceGraph: fwd=42718563 bwd=42718563 edges
+  Year 1997 total: 51415 ms  (pop: 570661)
+
+--- Year 1998 [ER:er-gnp] (pop: 570661) ---
+  Adding 5707 new papers
+  Launching ER kernel (5707 new nodes, 570661 citable old nodes)  p=0.001
+  ER generated 45974469 total edges so far
+  DeviceGraph: fwd=45974469 bwd=45974469 edges
+  Year 1998 total: 52922 ms  (pop: 576368)
+
+--- Year 1999 [ER:er-gnp] (pop: 576368) ---
+  Adding 5764 new papers
+  Launching ER kernel (5764 new nodes, 576368 citable old nodes)  p=0.001
+  ER generated 49295339 total edges so far
+  DeviceGraph: fwd=49295339 bwd=49295339 edges
+  Year 1999 total: 56565 ms  (pop: 582132)
+
+--- Year 2000 [ER:er-gnp] (pop: 582132) ---
+  Adding 5822 new papers
+  Launching ER kernel (5822 new nodes, 582132 citable old nodes)  p=0.001
+  ER generated 52685532 total edges so far
+  DeviceGraph: fwd=52685532 bwd=52685532 edges
+  Year 2000 total: 59208 ms  (pop: 587954)
+
+--- Year 2001 [ER:er-gnp] (pop: 587954) ---
+  Adding 5880 new papers
+  Launching ER kernel (5880 new nodes, 587954 citable old nodes)  p=0.001
+  ER generated 56142154 total edges so far
+  DeviceGraph: fwd=56142154 bwd=56142154 edges
+  Year 2001 total: 62956 ms  (pop: 593834)
+
+--- Year 2002 [ER:er-gnp] (pop: 593834) ---
+  Adding 5939 new papers
+  Launching ER kernel (5939 new nodes, 593834 citable old nodes)  p=0.001
+  ER generated 59667790 total edges so far
+  DeviceGraph: fwd=59667790 bwd=59667790 edges
+  Year 2002 total: 76614 ms  (pop: 599773)
+
+--- Year 2003 [ER:er-gnp] (pop: 599773) ---
+  Adding 5998 new papers
+  Launching ER kernel (5998 new nodes, 599773 citable old nodes)  p=0.001
+  ER generated 63263523 total edges so far
+  DeviceGraph: fwd=63263523 bwd=63263523 edges
+  Year 2003 total: 73315 ms  (pop: 605771)
+
+--- Year 2004 [ER:er-gnp] (pop: 605771) ---
+  Adding 6058 new papers
+  Launching ER kernel (6058 new nodes, 605771 citable old nodes)  p=0.001
+  ER generated 66934599 total edges so far
+  DeviceGraph: fwd=66934599 bwd=66934599 edges
+  Year 2004 total: 77943 ms  (pop: 611829)
+
+--- Year 2005 [ER:er-gnp] (pop: 611829) ---
+  Adding 6119 new papers
+  Launching ER kernel (6119 new nodes, 611829 citable old nodes)  p=0.001
+  ER generated 70678527 total edges so far
+  DeviceGraph: fwd=70678527 bwd=70678527 edges
+  Year 2005 total: 85812 ms  (pop: 617948)
+
+--- Year 2006 [ER:er-gnp] (pop: 617948) ---
+  Adding 6180 new papers
+  Launching ER kernel (6180 new nodes, 617948 citable old nodes)  p=0.001
+  ER generated 74496796 total edges so far
+  DeviceGraph: fwd=74496796 bwd=74496796 edges
+  Year 2006 total: 88716 ms  (pop: 624128)
+
+--- Year 2007 [ER:er-gnp] (pop: 624128) ---
+  Adding 6242 new papers
+  Launching ER kernel (6242 new nodes, 624128 citable old nodes)  p=0.001
+  ER generated 78391896 total edges so far
+  DeviceGraph: fwd=78391896 bwd=78391896 edges
+  Year 2007 total: 93926 ms  (pop: 630370)
+
+--- Year 2008 [ER:er-gnp] (pop: 630370) ---
+  Adding 6304 new papers
+  Launching ER kernel (6304 new nodes, 630370 citable old nodes)  p=0.001
+  ER generated 82364530 total edges so far
+  DeviceGraph: fwd=82364530 bwd=82364530 edges
+  Year 2008 total: 101023 ms  (pop: 636674)
+
+--- Year 2009 [ER:er-gnp] (pop: 636674) ---
+  Adding 6367 new papers
+  Launching ER kernel (6367 new nodes, 636674 citable old nodes)  p=0.001
+  ER generated 86417818 total edges so far
+  DeviceGraph: fwd=86417818 bwd=86417818 edges
+  Year 2009 total: 105086 ms  (pop: 643041)
+
+--- Year 2010 [ER:er-gnp] (pop: 643041) ---
+  Adding 6431 new papers
+  Launching ER kernel (6431 new nodes, 643041 citable old nodes)  p=0.001
+  ER generated 90551456 total edges so far
+  DeviceGraph: fwd=90551456 bwd=90551456 edges
+  Year 2010 total: 109660 ms  (pop: 649472)
+
+--- Year 2011 [ER:er-gnp] (pop: 649472) ---
+  Adding 6495 new papers
+  Launching ER kernel (6495 new nodes, 649472 citable old nodes)  p=0.001
+  ER generated 94770822 total edges so far
+  DeviceGraph: fwd=94770822 bwd=94770822 edges
+  Year 2011 total: 114710 ms  (pop: 655967)
+
+--- Year 2012 [ER:er-gnp] (pop: 655967) ---
+  Adding 6560 new papers
+  Launching ER kernel (6560 new nodes, 655967 citable old nodes)  p=0.001
+  ER generated 99071936 total edges so far
+  DeviceGraph: fwd=99071936 bwd=99071936 edges
+  Year 2012 total: 119015 ms  (pop: 662527)
+
+=== Simulation Complete ===
+Total: 1662 s  Final pop: 662527
+
+=== Exporting Results ===
+Edges saved: ./output/30y/0.10/mass-er-gnp_cuda-sj-output-30y-1p.edgelist (99071936)
+Attributes saved: ./output/30y/0.10/mass-er-gnp_cuda-sj-static-output-30y-1p.aux (662527 rows)
+
+Done.
+
+real	29m9.492s
+user	28m7.416s
+sys	0m56.183s
+Running dataset=sj growth=3% cycles=3y er_prob=0.0001 (0.01%) threads=16
+./output/3y/0.01/mass-er-gnp_cuda-sj-output-3y-3p.edgelist
+./output/3y/0.01/mass-er-gnp_cuda-sj-static-output-3y-3p.aux
+Citation Network ABM – MASS CUDA
+=================================
+
+Out-degree bag: 3980408 entries
+Recency probs:  355 entries
+BFS batches:    10 per year
+
+=== Initializing Citation ABM ===
+
+Inside parseNodelist...
+Populating continuous node mappings (491532 nodes)...
+parseNodelist done in 610 ms (491532 nodes)
+
+Inside parseEdgelist...
+parseEdgelist done in 169 ms (899050 edges)
+Seed max year: 1982  → simulation starts at 1983
+Max population: 539112
+Seed population: 491532 papers
+  DeviceGraph: fwd=899050 bwd=899050 edges
+Initialization complete
+
+
+=== Simulation Start  [model: er-gnp] ===
+
+--- Year 1983 [ER:er-gnp] (pop: 491532) ---
+  Adding 14746 new papers
+  Launching ER kernel (14746 new nodes, 491532 citable old nodes)  p=0.0001
+  ER generated 1623677 total edges so far
+  DeviceGraph: fwd=1623677 bwd=1623677 edges
+  Year 1983 total: 2022 ms  (pop: 506278)
+
+--- Year 1984 [ER:er-gnp] (pop: 506278) ---
+  Adding 15189 new papers
+  Launching ER kernel (15189 new nodes, 506278 citable old nodes)  p=0.0001
+  ER generated 2391914 total edges so far
+  DeviceGraph: fwd=2391914 bwd=2391914 edges
+  Year 1984 total: 2622 ms  (pop: 521467)
+
+--- Year 1985 [ER:er-gnp] (pop: 521467) ---
+  Adding 15645 new papers
+  Launching ER kernel (15645 new nodes, 521467 citable old nodes)  p=0.0001
+  ER generated 3207833 total edges so far
+  DeviceGraph: fwd=3207833 bwd=3207833 edges
+  Year 1985 total: 3239 ms  (pop: 537112)
+
+=== Simulation Complete ===
+Total: 7 s  Final pop: 537112
+
+=== Exporting Results ===
+Edges saved: ./output/3y/0.01/mass-er-gnp_cuda-sj-output-3y-3p.edgelist (3207833)
+Attributes saved: ./output/3y/0.01/mass-er-gnp_cuda-sj-static-output-3y-3p.aux (537112 rows)
+
+Done.
+
+real	0m15.042s
+user	0m13.967s
+sys	0m1.028s
+Running dataset=sj growth=3% cycles=3y er_prob=0.0003 (0.03%) threads=16
+./output/3y/0.03/mass-er-gnp_cuda-sj-output-3y-3p.edgelist
+./output/3y/0.03/mass-er-gnp_cuda-sj-static-output-3y-3p.aux
+Citation Network ABM – MASS CUDA
+=================================
+
+Out-degree bag: 3980408 entries
+Recency probs:  355 entries
+BFS batches:    10 per year
+
+=== Initializing Citation ABM ===
+
+Inside parseNodelist...
+Populating continuous node mappings (491532 nodes)...
+parseNodelist done in 613 ms (491532 nodes)
+
+Inside parseEdgelist...
+parseEdgelist done in 167 ms (899050 edges)
+Seed max year: 1982  → simulation starts at 1983
+Max population: 539112
+Seed population: 491532 papers
+  DeviceGraph: fwd=899050 bwd=899050 edges
+Initialization complete
+
+
+=== Simulation Start  [model: er-gnp] ===
+
+--- Year 1983 [ER:er-gnp] (pop: 491532) ---
+  Adding 14746 new papers
+  Launching ER kernel (14746 new nodes, 491532 citable old nodes)  p=0.0003
+  ER generated 3073228 total edges so far
+  DeviceGraph: fwd=3073228 bwd=3073228 edges
+  Year 1983 total: 3164 ms  (pop: 506278)
+
+--- Year 1984 [ER:er-gnp] (pop: 506278) ---
+  Adding 15189 new papers
+  Launching ER kernel (15189 new nodes, 506278 citable old nodes)  p=0.0003
+  ER generated 5379062 total edges so far
+  DeviceGraph: fwd=5379062 bwd=5379062 edges
+  Year 1984 total: 5170 ms  (pop: 521467)
+
+--- Year 1985 [ER:er-gnp] (pop: 521467) ---
+  Adding 15645 new papers
+  Launching ER kernel (15645 new nodes, 521467 citable old nodes)  p=0.0003
+  ER generated 7825716 total edges so far
+  DeviceGraph: fwd=7825716 bwd=7825716 edges
+  Year 1985 total: 7692 ms  (pop: 537112)
+
+=== Simulation Complete ===
+Total: 16 s  Final pop: 537112
+
+=== Exporting Results ===
+Edges saved: ./output/3y/0.03/mass-er-gnp_cuda-sj-output-3y-3p.edgelist (7825716)
+Attributes saved: ./output/3y/0.03/mass-er-gnp_cuda-sj-static-output-3y-3p.aux (537112 rows)
+
+Done.
+
+real	0m27.296s
+user	0m25.914s
+sys	0m1.298s
+Running dataset=sj growth=3% cycles=3y er_prob=0.0005 (0.05%) threads=16
+./output/3y/0.05/mass-er-gnp_cuda-sj-output-3y-3p.edgelist
+./output/3y/0.05/mass-er-gnp_cuda-sj-static-output-3y-3p.aux
+Citation Network ABM – MASS CUDA
+=================================
+
+Out-degree bag: 3980408 entries
+Recency probs:  355 entries
+BFS batches:    10 per year
+
+=== Initializing Citation ABM ===
+
+Inside parseNodelist...
+Populating continuous node mappings (491532 nodes)...
+parseNodelist done in 612 ms (491532 nodes)
+
+Inside parseEdgelist...
+parseEdgelist done in 170 ms (899050 edges)
+Seed max year: 1982  → simulation starts at 1983
+Max population: 539112
+Seed population: 491532 papers
+  DeviceGraph: fwd=899050 bwd=899050 edges
+Initialization complete
+
+
+=== Simulation Start  [model: er-gnp] ===
+
+--- Year 1983 [ER:er-gnp] (pop: 491532) ---
+  Adding 14746 new papers
+  Launching ER kernel (14746 new nodes, 491532 citable old nodes)  p=0.0005
+  ER generated 4523825 total edges so far
+  DeviceGraph: fwd=4523825 bwd=4523825 edges
+  Year 1983 total: 4420 ms  (pop: 506278)
+
+--- Year 1984 [ER:er-gnp] (pop: 506278) ---
+  Adding 15189 new papers
+  Launching ER kernel (15189 new nodes, 506278 citable old nodes)  p=0.0005
+  ER generated 8366961 total edges so far
+  DeviceGraph: fwd=8366961 bwd=8366961 edges
+  Year 1984 total: 8312 ms  (pop: 521467)
+
+--- Year 1985 [ER:er-gnp] (pop: 521467) ---
+  Adding 15645 new papers
+  Launching ER kernel (15645 new nodes, 521467 citable old nodes)  p=0.0005
+  ER generated 12445445 total edges so far
+  DeviceGraph: fwd=12445445 bwd=12445445 edges
+  Year 1985 total: 12551 ms  (pop: 537112)
+
+=== Simulation Complete ===
+Total: 25 s  Final pop: 537112
+
+=== Exporting Results ===
+Edges saved: ./output/3y/0.05/mass-er-gnp_cuda-sj-output-3y-3p.edgelist (12445445)
+Attributes saved: ./output/3y/0.05/mass-er-gnp_cuda-sj-static-output-3y-3p.aux (537112 rows)
+
+Done.
+
+real	0m40.842s
+user	0m38.977s
+sys	0m1.716s
+Running dataset=sj growth=3% cycles=3y er_prob=0.001 (0.10%) threads=16
+./output/3y/0.10/mass-er-gnp_cuda-sj-output-3y-3p.edgelist
+./output/3y/0.10/mass-er-gnp_cuda-sj-static-output-3y-3p.aux
+Citation Network ABM – MASS CUDA
+=================================
+
+Out-degree bag: 3980408 entries
+Recency probs:  355 entries
+BFS batches:    10 per year
+
+=== Initializing Citation ABM ===
+
+Inside parseNodelist...
+Populating continuous node mappings (491532 nodes)...
+parseNodelist done in 612 ms (491532 nodes)
+
+Inside parseEdgelist...
+parseEdgelist done in 166 ms (899050 edges)
+Seed max year: 1982  → simulation starts at 1983
+Max population: 539112
+Seed population: 491532 papers
+  DeviceGraph: fwd=899050 bwd=899050 edges
+Initialization complete
+
+
+=== Simulation Start  [model: er-gnp] ===
+
+--- Year 1983 [ER:er-gnp] (pop: 491532) ---
+  Adding 14746 new papers
+  Launching ER kernel (14746 new nodes, 491532 citable old nodes)  p=0.001
+  ER generated 8146466 total edges so far
+  DeviceGraph: fwd=8146466 bwd=8146466 edges
+  Year 1983 total: 8074 ms  (pop: 506278)
+
+--- Year 1984 [ER:er-gnp] (pop: 506278) ---
+  Adding 15189 new papers
+  Launching ER kernel (15189 new nodes, 506278 citable old nodes)  p=0.001
+  ER generated 15835901 total edges so far
+  DeviceGraph: fwd=15835901 bwd=15835901 edges
+  Year 1984 total: 16953 ms  (pop: 521467)
+
+--- Year 1985 [ER:er-gnp] (pop: 521467) ---
+  Adding 15645 new papers
+  Launching ER kernel (15645 new nodes, 521467 citable old nodes)  p=0.001
+  ER generated 23994300 total edges so far
+  DeviceGraph: fwd=23994300 bwd=23994300 edges
+  Year 1985 total: 25469 ms  (pop: 537112)
+
+=== Simulation Complete ===
+Total: 50 s  Final pop: 537112
+
+=== Exporting Results ===
+Edges saved: ./output/3y/0.10/mass-er-gnp_cuda-sj-output-3y-3p.edgelist (23994300)
+Attributes saved: ./output/3y/0.10/mass-er-gnp_cuda-sj-static-output-3y-3p.aux (537112 rows)
+
+Done.
+
+real	1m15.559s
+user	1m12.853s
+sys	0m2.506s
+Running dataset=sj growth=3% cycles=10y er_prob=0.0001 (0.01%) threads=16
+./output/10y/0.01/mass-er-gnp_cuda-sj-output-10y-3p.edgelist
+./output/10y/0.01/mass-er-gnp_cuda-sj-static-output-10y-3p.aux
+Citation Network ABM – MASS CUDA
+=================================
+
+Out-degree bag: 3980408 entries
+Recency probs:  355 entries
+BFS batches:    10 per year
+
+=== Initializing Citation ABM ===
+
+Inside parseNodelist...
+Populating continuous node mappings (491532 nodes)...
+parseNodelist done in 612 ms (491532 nodes)
+
+Inside parseEdgelist...
+parseEdgelist done in 170 ms (899050 edges)
+Seed max year: 1982  → simulation starts at 1983
+Max population: 662583
+Seed population: 491532 papers
+  DeviceGraph: fwd=899050 bwd=899050 edges
+Initialization complete
+
+
+=== Simulation Start  [model: er-gnp] ===
+
+--- Year 1983 [ER:er-gnp] (pop: 491532) ---
+  Adding 14746 new papers
+  Launching ER kernel (14746 new nodes, 491532 citable old nodes)  p=0.0001
+  ER generated 1623677 total edges so far
+  DeviceGraph: fwd=1623677 bwd=1623677 edges
+  Year 1983 total: 2056 ms  (pop: 506278)
+
+--- Year 1984 [ER:er-gnp] (pop: 506278) ---
+  Adding 15189 new papers
+  Launching ER kernel (15189 new nodes, 506278 citable old nodes)  p=0.0001
+  ER generated 2391914 total edges so far
+  DeviceGraph: fwd=2391914 bwd=2391914 edges
+  Year 1984 total: 2632 ms  (pop: 521467)
+
+--- Year 1985 [ER:er-gnp] (pop: 521467) ---
+  Adding 15645 new papers
+  Launching ER kernel (15645 new nodes, 521467 citable old nodes)  p=0.0001
+  ER generated 3207833 total edges so far
+  DeviceGraph: fwd=3207833 bwd=3207833 edges
+  Year 1985 total: 3246 ms  (pop: 537112)
+
+--- Year 1986 [ER:er-gnp] (pop: 537112) ---
+  Adding 16114 new papers
+  Launching ER kernel (16114 new nodes, 537112 citable old nodes)  p=0.0001
+  ER generated 4073156 total edges so far
+  DeviceGraph: fwd=4073156 bwd=4073156 edges
+  Year 1986 total: 3992 ms  (pop: 553226)
+
+--- Year 1987 [ER:er-gnp] (pop: 553226) ---
+  Adding 16597 new papers
+  Launching ER kernel (16597 new nodes, 553226 citable old nodes)  p=0.0001
+  ER generated 4993051 total edges so far
+  DeviceGraph: fwd=4993051 bwd=4993051 edges
+  Year 1987 total: 4736 ms  (pop: 569823)
+
+--- Year 1988 [ER:er-gnp] (pop: 569823) ---
+  Adding 17095 new papers
+  Launching ER kernel (17095 new nodes, 569823 citable old nodes)  p=0.0001
+  ER generated 5967692 total edges so far
+  DeviceGraph: fwd=5967692 bwd=5967692 edges
+  Year 1988 total: 5576 ms  (pop: 586918)
+
+--- Year 1989 [ER:er-gnp] (pop: 586918) ---
+  Adding 17608 new papers
+  Launching ER kernel (17608 new nodes, 586918 citable old nodes)  p=0.0001
+  ER generated 7000198 total edges so far
+  DeviceGraph: fwd=7000198 bwd=7000198 edges
+  Year 1989 total: 6632 ms  (pop: 604526)
+
+--- Year 1990 [ER:er-gnp] (pop: 604526) ---
+  Adding 18136 new papers
+  Launching ER kernel (18136 new nodes, 604526 citable old nodes)  p=0.0001
+  ER generated 8096569 total edges so far
+  DeviceGraph: fwd=8096569 bwd=8096569 edges
+  Year 1990 total: 7744 ms  (pop: 622662)
+
+--- Year 1991 [ER:er-gnp] (pop: 622662) ---
+  Adding 18680 new papers
+  Launching ER kernel (18680 new nodes, 622662 citable old nodes)  p=0.0001
+  ER generated 9260617 total edges so far
+  DeviceGraph: fwd=9260617 bwd=9260617 edges
+  Year 1991 total: 9072 ms  (pop: 641342)
+
+--- Year 1992 [ER:er-gnp] (pop: 641342) ---
+  Adding 19241 new papers
+  Launching ER kernel (19241 new nodes, 641342 citable old nodes)  p=0.0001
+  ER generated 10493459 total edges so far
+  DeviceGraph: fwd=10493459 bwd=10493459 edges
+  Year 1992 total: 10381 ms  (pop: 660583)
+
+=== Simulation Complete ===
+Total: 56 s  Final pop: 660583
+
+=== Exporting Results ===
+Edges saved: ./output/10y/0.01/mass-er-gnp_cuda-sj-output-10y-3p.edgelist (10493459)
+Attributes saved: ./output/10y/0.01/mass-er-gnp_cuda-sj-static-output-10y-3p.aux (660583 rows)
+
+Done.
+
+real	1m9.659s
+user	1m7.864s
+sys	0m1.560s
+Running dataset=sj growth=3% cycles=10y er_prob=0.0003 (0.03%) threads=16
+./output/10y/0.03/mass-er-gnp_cuda-sj-output-10y-3p.edgelist
+./output/10y/0.03/mass-er-gnp_cuda-sj-static-output-10y-3p.aux
+Citation Network ABM – MASS CUDA
+=================================
+
+Out-degree bag: 3980408 entries
+Recency probs:  355 entries
+BFS batches:    10 per year
+
+=== Initializing Citation ABM ===
+
+Inside parseNodelist...
+Populating continuous node mappings (491532 nodes)...
+parseNodelist done in 613 ms (491532 nodes)
+
+Inside parseEdgelist...
+parseEdgelist done in 167 ms (899050 edges)
+Seed max year: 1982  → simulation starts at 1983
+Max population: 662583
+Seed population: 491532 papers
+  DeviceGraph: fwd=899050 bwd=899050 edges
+Initialization complete
+
+
+=== Simulation Start  [model: er-gnp] ===
+
+--- Year 1983 [ER:er-gnp] (pop: 491532) ---
+  Adding 14746 new papers
+  Launching ER kernel (14746 new nodes, 491532 citable old nodes)  p=0.0003
+  ER generated 3073228 total edges so far
+  DeviceGraph: fwd=3073228 bwd=3073228 edges
+  Year 1983 total: 3133 ms  (pop: 506278)
+
+--- Year 1984 [ER:er-gnp] (pop: 506278) ---
+  Adding 15189 new papers
+  Launching ER kernel (15189 new nodes, 506278 citable old nodes)  p=0.0003
+  ER generated 5379062 total edges so far
+  DeviceGraph: fwd=5379062 bwd=5379062 edges
+  Year 1984 total: 5134 ms  (pop: 521467)
+
+--- Year 1985 [ER:er-gnp] (pop: 521467) ---
+  Adding 15645 new papers
+  Launching ER kernel (15645 new nodes, 521467 citable old nodes)  p=0.0003
+  ER generated 7825716 total edges so far
+  DeviceGraph: fwd=7825716 bwd=7825716 edges
+  Year 1985 total: 7683 ms  (pop: 537112)
+
+--- Year 1986 [ER:er-gnp] (pop: 537112) ---
+  Adding 16114 new papers
+  Launching ER kernel (16114 new nodes, 537112 citable old nodes)  p=0.0003
+  ER generated 10422328 total edges so far
+  DeviceGraph: fwd=10422328 bwd=10422328 edges
+  Year 1986 total: 10325 ms  (pop: 553226)
+
+--- Year 1987 [ER:er-gnp] (pop: 553226) ---
+  Adding 16597 new papers
+  Launching ER kernel (16597 new nodes, 553226 citable old nodes)  p=0.0003
+  ER generated 13175634 total edges so far
+  DeviceGraph: fwd=13175634 bwd=13175634 edges
+  Year 1987 total: 13210 ms  (pop: 569823)
+
+--- Year 1988 [ER:er-gnp] (pop: 569823) ---
+  Adding 17095 new papers
+  Launching ER kernel (17095 new nodes, 569823 citable old nodes)  p=0.0003
+  ER generated 16099045 total edges so far
+  DeviceGraph: fwd=16099045 bwd=16099045 edges
+  Year 1988 total: 16996 ms  (pop: 586918)
+
+--- Year 1989 [ER:er-gnp] (pop: 586918) ---
+  Adding 17608 new papers
+  Launching ER kernel (17608 new nodes, 586918 citable old nodes)  p=0.0003
+  ER generated 19198899 total edges so far
+  DeviceGraph: fwd=19198899 bwd=19198899 edges
+  Year 1989 total: 20558 ms  (pop: 604526)
+
+--- Year 1990 [ER:er-gnp] (pop: 604526) ---
+  Adding 18136 new papers
+  Launching ER kernel (18136 new nodes, 604526 citable old nodes)  p=0.0003
+  ER generated 22487186 total edges so far
+  DeviceGraph: fwd=22487186 bwd=22487186 edges
+  Year 1990 total: 24211 ms  (pop: 622662)
+
+--- Year 1991 [ER:er-gnp] (pop: 622662) ---
+  Adding 18680 new papers
+  Launching ER kernel (18680 new nodes, 622662 citable old nodes)  p=0.0003
+  ER generated 25979249 total edges so far
+  DeviceGraph: fwd=25979249 bwd=25979249 edges
+  Year 1991 total: 27713 ms  (pop: 641342)
+
+--- Year 1992 [ER:er-gnp] (pop: 641342) ---
+  Adding 19241 new papers
+  Launching ER kernel (19241 new nodes, 641342 citable old nodes)  p=0.0003
+  ER generated 29678437 total edges so far
+  DeviceGraph: fwd=29678437 bwd=29678437 edges
+  Year 1992 total: 32077 ms  (pop: 660583)
+
+=== Simulation Complete ===
+Total: 161 s  Final pop: 660583
+
+=== Exporting Results ===
+Edges saved: ./output/10y/0.03/mass-er-gnp_cuda-sj-output-10y-3p.edgelist (29678437)
+Attributes saved: ./output/10y/0.03/mass-er-gnp_cuda-sj-static-output-10y-3p.aux (660583 rows)
+
+Done.
+
+real	3m11.115s
+user	3m7.355s
+sys	0m3.106s
+Running dataset=sj growth=3% cycles=10y er_prob=0.0005 (0.05%) threads=16
+./output/10y/0.05/mass-er-gnp_cuda-sj-output-10y-3p.edgelist
+./output/10y/0.05/mass-er-gnp_cuda-sj-static-output-10y-3p.aux
+Citation Network ABM – MASS CUDA
+=================================
+
+Out-degree bag: 3980408 entries
+Recency probs:  355 entries
+BFS batches:    10 per year
+
+=== Initializing Citation ABM ===
+
+Inside parseNodelist...
+Populating continuous node mappings (491532 nodes)...
+parseNodelist done in 613 ms (491532 nodes)
+
+Inside parseEdgelist...
+parseEdgelist done in 168 ms (899050 edges)
+Seed max year: 1982  → simulation starts at 1983
+Max population: 662583
+Seed population: 491532 papers
+  DeviceGraph: fwd=899050 bwd=899050 edges
+Initialization complete
+
+
+=== Simulation Start  [model: er-gnp] ===
+
+--- Year 1983 [ER:er-gnp] (pop: 491532) ---
+  Adding 14746 new papers
+  Launching ER kernel (14746 new nodes, 491532 citable old nodes)  p=0.0005
+  ER generated 4523825 total edges so far
+  DeviceGraph: fwd=4523825 bwd=4523825 edges
+  Year 1983 total: 4377 ms  (pop: 506278)
+
+--- Year 1984 [ER:er-gnp] (pop: 506278) ---
+  Adding 15189 new papers
+  Launching ER kernel (15189 new nodes, 506278 citable old nodes)  p=0.0005
+  ER generated 8366961 total edges so far
+  DeviceGraph: fwd=8366961 bwd=8366961 edges
+  Year 1984 total: 8249 ms  (pop: 521467)
+
+--- Year 1985 [ER:er-gnp] (pop: 521467) ---
+  Adding 15645 new papers
+  Launching ER kernel (15645 new nodes, 521467 citable old nodes)  p=0.0005
+  ER generated 12445445 total edges so far
+  DeviceGraph: fwd=12445445 bwd=12445445 edges
+  Year 1985 total: 12592 ms  (pop: 537112)
+
+--- Year 1986 [ER:er-gnp] (pop: 537112) ---
+  Adding 16114 new papers
+  Launching ER kernel (16114 new nodes, 537112 citable old nodes)  p=0.0005
+  ER generated 16773322 total edges so far
+  DeviceGraph: fwd=16773322 bwd=16773322 edges
+  Year 1986 total: 17966 ms  (pop: 553226)
+
+--- Year 1987 [ER:er-gnp] (pop: 553226) ---
+  Adding 16597 new papers
+  Launching ER kernel (16597 new nodes, 553226 citable old nodes)  p=0.0005
+  ER generated 21364965 total edges so far
+  DeviceGraph: fwd=21364965 bwd=21364965 edges
+  Year 1987 total: 23389 ms  (pop: 569823)
+
+--- Year 1988 [ER:er-gnp] (pop: 569823) ---
+  Adding 17095 new papers
+  Launching ER kernel (17095 new nodes, 569823 citable old nodes)  p=0.0005
+  ER generated 26235543 total edges so far
+  DeviceGraph: fwd=26235543 bwd=26235543 edges
+  Year 1988 total: 28216 ms  (pop: 586918)
+
+--- Year 1989 [ER:er-gnp] (pop: 586918) ---
+  Adding 17608 new papers
+  Launching ER kernel (17608 new nodes, 586918 citable old nodes)  p=0.0005
+  ER generated 31402816 total edges so far
+  DeviceGraph: fwd=31402816 bwd=31402816 edges
+  Year 1989 total: 34800 ms  (pop: 604526)
+
+--- Year 1990 [ER:er-gnp] (pop: 604526) ---
+  Adding 18136 new papers
+  Launching ER kernel (18136 new nodes, 604526 citable old nodes)  p=0.0005
+  ER generated 36885877 total edges so far
+  DeviceGraph: fwd=36885877 bwd=36885877 edges
+  Year 1990 total: 43162 ms  (pop: 622662)
+
+--- Year 1991 [ER:er-gnp] (pop: 622662) ---
+  Adding 18680 new papers
+  Launching ER kernel (18680 new nodes, 622662 citable old nodes)  p=0.0005
+  ER generated 42701601 total edges so far
+  DeviceGraph: fwd=42701601 bwd=42701601 edges
+  Year 1991 total: 50205 ms  (pop: 641342)
+
+--- Year 1992 [ER:er-gnp] (pop: 641342) ---
+  Adding 19241 new papers
+  Launching ER kernel (19241 new nodes, 641342 citable old nodes)  p=0.0005
+  ER generated 48870669 total edges so far
+  DeviceGraph: fwd=48870669 bwd=48870669 edges
+  Year 1992 total: 56746 ms  (pop: 660583)
+
+=== Simulation Complete ===
+Total: 279 s  Final pop: 660583
+
+=== Exporting Results ===
+Edges saved: ./output/10y/0.05/mass-er-gnp_cuda-sj-output-10y-3p.edgelist (48870669)
+Attributes saved: ./output/10y/0.05/mass-er-gnp_cuda-sj-static-output-10y-3p.aux (660583 rows)
+
+Done.
+
+real	5m26.068s
+user	5m18.233s
+sys	0m6.652s
+Running dataset=sj growth=3% cycles=10y er_prob=0.001 (0.10%) threads=16
+./output/10y/0.10/mass-er-gnp_cuda-sj-output-10y-3p.edgelist
+./output/10y/0.10/mass-er-gnp_cuda-sj-static-output-10y-3p.aux
+Citation Network ABM – MASS CUDA
+=================================
+
+Out-degree bag: 3980408 entries
+Recency probs:  355 entries
+BFS batches:    10 per year
+
+=== Initializing Citation ABM ===
+
+Inside parseNodelist...
+Populating continuous node mappings (491532 nodes)...
+parseNodelist done in 614 ms (491532 nodes)
+
+Inside parseEdgelist...
+parseEdgelist done in 170 ms (899050 edges)
+Seed max year: 1982  → simulation starts at 1983
+Max population: 662583
+Seed population: 491532 papers
+  DeviceGraph: fwd=899050 bwd=899050 edges
+Initialization complete
+
+
+=== Simulation Start  [model: er-gnp] ===
+
+--- Year 1983 [ER:er-gnp] (pop: 491532) ---
+  Adding 14746 new papers
+  Launching ER kernel (14746 new nodes, 491532 citable old nodes)  p=0.001
+  ER generated 8146466 total edges so far
+  DeviceGraph: fwd=8146466 bwd=8146466 edges
+  Year 1983 total: 8144 ms  (pop: 506278)
+
+--- Year 1984 [ER:er-gnp] (pop: 506278) ---
+  Adding 15189 new papers
+  Launching ER kernel (15189 new nodes, 506278 citable old nodes)  p=0.001
+  ER generated 15835901 total edges so far
+  DeviceGraph: fwd=15835901 bwd=15835901 edges
+  Year 1984 total: 17143 ms  (pop: 521467)
+
+--- Year 1985 [ER:er-gnp] (pop: 521467) ---
+  Adding 15645 new papers
+  Launching ER kernel (15645 new nodes, 521467 citable old nodes)  p=0.001
+  ER generated 23994300 total edges so far
+  DeviceGraph: fwd=23994300 bwd=23994300 edges
+  Year 1985 total: 25735 ms  (pop: 537112)
+
+--- Year 1986 [ER:er-gnp] (pop: 537112) ---
+  Adding 16114 new papers
+  Launching ER kernel (16114 new nodes, 537112 citable old nodes)  p=0.001
+  ER generated 32652450 total edges so far
+  DeviceGraph: fwd=32652450 bwd=32652450 edges
+  Year 1986 total: 37676 ms  (pop: 553226)
+
+--- Year 1987 [ER:er-gnp] (pop: 553226) ---
+  Adding 16597 new papers
+  Launching ER kernel (16597 new nodes, 553226 citable old nodes)  p=0.001
+  ER generated 41833378 total edges so far
+  DeviceGraph: fwd=41833378 bwd=41833378 edges
+  Year 1987 total: 48618 ms  (pop: 569823)
+
+--- Year 1988 [ER:er-gnp] (pop: 569823) ---
+  Adding 17095 new papers
+  Launching ER kernel (17095 new nodes, 569823 citable old nodes)  p=0.001
+  ER generated 51573270 total edges so far
+  DeviceGraph: fwd=51573270 bwd=51573270 edges
+  Year 1988 total: 58261 ms  (pop: 586918)
+
+--- Year 1989 [ER:er-gnp] (pop: 586918) ---
+  Adding 17608 new papers
+  Launching ER kernel (17608 new nodes, 586918 citable old nodes)  p=0.001
+  ER generated 61905008 total edges so far
+  DeviceGraph: fwd=61905008 bwd=61905008 edges
+  Year 1989 total: 70340 ms  (pop: 604526)
+
+--- Year 1990 [ER:er-gnp] (pop: 604526) ---
+  Adding 18136 new papers
+  Launching ER kernel (18136 new nodes, 604526 citable old nodes)  p=0.001
+  ER generated 72869211 total edges so far
+  DeviceGraph: fwd=72869211 bwd=72869211 edges
+  Year 1990 total: 89604 ms  (pop: 622662)
+
+--- Year 1991 [ER:er-gnp] (pop: 622662) ---
+  Adding 18680 new papers
+  Launching ER kernel (18680 new nodes, 622662 citable old nodes)  p=0.001
+  ER generated 84501215 total edges so far
+  DeviceGraph: fwd=84501215 bwd=84501215 edges
+  Year 1991 total: 104971 ms  (pop: 641342)
+
+--- Year 1992 [ER:er-gnp] (pop: 641342) ---
+  Adding 19241 new papers
+  Launching ER kernel (19241 new nodes, 641342 citable old nodes)  p=0.001
+  ER generated 96842298 total edges so far
+  DeviceGraph: fwd=96842298 bwd=96842298 edges
+  Year 1992 total: 120494 ms  (pop: 660583)
+
+=== Simulation Complete ===
+Total: 580 s  Final pop: 660583
+
+=== Exporting Results ===
+Edges saved: ./output/10y/0.10/mass-er-gnp_cuda-sj-output-10y-3p.edgelist (96842298)
+Attributes saved: ./output/10y/0.10/mass-er-gnp_cuda-sj-static-output-10y-3p.aux (660583 rows)
+
+Done.
+
+real	11m6.495s
+user	10m46.736s
+sys	0m17.476s
+Running dataset=sj growth=3% cycles=30y er_prob=0.0001 (0.01%) threads=16
+./output/30y/0.01/mass-er-gnp_cuda-sj-output-30y-3p.edgelist
+./output/30y/0.01/mass-er-gnp_cuda-sj-static-output-30y-3p.aux
+Citation Network ABM – MASS CUDA
+=================================
+
+Out-degree bag: 3980408 entries
+Recency probs:  355 entries
+BFS batches:    10 per year
+
+=== Initializing Citation ABM ===
+
+Inside parseNodelist...
+Populating continuous node mappings (491532 nodes)...
+parseNodelist done in 613 ms (491532 nodes)
+
+Inside parseEdgelist...
+parseEdgelist done in 169 ms (899050 edges)
+Seed max year: 1982  → simulation starts at 1983
+Max population: 1195102
+Seed population: 491532 papers
+  DeviceGraph: fwd=899050 bwd=899050 edges
+Initialization complete
+
+
+=== Simulation Start  [model: er-gnp] ===
+
+--- Year 1983 [ER:er-gnp] (pop: 491532) ---
+  Adding 14746 new papers
+  Launching ER kernel (14746 new nodes, 491532 citable old nodes)  p=0.0001
+  ER generated 1623677 total edges so far
+  DeviceGraph: fwd=1623677 bwd=1623677 edges
+  Year 1983 total: 2005 ms  (pop: 506278)
+
+--- Year 1984 [ER:er-gnp] (pop: 506278) ---
+  Adding 15189 new papers
+  Launching ER kernel (15189 new nodes, 506278 citable old nodes)  p=0.0001
+  ER generated 2391914 total edges so far
+  DeviceGraph: fwd=2391914 bwd=2391914 edges
+  Year 1984 total: 2677 ms  (pop: 521467)
+
+--- Year 1985 [ER:er-gnp] (pop: 521467) ---
+  Adding 15645 new papers
+  Launching ER kernel (15645 new nodes, 521467 citable old nodes)  p=0.0001
+  ER generated 3207833 total edges so far
+  DeviceGraph: fwd=3207833 bwd=3207833 edges
+  Year 1985 total: 3269 ms  (pop: 537112)
+
+--- Year 1986 [ER:er-gnp] (pop: 537112) ---
+  Adding 16114 new papers
+  Launching ER kernel (16114 new nodes, 537112 citable old nodes)  p=0.0001
+  ER generated 4073156 total edges so far
+  DeviceGraph: fwd=4073156 bwd=4073156 edges
+  Year 1986 total: 3943 ms  (pop: 553226)
+
+--- Year 1987 [ER:er-gnp] (pop: 553226) ---
+  Adding 16597 new papers
+  Launching ER kernel (16597 new nodes, 553226 citable old nodes)  p=0.0001
+  ER generated 4993051 total edges so far
+  DeviceGraph: fwd=4993051 bwd=4993051 edges
+  Year 1987 total: 4696 ms  (pop: 569823)
+
+--- Year 1988 [ER:er-gnp] (pop: 569823) ---
+  Adding 17095 new papers
+  Launching ER kernel (17095 new nodes, 569823 citable old nodes)  p=0.0001
+  ER generated 5967692 total edges so far
+  DeviceGraph: fwd=5967692 bwd=5967692 edges
+  Year 1988 total: 5522 ms  (pop: 586918)
+
+--- Year 1989 [ER:er-gnp] (pop: 586918) ---
+  Adding 17608 new papers
+  Launching ER kernel (17608 new nodes, 586918 citable old nodes)  p=0.0001
+  ER generated 7000198 total edges so far
+  DeviceGraph: fwd=7000198 bwd=7000198 edges
+  Year 1989 total: 6672 ms  (pop: 604526)
+
+--- Year 1990 [ER:er-gnp] (pop: 604526) ---
+  Adding 18136 new papers
+  Launching ER kernel (18136 new nodes, 604526 citable old nodes)  p=0.0001
+  ER generated 8096569 total edges so far
+  DeviceGraph: fwd=8096569 bwd=8096569 edges
+  Year 1990 total: 7963 ms  (pop: 622662)
+
+--- Year 1991 [ER:er-gnp] (pop: 622662) ---
+  Adding 18680 new papers
+  Launching ER kernel (18680 new nodes, 622662 citable old nodes)  p=0.0001
+  ER generated 9260617 total edges so far
+  DeviceGraph: fwd=9260617 bwd=9260617 edges
+  Year 1991 total: 9346 ms  (pop: 641342)
+
+--- Year 1992 [ER:er-gnp] (pop: 641342) ---
+  Adding 19241 new papers
+  Launching ER kernel (19241 new nodes, 641342 citable old nodes)  p=0.0001
+  ER generated 10493459 total edges so far
+  DeviceGraph: fwd=10493459 bwd=10493459 edges
+  Year 1992 total: 10628 ms  (pop: 660583)
+
+--- Year 1993 [ER:er-gnp] (pop: 660583) ---
+  Adding 19818 new papers
+  Launching ER kernel (19818 new nodes, 660583 citable old nodes)  p=0.0001
+  ER generated 11801983 total edges so far
+  DeviceGraph: fwd=11801983 bwd=11801983 edges
+  Year 1993 total: 11934 ms  (pop: 680401)
+
+--- Year 1994 [ER:er-gnp] (pop: 680401) ---
+  Adding 20413 new papers
+  Launching ER kernel (20413 new nodes, 680401 citable old nodes)  p=0.0001
+  ER generated 13191020 total edges so far
+  DeviceGraph: fwd=13191020 bwd=13191020 edges
+  Year 1994 total: 13371 ms  (pop: 700814)
+
+--- Year 1995 [ER:er-gnp] (pop: 700814) ---
+  Adding 21025 new papers
+  Launching ER kernel (21025 new nodes, 700814 citable old nodes)  p=0.0001
+  ER generated 14663267 total edges so far
+  DeviceGraph: fwd=14663267 bwd=14663267 edges
+  Year 1995 total: 14961 ms  (pop: 721839)
+
+--- Year 1996 [ER:er-gnp] (pop: 721839) ---
+  Adding 21656 new papers
+  Launching ER kernel (21656 new nodes, 721839 citable old nodes)  p=0.0001
+  ER generated 16226096 total edges so far
+  DeviceGraph: fwd=16226096 bwd=16226096 edges
+  Year 1996 total: 16848 ms  (pop: 743495)
+
+--- Year 1997 [ER:er-gnp] (pop: 743495) ---
+  Adding 22305 new papers
+  Launching ER kernel (22305 new nodes, 743495 citable old nodes)  p=0.0001
+  ER generated 17883048 total edges so far
+  DeviceGraph: fwd=17883048 bwd=17883048 edges
+  Year 1997 total: 18910 ms  (pop: 765800)
+
+--- Year 1998 [ER:er-gnp] (pop: 765800) ---
+  Adding 22974 new papers
+  Launching ER kernel (22974 new nodes, 765800 citable old nodes)  p=0.0001
+  ER generated 19641143 total edges so far
+  DeviceGraph: fwd=19641143 bwd=19641143 edges
+  Year 1998 total: 21155 ms  (pop: 788774)
+
+--- Year 1999 [ER:er-gnp] (pop: 788774) ---
+  Adding 23664 new papers
+  Launching ER kernel (23664 new nodes, 788774 citable old nodes)  p=0.0001
+  ER generated 21506987 total edges so far
+  DeviceGraph: fwd=21506987 bwd=21506987 edges
+  Year 1999 total: 23369 ms  (pop: 812438)
+
+--- Year 2000 [ER:er-gnp] (pop: 812438) ---
+  Adding 24374 new papers
+  Launching ER kernel (24374 new nodes, 812438 citable old nodes)  p=0.0001
+  ER generated 23488016 total edges so far
+  DeviceGraph: fwd=23488016 bwd=23488016 edges
+  Year 2000 total: 26149 ms  (pop: 836812)
+
+--- Year 2001 [ER:er-gnp] (pop: 836812) ---
+  Adding 25105 new papers
+  Launching ER kernel (25105 new nodes, 836812 citable old nodes)  p=0.0001
+  ER generated 25591531 total edges so far
+  DeviceGraph: fwd=25591531 bwd=25591531 edges
+  Year 2001 total: 29132 ms  (pop: 861917)
+
+--- Year 2002 [ER:er-gnp] (pop: 861917) ---
+  Adding 25858 new papers
+  Launching ER kernel (25858 new nodes, 861917 citable old nodes)  p=0.0001
+  ER generated 27823900 total edges so far
+  DeviceGraph: fwd=27823900 bwd=27823900 edges
+  Year 2002 total: 31652 ms  (pop: 887775)
+
+--- Year 2003 [ER:er-gnp] (pop: 887775) ---
+  Adding 26634 new papers
+  Launching ER kernel (26634 new nodes, 887775 citable old nodes)  p=0.0001
+  ER generated 30189256 total edges so far
+  DeviceGraph: fwd=30189256 bwd=30189256 edges
+  Year 2003 total: 34423 ms  (pop: 914409)
+
+--- Year 2004 [ER:er-gnp] (pop: 914409) ---
+  Adding 27433 new papers
+  Launching ER kernel (27433 new nodes, 914409 citable old nodes)  p=0.0001
+  ER generated 32701741 total edges so far
+  DeviceGraph: fwd=32701741 bwd=32701741 edges
+  Year 2004 total: 37640 ms  (pop: 941842)
+
+--- Year 2005 [ER:er-gnp] (pop: 941842) ---
+  Adding 28256 new papers
+  Launching ER kernel (28256 new nodes, 941842 citable old nodes)  p=0.0001
+  ER generated 35361146 total edges so far
+  DeviceGraph: fwd=35361146 bwd=35361146 edges
+  Year 2005 total: 41528 ms  (pop: 970098)
+
+--- Year 2006 [ER:er-gnp] (pop: 970098) ---
+  Adding 29103 new papers
+  Launching ER kernel (29103 new nodes, 970098 citable old nodes)  p=0.0001
+  ER generated 38182833 total edges so far
+  DeviceGraph: fwd=38182833 bwd=38182833 edges
+  Year 2006 total: 44256 ms  (pop: 999201)
+
+--- Year 2007 [ER:er-gnp] (pop: 999201) ---
+  Adding 29977 new papers
+  Launching ER kernel (29977 new nodes, 999201 citable old nodes)  p=0.0001
+  ER generated 41178524 total edges so far
+  DeviceGraph: fwd=41178524 bwd=41178524 edges
+  Year 2007 total: 48752 ms  (pop: 1029178)
+
+--- Year 2008 [ER:er-gnp] (pop: 1029178) ---
+  Adding 30876 new papers
+  Launching ER kernel (30876 new nodes, 1029178 citable old nodes)  p=0.0001
+  ER generated 44355828 total edges so far
+  DeviceGraph: fwd=44355828 bwd=44355828 edges
+  Year 2008 total: 53106 ms  (pop: 1060054)
+
+--- Year 2009 [ER:er-gnp] (pop: 1060054) ---
+  Adding 31802 new papers
+  Launching ER kernel (31802 new nodes, 1060054 citable old nodes)  p=0.0001
+  ER generated 47728911 total edges so far
+  DeviceGraph: fwd=47728911 bwd=47728911 edges
+  Year 2009 total: 59873 ms  (pop: 1091856)
+
+--- Year 2010 [ER:er-gnp] (pop: 1091856) ---
+  Adding 32756 new papers
+  Launching ER kernel (32756 new nodes, 1091856 citable old nodes)  p=0.0001
+  ER generated 51304542 total edges so far
+  DeviceGraph: fwd=51304542 bwd=51304542 edges
+  Year 2010 total: 62864 ms  (pop: 1124612)
+
+--- Year 2011 [ER:er-gnp] (pop: 1124612) ---
+  Adding 33739 new papers
+  Launching ER kernel (33739 new nodes, 1124612 citable old nodes)  p=0.0001
+  ER generated 55098888 total edges so far
+  DeviceGraph: fwd=55098888 bwd=55098888 edges
+  Year 2011 total: 70630 ms  (pop: 1158351)
+
+--- Year 2012 [ER:er-gnp] (pop: 1158351) ---
+  Adding 34751 new papers
+  Launching ER kernel (34751 new nodes, 1158351 citable old nodes)  p=0.0001
+  ER generated 59121478 total edges so far
+  DeviceGraph: fwd=59121478 bwd=59121478 edges
+  Year 2012 total: 74507 ms  (pop: 1193102)
+
+=== Simulation Complete ===
+Total: 791 s  Final pop: 1193102
+
+=== Exporting Results ===
+Edges saved: ./output/30y/0.01/mass-er-gnp_cuda-sj-output-30y-3p.edgelist (59121478)
+Attributes saved: ./output/30y/0.01/mass-er-gnp_cuda-sj-static-output-30y-3p.aux (1193102 rows)
+
+Done.
+
+real	14m1.277s
+user	13m45.542s
+sys	0m12.313s
+Running dataset=sj growth=3% cycles=30y er_prob=0.0003 (0.03%) threads=16
+./output/30y/0.03/mass-er-gnp_cuda-sj-output-30y-3p.edgelist
+./output/30y/0.03/mass-er-gnp_cuda-sj-static-output-30y-3p.aux
+Citation Network ABM – MASS CUDA
+=================================
+
+Out-degree bag: 3980408 entries
+Recency probs:  355 entries
+BFS batches:    10 per year
+
+=== Initializing Citation ABM ===
+
+Inside parseNodelist...
+Populating continuous node mappings (491532 nodes)...
+parseNodelist done in 613 ms (491532 nodes)
+
+Inside parseEdgelist...
+parseEdgelist done in 167 ms (899050 edges)
+Seed max year: 1982  → simulation starts at 1983
+Max population: 1195102
+Seed population: 491532 papers
+  DeviceGraph: fwd=899050 bwd=899050 edges
+Initialization complete
+
+
+=== Simulation Start  [model: er-gnp] ===
+
+--- Year 1983 [ER:er-gnp] (pop: 491532) ---
+  Adding 14746 new papers
+  Launching ER kernel (14746 new nodes, 491532 citable old nodes)  p=0.0003
+  ER generated 3073228 total edges so far
+  DeviceGraph: fwd=3073228 bwd=3073228 edges
+  Year 1983 total: 3197 ms  (pop: 506278)
+
+--- Year 1984 [ER:er-gnp] (pop: 506278) ---
+  Adding 15189 new papers
+  Launching ER kernel (15189 new nodes, 506278 citable old nodes)  p=0.0003
+  ER generated 5379062 total edges so far
+  DeviceGraph: fwd=5379062 bwd=5379062 edges
+  Year 1984 total: 5298 ms  (pop: 521467)
+
+--- Year 1985 [ER:er-gnp] (pop: 521467) ---
+  Adding 15645 new papers
+  Launching ER kernel (15645 new nodes, 521467 citable old nodes)  p=0.0003
+  ER generated 7825716 total edges so far
+  DeviceGraph: fwd=7825716 bwd=7825716 edges
+  Year 1985 total: 7803 ms  (pop: 537112)
+
+--- Year 1986 [ER:er-gnp] (pop: 537112) ---
+  Adding 16114 new papers
+  Launching ER kernel (16114 new nodes, 537112 citable old nodes)  p=0.0003
+  ER generated 10422328 total edges so far
+  DeviceGraph: fwd=10422328 bwd=10422328 edges
+  Year 1986 total: 10478 ms  (pop: 553226)
+
+--- Year 1987 [ER:er-gnp] (pop: 553226) ---
+  Adding 16597 new papers
+  Launching ER kernel (16597 new nodes, 553226 citable old nodes)  p=0.0003
+  ER generated 13175634 total edges so far
+  DeviceGraph: fwd=13175634 bwd=13175634 edges
+  Year 1987 total: 13340 ms  (pop: 569823)
+
+--- Year 1988 [ER:er-gnp] (pop: 569823) ---
+  Adding 17095 new papers
+  Launching ER kernel (17095 new nodes, 569823 citable old nodes)  p=0.0003
+  ER generated 16099045 total edges so far
+  DeviceGraph: fwd=16099045 bwd=16099045 edges
+  Year 1988 total: 17148 ms  (pop: 586918)
+
+--- Year 1989 [ER:er-gnp] (pop: 586918) ---
+  Adding 17608 new papers
+  Launching ER kernel (17608 new nodes, 586918 citable old nodes)  p=0.0003
+  ER generated 19198899 total edges so far
+  DeviceGraph: fwd=19198899 bwd=19198899 edges
+  Year 1989 total: 21041 ms  (pop: 604526)
+
+--- Year 1990 [ER:er-gnp] (pop: 604526) ---
+  Adding 18136 new papers
+  Launching ER kernel (18136 new nodes, 604526 citable old nodes)  p=0.0003
+  ER generated 22487186 total edges so far
+  DeviceGraph: fwd=22487186 bwd=22487186 edges
+  Year 1990 total: 24805 ms  (pop: 622662)
+
+--- Year 1991 [ER:er-gnp] (pop: 622662) ---
+  Adding 18680 new papers
+  Launching ER kernel (18680 new nodes, 622662 citable old nodes)  p=0.0003
+  ER generated 25979249 total edges so far
+  DeviceGraph: fwd=25979249 bwd=25979249 edges
+  Year 1991 total: 28202 ms  (pop: 641342)
+
+--- Year 1992 [ER:er-gnp] (pop: 641342) ---
+  Adding 19241 new papers
+  Launching ER kernel (19241 new nodes, 641342 citable old nodes)  p=0.0003
+  ER generated 29678437 total edges so far
+  DeviceGraph: fwd=29678437 bwd=29678437 edges
+  Year 1992 total: 33838 ms  (pop: 660583)
+
+--- Year 1993 [ER:er-gnp] (pop: 660583) ---
+  Adding 19818 new papers
+  Launching ER kernel (19818 new nodes, 660583 citable old nodes)  p=0.0003
+  ER generated 33607890 total edges so far
+  DeviceGraph: fwd=33607890 bwd=33607890 edges
+  Year 1993 total: 38868 ms  (pop: 680401)
+
+--- Year 1994 [ER:er-gnp] (pop: 680401) ---
+  Adding 20413 new papers
+  Launching ER kernel (20413 new nodes, 680401 citable old nodes)  p=0.0003
+  ER generated 37776862 total edges so far
+  DeviceGraph: fwd=37776862 bwd=37776862 edges
+  Year 1994 total: 44226 ms  (pop: 700814)
+
+--- Year 1995 [ER:er-gnp] (pop: 700814) ---
+  Adding 21025 new papers
+  Launching ER kernel (21025 new nodes, 700814 citable old nodes)  p=0.0003[2026-07-07T10:47:55.006] error: *** JOB 13174165 ON h002 CANCELLED AT 2026-07-07T10:47:55 DUE TO TIME LIMIT ***
