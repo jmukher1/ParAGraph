@@ -38,10 +38,10 @@ do
     do
         mkdir -p output/${NUM_CYCLES}y/${ER_PROBABILITY_LABEL}
 
-        OUTPUT_FILE="./output/${NUM_CYCLES}y/${ER_PROBABILITY_LABEL}/gpu-opt-static-model-${MODEL}-${NUM_CYCLES}y-${GROWTH_LABEL}p-${ER_PROBABILITY_LABEL}p.edgelist"
-        OUTPUT_LOG="./output/${NUM_CYCLES}y/${ER_PROBABILITY_LABEL}/gpu-opt-static-model-${MODEL}-${NUM_CYCLES}y-${GROWTH_LABEL}p-${ER_PROBABILITY_LABEL}p-${NUM_THREADS}t.log"
-        OUTPUT_AUX="./output/${NUM_CYCLES}y/${ER_PROBABILITY_LABEL}/gpu-opt-static-model-${MODEL}-${NUM_CYCLES}y-${GROWTH_LABEL}p-${ER_PROBABILITY_LABEL}p.aux"
-        OUT_FILE="./output/${NUM_CYCLES}y/${ER_PROBABILITY_LABEL}/gpu-opt-static-model-${MODEL}-${NUM_CYCLES}y-${GROWTH_LABEL}p-${ER_PROBABILITY_LABEL}p-${NUM_THREADS}t.out"
+        OUTPUT_FILE="./output/${NUM_CYCLES}y/${ER_PROBABILITY_LABEL}/gpu-er-static-model-${MODEL}-${NUM_CYCLES}y-${GROWTH_LABEL}p-${ER_PROBABILITY_LABEL}p.edgelist"
+        OUTPUT_LOG="./output/${NUM_CYCLES}y/${ER_PROBABILITY_LABEL}/gpu-er-static-model-${MODEL}-${NUM_CYCLES}y-${GROWTH_LABEL}p-${ER_PROBABILITY_LABEL}p-${NUM_THREADS}t.log"
+        OUTPUT_AUX="./output/${NUM_CYCLES}y/${ER_PROBABILITY_LABEL}/gpu-er-static-model-${MODEL}-${NUM_CYCLES}y-${GROWTH_LABEL}p-${ER_PROBABILITY_LABEL}p.aux"
+        OUT_FILE="./output/${NUM_CYCLES}y/${ER_PROBABILITY_LABEL}/gpu-er-static-model-${MODEL}-${NUM_CYCLES}y-${GROWTH_LABEL}p-${ER_PROBABILITY_LABEL}p-${NUM_THREADS}t.out"
 
         echo "Running growth rate = ${GROWTH_RATE} = ${GROWTH_PERCENT}% with ${NUM_THREADS} thread"
         echo $OUTPUT_FILE

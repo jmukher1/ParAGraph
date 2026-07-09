@@ -1,0 +1,241 @@
+Running growth rate = .0100 = 1% with 16 thread
+./output/3y/0.01/gpu-er-amz-static-model-er-gnp-3y-1p-0.01p.edgelist
+./output/3y/0.01/gpu-er-amz-static-model-er-gnp-3y-1p-0.01p.aux
+
+real	0m5.869s
+user	0m5.662s
+sys	0m0.717s
+Running growth rate = .0100 = 1% with 16 thread
+./output/3y/0.01/gpu-er-eu-static-model-er-gnp-3y-1p-0.01p.edgelist
+./output/3y/0.01/gpu-er-eu-static-model-er-gnp-3y-1p-0.01p.aux
+
+real	0m3.655s
+user	0m3.446s
+sys	0m0.661s
+Running growth rate = .0100 = 1% with 16 thread
+./output/3y/0.01/gpu-er-yutb-static-model-er-gnp-3y-1p-0.01p.edgelist
+./output/3y/0.01/gpu-er-yutb-static-model-er-gnp-3y-1p-0.01p.aux
+
+real	0m21.943s
+user	0m21.376s
+sys	0m1.630s
+Running growth rate = .0100 = 1% with 16 thread
+./output/3y/0.01/gpu-er-twt-static-model-er-gnp-3y-1p-0.01p.edgelist
+./output/3y/0.01/gpu-er-twt-static-model-er-gnp-3y-1p-0.01p.aux
+
+real	0m5.095s
+user	0m4.828s
+sys	0m0.699s
+Running growth rate = .0100 = 1% with 16 thread
+./output/10y/0.01/gpu-er-amz-static-model-er-gnp-10y-1p-0.01p.edgelist
+./output/10y/0.01/gpu-er-amz-static-model-er-gnp-10y-1p-0.01p.aux
+
+real	0m8.635s
+user	0m8.447s
+sys	0m0.839s
+Running growth rate = .0100 = 1% with 16 thread
+./output/10y/0.01/gpu-er-eu-static-model-er-gnp-10y-1p-0.01p.edgelist
+./output/10y/0.01/gpu-er-eu-static-model-er-gnp-10y-1p-0.01p.aux
+
+real	0m5.891s
+user	0m5.353s
+sys	0m0.949s
+Running growth rate = .0100 = 1% with 16 thread
+./output/10y/0.01/gpu-er-yutb-static-model-er-gnp-10y-1p-0.01p.edgelist
+./output/10y/0.01/gpu-er-yutb-static-model-er-gnp-10y-1p-0.01p.aux
+
+real	0m54.135s
+user	0m53.635s
+sys	0m2.545s
+Running growth rate = .0100 = 1% with 16 thread
+./output/10y/0.01/gpu-er-twt-static-model-er-gnp-10y-1p-0.01p.edgelist
+./output/10y/0.01/gpu-er-twt-static-model-er-gnp-10y-1p-0.01p.aux
+
+real	0m5.344s
+user	0m5.227s
+sys	0m0.703s
+Running growth rate = .0100 = 1% with 16 thread
+./output/30y/0.01/gpu-er-amz-static-model-er-gnp-30y-1p-0.01p.edgelist
+./output/30y/0.01/gpu-er-amz-static-model-er-gnp-30y-1p-0.01p.aux
+
+real	0m21.281s
+user	0m21.148s
+sys	0m1.258s
+Running growth rate = .0100 = 1% with 16 thread
+./output/30y/0.01/gpu-er-eu-static-model-er-gnp-30y-1p-0.01p.edgelist
+./output/30y/0.01/gpu-er-eu-static-model-er-gnp-30y-1p-0.01p.aux
+
+real	0m12.891s
+user	0m12.981s
+sys	0m0.954s
+Running growth rate = .0100 = 1% with 16 thread
+./output/30y/0.01/gpu-er-yutb-static-model-er-gnp-30y-1p-0.01p.edgelist
+./output/30y/0.01/gpu-er-yutb-static-model-er-gnp-30y-1p-0.01p.aux
+
+real	3m14.663s
+user	3m13.880s
+sys	0m8.721s
+Running growth rate = .0100 = 1% with 16 thread
+./output/30y/0.01/gpu-er-twt-static-model-er-gnp-30y-1p-0.01p.edgelist
+./output/30y/0.01/gpu-er-twt-static-model-er-gnp-30y-1p-0.01p.aux
+
+real	0m6.434s
+user	0m6.645s
+sys	0m0.642s
+Running growth rate = .0300 = 3% with 16 thread
+./output/3y/0.01/gpu-er-amz-static-model-er-gnp-3y-3p-0.01p.edgelist
+./output/3y/0.01/gpu-er-amz-static-model-er-gnp-3y-3p-0.01p.aux
+
+real	0m7.680s
+user	0m7.426s
+sys	0m0.836s
+Running growth rate = .0300 = 3% with 16 thread
+./output/3y/0.01/gpu-er-eu-static-model-er-gnp-3y-3p-0.01p.edgelist
+./output/3y/0.01/gpu-er-eu-static-model-er-gnp-3y-3p-0.01p.aux
+
+real	0m4.908s
+user	0m4.644s
+sys	0m0.672s
+Running growth rate = .0300 = 3% with 16 thread
+./output/3y/0.01/gpu-er-yutb-static-model-er-gnp-3y-3p-0.01p.edgelist
+./output/3y/0.01/gpu-er-yutb-static-model-er-gnp-3y-3p-0.01p.aux
+
+real	0m42.010s
+user	0m41.502s
+sys	0m2.339s
+Running growth rate = .0300 = 3% with 16 thread
+./output/3y/0.01/gpu-er-twt-static-model-er-gnp-3y-3p-0.01p.edgelist
+./output/3y/0.01/gpu-er-twt-static-model-er-gnp-3y-3p-0.01p.aux
+
+real	0m5.064s
+user	0m4.963s
+sys	0m0.647s
+Running growth rate = .0300 = 3% with 16 thread
+./output/10y/0.01/gpu-er-amz-static-model-er-gnp-10y-3p-0.01p.edgelist
+./output/10y/0.01/gpu-er-amz-static-model-er-gnp-10y-3p-0.01p.aux
+
+real	0m18.305s
+user	0m18.466s
+sys	0m1.159s
+Running growth rate = .0300 = 3% with 16 thread
+./output/10y/0.01/gpu-er-eu-static-model-er-gnp-10y-3p-0.01p.edgelist
+./output/10y/0.01/gpu-er-eu-static-model-er-gnp-10y-3p-0.01p.aux
+
+real	0m11.470s
+user	0m11.333s
+sys	0m0.948s
+Running growth rate = .0300 = 3% with 16 thread
+./output/10y/0.01/gpu-er-yutb-static-model-er-gnp-10y-3p-0.01p.edgelist
+./output/10y/0.01/gpu-er-yutb-static-model-er-gnp-10y-3p-0.01p.aux
+
+real	2m37.834s
+user	2m38.003s
+sys	0m5.709s
+Running growth rate = .0300 = 3% with 16 thread
+./output/10y/0.01/gpu-er-twt-static-model-er-gnp-10y-3p-0.01p.edgelist
+./output/10y/0.01/gpu-er-twt-static-model-er-gnp-10y-3p-0.01p.aux
+
+real	0m6.509s
+user	0m6.385s
+sys	0m0.710s
+Running growth rate = .0300 = 3% with 16 thread
+./output/30y/0.01/gpu-er-amz-static-model-er-gnp-30y-3p-0.01p.edgelist
+./output/30y/0.01/gpu-er-amz-static-model-er-gnp-30y-3p-0.01p.aux
+
+real	1m35.497s
+user	1m38.397s
+sys	0m2.971s
+Running growth rate = .0300 = 3% with 16 thread
+./output/30y/0.01/gpu-er-eu-static-model-er-gnp-30y-3p-0.01p.edgelist
+./output/30y/0.01/gpu-er-eu-static-model-er-gnp-30y-3p-0.01p.aux
+
+real	1m0.815s
+user	1m1.169s
+sys	0m2.122s
+Running growth rate = .0300 = 3% with 16 thread
+./output/30y/0.01/gpu-er-yutb-static-model-er-gnp-30y-3p-0.01p.edgelist
+./output/30y/0.01/gpu-er-yutb-static-model-er-gnp-30y-3p-0.01p.aux
+
+real	18m0.294s
+user	18m5.782s
+sys	0m53.234s
+Running growth rate = .0300 = 3% with 16 thread
+./output/30y/0.01/gpu-er-twt-static-model-er-gnp-30y-3p-0.01p.edgelist
+./output/30y/0.01/gpu-er-twt-static-model-er-gnp-30y-3p-0.01p.aux
+
+real	0m14.590s
+user	0m14.573s
+sys	0m1.019s
+Running growth rate = .0600 = 6% with 16 thread
+./output/3y/0.01/gpu-er-amz-static-model-er-gnp-3y-6p-0.01p.edgelist
+./output/3y/0.01/gpu-er-amz-static-model-er-gnp-3y-6p-0.01p.aux
+
+real	0m13.912s
+user	0m13.566s
+sys	0m1.178s
+Running growth rate = .0600 = 6% with 16 thread
+./output/3y/0.01/gpu-er-eu-static-model-er-gnp-3y-6p-0.01p.edgelist
+./output/3y/0.01/gpu-er-eu-static-model-er-gnp-3y-6p-0.01p.aux
+
+real	0m8.392s
+user	0m7.959s
+sys	0m0.974s
+Running growth rate = .0600 = 6% with 16 thread
+./output/3y/0.01/gpu-er-yutb-static-model-er-gnp-3y-6p-0.01p.edgelist
+./output/3y/0.01/gpu-er-yutb-static-model-er-gnp-3y-6p-0.01p.aux
+
+real	1m30.984s
+user	1m30.999s
+sys	0m3.969s
+Running growth rate = .0600 = 6% with 16 thread
+./output/3y/0.01/gpu-er-twt-static-model-er-gnp-3y-6p-0.01p.edgelist
+./output/3y/0.01/gpu-er-twt-static-model-er-gnp-3y-6p-0.01p.aux
+
+real	0m6.467s
+user	0m6.110s
+sys	0m0.855s
+Running growth rate = .0600 = 6% with 16 thread
+./output/10y/0.01/gpu-er-amz-static-model-er-gnp-10y-6p-0.01p.edgelist
+./output/10y/0.01/gpu-er-amz-static-model-er-gnp-10y-6p-0.01p.aux
+
+real	0m53.256s
+user	0m53.400s
+sys	0m2.252s
+Running growth rate = .0600 = 6% with 16 thread
+./output/10y/0.01/gpu-er-eu-static-model-er-gnp-10y-6p-0.01p.edgelist
+./output/10y/0.01/gpu-er-eu-static-model-er-gnp-10y-6p-0.01p.aux
+
+real	0m32.637s
+user	0m32.225s
+sys	0m1.681s
+Running growth rate = .0600 = 6% with 16 thread
+./output/10y/0.01/gpu-er-yutb-static-model-er-gnp-10y-6p-0.01p.edgelist
+./output/10y/0.01/gpu-er-yutb-static-model-er-gnp-10y-6p-0.01p.aux
+
+real	6m55.360s
+user	7m1.382s
+sys	0m14.487s
+Running growth rate = .0600 = 6% with 16 thread
+./output/10y/0.01/gpu-er-twt-static-model-er-gnp-10y-6p-0.01p.edgelist
+./output/10y/0.01/gpu-er-twt-static-model-er-gnp-10y-6p-0.01p.aux
+
+real	0m9.768s
+user	0m9.592s
+sys	0m0.921s
+Running growth rate = .0600 = 6% with 16 thread
+./output/30y/0.01/gpu-er-amz-static-model-er-gnp-30y-6p-0.01p.edgelist
+./output/30y/0.01/gpu-er-amz-static-model-er-gnp-30y-6p-0.01p.aux
+
+real	9m0.613s
+user	9m15.461s
+sys	0m16.469s
+Running growth rate = .0600 = 6% with 16 thread
+./output/30y/0.01/gpu-er-eu-static-model-er-gnp-30y-6p-0.01p.edgelist
+./output/30y/0.01/gpu-er-eu-static-model-er-gnp-30y-6p-0.01p.aux
+
+real	5m51.884s
+user	6m0.602s
+sys	0m9.892s
+Running growth rate = .0600 = 6% with 16 thread
+./output/30y/0.01/gpu-er-yutb-static-model-er-gnp-30y-6p-0.01p.edgelist
+./output/30y/0.01/gpu-er-yutb-static-model-er-gnp-30y-6p-0.01p.aux

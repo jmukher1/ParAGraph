@@ -2,6 +2,7 @@
 
 #include "abm.cuh"
 #include "int2.cuh"
+#include "kernel_erdos_renyi.cuh"
 #include "argparse.h"
 #include <stdio.h>
 #include <stdlib.h>
@@ -132,7 +133,18 @@ int main(int argc, char* argv[]) {
     printf("\nInit ABM....");
     ABM* abm = new ABM(edgelist, nodelist, out_degree_bag, recency_probabilities, planted_nodes, alpha, fully_random_citations, preferential_weight, recency_weight, fitness_weight, growth_rate, num_cycles, same_year_proportion, output_file, auxiliary_information_file, log_file, num_processors, log_level, model, er_probability, er_edges_per_node);
     printf("\nExec ABM....");
-    execute(abm);
+    // Branch between the PA model's orchestration (execute(), kernel.cu)
+    // and the ER model's orchestration (executeER(), kernel_erdos_renyi.cu)
+    // based on --network-model. Previously, launchErdosRenyiKernel/
+    // kernelErdosRenyiGNP/kernelErdosRenyiFixedK were fully implemented
+    // but never called from anywhere -- the ER model was unreachable
+    // regardless of this flag's value. executeER() (kernel_erdos_renyi.cu)
+    // now provides the missing orchestration loop.
+    if (abm->get_model() == "pa") {
+        execute(abm);
+    } else {
+        executeER(abm);
+    }
 
     std::chrono::steady_clock::time_point t1 = std::chrono::steady_clock::now();
     auto durationE2E = std::chrono::duration_cast<std::chrono::milliseconds>(t1 - t0);

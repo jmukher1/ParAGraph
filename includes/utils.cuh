@@ -154,46 +154,88 @@ void append_device_to_host(device_vector_generic<T>* d_vec_vectors,
                             int num_vectors,
                             int* out_degree_arr,
                             int graphNodeSetSize) {
-    
-    // Copy device vector array to host
+
+
+    if (num_vectors <= 0) return;
+
+    // ---- Copy device vector array to host (unchanged: one struct-array
+    //      read, already O(1)) ----
     std::vector<device_vector_generic<T>> h_vecs(num_vectors);
     CUDA_CHECK(cudaMemcpy(h_vecs.data(), d_vec_vectors, 
                          num_vectors * sizeof(device_vector_generic<T>), 
                          cudaMemcpyDeviceToHost));
-    int countEdges = 0;
-    // Process each vector
-    for (int i = 0; i < num_vectors; i++) {
-        // Get size from device
-        int vec_size = 0;
-        if (h_vecs[i].d_size != nullptr) {
-            CUDA_CHECK(cudaMemcpy(&vec_size, h_vecs[i].d_size, sizeof(int), 
-                                 cudaMemcpyDeviceToHost));
-        }
-        
-        if (vec_size == 0 || h_vecs[i].data == nullptr) {
-            continue;  // Skip empty vectors
-        }
-        
-        // Allocate host buffer for this vector's data
-        std::vector<T> h_data(vec_size);
-        
-        // Copy data from device to host
-        CUDA_CHECK(cudaMemcpy(h_data.data(), h_vecs[i].data, 
-                             vec_size * sizeof(T), 
-                             cudaMemcpyDeviceToHost));
-        
-        //int biggerCitations = 0;                     
-        // Convert T (int2) to std::pair<int, int> and append
-        for (int j = 0; j < vec_size; j++) {
-            output_vec.push_back({h_data[j].x, h_data[j].y});
 
-            /*if (h_data[j].y > graphNodeSetSize) {
-                biggerCitations++;
-                printf("\ni = %d, edge: %d -> %d, size = %d, out deg = %d, biggerCitations = %d", 
-                    i, h_data[j].x, h_data[j].y, vec_size, out_degree_arr[i], biggerCitations);
-            }*/
+    // ---- Bulk-read ALL vectors' sizes in ONE cudaMemcpy. h_vecs[0].d_size
+    //      is the base pointer of the shared bulk size buffer (every
+    //      other vector's d_size is base+i). If d_size is null for some
+    //      reason, there's nothing to read at all. ----
+    std::vector<int> vec_sizes(num_vectors, 0);
+    if (h_vecs[0].d_size != nullptr) {
+        CUDA_CHECK(cudaMemcpy(vec_sizes.data(), h_vecs[0].d_size,
+                             num_vectors * sizeof(int), cudaMemcpyDeviceToHost));
+    }
+
+    // ---- Compute host-side offsets into the bulk `data` buffer from the
+    //      ALREADY-KNOWN capacities (out_degree_arr) -- no device read
+    //      needed for capacity at all. Mirrors the offset computation in
+    //      create_thread_vectors_bulk exactly, so these offsets match
+    //      what was actually allocated there. ----
+    std::vector<size_t> offsets(num_vectors);
+    size_t total_capacity = 0;
+    for (int i = 0; i < num_vectors; i++) {
+        offsets[i] = total_capacity;
+        total_capacity += (out_degree_arr[i] > 0) ? out_degree_arr[i] : 0;
+    }
+
+    // ---- Bulk-read the ENTIRE data payload in ONE cudaMemcpy, sized to
+    //      the total allocated capacity (an upper bound on actual content
+    //      -- safe to read past a given vector's true vec_size since it's
+    //      still within ITS OWN allocated capacity, just uninitialized
+    //      padding for the unused tail, which we simply never touch in
+    //      the extraction loop below). h_vecs[0].data is the bulk data
+    //      buffer's base pointer, same reasoning as vec_sizes above. ----
+    std::vector<T> h_data_all;
+    if (total_capacity > 0 && h_vecs[0].data != nullptr) {
+        h_data_all.resize(total_capacity);
+        CUDA_CHECK(cudaMemcpy(h_data_all.data(), h_vecs[0].data,
+                             total_capacity * sizeof(T), cudaMemcpyDeviceToHost));
+    }
+
+    // ---- Extract each vector's actual elements -- pure host-side work
+    //      now, zero further device calls. ----
+    int countEdges = 0;
+    int num_clamped = 0;
+    output_vec.reserve(output_vec.size() + total_capacity);
+
+    for (int i = 0; i < num_vectors; i++) {
+        int capacity = (out_degree_arr[i] > 0) ? out_degree_arr[i] : 0;
+        int vec_size = vec_sizes[i];
+
+        if (vec_size == 0 || capacity == 0) continue;
+
+        // Same overflow-safety reasoning as before: push_back's d_size
+        // can legitimately exceed capacity on a rejected push. Clamp
+        // using the host's own known capacity -- no device read needed.
+        if (vec_size > capacity) {
+            num_clamped++;
+            vec_size = capacity;
+        }
+
+        const T* vec_data = h_data_all.data() + offsets[i];
+        for (int j = 0; j < vec_size; j++) {
+            output_vec.push_back({vec_data[j].x, vec_data[j].y});
             countEdges++;
         }
+    }
+
+    if (num_clamped > 0) {
+        printf("\nWARNING [append_device_to_host]: %d of %d vectors overflowed "
+               "their allocated capacity and were clamped -- some sampled "
+               "edges were silently dropped by push_back (see its own "
+               "printf warning for exact positions). If this happens "
+               "routinely, the capacity estimate feeding "
+               "create_thread_vectors_bulk is too tight for this workload "
+               "and should be increased.\n", num_clamped, num_vectors);
     }
 
     //printf("\nTotal new edges = %d", countEdges);
@@ -211,45 +253,64 @@ void convertStdSetToDeviceStaticSet(
 inline void create_thread_vectors_int(int num_threads, int max_node_id, 
                                       device_vector** d_vectors) {
     CUDA_CHECK(cudaMallocManaged(d_vectors, num_threads * sizeof(device_vector)));
+
+    if (num_threads <= 0) return;
+
+    // FIXED: previously looped num_threads times calling device_vector::
+    // allocate() -- 4 cudaMalloc + 3 cudaMemcpy + 1 cudaMemset PER THREAD.
+    // CUDA driver call overhead is dominated by call COUNT, not payload
+    // size. Now bulk-allocates all four fields (bitmap, size, capacity,
+    // bitmap_words) into shared buffers sliced by pointer offset -- same
+    // pattern already used correctly elsewhere in this codebase for BFS
+    // bitmap slabs. Signature UNCHANGED -- no call sites need updating.
+    const int num_words = (max_node_id + 31) / 32;
+
+    uint32_t* d_bulk_bitmap       = nullptr;
+    int*      d_bulk_size         = nullptr;
+    int*      d_bulk_capacity     = nullptr;
+    int*      d_bulk_bitmap_words = nullptr;
+
+    CUDA_CHECK(cudaMalloc(&d_bulk_bitmap,       (size_t)num_threads * num_words * sizeof(uint32_t)));
+    CUDA_CHECK(cudaMalloc(&d_bulk_size,         (size_t)num_threads * sizeof(int)));
+    CUDA_CHECK(cudaMalloc(&d_bulk_capacity,     (size_t)num_threads * sizeof(int)));
+    CUDA_CHECK(cudaMalloc(&d_bulk_bitmap_words, (size_t)num_threads * sizeof(int)));
+
+    CUDA_CHECK(cudaMemset(d_bulk_bitmap, 0, (size_t)num_threads * num_words * sizeof(uint32_t)));
+    CUDA_CHECK(cudaMemset(d_bulk_size, 0, (size_t)num_threads * sizeof(int)));
+
+    {
+        std::vector<int> h_capacity_fill(num_threads, max_node_id);
+        std::vector<int> h_bitmap_words_fill(num_threads, num_words);
+        CUDA_CHECK(cudaMemcpy(d_bulk_capacity, h_capacity_fill.data(),
+                              num_threads * sizeof(int), cudaMemcpyHostToDevice));
+        CUDA_CHECK(cudaMemcpy(d_bulk_bitmap_words, h_bitmap_words_fill.data(),
+                              num_threads * sizeof(int), cudaMemcpyHostToDevice));
+    }
+
     for (int i = 0; i < num_threads; i++) {
         new (&((*d_vectors)[i])) device_vector();
-        (*d_vectors)[i].allocate(max_node_id);
-    } 
-    //("[create_thread_vectors_int] Creating %d vectors (device memory)\n", 
-    //       num_threads);
-    
-    /*/ Create temporary host array
-    device_vector* h_vectors = new device_vector[num_threads];
-    
-    // Initialize on host
-    for (int i = 0; i < num_threads; i++) {
-        h_vectors[i].allocate(max_node_id);
-        
-        if (i % 1000 == 0) {
-            printf("  Initialized %d/%d\n", i, num_threads);
-        }
+        device_vector& v = (*d_vectors)[i];
+        v.d_bitmap       = d_bulk_bitmap       + (size_t)i * num_words;
+        v.d_size         = d_bulk_size         + i;
+        v.d_capacity     = d_bulk_capacity     + i;
+        v.d_bitmap_words = d_bulk_bitmap_words + i;
+        v.max_node_id    = max_node_id;
     }
-    
-    // Allocate device memory
-    device_vector* d_vectors_ptr;
-    CUDA_CHECK(cudaMalloc(&d_vectors_ptr, num_threads * sizeof(device_vector)));
-    
-    // Copy to device
-    CUDA_CHECK(cudaMemcpy(d_vectors_ptr, h_vectors,
-                          num_threads * sizeof(device_vector),
-                          cudaMemcpyHostToDevice));
-    
-    delete[] h_vectors;
-    
-    *d_vectors = d_vectors_ptr;
-    
-    printf("SUCCESS: Vectors at device %p\n", (void*)d_vectors_ptr);*/
 }
 
 inline void destroy_thread_vectors_int(device_vector* d_vectors, int num_threads) {
+    // FIXED: previously called device_vector::destroy() per thread -- 4
+    // cudaFree PER THREAD. Now frees the 4 bulk buffers ONCE (via thread
+    // 0's base pointers, since every thread holds a slice of the SAME
+    // four allocations) + the struct array itself. CRITICAL: must NOT
+    // call v.destroy() per-thread here -- that would attempt to
+    // cudaFree(base_ptr + offset) for offsets > 0, an invalid free.
     if (d_vectors == nullptr) return;
-    for (int i = 0; i < num_threads; i++) {
-        d_vectors[i].destroy();
+    if (num_threads > 0) {
+        if (d_vectors[0].d_bitmap)       CUDA_CHECK(cudaFree(d_vectors[0].d_bitmap));
+        if (d_vectors[0].d_size)         CUDA_CHECK(cudaFree(d_vectors[0].d_size));
+        if (d_vectors[0].d_capacity)     CUDA_CHECK(cudaFree(d_vectors[0].d_capacity));
+        if (d_vectors[0].d_bitmap_words) CUDA_CHECK(cudaFree(d_vectors[0].d_bitmap_words));
     }
     CUDA_CHECK(cudaFree(d_vectors));
 }
@@ -268,31 +329,20 @@ __host__ void create_thread_vectors_bulk(
     int* capacities_per_thread,
     device_vector_generic<T>** d_vectors)
 {
-    //("\n[create_thread_vectors_bulk] Starting bulk allocation\n");
-    //printf("  Num vectors: %d\n", num_threads);
+    // FIXED: `data` was already correctly bulk-allocated (one cudaMalloc +
+    // one cudaMemset for the whole payload), but d_size/d_capacity were
+    // still allocated PER THREAD -- 2 cudaMalloc + 2 cudaMemcpy per
+    // thread, despite this function's original comment claiming "Single
+    // cudaMalloc" (true for `data`, not the metadata). Now d_size/
+    // d_capacity are ALSO bulk-allocated and sliced. Signature UNCHANGED.
 
     // =========================================================
     // 1. Create host array of vector structs
     // =========================================================
     std::vector<device_vector_generic<T>> h_vectors(num_threads);
 
-    // We must allocate d_size and d_capacity for each vector
-    for (int i = 0; i < num_threads; i++) {
-        CUDA_CHECK(cudaMalloc(&h_vectors[i].d_size, sizeof(int)));
-        CUDA_CHECK(cudaMalloc(&h_vectors[i].d_capacity, sizeof(int)));
-
-        int zero = 0;
-        CUDA_CHECK(cudaMemcpy(h_vectors[i].d_size, &zero, sizeof(int), cudaMemcpyHostToDevice));
-
-        int cap = capacities_per_thread[i];
-        CUDA_CHECK(cudaMemcpy(h_vectors[i].d_capacity, &cap, sizeof(int), cudaMemcpyHostToDevice));
-
-        h_vectors[i].owns_memory = false;   // memory will be bulk-managed
-        h_vectors[i].data = nullptr;        // will assign later
-    }
-
     // =========================================================
-    // 2. Compute total device memory needed
+    // 2. Compute total device memory needed for `data`
     // =========================================================
     std::vector<size_t> offsets(num_threads);
 
@@ -301,9 +351,6 @@ __host__ void create_thread_vectors_bulk(
         offsets[i] = total_elements;
         total_elements += capacities_per_thread[i];
     }
-
-    //("  Total elements: %zu\n", total_elements);
-    //printf("  Total bytes: %.2f MB\n", total_elements * sizeof(T) / (1024.0 * 1024.0));
 
     // =========================================================
     // 3. Bulk allocate `data` for ALL vectors
@@ -315,12 +362,30 @@ __host__ void create_thread_vectors_bulk(
         CUDA_CHECK(cudaMemset(d_bulk_data, 0, total_elements * sizeof(T)));
     }
 
-    // Assign each vector its slice of the bulk allocation
+    // =========================================================
+    // 3b. Bulk allocate d_size and d_capacity for ALL vectors, instead of
+    //     the previous per-thread loop of individual 4-byte allocations.
+    // =========================================================
+    int* d_bulk_size     = nullptr;
+    int* d_bulk_capacity = nullptr;
+    if (num_threads > 0) {
+        CUDA_CHECK(cudaMalloc(&d_bulk_size,     num_threads * sizeof(int)));
+        CUDA_CHECK(cudaMalloc(&d_bulk_capacity, num_threads * sizeof(int)));
+        CUDA_CHECK(cudaMemset(d_bulk_size, 0, num_threads * sizeof(int)));
+        CUDA_CHECK(cudaMemcpy(d_bulk_capacity, capacities_per_thread,
+                              num_threads * sizeof(int), cudaMemcpyHostToDevice));
+    }
+
+    // Assign each vector its slice of the bulk allocations
     for (int i = 0; i < num_threads; i++) {
         if (capacities_per_thread[i] > 0)
             h_vectors[i].data = d_bulk_data + offsets[i];
         else
-            h_vectors[i].data = nullptr; 
+            h_vectors[i].data = nullptr;
+
+        h_vectors[i].d_size     = d_bulk_size     + i;
+        h_vectors[i].d_capacity = d_bulk_capacity + i;
+        h_vectors[i].owns_memory = false;   // entire struct's memory is bulk-managed
     }
 
     // =========================================================
@@ -333,9 +398,6 @@ __host__ void create_thread_vectors_bulk(
                           h_vectors.data(),
                           num_threads * sizeof(device_vector_generic<T>),
                           cudaMemcpyHostToDevice));
-
-    //("[create_thread_vectors_bulk] Done. Single cudaMalloc for %zu elements.\n",
-    //       total_elements);
 }
 
 template <typename T>
@@ -754,13 +816,16 @@ __host__ void cleanup_vectors_bulk(
     device_vector_generic<T>* d_vectors,
     int num_threads)
 {
+    // FIXED: previously freed `data` once (correct), but looped
+    // num_threads times freeing d_size/d_capacity individually -- 2
+    // cudaFree PER THREAD. Now matches the bulk allocation in
+    // create_thread_vectors_bulk above: 2 cudaFree TOTAL for the
+    // metadata. 4 total frees regardless of num_threads.
     if (d_vectors == nullptr) {
         printf("[cleanup_vectors_bulk] d_vectors is nullptr, nothing to free\n");
         return;
     }
-    
-    //printf("\n[cleanup_vectors_bulk] Starting cleanup for %d vectors\n", num_threads);
-    
+
     // =========================================================
     // 1. Copy vector array from device to host
     // =========================================================
@@ -769,37 +834,32 @@ __host__ void cleanup_vectors_bulk(
                           d_vectors,
                           num_threads * sizeof(device_vector_generic<T>),
                           cudaMemcpyDeviceToHost));
-    
-    // =========================================================
-    // 2. Free bulk data buffer (only once!)
-    // =========================================================
-    if (num_threads > 0 && h_vectors[0].data != nullptr) {
-        T* d_bulk_data = h_vectors[0].data;
-        CUDA_CHECK(cudaFree(d_bulk_data));
-        //printf("  Freed bulk data at: %p\n", (void*)d_bulk_data);
-    }
-    
-    // =========================================================
-    // 3. Free individual d_size and d_capacity for each vector
-    // =========================================================
-    for (int i = 0; i < num_threads; i++) {
-        if (h_vectors[i].d_size != nullptr) {
-            CUDA_CHECK(cudaFree(h_vectors[i].d_size));
+
+    if (num_threads > 0) {
+        // =========================================================
+        // 2. Free bulk data buffer (only once!)
+        // =========================================================
+        if (h_vectors[0].data != nullptr) {
+            CUDA_CHECK(cudaFree(h_vectors[0].data));
         }
-        if (h_vectors[i].d_capacity != nullptr) {
-            CUDA_CHECK(cudaFree(h_vectors[i].d_capacity));
+
+        // =========================================================
+        // 3. Free bulk d_size / d_capacity buffers (only once each!) --
+        //    all threads share the same two underlying allocations now,
+        //    so thread 0's pointers are sufficient to free both.
+        // =========================================================
+        if (h_vectors[0].d_size != nullptr) {
+            CUDA_CHECK(cudaFree(h_vectors[0].d_size));
+        }
+        if (h_vectors[0].d_capacity != nullptr) {
+            CUDA_CHECK(cudaFree(h_vectors[0].d_capacity));
         }
     }
-    //printf("  Freed %d d_size and %d d_capacity pointers\n", num_threads, num_threads);
-    
+
     // =========================================================
     // 4. Free the vector array itself
     // =========================================================
     CUDA_CHECK(cudaFree(d_vectors));
-    /*printf("  Freed vector array at: %p\n", (void*)d_vectors);
-    
-    printf("[cleanup_vectors_bulk] Cleanup complete. Total frees: %d (1 bulk + %d metadata + 1 array)\n",
-           2 * num_threads + 2, 2 * num_threads);*/
 }
 
 // ============================================================================

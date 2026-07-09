@@ -29,10 +29,10 @@ do
     GROWTH_RATE=$(echo "scale=4; $GROWTH_PERCENT/100" | bc -l)
     GROWTH_LABEL=$(echo "$GROWTH_PERCENT" | sed 's/0\./dot/; s/\./dot/') 
 
-    OUTPUT_FILE="./output/${ER_PROBABILITY_LABEL}/gpu-opt-static-model-${MODEL}-${NUM_CYCLES}y-${GROWTH_LABEL}p-${ER_PROBABILITY_LABEL}p.edgelist"
-    OUTPUT_LOG="./output/${ER_PROBABILITY_LABEL}/gpu-opt-static-model-${MODEL}-${NUM_CYCLES}y-${GROWTH_LABEL}p-${ER_PROBABILITY_LABEL}p-${NUM_THREADS}t.log"
-    OUTPUT_AUX="./output/${ER_PROBABILITY_LABEL}/gpu-opt-static-model-${MODEL}-${NUM_CYCLES}y-${GROWTH_LABEL}p-${ER_PROBABILITY_LABEL}p.aux"
-    OUT_FILE="./output/${ER_PROBABILITY_LABEL}/gpu-opt-static-model-${MODEL}-${NUM_CYCLES}y-${GROWTH_LABEL}p-${ER_PROBABILITY_LABEL}p-${NUM_THREADS}t.out"
+    OUTPUT_FILE="./output/${ER_PROBABILITY_LABEL}/gpu-er-static-model-${MODEL}-${NUM_CYCLES}y-${GROWTH_LABEL}p-${ER_PROBABILITY_LABEL}p.edgelist"
+    OUTPUT_LOG="./output/${ER_PROBABILITY_LABEL}/gpu-er-static-model-${MODEL}-${NUM_CYCLES}y-${GROWTH_LABEL}p-${ER_PROBABILITY_LABEL}p-${NUM_THREADS}t.log"
+    OUTPUT_AUX="./output/${ER_PROBABILITY_LABEL}/gpu-er-static-model-${MODEL}-${NUM_CYCLES}y-${GROWTH_LABEL}p-${ER_PROBABILITY_LABEL}p.aux"
+    OUT_FILE="./output/${ER_PROBABILITY_LABEL}/gpu-er-static-model-${MODEL}-${NUM_CYCLES}y-${GROWTH_LABEL}p-${ER_PROBABILITY_LABEL}p-${NUM_THREADS}t.out"
 
     echo "Running growth rate = ${GROWTH_RATE} = ${GROWTH_PERCENT}% with ${NUM_THREADS} thread"
     echo $OUTPUT_FILE
