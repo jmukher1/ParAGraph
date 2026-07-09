@@ -25,10 +25,10 @@ for GROWTH_PERCENT in 1 3 6
 do
     GROWTH_RATE=$(echo "scale=2; $GROWTH_PERCENT/100" | bc)
 
-    OUTPUT_FILE="./output/gpu-parallel-static-${NUM_CYCLES}y-${GROWTH_PERCENT}p.edgelist"
-    OUTPUT_LOG="./output/gpu-parallel-static-${NUM_CYCLES}y-${GROWTH_PERCENT}p-${NUM_THREADS}t.log"
-    OUTPUT_AUX="./output/gpu-parallel-static-${NUM_CYCLES}y-${GROWTH_PERCENT}p.aux"
-    OUT_FILE="./output/gpu-parallel-static-${NUM_CYCLES}y-${GROWTH_PERCENT}p-${NUM_THREADS}t.out"
+    OUTPUT_FILE="./output/1M-gpu-parallel-static-${NUM_CYCLES}y-${GROWTH_PERCENT}p.edgelist"
+    OUTPUT_LOG="./output/1M-gpu-parallel-static-${NUM_CYCLES}y-${GROWTH_PERCENT}p-${NUM_THREADS}t.log"
+    OUTPUT_AUX="./output/1M-gpu-parallel-static-${NUM_CYCLES}y-${GROWTH_PERCENT}p.aux"
+    OUT_FILE="./output/1M-gpu-parallel-static-${NUM_CYCLES}y-${GROWTH_PERCENT}p-${NUM_THREADS}t.out"
 
     echo "Running growth rate ${GROWTH_PERCENT}% with ${NUM_THREADS} thread"
     echo $OUTPUT_FILE

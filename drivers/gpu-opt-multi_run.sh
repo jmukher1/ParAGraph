@@ -2,7 +2,7 @@
 
 mkdir -p output 
 
-NUM_THREADS=1
+NUM_THREADS=16
 NUM_CYCLES=10
 
 INPUT_EDGELIST="sj_edgelist"
@@ -27,10 +27,10 @@ do
     echo "Run $RUN_ID / 10"
     echo "=============================="
 
-    OUTPUT_FILE="./output/gpu-opt-pa-run${RUN_ID}-${NUM_CYCLES}y-${GROWTH_PERCENT}p.edgelist"
-    OUTPUT_AUX="./output/gpu-opt-pa-run${RUN_ID}-${NUM_CYCLES}y-${GROWTH_PERCENT}p.aux"
-    OUT_FILE="./output/gpu-opt-pa-run${RUN_ID}-${NUM_CYCLES}y-${GROWTH_PERCENT}p.out" 
-    LOG_FILE="./output/gpu-opt-pa-run${RUN_ID}-${NUM_CYCLES}y-${GROWTH_PERCENT}p.log" 
+    OUTPUT_FILE="./output/gpu-optim-pa-run${RUN_ID}-${NUM_CYCLES}y-${GROWTH_PERCENT}p.edgelist"
+    OUTPUT_AUX="./output/gpu-optim-pa-run${RUN_ID}-${NUM_CYCLES}y-${GROWTH_PERCENT}p.aux"
+    OUT_FILE="./output/gpu-optim-pa-run${RUN_ID}-${NUM_CYCLES}y-${GROWTH_PERCENT}p.out" 
+    LOG_FILE="./output/gpu-optim-pa-run${RUN_ID}-${NUM_CYCLES}y-${GROWTH_PERCENT}p.log" 
 
     time ./abm \
     --edgelist ${INPUT_EDGELIST} \

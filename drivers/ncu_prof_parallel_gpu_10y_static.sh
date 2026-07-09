@@ -9,7 +9,7 @@ mkdir -p errors
 OUTPUT=$(readlink -f ./output)/
 ERRORS=$(readlink -f ./errors)/
 
-NUM_THREADS=1
+NUM_THREADS=16
 NUM_CYCLES=10
 
 INPUT_EDGELIST="sj_edgelist"
@@ -21,20 +21,20 @@ SAME_YEAR_PROPORTION="0.12"
 FULLY_RANDOM_CITATIONS="0.05"
 LOG_LEVEL="1"
 
-for GROWTH_PERCENT in 6
+for GROWTH_PERCENT in 1 3 6
 do
     GROWTH_RATE=$(echo "scale=2; $GROWTH_PERCENT/100" | bc)
 
-    OUTPUT_FILE="./output/cpu-static-output-${NUM_CYCLES}y-${GROWTH_PERCENT}p.edgelist"
-    OUTPUT_LOG="./output/cpu-static-output-${NUM_CYCLES}y-${GROWTH_PERCENT}p-${NUM_THREADS}t.log"
-    OUTPUT_AUX="./output/cpu-static-output-${NUM_CYCLES}y-${GROWTH_PERCENT}p.aux"
-    OUT_FILE="./output/cpu-static-${NUM_CYCLES}y-${GROWTH_PERCENT}p-${NUM_THREADS}t-abm.out"
+    OUTPUT_FILE="./output/PROFRTX-parallel-static-${NUM_CYCLES}y-${GROWTH_PERCENT}p.edgelist"
+    OUTPUT_LOG="./output/PROFRTX-parallel-static-${NUM_CYCLES}y-${GROWTH_PERCENT}p-${NUM_THREADS}t.log"
+    OUTPUT_AUX="./output/PROFRTX-parallel-static-${NUM_CYCLES}y-${GROWTH_PERCENT}p.aux"
+    OUT_FILE="./output/PROFRTX-parallel-static-${NUM_CYCLES}y-${GROWTH_PERCENT}p-${NUM_THREADS}t.out"
 
     echo "Running growth rate ${GROWTH_PERCENT}% with ${NUM_THREADS} thread"
     echo $OUTPUT_FILE
     echo $OUTPUT_AUX
 
-    time ./abm \
+    ncu --metrics lts__t_sector_hit_rate.pct,smsp__thread_inst_executed_per_inst_executed.ratio,sm__warps_active.avg.pct_of_peak_sustained_active --kernel-name kernelCallStage1 ./abm \
     --edgelist ${INPUT_EDGELIST} \
     --nodelist ${INPUT_NODELIST} \
     --out-degree-bag ${OUTDEGREE_BAG} \
@@ -56,5 +56,3 @@ do
     1>${OUT_FILE}
 
 done
-
- 

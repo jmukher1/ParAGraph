@@ -1,0 +1,83 @@
+The following modules were not unloaded:
+  (Use "module --force purge" to unload all):
+
+  1) xalt/3.1.4
+
+Due to MODULEPATH changes, the following have been reloaded:
+  1) xalt/3.1.4
+
+
+Currently Loaded Modules:
+  1) gcc/11.4.1                   5) cuda/12.6.1
+  2) libiconv/1.17-2v5s4pp  (H)   6) openmpi/5.0.5
+  3) zlib/1.2.11-bw5swtx    (H)   7) modtree/gpu
+  4) libxml2/2.10.3-7g6anly (H)
+
+  Where:
+   H:  Hidden Module
+
+ 
+
+=== ENV CHECK ===
+nsys:  /apps/spack/gautschi-gpu/apps/cuda/12.6.1-gcc-11.4.1-jtjtgkd/bin/nsys  |  NVIDIA Nsight Systems version 2024.4.2.133-244234382004v0
+ncu:   /apps/spack/gautschi-gpu/apps/cuda/12.6.1-gcc-11.4.1-jtjtgkd/bin/ncu   |  NVIDIA (R) Nsight Compute Command Line Profiler
+nvcc:  Cuda compilation tools, release 12.6, V12.6.68
+GPU:   NVIDIA H100 80GB HBM3
+==================
+
+=== Ablation config: baseline  |  Growth 1% / 10y ===
+    use-warp-bfs=true  use-batching=true  max-batch-size=100000  use-multistage-kernel=true
+    Profile: ./profile/baseline-ncu-gpu-parallel-static-pa-10y-1p.ncu-rep
+    CSV:     ./profile/baseline-ncu-gpu-parallel-static-pa-10y-1p.csv
+    ./output/ablation/ncu-H100/baseline-ncu-gpu-parallel-static-10y-1p.edgelist
+    ./output/ablation/ncu-H100/baseline-ncu-gpu-parallel-static-10y-1p.aux
+    ncu exit code: 0
+    SUCCESS .ncu-rep: 7.8M
+    SUCCESS .csv:     0 lines
+
+=== Ablation config: default-batch  |  Growth 1% / 10y ===
+    use-warp-bfs=true  use-batching=true  max-batch-size=20000  use-multistage-kernel=true
+    Profile: ./profile/default-batch-ncu-gpu-parallel-static-pa-10y-1p.ncu-rep
+    CSV:     ./profile/default-batch-ncu-gpu-parallel-static-pa-10y-1p.csv
+    ./output/ablation/ncu-H100/default-batch-ncu-gpu-parallel-static-10y-1p.edgelist
+    ./output/ablation/ncu-H100/default-batch-ncu-gpu-parallel-static-10y-1p.aux
+    ncu exit code: 0
+    SUCCESS .ncu-rep: 7.8M
+    SUCCESS .csv:     0 lines
+
+=== Ablation config: no-warp  |  Growth 1% / 10y ===
+    use-warp-bfs=false  use-batching=true  max-batch-size=20000  use-multistage-kernel=true
+    Profile: ./profile/no-warp-ncu-gpu-parallel-static-pa-10y-1p.ncu-rep
+    CSV:     ./profile/no-warp-ncu-gpu-parallel-static-pa-10y-1p.csv
+    ./output/ablation/ncu-H100/no-warp-ncu-gpu-parallel-static-10y-1p.edgelist
+    ./output/ablation/ncu-H100/no-warp-ncu-gpu-parallel-static-10y-1p.aux
+    ncu exit code: 0
+    SUCCESS .ncu-rep: 7.9M
+    SUCCESS .csv:     0 lines
+
+=== Ablation config: no-batching  |  Growth 1% / 10y ===
+    use-warp-bfs=true  use-batching=false  max-batch-size=20000  use-multistage-kernel=true
+    Profile: ./profile/no-batching-ncu-gpu-parallel-static-pa-10y-1p.ncu-rep
+    CSV:     ./profile/no-batching-ncu-gpu-parallel-static-pa-10y-1p.csv
+    ./output/ablation/ncu-H100/no-batching-ncu-gpu-parallel-static-10y-1p.edgelist
+    ./output/ablation/ncu-H100/no-batching-ncu-gpu-parallel-static-10y-1p.aux
+    ncu exit code: 0
+    SUCCESS .ncu-rep: 7.3M
+    SUCCESS .csv:     0 lines
+
+=== Ablation config: large-batch  |  Growth 1% / 10y ===
+    use-warp-bfs=true  use-batching=true  max-batch-size=1000000  use-multistage-kernel=true
+    Profile: ./profile/large-batch-ncu-gpu-parallel-static-pa-10y-1p.ncu-rep
+    CSV:     ./profile/large-batch-ncu-gpu-parallel-static-pa-10y-1p.csv
+    ./output/ablation/ncu-H100/large-batch-ncu-gpu-parallel-static-10y-1p.edgelist
+    ./output/ablation/ncu-H100/large-batch-ncu-gpu-parallel-static-10y-1p.aux
+    ncu exit code: 0
+    SUCCESS .ncu-rep: 7.8M
+    SUCCESS .csv:     0 lines
+
+=== Ablation config: monolithic  |  Growth 1% / 10y ===
+    use-warp-bfs=true  use-batching=true  max-batch-size=20000  use-multistage-kernel=false
+    Profile: ./profile/monolithic-ncu-gpu-parallel-static-pa-10y-1p.ncu-rep
+    CSV:     ./profile/monolithic-ncu-gpu-parallel-static-pa-10y-1p.csv
+    ./output/ablation/ncu-H100/monolithic-ncu-gpu-parallel-static-10y-1p.edgelist
+    ./output/ablation/ncu-H100/monolithic-ncu-gpu-parallel-static-10y-1p.aux

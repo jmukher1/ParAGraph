@@ -186,16 +186,37 @@ struct CompactBFSState {
 
 class ABM {
     public:
+        // -----------------------------------------------------------------
+        // Ablation-study fields, added to match main.cu's ABM constructor
+        // call and kernel_abl.cu's usage (abm->use_warp_bfs,
+        // abm->is_use_multistage_kernel as direct public member reads;
+        // abm->is_use_batching() / abm->get_max_batch_size() as accessor
+        // methods). This class previously had none of these -- its
+        // constructor went straight from recency_probabilities to
+        // planted_nodes, which did not match main.cu's call site at all.
+        // -----------------------------------------------------------------
+        bool use_warp_bfs;             // true -> kernelCallStage1_warped, false -> kernelCallStage1
+        bool is_use_multistage_kernel; // true -> 4 separate kernel launches, false -> fused ABMKernel
+    private:
+        bool use_batching_flag;
+        int  max_batch_size_config;
+    public:
+        bool is_use_batching() const { return this->use_batching_flag; }
+        int  get_max_batch_size() const { return this->max_batch_size_config; }
+
         ABM(std::string edgelist, 
             std::string nodelist, 
             std::string out_degree_bag, 
             std::string recency_probabilities, 
+            bool use_warp_bfs, bool use_batching, int max_batch_size, bool use_multistage_kernel,
             std::string planted_nodes, double alpha, double fully_random_citations, 
             double preferential_weight, double recency_weight, double fitness_weight, 
             double growth_rate, int num_cycles, double same_year_proportion, 
             std::string output_file, std::string auxiliary_information_file, 
             std::string log_file, int num_processors, int log_level) : edgelist(edgelist), nodelist(nodelist), 
                         out_degree_bag(out_degree_bag), recency_probabilities(recency_probabilities), 
+                        use_warp_bfs(use_warp_bfs), is_use_multistage_kernel(use_multistage_kernel),
+                        use_batching_flag(use_batching), max_batch_size_config(max_batch_size),
                         planted_nodes(planted_nodes), alpha(alpha), fully_random_citations(fully_random_citations), 
                         preferential_weight(preferential_weight), recency_weight(recency_weight), 
                         fitness_weight(fitness_weight), growth_rate(growth_rate), num_cycles(num_cycles), 

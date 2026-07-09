@@ -9,6 +9,16 @@
 
 using namespace std;
 
+// -----------------------------------------------------------------------
+// Timing bridge: main.cu measures ABM construction time (file I/O for
+// out-degree-bag, recency-probabilities, planted-nodes -- see
+// ABM::ReadOutDegreeBag/ReadRecencyProbabilities/ReadPlantedNodes in
+// abm.cu) and hands it to execute() via this global, rather than changing
+// execute()'s signature -- avoids any risk of mismatching a forward
+// declaration in abm.cuh that isn't visible here. Defined in kernel.cu.
+// -----------------------------------------------------------------------
+extern double g_abm_construction_ms;
+
 int main(int argc, char* argv[]) {
     std::chrono::steady_clock::time_point t0 = std::chrono::steady_clock::now();
     printf("\nStart ABM....");
@@ -28,6 +38,28 @@ int main(int argc, char* argv[]) {
     main_program.add_argument("--recency-probabilities")
         .required()
         .help("Input recency bag (year, probability)");
+    main_program.add_argument("--use-warp-bfs")
+        .default_value(true)
+        .action([](const std::string& value) {
+            return (value == "true" || value == "1" || value == "yes");
+        });
+
+    main_program.add_argument("--use-batching")
+        .default_value(true)
+        .action([](const std::string& value) {
+            return (value == "true" || value == "1" || value == "yes");
+        });
+
+    main_program.add_argument("--use-multistage-kernel")
+        .default_value(true)
+        .action([](const std::string& value) {
+            return (value == "true" || value == "1" || value == "yes");
+        });
+    main_program.add_argument("--max-batch-size")
+        .default_value(int(20000))
+        .help("Maximum batch size")
+        .scan<'d', int>(); 
+
     main_program.add_argument("--planted-nodes")
         .default_value("")
         .help("Planted nodes file (year, fitness lag duration, fitness peak value, fitess peak duration, count)");
@@ -95,6 +127,10 @@ int main(int argc, char* argv[]) {
     std::string out_degree_bag = main_program.get<std::string>("--out-degree-bag");
     std::string recency_probabilities = main_program.get<std::string>("--recency-probabilities");
     std::string planted_nodes = main_program.get<std::string>("--planted-nodes");
+    bool use_warp_bfs = main_program.get<bool>("--use-warp-bfs");
+    bool use_batching = main_program.get<bool>("--use-batching");
+    int max_batch_size = main_program.get<int>("--max-batch-size");
+    bool use_multistage_kernel = main_program.get<bool>("--use-multistage-kernel");
     double alpha = main_program.get<double>("--alpha");
     double fully_random_citations = main_program.get<double>("--fully-random-citations");
     double preferential_weight = main_program.get<double>("--preferential-weight");
@@ -114,7 +150,21 @@ int main(int argc, char* argv[]) {
     int log_level = main_program.get<int>("--log-level") - 1; // so that enum is cleaner
     printf("\nlog-level = %d", log_level);
     printf("\nInit ABM....");
-    ABM* abm = new ABM(edgelist, nodelist, out_degree_bag, recency_probabilities, planted_nodes, alpha, fully_random_citations, preferential_weight, recency_weight, fitness_weight, growth_rate, num_cycles, same_year_proportion, output_file, auxiliary_information_file, log_file, num_processors, log_level);
+    std::chrono::steady_clock::time_point t_abm_ctor_start = std::chrono::steady_clock::now();
+    ABM* abm = new ABM(edgelist, nodelist, out_degree_bag, recency_probabilities, 
+        use_warp_bfs, use_batching, max_batch_size, use_multistage_kernel, 
+        planted_nodes, alpha, fully_random_citations, 
+        preferential_weight, recency_weight, 
+        fitness_weight, growth_rate, num_cycles, 
+        same_year_proportion, output_file, 
+        auxiliary_information_file, log_file, 
+        num_processors, log_level);
+
+    std::chrono::steady_clock::time_point t_abm_ctor_end = std::chrono::steady_clock::now();
+    // See the extern declaration above for why this is a global rather
+    // than an execute() parameter.
+    g_abm_construction_ms = std::chrono::duration_cast<std::chrono::milliseconds>(
+        t_abm_ctor_end - t_abm_ctor_start).count();
     printf("\nExec ABM....");
     execute(abm);
 

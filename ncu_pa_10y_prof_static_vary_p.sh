@@ -1,20 +1,20 @@
 #!/bin/bash
-#SBATCH --time=00:59:00
+#SBATCH --time=01:59:00
 #SBATCH --nodes=1
 #SBATCH --ntasks-per-node=1
 #SBATCH --cpus-per-task=14
 #SBATCH --job-name="ncu-pa-10y"
 #SBATCH --account=ayg
 #SBATCH --partition=ai
-#SBATCH --mem=228GB
 #SBATCH --gres=gpu:h100:1
-#SBATCH --reservation=perf_count
 
 # NO source ~/.bashrc — causes cuda/12.9 vs 12.6 version mismatch
 module purge
 module load modtree/gpu
 
 ml --force unload xalt
+
+module list
 
 echo "=== ENV CHECK ==="
 echo "nsys:  $(which nsys)  |  $(nsys --version 2>&1 | head -1)"
@@ -57,6 +57,8 @@ NCU_METRICS+="gpu__dram_throughput.avg.pct_of_peak_sustained_elapsed,"
 # FP32 and FP64 FLOP counts (for roofline arithmetic intensity)
 NCU_METRICS+="sm__sass_thread_inst_executed_op_fp32_pred_on.sum,"
 NCU_METRICS+="sm__sass_thread_inst_executed_op_fp64_pred_on.sum,"
+NCU_METRICS+="lts__t_sector_hit_rate.pct,"
+NCU_METRICS+="smsp__thread_inst_executed_per_inst_executed.ratio,"
 # Total DRAM bytes (for roofline denominator)
 NCU_METRICS+="dram__bytes.sum,"
 # Kernel wall time
@@ -78,7 +80,7 @@ NCU_METRICS+="launch__thread_count"
 NCU_METRICS="${NCU_METRICS%,}"
 
 
-growth_percents="5"
+growth_percents="3"
 
 for GROWTH_PERCENT in $growth_percents; do
     GROWTH_RATE=$(echo "scale=2; $GROWTH_PERCENT/100" | bc)
@@ -112,6 +114,7 @@ for GROWTH_PERCENT in $growth_percents; do
 
     ncu \
         --metrics "${NCU_METRICS}" \
+        --kernel-name regex:"kernelCallStage[1-4]" \
         --target-processes all \
         --clock-control none \
         --export "${PROFILE_BASE}" \
