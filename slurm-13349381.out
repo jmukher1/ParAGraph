@@ -239,3 +239,4 @@ sys	0m9.892s
 Running growth rate = .0600 = 6% with 16 thread
 ./output/30y/0.01/gpu-er-yutb-static-model-er-gnp-30y-6p-0.01p.edgelist
 ./output/30y/0.01/gpu-er-yutb-static-model-er-gnp-30y-6p-0.01p.aux
+[2026-07-09T14:03:41.004] error: *** JOB 13349381 ON h006 CANCELLED AT 2026-07-09T14:03:41 DUE TO TIME LIMIT ***

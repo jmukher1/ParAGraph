@@ -18,3 +18,11 @@ module load cuda/12.6
 ./drivers/p0005gpu_er_static_vary_p.sh 
 
 ./drivers/p001gpu_er_static_vary_p.sh 
+
+./drivers/p0001gpu_er_static_30y.sh
+
+./drivers/p0003gpu_er_static_30y.sh
+
+./drivers/p0005gpu_er_static_30y.sh
+
+./drivers/p001gpu_er_static_30y.sh

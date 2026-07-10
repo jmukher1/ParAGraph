@@ -17,7 +17,7 @@ SAME_YEAR_PROPORTION="0.12"
 FULLY_RANDOM_CITATIONS="0.05"
 LOG_LEVEL="1"
 MODEL="er-gnp"
-
+dataset="sj"
 ER_PROBABILITY="0.0001"
 ER_PROBABILITY_LABEL=$(awk "BEGIN {printf \"%.2f\", 100 * $ER_PROBABILITY}")
 datasets=("amz" "eu" "yutb" "twt") 

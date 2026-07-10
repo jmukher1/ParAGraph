@@ -19,7 +19,7 @@ SAME_YEAR_PROPORTION="0.12"
 FULLY_RANDOM_CITATIONS="0.05"
 LOG_LEVEL="1"
 MODEL="er-gnp"
-
+dataset="sj"
 ER_PROBABILITY="0.001"
 ER_PROBABILITY_LABEL=$(awk "BEGIN {printf \"%.2f\", 100 * $ER_PROBABILITY}")
 mkdir -p output/${NUM_CYCLES}y/${ER_PROBABILITY_LABEL}
@@ -29,7 +29,7 @@ do
     GROWTH_RATE=$(echo "scale=4; $GROWTH_PERCENT/100" | bc -l)
     GROWTH_LABEL=$(echo "$GROWTH_PERCENT" | sed 's/0\./dot/; s/\./dot/') 
 
-    for NUM_CYCLES in 3 10 30
+    for NUM_CYCLES in 3 10
     do
         mkdir -p output/${NUM_CYCLES}y/${ER_PROBABILITY_LABEL}
 

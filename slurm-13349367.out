@@ -162,3 +162,18 @@ sys	0m5.811s
 Running growth rate = .0300 = 3% with 16 thread
 ./output/30y/0.05/gpu-er--static-model-er-gnp-30y-3p-0.05p.edgelist
 ./output/30y/0.05/gpu-er--static-model-er-gnp-30y-3p-0.05p.aux
+
+real	17m39.186s
+user	17m16.737s
+sys	0m58.079s
+Running growth rate = .0600 = 6% with 16 thread
+./output/3y/0.05/gpu-er--static-model-er-gnp-3y-6p-0.05p.edgelist
+./output/3y/0.05/gpu-er--static-model-er-gnp-3y-6p-0.05p.aux
+
+real	1m3.822s
+user	1m3.556s
+sys	0m2.757s
+Running growth rate = .0600 = 6% with 16 thread
+./output/10y/0.05/gpu-er--static-model-er-gnp-10y-6p-0.05p.edgelist
+./output/10y/0.05/gpu-er--static-model-er-gnp-10y-6p-0.05p.aux
+[2026-07-09T14:02:42.006] error: *** JOB 13349367 ON h006 CANCELLED AT 2026-07-09T14:02:42 DUE TO TIME LIMIT ***
