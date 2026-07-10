@@ -22,7 +22,6 @@ MODEL="er-gnp"
 dataset="sj"
 ER_PROBABILITY="0.0003"
 ER_PROBABILITY_LABEL=$(awk "BEGIN {printf \"%.2f\", 100 * $ER_PROBABILITY}")
-mkdir -p output/${NUM_CYCLES}y/${ER_PROBABILITY_LABEL}
 
 for GROWTH_PERCENT in 1 3 6
 do
