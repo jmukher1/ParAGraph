@@ -443,7 +443,7 @@ int executeER(ABM* abm) {
 
     std::vector<int> new_nodes_vec;
     std::vector<std::pair<int,int>> new_edges_vec;
-    int max_batch_size = 23000;
+    int max_batch_size = 20000;
     std::vector<ERTiming> all_epochs;
 
     for (int current_year = start_year; current_year < start_year + abm->num_cycles; current_year++) {

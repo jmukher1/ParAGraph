@@ -1,9 +1,9 @@
 #!/bin/bash
-#SBATCH --time=01:59:00
+#SBATCH --time=05:59:00
 #SBATCH --nodes=1
 #SBATCH --ntasks-per-node=1
 #SBATCH --cpus-per-task=14
-#SBATCH --job-name="sj_p001-ERp"
+#SBATCH --job-name="sj_p0001-ERp"
 #SBATCH --account=ayg
 #SBATCH --partition=ai
 #SBATCH --gres=gpu:h100:1
@@ -26,3 +26,5 @@ module load cuda/12.6
 ./drivers/p0005gpu_er_static_30y.sh
 
 ./drivers/p001gpu_er_static_30y.sh
+
+
