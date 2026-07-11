@@ -6,9 +6,7 @@
 #SBATCH --job-name="nsys-pa-10y"
 #SBATCH --account=ayg
 #SBATCH --partition=ai
-#SBATCH --mem=228GB
-#SBATCH --gres=gpu:h100:1
-#SBATCH --reservation=perf_count
+#SBATCH --gres=gpu:h100:1 
 
 # NO source ~/.bashrc — causes cuda/12.9 vs 12.6 version mismatch
 module purge
@@ -36,17 +34,21 @@ SAME_YEAR_PROPORTION="0.12"
 FULLY_RANDOM_CITATIONS="0.05"
 LOG_LEVEL="1"
 MODEL="pa"
+USE_WARP_BFS="true"
+USE_BATCHING="true"
+MAX_BATCH_SIZE="200000"  
 
 mkdir -p output/${NUM_CYCLES}y
 
-growth_percents="1 3 5 6"
+growth_percents="1 3 6"
 
 for GROWTH_PERCENT in $growth_percents; do
     GROWTH_RATE=$(echo "scale=2; $GROWTH_PERCENT/100" | bc)
 
-    OUTPUT_FILE="${OUTPUT}${NUM_CYCLES}y/gpu-opt-static-output-${NUM_CYCLES}y-${GROWTH_PERCENT}p.edgelist"
+    OUT_FILE="${OUTPUT}${NUM_CYCLES}y/nsys-gpu-opt-static-${MODEL}-${NUM_CYCLES}y-${GROWTH_PERCENT}p.out"
+    OUTPUT_FILE="${OUTPUT}${NUM_CYCLES}y/nsys-gpu-opt-static-output-${NUM_CYCLES}y-${GROWTH_PERCENT}p.edgelist"
     OUTPUT_LOG="${OUTPUT}${NUM_CYCLES}y/nsys-gpu-opt-static-${MODEL}-${NUM_CYCLES}y-${GROWTH_PERCENT}p.log"
-    OUTPUT_AUX="${OUTPUT}${NUM_CYCLES}y/gpu-opt-static-output-${NUM_CYCLES}y-${GROWTH_PERCENT}p.aux"
+    OUTPUT_AUX="${OUTPUT}${NUM_CYCLES}y/nsys-gpu-opt-static-output-${NUM_CYCLES}y-${GROWTH_PERCENT}p.aux"
     NSYS_OUT="${PROFILE_DIR}nsys-${MODEL}-${NUM_CYCLES}y-${GROWTH_PERCENT}p"   # ← now uses absolute PROFILE_DIR
 
     echo "Running growth rate ${GROWTH_PERCENT}% for ${NUM_CYCLES} years."
@@ -65,6 +67,9 @@ for GROWTH_PERCENT in $growth_percents; do
     APP_CMD+=" --nodelist ${INPUT_NODELIST}"
     APP_CMD+=" --out-degree-bag ${OUTDEGREE_BAG}"
     APP_CMD+=" --recency-probabilities ${RECENCY_PROBABILITIES}"
+    APP_CMD+=" --use-warp-bfs ${USE_WARP_BFS}"
+    APP_CMD+=" --use-batching ${USE_BATCHING}"
+    APP_CMD+=" --max-batch-size ${MAX_BATCH_SIZE}"
     APP_CMD+=" --alpha 0.5"
     APP_CMD+=" --preferential-weight 0.33"
     APP_CMD+=" --recency-weight 0.33"
@@ -80,7 +85,7 @@ for GROWTH_PERCENT in $growth_percents; do
     APP_CMD+=" --log-level ${LOG_LEVEL}"
 
     echo "CMD: ${NSYS_CMD} ${APP_CMD}"
-    ${NSYS_CMD} ${APP_CMD}
+    ${NSYS_CMD} ${APP_CMD} | tee "${OUT_FILE}" 2>"${ERRORS}/nsys-${MODEL}-${NUM_CYCLES}y-${GROWTH_PERCENT}p.err"
 
     # confirm immediately
     if [ -f "${NSYS_OUT}.nsys-rep" ]; then

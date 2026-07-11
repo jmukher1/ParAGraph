@@ -1,0 +1,715 @@
+Running growth rate 1% for 3 years.
+Profile output: profile/nsys-pa-3y-1p.nsys-rep
+CMD: nsys profile --trace=nvtx,cuda,osrt --gpu-metrics-device=all --gpu-metrics-frequency=10000 --stats=true --force-overwrite=true -o profile/nsys-pa-3y-1p ./abm --edgelist sj_edgelist --nodelist sj_nodelist --out-degree-bag tcen_at_least_five --recency-probabilities sj_recprob --use-warp-bfs true --use-batching true --max-batch-size 200000 --alpha 0.5 --preferential-weight 0.33 --recency-weight 0.33 --fitness-weight 0.33 --growth-rate .01 --fully-random-citations 0.05 --num-cycles 3 --same-year-proportion 0.12 --output-file ./output/3y/nsys-gpu-opt-static-output-3y-1p.edgelist --auxiliary-information-file ./output/3y/nsys-gpu-opt-static-output-3y-1p.aux --log-file ./output/3y/nsys-gpu-opt-static-pa-3y-1p.log --num-processors 14 --log-level 1
+
+Start ABM....
+parse_args....
+edgelist....
+num-cycles....
+output-file....
+log-file = ./output/3y/nsys-gpu-opt-static-pa-3y-1p.log....
+num-processors = 14....
+log-level = 0
+Init ABM....
+Exec ABM....Init Graph
+Inside  Graph ParseNodelist.....
+Populating the continuous_node mappings..
+Elapsed time: ParseNodelist : 1091 millisecs = 1 seconds
+
+Inside Graph ParseEdgelist.....
+Elapsed time: ParseEdgelist : 1615 millisecs = 1 seconds
+
+In updateNodeInDegreeOutDegree: Update Outdegree first:
+In updateNodeInDegreeOutDegree: Update Indegree:
+Total (initial):: In-Degree = 899050, Out-Degree = 899050
+Elapsed time: 0-1 : 1 seconds
+Elapsed time: 1-2 : 1 seconds
+Elapsed time: 2-3 : 0 seconds
+
+Initialized Graph. Let us update the indegree and out-degrees... 
+[EP 1983] N=491532 delta=4916
+[prepareGraph] num_vertices = 491532
+
+[prepareGraph] edges = 899050, offsets = 491533 (should be V+1 = 491533)
+
+[prepareGraph] num_vertices = 491532
+
+[prepareGraph] edges = 899050, offsets = 491533 (should be V+1 = 491533)
+
+updateNodeInDegreeOutDegree(year=1983): updated 4916 out-degrees, 87182 in-degrees  pre=549 csr=653 S1=463 S2=9 S3=54 S4=2 xfer=130 upd=137  total=2017 ms  E/s=181966
+
+[EP 1984] N=496448 delta=4965
+[prepareGraph] num_vertices = 496448
+
+[prepareGraph] edges = 995023, offsets = 496449 (should be V+1 = 496449)
+
+[prepareGraph] num_vertices = 496448
+
+[prepareGraph] edges = 995023, offsets = 496449 (should be V+1 = 496449)
+
+updateNodeInDegreeOutDegree(year=1984): updated 4965 out-degrees, 85870 in-degrees  pre=572 csr=643 S1=252 S2=14 S3=100 S4=2 xfer=131 upd=135  total=1870 ms  E/s=255646
+
+[EP 1985] N=501413 delta=5015
+[prepareGraph] num_vertices = 501413
+
+[prepareGraph] edges = 1089384, offsets = 501414 (should be V+1 = 501414)
+
+[prepareGraph] num_vertices = 501413
+
+[prepareGraph] edges = 1089384, offsets = 501414 (should be V+1 = 501414)
+
+updateNodeInDegreeOutDegree(year=1985): updated 5015 out-degrees, 88750 in-degrees  pre=559 csr=642 S1=609 S2=20 S3=52 S4=2 xfer=134 upd=133  total=2169 ms  E/s=142613
+
+WriteAttributes: graph size = 506428
+
+E2E Time, model: PA  num_cycles=3  growth_rate=1%  threads=14  elapsed=10s
+========================================================================================================================
+  PARAGRAH GPU EPOCH BREAKDOWN  model=PA  growth=1.0%  threads=14
+========================================================================================================================
+
+[1] PER-EPOCH STAGE BREAKDOWN  (ms)
+------------------------------------------------------------------------------------------------------------------------
+Ep   N        Delta  B     mB   | FillID  FillFit FillRec CalcScr | NodeInit GenAsgn SameYr  | CSR     Upload | Slab  S1_BFS  S2_WS1  S3_WS2  S4_Fill | Dwnld  EdgeIns  InDeg   FitAsgn | EpTotal  Edges/s   
+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+1983 491532   4916   4916  1    | 129.3   124.0   291.7   4.3     | 6.8     13.0    0.1     | 653.2   2.7    | 0.4   462.7   9.1     53.9    1.7     | 126.9  54.3     56.6    26.3    | 2017     181966    
+1984 496448   4965   4916  2    | 134.0   135.4   294.3   8.7     | 4.5     12.7    0.1     | 643.4   2.3    | 0.7   252.3   14.5    100.3   2.1     | 129.1  57.2     52.3    25.6    | 1870     255646    
+1985 501413   5015   4892  2    | 133.4   132.1   289.8   3.7     | 4.0     12.8    0.1     | 641.9   2.4    | 0.7   609.4   19.9    52.2    2.3     | 131.2  52.7     54.8    25.8    | 2169     142613    
+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+[2] PER-STAGE STATISTICS ACROSS ALL EPOCHS  (ms)
+------------------------------------------------------------------------------------------------------------------------
+  Host preprocessing            total=      1681  mean=   560.3  std=    9.5  min=  549.2  max=   572.5
+  CSR build+upload              total=      1938  mean=   646.2  std=    5.0  min=  641.9  max=   653.2
+  Slab alloc+memset             total=         2  mean=     0.6  std=    0.2  min=    0.4  max=     0.7
+  Stage1 BFS                    total=      1324  mean=   441.5  std=  146.6  min=  252.3  max=   609.4
+  Stage2 WS1 (1-hop)            total=        44  mean=    14.5  std=    4.4  min=    9.1  max=    19.9
+  Stage3 WS2 (2-hop)            total=       206  mean=    68.8  std=   22.3  min=   52.2  max=   100.3
+  Stage4 fill+write             total=         6  mean=     2.0  std=    0.2  min=    1.7  max=     2.3
+  GPU kernels (total)           total=      1580  mean=   526.8  std=  128.5  min=  369.1  max=   683.8
+  Transfers (up+down)           total=       394  mean=   131.5  std=    1.6  min=  129.5  max=   133.5
+  Host graph update             total=       406  mean=   135.2  std=    1.6  min=  133.3  max=   137.2
+  Epoch total                   total=      6056  mean=  2018.6  std=  122.4  min= 1869.6  max=  2169.3
+
+[3] TOTAL TIME DISTRIBUTION
+------------------------------------------------------------------------------------------------------------------------
+  Host preprocessing           :       1681 ms  ( 27.8%)
+  CSR build                    :       1938 ms  ( 32.0%)
+  BFS slab overhead            :          2 ms  (  0.0%)
+  Stage1 BFS                   :       1324 ms  ( 21.9%)
+  Stage2+3 sampling            :        250 ms  (  4.1%)
+  Stage4 fill+write            :          6 ms  (  0.1%)
+  GPU kernels total            :       1580 ms  ( 26.1%)
+  Transfers                    :        394 ms  (  6.5%)
+  Host graph update            :        406 ms  (  6.7%)
+  Simulation total             :       6056 ms
+  E2E total                    :      10985 ms
+
+[4] BFS DOMINANCE
+------------------------------------------------------------------------------------------------------------------------
+  Stage1 BFS as % of GPU kernels : 83.8%
+  Stage1 BFS as % of epoch total : 21.9%
+  GPU kernels as % of epoch      : 26.1%
+  Total edges generated          : 287854
+  Overall edges/sec (GPU time)   : 182147
+========================================================================================================================
+
+========================================================================================================================
+  FULL PIPELINE BREAKDOWN (ABM construction -> parse -> init -> simulation -> output write)  model=PA  growth=1.0%  threads=14
+========================================================================================================================
+  ABM construction (out-degree bag, recency probs, planted nodes)        :       1660 ms  ( 13.1%)
+  Graph parse (nodelist + edgelist)                                      :       2964 ms  ( 23.4%)
+  Init (fitness + array alloc + weight/alpha/outdegree populate)         :        538 ms  (  4.3%)
+  Simulation (epoch loop total -- see breakdown above)                   :       6056 ms  ( 47.9%)
+  Output write (WriteGraph + UpdateGraphAttributes* + WriteAttributes)   :        826 ms  (  6.5%)
+------------------------------------------------------------------------------------------------------------------------
+  TOTAL (full pipeline, measured)                                        :      12044 ms  ( 95.2%)
+  Unaccounted (measurement gaps / process overhead outside execute())    :        601 ms  (  4.8%)
+  FULL PIPELINE TOTAL                                                    :      12645 ms  (100.0%)
+========================================================================================================================
+
+E2E Time for num_cycles = 3 with growth_rate = 1 % = 13 seconds.
+GPU 0: General Metrics for NVIDIA GH100 (any frequency)
+Generating '/tmp/nsys-report-d843.qdstrm'
+[1/8] [0%                          ] nsys-pa-3y-1p.nsys-rep[1/8] [0%                          ] nsys-pa-3y-1p.nsys-rep[1/8] [6%                          ] nsys-pa-3y-1p.nsys-rep[1/8] [8%                          ] nsys-pa-3y-1p.nsys-rep[1/8] [7%                          ] nsys-pa-3y-1p.nsys-rep[1/8] [6%                          ] nsys-pa-3y-1p.nsys-rep[1/8] [7%                          ] nsys-pa-3y-1p.nsys-rep[1/8] [8%                          ] nsys-pa-3y-1p.nsys-rep[1/8] [9%                          ] nsys-pa-3y-1p.nsys-rep[1/8] [10%                         ] nsys-pa-3y-1p.nsys-rep[1/8] [12%                         ] nsys-pa-3y-1p.nsys-rep[1/8] [13%                         ] nsys-pa-3y-1p.nsys-rep[1/8] [14%                         ] nsys-pa-3y-1p.nsys-rep[1/8] [=15%                        ] nsys-pa-3y-1p.nsys-rep[1/8] [=17%                        ] nsys-pa-3y-1p.nsys-rep[1/8] [==18%                       ] nsys-pa-3y-1p.nsys-rep[1/8] [==19%                       ] nsys-pa-3y-1p.nsys-rep[1/8] [==20%                       ] nsys-pa-3y-1p.nsys-rep[1/8] [==21%                       ] nsys-pa-3y-1p.nsys-rep[1/8] [===23%                      ] nsys-pa-3y-1p.nsys-rep[1/8] [===24%                      ] nsys-pa-3y-1p.nsys-rep[1/8] [====25%                     ] nsys-pa-3y-1p.nsys-rep[1/8] [====26%                     ] nsys-pa-3y-1p.nsys-rep[1/8] [====27%                     ] nsys-pa-3y-1p.nsys-rep[1/8] [====28%                     ] nsys-pa-3y-1p.nsys-rep[1/8] [=====29%                    ] nsys-pa-3y-1p.nsys-rep[1/8] [=====30%                    ] nsys-pa-3y-1p.nsys-rep[1/8] [=====32%                    ] nsys-pa-3y-1p.nsys-rep[1/8] [======33%                   ] nsys-pa-3y-1p.nsys-rep[1/8] [=======37%                  ] nsys-pa-3y-1p.nsys-rep[1/8] [========41%                 ] nsys-pa-3y-1p.nsys-rep[1/8] [=========44%                ] nsys-pa-3y-1p.nsys-rep[1/8] [==========47%               ] nsys-pa-3y-1p.nsys-rep[1/8] [===========51%              ] nsys-pa-3y-1p.nsys-rep[1/8] [============55%             ] nsys-pa-3y-1p.nsys-rep[1/8] [=============58%            ] nsys-pa-3y-1p.nsys-rep[1/8] [==============62%           ] nsys-pa-3y-1p.nsys-rep[1/8] [===============66%          ] nsys-pa-3y-1p.nsys-rep[1/8] [================68%         ] nsys-pa-3y-1p.nsys-rep[1/8] [================70%         ] nsys-pa-3y-1p.nsys-rep[1/8] [========================100%] nsys-pa-3y-1p.nsys-rep[1/8] [========================100%] nsys-pa-3y-1p.nsys-rep
+[2/8] [0%                          ] nsys-pa-3y-1p.sqlite[2/8] [1%                          ] nsys-pa-3y-1p.sqlite[2/8] [2%                          ] nsys-pa-3y-1p.sqlite[2/8] [3%                          ] nsys-pa-3y-1p.sqlite[2/8] [4%                          ] nsys-pa-3y-1p.sqlite[2/8] [5%                          ] nsys-pa-3y-1p.sqlite[2/8] [6%                          ] nsys-pa-3y-1p.sqlite[2/8] [7%                          ] nsys-pa-3y-1p.sqlite[2/8] [8%                          ] nsys-pa-3y-1p.sqlite[2/8] [9%                          ] nsys-pa-3y-1p.sqlite[2/8] [10%                         ] nsys-pa-3y-1p.sqlite[2/8] [11%                         ] nsys-pa-3y-1p.sqlite[2/8] [12%                         ] nsys-pa-3y-1p.sqlite[2/8] [13%                         ] nsys-pa-3y-1p.sqlite[2/8] [14%                         ] nsys-pa-3y-1p.sqlite[2/8] [=15%                        ] nsys-pa-3y-1p.sqlite[2/8] [=16%                        ] nsys-pa-3y-1p.sqlite[2/8] [=17%                        ] nsys-pa-3y-1p.sqlite[2/8] [==18%                       ] nsys-pa-3y-1p.sqlite[2/8] [==19%                       ] nsys-pa-3y-1p.sqlite[2/8] [==20%                       ] nsys-pa-3y-1p.sqlite[2/8] [==21%                       ] nsys-pa-3y-1p.sqlite[2/8] [===22%                      ] nsys-pa-3y-1p.sqlite[2/8] [===23%                      ] nsys-pa-3y-1p.sqlite[2/8] [===24%                      ] nsys-pa-3y-1p.sqlite[2/8] [====25%                     ] nsys-pa-3y-1p.sqlite[2/8] [====26%                     ] nsys-pa-3y-1p.sqlite[2/8] [====27%                     ] nsys-pa-3y-1p.sqlite[2/8] [====28%                     ] nsys-pa-3y-1p.sqlite[2/8] [=====29%                    ] nsys-pa-3y-1p.sqlite[2/8] [=====30%                    ] nsys-pa-3y-1p.sqlite[2/8] [=====31%                    ] nsys-pa-3y-1p.sqlite[2/8] [=====32%                    ] nsys-pa-3y-1p.sqlite[2/8] [======33%                   ] nsys-pa-3y-1p.sqlite[2/8] [======34%                   ] nsys-pa-3y-1p.sqlite[2/8] [======35%                   ] nsys-pa-3y-1p.sqlite[2/8] [=======36%                  ] nsys-pa-3y-1p.sqlite[2/8] [=======37%                  ] nsys-pa-3y-1p.sqlite[2/8] [=======38%                  ] nsys-pa-3y-1p.sqlite[2/8] [=======39%                  ] nsys-pa-3y-1p.sqlite[2/8] [========40%                 ] nsys-pa-3y-1p.sqlite[2/8] [========41%                 ] nsys-pa-3y-1p.sqlite[2/8] [========42%                 ] nsys-pa-3y-1p.sqlite[2/8] [=========43%                ] nsys-pa-3y-1p.sqlite[2/8] [=========44%                ] nsys-pa-3y-1p.sqlite[2/8] [=========45%                ] nsys-pa-3y-1p.sqlite[2/8] [=========46%                ] nsys-pa-3y-1p.sqlite[2/8] [==========47%               ] nsys-pa-3y-1p.sqlite[2/8] [==========48%               ] nsys-pa-3y-1p.sqlite[2/8] [==========49%               ] nsys-pa-3y-1p.sqlite[2/8] [===========50%              ] nsys-pa-3y-1p.sqlite[2/8] [===========51%              ] nsys-pa-3y-1p.sqlite[2/8] [===========52%              ] nsys-pa-3y-1p.sqlite[2/8] [===========53%              ] nsys-pa-3y-1p.sqlite[2/8] [============54%             ] nsys-pa-3y-1p.sqlite[2/8] [============55%             ] nsys-pa-3y-1p.sqlite[2/8] [============56%             ] nsys-pa-3y-1p.sqlite[2/8] [============57%             ] nsys-pa-3y-1p.sqlite[2/8] [=============58%            ] nsys-pa-3y-1p.sqlite[2/8] [=============59%            ] nsys-pa-3y-1p.sqlite[2/8] [=============60%            ] nsys-pa-3y-1p.sqlite[2/8] [==============61%           ] nsys-pa-3y-1p.sqlite[2/8] [==============62%           ] nsys-pa-3y-1p.sqlite[2/8] [==============63%           ] nsys-pa-3y-1p.sqlite[2/8] [==============64%           ] nsys-pa-3y-1p.sqlite[2/8] [===============65%          ] nsys-pa-3y-1p.sqlite[2/8] [===============66%          ] nsys-pa-3y-1p.sqlite[2/8] [===============67%          ] nsys-pa-3y-1p.sqlite[2/8] [================68%         ] nsys-pa-3y-1p.sqlite[2/8] [================69%         ] nsys-pa-3y-1p.sqlite[2/8] [================70%         ] nsys-pa-3y-1p.sqlite[2/8] [================71%         ] nsys-pa-3y-1p.sqlite[2/8] [=================72%        ] nsys-pa-3y-1p.sqlite[2/8] [=================73%        ] nsys-pa-3y-1p.sqlite[2/8] [=================74%        ] nsys-pa-3y-1p.sqlite[2/8] [==================75%       ] nsys-pa-3y-1p.sqlite[2/8] [==================76%       ] nsys-pa-3y-1p.sqlite[2/8] [==================77%       ] nsys-pa-3y-1p.sqlite[2/8] [==================78%       ] nsys-pa-3y-1p.sqlite[2/8] [===================79%      ] nsys-pa-3y-1p.sqlite[2/8] [===================80%      ] nsys-pa-3y-1p.sqlite[2/8] [===================81%      ] nsys-pa-3y-1p.sqlite[2/8] [===================82%      ] nsys-pa-3y-1p.sqlite[2/8] [====================83%     ] nsys-pa-3y-1p.sqlite[2/8] [====================84%     ] nsys-pa-3y-1p.sqlite[2/8] [====================85%     ] nsys-pa-3y-1p.sqlite[2/8] [=====================86%    ] nsys-pa-3y-1p.sqlite[2/8] [=====================87%    ] nsys-pa-3y-1p.sqlite[2/8] [=====================88%    ] nsys-pa-3y-1p.sqlite[2/8] [=====================89%    ] nsys-pa-3y-1p.sqlite[2/8] [======================90%   ] nsys-pa-3y-1p.sqlite[2/8] [======================91%   ] nsys-pa-3y-1p.sqlite[2/8] [======================92%   ] nsys-pa-3y-1p.sqlite[2/8] [=======================93%  ] nsys-pa-3y-1p.sqlite[2/8] [=======================94%  ] nsys-pa-3y-1p.sqlite[2/8] [=======================95%  ] nsys-pa-3y-1p.sqlite[2/8] [=======================96%  ] nsys-pa-3y-1p.sqlite[2/8] [========================97% ] nsys-pa-3y-1p.sqlite[2/8] [========================98% ] nsys-pa-3y-1p.sqlite[2/8] [========================99% ] nsys-pa-3y-1p.sqlite[2/8] [========================100%] nsys-pa-3y-1p.sqlite[2/8] [========================100%] nsys-pa-3y-1p.sqlite
+[3/8] Executing 'nvtx_sum' stats report
+
+ Time (%)  Total Time (ns)  Instances  Avg (ns)  Med (ns)  Min (ns)  Max (ns)  StdDev (ns)   Style             Range          
+ --------  ---------------  ---------  --------  --------  --------  --------  -----------  -------  -------------------------
+    100.0       82,378,392     14,902   5,528.0   5,318.0     5,036   258,818      3,637.2  PushPop  CCCL:cub::DeviceFor::Bulk
+
+[4/8] Executing 'osrt_sum' stats report
+
+ Time (%)  Total Time (ns)  Num Calls    Avg (ns)      Med (ns)    Min (ns)   Max (ns)    StdDev (ns)            Name         
+ --------  ---------------  ---------  ------------  ------------  --------  -----------  ------------  ----------------------
+     98.7   20,878,374,994        775  26,939,838.7  10,062,525.0     1,591  104,324,585  35,214,030.8  poll                  
+      1.0      210,092,203      1,204     174,495.2      21,759.5     1,001   31,568,755   1,035,821.7  ioctl                 
+      0.2       37,919,600         28   1,354,271.4   1,294,661.5   445,683    4,282,589     862,335.6  writev                
+      0.1       19,425,062      5,974       3,251.6       2,545.0     1,092    3,998,803      51,704.3  read                  
+      0.0        8,740,066         52     168,078.2     155,615.5   144,001      297,458      36,639.2  pthread_create        
+      0.0        2,969,175          9     329,908.3     320,457.0    87,474      552,285     191,821.3  fopen64               
+      0.0        1,472,688         30      49,089.6       8,158.5     3,491      953,942     172,421.0  mmap64                
+      0.0          936,486         44      21,283.8      11,429.0     1,736      102,375      27,744.4  mmap                  
+      0.0          868,963         12      72,413.6      30,973.5    18,450      531,598     144,967.2  sem_timedwait         
+      0.0          794,795         37      21,480.9       3,955.0     2,435      239,872      56,696.3  fclose                
+      0.0          623,240          6     103,873.3      39,551.5    23,857      249,250     111,353.0  pthread_rwlock_wrlock 
+      0.0          584,196         15      38,946.4       2,319.0     1,564      385,671     100,078.3  write                 
+      0.0          227,723         39       5,839.1       4,211.0     1,301       24,787       4,821.9  munmap                
+      0.0          178,253         42       4,244.1       2,100.0     1,217       22,910       4,774.7  fopen                 
+      0.0          167,580         55       3,046.9       2,117.0     1,001       11,055       2,206.9  open64                
+      0.0           67,935          4      16,983.8      16,450.5    13,364       21,670       3,506.6  pthread_rwlock_rdlock 
+      0.0           37,256          1      37,256.0      37,256.0    37,256       37,256           0.0  fgets                 
+      0.0           34,629          6       5,771.5       6,357.5     1,264        7,754       2,407.7  fflush                
+      0.0           26,079          6       4,346.5       5,520.0     1,182        6,108       2,295.8  open                  
+      0.0           22,221          2      11,110.5      11,110.5     7,248       14,973       5,462.4  fread                 
+      0.0           19,389          4       4,847.3       4,620.0     2,746        7,403       2,453.0  pipe2                 
+      0.0           15,179          2       7,589.5       7,589.5     4,869       10,310       3,847.4  socket                
+      0.0           11,877          1      11,877.0      11,877.0    11,877       11,877           0.0  connect               
+      0.0            7,970          3       2,656.7       1,983.0     1,013        4,974       2,064.6  fwrite                
+      0.0            5,751          3       1,917.0       1,908.0     1,871        1,972          51.1  pthread_cond_broadcast
+      0.0            3,706          3       1,235.3       1,245.0     1,068        1,393         162.7  fcntl                 
+      0.0            2,711          1       2,711.0       2,711.0     2,711        2,711           0.0  putc                  
+      0.0            2,208          1       2,208.0       2,208.0     2,208        2,208           0.0  bind                  
+      0.0            1,025          1       1,025.0       1,025.0     1,025        1,025           0.0  listen                
+
+[5/8] Executing 'cuda_api_sum' stats report
+
+ Time (%)  Total Time (ns)  Num Calls    Avg (ns)      Med (ns)     Min (ns)    Max (ns)     StdDev (ns)            Name         
+ --------  ---------------  ---------  ------------  ------------  ----------  -----------  -------------  ----------------------
+     60.9    1,577,705,235         43  36,690,819.4      15,280.0       2,196  459,222,746  101,110,849.4  cudaStreamSynchronize 
+     15.3      395,722,923     29,898      13,235.8      12,581.0       5,383    3,366,436       33,503.4  cudaMemcpy            
+      8.6      222,642,171         36   6,184,504.8      45,469.0      10,414   73,089,346   20,046,363.8  cudaMemcpyAsync       
+      6.8      176,854,153          3  58,951,384.3      40,581.0      30,942  176,782,630  102,044,852.2  cudaStreamCreate      
+      2.6       67,366,022     15,107       4,459.3       3,630.0       3,010      929,623       13,553.2  cudaFree              
+      2.4       62,399,565     15,093       4,134.3       2,359.0       1,849    4,786,368       59,986.7  cudaMalloc            
+      2.2       56,806,767     14,941       3,802.1       3,217.0       3,039    3,453,735       36,878.4  cudaLaunchKernel      
+      1.0       24,735,698          1  24,735,698.0  24,735,698.0  24,735,698   24,735,698            0.0  cuLibraryLoadData     
+      0.1        2,114,371         10     211,437.1      37,055.5       5,604      666,422      302,784.0  cudaDeviceSynchronize 
+      0.0          973,892     14,941          65.2          62.0          52        3,706           65.5  cuKernelGetName       
+      0.0          663,480         20      33,174.0      10,142.5       3,651      145,418       45,527.0  cudaMallocManaged     
+      0.0          289,395         41       7,058.4       5,136.0       2,498       17,577        4,343.4  cudaMemset            
+      0.0          256,283         62       4,133.6       2,906.5       1,643       19,070        3,467.0  cudaEventRecord       
+      0.0          197,726         31       6,378.3       6,036.0       4,580        8,589          885.8  cudaEventSynchronize  
+      0.0          184,755         62       2,979.9         733.0         350      110,941       14,003.4  cudaEventCreate       
+      0.0           62,359          6      10,393.2      10,178.5       6,515       15,386        4,106.1  cudaMemsetAsync       
+      0.0           39,527          3      13,175.7      11,689.0      10,757       17,081        3,414.1  cudaStreamDestroy     
+      0.0           35,655         62         575.1         419.0         269        1,955          364.9  cudaEventDestroy      
+      0.0           12,139         10       1,213.9       1,306.0         577        1,712          430.4  cuLibraryGetKernel    
+      0.0            1,308          1       1,308.0       1,308.0       1,308        1,308            0.0  cuModuleGetLoadingMode
+
+[6/8] Executing 'cuda_gpu_kern_sum' stats report
+
+ Time (%)  Total Time (ns)  Instances    Avg (ns)       Med (ns)      Min (ns)    Max (ns)     StdDev (ns)                                                   Name                                                
+ --------  ---------------  ---------  -------------  -------------  ----------  -----------  -------------  ----------------------------------------------------------------------------------------------------
+     73.1    1,320,781,579          5  264,156,315.8  171,674,380.0  80,552,247  459,217,692  178,625,156.3  kernelCallStage1_warped(int, int, int, ABM *, Graph *, DeviceGraph *, DeviceGraph *, device_map<int…
+     11.9      215,110,274          3   71,703,424.7   72,399,041.0  69,633,376   73,077,857    1,824,561.3  void cuco::legacy::detail::insert<(unsigned long)128, (unsigned int)4, cuco::pair<int, int> *, cuda…
+     11.4      206,254,828          5   41,250,965.6   49,933,222.0   3,749,226   53,842,799   21,057,458.3  kernelCallStage3(int, int, int, ABM *, Graph *, int, device_map<int, Node>::device_view, ABMStageSt…
+      2.4       43,465,494          5    8,693,098.8    9,110,904.0   3,718,569   12,159,170    3,244,153.7  kernelCallStage2(int, int, int, ABM *, Graph *, cuco::static_set_ref<int, (cuda::std::__4::thread_s…
+      0.7       13,346,964     14,899          895.8          896.0         863        1,152           11.1  void cub::CUB_300002_SM_900::detail::for_each::static_kernel<cub::CUB_300002_SM_900::detail::for_ea…
+      0.3        5,950,703          5    1,190,140.6    1,646,020.0     339,776    1,704,389      665,094.5  kernelCallStage4(int, int, int, ABM *, Graph *, int, device_map<int, Node>::device_view, ABMStageSt…
+      0.1        2,062,563         10      206,256.3       30,656.0       1,408      661,665      302,830.5  kernel_extract_vector_sizes(device_vector *, int *, int)                                            
+      0.0          133,408          3       44,469.3       47,392.0      29,248       56,768       13,990.9  void cuco::detail::open_addressing_ns::insert_if_n<(int)1, (int)128, int *, thrust::THRUST_300002_S…
+      0.0            7,137          3        2,379.0        2,400.0       2,336        2,401           37.2  void cuco::legacy::detail::initialize<(unsigned long)256, cuda::__4::atomic<int, (cuda::std::__4::t…
+      0.0            2,784          3          928.0          928.0         928          928            0.0  void cub::CUB_300002_SM_900::detail::for_each::static_kernel<cub::CUB_300002_SM_900::detail::for_ea…
+
+[7/8] Executing 'cuda_gpu_mem_time_sum' stats report
+
+ Time (%)  Total Time (ns)  Count   Avg (ns)   Med (ns)  Min (ns)  Max (ns)   StdDev (ns)               Operation              
+ --------  ---------------  ------  ---------  --------  --------  ---------  -----------  ------------------------------------
+     78.2       69,996,597  29,825    2,346.9   2,336.0     1,952      7,200        112.6  [CUDA memcpy Device-to-Host]        
+     20.2       18,065,612     109  165,739.6   4,320.0       736  3,262,376    540,662.6  [CUDA memcpy Host-to-Device]        
+      0.7          657,951     219    3,004.3   2,655.0     2,334      7,904        847.7  [CUDA memcpy Unified Host-to-Device]
+      0.7          617,187      47   13,131.6   1,120.0       704     95,232     31,220.2  [CUDA memset]                       
+      0.2          157,036      34    4,618.7   2,671.0     2,367     12,640      3,349.4  [CUDA memcpy Unified Device-to-Host]
+
+[8/8] Executing 'cuda_gpu_mem_size_sum' stats report
+
+ Total (MB)  Count   Avg (MB)  Med (MB)  Min (MB)  Max (MB)  StdDev (MB)               Operation              
+ ----------  ------  --------  --------  --------  --------  -----------  ------------------------------------
+  1,866.868      47    39.721     0.020     0.000   306.631      102.439  [CUDA memset]                       
+    214.103     109     1.964     0.060     0.000    40.514        6.621  [CUDA memcpy Host-to-Device]        
+      4.063      34     0.120     0.006     0.004     0.520        0.179  [CUDA memcpy Unified Device-to-Host]
+      4.063     219     0.019     0.008     0.004     0.188        0.029  [CUDA memcpy Unified Host-to-Device]
+      3.912  29,825     0.000     0.000     0.000     0.160        0.003  [CUDA memcpy Device-to-Host]        
+
+Generated:
+    /home/jmukher/workspace/uiuc/citation_abm/profile/nsys-pa-3y-1p.nsys-rep
+    /home/jmukher/workspace/uiuc/citation_abm/profile/nsys-pa-3y-1p.sqlite
+SUCCESS: 4.0M → profile/nsys-pa-3y-1p.nsys-rep
+Running growth rate 3% for 3 years.
+Profile output: profile/nsys-pa-3y-3p.nsys-rep
+CMD: nsys profile --trace=nvtx,cuda,osrt --gpu-metrics-device=all --gpu-metrics-frequency=10000 --stats=true --force-overwrite=true -o profile/nsys-pa-3y-3p ./abm --edgelist sj_edgelist --nodelist sj_nodelist --out-degree-bag tcen_at_least_five --recency-probabilities sj_recprob --use-warp-bfs true --use-batching true --max-batch-size 200000 --alpha 0.5 --preferential-weight 0.33 --recency-weight 0.33 --fitness-weight 0.33 --growth-rate .03 --fully-random-citations 0.05 --num-cycles 3 --same-year-proportion 0.12 --output-file ./output/3y/nsys-gpu-opt-static-output-3y-3p.edgelist --auxiliary-information-file ./output/3y/nsys-gpu-opt-static-output-3y-3p.aux --log-file ./output/3y/nsys-gpu-opt-static-pa-3y-3p.log --num-processors 14 --log-level 1
+
+Start ABM....
+parse_args....
+edgelist....
+num-cycles....
+output-file....
+log-file = ./output/3y/nsys-gpu-opt-static-pa-3y-3p.log....
+num-processors = 14....
+log-level = 0
+Init ABM....
+Exec ABM....Init Graph
+Inside  Graph ParseNodelist.....
+Populating the continuous_node mappings..
+Elapsed time: ParseNodelist : 1087 millisecs = 1 seconds
+
+Inside Graph ParseEdgelist.....
+Elapsed time: ParseEdgelist : 1637 millisecs = 1 seconds
+
+In updateNodeInDegreeOutDegree: Update Outdegree first:
+In updateNodeInDegreeOutDegree: Update Indegree:
+Total (initial):: In-Degree = 899050, Out-Degree = 899050
+Elapsed time: 0-1 : 1 seconds
+Elapsed time: 1-2 : 1 seconds
+Elapsed time: 2-3 : 0 seconds
+
+Initialized Graph. Let us update the indegree and out-degrees... 
+[EP 1983] N=491532 delta=14746
+[prepareGraph] num_vertices = 491532
+
+[prepareGraph] edges = 899050, offsets = 491533 (should be V+1 = 491533)
+
+[prepareGraph] num_vertices = 491532
+
+[prepareGraph] edges = 899050, offsets = 491533 (should be V+1 = 491533)
+
+updateNodeInDegreeOutDegree(year=1983): updated 14746 out-degrees, 223123 in-degrees  pre=569 csr=623 S1=195 S2=9 S3=51 S4=2 xfer=386 upd=307  total=2196 ms  E/s=1138788
+
+[EP 1984] N=506278 delta=15189
+[prepareGraph] num_vertices = 506278
+
+[prepareGraph] edges = 1192350, offsets = 506279 (should be V+1 = 506279)
+
+[prepareGraph] num_vertices = 506278
+
+[prepareGraph] edges = 1192350, offsets = 506279 (should be V+1 = 506279)
+
+updateNodeInDegreeOutDegree(year=1984): updated 15189 out-degrees, 224947 in-degrees  pre=573 csr=714 S1=425 S2=28 S3=101 S4=3 xfer=404 upd=305  total=2605 ms  E/s=532332
+
+[EP 1985] N=521467 delta=15645
+[prepareGraph] num_vertices = 521467
+
+[prepareGraph] edges = 1488993, offsets = 521468 (should be V+1 = 521468)
+
+[prepareGraph] num_vertices = 521467
+
+[prepareGraph] edges = 1488993, offsets = 521468 (should be V+1 = 521468)
+
+updateNodeInDegreeOutDegree(year=1985): updated 15645 out-degrees, 232290 in-degrees  pre=575 csr=788 S1=803 S2=31 S3=107 S4=2 xfer=413 upd=314  total=3086 ms  E/s=327743
+
+WriteAttributes: graph size = 537112
+
+E2E Time, model: PA  num_cycles=3  growth_rate=3%  threads=14  elapsed=13s
+========================================================================================================================
+  PARAGRAH GPU EPOCH BREAKDOWN  model=PA  growth=3.0%  threads=14
+========================================================================================================================
+
+[1] PER-EPOCH STAGE BREAKDOWN  (ms)
+------------------------------------------------------------------------------------------------------------------------
+Ep   N        Delta  B     mB   | FillID  FillFit FillRec CalcScr | NodeInit GenAsgn SameYr  | CSR     Upload | Slab  S1_BFS  S2_WS1  S3_WS2  S4_Fill | Dwnld  EdgeIns  InDeg   FitAsgn | EpTotal  Edges/s   
+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+1983 491532   14746  14746 1    | 129.8   126.0   309.2   4.3     | 15.0    37.8    0.3     | 622.6   3.0    | 0.5   194.9   9.3     51.0    2.3     | 382.9  130.4    100.8   76.2    | 2196     1138788   
+1984 506278   15189  14746 2    | 134.5   132.7   289.3   16.7    | 10.6    39.1    0.3     | 714.1   2.5    | 0.8   425.2   28.3    100.6   3.2     | 401.3  128.2    98.5    78.8    | 2605     532332    
+1985 521467   15645  14525 2    | 137.5   137.9   295.7   3.9     | 12.2    40.3    0.3     | 788.0   2.4    | 0.8   802.5   31.0    106.9   2.1     | 411.1  128.0    105.4   80.3    | 3086     327743    
+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+[2] PER-STAGE STATISTICS ACROSS ALL EPOCHS  (ms)
+------------------------------------------------------------------------------------------------------------------------
+  Host preprocessing            total=      1717  mean=   572.5  std=    2.4  min=  569.3  max=   575.0
+  CSR build+upload              total=      2125  mean=   708.2  std=   67.6  min=  622.6  max=   788.0
+  Slab alloc+memset             total=         2  mean=     0.7  std=    0.2  min=    0.5  max=     0.8
+  Stage1 BFS                    total=      1423  mean=   474.2  std=  250.4  min=  194.9  max=   802.5
+  Stage2 WS1 (1-hop)            total=        69  mean=    22.9  std=    9.6  min=    9.3  max=    31.0
+  Stage3 WS2 (2-hop)            total=       259  mean=    86.2  std=   25.0  min=   51.0  max=   106.9
+  Stage4 fill+write             total=         8  mean=     2.5  std=    0.5  min=    2.1  max=     3.2
+  GPU kernels (total)           total=      1757  mean=   585.8  std=  280.4  min=  257.6  max=   942.5
+  Transfers (up+down)           total=      1203  mean=   401.1  std=   11.5  min=  385.9  max=   413.5
+  Host graph update             total=       927  mean=   308.9  std=    3.5  min=  305.5  max=   313.7
+  Epoch total                   total=      7887  mean=  2629.1  std=  363.8  min= 2196.3  max=  3086.4
+
+[3] TOTAL TIME DISTRIBUTION
+------------------------------------------------------------------------------------------------------------------------
+  Host preprocessing           :       1717 ms  ( 21.8%)
+  CSR build                    :       2125 ms  ( 26.9%)
+  BFS slab overhead            :          2 ms  (  0.0%)
+  Stage1 BFS                   :       1423 ms  ( 18.0%)
+  Stage2+3 sampling            :        327 ms  (  4.1%)
+  Stage4 fill+write            :          8 ms  (  0.1%)
+  GPU kernels total            :       1757 ms  ( 22.3%)
+  Transfers                    :       1203 ms  ( 15.3%)
+  Host graph update            :        927 ms  ( 11.7%)
+  Simulation total             :       7887 ms
+  E2E total                    :      13424 ms
+
+[4] BFS DOMINANCE
+------------------------------------------------------------------------------------------------------------------------
+  Stage1 BFS as % of GPU kernels : 81.0%
+  Stage1 BFS as % of epoch total : 18.0%
+  GPU kernels as % of epoch      : 22.3%
+  Total edges generated          : 898856
+  Overall edges/sec (GPU time)   : 511483
+========================================================================================================================
+
+========================================================================================================================
+  FULL PIPELINE BREAKDOWN (ABM construction -> parse -> init -> simulation -> output write)  model=PA  growth=3.0%  threads=14
+========================================================================================================================
+  ABM construction (out-degree bag, recency probs, planted nodes)        :       1663 ms  ( 11.0%)
+  Graph parse (nodelist + edgelist)                                      :       2990 ms  ( 19.8%)
+  Init (fitness + array alloc + weight/alpha/outdegree populate)         :        537 ms  (  3.6%)
+  Simulation (epoch loop total -- see breakdown above)                   :       7887 ms  ( 52.3%)
+  Output write (WriteGraph + UpdateGraphAttributes* + WriteAttributes)   :        984 ms  (  6.5%)
+------------------------------------------------------------------------------------------------------------------------
+  TOTAL (full pipeline, measured)                                        :      14061 ms  ( 93.2%)
+  Unaccounted (measurement gaps / process overhead outside execute())    :       1026 ms  (  6.8%)
+  FULL PIPELINE TOTAL                                                    :      15087 ms  (100.0%)
+========================================================================================================================
+
+E2E Time for num_cycles = 3 with growth_rate = 3 % = 15 seconds.
+GPU 0: General Metrics for NVIDIA GH100 (any frequency)
+Generating '/tmp/nsys-report-fa75.qdstrm'
+[1/8] [0%                          ] nsys-pa-3y-3p.nsys-rep[1/8] [0%                          ] nsys-pa-3y-3p.nsys-rep[1/8] [6%                          ] nsys-pa-3y-3p.nsys-rep[1/8] [7%                          ] nsys-pa-3y-3p.nsys-rep[1/8] [8%                          ] nsys-pa-3y-3p.nsys-rep[1/8] [7%                          ] nsys-pa-3y-3p.nsys-rep[1/8] [8%                          ] nsys-pa-3y-3p.nsys-rep[1/8] [7%                          ] nsys-pa-3y-3p.nsys-rep[1/8] [8%                          ] nsys-pa-3y-3p.nsys-rep[1/8] [7%                          ] nsys-pa-3y-3p.nsys-rep[1/8] [8%                          ] nsys-pa-3y-3p.nsys-rep[1/8] [7%                          ] nsys-pa-3y-3p.nsys-rep[1/8] [8%                          ] nsys-pa-3y-3p.nsys-rep[1/8] [7%                          ] nsys-pa-3y-3p.nsys-rep[1/8] [8%                          ] nsys-pa-3y-3p.nsys-rep[1/8] [9%                          ] nsys-pa-3y-3p.nsys-rep[1/8] [8%                          ] nsys-pa-3y-3p.nsys-rep[1/8] [9%                          ] nsys-pa-3y-3p.nsys-rep[1/8] [8%                          ] nsys-pa-3y-3p.nsys-rep[1/8] [9%                          ] nsys-pa-3y-3p.nsys-rep[1/8] [10%                         ] nsys-pa-3y-3p.nsys-rep[1/8] [11%                         ] nsys-pa-3y-3p.nsys-rep[1/8] [12%                         ] nsys-pa-3y-3p.nsys-rep[1/8] [13%                         ] nsys-pa-3y-3p.nsys-rep[1/8] [14%                         ] nsys-pa-3y-3p.nsys-rep[1/8] [=15%                        ] nsys-pa-3y-3p.nsys-rep[1/8] [=16%                        ] nsys-pa-3y-3p.nsys-rep[1/8] [=17%                        ] nsys-pa-3y-3p.nsys-rep[1/8] [==19%                       ] nsys-pa-3y-3p.nsys-rep[1/8] [==21%                       ] nsys-pa-3y-3p.nsys-rep[1/8] [===23%                      ] nsys-pa-3y-3p.nsys-rep[1/8] [====25%                     ] nsys-pa-3y-3p.nsys-rep[1/8] [====27%                     ] nsys-pa-3y-3p.nsys-rep[1/8] [=====29%                    ] nsys-pa-3y-3p.nsys-rep[1/8] [=====30%                    ] nsys-pa-3y-3p.nsys-rep[1/8] [=====31%                    ] nsys-pa-3y-3p.nsys-rep[1/8] [======33%                   ] nsys-pa-3y-3p.nsys-rep[1/8] [======35%                   ] nsys-pa-3y-3p.nsys-rep[1/8] [=======36%                  ] nsys-pa-3y-3p.nsys-rep[1/8] [=======38%                  ] nsys-pa-3y-3p.nsys-rep[1/8] [========40%                 ] nsys-pa-3y-3p.nsys-rep[1/8] [========42%                 ] nsys-pa-3y-3p.nsys-rep[1/8] [=========43%                ] nsys-pa-3y-3p.nsys-rep[1/8] [=========46%                ] nsys-pa-3y-3p.nsys-rep[1/8] [==========47%               ] nsys-pa-3y-3p.nsys-rep[1/8] [==========49%               ] nsys-pa-3y-3p.nsys-rep[1/8] [===========51%              ] nsys-pa-3y-3p.nsys-rep[1/8] [===========52%              ] nsys-pa-3y-3p.nsys-rep[1/8] [============54%             ] nsys-pa-3y-3p.nsys-rep[1/8] [============56%             ] nsys-pa-3y-3p.nsys-rep[1/8] [=============58%            ] nsys-pa-3y-3p.nsys-rep[1/8] [=============60%            ] nsys-pa-3y-3p.nsys-rep[1/8] [==============62%           ] nsys-pa-3y-3p.nsys-rep[1/8] [==============64%           ] nsys-pa-3y-3p.nsys-rep[1/8] [===============66%          ] nsys-pa-3y-3p.nsys-rep[1/8] [================68%         ] nsys-pa-3y-3p.nsys-rep[1/8] [================70%         ] nsys-pa-3y-3p.nsys-rep[1/8] [=================72%        ] nsys-pa-3y-3p.nsys-rep[1/8] [==================75%       ] nsys-pa-3y-3p.nsys-rep[1/8] [========================100%] nsys-pa-3y-3p.nsys-rep[1/8] [========================100%] nsys-pa-3y-3p.nsys-rep
+[2/8] [0%                          ] nsys-pa-3y-3p.sqlite[2/8] [1%                          ] nsys-pa-3y-3p.sqlite[2/8] [2%                          ] nsys-pa-3y-3p.sqlite[2/8] [3%                          ] nsys-pa-3y-3p.sqlite[2/8] [4%                          ] nsys-pa-3y-3p.sqlite[2/8] [5%                          ] nsys-pa-3y-3p.sqlite[2/8] [6%                          ] nsys-pa-3y-3p.sqlite[2/8] [7%                          ] nsys-pa-3y-3p.sqlite[2/8] [8%                          ] nsys-pa-3y-3p.sqlite[2/8] [9%                          ] nsys-pa-3y-3p.sqlite[2/8] [10%                         ] nsys-pa-3y-3p.sqlite[2/8] [11%                         ] nsys-pa-3y-3p.sqlite[2/8] [12%                         ] nsys-pa-3y-3p.sqlite[2/8] [13%                         ] nsys-pa-3y-3p.sqlite[2/8] [14%                         ] nsys-pa-3y-3p.sqlite[2/8] [=15%                        ] nsys-pa-3y-3p.sqlite[2/8] [=16%                        ] nsys-pa-3y-3p.sqlite[2/8] [=17%                        ] nsys-pa-3y-3p.sqlite[2/8] [==18%                       ] nsys-pa-3y-3p.sqlite[2/8] [==19%                       ] nsys-pa-3y-3p.sqlite[2/8] [==20%                       ] nsys-pa-3y-3p.sqlite[2/8] [==21%                       ] nsys-pa-3y-3p.sqlite[2/8] [===22%                      ] nsys-pa-3y-3p.sqlite[2/8] [===23%                      ] nsys-pa-3y-3p.sqlite[2/8] [===24%                      ] nsys-pa-3y-3p.sqlite[2/8] [====25%                     ] nsys-pa-3y-3p.sqlite[2/8] [====26%                     ] nsys-pa-3y-3p.sqlite[2/8] [====27%                     ] nsys-pa-3y-3p.sqlite[2/8] [====28%                     ] nsys-pa-3y-3p.sqlite[2/8] [=====29%                    ] nsys-pa-3y-3p.sqlite[2/8] [=====30%                    ] nsys-pa-3y-3p.sqlite[2/8] [=====31%                    ] nsys-pa-3y-3p.sqlite[2/8] [=====32%                    ] nsys-pa-3y-3p.sqlite[2/8] [======33%                   ] nsys-pa-3y-3p.sqlite[2/8] [======34%                   ] nsys-pa-3y-3p.sqlite[2/8] [======35%                   ] nsys-pa-3y-3p.sqlite[2/8] [=======36%                  ] nsys-pa-3y-3p.sqlite[2/8] [=======37%                  ] nsys-pa-3y-3p.sqlite[2/8] [=======38%                  ] nsys-pa-3y-3p.sqlite[2/8] [=======39%                  ] nsys-pa-3y-3p.sqlite[2/8] [========40%                 ] nsys-pa-3y-3p.sqlite[2/8] [========41%                 ] nsys-pa-3y-3p.sqlite[2/8] [========42%                 ] nsys-pa-3y-3p.sqlite[2/8] [=========43%                ] nsys-pa-3y-3p.sqlite[2/8] [=========44%                ] nsys-pa-3y-3p.sqlite[2/8] [=========45%                ] nsys-pa-3y-3p.sqlite[2/8] [=========46%                ] nsys-pa-3y-3p.sqlite[2/8] [==========47%               ] nsys-pa-3y-3p.sqlite[2/8] [==========48%               ] nsys-pa-3y-3p.sqlite[2/8] [==========49%               ] nsys-pa-3y-3p.sqlite[2/8] [===========50%              ] nsys-pa-3y-3p.sqlite[2/8] [===========51%              ] nsys-pa-3y-3p.sqlite[2/8] [===========52%              ] nsys-pa-3y-3p.sqlite[2/8] [===========53%              ] nsys-pa-3y-3p.sqlite[2/8] [============54%             ] nsys-pa-3y-3p.sqlite[2/8] [============55%             ] nsys-pa-3y-3p.sqlite[2/8] [============56%             ] nsys-pa-3y-3p.sqlite[2/8] [============57%             ] nsys-pa-3y-3p.sqlite[2/8] [=============58%            ] nsys-pa-3y-3p.sqlite[2/8] [=============59%            ] nsys-pa-3y-3p.sqlite[2/8] [=============60%            ] nsys-pa-3y-3p.sqlite[2/8] [==============61%           ] nsys-pa-3y-3p.sqlite[2/8] [==============62%           ] nsys-pa-3y-3p.sqlite[2/8] [==============63%           ] nsys-pa-3y-3p.sqlite[2/8] [==============64%           ] nsys-pa-3y-3p.sqlite[2/8] [===============65%          ] nsys-pa-3y-3p.sqlite[2/8] [===============66%          ] nsys-pa-3y-3p.sqlite[2/8] [===============67%          ] nsys-pa-3y-3p.sqlite[2/8] [================68%         ] nsys-pa-3y-3p.sqlite[2/8] [================69%         ] nsys-pa-3y-3p.sqlite[2/8] [================70%         ] nsys-pa-3y-3p.sqlite[2/8] [================71%         ] nsys-pa-3y-3p.sqlite[2/8] [=================72%        ] nsys-pa-3y-3p.sqlite[2/8] [=================73%        ] nsys-pa-3y-3p.sqlite[2/8] [=================74%        ] nsys-pa-3y-3p.sqlite[2/8] [==================75%       ] nsys-pa-3y-3p.sqlite[2/8] [==================76%       ] nsys-pa-3y-3p.sqlite[2/8] [==================77%       ] nsys-pa-3y-3p.sqlite[2/8] [==================78%       ] nsys-pa-3y-3p.sqlite[2/8] [===================79%      ] nsys-pa-3y-3p.sqlite[2/8] [===================80%      ] nsys-pa-3y-3p.sqlite[2/8] [===================81%      ] nsys-pa-3y-3p.sqlite[2/8] [===================82%      ] nsys-pa-3y-3p.sqlite[2/8] [====================83%     ] nsys-pa-3y-3p.sqlite[2/8] [====================84%     ] nsys-pa-3y-3p.sqlite[2/8] [====================85%     ] nsys-pa-3y-3p.sqlite[2/8] [=====================86%    ] nsys-pa-3y-3p.sqlite[2/8] [=====================87%    ] nsys-pa-3y-3p.sqlite[2/8] [=====================88%    ] nsys-pa-3y-3p.sqlite[2/8] [=====================89%    ] nsys-pa-3y-3p.sqlite[2/8] [======================90%   ] nsys-pa-3y-3p.sqlite[2/8] [======================91%   ] nsys-pa-3y-3p.sqlite[2/8] [======================92%   ] nsys-pa-3y-3p.sqlite[2/8] [=======================93%  ] nsys-pa-3y-3p.sqlite[2/8] [=======================94%  ] nsys-pa-3y-3p.sqlite[2/8] [=======================95%  ] nsys-pa-3y-3p.sqlite[2/8] [=======================96%  ] nsys-pa-3y-3p.sqlite[2/8] [========================97% ] nsys-pa-3y-3p.sqlite[2/8] [========================98% ] nsys-pa-3y-3p.sqlite[2/8] [========================99% ] nsys-pa-3y-3p.sqlite[2/8] [========================100%] nsys-pa-3y-3p.sqlite[2/8] [========================100%] nsys-pa-3y-3p.sqlite
+[3/8] Executing 'nvtx_sum' stats report
+
+ Time (%)  Total Time (ns)  Instances  Avg (ns)  Med (ns)  Min (ns)  Max (ns)  StdDev (ns)   Style             Range          
+ --------  ---------------  ---------  --------  --------  --------  --------  -----------  -------  -------------------------
+    100.0      245,342,162     45,586   5,382.0   5,238.0     4,958   205,481      1,599.7  PushPop  CCCL:cub::DeviceFor::Bulk
+
+[4/8] Executing 'osrt_sum' stats report
+
+ Time (%)  Total Time (ns)  Num Calls    Avg (ns)      Med (ns)    Min (ns)   Max (ns)    StdDev (ns)            Name         
+ --------  ---------------  ---------  ------------  ------------  --------  -----------  ------------  ----------------------
+     98.9   27,823,141,697      1,025  27,144,528.5  10,062,310.0     1,094  104,049,336  35,405,651.8  poll                  
+      0.8      233,549,923      1,381     169,116.5      23,623.0     1,006   31,852,918   1,005,607.2  ioctl                 
+      0.2       44,226,138         28   1,579,504.9   1,515,509.0   448,197    6,473,436   1,158,430.4  writev                
+      0.1       19,565,676      5,975       3,274.6       2,574.0     1,042    3,938,460      50,918.8  read                  
+      0.0        8,797,625         52     169,185.1     159,541.0   137,102      285,048      35,802.3  pthread_create        
+      0.0        2,569,346          9     285,482.9     263,322.0    63,018      510,466     173,781.3  fopen64               
+      0.0        1,871,016         22      85,046.2      31,674.0    21,601      430,344     116,980.6  pthread_rwlock_wrlock 
+      0.0        1,408,259         30      46,942.0       7,014.5     3,585      914,903     165,391.0  mmap64                
+      0.0        1,032,387         51      20,242.9      10,341.0     1,744       99,698      25,619.9  mmap                  
+      0.0          891,401         12      74,283.4      33,466.0    17,037      548,512     149,769.0  sem_timedwait         
+      0.0          819,441         39      21,011.3       3,936.0     1,007      270,781      58,482.8  fclose                
+      0.0          673,744         15      44,916.3       2,860.0     1,320      523,716     134,772.0  write                 
+      0.0          385,721         18      21,428.9      19,704.5     3,212       41,527       8,997.6  pthread_rwlock_rdlock 
+      0.0          240,572         45       5,346.0       3,976.0     1,179       25,262       4,826.5  munmap                
+      0.0          178,196         42       4,242.8       2,006.0     1,211       21,406       4,676.4  fopen                 
+      0.0          170,519         54       3,157.8       2,143.5     1,039        9,720       2,176.6  open64                
+      0.0           74,736          1      74,736.0      74,736.0    74,736       74,736           0.0  pthread_cond_wait     
+      0.0           37,635          1      37,635.0      37,635.0    37,635       37,635           0.0  fgets                 
+      0.0           34,664          6       5,777.3       6,626.0     1,058        7,791       2,518.7  fflush                
+      0.0           26,204          6       4,367.3       5,118.5     1,756        5,832       1,753.3  open                  
+      0.0           20,037          4       5,009.3       5,385.0     2,496        6,771       1,932.1  pipe2                 
+      0.0           15,453          2       7,726.5       7,726.5     6,600        8,853       1,593.1  fread                 
+      0.0           13,284          1      13,284.0      13,284.0    13,284       13,284           0.0  connect               
+      0.0           13,188          2       6,594.0       6,594.0     4,583        8,605       2,844.0  socket                
+      0.0            8,305          2       4,152.5       4,152.5     2,666        5,639       2,102.2  putc                  
+      0.0            7,797          3       2,599.0       1,936.0     1,785        4,076       1,281.3  pthread_cond_broadcast
+      0.0            7,425          2       3,712.5       3,712.5     1,856        5,569       2,625.5  fwrite                
+      0.0            3,670          3       1,223.3       1,220.0     1,044        1,406         181.0  fcntl                 
+      0.0            1,287          1       1,287.0       1,287.0     1,287        1,287           0.0  bind                  
+
+[5/8] Executing 'cuda_api_sum' stats report
+
+ Time (%)  Total Time (ns)  Num Calls    Avg (ns)      Med (ns)     Min (ns)    Max (ns)     StdDev (ns)            Name         
+ --------  ---------------  ---------  ------------  ------------  ----------  -----------  -------------  ----------------------
+     45.3    1,759,504,045         43  40,918,698.7      14,191.0       2,226  602,993,667  106,505,357.6  cudaStreamSynchronize 
+     30.6    1,188,993,115     91,266      13,027.8      12,674.0       6,162    3,583,925       20,321.7  cudaMemcpy            
+      5.9      230,920,647         36   6,414,462.4      73,216.0      10,247   84,248,745   20,821,865.7  cudaMemcpyAsync       
+      5.1      197,167,975     45,791       4,305.8       3,840.0       3,022    1,141,525       12,535.1  cudaFree              
+      4.6      178,203,724          3  59,401,241.3      38,629.0      36,700  178,128,395  102,820,731.2  cudaStreamCreate      
+      4.0      157,133,007     45,625       3,444.0       3,187.0       2,983    3,496,268       21,898.5  cudaLaunchKernel      
+      3.8      147,390,376     45,777       3,219.7       2,630.0       1,849    4,677,827       25,034.3  cudaMalloc            
+      0.6       22,196,917          1  22,196,917.0  22,196,917.0  22,196,917   22,196,917            0.0  cuLibraryLoadData     
+      0.1        2,881,799     45,625          63.2          60.0          51        3,679           52.9  cuKernelGetName       
+      0.0        1,074,051         20      53,702.6      14,644.0       3,478      462,345      104,934.3  cudaMallocManaged     
+      0.0          504,320         62       8,134.2         948.0         363      293,589       39,905.7  cudaEventCreate       
+      0.0          345,064         41       8,416.2       5,124.0       3,735       26,539        5,813.5  cudaMemset            
+      0.0          277,941         62       4,482.9       3,470.5       1,734       16,274        2,991.2  cudaEventRecord       
+      0.0          261,804         10      26,180.4       8,796.0       6,526       98,432       37,399.6  cudaDeviceSynchronize 
+      0.0          197,963         31       6,385.9       6,094.0       4,863        8,585        1,046.7  cudaEventSynchronize  
+      0.0           66,968          6      11,161.3      11,281.5       6,851       15,283        3,991.8  cudaMemsetAsync       
+      0.0           44,268          3      14,756.0      12,869.0      12,580       18,819        3,521.6  cudaStreamDestroy     
+      0.0           39,033         62         629.6         483.0         272        1,635          391.0  cudaEventDestroy      
+      0.0           10,272         10       1,027.2         965.5         702        1,610          327.2  cuLibraryGetKernel    
+      0.0            1,176          1       1,176.0       1,176.0       1,176        1,176            0.0  cuModuleGetLoadingMode
+
+[6/8] Executing 'cuda_gpu_kern_sum' stats report
+
+ Time (%)  Total Time (ns)  Instances    Avg (ns)       Med (ns)      Min (ns)     Max (ns)     StdDev (ns)                                                   Name                                                
+ --------  ---------------  ---------  -------------  -------------  -----------  -----------  -------------  ----------------------------------------------------------------------------------------------------
+     70.3    1,419,049,702          5  283,809,940.4  199,475,066.0  172,445,090  602,980,219  180,890,144.2  kernelCallStage1_warped(int, int, int, ABM *, Graph *, DeviceGraph *, DeviceGraph *, device_map<int…
+     12.8      258,458,454          5   51,691,690.8   52,026,004.0   48,250,696   54,871,037    2,391,744.6  kernelCallStage3(int, int, int, ABM *, Graph *, int, device_map<int, Node>::device_view, ABMStageSt…
+     11.0      222,402,989          3   74,134,329.7   70,377,540.0   67,791,193   84,234,256    8,841,870.9  void cuco::legacy::detail::insert<(unsigned long)128, (unsigned int)4, cuco::pair<int, int> *, cuda…
+      3.4       68,474,530          5   13,694,906.0   14,007,017.0    9,286,105   16,936,593    2,910,767.1  kernelCallStage2(int, int, int, ABM *, Graph *, cuco::static_set_ref<int, (cuda::std::__4::thread_s…
+      2.0       40,879,152     45,583          896.8          896.0          863        1,248           11.1  void cub::CUB_300002_SM_900::detail::for_each::static_kernel<cub::CUB_300002_SM_900::detail::for_ea…
+      0.4        7,447,766          5    1,489,553.2    1,169,156.0      874,242    2,255,975      692,228.3  kernelCallStage4(int, int, int, ABM *, Graph *, int, device_map<int, Node>::device_view, ABMStageSt…
+      0.0          529,569          3      176,523.0      200,352.0       68,288      260,929       98,506.4  void cuco::detail::open_addressing_ns::insert_if_n<(int)1, (int)128, int *, thrust::THRUST_300002_S…
+      0.0          208,161         10       20,816.1        3,152.0        1,824       93,953       37,829.0  kernel_extract_vector_sizes(device_vector *, int *, int)                                            
+      0.0            7,424          3        2,474.7        2,464.0        2,464        2,496           18.5  void cuco::legacy::detail::initialize<(unsigned long)256, cuda::__4::atomic<int, (cuda::std::__4::t…
+      0.0            3,072          3        1,024.0          960.0          928        1,184          139.5  void cub::CUB_300002_SM_900::detail::for_each::static_kernel<cub::CUB_300002_SM_900::detail::for_ea…
+
+[7/8] Executing 'cuda_gpu_mem_time_sum' stats report
+
+ Time (%)  Total Time (ns)  Count   Avg (ns)   Med (ns)  Min (ns)  Max (ns)   StdDev (ns)               Operation              
+ --------  ---------------  ------  ---------  --------  --------  ---------  -----------  ------------------------------------
+     90.8      217,106,139  91,193    2,380.7   2,336.0     2,017     15,680        148.4  [CUDA memcpy Device-to-Host]        
+      8.0       19,176,119     109  175,927.7   6,144.0       736  3,461,866    563,559.7  [CUDA memcpy Host-to-Device]        
+      0.8        1,836,196      47   39,068.0   1,408.0       736    292,737     95,251.9  [CUDA memset]                       
+      0.4          936,922     263    3,562.4   2,751.0     2,399     21,568      2,354.0  [CUDA memcpy Unified Host-to-Device]
+      0.1          137,860      45    3,063.6   2,783.0     2,367      4,608        578.2  [CUDA memcpy Unified Device-to-Host]
+
+[8/8] Executing 'cuda_gpu_mem_size_sum' stats report
+
+ Total (MB)  Count   Avg (MB)  Med (MB)  Min (MB)  Max (MB)  StdDev (MB)               Operation              
+ ----------  ------  --------  --------  --------  --------  -----------  ------------------------------------
+  5,829.053      47   124.022     0.059     0.000   946.798      311.608  [CUDA memset]                       
+    234.033     109     2.147     0.182     0.000    42.969        6.890  [CUDA memcpy Host-to-Device]        
+     12.114  91,193     0.000     0.000     0.000     0.501        0.005  [CUDA memcpy Device-to-Host]        
+      8.978     263     0.034     0.008     0.004     1.044        0.118  [CUDA memcpy Unified Host-to-Device]
+      1.507      45     0.033     0.025     0.004     0.127        0.032  [CUDA memcpy Unified Device-to-Host]
+
+Generated:
+    /home/jmukher/workspace/uiuc/citation_abm/profile/nsys-pa-3y-3p.nsys-rep
+    /home/jmukher/workspace/uiuc/citation_abm/profile/nsys-pa-3y-3p.sqlite
+SUCCESS: 8.0M → profile/nsys-pa-3y-3p.nsys-rep
+Running growth rate 6% for 3 years.
+Profile output: profile/nsys-pa-3y-6p.nsys-rep
+CMD: nsys profile --trace=nvtx,cuda,osrt --gpu-metrics-device=all --gpu-metrics-frequency=10000 --stats=true --force-overwrite=true -o profile/nsys-pa-3y-6p ./abm --edgelist sj_edgelist --nodelist sj_nodelist --out-degree-bag tcen_at_least_five --recency-probabilities sj_recprob --use-warp-bfs true --use-batching true --max-batch-size 200000 --alpha 0.5 --preferential-weight 0.33 --recency-weight 0.33 --fitness-weight 0.33 --growth-rate .06 --fully-random-citations 0.05 --num-cycles 3 --same-year-proportion 0.12 --output-file ./output/3y/nsys-gpu-opt-static-output-3y-6p.edgelist --auxiliary-information-file ./output/3y/nsys-gpu-opt-static-output-3y-6p.aux --log-file ./output/3y/nsys-gpu-opt-static-pa-3y-6p.log --num-processors 14 --log-level 1
+
+Start ABM....
+parse_args....
+edgelist....
+num-cycles....
+output-file....
+log-file = ./output/3y/nsys-gpu-opt-static-pa-3y-6p.log....
+num-processors = 14....
+log-level = 0
+Init ABM....
+Exec ABM....Init Graph
+Inside  Graph ParseNodelist.....
+Populating the continuous_node mappings..
+Elapsed time: ParseNodelist : 1087 millisecs = 1 seconds
+
+Inside Graph ParseEdgelist.....
+Elapsed time: ParseEdgelist : 1644 millisecs = 1 seconds
+
+In updateNodeInDegreeOutDegree: Update Outdegree first:
+In updateNodeInDegreeOutDegree: Update Indegree:
+Total (initial):: In-Degree = 899050, Out-Degree = 899050
+Elapsed time: 0-1 : 1 seconds
+Elapsed time: 1-2 : 1 seconds
+Elapsed time: 2-3 : 0 seconds
+
+Initialized Graph. Let us update the indegree and out-degrees... 
+[EP 1983] N=491532 delta=29492
+[prepareGraph] num_vertices = 491532
+
+[prepareGraph] edges = 899050, offsets = 491533 (should be V+1 = 491533)
+
+[prepareGraph] num_vertices = 491532
+
+[prepareGraph] edges = 899050, offsets = 491533 (should be V+1 = 491533)
+
+updateNodeInDegreeOutDegree(year=1983): updated 29492 out-degrees, 353848 in-degrees  pre=579 csr=636 S1=270 S2=11 S3=50 S4=2 xfer=766 upd=529  total=2950 ms  E/s=1735751
+
+[EP 1984] N=521024 delta=31262
+[prepareGraph] num_vertices = 521024
+
+[prepareGraph] edges = 1478098, offsets = 521025 (should be V+1 = 521025)
+
+[prepareGraph] num_vertices = 521024
+
+[prepareGraph] edges = 1478098, offsets = 521025 (should be V+1 = 521025)
+
+updateNodeInDegreeOutDegree(year=1984): updated 31262 out-degrees, 368900 in-degrees  pre=604 csr=814 S1=627 S2=30 S3=111 S4=3 xfer=819 upd=523  total=3640 ms  E/s=791318
+
+[EP 1985] N=552286 delta=33138
+[prepareGraph] num_vertices = 552286
+
+[prepareGraph] edges = 2088255, offsets = 552287 (should be V+1 = 552287)
+
+[prepareGraph] num_vertices = 552286
+
+[prepareGraph] edges = 2088255, offsets = 552287 (should be V+1 = 552287)
+
+updateNodeInDegreeOutDegree(year=1985): updated 33138 out-degrees, 387984 in-degrees  pre=598 csr=947 S1=486 S2=38 S3=121 S4=4 xfer=869 upd=554  total=3728 ms  E/s=1003230
+
+WriteAttributes: graph size = 585424
+
+E2E Time, model: PA  num_cycles=3  growth_rate=6%  threads=14  elapsed=16s
+========================================================================================================================
+  PARAGRAH GPU EPOCH BREAKDOWN  model=PA  growth=6.0%  threads=14
+========================================================================================================================
+
+[1] PER-EPOCH STAGE BREAKDOWN  (ms)
+------------------------------------------------------------------------------------------------------------------------
+Ep   N        Delta  B     mB   | FillID  FillFit FillRec CalcScr | NodeInit GenAsgn SameYr  | CSR     Upload | Slab  S1_BFS  S2_WS1  S3_WS2  S4_Fill | Dwnld  EdgeIns  InDeg   FitAsgn | EpTotal  Edges/s   
+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+1983 491532   29492  29492 1    | 128.7   127.9   318.4   4.3     | 29.7    75.2    0.7     | 636.0   3.2    | 0.6   269.7   11.4    50.1    2.4     | 763.0  241.7    139.4   147.5   | 2950     1735751   
+1984 521024   31262  29492 2    | 139.2   137.2   299.0   28.2    | 28.1    79.2    0.6     | 814.2   2.7    | 1.0   626.6   30.4    110.7   3.4     | 816.2  221.4    141.8   159.8   | 3640     791318    
+1985 552286   33138  28608 2    | 141.5   139.0   308.2   9.1     | 25.9    84.1    0.7     | 947.5   2.6    | 1.0   485.6   37.6    120.7   4.2     | 866.2  232.1    151.9   169.7   | 3728     1003230   
+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+[2] PER-STAGE STATISTICS ACROSS ALL EPOCHS  (ms)
+------------------------------------------------------------------------------------------------------------------------
+  Host preprocessing            total=      1781  mean=   593.6  std=   10.4  min=  579.3  max=   603.6
+  CSR build+upload              total=      2398  mean=   799.2  std=  127.6  min=  636.0  max=   947.5
+  Slab alloc+memset             total=         3  mean=     0.8  std=    0.2  min=    0.6  max=     1.0
+  Stage1 BFS                    total=      1382  mean=   460.6  std=  146.8  min=  269.7  max=   626.6
+  Stage2 WS1 (1-hop)            total=        79  mean=    26.5  std=   11.0  min=   11.4  max=    37.6
+  Stage3 WS2 (2-hop)            total=       281  mean=    93.8  std=   31.2  min=   50.1  max=   120.7
+  Stage4 fill+write             total=        10  mean=     3.3  std=    0.7  min=    2.4  max=     4.2
+  GPU kernels (total)           total=      1753  mean=   584.2  std=  184.2  min=  333.6  max=   771.1
+  Transfers (up+down)           total=      2454  mean=   818.0  std=   41.9  min=  766.2  max=   868.8
+  Host graph update             total=      1605  mean=   535.1  std=   13.4  min=  522.9  max=   553.7
+  Epoch total                   total=     10317  mean=  3439.1  std=  347.7  min= 2949.9  max=  3727.6
+
+[3] TOTAL TIME DISTRIBUTION
+------------------------------------------------------------------------------------------------------------------------
+  Host preprocessing           :       1781 ms  ( 17.3%)
+  CSR build                    :       2398 ms  ( 23.2%)
+  BFS slab overhead            :          3 ms  (  0.0%)
+  Stage1 BFS                   :       1382 ms  ( 13.4%)
+  Stage2+3 sampling            :        361 ms  (  3.5%)
+  Stage4 fill+write            :         10 ms  (  0.1%)
+  GPU kernels total            :       1753 ms  ( 17.0%)
+  Transfers                    :       2454 ms  ( 23.8%)
+  Host graph update            :       1605 ms  ( 15.6%)
+  Simulation total             :      10317 ms
+  E2E total                    :      16707 ms
+
+[4] BFS DOMINANCE
+------------------------------------------------------------------------------------------------------------------------
+  Stage1 BFS as % of GPU kernels : 78.8%
+  Stage1 BFS as % of epoch total : 13.4%
+  GPU kernels as % of epoch      : 17.0%
+  Total edges generated          : 1839376
+  Overall edges/sec (GPU time)   : 1049427
+========================================================================================================================
+
+========================================================================================================================
+  FULL PIPELINE BREAKDOWN (ABM construction -> parse -> init -> simulation -> output write)  model=PA  growth=6.0%  threads=14
+========================================================================================================================
+  ABM construction (out-degree bag, recency probs, planted nodes)        :       1660 ms  (  9.0%)
+  Graph parse (nodelist + edgelist)                                      :       2994 ms  ( 16.3%)
+  Init (fitness + array alloc + weight/alpha/outdegree populate)         :        542 ms  (  3.0%)
+  Simulation (epoch loop total -- see breakdown above)                   :      10317 ms  ( 56.2%)
+  Output write (WriteGraph + UpdateGraphAttributes* + WriteAttributes)   :       1151 ms  (  6.3%)
+------------------------------------------------------------------------------------------------------------------------
+  TOTAL (full pipeline, measured)                                        :      16665 ms  ( 90.7%)
+  Unaccounted (measurement gaps / process overhead outside execute())    :       1702 ms  (  9.3%)
+  FULL PIPELINE TOTAL                                                    :      18367 ms  (100.0%)
+========================================================================================================================
+
+E2E Time for num_cycles = 3 with growth_rate = 6 % = 19 seconds.
+GPU 0: General Metrics for NVIDIA GH100 (any frequency)
+Generating '/tmp/nsys-report-675f.qdstrm'
+[1/8] [0%                          ] nsys-pa-3y-6p.nsys-rep[1/8] [0%                          ] nsys-pa-3y-6p.nsys-rep[1/8] [6%                          ] nsys-pa-3y-6p.nsys-rep[1/8] [7%                          ] nsys-pa-3y-6p.nsys-rep[1/8] [6%                          ] nsys-pa-3y-6p.nsys-rep[1/8] [7%                          ] nsys-pa-3y-6p.nsys-rep[1/8] [6%                          ] nsys-pa-3y-6p.nsys-rep[1/8] [7%                          ] nsys-pa-3y-6p.nsys-rep[1/8] [8%                          ] nsys-pa-3y-6p.nsys-rep[1/8] [7%                          ] nsys-pa-3y-6p.nsys-rep[1/8] [8%                          ] nsys-pa-3y-6p.nsys-rep[1/8] [7%                          ] nsys-pa-3y-6p.nsys-rep[1/8] [8%                          ] nsys-pa-3y-6p.nsys-rep[1/8] [7%                          ] nsys-pa-3y-6p.nsys-rep[1/8] [8%                          ] nsys-pa-3y-6p.nsys-rep[1/8] [7%                          ] nsys-pa-3y-6p.nsys-rep[1/8] [8%                          ] nsys-pa-3y-6p.nsys-rep[1/8] [7%                          ] nsys-pa-3y-6p.nsys-rep[1/8] [8%                          ] nsys-pa-3y-6p.nsys-rep[1/8] [9%                          ] nsys-pa-3y-6p.nsys-rep[1/8] [8%                          ] nsys-pa-3y-6p.nsys-rep[1/8] [9%                          ] nsys-pa-3y-6p.nsys-rep[1/8] [8%                          ] nsys-pa-3y-6p.nsys-rep[1/8] [9%                          ] nsys-pa-3y-6p.nsys-rep[1/8] [8%                          ] nsys-pa-3y-6p.nsys-rep[1/8] [9%                          ] nsys-pa-3y-6p.nsys-rep[1/8] [10%                         ] nsys-pa-3y-6p.nsys-rep[1/8] [9%                          ] nsys-pa-3y-6p.nsys-rep[1/8] [10%                         ] nsys-pa-3y-6p.nsys-rep[1/8] [9%                          ] nsys-pa-3y-6p.nsys-rep[1/8] [10%                         ] nsys-pa-3y-6p.nsys-rep[1/8] [9%                          ] nsys-pa-3y-6p.nsys-rep[1/8] [10%                         ] nsys-pa-3y-6p.nsys-rep[1/8] [11%                         ] nsys-pa-3y-6p.nsys-rep[1/8] [12%                         ] nsys-pa-3y-6p.nsys-rep[1/8] [13%                         ] nsys-pa-3y-6p.nsys-rep[1/8] [14%                         ] nsys-pa-3y-6p.nsys-rep[1/8] [=15%                        ] nsys-pa-3y-6p.nsys-rep[1/8] [=16%                        ] nsys-pa-3y-6p.nsys-rep[1/8] [=17%                        ] nsys-pa-3y-6p.nsys-rep[1/8] [==18%                       ] nsys-pa-3y-6p.nsys-rep[1/8] [==19%                       ] nsys-pa-3y-6p.nsys-rep[1/8] [==20%                       ] nsys-pa-3y-6p.nsys-rep[1/8] [===22%                      ] nsys-pa-3y-6p.nsys-rep[1/8] [===23%                      ] nsys-pa-3y-6p.nsys-rep[1/8] [===24%                      ] nsys-pa-3y-6p.nsys-rep[1/8] [====25%                     ] nsys-pa-3y-6p.nsys-rep[1/8] [====26%                     ] nsys-pa-3y-6p.nsys-rep[1/8] [====27%                     ] nsys-pa-3y-6p.nsys-rep[1/8] [====28%                     ] nsys-pa-3y-6p.nsys-rep[1/8] [=====29%                    ] nsys-pa-3y-6p.nsys-rep[1/8] [=====30%                    ] nsys-pa-3y-6p.nsys-rep[1/8] [=====31%                    ] nsys-pa-3y-6p.nsys-rep[1/8] [=====32%                    ] nsys-pa-3y-6p.nsys-rep[1/8] [======33%                   ] nsys-pa-3y-6p.nsys-rep[1/8] [======34%                   ] nsys-pa-3y-6p.nsys-rep[1/8] [======35%                   ] nsys-pa-3y-6p.nsys-rep[1/8] [=======36%                  ] nsys-pa-3y-6p.nsys-rep[1/8] [=======37%                  ] nsys-pa-3y-6p.nsys-rep[1/8] [=======38%                  ] nsys-pa-3y-6p.nsys-rep[1/8] [=======39%                  ] nsys-pa-3y-6p.nsys-rep[1/8] [========40%                 ] nsys-pa-3y-6p.nsys-rep[1/8] [========41%                 ] nsys-pa-3y-6p.nsys-rep[1/8] [=========43%                ] nsys-pa-3y-6p.nsys-rep[1/8] [=========44%                ] nsys-pa-3y-6p.nsys-rep[1/8] [=========45%                ] nsys-pa-3y-6p.nsys-rep[1/8] [=========46%                ] nsys-pa-3y-6p.nsys-rep[1/8] [==========47%               ] nsys-pa-3y-6p.nsys-rep[1/8] [==========48%               ] nsys-pa-3y-6p.nsys-rep[1/8] [==========49%               ] nsys-pa-3y-6p.nsys-rep[1/8] [===========50%              ] nsys-pa-3y-6p.nsys-rep[1/8] [===========51%              ] nsys-pa-3y-6p.nsys-rep[1/8] [===========52%              ] nsys-pa-3y-6p.nsys-rep[1/8] [===========53%              ] nsys-pa-3y-6p.nsys-rep[1/8] [============54%             ] nsys-pa-3y-6p.nsys-rep[1/8] [============55%             ] nsys-pa-3y-6p.nsys-rep[1/8] [============56%             ] nsys-pa-3y-6p.nsys-rep[1/8] [============57%             ] nsys-pa-3y-6p.nsys-rep[1/8] [=============58%            ] nsys-pa-3y-6p.nsys-rep[1/8] [=============59%            ] nsys-pa-3y-6p.nsys-rep[1/8] [==============61%           ] nsys-pa-3y-6p.nsys-rep[1/8] [==============62%           ] nsys-pa-3y-6p.nsys-rep[1/8] [==============63%           ] nsys-pa-3y-6p.nsys-rep[1/8] [==============64%           ] nsys-pa-3y-6p.nsys-rep[1/8] [===============65%          ] nsys-pa-3y-6p.nsys-rep[1/8] [===============67%          ] nsys-pa-3y-6p.nsys-rep[1/8] [================68%         ] nsys-pa-3y-6p.nsys-rep[1/8] [================69%         ] nsys-pa-3y-6p.nsys-rep[1/8] [================70%         ] nsys-pa-3y-6p.nsys-rep[1/8] [================71%         ] nsys-pa-3y-6p.nsys-rep[1/8] [=================72%        ] nsys-pa-3y-6p.nsys-rep[1/8] [=================73%        ] nsys-pa-3y-6p.nsys-rep[1/8] [==================77%       ] nsys-pa-3y-6p.nsys-rep[1/8] [========================100%] nsys-pa-3y-6p.nsys-rep[1/8] [========================100%] nsys-pa-3y-6p.nsys-rep
+[2/8] [0%                          ] nsys-pa-3y-6p.sqlite[2/8] [1%                          ] nsys-pa-3y-6p.sqlite[2/8] [2%                          ] nsys-pa-3y-6p.sqlite[2/8] [3%                          ] nsys-pa-3y-6p.sqlite[2/8] [4%                          ] nsys-pa-3y-6p.sqlite[2/8] [5%                          ] nsys-pa-3y-6p.sqlite[2/8] [6%                          ] nsys-pa-3y-6p.sqlite[2/8] [7%                          ] nsys-pa-3y-6p.sqlite[2/8] [8%                          ] nsys-pa-3y-6p.sqlite[2/8] [9%                          ] nsys-pa-3y-6p.sqlite[2/8] [10%                         ] nsys-pa-3y-6p.sqlite[2/8] [11%                         ] nsys-pa-3y-6p.sqlite[2/8] [12%                         ] nsys-pa-3y-6p.sqlite[2/8] [13%                         ] nsys-pa-3y-6p.sqlite[2/8] [14%                         ] nsys-pa-3y-6p.sqlite[2/8] [=15%                        ] nsys-pa-3y-6p.sqlite[2/8] [=16%                        ] nsys-pa-3y-6p.sqlite[2/8] [=17%                        ] nsys-pa-3y-6p.sqlite[2/8] [==18%                       ] nsys-pa-3y-6p.sqlite[2/8] [==19%                       ] nsys-pa-3y-6p.sqlite[2/8] [==20%                       ] nsys-pa-3y-6p.sqlite[2/8] [==21%                       ] nsys-pa-3y-6p.sqlite[2/8] [===22%                      ] nsys-pa-3y-6p.sqlite[2/8] [===23%                      ] nsys-pa-3y-6p.sqlite[2/8] [===24%                      ] nsys-pa-3y-6p.sqlite[2/8] [====25%                     ] nsys-pa-3y-6p.sqlite[2/8] [====26%                     ] nsys-pa-3y-6p.sqlite[2/8] [====27%                     ] nsys-pa-3y-6p.sqlite[2/8] [====28%                     ] nsys-pa-3y-6p.sqlite[2/8] [=====29%                    ] nsys-pa-3y-6p.sqlite[2/8] [=====30%                    ] nsys-pa-3y-6p.sqlite[2/8] [=====31%                    ] nsys-pa-3y-6p.sqlite[2/8] [=====32%                    ] nsys-pa-3y-6p.sqlite[2/8] [======33%                   ] nsys-pa-3y-6p.sqlite[2/8] [======34%                   ] nsys-pa-3y-6p.sqlite[2/8] [======35%                   ] nsys-pa-3y-6p.sqlite[2/8] [=======36%                  ] nsys-pa-3y-6p.sqlite[2/8] [=======37%                  ] nsys-pa-3y-6p.sqlite[2/8] [=======38%                  ] nsys-pa-3y-6p.sqlite[2/8] [=======39%                  ] nsys-pa-3y-6p.sqlite[2/8] [========40%                 ] nsys-pa-3y-6p.sqlite[2/8] [========41%                 ] nsys-pa-3y-6p.sqlite[2/8] [========42%                 ] nsys-pa-3y-6p.sqlite[2/8] [=========43%                ] nsys-pa-3y-6p.sqlite[2/8] [=========44%                ] nsys-pa-3y-6p.sqlite[2/8] [=========45%                ] nsys-pa-3y-6p.sqlite[2/8] [=========46%                ] nsys-pa-3y-6p.sqlite[2/8] [==========47%               ] nsys-pa-3y-6p.sqlite[2/8] [==========48%               ] nsys-pa-3y-6p.sqlite[2/8] [==========49%               ] nsys-pa-3y-6p.sqlite[2/8] [===========50%              ] nsys-pa-3y-6p.sqlite[2/8] [===========51%              ] nsys-pa-3y-6p.sqlite[2/8] [===========52%              ] nsys-pa-3y-6p.sqlite[2/8] [===========53%              ] nsys-pa-3y-6p.sqlite[2/8] [============54%             ] nsys-pa-3y-6p.sqlite[2/8] [============55%             ] nsys-pa-3y-6p.sqlite[2/8] [============56%             ] nsys-pa-3y-6p.sqlite[2/8] [============57%             ] nsys-pa-3y-6p.sqlite[2/8] [=============58%            ] nsys-pa-3y-6p.sqlite[2/8] [=============59%            ] nsys-pa-3y-6p.sqlite[2/8] [=============60%            ] nsys-pa-3y-6p.sqlite[2/8] [==============61%           ] nsys-pa-3y-6p.sqlite[2/8] [==============62%           ] nsys-pa-3y-6p.sqlite[2/8] [==============63%           ] nsys-pa-3y-6p.sqlite[2/8] [==============64%           ] nsys-pa-3y-6p.sqlite[2/8] [===============65%          ] nsys-pa-3y-6p.sqlite[2/8] [===============66%          ] nsys-pa-3y-6p.sqlite[2/8] [===============67%          ] nsys-pa-3y-6p.sqlite[2/8] [================68%         ] nsys-pa-3y-6p.sqlite[2/8] [================69%         ] nsys-pa-3y-6p.sqlite[2/8] [================70%         ] nsys-pa-3y-6p.sqlite[2/8] [================71%         ] nsys-pa-3y-6p.sqlite[2/8] [=================72%        ] nsys-pa-3y-6p.sqlite[2/8] [=================73%        ] nsys-pa-3y-6p.sqlite[2/8] [=================74%        ] nsys-pa-3y-6p.sqlite[2/8] [==================75%       ] nsys-pa-3y-6p.sqlite[2/8] [==================76%       ] nsys-pa-3y-6p.sqlite[2/8] [==================77%       ] nsys-pa-3y-6p.sqlite[2/8] [==================78%       ] nsys-pa-3y-6p.sqlite[2/8] [===================79%      ] nsys-pa-3y-6p.sqlite[2/8] [===================80%      ] nsys-pa-3y-6p.sqlite[2/8] [===================81%      ] nsys-pa-3y-6p.sqlite[2/8] [===================82%      ] nsys-pa-3y-6p.sqlite[2/8] [====================83%     ] nsys-pa-3y-6p.sqlite[2/8] [====================84%     ] nsys-pa-3y-6p.sqlite[2/8] [====================85%     ] nsys-pa-3y-6p.sqlite[2/8] [=====================86%    ] nsys-pa-3y-6p.sqlite[2/8] [=====================87%    ] nsys-pa-3y-6p.sqlite[2/8] [=====================88%    ] nsys-pa-3y-6p.sqlite[2/8] [=====================89%    ] nsys-pa-3y-6p.sqlite[2/8] [======================90%   ] nsys-pa-3y-6p.sqlite[2/8] [======================91%   ] nsys-pa-3y-6p.sqlite[2/8] [======================92%   ] nsys-pa-3y-6p.sqlite[2/8] [=======================93%  ] nsys-pa-3y-6p.sqlite[2/8] [=======================94%  ] nsys-pa-3y-6p.sqlite[2/8] [=======================95%  ] nsys-pa-3y-6p.sqlite[2/8] [=======================96%  ] nsys-pa-3y-6p.sqlite[2/8] [========================97% ] nsys-pa-3y-6p.sqlite[2/8] [========================98% ] nsys-pa-3y-6p.sqlite[2/8] [========================99% ] nsys-pa-3y-6p.sqlite[2/8] [========================100%] nsys-pa-3y-6p.sqlite[2/8] [========================100%] nsys-pa-3y-6p.sqlite
+[3/8] Executing 'nvtx_sum' stats report
+
+ Time (%)  Total Time (ns)  Instances  Avg (ns)  Med (ns)  Min (ns)  Max (ns)  StdDev (ns)   Style             Range          
+ --------  ---------------  ---------  --------  --------  --------  --------  -----------  -------  -------------------------
+    100.0      516,892,584     93,898   5,504.8   5,359.0     4,997   233,655      1,948.2  PushPop  CCCL:cub::DeviceFor::Bulk
+
+[4/8] Executing 'osrt_sum' stats report
+
+ Time (%)  Total Time (ns)  Num Calls    Avg (ns)      Med (ns)    Min (ns)   Max (ns)    StdDev (ns)            Name         
+ --------  ---------------  ---------  ------------  ------------  --------  -----------  ------------  ----------------------
+     99.1   37,072,703,586      1,360  27,259,340.9  10,062,279.5     1,368  102,415,148  35,502,109.6  poll                  
+      0.6      238,835,790      1,595     149,740.3      25,076.0     1,004   31,759,486     920,870.4  ioctl                 
+      0.1       54,759,470         28   1,955,695.4   1,708,084.0   459,199    7,535,980   1,725,126.4  writev                
+      0.1       19,140,025      5,975       3,203.4       2,548.0     1,035    3,687,863      47,677.4  read                  
+      0.0        8,868,894         52     170,555.7     156,831.5   141,149      302,514      39,022.7  pthread_create        
+      0.0        4,254,147         59      72,104.2      11,705.0     1,864    1,045,042     227,086.1  mmap                  
+      0.0        3,235,804         47      68,846.9      28,360.0    20,465      636,453     102,257.8  pthread_rwlock_wrlock 
+      0.0        2,764,748          9     307,194.2     243,099.0    71,914      711,326     221,034.7  fopen64               
+      0.0        1,434,671         30      47,822.4       6,262.0     3,634      942,870     170,571.5  mmap64                
+      0.0          898,548         12      74,879.0      32,782.5    19,155      550,517     150,042.5  sem_timedwait         
+      0.0          807,857         36      22,440.5      19,618.5     8,711       41,156       7,517.5  pthread_rwlock_rdlock 
+      0.0          780,554         38      20,540.9       3,991.0     1,114      237,347      54,891.6  fclose                
+      0.0          469,547         15      31,303.1       2,700.0     1,427      344,004      88,493.0  write                 
+      0.0          263,763         45       5,861.4       4,556.0     1,439       22,614       4,742.8  munmap                
+      0.0          182,217         42       4,338.5       2,018.0     1,314       23,694       4,805.7  fopen                 
+      0.0          161,830         53       3,053.4       2,076.0     1,061       10,053       2,181.1  open64                
+      0.0           72,962          1      72,962.0      72,962.0    72,962       72,962           0.0  pthread_cond_wait     
+      0.0           38,522          1      38,522.0      38,522.0    38,522       38,522           0.0  fgets                 
+      0.0           33,668          6       5,611.3       6,333.5     1,103        7,715       2,341.9  fflush                
+      0.0           25,478          6       4,246.3       5,283.0     1,174        6,519       2,228.5  open                  
+      0.0           23,481          2      11,740.5      11,740.5     7,408       16,073       6,127.1  fread                 
+      0.0           18,670          4       4,667.5       4,731.0     2,456        6,752       2,225.7  pipe2                 
+      0.0           15,250          2       7,625.0       7,625.0     5,369        9,881       3,190.5  socket                
+      0.0           12,882          1      12,882.0      12,882.0    12,882       12,882           0.0  connect               
+      0.0            8,902          3       2,967.3       1,921.0     1,752        5,229       1,960.5  pthread_cond_broadcast
+      0.0            7,830          4       1,957.5       1,415.5     1,032        3,967       1,380.1  fwrite                
+      0.0            2,659          1       2,659.0       2,659.0     2,659        2,659           0.0  putc                  
+      0.0            2,402          2       1,201.0       1,201.0     1,134        1,268          94.8  fcntl                 
+      0.0            2,299          2       1,149.5       1,149.5     1,105        1,194          62.9  pthread_mutex_lock    
+      0.0            1,407          1       1,407.0       1,407.0     1,407        1,407           0.0  bind                  
+
+[5/8] Executing 'cuda_api_sum' stats report
+
+ Time (%)  Total Time (ns)  Num Calls    Avg (ns)      Med (ns)     Min (ns)    Max (ns)    StdDev (ns)            Name         
+ --------  ---------------  ---------  ------------  ------------  ----------  -----------  ------------  ----------------------
+     42.8    2,416,920,143    187,890      12,863.5      12,589.0       6,573    3,992,679      15,524.9  cudaMemcpy            
+     31.1    1,755,550,378         43  40,826,753.0      17,969.0       2,129  416,603,667  91,599,464.1  cudaStreamSynchronize 
+      7.2      406,756,646     94,103       4,322.5       3,909.0       3,079    2,246,759      16,197.0  cudaFree              
+      5.7      322,761,056     93,937       3,435.9       3,264.0       2,970    3,617,938      15,152.4  cudaLaunchKernel      
+      5.1      289,088,429     94,089       3,072.5       2,735.0       1,741    4,940,538      18,248.2  cudaMalloc            
+      4.5      255,815,579         36   7,105,988.3      85,989.5      10,951   87,432,292  22,983,158.6  cudaMemcpyAsync       
+      3.0      168,701,601          3  56,233,867.0      77,894.0      39,004  168,584,703  97,298,680.1  cudaStreamCreate      
+      0.4       22,190,558          1  22,190,558.0  22,190,558.0  22,190,558   22,190,558           0.0  cuLibraryLoadData     
+      0.1        6,491,578     93,937          69.1          69.0          52        4,802          56.9  cuKernelGetName       
+      0.0          731,755         10      73,175.5       8,638.0       6,298      654,315     204,199.8  cudaDeviceSynchronize 
+      0.0          657,294         20      32,864.7      29,254.5       4,141       92,350      28,579.9  cudaMallocManaged     
+      0.0          369,450         41       9,011.0       6,641.0       3,762       31,004       6,434.4  cudaMemset            
+      0.0          283,585         62       4,574.0       3,557.5       1,565       18,583       3,192.8  cudaEventRecord       
+      0.0          210,160         31       6,779.4       6,266.0       5,052       10,740       1,366.5  cudaEventSynchronize  
+      0.0          142,714         62       2,301.8         966.5         361       53,995       6,914.7  cudaEventCreate       
+      0.0           57,659          6       9,609.8       9,643.5       6,315       13,229       3,074.3  cudaMemsetAsync       
+      0.0           41,606         62         671.1         500.5         278        1,976         447.8  cudaEventDestroy      
+      0.0           40,767          3      13,589.0      13,146.0      12,938       14,683         953.1  cudaStreamDestroy     
+      0.0           17,762         10       1,776.2       1,211.5         601        6,829       1,816.6  cuLibraryGetKernel    
+      0.0            1,177          1       1,177.0       1,177.0       1,177        1,177           0.0  cuModuleGetLoadingMode
+
+[6/8] Executing 'cuda_gpu_kern_sum' stats report
+
+ Time (%)  Total Time (ns)  Instances    Avg (ns)       Med (ns)      Min (ns)     Max (ns)    StdDev (ns)                                                   Name                                                
+ --------  ---------------  ---------  -------------  -------------  -----------  -----------  ------------  ----------------------------------------------------------------------------------------------------
+     66.2    1,378,134,616          5  275,626,923.2  243,450,201.0  209,960,349  416,594,992  81,295,661.8  kernelCallStage1_warped(int, int, int, ABM *, Graph *, DeviceGraph *, DeviceGraph *, device_map<int…
+     13.5      281,401,701          5   56,280,340.2   54,993,042.0   50,107,516   65,671,574   6,036,528.5  kernelCallStage3(int, int, int, ABM *, Graph *, int, device_map<int, Node>::device_view, ABMStageSt…
+     11.8      246,474,866          3   82,158,288.7   80,575,900.0   78,476,480   87,422,486   4,678,217.7  void cuco::legacy::detail::insert<(unsigned long)128, (unsigned int)4, cuco::pair<int, int> *, cuda…
+      4.0       84,178,217     93,895          896.5          896.0          863        1,248          10.9  void cub::CUB_300002_SM_900::detail::for_each::static_kernel<cub::CUB_300002_SM_900::detail::for_ea…
+      3.8       79,313,247          5   15,862,649.4   16,281,237.0   11,402,116   20,024,801   3,293,068.2  kernelCallStage2(int, int, int, ABM *, Graph *, cuco::static_set_ref<int, (cuda::std::__4::thread_s…
+      0.5        9,852,735          5    1,970,547.0    2,326,759.0      983,907    2,385,512     604,104.4  kernelCallStage4(int, int, int, ABM *, Graph *, int, device_map<int, Node>::device_view, ABMStageSt…
+      0.0          807,010          3      269,003.3      195,776.0      147,649      463,585     170,222.1  void cuco::detail::open_addressing_ns::insert_if_n<(int)1, (int)128, int *, thrust::THRUST_300002_S…
+      0.0          676,322         10       67,632.2        3,151.5        1,953      649,442     204,427.6  kernel_extract_vector_sizes(device_vector *, int *, int)                                            
+      0.0            7,808          3        2,602.7        2,656.0        2,368        2,784         213.1  void cuco::legacy::detail::initialize<(unsigned long)256, cuda::__4::atomic<int, (cuda::std::__4::t…
+      0.0            2,848          3          949.3          960.0          928          960          18.5  void cub::CUB_300002_SM_900::detail::for_each::static_kernel<cub::CUB_300002_SM_900::detail::for_ea…
+
+[7/8] Executing 'cuda_gpu_mem_time_sum' stats report
+
+ Time (%)  Total Time (ns)   Count   Avg (ns)   Med (ns)  Min (ns)  Max (ns)   StdDev (ns)               Operation              
+ --------  ---------------  -------  ---------  --------  --------  ---------  -----------  ------------------------------------
+     94.3      446,673,427  187,817    2,378.2   2,336.0     1,888     28,928        182.3  [CUDA memcpy Device-to-Host]        
+      4.5       21,199,362      109  194,489.6   9,536.0       736  3,896,813    602,136.1  [CUDA memcpy Host-to-Device]        
+      0.8        3,835,087       47   81,597.6   1,472.0       736    605,026    194,561.5  [CUDA memset]                       
+      0.4        1,775,794      474    3,746.4   2,719.0     2,334     22,464      2,897.9  [CUDA memcpy Unified Host-to-Device]
+      0.0          183,844       53    3,468.8   2,976.0     2,367     12,448      1,630.1  [CUDA memcpy Unified Device-to-Host]
+
+[8/8] Executing 'cuda_gpu_mem_size_sum' stats report
+
+ Total (MB)   Count   Avg (MB)  Med (MB)  Min (MB)  Max (MB)   StdDev (MB)               Operation              
+ ----------  -------  --------  --------  --------  ---------  -----------  ------------------------------------
+ 12,384.444       47   263.499     0.125     0.000  1,974.982      637.739  [CUDA memset]                       
+    264.824      109     2.430     0.376     0.000     46.834        7.320  [CUDA memcpy Host-to-Device]        
+     24.856  187,817     0.000     0.000     0.000      1.060        0.007  [CUDA memcpy Device-to-Host]        
+     20.185      474     0.043     0.008     0.004      1.044        0.136  [CUDA memcpy Unified Host-to-Device]
+      2.753       53     0.052     0.029     0.004      0.520        0.087  [CUDA memcpy Unified Device-to-Host]
+
+Generated:
+    /home/jmukher/workspace/uiuc/citation_abm/profile/nsys-pa-3y-6p.nsys-rep
+    /home/jmukher/workspace/uiuc/citation_abm/profile/nsys-pa-3y-6p.sqlite
+SUCCESS: 16M → profile/nsys-pa-3y-6p.nsys-rep

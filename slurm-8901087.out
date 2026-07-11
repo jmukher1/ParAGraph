@@ -1,1320 +1,0 @@
-The following modules were not unloaded:
-  (Use "module --force purge" to unload all):
-
-  1) xalt/3.1.4
-Running growth rate 1% for 3 years.
-Profile output: erprofile/nsys-er-gnp-3y-1p.nsys-rep
-CMD: nsys profile --trace=nvtx,cuda,osrt --gpu-metrics-device=all --gpu-metrics-frequency=10000 --stats=true --force-overwrite=true -o erprofile/nsys-er-gnp-3y-1p ./abm --model er-gnp --er-probability 0.0001 --edgelist sj_edgelist --nodelist sj_nodelist --out-degree-bag tcen_at_least_five --recency-probabilities sj_recprob --alpha 0.5 --preferential-weight 0.33 --recency-weight 0.33 --fitness-weight 0.33 --growth-rate .01 --fully-random-citations 0.05 --num-cycles 3 --same-year-proportion 0.12 --output-file ./output/3y/gpu-opt-static-output-3y-1p.edgelist --auxiliary-information-file ./output/3y/gpu-opt-static-output-3y-1p.aux --log-file ./output/3y/nsys-gpu-opt-static-er-gnp-3y-1p.log --num-processors 14 --log-level 1
-
-Start ABM....
-parse_args....
-edgelist....
-num-cycles....
-output-file....
-log-file = ./output/3y/nsys-gpu-opt-static-er-gnp-3y-1p.log....
-num-processors = 14....
-log-level = 0
-er_probability = 0.000100
-model = er-gnp
-Init ABM....
-Exec ABM....
-Start execute.Init Graph
-Inside  Graph ParseNodelist.....
-Populating the continuous_node mappings..
-Elapsed time: ParseNodelist : 1088 millisecs = 1 seconds
-
-Inside Graph ParseEdgelist.....
-Elapsed time: ParseEdgelist : 1665 millisecs = 1 seconds
-
-In updateNodeInDegreeOutDegree: Update Outdegree first:
-In updateNodeInDegreeOutDegree: Update Indegree:
-Total (initial):: In-Degree = 899050, Out-Degree = 899050
-Elapsed time: 0-1 : 1 seconds
-Elapsed time: 1-2 : 1 seconds
-Elapsed time: 2-3 : 0 seconds
-
-Initialized Graph. Let us update the indegree and out-degrees... 
-Graph init done...
-calling InitializeFitness...
-final graph size is 506428 from initial_graph_size of 491532.
- populated out degree array.
- Entering loop for year = 1983
-Elapsed time: 70-71: total : 0.262 secs, iter cost : 0 seconds
-
-Elapsed time: 71-72: total : 0.328 secs, iter cost : 0 seconds
-
-Elapsed time: 72-73: total : 19 millisecs, iter cost : 19 mseconds
-
-num_new_nodes = 4916, current_graph_size = 491532, growth rate = 0.010000 
-Elapsed time: 73-74: total : 0 millisecs, iter cost : 0 mseconds
-
-Elapsed time: 74-75: total : 6 millisecs, iter cost : 6 mseconds
-
-all new nodes initialized with years and mapped. FillSameYearSourceNodes with new_nodes_vec.size() = 4916
-checking same_year_source_nodes size.
-Elapsed time: 75-76: total : 0 millisecs, iter cost : 0 mseconds
-
-new_nodes_vec.size() b4 : 4916
-
-updated  updateGraphAttributesGeneratorNode .... 
-Elapsed time: 76-77: total : 13 millisecs, iter cost : 13 mseconds
-
-continuous_node_mapping.size() b5 : 496448, reverse_continuous_node_mapping size = 496448
-
-[ER Model] Building connections using Erdos-Renyi
-
-[ER Model] Processing 4916 new nodes for year 1983 (graph size: 491532)
-
-ALLOCATE DEVICE MEMORY
- Allocate RNG states.
- Estimate capacity based on ER model.
-create_thread_vectors_bulk<int2>(num_new_nodes, per_thread_capacities.
-Instead of batch - process all new nodes in parallel.
-COLLECT RESULTS
-[ER Model] Generated 241162 edges
-
-Year 1983: 4916 new nodes, 241162 new edges
-
-Elapsed time: 78-781 : total : 0.568 secs, this iter cost : 0.568 seconds
-
-Elapsed time: 78-79 : total : 0.657 secs, this iter cost : 0.657 seconds
-
-updateNodeInDegreeOutDegree(year=1983): updated 4916 out-degrees, 195491 in-degrees
-Elapsed time: 79-81 : total : 0.108 secs, this iter cost : 0 seconds
-
-Elapsed time: 79-80 : total : 0.083 secs, this iter cost : 0 seconds
-
-Elapsed time: 80-81 : total : 0.025 secs, this iter cost : 0 seconds
-
-Elapsed time: 70-81 : total : 1.396 secs, this iter cost : 1 seconds
-
- Entering loop for year = 1984
-Elapsed time: 70-71: total : 0.53 secs, iter cost : 0 seconds
-
-Elapsed time: 71-72: total : 0.65 secs, iter cost : 0 seconds
-
-Elapsed time: 72-73: total : 43 millisecs, iter cost : 24 mseconds
-
-num_new_nodes = 4965, current_graph_size = 496448, growth rate = 0.010000 
-Elapsed time: 73-74: total : 0 millisecs, iter cost : 0 mseconds
-
-Elapsed time: 74-75: total : 10 millisecs, iter cost : 4 mseconds
-
-all new nodes initialized with years and mapped. FillSameYearSourceNodes with new_nodes_vec.size() = 4965
-checking same_year_source_nodes size.
-Elapsed time: 75-76: total : 0 millisecs, iter cost : 0 mseconds
-
-new_nodes_vec.size() b4 : 4965
-
-updated  updateGraphAttributesGeneratorNode .... 
-Elapsed time: 76-77: total : 25 millisecs, iter cost : 12 mseconds
-
-continuous_node_mapping.size() b5 : 501413, reverse_continuous_node_mapping size = 501413
-
-[ER Model] Building connections using Erdos-Renyi
-
-[ER Model] Processing 4965 new nodes for year 1984 (graph size: 496448)
-
-ALLOCATE DEVICE MEMORY
- Allocate RNG states.
- Estimate capacity based on ER model.
-create_thread_vectors_bulk<int2>(num_new_nodes, per_thread_capacities.
-Instead of batch - process all new nodes in parallel.
-COLLECT RESULTS
-[ER Model] Generated 246433 edges
-
-Year 1984: 4965 new nodes, 246433 new edges
-
-Elapsed time: 78-781 : total : 0.834 secs, this iter cost : 0.266 seconds
-
-Elapsed time: 78-79 : total : 1.044 secs, this iter cost : 0.387 seconds
-
-updateNodeInDegreeOutDegree(year=1984): updated 4965 out-degrees, 199092 in-degrees
-Elapsed time: 79-81 : total : 0.238 secs, this iter cost : 0 seconds
-
-Elapsed time: 79-80 : total : 0.188 secs, this iter cost : 0 seconds
-
-Elapsed time: 80-81 : total : 0.05 secs, this iter cost : 0 seconds
-
-Elapsed time: 70-81 : total : 2.547 secs, this iter cost : 1 seconds
-
- Entering loop for year = 1985
-Elapsed time: 70-71: total : 0.801 secs, iter cost : 0 seconds
-
-Elapsed time: 71-72: total : 0.971 secs, iter cost : 0 seconds
-
-Elapsed time: 72-73: total : 58 millisecs, iter cost : 15 mseconds
-
-num_new_nodes = 5015, current_graph_size = 501413, growth rate = 0.010000 
-Elapsed time: 73-74: total : 0 millisecs, iter cost : 0 mseconds
-
-Elapsed time: 74-75: total : 13 millisecs, iter cost : 3 mseconds
-
-all new nodes initialized with years and mapped. FillSameYearSourceNodes with new_nodes_vec.size() = 5015
-checking same_year_source_nodes size.
-Elapsed time: 75-76: total : 0 millisecs, iter cost : 0 mseconds
-
-new_nodes_vec.size() b4 : 5015
-
-updated  updateGraphAttributesGeneratorNode .... 
-Elapsed time: 76-77: total : 37 millisecs, iter cost : 12 mseconds
-
-continuous_node_mapping.size() b5 : 506428, reverse_continuous_node_mapping size = 506428
-
-[ER Model] Building connections using Erdos-Renyi
-
-[ER Model] Processing 5015 new nodes for year 1985 (graph size: 501413)
-
-ALLOCATE DEVICE MEMORY
- Allocate RNG states.
- Estimate capacity based on ER model.
-create_thread_vectors_bulk<int2>(num_new_nodes, per_thread_capacities.
-Instead of batch - process all new nodes in parallel.
-COLLECT RESULTS
-[ER Model] Generated 250575 edges
-
-Year 1985: 5015 new nodes, 250575 new edges
-
-Elapsed time: 78-781 : total : 1.095 secs, this iter cost : 0.261 seconds
-
-Elapsed time: 78-79 : total : 1.409 secs, this iter cost : 0.365 seconds
-
-updateNodeInDegreeOutDegree(year=1985): updated 5015 out-degrees, 202277 in-degrees
-Elapsed time: 79-81 : total : 0.354 secs, this iter cost : 0 seconds
-
-Elapsed time: 79-80 : total : 0.279 secs, this iter cost : 0 seconds
-
-Elapsed time: 80-81 : total : 0.075 secs, this iter cost : 0 seconds
-
-Elapsed time: 70-81 : total : 3.654 secs, this iter cost : 1 seconds
-
-Elapsed time: 7-8 :  3 seconds
-
-compute done:: graph size = 506428
-Elapsed time: 8-8.1 :  0 seconds
-
-Writing Graph to file: ./output/3y/gpu-opt-static-output-3y-1p.edgelist
-
-Elapsed time: 8.1-9 :  0 seconds
-
-Elapsed time: 9-10 :  0 seconds
-
- graph size = 506428
-WriteAttributes: graph size = 506428
-
-Elapsed time: 0-1 : 3 seconds
-
-Elapsed time: 1-4 : 0 seconds
-
-Elapsed time: 4-7 : 0 seconds
-
-Elapsed time: 70-71: total : 0.801 seconds.
-
-Elapsed time: 71-72: total : 0.971 seconds.
-
-Elapsed time: 72-73: total : 0.058 seconds.
-
-Elapsed time: 73-74: total : 0 seconds.
-
-Elapsed time: 74-75: total : 0.013 seconds.
-
-Elapsed time: 75-76: total : 0 seconds.
-
-Elapsed time: 76-77: total : 0.037 seconds.
-
-Elapsed time: 77-79: total : 1.409 seconds.
-
-Elapsed time: 79-81 : total : 0.354 seconds.
-
-Elapsed time: 79-80 : total : 0.279 seconds.
-
-Elapsed time: 80-81 : total : 0.075 seconds.
-
-Elapsed time: 70-81 : total : 3.654 seconds.
-
-Elapsed time: 7-8 : 3 seconds
-
-Elapsed time: 8-8.1 :  0 seconds
-
-Elapsed time: 8.1-9 :  0 seconds
-
-Elapsed time: 9-10 : 0 seconds
-
-Elapsed time: 11-12 : 0 seconds
-
-Elapsed time: 10-12 : 0 seconds
-
-Elapsed time: 0-7 : 3 seconds
-
-Elapsed time: 7-8 : 3 seconds
-
-Elapsed time: 8-12 : 0 seconds
-
-E2E Time for num_cycles = 3 with growth_rate = 1 % = 10 seconds.
-GPU 0: General Metrics for NVIDIA GH100 (any frequency)
-Generating '/tmp/nsys-report-8a95.qdstrm'
-[1/8] [0%                          ] nsys-er-gnp-3y-1p.nsys-rep[1/8] [0%                          ] nsys-er-gnp-3y-1p.nsys-rep[1/8] [6%                          ] nsys-er-gnp-3y-1p.nsys-rep[1/8] [8%                          ] nsys-er-gnp-3y-1p.nsys-rep[1/8] [7%                          ] nsys-er-gnp-3y-1p.nsys-rep[1/8] [8%                          ] nsys-er-gnp-3y-1p.nsys-rep[1/8] [9%                          ] nsys-er-gnp-3y-1p.nsys-rep[1/8] [11%                         ] nsys-er-gnp-3y-1p.nsys-rep[1/8] [12%                         ] nsys-er-gnp-3y-1p.nsys-rep[1/8] [13%                         ] nsys-er-gnp-3y-1p.nsys-rep[1/8] [=15%                        ] nsys-er-gnp-3y-1p.nsys-rep[1/8] [=16%                        ] nsys-er-gnp-3y-1p.nsys-rep[1/8] [=17%                        ] nsys-er-gnp-3y-1p.nsys-rep[1/8] [==19%                       ] nsys-er-gnp-3y-1p.nsys-rep[1/8] [==20%                       ] nsys-er-gnp-3y-1p.nsys-rep[1/8] [==21%                       ] nsys-er-gnp-3y-1p.nsys-rep[1/8] [===22%                      ] nsys-er-gnp-3y-1p.nsys-rep[1/8] [===23%                      ] nsys-er-gnp-3y-1p.nsys-rep[1/8] [===24%                      ] nsys-er-gnp-3y-1p.nsys-rep[1/8] [====25%                     ] nsys-er-gnp-3y-1p.nsys-rep[1/8] [====28%                     ] nsys-er-gnp-3y-1p.nsys-rep[1/8] [=====31%                    ] nsys-er-gnp-3y-1p.nsys-rep[1/8] [======35%                   ] nsys-er-gnp-3y-1p.nsys-rep[1/8] [=======39%                  ] nsys-er-gnp-3y-1p.nsys-rep[1/8] [=========43%                ] nsys-er-gnp-3y-1p.nsys-rep[1/8] [==========47%               ] nsys-er-gnp-3y-1p.nsys-rep[1/8] [===========51%              ] nsys-er-gnp-3y-1p.nsys-rep[1/8] [============55%             ] nsys-er-gnp-3y-1p.nsys-rep[1/8] [=============60%            ] nsys-er-gnp-3y-1p.nsys-rep[1/8] [==============64%           ] nsys-er-gnp-3y-1p.nsys-rep[1/8] [================68%         ] nsys-er-gnp-3y-1p.nsys-rep[1/8] [=================72%        ] nsys-er-gnp-3y-1p.nsys-rep[1/8] [=================73%        ] nsys-er-gnp-3y-1p.nsys-rep[1/8] [========================100%] nsys-er-gnp-3y-1p.nsys-rep[1/8] [========================100%] nsys-er-gnp-3y-1p.nsys-rep
-[2/8] [0%                          ] nsys-er-gnp-3y-1p.sqlite[2/8] [1%                          ] nsys-er-gnp-3y-1p.sqlite[2/8] [2%                          ] nsys-er-gnp-3y-1p.sqlite[2/8] [3%                          ] nsys-er-gnp-3y-1p.sqlite[2/8] [4%                          ] nsys-er-gnp-3y-1p.sqlite[2/8] [5%                          ] nsys-er-gnp-3y-1p.sqlite[2/8] [6%                          ] nsys-er-gnp-3y-1p.sqlite[2/8] [7%                          ] nsys-er-gnp-3y-1p.sqlite[2/8] [8%                          ] nsys-er-gnp-3y-1p.sqlite[2/8] [9%                          ] nsys-er-gnp-3y-1p.sqlite[2/8] [10%                         ] nsys-er-gnp-3y-1p.sqlite[2/8] [11%                         ] nsys-er-gnp-3y-1p.sqlite[2/8] [12%                         ] nsys-er-gnp-3y-1p.sqlite[2/8] [13%                         ] nsys-er-gnp-3y-1p.sqlite[2/8] [14%                         ] nsys-er-gnp-3y-1p.sqlite[2/8] [=15%                        ] nsys-er-gnp-3y-1p.sqlite[2/8] [=16%                        ] nsys-er-gnp-3y-1p.sqlite[2/8] [=17%                        ] nsys-er-gnp-3y-1p.sqlite[2/8] [==18%                       ] nsys-er-gnp-3y-1p.sqlite[2/8] [==19%                       ] nsys-er-gnp-3y-1p.sqlite[2/8] [==20%                       ] nsys-er-gnp-3y-1p.sqlite[2/8] [==21%                       ] nsys-er-gnp-3y-1p.sqlite[2/8] [===22%                      ] nsys-er-gnp-3y-1p.sqlite[2/8] [===23%                      ] nsys-er-gnp-3y-1p.sqlite[2/8] [===24%                      ] nsys-er-gnp-3y-1p.sqlite[2/8] [====25%                     ] nsys-er-gnp-3y-1p.sqlite[2/8] [====26%                     ] nsys-er-gnp-3y-1p.sqlite[2/8] [====27%                     ] nsys-er-gnp-3y-1p.sqlite[2/8] [====28%                     ] nsys-er-gnp-3y-1p.sqlite[2/8] [=====29%                    ] nsys-er-gnp-3y-1p.sqlite[2/8] [=====30%                    ] nsys-er-gnp-3y-1p.sqlite[2/8] [=====31%                    ] nsys-er-gnp-3y-1p.sqlite[2/8] [=====32%                    ] nsys-er-gnp-3y-1p.sqlite[2/8] [======33%                   ] nsys-er-gnp-3y-1p.sqlite[2/8] [======34%                   ] nsys-er-gnp-3y-1p.sqlite[2/8] [======35%                   ] nsys-er-gnp-3y-1p.sqlite[2/8] [=======36%                  ] nsys-er-gnp-3y-1p.sqlite[2/8] [=======37%                  ] nsys-er-gnp-3y-1p.sqlite[2/8] [=======38%                  ] nsys-er-gnp-3y-1p.sqlite[2/8] [=======39%                  ] nsys-er-gnp-3y-1p.sqlite[2/8] [========40%                 ] nsys-er-gnp-3y-1p.sqlite[2/8] [========41%                 ] nsys-er-gnp-3y-1p.sqlite[2/8] [========42%                 ] nsys-er-gnp-3y-1p.sqlite[2/8] [=========43%                ] nsys-er-gnp-3y-1p.sqlite[2/8] [=========44%                ] nsys-er-gnp-3y-1p.sqlite[2/8] [=========45%                ] nsys-er-gnp-3y-1p.sqlite[2/8] [=========46%                ] nsys-er-gnp-3y-1p.sqlite[2/8] [==========47%               ] nsys-er-gnp-3y-1p.sqlite[2/8] [==========48%               ] nsys-er-gnp-3y-1p.sqlite[2/8] [==========49%               ] nsys-er-gnp-3y-1p.sqlite[2/8] [===========50%              ] nsys-er-gnp-3y-1p.sqlite[2/8] [===========51%              ] nsys-er-gnp-3y-1p.sqlite[2/8] [===========52%              ] nsys-er-gnp-3y-1p.sqlite[2/8] [===========53%              ] nsys-er-gnp-3y-1p.sqlite[2/8] [============54%             ] nsys-er-gnp-3y-1p.sqlite[2/8] [============55%             ] nsys-er-gnp-3y-1p.sqlite[2/8] [============56%             ] nsys-er-gnp-3y-1p.sqlite[2/8] [============57%             ] nsys-er-gnp-3y-1p.sqlite[2/8] [=============58%            ] nsys-er-gnp-3y-1p.sqlite[2/8] [=============59%            ] nsys-er-gnp-3y-1p.sqlite[2/8] [=============60%            ] nsys-er-gnp-3y-1p.sqlite[2/8] [==============61%           ] nsys-er-gnp-3y-1p.sqlite[2/8] [==============62%           ] nsys-er-gnp-3y-1p.sqlite[2/8] [==============63%           ] nsys-er-gnp-3y-1p.sqlite[2/8] [==============64%           ] nsys-er-gnp-3y-1p.sqlite[2/8] [===============65%          ] nsys-er-gnp-3y-1p.sqlite[2/8] [===============66%          ] nsys-er-gnp-3y-1p.sqlite[2/8] [===============67%          ] nsys-er-gnp-3y-1p.sqlite[2/8] [================68%         ] nsys-er-gnp-3y-1p.sqlite[2/8] [================69%         ] nsys-er-gnp-3y-1p.sqlite[2/8] [================70%         ] nsys-er-gnp-3y-1p.sqlite[2/8] [================71%         ] nsys-er-gnp-3y-1p.sqlite[2/8] [=================72%        ] nsys-er-gnp-3y-1p.sqlite[2/8] [=================73%        ] nsys-er-gnp-3y-1p.sqlite[2/8] [=================74%        ] nsys-er-gnp-3y-1p.sqlite[2/8] [==================75%       ] nsys-er-gnp-3y-1p.sqlite[2/8] [==================76%       ] nsys-er-gnp-3y-1p.sqlite[2/8] [==================77%       ] nsys-er-gnp-3y-1p.sqlite[2/8] [==================78%       ] nsys-er-gnp-3y-1p.sqlite[2/8] [===================79%      ] nsys-er-gnp-3y-1p.sqlite[2/8] [===================80%      ] nsys-er-gnp-3y-1p.sqlite[2/8] [===================81%      ] nsys-er-gnp-3y-1p.sqlite[2/8] [===================82%      ] nsys-er-gnp-3y-1p.sqlite[2/8] [====================83%     ] nsys-er-gnp-3y-1p.sqlite[2/8] [====================84%     ] nsys-er-gnp-3y-1p.sqlite[2/8] [====================85%     ] nsys-er-gnp-3y-1p.sqlite[2/8] [=====================86%    ] nsys-er-gnp-3y-1p.sqlite[2/8] [=====================87%    ] nsys-er-gnp-3y-1p.sqlite[2/8] [=====================88%    ] nsys-er-gnp-3y-1p.sqlite[2/8] [=====================89%    ] nsys-er-gnp-3y-1p.sqlite[2/8] [======================90%   ] nsys-er-gnp-3y-1p.sqlite[2/8] [======================91%   ] nsys-er-gnp-3y-1p.sqlite[2/8] [======================92%   ] nsys-er-gnp-3y-1p.sqlite[2/8] [=======================93%  ] nsys-er-gnp-3y-1p.sqlite[2/8] [=======================94%  ] nsys-er-gnp-3y-1p.sqlite[2/8] [=======================95%  ] nsys-er-gnp-3y-1p.sqlite[2/8] [=======================96%  ] nsys-er-gnp-3y-1p.sqlite[2/8] [========================97% ] nsys-er-gnp-3y-1p.sqlite[2/8] [========================98% ] nsys-er-gnp-3y-1p.sqlite[2/8] [========================99% ] nsys-er-gnp-3y-1p.sqlite[2/8] [========================100%] nsys-er-gnp-3y-1p.sqlite[2/8] [========================100%] nsys-er-gnp-3y-1p.sqlite
-SKIPPED: /home/jmukher/workspace/uiuc/citation_abm/erprofile/nsys-er-gnp-3y-1p.sqlite does not contain NV Tools Extension (NVTX) data.
-[3/8] Executing 'nvtx_sum' stats report
-[4/8] Executing 'osrt_sum' stats report
-
- Time (%)  Total Time (ns)  Num Calls    Avg (ns)      Med (ns)    Min (ns)   Max (ns)    StdDev (ns)            Name         
- --------  ---------------  ---------  ------------  ------------  --------  -----------  ------------  ----------------------
-     96.8    7,382,570,040        385  19,175,506.6  10,060,119.0     1,155  105,552,544  27,342,034.6  poll                  
-      2.4      179,395,412        700     256,279.2      19,129.5     1,003   27,441,407   1,360,135.0  ioctl                 
-      0.4       34,017,141         30   1,133,904.7   1,035,103.0   344,595    6,604,613   1,104,345.2  writev                
-      0.1       10,522,843         55     191,324.4     169,654.0   137,112      415,710      63,098.2  pthread_create        
-      0.1       10,355,581      5,878       1,761.8       1,441.0     1,000    1,852,403      24,143.5  read                  
-      0.1        9,377,073          9   1,041,897.0     138,406.0    70,214    3,354,616   1,439,780.7  fopen64               
-      0.0        1,265,724         30      42,190.8       6,264.0     3,290      809,352     146,383.7  mmap64                
-      0.0          712,011         11      64,728.3      25,076.0    19,323      454,561     129,376.1  sem_timedwait         
-      0.0          644,908         13      49,608.3       4,351.0     1,051      260,082      90,599.2  fclose                
-      0.0          316,277         42       7,530.4       4,015.5     1,262       50,209      10,164.7  fflush                
-      0.0          286,886         22      13,040.3       2,890.0     1,472      114,143      25,128.1  write                 
-      0.0          215,951          3      71,983.7      49,218.0    22,649      144,084      63,838.2  pthread_rwlock_wrlock 
-      0.0          202,243         16      12,640.2       8,763.0     3,261       54,917      13,256.4  mmap                  
-      0.0          179,466         60       2,991.1       2,282.5     1,015        9,826       2,089.6  open64                
-      0.0          155,335         41       3,788.7       1,808.0     1,306       17,740       3,982.5  fopen                 
-      0.0           71,824          1      71,824.0      71,824.0    71,824       71,824           0.0  pthread_cond_wait     
-      0.0           69,819          3      23,273.0      26,344.0     2,815       40,660      19,108.5  pthread_rwlock_rdlock 
-      0.0           34,588          1      34,588.0      34,588.0    34,588       34,588           0.0  fgets                 
-      0.0           24,193          4       6,048.3       5,548.5     4,308        8,788       1,931.8  munmap                
-      0.0           20,662          6       3,443.7       3,088.0     1,201        6,564       2,014.0  open                  
-      0.0           17,447          3       5,815.7       7,504.0     2,338        7,605       3,012.2  pipe2                 
-      0.0           15,814          5       3,162.8       2,447.0     1,953        6,074       1,720.9  fwrite                
-      0.0           12,905          2       6,452.5       6,452.5     4,595        8,310       2,626.9  socket                
-      0.0           11,003          1      11,003.0      11,003.0    11,003       11,003           0.0  connect               
-      0.0            2,354          1       2,354.0       2,354.0     2,354        2,354           0.0  bind                  
-      0.0            2,267          1       2,267.0       2,267.0     2,267        2,267           0.0  pthread_cond_broadcast
-      0.0            2,052          1       2,052.0       2,052.0     2,052        2,052           0.0  pthread_mutex_trylock 
-      0.0            1,102          1       1,102.0       1,102.0     1,102        1,102           0.0  fcntl                 
-
-[5/8] Executing 'cuda_api_sum' stats report
-
- Time (%)  Total Time (ns)  Num Calls    Avg (ns)      Med (ns)     Min (ns)    Max (ns)    StdDev (ns)            Name         
- --------  ---------------  ---------  ------------  ------------  ----------  -----------  ------------  ----------------------
-     52.2      475,464,107     59,593       7,978.5      10,277.0       2,301    4,475,460      18,634.3  cudaMemcpy            
-     14.8      135,282,999          3  45,094,333.0      35,219.0      23,283  135,224,497  78,055,011.9  cudaStreamCreate      
-     12.8      116,816,691     29,804       3,919.5       3,831.0       3,049      217,032       2,876.1  cudaFree              
-      9.8       89,257,782          3  29,752,594.0  29,753,972.0  29,454,970   30,048,840     296,937.4  cudaStreamSynchronize 
-      8.9       81,148,986     29,804       2,722.8       2,466.0       1,641      548,674       4,338.2  cudaMalloc            
-      1.5       13,418,747          3   4,472,915.7      16,021.0      13,057   13,389,669   7,722,135.0  cudaLaunchKernel      
-      0.0           87,514          3      29,171.3      28,798.0      20,733       37,983       8,631.1  cudaMemcpyAsync       
-      0.0           68,438          3      22,812.7      19,776.0      18,364       30,298       6,520.8  cudaMemset            
-      0.0           33,868          3      11,289.3       8,737.0       7,905       17,226       5,158.1  cudaStreamDestroy     
-      0.0              947          1         947.0         947.0         947          947           0.0  cuModuleGetLoadingMode
-
-[6/8] Executing 'cuda_gpu_kern_sum' stats report
-
- Time (%)  Total Time (ns)  Instances    Avg (ns)      Med (ns)     Min (ns)    Max (ns)   StdDev (ns)                                                  Name                                                
- --------  ---------------  ---------  ------------  ------------  ----------  ----------  -----------  ----------------------------------------------------------------------------------------------------
-    100.0       89,256,845          3  29,752,281.7  29,750,681.0  29,459,609  30,046,555    293,476.3  kernelErdosRenyiGNP(int, int, int, ABM *, curandStateXORWOW *, unsigned long long, int *, device_ve…
-
-[7/8] Executing 'cuda_gpu_mem_time_sum' stats report
-
- Time (%)  Total Time (ns)  Count   Avg (ns)  Med (ns)  Min (ns)  Max (ns)  StdDev (ns)           Operation          
- --------  ---------------  ------  --------  --------  --------  --------  -----------  ----------------------------
-     74.7       68,226,761  29,798   2,289.6   2,272.0     1,888     5,760         69.4  [CUDA memcpy Device-to-Host]
-     25.3       23,149,744  29,798     776.9     768.0       703     5,600        138.7  [CUDA memcpy Host-to-Device]
-      0.0            7,872       3   2,624.0   2,624.0     2,560     2,688         64.0  [CUDA memset]               
-
-[8/8] Executing 'cuda_gpu_mem_size_sum' stats report
-
- Total (MB)  Count   Avg (MB)  Med (MB)  Min (MB)  Max (MB)  StdDev (MB)           Operation          
- ----------  ------  --------  --------  --------  --------  -----------  ----------------------------
-     11.798       3     3.933     3.932     3.854     4.012        0.079  [CUDA memset]               
-      6.918  29,798     0.000     0.000     0.000     0.160        0.002  [CUDA memcpy Device-to-Host]
-      0.655  29,798     0.000     0.000     0.000     0.160        0.002  [CUDA memcpy Host-to-Device]
-
-Generated:
-    /home/jmukher/workspace/uiuc/citation_abm/erprofile/nsys-er-gnp-3y-1p.nsys-rep
-    /home/jmukher/workspace/uiuc/citation_abm/erprofile/nsys-er-gnp-3y-1p.sqlite
-SUCCESS: 4.0M → erprofile/nsys-er-gnp-3y-1p.nsys-rep
-Running growth rate 3% for 3 years.
-Profile output: erprofile/nsys-er-gnp-3y-3p.nsys-rep
-CMD: nsys profile --trace=nvtx,cuda,osrt --gpu-metrics-device=all --gpu-metrics-frequency=10000 --stats=true --force-overwrite=true -o erprofile/nsys-er-gnp-3y-3p ./abm --model er-gnp --er-probability 0.0001 --edgelist sj_edgelist --nodelist sj_nodelist --out-degree-bag tcen_at_least_five --recency-probabilities sj_recprob --alpha 0.5 --preferential-weight 0.33 --recency-weight 0.33 --fitness-weight 0.33 --growth-rate .03 --fully-random-citations 0.05 --num-cycles 3 --same-year-proportion 0.12 --output-file ./output/3y/gpu-opt-static-output-3y-3p.edgelist --auxiliary-information-file ./output/3y/gpu-opt-static-output-3y-3p.aux --log-file ./output/3y/nsys-gpu-opt-static-er-gnp-3y-3p.log --num-processors 14 --log-level 1
-
-Start ABM....
-parse_args....
-edgelist....
-num-cycles....
-output-file....
-log-file = ./output/3y/nsys-gpu-opt-static-er-gnp-3y-3p.log....
-num-processors = 14....
-log-level = 0
-er_probability = 0.000100
-model = er-gnp
-Init ABM....
-Exec ABM....
-Start execute.Init Graph
-Inside  Graph ParseNodelist.....
-Populating the continuous_node mappings..
-Elapsed time: ParseNodelist : 1097 millisecs = 1 seconds
-
-Inside Graph ParseEdgelist.....
-Elapsed time: ParseEdgelist : 1652 millisecs = 1 seconds
-
-In updateNodeInDegreeOutDegree: Update Outdegree first:
-In updateNodeInDegreeOutDegree: Update Indegree:
-Total (initial):: In-Degree = 899050, Out-Degree = 899050
-Elapsed time: 0-1 : 1 seconds
-Elapsed time: 1-2 : 1 seconds
-Elapsed time: 2-3 : 0 seconds
-
-Initialized Graph. Let us update the indegree and out-degrees... 
-Graph init done...
-calling InitializeFitness...
-final graph size is 537112 from initial_graph_size of 491532.
- populated out degree array.
- Entering loop for year = 1983
-Elapsed time: 70-71: total : 0.264 secs, iter cost : 0 seconds
-
-Elapsed time: 71-72: total : 0.34 secs, iter cost : 0 seconds
-
-Elapsed time: 72-73: total : 22 millisecs, iter cost : 22 mseconds
-
-num_new_nodes = 14746, current_graph_size = 491532, growth rate = 0.030000 
-Elapsed time: 73-74: total : 0 millisecs, iter cost : 0 mseconds
-
-Elapsed time: 74-75: total : 14 millisecs, iter cost : 14 mseconds
-
-all new nodes initialized with years and mapped. FillSameYearSourceNodes with new_nodes_vec.size() = 14746
-checking same_year_source_nodes size.
-Elapsed time: 75-76: total : 0 millisecs, iter cost : 0 mseconds
-
-new_nodes_vec.size() b4 : 14746
-
-updated  updateGraphAttributesGeneratorNode .... 
-Elapsed time: 76-77: total : 37 millisecs, iter cost : 37 mseconds
-
-continuous_node_mapping.size() b5 : 506278, reverse_continuous_node_mapping size = 506278
-
-[ER Model] Building connections using Erdos-Renyi
-
-[ER Model] Processing 14746 new nodes for year 1983 (graph size: 491532)
-
-ALLOCATE DEVICE MEMORY
- Allocate RNG states.
- Estimate capacity based on ER model.
-create_thread_vectors_bulk<int2>(num_new_nodes, per_thread_capacities.
-Instead of batch - process all new nodes in parallel.
-COLLECT RESULTS
-[ER Model] Generated 724781 edges
-
-Year 1983: 14746 new nodes, 724781 new edges
-
-Elapsed time: 78-781 : total : 1.039 secs, this iter cost : 1.039 seconds
-
-Elapsed time: 78-79 : total : 1.26 secs, this iter cost : 1.26 seconds
-
-updateNodeInDegreeOutDegree(year=1983): updated 14746 out-degrees, 393944 in-degrees
-Elapsed time: 79-81 : total : 0.214 secs, this iter cost : 0 seconds
-
-Elapsed time: 79-80 : total : 0.14 secs, this iter cost : 0 seconds
-
-Elapsed time: 80-81 : total : 0.073 secs, this iter cost : 0 seconds
-
-Elapsed time: 70-81 : total : 2.154 secs, this iter cost : 2 seconds
-
- Entering loop for year = 1984
-Elapsed time: 70-71: total : 0.584 secs, iter cost : 0 seconds
-
-Elapsed time: 71-72: total : 0.664 secs, iter cost : 0 seconds
-
-Elapsed time: 72-73: total : 41 millisecs, iter cost : 19 mseconds
-
-num_new_nodes = 15189, current_graph_size = 506278, growth rate = 0.030000 
-Elapsed time: 73-74: total : 0 millisecs, iter cost : 0 mseconds
-
-Elapsed time: 74-75: total : 25 millisecs, iter cost : 11 mseconds
-
-all new nodes initialized with years and mapped. FillSameYearSourceNodes with new_nodes_vec.size() = 15189
-checking same_year_source_nodes size.
-Elapsed time: 75-76: total : 0 millisecs, iter cost : 0 mseconds
-
-new_nodes_vec.size() b4 : 15189
-
-updated  updateGraphAttributesGeneratorNode .... 
-Elapsed time: 76-77: total : 74 millisecs, iter cost : 37 mseconds
-
-continuous_node_mapping.size() b5 : 521467, reverse_continuous_node_mapping size = 521467
-
-[ER Model] Building connections using Erdos-Renyi
-
-[ER Model] Processing 15189 new nodes for year 1984 (graph size: 506278)
-
-ALLOCATE DEVICE MEMORY
- Allocate RNG states.
- Estimate capacity based on ER model.
-create_thread_vectors_bulk<int2>(num_new_nodes, per_thread_capacities.
-Instead of batch - process all new nodes in parallel.
-COLLECT RESULTS
-[ER Model] Generated 768468 edges
-
-Year 1984: 15189 new nodes, 768468 new edges
-
-Elapsed time: 78-781 : total : 1.79 secs, this iter cost : 0.751 seconds
-
-Elapsed time: 78-79 : total : 2.259 secs, this iter cost : 0.999 seconds
-
-updateNodeInDegreeOutDegree(year=1984): updated 15189 out-degrees, 410415 in-degrees
-Elapsed time: 79-81 : total : 0.473 secs, this iter cost : 0 seconds
-
-Elapsed time: 79-80 : total : 0.322 secs, this iter cost : 0 seconds
-
-Elapsed time: 80-81 : total : 0.149 secs, this iter cost : 0 seconds
-
-Elapsed time: 70-81 : total : 4.126 secs, this iter cost : 1 seconds
-
- Entering loop for year = 1985
-Elapsed time: 70-71: total : 0.866 secs, iter cost : 0 seconds
-
-Elapsed time: 71-72: total : 1.029 secs, iter cost : 0 seconds
-
-Elapsed time: 72-73: total : 61 millisecs, iter cost : 20 mseconds
-
-num_new_nodes = 15645, current_graph_size = 521467, growth rate = 0.030000 
-Elapsed time: 73-74: total : 0 millisecs, iter cost : 0 mseconds
-
-Elapsed time: 74-75: total : 37 millisecs, iter cost : 12 mseconds
-
-all new nodes initialized with years and mapped. FillSameYearSourceNodes with new_nodes_vec.size() = 15645
-checking same_year_source_nodes size.
-Elapsed time: 75-76: total : 0 millisecs, iter cost : 0 mseconds
-
-new_nodes_vec.size() b4 : 15645
-
-updated  updateGraphAttributesGeneratorNode .... 
-Elapsed time: 76-77: total : 114 millisecs, iter cost : 40 mseconds
-
-continuous_node_mapping.size() b5 : 537112, reverse_continuous_node_mapping size = 537112
-
-[ER Model] Building connections using Erdos-Renyi
-
-[ER Model] Processing 15645 new nodes for year 1985 (graph size: 521467)
-
-ALLOCATE DEVICE MEMORY
- Allocate RNG states.
- Estimate capacity based on ER model.
-create_thread_vectors_bulk<int2>(num_new_nodes, per_thread_capacities.
-Instead of batch - process all new nodes in parallel.
-COLLECT RESULTS
-[ER Model] Generated 814764 edges
-
-Year 1985: 15645 new nodes, 814764 new edges
-
-Elapsed time: 78-781 : total : 2.586 secs, this iter cost : 0.796 seconds
-
-Elapsed time: 78-79 : total : 3.338 secs, this iter cost : 1.079 seconds
-
-updateNodeInDegreeOutDegree(year=1985): updated 15645 out-degrees, 428058 in-degrees
-Elapsed time: 79-81 : total : 0.726 secs, this iter cost : 0 seconds
-
-Elapsed time: 79-80 : total : 0.494 secs, this iter cost : 0 seconds
-
-Elapsed time: 80-81 : total : 0.229 secs, this iter cost : 0 seconds
-
-Elapsed time: 70-81 : total : 6.18 secs, this iter cost : 2 seconds
-
-Elapsed time: 7-8 :  6 seconds
-
-compute done:: graph size = 537112
-Elapsed time: 8-8.1 :  0 seconds
-
-Writing Graph to file: ./output/3y/gpu-opt-static-output-3y-3p.edgelist
-
-Elapsed time: 8.1-9 :  0 seconds
-
-Elapsed time: 9-10 :  0 seconds
-
- graph size = 537112
-WriteAttributes: graph size = 537112
-
-Elapsed time: 0-1 : 3 seconds
-
-Elapsed time: 1-4 : 0 seconds
-
-Elapsed time: 4-7 : 0 seconds
-
-Elapsed time: 70-71: total : 0.866 seconds.
-
-Elapsed time: 71-72: total : 1.029 seconds.
-
-Elapsed time: 72-73: total : 0.061 seconds.
-
-Elapsed time: 73-74: total : 0 seconds.
-
-Elapsed time: 74-75: total : 0.037 seconds.
-
-Elapsed time: 75-76: total : 0 seconds.
-
-Elapsed time: 76-77: total : 0.114 seconds.
-
-Elapsed time: 77-79: total : 3.338 seconds.
-
-Elapsed time: 79-81 : total : 0.726 seconds.
-
-Elapsed time: 79-80 : total : 0.494 seconds.
-
-Elapsed time: 80-81 : total : 0.229 seconds.
-
-Elapsed time: 70-81 : total : 6.18 seconds.
-
-Elapsed time: 7-8 : 6 seconds
-
-Elapsed time: 8-8.1 :  0 seconds
-
-Elapsed time: 8.1-9 :  0 seconds
-
-Elapsed time: 9-10 : 0 seconds
-
-Elapsed time: 11-12 : 0 seconds
-
-Elapsed time: 10-12 : 0 seconds
-
-Elapsed time: 0-7 : 3 seconds
-
-Elapsed time: 7-8 : 6 seconds
-
-Elapsed time: 8-12 : 1 seconds
-
-E2E Time for num_cycles = 3 with growth_rate = 3 % = 13 seconds.
-GPU 0: General Metrics for NVIDIA GH100 (any frequency)
-Generating '/tmp/nsys-report-991e.qdstrm'
-[1/8] [0%                          ] nsys-er-gnp-3y-3p.nsys-rep[1/8] [0%                          ] nsys-er-gnp-3y-3p.nsys-rep[1/8] [5%                          ] nsys-er-gnp-3y-3p.nsys-rep[1/8] [7%                          ] nsys-er-gnp-3y-3p.nsys-rep[1/8] [6%                          ] nsys-er-gnp-3y-3p.nsys-rep[1/8] [7%                          ] nsys-er-gnp-3y-3p.nsys-rep[1/8] [6%                          ] nsys-er-gnp-3y-3p.nsys-rep[1/8] [7%                          ] nsys-er-gnp-3y-3p.nsys-rep[1/8] [6%                          ] nsys-er-gnp-3y-3p.nsys-rep[1/8] [7%                          ] nsys-er-gnp-3y-3p.nsys-rep[1/8] [8%                          ] nsys-er-gnp-3y-3p.nsys-rep[1/8] [7%                          ] nsys-er-gnp-3y-3p.nsys-rep[1/8] [8%                          ] nsys-er-gnp-3y-3p.nsys-rep[1/8] [9%                          ] nsys-er-gnp-3y-3p.nsys-rep[1/8] [8%                          ] nsys-er-gnp-3y-3p.nsys-rep[1/8] [9%                          ] nsys-er-gnp-3y-3p.nsys-rep[1/8] [8%                          ] nsys-er-gnp-3y-3p.nsys-rep[1/8] [9%                          ] nsys-er-gnp-3y-3p.nsys-rep[1/8] [10%                         ] nsys-er-gnp-3y-3p.nsys-rep[1/8] [9%                          ] nsys-er-gnp-3y-3p.nsys-rep[1/8] [10%                         ] nsys-er-gnp-3y-3p.nsys-rep[1/8] [9%                          ] nsys-er-gnp-3y-3p.nsys-rep[1/8] [10%                         ] nsys-er-gnp-3y-3p.nsys-rep[1/8] [11%                         ] nsys-er-gnp-3y-3p.nsys-rep[1/8] [12%                         ] nsys-er-gnp-3y-3p.nsys-rep[1/8] [13%                         ] nsys-er-gnp-3y-3p.nsys-rep[1/8] [14%                         ] nsys-er-gnp-3y-3p.nsys-rep[1/8] [=15%                        ] nsys-er-gnp-3y-3p.nsys-rep[1/8] [=16%                        ] nsys-er-gnp-3y-3p.nsys-rep[1/8] [=17%                        ] nsys-er-gnp-3y-3p.nsys-rep[1/8] [==18%                       ] nsys-er-gnp-3y-3p.nsys-rep[1/8] [==19%                       ] nsys-er-gnp-3y-3p.nsys-rep[1/8] [==21%                       ] nsys-er-gnp-3y-3p.nsys-rep[1/8] [===23%                      ] nsys-er-gnp-3y-3p.nsys-rep[1/8] [====25%                     ] nsys-er-gnp-3y-3p.nsys-rep[1/8] [====26%                     ] nsys-er-gnp-3y-3p.nsys-rep[1/8] [====28%                     ] nsys-er-gnp-3y-3p.nsys-rep[1/8] [=====30%                    ] nsys-er-gnp-3y-3p.nsys-rep[1/8] [=====32%                    ] nsys-er-gnp-3y-3p.nsys-rep[1/8] [======34%                   ] nsys-er-gnp-3y-3p.nsys-rep[1/8] [=======36%                  ] nsys-er-gnp-3y-3p.nsys-rep[1/8] [=======37%                  ] nsys-er-gnp-3y-3p.nsys-rep[1/8] [=======39%                  ] nsys-er-gnp-3y-3p.nsys-rep[1/8] [========41%                 ] nsys-er-gnp-3y-3p.nsys-rep[1/8] [=========43%                ] nsys-er-gnp-3y-3p.nsys-rep[1/8] [=========45%                ] nsys-er-gnp-3y-3p.nsys-rep[1/8] [==========47%               ] nsys-er-gnp-3y-3p.nsys-rep[1/8] [==========49%               ] nsys-er-gnp-3y-3p.nsys-rep[1/8] [===========50%              ] nsys-er-gnp-3y-3p.nsys-rep[1/8] [===========53%              ] nsys-er-gnp-3y-3p.nsys-rep[1/8] [============55%             ] nsys-er-gnp-3y-3p.nsys-rep[1/8] [============57%             ] nsys-er-gnp-3y-3p.nsys-rep[1/8] [=============59%            ] nsys-er-gnp-3y-3p.nsys-rep[1/8] [==============61%           ] nsys-er-gnp-3y-3p.nsys-rep[1/8] [==============63%           ] nsys-er-gnp-3y-3p.nsys-rep[1/8] [===============65%          ] nsys-er-gnp-3y-3p.nsys-rep[1/8] [===============67%          ] nsys-er-gnp-3y-3p.nsys-rep[1/8] [================69%         ] nsys-er-gnp-3y-3p.nsys-rep[1/8] [================71%         ] nsys-er-gnp-3y-3p.nsys-rep[1/8] [=================73%        ] nsys-er-gnp-3y-3p.nsys-rep[1/8] [==================75%       ] nsys-er-gnp-3y-3p.nsys-rep[1/8] [==================77%       ] nsys-er-gnp-3y-3p.nsys-rep[1/8] [========================100%] nsys-er-gnp-3y-3p.nsys-rep[1/8] [========================100%] nsys-er-gnp-3y-3p.nsys-rep
-[2/8] [0%                          ] nsys-er-gnp-3y-3p.sqlite[2/8] [1%                          ] nsys-er-gnp-3y-3p.sqlite[2/8] [2%                          ] nsys-er-gnp-3y-3p.sqlite[2/8] [3%                          ] nsys-er-gnp-3y-3p.sqlite[2/8] [4%                          ] nsys-er-gnp-3y-3p.sqlite[2/8] [5%                          ] nsys-er-gnp-3y-3p.sqlite[2/8] [6%                          ] nsys-er-gnp-3y-3p.sqlite[2/8] [7%                          ] nsys-er-gnp-3y-3p.sqlite[2/8] [8%                          ] nsys-er-gnp-3y-3p.sqlite[2/8] [9%                          ] nsys-er-gnp-3y-3p.sqlite[2/8] [10%                         ] nsys-er-gnp-3y-3p.sqlite[2/8] [11%                         ] nsys-er-gnp-3y-3p.sqlite[2/8] [12%                         ] nsys-er-gnp-3y-3p.sqlite[2/8] [13%                         ] nsys-er-gnp-3y-3p.sqlite[2/8] [14%                         ] nsys-er-gnp-3y-3p.sqlite[2/8] [=15%                        ] nsys-er-gnp-3y-3p.sqlite[2/8] [=16%                        ] nsys-er-gnp-3y-3p.sqlite[2/8] [=17%                        ] nsys-er-gnp-3y-3p.sqlite[2/8] [==18%                       ] nsys-er-gnp-3y-3p.sqlite[2/8] [==19%                       ] nsys-er-gnp-3y-3p.sqlite[2/8] [==20%                       ] nsys-er-gnp-3y-3p.sqlite[2/8] [==21%                       ] nsys-er-gnp-3y-3p.sqlite[2/8] [===22%                      ] nsys-er-gnp-3y-3p.sqlite[2/8] [===23%                      ] nsys-er-gnp-3y-3p.sqlite[2/8] [===24%                      ] nsys-er-gnp-3y-3p.sqlite[2/8] [====25%                     ] nsys-er-gnp-3y-3p.sqlite[2/8] [====26%                     ] nsys-er-gnp-3y-3p.sqlite[2/8] [====27%                     ] nsys-er-gnp-3y-3p.sqlite[2/8] [====28%                     ] nsys-er-gnp-3y-3p.sqlite[2/8] [=====29%                    ] nsys-er-gnp-3y-3p.sqlite[2/8] [=====30%                    ] nsys-er-gnp-3y-3p.sqlite[2/8] [=====31%                    ] nsys-er-gnp-3y-3p.sqlite[2/8] [=====32%                    ] nsys-er-gnp-3y-3p.sqlite[2/8] [======33%                   ] nsys-er-gnp-3y-3p.sqlite[2/8] [======34%                   ] nsys-er-gnp-3y-3p.sqlite[2/8] [======35%                   ] nsys-er-gnp-3y-3p.sqlite[2/8] [=======36%                  ] nsys-er-gnp-3y-3p.sqlite[2/8] [=======37%                  ] nsys-er-gnp-3y-3p.sqlite[2/8] [=======38%                  ] nsys-er-gnp-3y-3p.sqlite[2/8] [=======39%                  ] nsys-er-gnp-3y-3p.sqlite[2/8] [========40%                 ] nsys-er-gnp-3y-3p.sqlite[2/8] [========41%                 ] nsys-er-gnp-3y-3p.sqlite[2/8] [========42%                 ] nsys-er-gnp-3y-3p.sqlite[2/8] [=========43%                ] nsys-er-gnp-3y-3p.sqlite[2/8] [=========44%                ] nsys-er-gnp-3y-3p.sqlite[2/8] [=========45%                ] nsys-er-gnp-3y-3p.sqlite[2/8] [=========46%                ] nsys-er-gnp-3y-3p.sqlite[2/8] [==========47%               ] nsys-er-gnp-3y-3p.sqlite[2/8] [==========48%               ] nsys-er-gnp-3y-3p.sqlite[2/8] [==========49%               ] nsys-er-gnp-3y-3p.sqlite[2/8] [===========50%              ] nsys-er-gnp-3y-3p.sqlite[2/8] [===========51%              ] nsys-er-gnp-3y-3p.sqlite[2/8] [===========52%              ] nsys-er-gnp-3y-3p.sqlite[2/8] [===========53%              ] nsys-er-gnp-3y-3p.sqlite[2/8] [============54%             ] nsys-er-gnp-3y-3p.sqlite[2/8] [============55%             ] nsys-er-gnp-3y-3p.sqlite[2/8] [============56%             ] nsys-er-gnp-3y-3p.sqlite[2/8] [============57%             ] nsys-er-gnp-3y-3p.sqlite[2/8] [=============58%            ] nsys-er-gnp-3y-3p.sqlite[2/8] [=============59%            ] nsys-er-gnp-3y-3p.sqlite[2/8] [=============60%            ] nsys-er-gnp-3y-3p.sqlite[2/8] [==============61%           ] nsys-er-gnp-3y-3p.sqlite[2/8] [==============62%           ] nsys-er-gnp-3y-3p.sqlite[2/8] [==============63%           ] nsys-er-gnp-3y-3p.sqlite[2/8] [==============64%           ] nsys-er-gnp-3y-3p.sqlite[2/8] [===============65%          ] nsys-er-gnp-3y-3p.sqlite[2/8] [===============66%          ] nsys-er-gnp-3y-3p.sqlite[2/8] [===============67%          ] nsys-er-gnp-3y-3p.sqlite[2/8] [================68%         ] nsys-er-gnp-3y-3p.sqlite[2/8] [================69%         ] nsys-er-gnp-3y-3p.sqlite[2/8] [================70%         ] nsys-er-gnp-3y-3p.sqlite[2/8] [================71%         ] nsys-er-gnp-3y-3p.sqlite[2/8] [=================72%        ] nsys-er-gnp-3y-3p.sqlite[2/8] [=================73%        ] nsys-er-gnp-3y-3p.sqlite[2/8] [=================74%        ] nsys-er-gnp-3y-3p.sqlite[2/8] [==================75%       ] nsys-er-gnp-3y-3p.sqlite[2/8] [==================76%       ] nsys-er-gnp-3y-3p.sqlite[2/8] [==================77%       ] nsys-er-gnp-3y-3p.sqlite[2/8] [==================78%       ] nsys-er-gnp-3y-3p.sqlite[2/8] [===================79%      ] nsys-er-gnp-3y-3p.sqlite[2/8] [===================80%      ] nsys-er-gnp-3y-3p.sqlite[2/8] [===================81%      ] nsys-er-gnp-3y-3p.sqlite[2/8] [===================82%      ] nsys-er-gnp-3y-3p.sqlite[2/8] [====================83%     ] nsys-er-gnp-3y-3p.sqlite[2/8] [====================84%     ] nsys-er-gnp-3y-3p.sqlite[2/8] [====================85%     ] nsys-er-gnp-3y-3p.sqlite[2/8] [=====================86%    ] nsys-er-gnp-3y-3p.sqlite[2/8] [=====================87%    ] nsys-er-gnp-3y-3p.sqlite[2/8] [=====================88%    ] nsys-er-gnp-3y-3p.sqlite[2/8] [=====================89%    ] nsys-er-gnp-3y-3p.sqlite[2/8] [======================90%   ] nsys-er-gnp-3y-3p.sqlite[2/8] [======================91%   ] nsys-er-gnp-3y-3p.sqlite[2/8] [======================92%   ] nsys-er-gnp-3y-3p.sqlite[2/8] [=======================93%  ] nsys-er-gnp-3y-3p.sqlite[2/8] [=======================94%  ] nsys-er-gnp-3y-3p.sqlite[2/8] [=======================95%  ] nsys-er-gnp-3y-3p.sqlite[2/8] [=======================96%  ] nsys-er-gnp-3y-3p.sqlite[2/8] [========================97% ] nsys-er-gnp-3y-3p.sqlite[2/8] [========================98% ] nsys-er-gnp-3y-3p.sqlite[2/8] [========================99% ] nsys-er-gnp-3y-3p.sqlite[2/8] [========================100%] nsys-er-gnp-3y-3p.sqlite[2/8] [========================100%] nsys-er-gnp-3y-3p.sqlite
-SKIPPED: /home/jmukher/workspace/uiuc/citation_abm/erprofile/nsys-er-gnp-3y-3p.sqlite does not contain NV Tools Extension (NVTX) data.
-[3/8] Executing 'nvtx_sum' stats report
-[4/8] Executing 'osrt_sum' stats report
-
- Time (%)  Total Time (ns)  Num Calls    Avg (ns)      Med (ns)    Min (ns)   Max (ns)    StdDev (ns)            Name         
- --------  ---------------  ---------  ------------  ------------  --------  -----------  ------------  ----------------------
-     98.0   12,835,445,073        657  19,536,446.1  10,060,074.0     1,967  100,548,055  27,667,646.3  poll                  
-      1.3      172,625,147        817     211,291.5      21,645.0     1,008   27,886,918   1,165,289.9  ioctl                 
-      0.4       53,403,626         30   1,780,120.9   1,115,765.0   365,087   16,744,722   3,033,832.2  writev                
-      0.1       11,697,558         55     212,682.9     198,144.0   139,599      445,554      63,275.8  pthread_create        
-      0.1       11,263,443      5,970       1,886.7       1,554.0     1,007    1,854,660      23,985.0  read                  
-      0.1        9,507,438          9   1,056,382.0     145,215.0    57,367    4,031,599   1,558,262.3  fopen64               
-      0.0        1,732,673         16     108,292.1      31,226.0    23,085      522,067     146,209.6  pthread_rwlock_wrlock 
-      0.0        1,321,074         30      44,035.8       7,094.0     3,538      818,633     147,978.1  mmap64                
-      0.0          755,638         11      68,694.4      28,713.0    19,513      458,041     129,395.0  sem_timedwait         
-      0.0          638,137         13      49,087.5       4,233.0     1,035      250,503      88,514.7  fclose                
-      0.0          382,217         15      25,481.1      26,880.0     7,404       46,660      11,485.0  pthread_rwlock_rdlock 
-      0.0          307,892         22      13,995.1       2,996.0     1,590      104,763      24,242.6  write                 
-      0.0          266,438         44       6,055.4       3,885.5     1,011       46,431       9,043.8  fflush                
-      0.0          191,215         17      11,247.9       6,940.0     3,221       48,362      11,207.2  mmap                  
-      0.0          172,490         41       4,207.1       1,888.0     1,228       24,396       5,026.6  fopen                 
-      0.0          165,895         55       3,016.3       2,138.0     1,053       14,300       2,358.8  open64                
-      0.0           86,844          1      86,844.0      86,844.0    86,844       86,844           0.0  pthread_cond_wait     
-      0.0           39,503         15       2,633.5       1,656.0     1,009       13,411       3,103.7  fwrite                
-      0.0           35,764          1      35,764.0      35,764.0    35,764       35,764           0.0  fgets                 
-      0.0           27,629          5       5,525.8       5,650.0     2,830        9,278       2,449.3  munmap                
-      0.0           23,377          6       3,896.2       4,209.5     1,187        6,318       2,099.2  open                  
-      0.0           15,534          2       7,767.0       7,767.0     4,878       10,656       4,085.7  socket                
-      0.0           15,479          3       5,159.7       6,257.0     2,364        6,858       2,439.7  pipe2                 
-      0.0           12,516          1      12,516.0      12,516.0    12,516       12,516           0.0  connect               
-      0.0            3,296          1       3,296.0       3,296.0     3,296        3,296           0.0  pthread_cond_broadcast
-      0.0            2,337          2       1,168.5       1,168.5     1,013        1,324         219.9  fcntl                 
-      0.0            1,402          1       1,402.0       1,402.0     1,402        1,402           0.0  bind                  
-      0.0            1,039          1       1,039.0       1,039.0     1,039        1,039           0.0  listen                
-
-[5/8] Executing 'cuda_api_sum' stats report
-
- Time (%)  Total Time (ns)  Num Calls    Avg (ns)      Med (ns)     Min (ns)    Max (ns)    StdDev (ns)            Name         
- --------  ---------------  ---------  ------------  ------------  ----------  -----------  ------------  ----------------------
-     62.2    1,472,399,872    182,329       8,075.5      10,385.0       2,283      554,381       4,062.8  cudaMemcpy            
-     16.0      378,165,927     91,172       4,147.8       4,063.0       3,160      447,971       2,902.6  cudaFree              
-     11.5      271,471,811     91,172       2,977.6       2,667.0       1,706    2,350,098       8,930.8  cudaMalloc            
-      5.9      139,377,209          3  46,459,069.7      71,653.0      45,822  139,259,734  80,367,733.8  cudaStreamCreate      
-      3.9       91,126,923          3  30,375,641.0  30,375,231.0  29,487,031   31,264,661     888,815.1  cudaStreamSynchronize 
-      0.6       13,779,082          3   4,593,027.3      30,925.0      20,167   13,727,990   7,911,111.6  cudaLaunchKernel      
-      0.0          145,144          3      48,381.3      56,383.0      27,404       61,357      18,336.3  cudaMemcpyAsync       
-      0.0          111,721          3      37,240.3      42,355.0      20,728       48,638      14,641.1  cudaMemset            
-      0.0           42,197          3      14,065.7      13,231.0      11,979       16,987       2,606.2  cudaStreamDestroy     
-      0.0            1,223          1       1,223.0       1,223.0       1,223        1,223           0.0  cuModuleGetLoadingMode
-
-[6/8] Executing 'cuda_gpu_kern_sum' stats report
-
- Time (%)  Total Time (ns)  Instances    Avg (ns)      Med (ns)     Min (ns)    Max (ns)   StdDev (ns)                                                  Name                                                
- --------  ---------------  ---------  ------------  ------------  ----------  ----------  -----------  ----------------------------------------------------------------------------------------------------
-    100.0       91,128,518          3  30,376,172.7  30,373,848.0  29,490,389  31,264,281    886,948.3  kernelErdosRenyiGNP(int, int, int, ABM *, curandStateXORWOW *, unsigned long long, int *, device_ve…
-
-[7/8] Executing 'cuda_gpu_mem_time_sum' stats report
-
- Time (%)  Total Time (ns)  Count   Avg (ns)  Med (ns)  Min (ns)  Max (ns)  StdDev (ns)           Operation          
- --------  ---------------  ------  --------  --------  --------  --------  -----------  ----------------------------
-     74.7      208,830,626  91,166   2,290.7   2,272.0     1,888    12,511         98.9  [CUDA memcpy Device-to-Host]
-     25.3       70,601,860  91,166     774.4     768.0       703    11,807        139.4  [CUDA memcpy Host-to-Device]
-      0.0           14,592       3   4,864.0   4,864.0     4,800     4,928         64.0  [CUDA memset]               
-
-[8/8] Executing 'cuda_gpu_mem_size_sum' stats report
-
- Total (MB)  Count   Avg (MB)  Med (MB)  Min (MB)  Max (MB)  StdDev (MB)           Operation          
- ----------  ------  --------  --------  --------  --------  -----------  ----------------------------
-     36.850       3    12.283    12.273    11.561    13.017        0.728  [CUDA memset]               
-     21.564  91,166     0.000     0.000     0.000     0.501        0.004  [CUDA memcpy Device-to-Host]
-      2.006  91,166     0.000     0.000     0.000     0.501        0.003  [CUDA memcpy Host-to-Device]
-
-Generated:
-    /home/jmukher/workspace/uiuc/citation_abm/erprofile/nsys-er-gnp-3y-3p.nsys-rep
-    /home/jmukher/workspace/uiuc/citation_abm/erprofile/nsys-er-gnp-3y-3p.sqlite
-SUCCESS: 8.0M → erprofile/nsys-er-gnp-3y-3p.nsys-rep
-Running growth rate 5% for 3 years.
-Profile output: erprofile/nsys-er-gnp-3y-5p.nsys-rep
-CMD: nsys profile --trace=nvtx,cuda,osrt --gpu-metrics-device=all --gpu-metrics-frequency=10000 --stats=true --force-overwrite=true -o erprofile/nsys-er-gnp-3y-5p ./abm --model er-gnp --er-probability 0.0001 --edgelist sj_edgelist --nodelist sj_nodelist --out-degree-bag tcen_at_least_five --recency-probabilities sj_recprob --alpha 0.5 --preferential-weight 0.33 --recency-weight 0.33 --fitness-weight 0.33 --growth-rate .05 --fully-random-citations 0.05 --num-cycles 3 --same-year-proportion 0.12 --output-file ./output/3y/gpu-opt-static-output-3y-5p.edgelist --auxiliary-information-file ./output/3y/gpu-opt-static-output-3y-5p.aux --log-file ./output/3y/nsys-gpu-opt-static-er-gnp-3y-5p.log --num-processors 14 --log-level 1
-
-Start ABM....
-parse_args....
-edgelist....
-num-cycles....
-output-file....
-log-file = ./output/3y/nsys-gpu-opt-static-er-gnp-3y-5p.log....
-num-processors = 14....
-log-level = 0
-er_probability = 0.000100
-model = er-gnp
-Init ABM....
-Exec ABM....
-Start execute.Init Graph
-Inside  Graph ParseNodelist.....
-Populating the continuous_node mappings..
-Elapsed time: ParseNodelist : 1090 millisecs = 1 seconds
-
-Inside Graph ParseEdgelist.....
-Elapsed time: ParseEdgelist : 1622 millisecs = 1 seconds
-
-In updateNodeInDegreeOutDegree: Update Outdegree first:
-In updateNodeInDegreeOutDegree: Update Indegree:
-Total (initial):: In-Degree = 899050, Out-Degree = 899050
-Elapsed time: 0-1 : 1 seconds
-Elapsed time: 1-2 : 1 seconds
-Elapsed time: 2-3 : 0 seconds
-
-Initialized Graph. Let us update the indegree and out-degrees... 
-Graph init done...
-calling InitializeFitness...
-final graph size is 569011 from initial_graph_size of 491532.
- populated out degree array.
- Entering loop for year = 1983
-Elapsed time: 70-71: total : 0.264 secs, iter cost : 0 seconds
-
-Elapsed time: 71-72: total : 0.332 secs, iter cost : 0 seconds
-
-Elapsed time: 72-73: total : 26 millisecs, iter cost : 26 mseconds
-
-num_new_nodes = 24577, current_graph_size = 491532, growth rate = 0.050000 
-Elapsed time: 73-74: total : 0 millisecs, iter cost : 0 mseconds
-
-Elapsed time: 74-75: total : 21 millisecs, iter cost : 21 mseconds
-
-all new nodes initialized with years and mapped. FillSameYearSourceNodes with new_nodes_vec.size() = 24577
-checking same_year_source_nodes size.
-Elapsed time: 75-76: total : 0 millisecs, iter cost : 0 mseconds
-
-new_nodes_vec.size() b4 : 24577
-
-updated  updateGraphAttributesGeneratorNode .... 
-Elapsed time: 76-77: total : 61 millisecs, iter cost : 61 mseconds
-
-continuous_node_mapping.size() b5 : 516109, reverse_continuous_node_mapping size = 516109
-
-[ER Model] Building connections using Erdos-Renyi
-
-[ER Model] Processing 24577 new nodes for year 1983 (graph size: 491532)
-
-ALLOCATE DEVICE MEMORY
- Allocate RNG states.
- Estimate capacity based on ER model.
-create_thread_vectors_bulk<int2>(num_new_nodes, per_thread_capacities.
-Instead of batch - process all new nodes in parallel.
-COLLECT RESULTS
-[ER Model] Generated 1207804 edges
-
-Year 1983: 24577 new nodes, 1207804 new edges
-
-Elapsed time: 78-781 : total : 1.531 secs, this iter cost : 1.531 seconds
-
-Elapsed time: 78-79 : total : 1.889 secs, this iter cost : 1.889 seconds
-
-updateNodeInDegreeOutDegree(year=1983): updated 24577 out-degrees, 473971 in-degrees
-Elapsed time: 79-81 : total : 0.308 secs, this iter cost : 0 seconds
-
-Elapsed time: 79-80 : total : 0.183 secs, this iter cost : 0 seconds
-
-Elapsed time: 80-81 : total : 0.124 secs, this iter cost : 0 seconds
-
-Elapsed time: 70-81 : total : 2.904 secs, this iter cost : 2 seconds
-
- Entering loop for year = 1984
-Elapsed time: 70-71: total : 0.539 secs, iter cost : 0 seconds
-
-Elapsed time: 71-72: total : 0.674 secs, iter cost : 0 seconds
-
-Elapsed time: 72-73: total : 68 millisecs, iter cost : 42 mseconds
-
-num_new_nodes = 25806, current_graph_size = 516109, growth rate = 0.050000 
-Elapsed time: 73-74: total : 0 millisecs, iter cost : 0 mseconds
-
-Elapsed time: 74-75: total : 43 millisecs, iter cost : 22 mseconds
-
-all new nodes initialized with years and mapped. FillSameYearSourceNodes with new_nodes_vec.size() = 25806
-checking same_year_source_nodes size.
-Elapsed time: 75-76: total : 0 millisecs, iter cost : 0 mseconds
-
-new_nodes_vec.size() b4 : 25806
-
-updated  updateGraphAttributesGeneratorNode .... 
-Elapsed time: 76-77: total : 125 millisecs, iter cost : 64 mseconds
-
-continuous_node_mapping.size() b5 : 541915, reverse_continuous_node_mapping size = 541915
-
-[ER Model] Building connections using Erdos-Renyi
-
-[ER Model] Processing 25806 new nodes for year 1984 (graph size: 516109)
-
-ALLOCATE DEVICE MEMORY
- Allocate RNG states.
- Estimate capacity based on ER model.
-create_thread_vectors_bulk<int2>(num_new_nodes, per_thread_capacities.
-Instead of batch - process all new nodes in parallel.
-COLLECT RESULTS
-[ER Model] Generated 1331200 edges
-
-Year 1984: 25806 new nodes, 1331200 new edges
-
-Elapsed time: 78-781 : total : 2.848 secs, this iter cost : 1.317 seconds
-
-Elapsed time: 78-79 : total : 3.571 secs, this iter cost : 1.682 seconds
-
-updateNodeInDegreeOutDegree(year=1984): updated 25806 out-degrees, 503032 in-degrees
-Elapsed time: 79-81 : total : 0.614 secs, this iter cost : 0 seconds
-
-Elapsed time: 79-80 : total : 0.359 secs, this iter cost : 0 seconds
-
-Elapsed time: 80-81 : total : 0.254 secs, this iter cost : 0 seconds
-
-Elapsed time: 70-81 : total : 5.64 secs, this iter cost : 2 seconds
-
- Entering loop for year = 1985
-Elapsed time: 70-71: total : 0.821 secs, iter cost : 0 seconds
-
-Elapsed time: 71-72: total : 1.025 secs, iter cost : 0 seconds
-
-Elapsed time: 72-73: total : 87 millisecs, iter cost : 19 mseconds
-
-num_new_nodes = 27096, current_graph_size = 541915, growth rate = 0.050000 
-Elapsed time: 73-74: total : 0 millisecs, iter cost : 0 mseconds
-
-Elapsed time: 74-75: total : 68 millisecs, iter cost : 25 mseconds
-
-all new nodes initialized with years and mapped. FillSameYearSourceNodes with new_nodes_vec.size() = 27096
-checking same_year_source_nodes size.
-Elapsed time: 75-76: total : 0 millisecs, iter cost : 0 mseconds
-
-new_nodes_vec.size() b4 : 27096
-
-updated  updateGraphAttributesGeneratorNode .... 
-Elapsed time: 76-77: total : 193 millisecs, iter cost : 68 mseconds
-
-continuous_node_mapping.size() b5 : 569011, reverse_continuous_node_mapping size = 569011
-
-[ER Model] Building connections using Erdos-Renyi
-
-[ER Model] Processing 27096 new nodes for year 1985 (graph size: 541915)
-
-ALLOCATE DEVICE MEMORY
- Allocate RNG states.
- Estimate capacity based on ER model.
-create_thread_vectors_bulk<int2>(num_new_nodes, per_thread_capacities.
-Instead of batch - process all new nodes in parallel.
-COLLECT RESULTS
-[ER Model] Generated 1467461 edges
-
-Year 1985: 27096 new nodes, 1467461 new edges
-
-Elapsed time: 78-781 : total : 4.213 secs, this iter cost : 1.365 seconds
-
-Elapsed time: 78-79 : total : 5.348 secs, this iter cost : 1.777 seconds
-
-updateNodeInDegreeOutDegree(year=1985): updated 27096 out-degrees, 532839 in-degrees
-Elapsed time: 79-81 : total : 0.938 secs, this iter cost : 0 seconds
-
-Elapsed time: 79-80 : total : 0.544 secs, this iter cost : 0 seconds
-
-Elapsed time: 80-81 : total : 0.393 secs, this iter cost : 0 seconds
-
-Elapsed time: 70-81 : total : 8.49 secs, this iter cost : 2 seconds
-
-Elapsed time: 7-8 :  8 seconds
-
-compute done:: graph size = 569011
-Elapsed time: 8-8.1 :  0 seconds
-
-Writing Graph to file: ./output/3y/gpu-opt-static-output-3y-5p.edgelist
-
-Elapsed time: 8.1-9 :  0 seconds
-
-Elapsed time: 9-10 :  0 seconds
-
- graph size = 569011
-WriteAttributes: graph size = 569011
-
-Elapsed time: 0-1 : 3 seconds
-
-Elapsed time: 1-4 : 0 seconds
-
-Elapsed time: 4-7 : 0 seconds
-
-Elapsed time: 70-71: total : 0.821 seconds.
-
-Elapsed time: 71-72: total : 1.025 seconds.
-
-Elapsed time: 72-73: total : 0.087 seconds.
-
-Elapsed time: 73-74: total : 0 seconds.
-
-Elapsed time: 74-75: total : 0.068 seconds.
-
-Elapsed time: 75-76: total : 0 seconds.
-
-Elapsed time: 76-77: total : 0.193 seconds.
-
-Elapsed time: 77-79: total : 5.348 seconds.
-
-Elapsed time: 79-81 : total : 0.938 seconds.
-
-Elapsed time: 79-80 : total : 0.544 seconds.
-
-Elapsed time: 80-81 : total : 0.393 seconds.
-
-Elapsed time: 70-81 : total : 8.49 seconds.
-
-Elapsed time: 7-8 : 8 seconds
-
-Elapsed time: 8-8.1 :  0 seconds
-
-Elapsed time: 8.1-9 :  0 seconds
-
-Elapsed time: 9-10 : 0 seconds
-
-Elapsed time: 11-12 : 0 seconds
-
-Elapsed time: 10-12 : 0 seconds
-
-Elapsed time: 0-7 : 3 seconds
-
-Elapsed time: 7-8 : 8 seconds
-
-Elapsed time: 8-12 : 1 seconds
-
-E2E Time for num_cycles = 3 with growth_rate = 5 % = 15 seconds.
-GPU 0: General Metrics for NVIDIA GH100 (any frequency)
-Generating '/tmp/nsys-report-f840.qdstrm'
-[1/8] [0%                          ] nsys-er-gnp-3y-5p.nsys-rep[1/8] [0%                          ] nsys-er-gnp-3y-5p.nsys-rep[1/8] [6%                          ] nsys-er-gnp-3y-5p.nsys-rep[1/8] [5%                          ] nsys-er-gnp-3y-5p.nsys-rep[1/8] [6%                          ] nsys-er-gnp-3y-5p.nsys-rep[1/8] [5%                          ] nsys-er-gnp-3y-5p.nsys-rep[1/8] [7%                          ] nsys-er-gnp-3y-5p.nsys-rep[1/8] [6%                          ] nsys-er-gnp-3y-5p.nsys-rep[1/8] [7%                          ] nsys-er-gnp-3y-5p.nsys-rep[1/8] [6%                          ] nsys-er-gnp-3y-5p.nsys-rep[1/8] [7%                          ] nsys-er-gnp-3y-5p.nsys-rep[1/8] [6%                          ] nsys-er-gnp-3y-5p.nsys-rep[1/8] [7%                          ] nsys-er-gnp-3y-5p.nsys-rep[1/8] [8%                          ] nsys-er-gnp-3y-5p.nsys-rep[1/8] [7%                          ] nsys-er-gnp-3y-5p.nsys-rep[1/8] [8%                          ] nsys-er-gnp-3y-5p.nsys-rep[1/8] [9%                          ] nsys-er-gnp-3y-5p.nsys-rep[1/8] [8%                          ] nsys-er-gnp-3y-5p.nsys-rep[1/8] [9%                          ] nsys-er-gnp-3y-5p.nsys-rep[1/8] [8%                          ] nsys-er-gnp-3y-5p.nsys-rep[1/8] [9%                          ] nsys-er-gnp-3y-5p.nsys-rep[1/8] [10%                         ] nsys-er-gnp-3y-5p.nsys-rep[1/8] [9%                          ] nsys-er-gnp-3y-5p.nsys-rep[1/8] [8%                          ] nsys-er-gnp-3y-5p.nsys-rep[1/8] [9%                          ] nsys-er-gnp-3y-5p.nsys-rep[1/8] [10%                         ] nsys-er-gnp-3y-5p.nsys-rep[1/8] [11%                         ] nsys-er-gnp-3y-5p.nsys-rep[1/8] [12%                         ] nsys-er-gnp-3y-5p.nsys-rep[1/8] [13%                         ] nsys-er-gnp-3y-5p.nsys-rep[1/8] [=15%                        ] nsys-er-gnp-3y-5p.nsys-rep[1/8] [=16%                        ] nsys-er-gnp-3y-5p.nsys-rep[1/8] [=17%                        ] nsys-er-gnp-3y-5p.nsys-rep[1/8] [==18%                       ] nsys-er-gnp-3y-5p.nsys-rep[1/8] [==19%                       ] nsys-er-gnp-3y-5p.nsys-rep[1/8] [==20%                       ] nsys-er-gnp-3y-5p.nsys-rep[1/8] [==21%                       ] nsys-er-gnp-3y-5p.nsys-rep[1/8] [===22%                      ] nsys-er-gnp-3y-5p.nsys-rep[1/8] [===23%                      ] nsys-er-gnp-3y-5p.nsys-rep[1/8] [===24%                      ] nsys-er-gnp-3y-5p.nsys-rep[1/8] [====26%                     ] nsys-er-gnp-3y-5p.nsys-rep[1/8] [====27%                     ] nsys-er-gnp-3y-5p.nsys-rep[1/8] [====28%                     ] nsys-er-gnp-3y-5p.nsys-rep[1/8] [=====29%                    ] nsys-er-gnp-3y-5p.nsys-rep[1/8] [=====30%                    ] nsys-er-gnp-3y-5p.nsys-rep[1/8] [=====32%                    ] nsys-er-gnp-3y-5p.nsys-rep[1/8] [======33%                   ] nsys-er-gnp-3y-5p.nsys-rep[1/8] [======34%                   ] nsys-er-gnp-3y-5p.nsys-rep[1/8] [=======36%                  ] nsys-er-gnp-3y-5p.nsys-rep[1/8] [=======37%                  ] nsys-er-gnp-3y-5p.nsys-rep[1/8] [=======38%                  ] nsys-er-gnp-3y-5p.nsys-rep[1/8] [========40%                 ] nsys-er-gnp-3y-5p.nsys-rep[1/8] [========41%                 ] nsys-er-gnp-3y-5p.nsys-rep[1/8] [========42%                 ] nsys-er-gnp-3y-5p.nsys-rep[1/8] [=========43%                ] nsys-er-gnp-3y-5p.nsys-rep[1/8] [=========45%                ] nsys-er-gnp-3y-5p.nsys-rep[1/8] [=========46%                ] nsys-er-gnp-3y-5p.nsys-rep[1/8] [==========47%               ] nsys-er-gnp-3y-5p.nsys-rep[1/8] [==========48%               ] nsys-er-gnp-3y-5p.nsys-rep[1/8] [==========49%               ] nsys-er-gnp-3y-5p.nsys-rep[1/8] [===========51%              ] nsys-er-gnp-3y-5p.nsys-rep[1/8] [===========52%              ] nsys-er-gnp-3y-5p.nsys-rep[1/8] [============54%             ] nsys-er-gnp-3y-5p.nsys-rep[1/8] [============55%             ] nsys-er-gnp-3y-5p.nsys-rep[1/8] [============57%             ] nsys-er-gnp-3y-5p.nsys-rep[1/8] [=============58%            ] nsys-er-gnp-3y-5p.nsys-rep[1/8] [=============59%            ] nsys-er-gnp-3y-5p.nsys-rep[1/8] [=============60%            ] nsys-er-gnp-3y-5p.nsys-rep[1/8] [==============62%           ] nsys-er-gnp-3y-5p.nsys-rep[1/8] [==============63%           ] nsys-er-gnp-3y-5p.nsys-rep[1/8] [==============64%           ] nsys-er-gnp-3y-5p.nsys-rep[1/8] [===============66%          ] nsys-er-gnp-3y-5p.nsys-rep[1/8] [===============67%          ] nsys-er-gnp-3y-5p.nsys-rep[1/8] [================68%         ] nsys-er-gnp-3y-5p.nsys-rep[1/8] [================69%         ] nsys-er-gnp-3y-5p.nsys-rep[1/8] [================70%         ] nsys-er-gnp-3y-5p.nsys-rep[1/8] [=================72%        ] nsys-er-gnp-3y-5p.nsys-rep[1/8] [=================73%        ] nsys-er-gnp-3y-5p.nsys-rep[1/8] [=================74%        ] nsys-er-gnp-3y-5p.nsys-rep[1/8] [==================76%       ] nsys-er-gnp-3y-5p.nsys-rep[1/8] [==================77%       ] nsys-er-gnp-3y-5p.nsys-rep[1/8] [===================79%      ] nsys-er-gnp-3y-5p.nsys-rep[1/8] [========================100%] nsys-er-gnp-3y-5p.nsys-rep[1/8] [========================100%] nsys-er-gnp-3y-5p.nsys-rep
-[2/8] [0%                          ] nsys-er-gnp-3y-5p.sqlite[2/8] [1%                          ] nsys-er-gnp-3y-5p.sqlite[2/8] [2%                          ] nsys-er-gnp-3y-5p.sqlite[2/8] [3%                          ] nsys-er-gnp-3y-5p.sqlite[2/8] [4%                          ] nsys-er-gnp-3y-5p.sqlite[2/8] [5%                          ] nsys-er-gnp-3y-5p.sqlite[2/8] [6%                          ] nsys-er-gnp-3y-5p.sqlite[2/8] [7%                          ] nsys-er-gnp-3y-5p.sqlite[2/8] [8%                          ] nsys-er-gnp-3y-5p.sqlite[2/8] [9%                          ] nsys-er-gnp-3y-5p.sqlite[2/8] [10%                         ] nsys-er-gnp-3y-5p.sqlite[2/8] [11%                         ] nsys-er-gnp-3y-5p.sqlite[2/8] [12%                         ] nsys-er-gnp-3y-5p.sqlite[2/8] [13%                         ] nsys-er-gnp-3y-5p.sqlite[2/8] [14%                         ] nsys-er-gnp-3y-5p.sqlite[2/8] [=15%                        ] nsys-er-gnp-3y-5p.sqlite[2/8] [=16%                        ] nsys-er-gnp-3y-5p.sqlite[2/8] [=17%                        ] nsys-er-gnp-3y-5p.sqlite[2/8] [==18%                       ] nsys-er-gnp-3y-5p.sqlite[2/8] [==19%                       ] nsys-er-gnp-3y-5p.sqlite[2/8] [==20%                       ] nsys-er-gnp-3y-5p.sqlite[2/8] [==21%                       ] nsys-er-gnp-3y-5p.sqlite[2/8] [===22%                      ] nsys-er-gnp-3y-5p.sqlite[2/8] [===23%                      ] nsys-er-gnp-3y-5p.sqlite[2/8] [===24%                      ] nsys-er-gnp-3y-5p.sqlite[2/8] [====25%                     ] nsys-er-gnp-3y-5p.sqlite[2/8] [====26%                     ] nsys-er-gnp-3y-5p.sqlite[2/8] [====27%                     ] nsys-er-gnp-3y-5p.sqlite[2/8] [====28%                     ] nsys-er-gnp-3y-5p.sqlite[2/8] [=====29%                    ] nsys-er-gnp-3y-5p.sqlite[2/8] [=====30%                    ] nsys-er-gnp-3y-5p.sqlite[2/8] [=====31%                    ] nsys-er-gnp-3y-5p.sqlite[2/8] [=====32%                    ] nsys-er-gnp-3y-5p.sqlite[2/8] [======33%                   ] nsys-er-gnp-3y-5p.sqlite[2/8] [======34%                   ] nsys-er-gnp-3y-5p.sqlite[2/8] [======35%                   ] nsys-er-gnp-3y-5p.sqlite[2/8] [=======36%                  ] nsys-er-gnp-3y-5p.sqlite[2/8] [=======37%                  ] nsys-er-gnp-3y-5p.sqlite[2/8] [=======38%                  ] nsys-er-gnp-3y-5p.sqlite[2/8] [=======39%                  ] nsys-er-gnp-3y-5p.sqlite[2/8] [========40%                 ] nsys-er-gnp-3y-5p.sqlite[2/8] [========41%                 ] nsys-er-gnp-3y-5p.sqlite[2/8] [========42%                 ] nsys-er-gnp-3y-5p.sqlite[2/8] [=========43%                ] nsys-er-gnp-3y-5p.sqlite[2/8] [=========44%                ] nsys-er-gnp-3y-5p.sqlite[2/8] [=========45%                ] nsys-er-gnp-3y-5p.sqlite[2/8] [=========46%                ] nsys-er-gnp-3y-5p.sqlite[2/8] [==========47%               ] nsys-er-gnp-3y-5p.sqlite[2/8] [==========48%               ] nsys-er-gnp-3y-5p.sqlite[2/8] [==========49%               ] nsys-er-gnp-3y-5p.sqlite[2/8] [===========50%              ] nsys-er-gnp-3y-5p.sqlite[2/8] [===========51%              ] nsys-er-gnp-3y-5p.sqlite[2/8] [===========52%              ] nsys-er-gnp-3y-5p.sqlite[2/8] [===========53%              ] nsys-er-gnp-3y-5p.sqlite[2/8] [============54%             ] nsys-er-gnp-3y-5p.sqlite[2/8] [============55%             ] nsys-er-gnp-3y-5p.sqlite[2/8] [============56%             ] nsys-er-gnp-3y-5p.sqlite[2/8] [============57%             ] nsys-er-gnp-3y-5p.sqlite[2/8] [=============58%            ] nsys-er-gnp-3y-5p.sqlite[2/8] [=============59%            ] nsys-er-gnp-3y-5p.sqlite[2/8] [=============60%            ] nsys-er-gnp-3y-5p.sqlite[2/8] [==============61%           ] nsys-er-gnp-3y-5p.sqlite[2/8] [==============62%           ] nsys-er-gnp-3y-5p.sqlite[2/8] [==============63%           ] nsys-er-gnp-3y-5p.sqlite[2/8] [==============64%           ] nsys-er-gnp-3y-5p.sqlite[2/8] [===============65%          ] nsys-er-gnp-3y-5p.sqlite[2/8] [===============66%          ] nsys-er-gnp-3y-5p.sqlite[2/8] [===============67%          ] nsys-er-gnp-3y-5p.sqlite[2/8] [================68%         ] nsys-er-gnp-3y-5p.sqlite[2/8] [================69%         ] nsys-er-gnp-3y-5p.sqlite[2/8] [================70%         ] nsys-er-gnp-3y-5p.sqlite[2/8] [================71%         ] nsys-er-gnp-3y-5p.sqlite[2/8] [=================72%        ] nsys-er-gnp-3y-5p.sqlite[2/8] [=================73%        ] nsys-er-gnp-3y-5p.sqlite[2/8] [=================74%        ] nsys-er-gnp-3y-5p.sqlite[2/8] [==================75%       ] nsys-er-gnp-3y-5p.sqlite[2/8] [==================76%       ] nsys-er-gnp-3y-5p.sqlite[2/8] [==================77%       ] nsys-er-gnp-3y-5p.sqlite[2/8] [==================78%       ] nsys-er-gnp-3y-5p.sqlite[2/8] [===================79%      ] nsys-er-gnp-3y-5p.sqlite[2/8] [===================80%      ] nsys-er-gnp-3y-5p.sqlite[2/8] [===================81%      ] nsys-er-gnp-3y-5p.sqlite[2/8] [===================82%      ] nsys-er-gnp-3y-5p.sqlite[2/8] [====================83%     ] nsys-er-gnp-3y-5p.sqlite[2/8] [====================84%     ] nsys-er-gnp-3y-5p.sqlite[2/8] [====================85%     ] nsys-er-gnp-3y-5p.sqlite[2/8] [=====================86%    ] nsys-er-gnp-3y-5p.sqlite[2/8] [=====================87%    ] nsys-er-gnp-3y-5p.sqlite[2/8] [=====================88%    ] nsys-er-gnp-3y-5p.sqlite[2/8] [=====================89%    ] nsys-er-gnp-3y-5p.sqlite[2/8] [======================90%   ] nsys-er-gnp-3y-5p.sqlite[2/8] [======================91%   ] nsys-er-gnp-3y-5p.sqlite[2/8] [======================92%   ] nsys-er-gnp-3y-5p.sqlite[2/8] [=======================93%  ] nsys-er-gnp-3y-5p.sqlite[2/8] [=======================94%  ] nsys-er-gnp-3y-5p.sqlite[2/8] [=======================95%  ] nsys-er-gnp-3y-5p.sqlite[2/8] [=======================96%  ] nsys-er-gnp-3y-5p.sqlite[2/8] [========================97% ] nsys-er-gnp-3y-5p.sqlite[2/8] [========================98% ] nsys-er-gnp-3y-5p.sqlite[2/8] [========================99% ] nsys-er-gnp-3y-5p.sqlite[2/8] [========================100%] nsys-er-gnp-3y-5p.sqlite[2/8] [========================100%] nsys-er-gnp-3y-5p.sqlite
-SKIPPED: /home/jmukher/workspace/uiuc/citation_abm/erprofile/nsys-er-gnp-3y-5p.sqlite does not contain NV Tools Extension (NVTX) data.
-[3/8] Executing 'nvtx_sum' stats report
-[4/8] Executing 'osrt_sum' stats report
-
- Time (%)  Total Time (ns)  Num Calls    Avg (ns)      Med (ns)    Min (ns)   Max (ns)    StdDev (ns)            Name         
- --------  ---------------  ---------  ------------  ------------  --------  -----------  ------------  ----------------------
-     98.4   17,120,753,268        876  19,544,238.9  10,059,028.5     1,477  104,033,399  27,684,660.9  poll                  
-      0.9      156,819,521        929     168,804.7      22,934.0     1,019   26,888,652     977,276.6  ioctl                 
-      0.5       80,747,770         30   2,691,592.3   1,302,650.5   381,901   20,167,475   4,820,124.6  writev                
-      0.1       15,247,931         10   1,524,793.1     150,159.0     1,098    8,030,600   2,725,606.1  fopen64               
-      0.1       11,563,088      5,972       1,936.2       1,585.0     1,010    1,979,202      25,592.0  read                  
-      0.1       11,039,099         55     200,710.9     185,253.0   136,172      415,299      66,791.6  pthread_create        
-      0.0        3,208,912         30     106,963.7      30,899.5    22,160      594,075     142,830.9  pthread_rwlock_wrlock 
-      0.0        1,282,145         30      42,738.2       5,999.5     3,486      801,938     145,124.4  mmap64                
-      0.0          752,677         29      25,954.4      21,519.0     8,511       72,499      14,490.9  pthread_rwlock_rdlock 
-      0.0          728,333         11      66,212.1      25,955.0    19,023      476,551     136,152.6  sem_timedwait         
-      0.0          663,502         13      51,038.6       4,612.0     1,054      223,450      89,977.0  fclose                
-      0.0          292,387         22      13,290.3       3,202.5     1,249       96,865      21,963.4  write                 
-      0.0          273,257         46       5,940.4       5,517.5     1,038       30,425       5,595.5  fflush                
-      0.0          192,999         17      11,352.9       6,679.0     3,188       50,704      11,746.3  mmap                  
-      0.0          173,579         41       4,233.6       1,931.0     1,263       24,164       4,966.0  fopen                 
-      0.0          155,273         54       2,875.4       2,067.0     1,005        9,095       1,827.9  open64                
-      0.0           86,224          1      86,224.0      86,224.0    86,224       86,224           0.0  pthread_cond_wait     
-      0.0           36,642          1      36,642.0      36,642.0    36,642       36,642           0.0  fgets                 
-      0.0           30,604          5       6,120.8       5,477.0     4,073        8,172       1,679.0  munmap                
-      0.0           25,418          6       4,236.3       4,442.0     1,627        7,147       2,269.6  open                  
-      0.0           21,568         10       2,156.8       1,953.0     1,151        4,369       1,049.2  fwrite                
-      0.0           16,123          3       5,374.3       6,201.0     2,748        7,174       2,325.9  pipe2                 
-      0.0           15,757          2       7,878.5       7,878.5     4,610       11,147       4,622.4  socket                
-      0.0           12,463          1      12,463.0      12,463.0    12,463       12,463           0.0  connect               
-      0.0            3,647          1       3,647.0       3,647.0     3,647        3,647           0.0  pthread_cond_broadcast
-      0.0            3,370          3       1,123.3       1,110.0     1,002        1,258         128.5  fcntl                 
-      0.0            1,464          1       1,464.0       1,464.0     1,464        1,464           0.0  bind                  
-      0.0            1,014          1       1,014.0       1,014.0     1,014        1,014           0.0  listen                
-
-[5/8] Executing 'cuda_api_sum' stats report
-
- Time (%)  Total Time (ns)  Num Calls    Avg (ns)      Med (ns)     Min (ns)    Max (ns)    StdDev (ns)            Name         
- --------  ---------------  ---------  ------------  ------------  ----------  -----------  ------------  ----------------------
-     64.0    2,531,705,199    309,925       8,168.8      10,476.0       2,288    3,685,759       7,756.8  cudaMemcpy            
-     17.0      673,077,427    154,970       4,343.3       4,193.5       3,215    4,449,268      12,653.2  cudaFree              
-     13.0      513,027,256    154,970       3,310.5       2,862.0       1,664    3,108,338      12,153.3  cudaMalloc            
-      3.3      132,041,895          3  44,013,965.0      42,609.0      38,408  131,960,878  76,164,260.9  cudaStreamCreate      
-      2.3       92,929,381          3  30,976,460.3  30,949,141.0  29,478,167   32,502,073   1,512,138.1  cudaStreamSynchronize 
-      0.3       13,617,449          3   4,539,149.7      35,073.0      21,580   13,560,796   7,812,977.8  cudaLaunchKernel      
-      0.0          146,490          3      48,830.0      56,947.0      31,406       58,137      15,101.4  cudaMemcpyAsync       
-      0.0          116,633          3      38,877.7      38,678.0      33,325       44,630       5,655.1  cudaMemset            
-      0.0           47,360          3      15,786.7      15,246.0      12,858       19,256       3,233.1  cudaStreamDestroy     
-      0.0            1,333          1       1,333.0       1,333.0       1,333        1,333           0.0  cuModuleGetLoadingMode
-
-[6/8] Executing 'cuda_gpu_kern_sum' stats report
-
- Time (%)  Total Time (ns)  Instances    Avg (ns)      Med (ns)     Min (ns)    Max (ns)   StdDev (ns)                                                  Name                                                
- --------  ---------------  ---------  ------------  ------------  ----------  ----------  -----------  ----------------------------------------------------------------------------------------------------
-    100.0       92,928,739          3  30,976,246.3  30,944,757.0  29,483,379  32,500,603  1,508,858.5  kernelErdosRenyiGNP(int, int, int, ABM *, curandStateXORWOW *, unsigned long long, int *, device_ve…
-
-[7/8] Executing 'cuda_gpu_mem_time_sum' stats report
-
- Time (%)  Total Time (ns)   Count   Avg (ns)  Med (ns)  Min (ns)  Max (ns)  StdDev (ns)           Operation          
- --------  ---------------  -------  --------  --------  --------  --------  -----------  ----------------------------
-     74.8      355,268,721  154,964   2,292.6   2,272.0     1,760    18,816        117.4  [CUDA memcpy Device-to-Host]
-     25.2      119,923,197  154,964     773.9     768.0       703    18,401        142.9  [CUDA memcpy Host-to-Device]
-      0.0           26,177        3   8,725.7   9,024.0     8,096     9,057        545.6  [CUDA memset]               
-
-[8/8] Executing 'cuda_gpu_mem_size_sum' stats report
-
- Total (MB)   Count   Avg (MB)  Med (MB)  Min (MB)  Max (MB)  StdDev (MB)           Operation          
- ----------  -------  --------  --------  --------  --------  -----------  ----------------------------
-     63.943        3    21.314    21.264    19.268    23.411        2.072  [CUDA memset]               
-     37.320  154,964     0.000     0.000     0.000     0.867        0.005  [CUDA memcpy Device-to-Host]
-      3.409  154,964     0.000     0.000     0.000     0.867        0.004  [CUDA memcpy Host-to-Device]
-
-Generated:
-    /home/jmukher/workspace/uiuc/citation_abm/erprofile/nsys-er-gnp-3y-5p.nsys-rep
-    /home/jmukher/workspace/uiuc/citation_abm/erprofile/nsys-er-gnp-3y-5p.sqlite
-SUCCESS: 16M → erprofile/nsys-er-gnp-3y-5p.nsys-rep
-Running growth rate 6% for 3 years.
-Profile output: erprofile/nsys-er-gnp-3y-6p.nsys-rep
-CMD: nsys profile --trace=nvtx,cuda,osrt --gpu-metrics-device=all --gpu-metrics-frequency=10000 --stats=true --force-overwrite=true -o erprofile/nsys-er-gnp-3y-6p ./abm --model er-gnp --er-probability 0.0001 --edgelist sj_edgelist --nodelist sj_nodelist --out-degree-bag tcen_at_least_five --recency-probabilities sj_recprob --alpha 0.5 --preferential-weight 0.33 --recency-weight 0.33 --fitness-weight 0.33 --growth-rate .06 --fully-random-citations 0.05 --num-cycles 3 --same-year-proportion 0.12 --output-file ./output/3y/gpu-opt-static-output-3y-6p.edgelist --auxiliary-information-file ./output/3y/gpu-opt-static-output-3y-6p.aux --log-file ./output/3y/nsys-gpu-opt-static-er-gnp-3y-6p.log --num-processors 14 --log-level 1
-
-Start ABM....
-parse_args....
-edgelist....
-num-cycles....
-output-file....
-log-file = ./output/3y/nsys-gpu-opt-static-er-gnp-3y-6p.log....
-num-processors = 14....
-log-level = 0
-er_probability = 0.000100
-model = er-gnp
-Init ABM....
-Exec ABM....
-Start execute.Init Graph
-Inside  Graph ParseNodelist.....
-Populating the continuous_node mappings..
-Elapsed time: ParseNodelist : 1093 millisecs = 1 seconds
-
-Inside Graph ParseEdgelist.....
-Elapsed time: ParseEdgelist : 1618 millisecs = 1 seconds
-
-In updateNodeInDegreeOutDegree: Update Outdegree first:
-In updateNodeInDegreeOutDegree: Update Indegree:
-Total (initial):: In-Degree = 899050, Out-Degree = 899050
-Elapsed time: 0-1 : 1 seconds
-Elapsed time: 1-2 : 1 seconds
-Elapsed time: 2-3 : 0 seconds
-
-Initialized Graph. Let us update the indegree and out-degrees... 
-Graph init done...
-calling InitializeFitness...
-final graph size is 585424 from initial_graph_size of 491532.
- populated out degree array.
- Entering loop for year = 1983
-Elapsed time: 70-71: total : 0.258 secs, iter cost : 0 seconds
-
-Elapsed time: 71-72: total : 0.332 secs, iter cost : 0 seconds
-
-Elapsed time: 72-73: total : 38 millisecs, iter cost : 38 mseconds
-
-num_new_nodes = 29492, current_graph_size = 491532, growth rate = 0.060000 
-Elapsed time: 73-74: total : 0 millisecs, iter cost : 0 mseconds
-
-Elapsed time: 74-75: total : 27 millisecs, iter cost : 27 mseconds
-
-all new nodes initialized with years and mapped. FillSameYearSourceNodes with new_nodes_vec.size() = 29492
-checking same_year_source_nodes size.
-Elapsed time: 75-76: total : 0 millisecs, iter cost : 0 mseconds
-
-new_nodes_vec.size() b4 : 29492
-
-updated  updateGraphAttributesGeneratorNode .... 
-Elapsed time: 76-77: total : 74 millisecs, iter cost : 74 mseconds
-
-continuous_node_mapping.size() b5 : 521024, reverse_continuous_node_mapping size = 521024
-
-[ER Model] Building connections using Erdos-Renyi
-
-[ER Model] Processing 29492 new nodes for year 1983 (graph size: 491532)
-
-ALLOCATE DEVICE MEMORY
- Allocate RNG states.
- Estimate capacity based on ER model.
-create_thread_vectors_bulk<int2>(num_new_nodes, per_thread_capacities.
-Instead of batch - process all new nodes in parallel.
-COLLECT RESULTS
-[ER Model] Generated 1449563 edges
-
-Year 1983: 29492 new nodes, 1449563 new edges
-
-Elapsed time: 78-781 : total : 2.048 secs, this iter cost : 2.048 seconds
-
-Elapsed time: 78-79 : total : 2.437 secs, this iter cost : 2.437 seconds
-
-updateNodeInDegreeOutDegree(year=1983): updated 29492 out-degrees, 495177 in-degrees
-Elapsed time: 79-81 : total : 0.341 secs, this iter cost : 0 seconds
-
-Elapsed time: 79-80 : total : 0.192 secs, this iter cost : 0 seconds
-
-Elapsed time: 80-81 : total : 0.149 secs, this iter cost : 0 seconds
-
-Elapsed time: 70-81 : total : 3.511 secs, this iter cost : 3 seconds
-
- Entering loop for year = 1984
-Elapsed time: 70-71: total : 0.537 secs, iter cost : 0 seconds
-
-Elapsed time: 71-72: total : 0.667 secs, iter cost : 0 seconds
-
-Elapsed time: 72-73: total : 69 millisecs, iter cost : 31 mseconds
-
-num_new_nodes = 31262, current_graph_size = 521024, growth rate = 0.060000 
-Elapsed time: 73-74: total : 0 millisecs, iter cost : 0 mseconds
-
-Elapsed time: 74-75: total : 54 millisecs, iter cost : 27 mseconds
-
-all new nodes initialized with years and mapped. FillSameYearSourceNodes with new_nodes_vec.size() = 31262
-checking same_year_source_nodes size.
-Elapsed time: 75-76: total : 0 millisecs, iter cost : 0 mseconds
-
-new_nodes_vec.size() b4 : 31262
-
-updated  updateGraphAttributesGeneratorNode .... 
-Elapsed time: 76-77: total : 156 millisecs, iter cost : 82 mseconds
-
-continuous_node_mapping.size() b5 : 552286, reverse_continuous_node_mapping size = 552286
-
-[ER Model] Building connections using Erdos-Renyi
-
-[ER Model] Processing 31262 new nodes for year 1984 (graph size: 521024)
-
-ALLOCATE DEVICE MEMORY
- Allocate RNG states.
- Estimate capacity based on ER model.
-create_thread_vectors_bulk<int2>(num_new_nodes, per_thread_capacities.
-Instead of batch - process all new nodes in parallel.
-COLLECT RESULTS
-[ER Model] Generated 1628095 edges
-
-Year 1984: 31262 new nodes, 1628095 new edges
-
-Elapsed time: 78-781 : total : 3.816 secs, this iter cost : 1.768 seconds
-
-Elapsed time: 78-79 : total : 4.628 secs, this iter cost : 2.191 seconds
-
-updateNodeInDegreeOutDegree(year=1984): updated 31262 out-degrees, 529743 in-degrees
-Elapsed time: 79-81 : total : 0.685 secs, this iter cost : 0 seconds
-
-Elapsed time: 79-80 : total : 0.377 secs, this iter cost : 0 seconds
-
-Elapsed time: 80-81 : total : 0.308 secs, this iter cost : 0 seconds
-
-Elapsed time: 70-81 : total : 6.803 secs, this iter cost : 3 seconds
-
- Entering loop for year = 1985
-Elapsed time: 70-71: total : 0.821 secs, iter cost : 0 seconds
-
-Elapsed time: 71-72: total : 1.019 secs, iter cost : 0 seconds
-
-Elapsed time: 72-73: total : 103 millisecs, iter cost : 34 mseconds
-
-num_new_nodes = 33138, current_graph_size = 552286, growth rate = 0.060000 
-Elapsed time: 73-74: total : 0 millisecs, iter cost : 0 mseconds
-
-Elapsed time: 74-75: total : 83 millisecs, iter cost : 29 mseconds
-
-all new nodes initialized with years and mapped. FillSameYearSourceNodes with new_nodes_vec.size() = 33138
-checking same_year_source_nodes size.
-Elapsed time: 75-76: total : 0 millisecs, iter cost : 0 mseconds
-
-new_nodes_vec.size() b4 : 33138
-
-updated  updateGraphAttributesGeneratorNode .... 
-Elapsed time: 76-77: total : 238 millisecs, iter cost : 82 mseconds
-
-continuous_node_mapping.size() b5 : 585424, reverse_continuous_node_mapping size = 585424
-
-[ER Model] Building connections using Erdos-Renyi
-
-[ER Model] Processing 33138 new nodes for year 1985 (graph size: 552286)
-
-ALLOCATE DEVICE MEMORY
- Allocate RNG states.
- Estimate capacity based on ER model.
-create_thread_vectors_bulk<int2>(num_new_nodes, per_thread_capacities.
-Instead of batch - process all new nodes in parallel.
-COLLECT RESULTS
-[ER Model] Generated 1829559 edges
-
-Year 1985: 33138 new nodes, 1829559 new edges
-
-Elapsed time: 78-781 : total : 5.495 secs, this iter cost : 1.679 seconds
-
-Elapsed time: 78-79 : total : 6.831 secs, this iter cost : 2.203 seconds
-
-updateNodeInDegreeOutDegree(year=1985): updated 33138 out-degrees, 565152 in-degrees
-Elapsed time: 79-81 : total : 1.069 secs, this iter cost : 0 seconds
-
-Elapsed time: 79-80 : total : 0.594 secs, this iter cost : 0 seconds
-
-Elapsed time: 80-81 : total : 0.475 secs, this iter cost : 0 seconds
-
-Elapsed time: 70-81 : total : 10.174 secs, this iter cost : 3 seconds
-
-Elapsed time: 7-8 :  10 seconds
-
-compute done:: graph size = 585424
-Elapsed time: 8-8.1 :  0 seconds
-
-Writing Graph to file: ./output/3y/gpu-opt-static-output-3y-6p.edgelist
-
-Elapsed time: 8.1-9 :  0 seconds
-
-Elapsed time: 9-10 :  0 seconds
-
- graph size = 585424
-WriteAttributes: graph size = 585424
-
-Elapsed time: 0-1 : 3 seconds
-
-Elapsed time: 1-4 : 0 seconds
-
-Elapsed time: 4-7 : 0 seconds
-
-Elapsed time: 70-71: total : 0.821 seconds.
-
-Elapsed time: 71-72: total : 1.019 seconds.
-
-Elapsed time: 72-73: total : 0.103 seconds.
-
-Elapsed time: 73-74: total : 0 seconds.
-
-Elapsed time: 74-75: total : 0.083 seconds.
-
-Elapsed time: 75-76: total : 0 seconds.
-
-Elapsed time: 76-77: total : 0.238 seconds.
-
-Elapsed time: 77-79: total : 6.831 seconds.
-
-Elapsed time: 79-81 : total : 1.069 seconds.
-
-Elapsed time: 79-80 : total : 0.594 seconds.
-
-Elapsed time: 80-81 : total : 0.475 seconds.
-
-Elapsed time: 70-81 : total : 10.174 seconds.
-
-Elapsed time: 7-8 : 10 seconds
-
-Elapsed time: 8-8.1 :  0 seconds
-
-Elapsed time: 8.1-9 :  0 seconds
-
-Elapsed time: 9-10 : 0 seconds
-
-Elapsed time: 11-12 : 0 seconds
-
-Elapsed time: 10-12 : 0 seconds
-
-Elapsed time: 0-7 : 3 seconds
-
-Elapsed time: 7-8 : 10 seconds
-
-Elapsed time: 8-12 : 1 seconds
-
-E2E Time for num_cycles = 3 with growth_rate = 6 % = 17 seconds.
-GPU 0: General Metrics for NVIDIA GH100 (any frequency)
-Generating '/tmp/nsys-report-a916.qdstrm'
-[1/8] [0%                          ] nsys-er-gnp-3y-6p.nsys-rep[1/8] [0%                          ] nsys-er-gnp-3y-6p.nsys-rep[1/8] [5%                          ] nsys-er-gnp-3y-6p.nsys-rep[1/8] [6%                          ] nsys-er-gnp-3y-6p.nsys-rep[1/8] [7%                          ] nsys-er-gnp-3y-6p.nsys-rep[1/8] [6%                          ] nsys-er-gnp-3y-6p.nsys-rep[1/8] [7%                          ] nsys-er-gnp-3y-6p.nsys-rep[1/8] [6%                          ] nsys-er-gnp-3y-6p.nsys-rep[1/8] [7%                          ] nsys-er-gnp-3y-6p.nsys-rep[1/8] [6%                          ] nsys-er-gnp-3y-6p.nsys-rep[1/8] [7%                          ] nsys-er-gnp-3y-6p.nsys-rep[1/8] [8%                          ] nsys-er-gnp-3y-6p.nsys-rep[1/8] [7%                          ] nsys-er-gnp-3y-6p.nsys-rep[1/8] [8%                          ] nsys-er-gnp-3y-6p.nsys-rep[1/8] [9%                          ] nsys-er-gnp-3y-6p.nsys-rep[1/8] [8%                          ] nsys-er-gnp-3y-6p.nsys-rep[1/8] [9%                          ] nsys-er-gnp-3y-6p.nsys-rep[1/8] [8%                          ] nsys-er-gnp-3y-6p.nsys-rep[1/8] [9%                          ] nsys-er-gnp-3y-6p.nsys-rep[1/8] [8%                          ] nsys-er-gnp-3y-6p.nsys-rep[1/8] [9%                          ] nsys-er-gnp-3y-6p.nsys-rep[1/8] [10%                         ] nsys-er-gnp-3y-6p.nsys-rep[1/8] [9%                          ] nsys-er-gnp-3y-6p.nsys-rep[1/8] [10%                         ] nsys-er-gnp-3y-6p.nsys-rep[1/8] [9%                          ] nsys-er-gnp-3y-6p.nsys-rep[1/8] [8%                          ] nsys-er-gnp-3y-6p.nsys-rep[1/8] [9%                          ] nsys-er-gnp-3y-6p.nsys-rep[1/8] [10%                         ] nsys-er-gnp-3y-6p.nsys-rep[1/8] [11%                         ] nsys-er-gnp-3y-6p.nsys-rep[1/8] [12%                         ] nsys-er-gnp-3y-6p.nsys-rep[1/8] [13%                         ] nsys-er-gnp-3y-6p.nsys-rep[1/8] [14%                         ] nsys-er-gnp-3y-6p.nsys-rep[1/8] [=15%                        ] nsys-er-gnp-3y-6p.nsys-rep[1/8] [=16%                        ] nsys-er-gnp-3y-6p.nsys-rep[1/8] [=17%                        ] nsys-er-gnp-3y-6p.nsys-rep[1/8] [==18%                       ] nsys-er-gnp-3y-6p.nsys-rep[1/8] [==19%                       ] nsys-er-gnp-3y-6p.nsys-rep[1/8] [==20%                       ] nsys-er-gnp-3y-6p.nsys-rep[1/8] [==21%                       ] nsys-er-gnp-3y-6p.nsys-rep[1/8] [===22%                      ] nsys-er-gnp-3y-6p.nsys-rep[1/8] [===23%                      ] nsys-er-gnp-3y-6p.nsys-rep[1/8] [===24%                      ] nsys-er-gnp-3y-6p.nsys-rep[1/8] [====25%                     ] nsys-er-gnp-3y-6p.nsys-rep[1/8] [====26%                     ] nsys-er-gnp-3y-6p.nsys-rep[1/8] [====27%                     ] nsys-er-gnp-3y-6p.nsys-rep[1/8] [====28%                     ] nsys-er-gnp-3y-6p.nsys-rep[1/8] [=====29%                    ] nsys-er-gnp-3y-6p.nsys-rep[1/8] [=====30%                    ] nsys-er-gnp-3y-6p.nsys-rep[1/8] [=====31%                    ] nsys-er-gnp-3y-6p.nsys-rep[1/8] [=====32%                    ] nsys-er-gnp-3y-6p.nsys-rep[1/8] [======34%                   ] nsys-er-gnp-3y-6p.nsys-rep[1/8] [======35%                   ] nsys-er-gnp-3y-6p.nsys-rep[1/8] [=======36%                  ] nsys-er-gnp-3y-6p.nsys-rep[1/8] [=======37%                  ] nsys-er-gnp-3y-6p.nsys-rep[1/8] [=======38%                  ] nsys-er-gnp-3y-6p.nsys-rep[1/8] [=======39%                  ] nsys-er-gnp-3y-6p.nsys-rep[1/8] [========40%                 ] nsys-er-gnp-3y-6p.nsys-rep[1/8] [========41%                 ] nsys-er-gnp-3y-6p.nsys-rep[1/8] [========42%                 ] nsys-er-gnp-3y-6p.nsys-rep[1/8] [=========43%                ] nsys-er-gnp-3y-6p.nsys-rep[1/8] [=========44%                ] nsys-er-gnp-3y-6p.nsys-rep[1/8] [=========45%                ] nsys-er-gnp-3y-6p.nsys-rep[1/8] [=========46%                ] nsys-er-gnp-3y-6p.nsys-rep[1/8] [==========47%               ] nsys-er-gnp-3y-6p.nsys-rep[1/8] [==========48%               ] nsys-er-gnp-3y-6p.nsys-rep[1/8] [==========49%               ] nsys-er-gnp-3y-6p.nsys-rep[1/8] [===========50%              ] nsys-er-gnp-3y-6p.nsys-rep[1/8] [===========52%              ] nsys-er-gnp-3y-6p.nsys-rep[1/8] [===========53%              ] nsys-er-gnp-3y-6p.nsys-rep[1/8] [============54%             ] nsys-er-gnp-3y-6p.nsys-rep[1/8] [============55%             ] nsys-er-gnp-3y-6p.nsys-rep[1/8] [============57%             ] nsys-er-gnp-3y-6p.nsys-rep[1/8] [=============58%            ] nsys-er-gnp-3y-6p.nsys-rep[1/8] [=============59%            ] nsys-er-gnp-3y-6p.nsys-rep[1/8] [=============60%            ] nsys-er-gnp-3y-6p.nsys-rep[1/8] [==============61%           ] nsys-er-gnp-3y-6p.nsys-rep[1/8] [==============62%           ] nsys-er-gnp-3y-6p.nsys-rep[1/8] [==============63%           ] nsys-er-gnp-3y-6p.nsys-rep[1/8] [==============64%           ] nsys-er-gnp-3y-6p.nsys-rep[1/8] [===============65%          ] nsys-er-gnp-3y-6p.nsys-rep[1/8] [===============66%          ] nsys-er-gnp-3y-6p.nsys-rep[1/8] [===============67%          ] nsys-er-gnp-3y-6p.nsys-rep[1/8] [================68%         ] nsys-er-gnp-3y-6p.nsys-rep[1/8] [================69%         ] nsys-er-gnp-3y-6p.nsys-rep[1/8] [================70%         ] nsys-er-gnp-3y-6p.nsys-rep[1/8] [================71%         ] nsys-er-gnp-3y-6p.nsys-rep[1/8] [=================72%        ] nsys-er-gnp-3y-6p.nsys-rep[1/8] [=================73%        ] nsys-er-gnp-3y-6p.nsys-rep[1/8] [=================74%        ] nsys-er-gnp-3y-6p.nsys-rep[1/8] [==================76%       ] nsys-er-gnp-3y-6p.nsys-rep[1/8] [==================77%       ] nsys-er-gnp-3y-6p.nsys-rep[1/8] [==================78%       ] nsys-er-gnp-3y-6p.nsys-rep[1/8] [===================79%      ] nsys-er-gnp-3y-6p.nsys-rep[1/8] [========================100%] nsys-er-gnp-3y-6p.nsys-rep[1/8] [========================100%] nsys-er-gnp-3y-6p.nsys-rep
-[2/8] [0%                          ] nsys-er-gnp-3y-6p.sqlite[2/8] [1%                          ] nsys-er-gnp-3y-6p.sqlite[2/8] [2%                          ] nsys-er-gnp-3y-6p.sqlite[2/8] [3%                          ] nsys-er-gnp-3y-6p.sqlite[2/8] [4%                          ] nsys-er-gnp-3y-6p.sqlite[2/8] [5%                          ] nsys-er-gnp-3y-6p.sqlite[2/8] [6%                          ] nsys-er-gnp-3y-6p.sqlite[2/8] [7%                          ] nsys-er-gnp-3y-6p.sqlite[2/8] [8%                          ] nsys-er-gnp-3y-6p.sqlite[2/8] [9%                          ] nsys-er-gnp-3y-6p.sqlite[2/8] [10%                         ] nsys-er-gnp-3y-6p.sqlite[2/8] [11%                         ] nsys-er-gnp-3y-6p.sqlite[2/8] [12%                         ] nsys-er-gnp-3y-6p.sqlite[2/8] [13%                         ] nsys-er-gnp-3y-6p.sqlite[2/8] [14%                         ] nsys-er-gnp-3y-6p.sqlite[2/8] [=15%                        ] nsys-er-gnp-3y-6p.sqlite[2/8] [=16%                        ] nsys-er-gnp-3y-6p.sqlite[2/8] [=17%                        ] nsys-er-gnp-3y-6p.sqlite[2/8] [==18%                       ] nsys-er-gnp-3y-6p.sqlite[2/8] [==19%                       ] nsys-er-gnp-3y-6p.sqlite[2/8] [==20%                       ] nsys-er-gnp-3y-6p.sqlite[2/8] [==21%                       ] nsys-er-gnp-3y-6p.sqlite[2/8] [===22%                      ] nsys-er-gnp-3y-6p.sqlite[2/8] [===23%                      ] nsys-er-gnp-3y-6p.sqlite[2/8] [===24%                      ] nsys-er-gnp-3y-6p.sqlite[2/8] [====25%                     ] nsys-er-gnp-3y-6p.sqlite[2/8] [====26%                     ] nsys-er-gnp-3y-6p.sqlite[2/8] [====27%                     ] nsys-er-gnp-3y-6p.sqlite[2/8] [====28%                     ] nsys-er-gnp-3y-6p.sqlite[2/8] [=====29%                    ] nsys-er-gnp-3y-6p.sqlite[2/8] [=====30%                    ] nsys-er-gnp-3y-6p.sqlite[2/8] [=====31%                    ] nsys-er-gnp-3y-6p.sqlite[2/8] [=====32%                    ] nsys-er-gnp-3y-6p.sqlite[2/8] [======33%                   ] nsys-er-gnp-3y-6p.sqlite[2/8] [======34%                   ] nsys-er-gnp-3y-6p.sqlite[2/8] [======35%                   ] nsys-er-gnp-3y-6p.sqlite[2/8] [=======36%                  ] nsys-er-gnp-3y-6p.sqlite[2/8] [=======37%                  ] nsys-er-gnp-3y-6p.sqlite[2/8] [=======38%                  ] nsys-er-gnp-3y-6p.sqlite[2/8] [=======39%                  ] nsys-er-gnp-3y-6p.sqlite[2/8] [========40%                 ] nsys-er-gnp-3y-6p.sqlite[2/8] [========41%                 ] nsys-er-gnp-3y-6p.sqlite[2/8] [========42%                 ] nsys-er-gnp-3y-6p.sqlite[2/8] [=========43%                ] nsys-er-gnp-3y-6p.sqlite[2/8] [=========44%                ] nsys-er-gnp-3y-6p.sqlite[2/8] [=========45%                ] nsys-er-gnp-3y-6p.sqlite[2/8] [=========46%                ] nsys-er-gnp-3y-6p.sqlite[2/8] [==========47%               ] nsys-er-gnp-3y-6p.sqlite[2/8] [==========48%               ] nsys-er-gnp-3y-6p.sqlite[2/8] [==========49%               ] nsys-er-gnp-3y-6p.sqlite[2/8] [===========50%              ] nsys-er-gnp-3y-6p.sqlite[2/8] [===========51%              ] nsys-er-gnp-3y-6p.sqlite[2/8] [===========52%              ] nsys-er-gnp-3y-6p.sqlite[2/8] [===========53%              ] nsys-er-gnp-3y-6p.sqlite[2/8] [============54%             ] nsys-er-gnp-3y-6p.sqlite[2/8] [============55%             ] nsys-er-gnp-3y-6p.sqlite[2/8] [============56%             ] nsys-er-gnp-3y-6p.sqlite[2/8] [============57%             ] nsys-er-gnp-3y-6p.sqlite[2/8] [=============58%            ] nsys-er-gnp-3y-6p.sqlite[2/8] [=============59%            ] nsys-er-gnp-3y-6p.sqlite[2/8] [=============60%            ] nsys-er-gnp-3y-6p.sqlite[2/8] [==============61%           ] nsys-er-gnp-3y-6p.sqlite[2/8] [==============62%           ] nsys-er-gnp-3y-6p.sqlite[2/8] [==============63%           ] nsys-er-gnp-3y-6p.sqlite[2/8] [==============64%           ] nsys-er-gnp-3y-6p.sqlite[2/8] [===============65%          ] nsys-er-gnp-3y-6p.sqlite[2/8] [===============66%          ] nsys-er-gnp-3y-6p.sqlite[2/8] [===============67%          ] nsys-er-gnp-3y-6p.sqlite[2/8] [================68%         ] nsys-er-gnp-3y-6p.sqlite[2/8] [================69%         ] nsys-er-gnp-3y-6p.sqlite[2/8] [================70%         ] nsys-er-gnp-3y-6p.sqlite[2/8] [================71%         ] nsys-er-gnp-3y-6p.sqlite[2/8] [=================72%        ] nsys-er-gnp-3y-6p.sqlite[2/8] [=================73%        ] nsys-er-gnp-3y-6p.sqlite[2/8] [=================74%        ] nsys-er-gnp-3y-6p.sqlite[2/8] [==================75%       ] nsys-er-gnp-3y-6p.sqlite[2/8] [==================76%       ] nsys-er-gnp-3y-6p.sqlite[2/8] [==================77%       ] nsys-er-gnp-3y-6p.sqlite[2/8] [==================78%       ] nsys-er-gnp-3y-6p.sqlite[2/8] [===================79%      ] nsys-er-gnp-3y-6p.sqlite[2/8] [===================80%      ] nsys-er-gnp-3y-6p.sqlite[2/8] [===================81%      ] nsys-er-gnp-3y-6p.sqlite[2/8] [===================82%      ] nsys-er-gnp-3y-6p.sqlite[2/8] [====================83%     ] nsys-er-gnp-3y-6p.sqlite[2/8] [====================84%     ] nsys-er-gnp-3y-6p.sqlite[2/8] [====================85%     ] nsys-er-gnp-3y-6p.sqlite[2/8] [=====================86%    ] nsys-er-gnp-3y-6p.sqlite[2/8] [=====================87%    ] nsys-er-gnp-3y-6p.sqlite[2/8] [=====================88%    ] nsys-er-gnp-3y-6p.sqlite[2/8] [=====================89%    ] nsys-er-gnp-3y-6p.sqlite[2/8] [======================90%   ] nsys-er-gnp-3y-6p.sqlite[2/8] [======================91%   ] nsys-er-gnp-3y-6p.sqlite[2/8] [======================92%   ] nsys-er-gnp-3y-6p.sqlite[2/8] [=======================93%  ] nsys-er-gnp-3y-6p.sqlite[2/8] [=======================94%  ] nsys-er-gnp-3y-6p.sqlite[2/8] [=======================95%  ] nsys-er-gnp-3y-6p.sqlite[2/8] [=======================96%  ] nsys-er-gnp-3y-6p.sqlite[2/8] [========================97% ] nsys-er-gnp-3y-6p.sqlite[2/8] [========================98% ] nsys-er-gnp-3y-6p.sqlite[2/8] [========================99% ] nsys-er-gnp-3y-6p.sqlite[2/8] [========================100%] nsys-er-gnp-3y-6p.sqlite[2/8] [========================100%] nsys-er-gnp-3y-6p.sqlite
-SKIPPED: /home/jmukher/workspace/uiuc/citation_abm/erprofile/nsys-er-gnp-3y-6p.sqlite does not contain NV Tools Extension (NVTX) data.
-[3/8] Executing 'nvtx_sum' stats report
-[4/8] Executing 'osrt_sum' stats report
-
- Time (%)  Total Time (ns)  Num Calls    Avg (ns)      Med (ns)    Min (ns)   Max (ns)    StdDev (ns)            Name         
- --------  ---------------  ---------  ------------  ------------  --------  -----------  ------------  ----------------------
-     96.5   20,533,542,209      1,045  19,649,322.7  10,059,457.0     1,328  100,547,691  27,824,101.4  poll                  
-      2.9      624,176,970        995     627,313.5      22,528.0     1,008   78,746,394   5,011,706.4  ioctl                 
-      0.4       86,685,371         30   2,889,512.4   1,468,699.0   481,420   21,199,877   5,166,125.4  writev                
-      0.1       11,405,324      5,973       1,909.5       1,577.0     1,011    1,865,557      24,119.4  read                  
-      0.1       11,311,626          9   1,256,847.3     216,192.0    61,568    4,656,956   1,738,693.6  fopen64               
-      0.1       10,849,671         55     197,266.7     186,002.0   137,299      372,268      51,998.5  pthread_create        
-      0.0        3,679,345         36     102,204.0      27,192.0    22,307      494,370     128,060.0  pthread_rwlock_wrlock 
-      0.0        1,263,180         30      42,106.0       5,921.5     3,379      781,433     141,351.0  mmap64                
-      0.0          806,288         35      23,036.8      22,103.0     5,396       41,449       9,200.2  pthread_rwlock_rdlock 
-      0.0          682,050         13      52,465.4       4,434.0     1,186      267,185      94,850.3  fclose                
-      0.0          402,851         47       8,571.3       5,818.0     1,017       43,193      10,406.4  fflush                
-      0.0          304,907         11      27,718.8      26,344.0    16,836       51,958       9,565.9  sem_timedwait         
-      0.0          279,918         22      12,723.5       3,261.5     1,336       93,850      20,735.0  write                 
-      0.0          197,453         18      10,969.6       7,424.5     3,220       46,193      10,463.3  mmap                  
-      0.0          163,728         41       3,993.4       1,780.0     1,237       21,298       4,536.8  fopen                 
-      0.0          154,251         54       2,856.5       2,056.5     1,001        9,367       1,845.5  open64                
-      0.0           75,597          1      75,597.0      75,597.0    75,597       75,597           0.0  pthread_cond_wait     
-      0.0           43,922          7       6,274.6       6,011.0     2,651       11,345       2,735.8  munmap                
-      0.0           35,272          1      35,272.0      35,272.0    35,272       35,272           0.0  fgets                 
-      0.0           28,259         16       1,766.2       1,411.5     1,019        5,732       1,178.2  fwrite                
-      0.0           23,530          6       3,921.7       4,003.5     1,179        6,541       2,084.5  open                  
-      0.0           15,860          3       5,286.7       6,102.0     2,348        7,410       2,627.6  pipe2                 
-      0.0           14,538          2       7,269.0       7,269.0     4,449       10,089       3,988.1  socket                
-      0.0           11,856          1      11,856.0      11,856.0    11,856       11,856           0.0  connect               
-      0.0            5,357          2       2,678.5       2,678.5     1,619        3,738       1,498.4  pthread_cond_broadcast
-      0.0            2,705          1       2,705.0       2,705.0     2,705        2,705           0.0  bind                  
-      0.0            1,598          1       1,598.0       1,598.0     1,598        1,598           0.0  pthread_mutex_trylock 
-      0.0            1,258          1       1,258.0       1,258.0     1,258        1,258           0.0  fcntl                 
-
-[5/8] Executing 'cuda_api_sum' stats report
-
- Time (%)  Total Time (ns)  Num Calls    Avg (ns)      Med (ns)     Min (ns)    Max (ns)    StdDev (ns)            Name         
- --------  ---------------  ---------  ------------  ------------  ----------  -----------  ------------  ----------------------
-     58.3    3,033,763,472    375,577       8,077.6      10,453.0       2,309    3,699,358       7,118.5  cudaMemcpy            
-     21.1    1,095,248,432    187,796       5,832.1       4,300.0       3,131  148,629,956     386,827.0  cudaFree              
-     16.1      835,640,667    187,796       4,449.7       2,953.0       1,711   67,674,243     220,109.5  cudaMalloc            
-      2.5      128,268,349          3  42,756,116.3      70,338.0      37,513  128,160,498  73,962,365.9  cudaStreamCreate      
-      1.8       93,897,128          3  31,299,042.7  31,264,865.0  29,484,995   33,147,268   1,831,375.7  cudaStreamSynchronize 
-      0.3       13,273,160          3   4,424,386.7      35,820.0      31,053   13,206,287   7,605,349.2  cudaLaunchKernel      
-      0.0          163,977          3      54,659.0      61,337.0      36,492       66,148      15,915.9  cudaMemcpyAsync       
-      0.0          135,666          3      45,222.0      45,581.0      37,828       52,257       7,221.2  cudaMemset            
-      0.0           45,447          3      15,149.0      12,795.0      12,779       19,873       4,091.1  cudaStreamDestroy     
-      0.0            1,428          1       1,428.0       1,428.0       1,428        1,428           0.0  cuModuleGetLoadingMode
-
-[6/8] Executing 'cuda_gpu_kern_sum' stats report
-
- Time (%)  Total Time (ns)  Instances    Avg (ns)      Med (ns)     Min (ns)    Max (ns)   StdDev (ns)                                                  Name                                                
- --------  ---------------  ---------  ------------  ------------  ----------  ----------  -----------  ----------------------------------------------------------------------------------------------------
-    100.0       93,902,559          3  31,300,853.0  31,265,366.0  29,491,728  33,145,465  1,827,127.0  kernelErdosRenyiGNP(int, int, int, ABM *, curandStateXORWOW *, unsigned long long, int *, device_ve…
-
-[7/8] Executing 'cuda_gpu_mem_time_sum' stats report
-
- Time (%)  Total Time (ns)   Count   Avg (ns)  Med (ns)  Min (ns)  Max (ns)  StdDev (ns)           Operation          
- --------  ---------------  -------  --------  --------  --------  --------  -----------  ----------------------------
-     74.8      431,978,499  187,790   2,300.3   2,304.0     1,760    47,936        165.5  [CUDA memcpy Device-to-Host]
-     25.2      145,424,089  187,790     774.4     768.0       703    25,087        150.1  [CUDA memcpy Host-to-Device]
-      0.0           34,016        3  11,338.7  11,328.0    10,208    12,480      1,136.0  [CUDA memset]               
-
-[8/8] Executing 'cuda_gpu_mem_size_sum' stats report
-
- Total (MB)   Count   Avg (MB)  Med (MB)  Min (MB)  Max (MB)  StdDev (MB)           Operation          
- ----------  -------  --------  --------  --------  --------  -----------  ----------------------------
-     78.293        3    26.098    26.010    23.122    29.161        3.021  [CUDA memset]               
-     45.642  187,790     0.000     0.000     0.000     1.060        0.006  [CUDA memcpy Device-to-Host]
-      4.131  187,790     0.000     0.000     0.000     1.060        0.004  [CUDA memcpy Host-to-Device]
-
-Generated:
-    /home/jmukher/workspace/uiuc/citation_abm/erprofile/nsys-er-gnp-3y-6p.nsys-rep
-    /home/jmukher/workspace/uiuc/citation_abm/erprofile/nsys-er-gnp-3y-6p.sqlite
-SUCCESS: 20M → erprofile/nsys-er-gnp-3y-6p.nsys-rep

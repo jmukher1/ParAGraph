@@ -1,7 +1,0 @@
-Running growth rate 1% with 1 thread
-./output/cpu-serial-profile-static-output-1p5p-30y-1p.edgelist
-./output/cpu-serial-profile-static-output-1p5p-30y-1p.aux
-
-real	37m51.034s
-user	37m36.895s
-sys	0m5.804s

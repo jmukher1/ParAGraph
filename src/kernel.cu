@@ -14,7 +14,7 @@
 // declaration in abm.cuh, which isn't available here.
 double g_abm_construction_ms = 0.0;
 
-__global__ void kernelCallStage1(
+__global__ void __launch_bounds__(256, 4) kernelCallStage1(
     int start_idx,
     int batch_size,
     int total_N,
@@ -107,7 +107,7 @@ __global__ void kernelCallStage1(
 // create_thread_vectors_int/create_thread_vectors_bulk).
 // __launch_bounds__(256, 4) 
 // -----------------------------------------------------------------------
-__global__ void kernelCallStage1_warped(
+__global__ void __launch_bounds__(256, 4) kernelCallStage1_warped(
     int start_idx,
     int batch_size,
     int total_N,
@@ -167,7 +167,7 @@ __global__ void kernelCallStage1_warped(
 
 }
 
-__global__ void kernelCallStage2(
+__global__ void __launch_bounds__(256, 4) kernelCallStage2(
     int start_idx,
     int batch_size,
     int total_N,
@@ -273,7 +273,7 @@ __global__ void kernelCallStage2(
                 d_states[local_idx].num_actually_cited);
 }
  
-__global__ void kernelCallStage3(
+__global__ void __launch_bounds__(256, 4) kernelCallStage3(
         int start_idx,
         int batch_size,
         int total_N,
@@ -343,7 +343,7 @@ __global__ void kernelCallStage3(
                 &deviceStates[local_idx]);
 }
 
-__global__ void kernelCallStage4(
+__global__ void __launch_bounds__(256, 4) kernelCallStage4(
         int start_idx,
         int batch_size,
         int total_N,
@@ -433,7 +433,7 @@ __global__ void kernelCallStage4(
 // buildOneNodeConnections / buildOneNodeConnections_timed's fused-kernel
 // branch.
 // =============================================================================
-__global__ void ABMKernel(
+__global__ void __launch_bounds__(256, 4) ABMKernel(
     // ---- common ----
     int start_idx, int batch_size, int total_N,
     ABM* abm, Graph* graph, int graphNodeSetSize,
@@ -573,7 +573,7 @@ __global__ void ABMKernel(
 }
 
 // Kernel to verify initialization
-__global__ void verify_bfs_pool(CompactBFSState* pool, int num_threads) {
+__global__ void __launch_bounds__(256, 4) verify_bfs_pool(CompactBFSState* pool, int num_threads) {
     int idx = blockIdx.x * blockDim.x + threadIdx.x;
     if (idx < num_threads) {
         printf("Thread %d: max_vertices = %d, bitmap_words = %d\n", 

@@ -1,0 +1,1685 @@
+Running growth rate 1% for 30 years.
+Profile output: profile/nsys-pa-30y-1p.nsys-rep
+CMD: nsys profile --trace=nvtx,cuda,osrt --gpu-metrics-device=all --gpu-metrics-frequency=10000 --stats=true --force-overwrite=true -o profile/nsys-pa-30y-1p ./abm --edgelist sj_edgelist --nodelist sj_nodelist --out-degree-bag tcen_at_least_five --recency-probabilities sj_recprob --use-warp-bfs true --use-batching true --max-batch-size 200000 --alpha 0.5 --preferential-weight 0.33 --recency-weight 0.33 --fitness-weight 0.33 --growth-rate .01 --fully-random-citations 0.05 --num-cycles 30 --same-year-proportion 0.12 --output-file ./output/30y/nsys-gpu-opt-static-output-30y-1p.edgelist --auxiliary-information-file ./output/30y/nsys-gpu-opt-static-output-30y-1p.aux --log-file ./output/30y/nsys-gpu-opt-static-pa-30y-1p.log --num-processors 14 --log-level 1
+
+Start ABM....
+parse_args....
+edgelist....
+num-cycles....
+output-file....
+log-file = ./output/30y/nsys-gpu-opt-static-pa-30y-1p.log....
+num-processors = 14....
+log-level = 0
+Init ABM....
+Exec ABM....Init Graph
+Inside  Graph ParseNodelist.....
+Populating the continuous_node mappings..
+Elapsed time: ParseNodelist : 1089 millisecs = 1 seconds
+
+Inside Graph ParseEdgelist.....
+Elapsed time: ParseEdgelist : 1759 millisecs = 1 seconds
+
+In updateNodeInDegreeOutDegree: Update Outdegree first:
+In updateNodeInDegreeOutDegree: Update Indegree:
+Total (initial):: In-Degree = 899050, Out-Degree = 899050
+Elapsed time: 0-1 : 1 seconds
+Elapsed time: 1-2 : 1 seconds
+Elapsed time: 2-3 : 0 seconds
+
+Initialized Graph. Let us update the indegree and out-degrees... 
+[EP 1983] N=491532 delta=4916
+[prepareGraph] num_vertices = 491532
+
+[prepareGraph] edges = 899050, offsets = 491533 (should be V+1 = 491533)
+
+[prepareGraph] num_vertices = 491532
+
+[prepareGraph] edges = 899050, offsets = 491533 (should be V+1 = 491533)
+
+updateNodeInDegreeOutDegree(year=1983): updated 4916 out-degrees, 89137 in-degrees  pre=641 csr=636 S1=450 S2=9 S3=51 S4=2 xfer=125 upd=137  total=2072 ms  E/s=191726
+
+[EP 1984] N=496448 delta=4965
+[prepareGraph] num_vertices = 496448
+
+[prepareGraph] edges = 997165, offsets = 496449 (should be V+1 = 496449)
+
+[prepareGraph] num_vertices = 496448
+
+[prepareGraph] edges = 997165, offsets = 496449 (should be V+1 = 496449)
+
+updateNodeInDegreeOutDegree(year=1984): updated 4965 out-degrees, 89394 in-degrees  pre=605 csr=661 S1=257 S2=17 S3=101 S4=2 xfer=126 upd=132  total=1921 ms  E/s=261071
+
+[EP 1985] N=501413 delta=5015
+[prepareGraph] num_vertices = 501413
+
+[prepareGraph] edges = 1095644, offsets = 501414 (should be V+1 = 501414)
+
+[prepareGraph] num_vertices = 501413
+
+[prepareGraph] edges = 1095644, offsets = 501414 (should be V+1 = 501414)
+
+updateNodeInDegreeOutDegree(year=1985): updated 5015 out-degrees, 88399 in-degrees  pre=601 csr=647 S1=658 S2=21 S3=60 S4=2 xfer=128 upd=164  total=2298 ms  E/s=131485
+
+[EP 1986] N=506428 delta=5065
+[prepareGraph] num_vertices = 506428
+
+[prepareGraph] edges = 1193070, offsets = 506429 (should be V+1 = 506429)
+
+[prepareGraph] num_vertices = 506428
+
+[prepareGraph] edges = 1193070, offsets = 506429 (should be V+1 = 506429)
+
+updateNodeInDegreeOutDegree(year=1986): updated 5065 out-degrees, 86967 in-degrees  pre=606 csr=680 S1=654 S2=32 S3=102 S4=2 xfer=130 upd=146  total=2368 ms  E/s=121491
+
+[EP 1987] N=511493 delta=5115
+[prepareGraph] num_vertices = 511493
+
+[prepareGraph] edges = 1289016, offsets = 511494 (should be V+1 = 511494)
+
+[prepareGraph] num_vertices = 511493
+
+[prepareGraph] edges = 1289016, offsets = 511494 (should be V+1 = 511494)
+
+updateNodeInDegreeOutDegree(year=1987): updated 5115 out-degrees, 90722 in-degrees  pre=855 csr=731 S1=734 S2=27 S3=106 S4=3 xfer=134 upd=213  total=2820 ms  E/s=115518
+
+[EP 1988] N=516608 delta=5167
+[prepareGraph] num_vertices = 516608
+
+[prepareGraph] edges = 1389503, offsets = 516609 (should be V+1 = 516609)
+
+[prepareGraph] num_vertices = 516608
+
+[prepareGraph] edges = 1389503, offsets = 516609 (should be V+1 = 516609)
+
+updateNodeInDegreeOutDegree(year=1988): updated 5167 out-degrees, 90628 in-degrees  pre=647 csr=776 S1=441 S2=27 S3=107 S4=2 xfer=136 upd=149  total=2301 ms  E/s=173802
+
+[EP 1989] N=521775 delta=5218
+[prepareGraph] num_vertices = 521775
+
+[prepareGraph] edges = 1489686, offsets = 521776 (should be V+1 = 521776)
+
+[prepareGraph] num_vertices = 521775
+
+[prepareGraph] edges = 1489686, offsets = 521776 (should be V+1 = 521776)
+
+updateNodeInDegreeOutDegree(year=1989): updated 5218 out-degrees, 91995 in-degrees  pre=643 csr=797 S1=348 S2=28 S3=108 S4=2 xfer=135 upd=155  total=2234 ms  E/s=209471
+
+[EP 1990] N=526993 delta=5270
+[prepareGraph] num_vertices = 526993
+
+[prepareGraph] edges = 1591459, offsets = 526994 (should be V+1 = 526994)
+
+[prepareGraph] num_vertices = 526993
+
+[prepareGraph] edges = 1591459, offsets = 526994 (should be V+1 = 526994)
+
+updateNodeInDegreeOutDegree(year=1990): updated 5270 out-degrees, 93959 in-degrees  pre=647 csr=873 S1=602 S2=35 S3=108 S4=3 xfer=139 upd=168  total=2596 ms  E/s=140008
+
+[EP 1991] N=532263 delta=5323
+[prepareGraph] num_vertices = 532263
+
+[prepareGraph] edges = 1696207, offsets = 532264 (should be V+1 = 532264)
+
+[prepareGraph] num_vertices = 532263
+
+[prepareGraph] edges = 1696207, offsets = 532264 (should be V+1 = 532264)
+
+updateNodeInDegreeOutDegree(year=1991): updated 5323 out-degrees, 90149 in-degrees  pre=641 csr=975 S1=648 S2=33 S3=110 S4=2 xfer=138 upd=202  total=2767 ms  E/s=125779
+
+[EP 1992] N=537586 delta=5376
+[prepareGraph] num_vertices = 537586
+
+[prepareGraph] edges = 1795963, offsets = 537587 (should be V+1 = 537587)
+
+[prepareGraph] num_vertices = 537586
+
+[prepareGraph] edges = 1795963, offsets = 537587 (should be V+1 = 537587)
+
+updateNodeInDegreeOutDegree(year=1992): updated 5376 out-degrees, 96062 in-degrees  pre=655 csr=891 S1=730 S2=31 S3=113 S4=3 xfer=139 upd=143  total=2722 ms  E/s=122176
+
+[EP 1993] N=542962 delta=5430
+[prepareGraph] num_vertices = 542962
+
+[prepareGraph] edges = 1902966, offsets = 542963 (should be V+1 = 542963)
+
+[prepareGraph] num_vertices = 542962
+
+[prepareGraph] edges = 1902966, offsets = 542963 (should be V+1 = 542963)
+
+updateNodeInDegreeOutDegree(year=1993): updated 5430 out-degrees, 96794 in-degrees  pre=626 csr=888 S1=674 S2=37 S3=111 S4=2 xfer=142 upd=213  total=2712 ms  E/s=130965
+
+[EP 1994] N=548392 delta=5484
+[prepareGraph] num_vertices = 548392
+
+[prepareGraph] edges = 2010965, offsets = 548393 (should be V+1 = 548393)
+
+[prepareGraph] num_vertices = 548392
+
+[prepareGraph] edges = 2010965, offsets = 548393 (should be V+1 = 548393)
+
+updateNodeInDegreeOutDegree(year=1994): updated 5484 out-degrees, 96623 in-degrees  pre=626 csr=935 S1=612 S2=34 S3=116 S4=3 xfer=142 upd=160  total=2646 ms  E/s=140479
+
+[EP 1995] N=553876 delta=5539
+[prepareGraph] num_vertices = 553876
+
+[prepareGraph] edges = 2118345, offsets = 553877 (should be V+1 = 553877)
+
+[prepareGraph] num_vertices = 553876
+
+[prepareGraph] edges = 2118345, offsets = 553877 (should be V+1 = 553877)
+
+updateNodeInDegreeOutDegree(year=1995): updated 5539 out-degrees, 93566 in-degrees  pre=672 csr=979 S1=758 S2=34 S3=114 S4=3 xfer=144 upd=198  total=2919 ms  E/s=114917
+
+[EP 1996] N=559415 delta=5595
+[prepareGraph] num_vertices = 559415
+
+[prepareGraph] edges = 2222763, offsets = 559416 (should be V+1 = 559416)
+
+[prepareGraph] num_vertices = 559415
+
+[prepareGraph] edges = 2222763, offsets = 559416 (should be V+1 = 559416)
+
+updateNodeInDegreeOutDegree(year=1996): updated 5595 out-degrees, 98027 in-degrees  pre=636 csr=964 S1=990 S2=37 S3=120 S4=3 xfer=145 upd=176  total=3089 ms  E/s=95342
+
+[EP 1997] N=565010 delta=5651
+[prepareGraph] num_vertices = 565010
+
+[prepareGraph] edges = 2332358, offsets = 565011 (should be V+1 = 565011)
+
+[prepareGraph] num_vertices = 565010
+
+[prepareGraph] edges = 2332358, offsets = 565011 (should be V+1 = 565011)
+
+updateNodeInDegreeOutDegree(year=1997): updated 5651 out-degrees, 100593 in-degrees  pre=637 csr=1044 S1=940 S2=43 S3=120 S4=3 xfer=147 upd=205  total=3158 ms  E/s=101772
+
+[EP 1998] N=570661 delta=5707
+[prepareGraph] num_vertices = 570661
+
+[prepareGraph] edges = 2444939, offsets = 570662 (should be V+1 = 570662)
+
+[prepareGraph] num_vertices = 570661
+
+[prepareGraph] edges = 2444939, offsets = 570662 (should be V+1 = 570662)
+
+updateNodeInDegreeOutDegree(year=1998): updated 5707 out-degrees, 97784 in-degrees  pre=660 csr=1051 S1=1153 S2=35 S3=123 S4=3 xfer=148 upd=200  total=3391 ms  E/s=83299
+
+[EP 1999] N=576368 delta=5764
+[prepareGraph] num_vertices = 576368
+
+[prepareGraph] edges = 2554322, offsets = 576369 (should be V+1 = 576369)
+
+[prepareGraph] num_vertices = 576368
+
+[prepareGraph] edges = 2554322, offsets = 576369 (should be V+1 = 576369)
+
+updateNodeInDegreeOutDegree(year=1999): updated 5764 out-degrees, 98194 in-degrees  pre=663 csr=1091 S1=678 S2=36 S3=121 S4=3 xfer=149 upd=164  total=2921 ms  E/s=130920
+
+[EP 2000] N=582132 delta=5822
+[prepareGraph] num_vertices = 582132
+
+[prepareGraph] edges = 2663902, offsets = 582133 (should be V+1 = 582133)
+
+[prepareGraph] num_vertices = 582132
+
+[prepareGraph] edges = 2663902, offsets = 582133 (should be V+1 = 582133)
+
+updateNodeInDegreeOutDegree(year=2000): updated 5822 out-degrees, 102063 in-degrees  pre=641 csr=1063 S1=949 S2=37 S3=124 S4=3 xfer=149 upd=160  total=3144 ms  E/s=103055
+
+[EP 2001] N=587954 delta=5880
+[prepareGraph] num_vertices = 587954
+
+[prepareGraph] edges = 2778537, offsets = 587955 (should be V+1 = 587955)
+
+[prepareGraph] num_vertices = 587954
+
+[prepareGraph] edges = 2778537, offsets = 587955 (should be V+1 = 587955)
+
+updateNodeInDegreeOutDegree(year=2001): updated 5880 out-degrees, 103798 in-degrees  pre=643 csr=1060 S1=470 S2=36 S3=127 S4=3 xfer=151 upd=153  total=2666 ms  E/s=182987
+
+[EP 2002] N=593834 delta=5939
+[prepareGraph] num_vertices = 593834
+
+[prepareGraph] edges = 2894990, offsets = 593835 (should be V+1 = 593835)
+
+[prepareGraph] num_vertices = 593834
+
+[prepareGraph] edges = 2894990, offsets = 593835 (should be V+1 = 593835)
+
+updateNodeInDegreeOutDegree(year=2002): updated 5939 out-degrees, 102474 in-degrees  pre=657 csr=1137 S1=825 S2=37 S3=127 S4=3 xfer=152 upd=155  total=3111 ms  E/s=115763
+
+[EP 2003] N=599773 delta=5998
+[prepareGraph] num_vertices = 599773
+
+[prepareGraph] edges = 3009816, offsets = 599774 (should be V+1 = 599774)
+
+[prepareGraph] num_vertices = 599773
+
+[prepareGraph] edges = 3009816, offsets = 599774 (should be V+1 = 599774)
+
+updateNodeInDegreeOutDegree(year=2003): updated 5998 out-degrees, 102178 in-degrees  pre=658 csr=1398 S1=970 S2=41 S3=133 S4=3 xfer=158 upd=177  total=3632 ms  E/s=99910
+
+[EP 2004] N=605771 delta=6058
+[prepareGraph] num_vertices = 605771
+
+[prepareGraph] edges = 3124343, offsets = 605772 (should be V+1 = 605772)
+
+[prepareGraph] num_vertices = 605771
+
+[prepareGraph] edges = 3124343, offsets = 605772 (should be V+1 = 605772)
+
+updateNodeInDegreeOutDegree(year=2004): updated 6058 out-degrees, 105600 in-degrees  pre=658 csr=1232 S1=2149 S2=96 S3=129 S4=3 xfer=159 upd=212  total=4657 ms  E/s=49862
+
+[EP 2005] N=611829 delta=6119
+[prepareGraph] num_vertices = 611829
+
+[prepareGraph] edges = 3242899, offsets = 611830 (should be V+1 = 611830)
+
+[prepareGraph] num_vertices = 611829
+
+[prepareGraph] edges = 3242899, offsets = 611830 (should be V+1 = 611830)
+
+updateNodeInDegreeOutDegree(year=2005): updated 6119 out-degrees, 106063 in-degrees  pre=669 csr=1264 S1=1085 S2=43 S3=134 S4=3 xfer=162 upd=287  total=3665 ms  E/s=94210
+
+[EP 2006] N=617948 delta=6180
+[prepareGraph] num_vertices = 617948
+
+[prepareGraph] edges = 3362024, offsets = 617949 (should be V+1 = 617949)
+
+[prepareGraph] num_vertices = 617948
+
+[prepareGraph] edges = 3362024, offsets = 617949 (should be V+1 = 617949)
+
+updateNodeInDegreeOutDegree(year=2006): updated 6180 out-degrees, 106793 in-degrees  pre=680 csr=1792 S1=1276 S2=39 S3=132 S4=3 xfer=164 upd=263  total=4369 ms  E/s=83002
+
+[EP 2007] N=624128 delta=6242
+[prepareGraph] num_vertices = 624128
+
+[prepareGraph] edges = 3482421, offsets = 624129 (should be V+1 = 624129)
+
+[prepareGraph] num_vertices = 624128
+
+[prepareGraph] edges = 3482421, offsets = 624129 (should be V+1 = 624129)
+
+updateNodeInDegreeOutDegree(year=2007): updated 6242 out-degrees, 108646 in-degrees  pre=767 csr=1589 S1=984 S2=39 S3=136 S4=3 xfer=167 upd=252  total=3961 ms  E/s=105481
+
+[EP 2008] N=630370 delta=6304
+[prepareGraph] num_vertices = 630370
+
+[prepareGraph] edges = 3605030, offsets = 630371 (should be V+1 = 630371)
+
+[prepareGraph] num_vertices = 630370
+
+[prepareGraph] edges = 3605030, offsets = 630371 (should be V+1 = 630371)
+
+updateNodeInDegreeOutDegree(year=2008): updated 6304 out-degrees, 108078 in-degrees  pre=724 csr=1545 S1=800 S2=40 S3=136 S4=3 xfer=164 upd=251  total=3681 ms  E/s=124298
+
+[EP 2009] N=636674 delta=6367
+[prepareGraph] num_vertices = 636674
+
+[prepareGraph] edges = 3726655, offsets = 636675 (should be V+1 = 636675)
+
+[prepareGraph] num_vertices = 636674
+
+[prepareGraph] edges = 3726655, offsets = 636675 (should be V+1 = 636675)
+
+updateNodeInDegreeOutDegree(year=2009): updated 6367 out-degrees, 109803 in-degrees  pre=691 csr=1576 S1=868 S2=42 S3=137 S4=3 xfer=165 upd=254  total=3756 ms  E/s=117991
+
+[EP 2010] N=643041 delta=6431
+[prepareGraph] num_vertices = 643041
+
+[prepareGraph] edges = 3850556, offsets = 643042 (should be V+1 = 643042)
+
+[prepareGraph] num_vertices = 643041
+
+[prepareGraph] edges = 3850556, offsets = 643042 (should be V+1 = 643042)
+
+updateNodeInDegreeOutDegree(year=2010): updated 6431 out-degrees, 110628 in-degrees  pre=674 csr=1585 S1=878 S2=43 S3=143 S4=3 xfer=166 upd=244  total=3755 ms  E/s=117151
+
+[EP 2011] N=649472 delta=6495
+[prepareGraph] num_vertices = 649472
+
+[prepareGraph] edges = 3975480, offsets = 649473 (should be V+1 = 649473)
+
+[prepareGraph] num_vertices = 649472
+
+[prepareGraph] edges = 3975480, offsets = 649473 (should be V+1 = 649473)
+
+updateNodeInDegreeOutDegree(year=2011): updated 6495 out-degrees, 110464 in-degrees  pre=700 csr=1508 S1=794 S2=41 S3=141 S4=3 xfer=171 upd=209  total=3587 ms  E/s=127047
+
+[EP 2012] N=655967 delta=6560
+[prepareGraph] num_vertices = 655967
+
+[prepareGraph] edges = 4099868, offsets = 655968 (should be V+1 = 655968)
+
+[prepareGraph] num_vertices = 655967
+
+[prepareGraph] edges = 4099868, offsets = 655968 (should be V+1 = 655968)
+
+updateNodeInDegreeOutDegree(year=2012): updated 6560 out-degrees, 115671 in-degrees  pre=731 csr=1552 S1=814 S2=46 S3=149 S4=3 xfer=170 upd=255  total=3743 ms  E/s=129290
+
+WriteAttributes: graph size = 662527
+
+E2E Time, model: PA  num_cycles=30  growth_rate=1%  threads=14  elapsed=101s
+========================================================================================================================
+  PARAGRAH GPU EPOCH BREAKDOWN  model=PA  growth=1.0%  threads=14
+========================================================================================================================
+
+[1] PER-EPOCH STAGE BREAKDOWN  (ms)
+------------------------------------------------------------------------------------------------------------------------
+Ep   N        Delta  B     mB   | FillID  FillFit FillRec CalcScr | NodeInit GenAsgn SameYr  | CSR     Upload | Slab  S1_BFS  S2_WS1  S3_WS2  S4_Fill | Dwnld  EdgeIns  InDeg   FitAsgn | EpTotal  Edges/s   
+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+1983 491532   4916   4916  1    | 131.8   135.8   330.9   42.9    | 6.7     13.0    0.1     | 636.0   4.3    | 0.5   449.6   8.9     51.5    1.7     | 121.1  54.5     56.8    25.7    | 2072     191726    
+1984 496448   4965   4916  2    | 133.0   133.1   291.9   46.9    | 4.4     13.7    0.1     | 660.9   3.8    | 0.8   257.2   16.6    101.1   2.3     | 122.6  53.4     54.4    24.5    | 1921     261071    
+1985 501413   5015   4892  2    | 131.2   133.5   297.2   39.0    | 3.7     12.3    0.1     | 646.8   3.3    | 0.7   657.6   21.3    60.1    2.0     | 125.0  63.0     76.4    24.8    | 2298     131485    
+1986 506428   5065   4868  2    | 140.0   135.3   289.7   40.6    | 3.7     12.3    0.1     | 680.4   3.0    | 0.7   654.0   31.9    101.5   2.3     | 126.7  46.4     73.5    25.8    | 2368     121491    
+1987 511493   5115   4844  2    | 191.8   190.8   423.7   49.0    | 3.4     12.8    0.1     | 730.8   3.2    | 0.7   734.2   26.7    106.4   2.6     | 130.5  113.2    74.3    25.5    | 2820     115518    
+1988 516608   5167   4820  2    | 146.6   138.4   301.7   60.3    | 3.4     12.8    0.1     | 775.6   5.0    | 0.7   440.7   26.7    106.6   2.4     | 130.7  65.0     58.6    25.8    | 2301     173802    
+1989 521775   5218   4796  2    | 139.8   141.5   311.3   50.6    | 3.5     13.1    0.1     | 797.4   3.0    | 0.7   347.8   27.9    107.8   2.4     | 132.3  50.3     79.2    25.7    | 2234     209471    
+1990 526993   5270   4773  2    | 146.7   144.3   314.6   41.0    | 7.2     13.2    0.1     | 872.9   7.8    | 0.7   602.3   34.9    108.3   2.6     | 131.2  59.3     82.4    26.4    | 2596     140008    
+1991 532263   5323   4750  2    | 153.4   136.5   308.9   42.1    | 3.9     13.2    0.1     | 974.6   3.7    | 0.7   648.2   33.1    109.5   2.3     | 134.2  100.4    75.3    26.6    | 2767     125779    
+1992 537586   5376   4727  2    | 145.1   140.5   303.5   65.8    | 3.7     13.3    0.1     | 891.3   4.9    | 0.7   729.8   30.9    112.6   2.6     | 134.3  54.4     61.3    26.8    | 2722     122176    
+1993 542962   5430   4704  2    | 139.4   140.2   314.2   32.1    | 3.6     13.4    0.1     | 888.2   3.3    | 1.4   674.2   37.3    110.6   2.4     | 138.5  106.6    79.5    27.0    | 2712     130965    
+1994 548392   5484   4681  2    | 147.7   140.7   296.3   41.7    | 3.5     13.3    0.1     | 935.0   5.0    | 0.7   611.7   33.9    116.0   2.7     | 137.3  70.6     62.5    26.8    | 2646     140479    
+1995 553876   5539   4658  2    | 141.3   178.1   310.9   41.8    | 3.4     13.3    0.1     | 979.4   4.3    | 0.7   757.5   34.3    114.2   2.7     | 139.3  93.2     77.7    27.1    | 2919     114917    
+1996 559415   5595   4635  2    | 146.1   137.4   299.5   53.0    | 3.0     13.7    0.1     | 964.4   4.8    | 0.7   989.9   36.6    119.9   3.1     | 140.6  84.8     63.4    27.9    | 3089     95342     
+1997 565010   5651   4612  2    | 142.7   140.5   303.4   50.4    | 3.0     13.8    0.1     | 1044.4  3.6    | 0.7   940.1   42.8    120.3   3.0     | 143.7  106.3    70.5    28.1    | 3158     101772    
+1998 570661   5707   4589  2    | 149.8   140.7   303.8   65.8    | 3.1     13.9    0.1     | 1051.3  4.8    | 0.7   1152.5  34.8    123.0   2.8     | 142.8  84.6     87.5    28.3    | 3391     83299     
+1999 576368   5764   4567  2    | 153.2   144.0   308.5   57.0    | 3.2     14.3    0.1     | 1090.6  4.6    | 0.7   677.6   35.7    120.9   2.8     | 144.2  69.6     65.0    29.1    | 2921     130920    
+2000 582132   5822   4545  2    | 143.9   141.1   310.4   45.8    | 3.1     14.5    0.1     | 1062.8  3.0    | 0.7   948.5   36.7    124.3   2.8     | 146.2  63.8     66.4    29.3    | 3144     103055    
+2001 587954   5880   4523  2    | 143.9   142.9   310.5   45.9    | 7.6     14.0    0.1     | 1060.1  2.9    | 0.7   470.1   36.1    127.2   3.0     | 148.3  58.7     65.9    28.5    | 2666     182987    
+2002 593834   5939   4501  2    | 145.9   144.1   310.7   56.0    | 2.8     14.1    0.1     | 1137.4  3.0    | 0.7   824.9   37.4    126.9   2.8     | 149.1  58.2     67.8    28.7    | 3111     115763    
+2003 599773   5998   4479  2    | 145.3   145.4   317.4   49.9    | 7.4     18.0    0.1     | 1398.0  7.8    | 69.7  969.7   40.9    132.9   2.8     | 150.2  76.5     71.0    29.0    | 3632     99910     
+2004 605771   6058   4457  2    | 148.8   145.5   318.2   45.6    | 3.0     14.4    0.1     | 1231.6  3.8    | 0.8   2149.3  96.2    128.9   3.3     | 155.0  99.0     84.0    29.4    | 4657     49862     
+2005 611829   6119   4435  2    | 152.9   148.3   326.5   41.4    | 3.2     14.8    0.1     | 1263.6  6.4    | 0.8   1084.6  43.4    133.7   2.8     | 156.0  152.0    105.0   29.8    | 3665     94210     
+2006 617948   6180   4413  2    | 162.7   149.7   325.7   41.9    | 3.2     15.0    0.1     | 1791.8  6.5    | 0.9   1276.5  39.0    132.5   2.6     | 157.6  146.4    87.3    29.8    | 4369     83002     
+2007 624128   6242   4391  2    | 211.0   159.0   331.8   65.5    | 7.6     14.9    0.1     | 1589.5  7.2    | 0.9   983.8   39.5    136.0   3.1     | 159.3  129.5    92.4    30.1    | 3961     105481    
+2008 630370   6304   4370  2    | 158.4   148.9   366.6   50.1    | 3.0     15.0    0.1     | 1544.5  5.0    | 0.8   799.7   39.7    136.0   3.2     | 158.6  134.1    87.0    30.4    | 3681     124298    
+2009 636674   6367   4349  2    | 165.7   151.4   326.6   47.4    | 3.1     15.5    0.1     | 1576.1  4.5    | 0.9   868.1   41.9    137.3   2.9     | 160.3  134.1    88.8    31.0    | 3756     117991    
+2010 643041   6431   4328  2    | 166.7   151.6   331.9   23.8    | 3.1     15.5    0.1     | 1584.7  4.8    | 1.1   877.8   42.8    142.7   3.0     | 161.6  123.9    88.7    31.6    | 3755     117151    
+2011 649472   6495   4307  2    | 159.4   151.4   330.3   59.0    | 3.1     15.8    0.1     | 1508.3  4.2    | 1.1   794.1   41.3    140.8   2.9     | 166.8  100.5    72.3    35.7    | 3587     127047    
+2012 655967   6560   4286  2    | 188.8   146.5   338.7   56.7    | 3.1     19.2    0.1     | 1552.2  4.2    | 0.8   813.7   46.3    149.3   3.2     | 165.4  133.6    89.1    32.2    | 3743     129290    
+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+[2] PER-STAGE STATISTICS ACROSS ALL EPOCHS  (ms)
+------------------------------------------------------------------------------------------------------------------------
+  Host preprocessing            total=     19955  mean=   665.2  std=   50.4  min=  600.8  max=   855.4
+  CSR build+upload              total=     32921  mean=  1097.4  std=  328.1  min=  636.0  max=  1791.8
+  Slab alloc+memset             total=        92  mean=     3.1  std=   12.4  min=    0.5  max=    69.7
+  Stage1 BFS                    total=     24186  mean=   806.2  std=  338.8  min=  257.2  max=  2149.3
+  Stage2 WS1 (1-hop)            total=      1096  mean=    36.5  std=   13.7  min=    8.9  max=    96.2
+  Stage3 WS2 (2-hop)            total=      3539  mean=   118.0  std=   20.9  min=   51.5  max=   149.3
+  Stage4 fill+write             total=        81  mean=     2.7  std=    0.4  min=    1.7  max=     3.3
+  GPU kernels (total)           total=     28901  mean=   963.4  std=  360.7  min=  377.2  max=  2377.7
+  Transfers (up+down)           total=      4445  mean=   148.2  std=   13.5  min=  125.4  max=   170.9
+  Host graph update             total=      5798  mean=   193.3  std=   43.1  min=  132.3  max=   286.9
+  Epoch total                   total=     92661  mean=  3088.7  std=  671.4  min= 1920.8  max=  4656.9
+
+[3] TOTAL TIME DISTRIBUTION
+------------------------------------------------------------------------------------------------------------------------
+  Host preprocessing           :      19955 ms  ( 21.5%)
+  CSR build                    :      32921 ms  ( 35.5%)
+  BFS slab overhead            :         92 ms  (  0.1%)
+  Stage1 BFS                   :      24186 ms  ( 26.1%)
+  Stage2+3 sampling            :       4635 ms  (  5.0%)
+  Stage4 fill+write            :         81 ms  (  0.1%)
+  GPU kernels total            :      28901 ms  ( 31.2%)
+  Transfers                    :       4445 ms  (  4.8%)
+  Host graph update            :       5798 ms  (  6.3%)
+  Simulation total             :      92661 ms
+  E2E total                    :     101739 ms
+
+[4] BFS DOMINANCE
+------------------------------------------------------------------------------------------------------------------------
+  Stage1 BFS as % of GPU kernels : 83.7%
+  Stage1 BFS as % of epoch total : 26.1%
+  GPU kernels as % of epoch      : 31.2%
+  Total edges generated          : 3331736
+  Overall edges/sec (GPU time)   : 115281
+========================================================================================================================
+
+========================================================================================================================
+  FULL PIPELINE BREAKDOWN (ABM construction -> parse -> init -> simulation -> output write)  model=PA  growth=1.0%  threads=14
+========================================================================================================================
+  ABM construction (out-degree bag, recency probs, planted nodes)        :       1684 ms  (  1.6%)
+  Graph parse (nodelist + edgelist)                                      :       3112 ms  (  3.0%)
+  Init (fitness + array alloc + weight/alpha/outdegree populate)         :        552 ms  (  0.5%)
+  Simulation (epoch loop total -- see breakdown above)                   :      92661 ms  ( 89.6%)
+  Output write (WriteGraph + UpdateGraphAttributes* + WriteAttributes)   :       1482 ms  (  1.4%)
+------------------------------------------------------------------------------------------------------------------------
+  TOTAL (full pipeline, measured)                                        :      99490 ms  ( 96.2%)
+  Unaccounted (measurement gaps / process overhead outside execute())    :       3933 ms  (  3.8%)
+  FULL PIPELINE TOTAL                                                    :     103423 ms  (100.0%)
+========================================================================================================================
+
+E2E Time for num_cycles = 30 with growth_rate = 1 % = 104 seconds.
+GPU 0: General Metrics for NVIDIA GH100 (any frequency)
+Generating '/tmp/nsys-report-1db8.qdstrm'
+[1/8] [0%                          ] nsys-pa-30y-1p.nsys-rep[1/8] [0%                          ] nsys-pa-30y-1p.nsys-rep[1/8] [9%                          ] nsys-pa-30y-1p.nsys-rep[1/8] [8%                          ] nsys-pa-30y-1p.nsys-rep[1/8] [7%                          ] nsys-pa-30y-1p.nsys-rep[1/8] [6%                          ] nsys-pa-30y-1p.nsys-rep[1/8] [9%                          ] nsys-pa-30y-1p.nsys-rep[1/8] [8%                          ] nsys-pa-30y-1p.nsys-rep[1/8] [7%                          ] nsys-pa-30y-1p.nsys-rep[1/8] [9%                          ] nsys-pa-30y-1p.nsys-rep[1/8] [8%                          ] nsys-pa-30y-1p.nsys-rep[1/8] [9%                          ] nsys-pa-30y-1p.nsys-rep[1/8] [8%                          ] nsys-pa-30y-1p.nsys-rep[1/8] [9%                          ] nsys-pa-30y-1p.nsys-rep[1/8] [8%                          ] nsys-pa-30y-1p.nsys-rep[1/8] [9%                          ] nsys-pa-30y-1p.nsys-rep[1/8] [8%                          ] nsys-pa-30y-1p.nsys-rep[1/8] [9%                          ] nsys-pa-30y-1p.nsys-rep[1/8] [8%                          ] nsys-pa-30y-1p.nsys-rep[1/8] [9%                          ] nsys-pa-30y-1p.nsys-rep[1/8] [8%                          ] nsys-pa-30y-1p.nsys-rep[1/8] [9%                          ] nsys-pa-30y-1p.nsys-rep[1/8] [8%                          ] nsys-pa-30y-1p.nsys-rep[1/8] [9%                          ] nsys-pa-30y-1p.nsys-rep[1/8] [8%                          ] nsys-pa-30y-1p.nsys-rep[1/8] [9%                          ] nsys-pa-30y-1p.nsys-rep[1/8] [8%                          ] nsys-pa-30y-1p.nsys-rep[1/8] [9%                          ] nsys-pa-30y-1p.nsys-rep[1/8] [8%                          ] nsys-pa-30y-1p.nsys-rep[1/8] [9%                          ] nsys-pa-30y-1p.nsys-rep[1/8] [8%                          ] nsys-pa-30y-1p.nsys-rep[1/8] [9%                          ] nsys-pa-30y-1p.nsys-rep[1/8] [8%                          ] nsys-pa-30y-1p.nsys-rep[1/8] [9%                          ] nsys-pa-30y-1p.nsys-rep[1/8] [8%                          ] nsys-pa-30y-1p.nsys-rep[1/8] [9%                          ] nsys-pa-30y-1p.nsys-rep[1/8] [10%                         ] nsys-pa-30y-1p.nsys-rep[1/8] [11%                         ] nsys-pa-30y-1p.nsys-rep[1/8] [12%                         ] nsys-pa-30y-1p.nsys-rep[1/8] [13%                         ] nsys-pa-30y-1p.nsys-rep[1/8] [14%                         ] nsys-pa-30y-1p.nsys-rep[1/8] [=15%                        ] nsys-pa-30y-1p.nsys-rep[1/8] [=16%                        ] nsys-pa-30y-1p.nsys-rep[1/8] [=17%                        ] nsys-pa-30y-1p.nsys-rep[1/8] [==18%                       ] nsys-pa-30y-1p.nsys-rep[1/8] [==19%                       ] nsys-pa-30y-1p.nsys-rep[1/8] [==20%                       ] nsys-pa-30y-1p.nsys-rep[1/8] [==21%                       ] nsys-pa-30y-1p.nsys-rep[1/8] [===22%                      ] nsys-pa-30y-1p.nsys-rep[1/8] [===23%                      ] nsys-pa-30y-1p.nsys-rep[1/8] [===24%                      ] nsys-pa-30y-1p.nsys-rep[1/8] [====25%                     ] nsys-pa-30y-1p.nsys-rep[1/8] [====26%                     ] nsys-pa-30y-1p.nsys-rep[1/8] [====27%                     ] nsys-pa-30y-1p.nsys-rep[1/8] [====28%                     ] nsys-pa-30y-1p.nsys-rep[1/8] [=====29%                    ] nsys-pa-30y-1p.nsys-rep[1/8] [=====30%                    ] nsys-pa-30y-1p.nsys-rep[1/8] [=====31%                    ] nsys-pa-30y-1p.nsys-rep[1/8] [=====32%                    ] nsys-pa-30y-1p.nsys-rep[1/8] [======33%                   ] nsys-pa-30y-1p.nsys-rep[1/8] [======34%                   ] nsys-pa-30y-1p.nsys-rep[1/8] [======35%                   ] nsys-pa-30y-1p.nsys-rep[1/8] [=======36%                  ] nsys-pa-30y-1p.nsys-rep[1/8] [=======37%                  ] nsys-pa-30y-1p.nsys-rep[1/8] [=======38%                  ] nsys-pa-30y-1p.nsys-rep[1/8] [=======39%                  ] nsys-pa-30y-1p.nsys-rep[1/8] [========40%                 ] nsys-pa-30y-1p.nsys-rep[1/8] [========41%                 ] nsys-pa-30y-1p.nsys-rep[1/8] [========42%                 ] nsys-pa-30y-1p.nsys-rep[1/8] [=========43%                ] nsys-pa-30y-1p.nsys-rep[1/8] [=========44%                ] nsys-pa-30y-1p.nsys-rep[1/8] [=========45%                ] nsys-pa-30y-1p.nsys-rep[1/8] [=========46%                ] nsys-pa-30y-1p.nsys-rep[1/8] [==========47%               ] nsys-pa-30y-1p.nsys-rep[1/8] [==========48%               ] nsys-pa-30y-1p.nsys-rep[1/8] [==========49%               ] nsys-pa-30y-1p.nsys-rep[1/8] [===========50%              ] nsys-pa-30y-1p.nsys-rep[1/8] [===========51%              ] nsys-pa-30y-1p.nsys-rep[1/8] [===========52%              ] nsys-pa-30y-1p.nsys-rep[1/8] [===========53%              ] nsys-pa-30y-1p.nsys-rep[1/8] [============54%             ] nsys-pa-30y-1p.nsys-rep[1/8] [============55%             ] nsys-pa-30y-1p.nsys-rep[1/8] [============56%             ] nsys-pa-30y-1p.nsys-rep[1/8] [============57%             ] nsys-pa-30y-1p.nsys-rep[1/8] [=============58%            ] nsys-pa-30y-1p.nsys-rep[1/8] [=============59%            ] nsys-pa-30y-1p.nsys-rep[1/8] [=============60%            ] nsys-pa-30y-1p.nsys-rep[1/8] [==============61%           ] nsys-pa-30y-1p.nsys-rep[1/8] [==============62%           ] nsys-pa-30y-1p.nsys-rep[1/8] [==============63%           ] nsys-pa-30y-1p.nsys-rep[1/8] [==============64%           ] nsys-pa-30y-1p.nsys-rep[1/8] [===============65%          ] nsys-pa-30y-1p.nsys-rep[1/8] [===============66%          ] nsys-pa-30y-1p.nsys-rep[1/8] [===============67%          ] nsys-pa-30y-1p.nsys-rep[1/8] [================68%         ] nsys-pa-30y-1p.nsys-rep[1/8] [================69%         ] nsys-pa-30y-1p.nsys-rep[1/8] [=================72%        ] nsys-pa-30y-1p.nsys-rep[1/8] [========================100%] nsys-pa-30y-1p.nsys-rep[1/8] [========================100%] nsys-pa-30y-1p.nsys-rep
+[2/8] [0%                          ] nsys-pa-30y-1p.sqlite[2/8] [1%                          ] nsys-pa-30y-1p.sqlite[2/8] [2%                          ] nsys-pa-30y-1p.sqlite[2/8] [3%                          ] nsys-pa-30y-1p.sqlite[2/8] [4%                          ] nsys-pa-30y-1p.sqlite[2/8] [5%                          ] nsys-pa-30y-1p.sqlite[2/8] [6%                          ] nsys-pa-30y-1p.sqlite[2/8] [7%                          ] nsys-pa-30y-1p.sqlite[2/8] [8%                          ] nsys-pa-30y-1p.sqlite[2/8] [9%                          ] nsys-pa-30y-1p.sqlite[2/8] [10%                         ] nsys-pa-30y-1p.sqlite[2/8] [11%                         ] nsys-pa-30y-1p.sqlite[2/8] [12%                         ] nsys-pa-30y-1p.sqlite[2/8] [13%                         ] nsys-pa-30y-1p.sqlite[2/8] [14%                         ] nsys-pa-30y-1p.sqlite[2/8] [=15%                        ] nsys-pa-30y-1p.sqlite[2/8] [=16%                        ] nsys-pa-30y-1p.sqlite[2/8] [=17%                        ] nsys-pa-30y-1p.sqlite[2/8] [==18%                       ] nsys-pa-30y-1p.sqlite[2/8] [==19%                       ] nsys-pa-30y-1p.sqlite[2/8] [==20%                       ] nsys-pa-30y-1p.sqlite[2/8] [==21%                       ] nsys-pa-30y-1p.sqlite[2/8] [===22%                      ] nsys-pa-30y-1p.sqlite[2/8] [===23%                      ] nsys-pa-30y-1p.sqlite[2/8] [===24%                      ] nsys-pa-30y-1p.sqlite[2/8] [====25%                     ] nsys-pa-30y-1p.sqlite[2/8] [====26%                     ] nsys-pa-30y-1p.sqlite[2/8] [====27%                     ] nsys-pa-30y-1p.sqlite[2/8] [====28%                     ] nsys-pa-30y-1p.sqlite[2/8] [=====29%                    ] nsys-pa-30y-1p.sqlite[2/8] [=====30%                    ] nsys-pa-30y-1p.sqlite[2/8] [=====31%                    ] nsys-pa-30y-1p.sqlite[2/8] [=====32%                    ] nsys-pa-30y-1p.sqlite[2/8] [======33%                   ] nsys-pa-30y-1p.sqlite[2/8] [======34%                   ] nsys-pa-30y-1p.sqlite[2/8] [======35%                   ] nsys-pa-30y-1p.sqlite[2/8] [=======36%                  ] nsys-pa-30y-1p.sqlite[2/8] [=======37%                  ] nsys-pa-30y-1p.sqlite[2/8] [=======38%                  ] nsys-pa-30y-1p.sqlite[2/8] [=======39%                  ] nsys-pa-30y-1p.sqlite[2/8] [========40%                 ] nsys-pa-30y-1p.sqlite[2/8] [========41%                 ] nsys-pa-30y-1p.sqlite[2/8] [========42%                 ] nsys-pa-30y-1p.sqlite[2/8] [=========43%                ] nsys-pa-30y-1p.sqlite[2/8] [=========44%                ] nsys-pa-30y-1p.sqlite[2/8] [=========45%                ] nsys-pa-30y-1p.sqlite[2/8] [=========46%                ] nsys-pa-30y-1p.sqlite[2/8] [==========47%               ] nsys-pa-30y-1p.sqlite[2/8] [==========48%               ] nsys-pa-30y-1p.sqlite[2/8] [==========49%               ] nsys-pa-30y-1p.sqlite[2/8] [===========50%              ] nsys-pa-30y-1p.sqlite[2/8] [===========51%              ] nsys-pa-30y-1p.sqlite[2/8] [===========52%              ] nsys-pa-30y-1p.sqlite[2/8] [===========53%              ] nsys-pa-30y-1p.sqlite[2/8] [============54%             ] nsys-pa-30y-1p.sqlite[2/8] [============55%             ] nsys-pa-30y-1p.sqlite[2/8] [============56%             ] nsys-pa-30y-1p.sqlite[2/8] [============57%             ] nsys-pa-30y-1p.sqlite[2/8] [=============58%            ] nsys-pa-30y-1p.sqlite[2/8] [=============59%            ] nsys-pa-30y-1p.sqlite[2/8] [=============60%            ] nsys-pa-30y-1p.sqlite[2/8] [==============61%           ] nsys-pa-30y-1p.sqlite[2/8] [==============62%           ] nsys-pa-30y-1p.sqlite[2/8] [==============63%           ] nsys-pa-30y-1p.sqlite[2/8] [==============64%           ] nsys-pa-30y-1p.sqlite[2/8] [===============65%          ] nsys-pa-30y-1p.sqlite[2/8] [===============66%          ] nsys-pa-30y-1p.sqlite[2/8] [===============67%          ] nsys-pa-30y-1p.sqlite[2/8] [================68%         ] nsys-pa-30y-1p.sqlite[2/8] [================69%         ] nsys-pa-30y-1p.sqlite[2/8] [================70%         ] nsys-pa-30y-1p.sqlite[2/8] [================71%         ] nsys-pa-30y-1p.sqlite[2/8] [=================72%        ] nsys-pa-30y-1p.sqlite[2/8] [=================73%        ] nsys-pa-30y-1p.sqlite[2/8] [=================74%        ] nsys-pa-30y-1p.sqlite[2/8] [==================75%       ] nsys-pa-30y-1p.sqlite[2/8] [==================76%       ] nsys-pa-30y-1p.sqlite[2/8] [==================77%       ] nsys-pa-30y-1p.sqlite[2/8] [==================78%       ] nsys-pa-30y-1p.sqlite[2/8] [===================79%      ] nsys-pa-30y-1p.sqlite[2/8] [===================80%      ] nsys-pa-30y-1p.sqlite[2/8] [===================81%      ] nsys-pa-30y-1p.sqlite[2/8] [===================82%      ] nsys-pa-30y-1p.sqlite[2/8] [====================83%     ] nsys-pa-30y-1p.sqlite[2/8] [====================84%     ] nsys-pa-30y-1p.sqlite[2/8] [====================85%     ] nsys-pa-30y-1p.sqlite[2/8] [=====================86%    ] nsys-pa-30y-1p.sqlite[2/8] [=====================87%    ] nsys-pa-30y-1p.sqlite[2/8] [=====================88%    ] nsys-pa-30y-1p.sqlite[2/8] [=====================89%    ] nsys-pa-30y-1p.sqlite[2/8] [======================90%   ] nsys-pa-30y-1p.sqlite[2/8] [======================91%   ] nsys-pa-30y-1p.sqlite[2/8] [======================92%   ] nsys-pa-30y-1p.sqlite[2/8] [=======================93%  ] nsys-pa-30y-1p.sqlite[2/8] [=======================94%  ] nsys-pa-30y-1p.sqlite[2/8] [=======================95%  ] nsys-pa-30y-1p.sqlite[2/8] [=======================96%  ] nsys-pa-30y-1p.sqlite[2/8] [========================97% ] nsys-pa-30y-1p.sqlite[2/8] [========================98% ] nsys-pa-30y-1p.sqlite[2/8] [========================99% ] nsys-pa-30y-1p.sqlite[2/8] [========================100%] nsys-pa-30y-1p.sqlite[2/8] [========================100%] nsys-pa-30y-1p.sqlite
+[3/8] Executing 'nvtx_sum' stats report
+
+ Time (%)  Total Time (ns)  Instances  Avg (ns)  Med (ns)  Min (ns)  Max (ns)   StdDev (ns)   Style             Range          
+ --------  ---------------  ---------  --------  --------  --------  ---------  -----------  -------  -------------------------
+    100.0      893,110,840    171,055   5,221.2   4,986.0     4,618  1,589,968      5,885.7  PushPop  CCCL:cub::DeviceFor::Bulk
+
+[4/8] Executing 'osrt_sum' stats report
+
+ Time (%)  Total Time (ns)  Num Calls    Avg (ns)      Med (ns)    Min (ns)   Max (ns)    StdDev (ns)            Name         
+ --------  ---------------  ---------  ------------  ------------  --------  -----------  ------------  ----------------------
+     99.5  277,888,250,076     10,070  27,595,655.4  10,062,963.5     1,780  106,202,260  35,751,011.1  poll                  
+      0.4    1,070,413,891      7,598     140,881.0      27,661.5     1,000  109,114,851   2,077,863.7  ioctl                 
+      0.0       92,118,490      5,974      15,419.9       3,419.0     1,160   55,977,954     726,546.7  read                  
+      0.0       70,053,522         28   2,501,911.5   1,804,838.0   624,703    8,636,668   2,372,162.3  writev                
+      0.0       64,765,072        376     172,247.5     152,450.5   125,205      372,508      52,009.7  pthread_create        
+      0.0        8,606,989        340      25,314.7       8,269.0     1,814      128,281      35,134.4  mmap                  
+      0.0        7,304,530         89      82,073.4      27,339.0    15,707      308,287      91,501.2  pthread_rwlock_wrlock 
+      0.0        3,624,968         10     362,496.8     374,991.0     1,101      725,974     261,204.5  fopen64               
+      0.0        1,923,004        414       4,644.9       3,702.0     1,067       43,897       3,662.7  munmap                
+      0.0        1,385,074         73      18,973.6      17,941.0     1,301       40,377       7,344.6  pthread_rwlock_rdlock 
+      0.0        1,338,384         30      44,612.8       8,319.0     3,578      825,011     149,151.5  mmap64                
+      0.0          862,665         39      22,119.6       3,980.0     1,808      293,615      62,181.5  fclose                
+      0.0          824,356         12      68,696.3      26,684.5    18,497      532,937     146,280.0  sem_timedwait         
+      0.0          558,013         15      37,200.9       2,226.0     1,556      322,676      87,110.2  write                 
+      0.0          186,182         55       3,385.1       2,512.0     1,034       10,029       2,162.3  open64                
+      0.0          179,828         42       4,281.6       2,060.0     1,312       18,825       4,656.5  fopen                 
+      0.0           38,218          5       7,643.6       7,616.0     5,845        9,461       1,295.9  fflush                
+      0.0           37,186          1      37,186.0      37,186.0    37,186       37,186           0.0  fgets                 
+      0.0           27,613          6       4,602.2       5,386.5     1,162        7,659       2,562.6  open                  
+      0.0           23,873          4       5,968.3       6,513.5     2,021        8,825       3,409.1  pipe2                 
+      0.0           23,261          2      11,630.5      11,630.5     6,731       16,530       6,928.9  fread                 
+      0.0           12,376          6       2,062.7       1,639.0     1,001        3,935       1,246.4  fwrite                
+      0.0           10,248          2       5,124.0       5,124.0     4,604        5,644         735.4  socket                
+      0.0            8,237          1       8,237.0       8,237.0     8,237        8,237           0.0  connect               
+      0.0            5,366          3       1,788.7       1,939.0     1,440        1,987         302.9  pthread_cond_broadcast
+      0.0            1,348          1       1,348.0       1,348.0     1,348        1,348           0.0  bind                  
+      0.0            1,279          1       1,279.0       1,279.0     1,279        1,279           0.0  fcntl                 
+
+[5/8] Executing 'cuda_api_sum' stats report
+
+ Time (%)  Total Time (ns)  Num Calls    Avg (ns)      Med (ns)     Min (ns)     Max (ns)      StdDev (ns)            Name         
+ --------  ---------------  ---------  ------------  ------------  ----------  -------------  -------------  ----------------------
+     74.5   28,900,582,076        475  60,843,330.7      26,209.0       2,023  1,696,258,219  155,088,231.5  cudaStreamSynchronize 
+     11.4    4,434,085,289    343,149      12,921.7      12,141.0       4,626      4,422,603       38,279.6  cudaMemcpy            
+      6.8    2,652,028,790        360   7,366,746.6     336,435.5       8,920    107,044,602   23,306,224.7  cudaMemcpyAsync       
+      2.4      940,838,644    173,339       5,427.7       3,536.0       2,869     54,072,045      184,823.3  cudaFree              
+      2.4      936,625,541    173,163       5,408.9       2,317.0       1,756    110,555,402      382,956.6  cudaMalloc            
+      1.4      543,009,594    171,499       3,166.3       2,940.0       2,680      2,844,125       11,281.2  cudaLaunchKernel      
+      0.8      304,743,690         30  10,158,123.0      49,713.0      35,593    303,045,676   55,317,633.0  cudaStreamCreate      
+      0.1       26,533,739          1  26,533,739.0  26,533,739.0  26,533,739     26,533,739            0.0  cuLibraryLoadData     
+      0.1       22,224,656        118     188,344.5      13,945.0       5,162        740,558      269,370.4  cudaDeviceSynchronize 
+      0.0       11,018,474    171,499          64.2          60.0          51          7,614           96.0  cuKernelGetName       
+      0.0        6,122,341        236      25,942.1      11,437.0       2,408        202,356       35,567.5  cudaMallocManaged     
+      0.0        3,499,610        473       7,398.8       4,660.0       1,854         37,032        5,434.9  cudaMemset            
+      0.0        3,148,985        710       4,435.2       3,084.0       1,362         30,295        4,001.8  cudaEventRecord       
+      0.0        2,219,620        355       6,252.5       5,856.0       3,548         12,336        1,079.7  cudaEventSynchronize  
+      0.0        1,152,339        710       1,623.0         848.5         329         45,837        3,368.1  cudaEventCreate       
+      0.0          639,609         60      10,660.2       9,856.5       5,739         21,633        4,190.9  cudaMemsetAsync       
+      0.0          497,838        710         701.2         466.5         251          5,763          621.0  cudaEventDestroy      
+      0.0          496,377         30      16,545.9      14,398.5      10,265         44,263        7,824.8  cudaStreamDestroy     
+      0.0           12,344         10       1,234.4       1,242.0         664          1,898          413.1  cuLibraryGetKernel    
+      0.0            1,579          1       1,579.0       1,579.0       1,579          1,579            0.0  cuModuleGetLoadingMode
+
+[6/8] Executing 'cuda_gpu_kern_sum' stats report
+
+ Time (%)  Total Time (ns)  Instances    Avg (ns)       Med (ns)      Min (ns)     Max (ns)      StdDev (ns)                                                   Name                                                
+ --------  ---------------  ---------  -------------  -------------  ----------  -------------  -------------  ----------------------------------------------------------------------------------------------------
+     76.6   24,180,472,740         59  409,838,521.0  436,181,701.0  85,695,025  1,696,246,171  227,640,990.8  kernelCallStage1_warped(int, int, int, ABM *, Graph *, DeviceGraph *, DeviceGraph *, device_map<int…
+     11.2    3,537,615,388         59   59,959,582.8   61,185,081.0   6,453,024     74,926,495    9,875,858.7  kernelCallStage3(int, int, int, ABM *, Graph *, int, device_map<int, Node>::device_view, ABMStageSt…
+      8.0    2,514,090,262         30   83,803,008.7   83,860,234.5  49,740,256    107,030,844   11,156,190.8  void cuco::legacy::detail::insert<(unsigned long)128, (unsigned int)4, cuco::pair<int, int> *, cuda…
+      3.5    1,094,420,491         59   18,549,499.8   18,244,588.0   5,414,463     76,802,103    8,651,421.9  kernelCallStage2(int, int, int, ABM *, Graph *, cuco::static_set_ref<int, (cuda::std::__4::thread_s…
+      0.5      153,403,428    171,025          897.0          896.0         863          1,280           11.2  void cub::CUB_300002_SM_900::detail::for_each::static_kernel<cub::CUB_300002_SM_900::detail::for_ea…
+      0.3       79,477,921         59    1,347,083.4    1,557,825.0     332,288      2,039,426      440,201.7  kernelCallStage4(int, int, int, ABM *, Graph *, int, device_map<int, Node>::device_view, ABMStageSt…
+      0.1       21,631,531        118      183,318.1        3,344.0       1,408        735,265      269,635.9  kernel_extract_vector_sizes(device_vector *, int *, int)                                            
+      0.0        1,902,367         30       63,412.2       58,576.0      22,752        117,792       26,567.1  void cuco::detail::open_addressing_ns::insert_if_n<(int)1, (int)128, int *, thrust::THRUST_300002_S…
+      0.0           79,359         30        2,645.3        2,640.0       2,400          2,816          124.2  void cuco::legacy::detail::initialize<(unsigned long)256, cuda::__4::atomic<int, (cuda::std::__4::t…
+      0.0           27,968         30          932.3          928.0         896            992           18.3  void cub::CUB_300002_SM_900::detail::for_each::static_kernel<cub::CUB_300002_SM_900::detail::for_ea…
+
+[7/8] Executing 'cuda_gpu_mem_time_sum' stats report
+
+ Time (%)  Total Time (ns)   Count   Avg (ns)   Med (ns)  Min (ns)  Max (ns)   StdDev (ns)               Operation              
+ --------  ---------------  -------  ---------  --------  --------  ---------  -----------  ------------------------------------
+     75.0      819,745,497  342,347    2,394.5   2,368.0     1,728      9,216        128.0  [CUDA memcpy Device-to-Host]        
+     23.5      257,038,628    1,162  221,203.6   3,584.0       704  4,322,435    626,063.2  [CUDA memcpy Host-to-Device]        
+      0.7        8,125,443      533   15,244.7   1,376.0       704    108,736     31,953.0  [CUDA memset]                       
+      0.6        6,546,057    2,252    2,906.8   2,559.0     2,174     11,712        930.2  [CUDA memcpy Unified Host-to-Device]
+      0.2        1,926,715      440    4,378.9   2,975.0     2,367     20,512      2,944.6  [CUDA memcpy Unified Device-to-Host]
+
+[8/8] Executing 'cuda_gpu_mem_size_sum' stats report
+
+ Total (MB)   Count   Avg (MB)  Med (MB)  Min (MB)  Max (MB)  StdDev (MB)               Operation              
+ ----------  -------  --------  --------  --------  --------  -----------  ------------------------------------
+ 24,750.361      533    46.436     0.024     0.000   351.435      105.015  [CUDA memset]                       
+  2,991.244    1,162     2.574     0.045     0.000    53.002        7.586  [CUDA memcpy Host-to-Device]        
+     45.482    2,252     0.020     0.008     0.004     0.258        0.031  [CUDA memcpy Unified Host-to-Device]
+     45.123  342,347     0.000     0.000     0.000     0.210        0.003  [CUDA memcpy Device-to-Host]        
+     44.564      440     0.101     0.033     0.004     0.520        0.150  [CUDA memcpy Unified Device-to-Host]
+
+Generated:
+    /home/jmukher/workspace/uiuc/citation_abm/profile/nsys-pa-30y-1p.nsys-rep
+    /home/jmukher/workspace/uiuc/citation_abm/profile/nsys-pa-30y-1p.sqlite
+SUCCESS: 49M → profile/nsys-pa-30y-1p.nsys-rep
+Running growth rate 3% for 30 years.
+Profile output: profile/nsys-pa-30y-3p.nsys-rep
+CMD: nsys profile --trace=nvtx,cuda,osrt --gpu-metrics-device=all --gpu-metrics-frequency=10000 --stats=true --force-overwrite=true -o profile/nsys-pa-30y-3p ./abm --edgelist sj_edgelist --nodelist sj_nodelist --out-degree-bag tcen_at_least_five --recency-probabilities sj_recprob --use-warp-bfs true --use-batching true --max-batch-size 200000 --alpha 0.5 --preferential-weight 0.33 --recency-weight 0.33 --fitness-weight 0.33 --growth-rate .03 --fully-random-citations 0.05 --num-cycles 30 --same-year-proportion 0.12 --output-file ./output/30y/nsys-gpu-opt-static-output-30y-3p.edgelist --auxiliary-information-file ./output/30y/nsys-gpu-opt-static-output-30y-3p.aux --log-file ./output/30y/nsys-gpu-opt-static-pa-30y-3p.log --num-processors 14 --log-level 1
+
+Start ABM....
+parse_args....
+edgelist....
+num-cycles....
+output-file....
+log-file = ./output/30y/nsys-gpu-opt-static-pa-30y-3p.log....
+num-processors = 14....
+log-level = 0
+Init ABM....
+Exec ABM....Init Graph
+Inside  Graph ParseNodelist.....
+Populating the continuous_node mappings..
+Elapsed time: ParseNodelist : 1084 millisecs = 1 seconds
+
+Inside Graph ParseEdgelist.....
+Elapsed time: ParseEdgelist : 1682 millisecs = 1 seconds
+
+In updateNodeInDegreeOutDegree: Update Outdegree first:
+In updateNodeInDegreeOutDegree: Update Indegree:
+Total (initial):: In-Degree = 899050, Out-Degree = 899050
+Elapsed time: 0-1 : 1 seconds
+Elapsed time: 1-2 : 1 seconds
+Elapsed time: 2-3 : 0 seconds
+
+Initialized Graph. Let us update the indegree and out-degrees... 
+[EP 1983] N=491532 delta=14746
+[prepareGraph] num_vertices = 491532
+
+[prepareGraph] edges = 899050, offsets = 491533 (should be V+1 = 491533)
+
+[prepareGraph] num_vertices = 491532
+
+[prepareGraph] edges = 899050, offsets = 491533 (should be V+1 = 491533)
+
+updateNodeInDegreeOutDegree(year=1983): updated 14746 out-degrees, 222214 in-degrees  pre=644 csr=602 S1=202 S2=17 S3=49 S4=2 xfer=371 upd=336  total=2275 ms  E/s=1081838
+
+[EP 1984] N=506278 delta=15189
+[prepareGraph] num_vertices = 506278
+
+[prepareGraph] edges = 1190288, offsets = 506279 (should be V+1 = 506279)
+
+[prepareGraph] num_vertices = 506278
+
+[prepareGraph] edges = 1190288, offsets = 506279 (should be V+1 = 506279)
+
+updateNodeInDegreeOutDegree(year=1984): updated 15189 out-degrees, 223423 in-degrees  pre=622 csr=711 S1=623 S2=29 S3=106 S4=3 xfer=388 upd=308  total=2841 ms  E/s=386226
+
+[EP 1985] N=521467 delta=15645
+[prepareGraph] num_vertices = 521467
+
+[prepareGraph] edges = 1484195, offsets = 521468 (should be V+1 = 521468)
+
+[prepareGraph] num_vertices = 521467
+
+[prepareGraph] edges = 1484195, offsets = 521468 (should be V+1 = 521468)
+
+updateNodeInDegreeOutDegree(year=1985): updated 15645 out-degrees, 229192 in-degrees  pre=625 csr=799 S1=832 S2=29 S3=103 S4=2 xfer=395 upd=343  total=3182 ms  E/s=314076
+
+[EP 1986] N=537112 delta=16114
+[prepareGraph] num_vertices = 537112
+
+[prepareGraph] edges = 1787663, offsets = 537113 (should be V+1 = 537113)
+
+[prepareGraph] num_vertices = 537112
+
+[prepareGraph] edges = 1787663, offsets = 537113 (should be V+1 = 537113)
+
+updateNodeInDegreeOutDegree(year=1986): updated 16114 out-degrees, 240994 in-degrees  pre=621 csr=880 S1=785 S2=35 S3=112 S4=2 xfer=407 upd=338  total=3232 ms  E/s=346285
+
+[EP 1987] N=553226 delta=16597
+[prepareGraph] num_vertices = 553226
+
+[prepareGraph] edges = 2110655, offsets = 553227 (should be V+1 = 553227)
+
+[prepareGraph] num_vertices = 553226
+
+[prepareGraph] edges = 2110655, offsets = 553227 (should be V+1 = 553227)
+
+updateNodeInDegreeOutDegree(year=1987): updated 16597 out-degrees, 241889 in-degrees  pre=644 csr=984 S1=764 S2=37 S3=117 S4=3 xfer=419 upd=366  total=3386 ms  E/s=351735
+
+[EP 1988] N=569823 delta=17095
+[prepareGraph] num_vertices = 569823
+
+[prepareGraph] edges = 2434514, offsets = 569824 (should be V+1 = 569824)
+
+[prepareGraph] num_vertices = 569823
+
+[prepareGraph] edges = 2434514, offsets = 569824 (should be V+1 = 569824)
+
+updateNodeInDegreeOutDegree(year=1988): updated 17095 out-degrees, 250411 in-degrees  pre=602 csr=1084 S1=480 S2=44 S3=122 S4=3 xfer=432 upd=355  total=3176 ms  E/s=521041
+
+[EP 1989] N=586918 delta=17608
+[prepareGraph] num_vertices = 586918
+
+[prepareGraph] edges = 2772728, offsets = 586919 (should be V+1 = 586919)
+
+[prepareGraph] num_vertices = 586918
+
+[prepareGraph] edges = 2772728, offsets = 586919 (should be V+1 = 586919)
+
+updateNodeInDegreeOutDegree(year=1989): updated 17608 out-degrees, 257486 in-degrees  pre=666 csr=1188 S1=461 S2=39 S3=128 S4=3 xfer=448 upd=356  total=3348 ms  E/s=552750
+
+[EP 1990] N=604526 delta=18136
+[prepareGraph] num_vertices = 604526
+
+[prepareGraph] edges = 3121521, offsets = 604527 (should be V+1 = 604527)
+
+[prepareGraph] num_vertices = 604526
+
+[prepareGraph] edges = 3121521, offsets = 604527 (should be V+1 = 604527)
+
+updateNodeInDegreeOutDegree(year=1990): updated 18136 out-degrees, 261874 in-degrees  pre=626 csr=1199 S1=942 S2=40 S3=137 S4=3 xfer=457 upd=374  total=3833 ms  E/s=317262
+
+[EP 1991] N=622662 delta=18680
+[prepareGraph] num_vertices = 622662
+
+[prepareGraph] edges = 3477384, offsets = 622663 (should be V+1 = 622663)
+
+[prepareGraph] num_vertices = 622662
+
+[prepareGraph] edges = 3477384, offsets = 622663 (should be V+1 = 622663)
+
+updateNodeInDegreeOutDegree(year=1991): updated 18680 out-degrees, 270036 in-degrees  pre=648 csr=1284 S1=763 S2=47 S3=143 S4=4 xfer=472 upd=413  total=3832 ms  E/s=385250
+
+[EP 1992] N=641342 delta=19241
+[prepareGraph] num_vertices = 641342
+
+[prepareGraph] edges = 3846133, offsets = 641343 (should be V+1 = 641343)
+
+[prepareGraph] num_vertices = 641342
+
+[prepareGraph] edges = 3846133, offsets = 641343 (should be V+1 = 641343)
+
+updateNodeInDegreeOutDegree(year=1992): updated 19241 out-degrees, 280248 in-degrees  pre=652 csr=1399 S1=887 S2=43 S3=147 S4=5 xfer=484 upd=376  total=4053 ms  E/s=354918
+
+[EP 1993] N=660583 delta=19818
+[prepareGraph] num_vertices = 660583
+
+[prepareGraph] edges = 4230185, offsets = 660584 (should be V+1 = 660584)
+
+[prepareGraph] num_vertices = 660583
+
+[prepareGraph] edges = 4230185, offsets = 660584 (should be V+1 = 660584)
+
+updateNodeInDegreeOutDegree(year=1993): updated 19818 out-degrees, 279156 in-degrees  pre=654 csr=1505 S1=1136 S2=45 S3=157 S4=3 xfer=499 upd=365  total=4425 ms  E/s=284894
+
+[EP 1994] N=680401 delta=20413
+[prepareGraph] num_vertices = 680401
+
+[prepareGraph] edges = 4612141, offsets = 680402 (should be V+1 = 680402)
+
+[prepareGraph] num_vertices = 680401
+
+[prepareGraph] edges = 4612141, offsets = 680402 (should be V+1 = 680402)
+
+updateNodeInDegreeOutDegree(year=1994): updated 20413 out-degrees, 290385 in-degrees  pre=704 csr=1738 S1=562 S2=52 S3=163 S4=4 xfer=522 upd=477  total=4286 ms  E/s=511032
+
+[EP 1995] N=700814 delta=21025
+[prepareGraph] num_vertices = 700814
+
+[prepareGraph] edges = 5010966, offsets = 700815 (should be V+1 = 700815)
+
+[prepareGraph] num_vertices = 700814
+
+[prepareGraph] edges = 5010966, offsets = 700815 (should be V+1 = 700815)
+
+updateNodeInDegreeOutDegree(year=1995): updated 21025 out-degrees, 296688 in-degrees  pre=661 csr=1915 S1=926 S2=51 S3=172 S4=6 xfer=535 upd=510  total=4841 ms  E/s=353887
+
+[EP 1996] N=721839 delta=21656
+[prepareGraph] num_vertices = 721839
+
+[prepareGraph] edges = 5419340, offsets = 721840 (should be V+1 = 721840)
+
+[prepareGraph] num_vertices = 721839
+
+[prepareGraph] edges = 5419340, offsets = 721840 (should be V+1 = 721840)
+
+updateNodeInDegreeOutDegree(year=1996): updated 21656 out-degrees, 310076 in-degrees  pre=687 csr=1853 S1=1048 S2=71 S3=167 S4=4 xfer=549 upd=507  total=4952 ms  E/s=332653
+
+[EP 1997] N=743495 delta=22305
+[prepareGraph] num_vertices = 743495
+
+[prepareGraph] edges = 5848176, offsets = 743496 (should be V+1 = 743496)
+
+[prepareGraph] num_vertices = 743495
+
+[prepareGraph] edges = 5848176, offsets = 743496 (should be V+1 = 743496)
+
+updateNodeInDegreeOutDegree(year=1997): updated 22305 out-degrees, 313632 in-degrees  pre=705 csr=2019 S1=826 S2=51 S3=174 S4=4 xfer=567 upd=517  total=4933 ms  E/s=412124
+
+[EP 1998] N=765800 delta=22974
+[prepareGraph] num_vertices = 765800
+
+[prepareGraph] edges = 6283027, offsets = 765801 (should be V+1 = 765801)
+
+[prepareGraph] num_vertices = 765800
+
+[prepareGraph] edges = 6283027, offsets = 765801 (should be V+1 = 765801)
+
+updateNodeInDegreeOutDegree(year=1998): updated 22974 out-degrees, 325921 in-degrees  pre=726 csr=2155 S1=1225 S2=61 S3=186 S4=5 xfer=582 upd=487  total=5498 ms  E/s=306240
+
+[EP 1999] N=788774 delta=23664
+[prepareGraph] num_vertices = 788774
+
+[prepareGraph] edges = 6735192, offsets = 788775 (should be V+1 = 788775)
+
+[prepareGraph] num_vertices = 788774
+
+[prepareGraph] edges = 6735192, offsets = 788775 (should be V+1 = 788775)
+
+updateNodeInDegreeOutDegree(year=1999): updated 23664 out-degrees, 337821 in-degrees  pre=737 csr=2212 S1=1228 S2=79 S3=217 S4=6 xfer=603 upd=526  total=5686 ms  E/s=308506
+
+[EP 2000] N=812438 delta=24374
+[prepareGraph] num_vertices = 812438
+
+[prepareGraph] edges = 7207288, offsets = 812439 (should be V+1 = 812439)
+
+[prepareGraph] num_vertices = 812438
+
+[prepareGraph] edges = 7207288, offsets = 812439 (should be V+1 = 812439)
+
+updateNodeInDegreeOutDegree(year=2000): updated 24374 out-degrees, 342896 in-degrees  pre=743 csr=2356 S1=1812 S2=83 S3=297 S4=8 xfer=622 upd=546  total=6543 ms  E/s=217133
+
+[EP 2001] N=836812 delta=25105
+[prepareGraph] num_vertices = 836812
+
+[prepareGraph] edges = 7685098, offsets = 836813 (should be V+1 = 836813)
+
+[prepareGraph] num_vertices = 836812
+
+[prepareGraph] edges = 7685098, offsets = 836813 (should be V+1 = 836813)
+
+updateNodeInDegreeOutDegree(year=2001): updated 25105 out-degrees, 355230 in-degrees  pre=733 csr=2684 S1=1862 S2=86 S3=307 S4=7 xfer=639 upd=641  total=7037 ms  E/s=220122
+
+[EP 2002] N=861917 delta=25858
+[prepareGraph] num_vertices = 861917
+
+[prepareGraph] edges = 8182822, offsets = 861918 (should be V+1 = 861918)
+
+[prepareGraph] num_vertices = 861917
+
+[prepareGraph] edges = 8182822, offsets = 861918 (should be V+1 = 861918)
+
+updateNodeInDegreeOutDegree(year=2002): updated 25858 out-degrees, 360318 in-degrees  pre=755 csr=2689 S1=1521 S2=86 S3=318 S4=6 xfer=654 upd=631  total=6742 ms  E/s=261015
+
+[EP 2003] N=887775 delta=26634
+[prepareGraph] num_vertices = 887775
+
+[prepareGraph] edges = 8686859, offsets = 887776 (should be V+1 = 887776)
+
+[prepareGraph] num_vertices = 887775
+
+[prepareGraph] edges = 8686859, offsets = 887776 (should be V+1 = 887776)
+
+updateNodeInDegreeOutDegree(year=2003): updated 26634 out-degrees, 373538 in-degrees  pre=770 csr=2865 S1=1666 S2=94 S3=337 S4=8 xfer=673 upd=638  total=7149 ms  E/s=248852
+
+[EP 2004] N=914409 delta=27433
+[prepareGraph] num_vertices = 914409
+
+[prepareGraph] edges = 9210785, offsets = 914410 (should be V+1 = 914410)
+
+[prepareGraph] num_vertices = 914409
+
+[prepareGraph] edges = 9210785, offsets = 914410 (should be V+1 = 914410)
+
+updateNodeInDegreeOutDegree(year=2004): updated 27433 out-degrees, 378213 in-degrees  pre=784 csr=2951 S1=1341 S2=89 S3=341 S4=7 xfer=696 upd=613  total=6908 ms  E/s=298846
+
+[EP 2005] N=941842 delta=28256
+[prepareGraph] num_vertices = 941842
+
+[prepareGraph] edges = 9742129, offsets = 941843 (should be V+1 = 941843)
+
+[prepareGraph] num_vertices = 941842
+
+[prepareGraph] edges = 9742129, offsets = 941843 (should be V+1 = 941843)
+
+updateNodeInDegreeOutDegree(year=2005): updated 28256 out-degrees, 394029 in-degrees  pre=792 csr=3100 S1=1335 S2=102 S3=364 S4=6 xfer=715 upd=631  total=7136 ms  E/s=307420
+
+[EP 2006] N=970098 delta=29103
+[prepareGraph] num_vertices = 970098
+
+[prepareGraph] edges = 10297930, offsets = 970099 (should be V+1 = 970099)
+
+[prepareGraph] num_vertices = 970098
+
+[prepareGraph] edges = 10297930, offsets = 970099 (should be V+1 = 970099)
+
+updateNodeInDegreeOutDegree(year=2006): updated 29103 out-degrees, 404051 in-degrees  pre=806 csr=3231 S1=1776 S2=97 S3=372 S4=7 xfer=736 upd=647  total=7765 ms  E/s=253579
+
+[EP 2007] N=999201 delta=29977
+[prepareGraph] num_vertices = 999201
+
+[prepareGraph] edges = 10869001, offsets = 999202 (should be V+1 = 999202)
+
+[prepareGraph] num_vertices = 999201
+
+[prepareGraph] edges = 10869001, offsets = 999202 (should be V+1 = 999202)
+
+updateNodeInDegreeOutDegree(year=2007): updated 29977 out-degrees, 415902 in-degrees  pre=811 csr=3353 S1=1287 S2=104 S3=386 S4=8 xfer=757 upd=645  total=7447 ms  E/s=329695
+
+[EP 2008] N=1029178 delta=30876
+[prepareGraph] num_vertices = 1029178
+
+[prepareGraph] edges = 11457268, offsets = 1029179 (should be V+1 = 1029179)
+
+[prepareGraph] num_vertices = 1029178
+
+[prepareGraph] edges = 11457268, offsets = 1029179 (should be V+1 = 1029179)
+
+updateNodeInDegreeOutDegree(year=2008): updated 30876 out-degrees, 422916 in-degrees  pre=838 csr=3461 S1=1680 S2=139 S3=559 S4=7 xfer=780 upd=653  total=8212 ms  E/s=250204
+
+[EP 2009] N=1060054 delta=31802
+[prepareGraph] num_vertices = 1060054
+
+[prepareGraph] edges = 12054032, offsets = 1060055 (should be V+1 = 1060055)
+
+[prepareGraph] num_vertices = 1060054
+
+[prepareGraph] edges = 12054032, offsets = 1060055 (should be V+1 = 1060055)
+
+updateNodeInDegreeOutDegree(year=2009): updated 31802 out-degrees, 439388 in-degrees  pre=820 csr=3620 S1=1735 S2=144 S3=556 S4=10 xfer=802 upd=659  total=8448 ms  E/s=254495
+
+[EP 2010] N=1091856 delta=32756
+[prepareGraph] num_vertices = 1091856
+
+[prepareGraph] edges = 12676238, offsets = 1091857 (should be V+1 = 1091857)
+
+[prepareGraph] num_vertices = 1091856
+
+[prepareGraph] edges = 12676238, offsets = 1091857 (should be V+1 = 1091857)
+
+updateNodeInDegreeOutDegree(year=2010): updated 32756 out-degrees, 450443 in-degrees  pre=847 csr=3813 S1=1752 S2=150 S3=572 S4=9 xfer=828 upd=721  total=8799 ms  E/s=256671
+
+[EP 2011] N=1124612 delta=33739
+[prepareGraph] num_vertices = 1124612
+
+[prepareGraph] edges = 13313364, offsets = 1124613 (should be V+1 = 1124613)
+
+[prepareGraph] num_vertices = 1124612
+
+[prepareGraph] edges = 13313364, offsets = 1124613 (should be V+1 = 1124613)
+
+updateNodeInDegreeOutDegree(year=2011): updated 33739 out-degrees, 466721 in-degrees  pre=885 csr=3854 S1=3446 S2=172 S3=597 S4=9 xfer=854 upd=692  total=10622 ms  E/s=157458
+
+[EP 2012] N=1158351 delta=34751
+[prepareGraph] num_vertices = 1158351
+
+[prepareGraph] edges = 13978583, offsets = 1158352 (should be V+1 = 1158352)
+
+[prepareGraph] num_vertices = 1158351
+
+[prepareGraph] edges = 13978583, offsets = 1158352 (should be V+1 = 1158352)
+
+updateNodeInDegreeOutDegree(year=2012): updated 34751 out-degrees, 474045 in-degrees  pre=880 csr=4165 S1=2871 S2=154 S3=633 S4=11 xfer=872 upd=749  total=10450 ms  E/s=183525
+
+WriteAttributes: graph size = 1193102
+
+E2E Time, model: PA  num_cycles=30  growth_rate=3%  threads=14  elapsed=188s
+========================================================================================================================
+  PARAGRAH GPU EPOCH BREAKDOWN  model=PA  growth=3.0%  threads=14
+========================================================================================================================
+
+[1] PER-EPOCH STAGE BREAKDOWN  (ms)
+------------------------------------------------------------------------------------------------------------------------
+Ep   N        Delta  B     mB   | FillID  FillFit FillRec CalcScr | NodeInit GenAsgn SameYr  | CSR     Upload | Slab  S1_BFS  S2_WS1  S3_WS2  S4_Fill | Dwnld  EdgeIns  InDeg   FitAsgn | EpTotal  Edges/s   
+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+1983 491532   14746  14746 1    | 135.2   134.8   331.9   42.2    | 15.2    37.4    0.3     | 601.9   7.1    | 0.5   201.6   16.6    48.7    2.4     | 363.7  142.2    118.4   75.4    | 2275     1081838   
+1984 506278   15189  14746 2    | 142.9   137.5   309.3   32.0    | 12.3    38.0    0.3     | 710.6   7.7    | 0.8   622.7   29.2    106.0   3.0     | 379.9  129.3    101.9   77.1    | 2841     386226    
+1985 521467   15645  14525 2    | 138.0   139.1   307.1   41.2    | 12.1    39.5    0.3     | 798.9   5.9    | 0.8   832.3   28.5    103.1   2.3     | 389.6  140.1    123.2   80.0    | 3182     314076    
+1986 537112   16114  14308 2    | 145.3   137.6   295.3   43.1    | 11.5    40.9    0.3     | 880.1   5.9    | 0.8   784.6   34.5    111.8   1.9     | 401.2  122.6    131.5   83.5    | 3232     346285    
+1987 553226   16597  14094 2    | 146.9   141.4   313.8   41.8    | 9.7     41.2    0.3     | 984.3   5.9    | 0.8   764.2   37.0    116.9   2.6     | 413.0  171.3    111.0   83.6    | 3386     351735    
+1988 569823   17095  13883 2    | 143.6   141.2   304.6   12.7    | 10.4    42.4    0.3     | 1084.1  7.4    | 0.9   479.6   44.2    122.4   2.9     | 424.9  145.2    123.8   85.8    | 3176     521041    
+1989 586918   17608  13675 2    | 150.1   144.4   319.6   51.5    | 10.4    47.9    0.3     | 1188.2  7.7    | 0.9   461.2   38.9    128.0   3.0     | 440.1  149.4    118.5   88.1    | 3348     552750    
+1990 604526   18136  13470 2    | 146.0   144.2   308.2   27.3    | 10.5    44.7    0.3     | 1198.9  6.2    | 0.9   941.8   40.1    136.9   2.9     | 450.8  165.9    117.4   90.5    | 3833     317262    
+1991 622662   18680  13268 2    | 147.7   145.2   313.3   41.4    | 10.0    46.8    0.4     | 1284.0  5.9    | 0.9   763.4   47.2    143.0   3.5     | 466.5  169.5    148.3   95.1    | 3832     385250    
+1992 641342   19241  13069 2    | 154.2   145.6   316.7   36.0    | 12.3    46.7    0.4     | 1398.8  6.1    | 1.0   887.4   43.0    147.2   4.6     | 477.4  158.6    122.5   95.0    | 4053     354918    
+1993 660583   19818  12873 2    | 147.4   144.0   321.7   41.3    | 10.7    49.0    0.4     | 1505.1  6.1    | 0.9   1135.6  45.3    156.6   3.3     | 493.2  143.6    124.1   97.0    | 4425     284894    
+1994 680401   20413  12680 2    | 149.6   148.8   363.1   42.3    | 12.7    51.6    0.4     | 1737.7  9.9    | 1.0   561.7   51.8    162.6   4.4     | 511.8  227.7    148.8   100.6   | 4286     511032    
+1995 700814   21025  12490 2    | 157.8   151.6   328.2   23.0    | 13.3    51.0    0.4     | 1915.4  9.0    | 1.0   925.7   50.6    172.0   5.7     | 525.9  255.6    151.0   103.4   | 4841     353887    
+1996 721839   21656  12303 2    | 159.2   150.9   336.0   40.6    | 13.0    52.4    0.4     | 1852.6  9.1    | 1.0   1047.5  70.7    166.6   4.3     | 540.0  241.1    159.4   106.8   | 4952     332653    
+1997 743495   22305  12119 2    | 168.3   154.2   335.0   47.1    | 13.1    54.9    0.4     | 2019.2  9.0    | 1.0   826.4   50.7    173.7   4.4     | 558.0  256.6    149.2   111.6   | 4933     412124    
+1998 765800   22974  11938 2    | 164.3   154.7   346.8   59.9    | 14.1    57.0    0.5     | 2154.8  8.6    | 1.0   1224.5  61.0    185.8   5.2     | 573.0  219.6    151.2   116.0   | 5498     306240    
+1999 788774   23664  11759 3    | 160.4   155.5   345.1   76.4    | 17.7    58.2    0.5     | 2211.9  8.5    | 1.2   1228.5  79.0    216.9   5.9     | 594.4  252.5    155.5   118.0   | 5686     308506    
+2000 812438   24374  11583 3    | 167.6   159.7   353.9   62.0    | 13.6    60.2    0.5     | 2355.9  8.6    | 1.3   1812.5  83.3    297.1   7.7     | 613.2  255.7    167.9   121.9   | 6543     217133    
+2001 836812   25105  11410 3    | 169.9   160.3   359.6   42.7    | 17.1    60.8    0.5     | 2683.8  8.9    | 1.4   1862.0  85.9    306.8   6.5     | 629.8  343.0    174.5   123.9   | 7037     220122    
+2002 861917   25858  11239 3    | 172.7   164.2   369.4   48.5    | 16.3    62.9    0.5     | 2688.8  8.5    | 2.0   1520.6  85.8    318.3   6.3     | 645.8  325.6    177.9   127.6   | 6742     261015    
+2003 887775   26634  11071 3    | 177.2   166.6   377.3   49.0    | 21.3    66.3    0.5     | 2865.1  8.3    | 9.0   1665.9  94.1    337.4   8.0     | 664.4  320.4    184.5   133.5   | 7149     248852    
+2004 914409   27433  10905 3    | 178.8   169.4   378.3   57.8    | 16.1    67.4    0.6     | 2951.5  8.5    | 1.4   1341.3  88.5    341.2   7.0     | 687.5  301.9    173.5   137.6   | 6908     298846    
+2005 941842   28256  10742 3    | 181.4   171.5   385.0   53.9    | 18.9    68.9    0.6     | 3100.3  8.3    | 1.8   1335.4  102.2   364.3   6.0     | 706.5  309.9    180.6   140.3   | 7136     307420    
+2006 970098   29103  10581 3    | 185.5   175.9   396.0   48.6    | 20.4    70.6    0.6     | 3231.3  8.2    | 1.5   1776.1  96.9    371.6   7.5     | 727.4  319.3    184.9   143.1   | 7765     253579    
+2007 999201   29977  10423 3    | 186.1   178.1   396.8   50.1    | 20.0    74.6    0.6     | 3353.1  8.1    | 1.5   1286.8  103.7   386.2   7.6     | 748.7  303.5    191.3   150.1   | 7447     329695    
+2008 1029178  30876  10267 4    | 188.0   181.0   415.8   52.8    | 18.8    75.2    0.6     | 3460.9  8.3    | 1.8   1679.9  138.6   559.2   7.4     | 771.3  321.8    178.8   151.9   | 8212     250204    
+2009 1060054  31802  10113 4    | 185.1   180.7   410.3   43.9    | 20.9    77.6    0.7     | 3620.2  6.2    | 1.9   1734.9  144.0   555.8   10.1    | 796.2  305.4    196.4   157.3   | 8448     254495    
+2010 1091856  32756  9962  4    | 190.8   188.1   423.1   45.1    | 23.7    81.4    0.7     | 3813.1  8.2    | 2.0   1751.5  149.5   572.3   8.8     | 819.8  354.6    201.4   164.5   | 8799     256671    
+2011 1124612  33739  9813  4    | 205.8   190.4   428.1   60.5    | 24.9    84.1    0.7     | 3854.5  8.1    | 2.0   3446.1  172.3   597.1   9.3     | 846.0  322.5    199.0   170.2   | 10622    157458    
+2012 1158351  34751  9666  4    | 196.8   191.7   437.6   54.1    | 28.3    84.7    0.7     | 4164.9  6.0    | 2.0   2871.2  153.6   633.0   10.6    | 865.6  364.4    214.3   170.8   | 10450    183525    
+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+[2] PER-STAGE STATISTICS ACROSS ALL EPOCHS  (ms)
+------------------------------------------------------------------------------------------------------------------------
+  Host preprocessing            total=     21687  mean=   722.9  std=   83.1  min=  602.1  max=   884.8
+  CSR build+upload              total=     65670  mean=  2189.0  std= 1051.2  min=  601.9  max=  4164.9
+  Slab alloc+memset             total=        45  mean=     1.5  std=    1.5  min=    0.5  max=     9.0
+  Stage1 BFS                    total=     37773  mean=  1259.1  std=  682.2  min=  201.6  max=  3446.1
+  Stage2 WS1 (1-hop)            total=      2267  mean=    75.6  std=   41.5  min=   16.6  max=   172.3
+  Stage3 WS2 (2-hop)            total=      8039  mean=   268.0  std=  168.2  min=   48.7  max=   633.0
+  Stage4 fill+write             total=       165  mean=     5.5  std=    2.5  min=    1.9  max=    10.6
+  GPU kernels (total)           total=     48243  mean=  1608.1  std=  872.9  min=  269.2  max=  4224.8
+  Transfers (up+down)           total=     17756  mean=   591.9  std=  149.8  min=  370.9  max=   871.6
+  Host graph update             total=     15419  mean=   514.0  std=  136.0  min=  308.4  max=   749.5
+  Epoch total                   total=    171037  mean=  5701.2  std= 2248.0  min= 2275.5  max= 10621.6
+
+[3] TOTAL TIME DISTRIBUTION
+------------------------------------------------------------------------------------------------------------------------
+  Host preprocessing           :      21687 ms  ( 12.7%)
+  CSR build                    :      65670 ms  ( 38.4%)
+  BFS slab overhead            :         45 ms  (  0.0%)
+  Stage1 BFS                   :      37773 ms  ( 22.1%)
+  Stage2+3 sampling            :      10305 ms  (  6.0%)
+  Stage4 fill+write            :        165 ms  (  0.1%)
+  GPU kernels total            :      48243 ms  ( 28.2%)
+  Transfers                    :      17756 ms  ( 10.4%)
+  Host graph update            :      15419 ms  (  9.0%)
+  Simulation total             :     171037 ms
+  E2E total                    :     188771 ms
+
+[4] BFS DOMINANCE
+------------------------------------------------------------------------------------------------------------------------
+  Stage1 BFS as % of GPU kernels : 78.3%
+  Stage1 BFS as % of epoch total : 22.1%
+  GPU kernels as % of epoch      : 28.2%
+  Total edges generated          : 13752776
+  Overall edges/sec (GPU time)   : 285074
+========================================================================================================================
+
+========================================================================================================================
+  FULL PIPELINE BREAKDOWN (ABM construction -> parse -> init -> simulation -> output write)  model=PA  growth=3.0%  threads=14
+========================================================================================================================
+  ABM construction (out-degree bag, recency probs, planted nodes)        :       1655 ms  (  0.9%)
+  Graph parse (nodelist + edgelist)                                      :       3034 ms  (  1.6%)
+  Init (fitness + array alloc + weight/alpha/outdegree populate)         :        573 ms  (  0.3%)
+  Simulation (epoch loop total -- see breakdown above)                   :     171037 ms  ( 89.8%)
+  Output write (WriteGraph + UpdateGraphAttributes* + WriteAttributes)   :       3031 ms  (  1.6%)
+------------------------------------------------------------------------------------------------------------------------
+  TOTAL (full pipeline, measured)                                        :     179329 ms  ( 94.2%)
+  Unaccounted (measurement gaps / process overhead outside execute())    :      11097 ms  (  5.8%)
+  FULL PIPELINE TOTAL                                                    :     190426 ms  (100.0%)
+========================================================================================================================
+
+E2E Time for num_cycles = 30 with growth_rate = 3 % = 192 seconds.
+GPU 0: General Metrics for NVIDIA GH100 (any frequency)
+Generating '/tmp/nsys-report-d428.qdstrm'
+[1/8] [0%                          ] nsys-pa-30y-3p.nsys-rep[1/8] [0%                          ] nsys-pa-30y-3p.nsys-rep[1/8] [7%                          ] nsys-pa-30y-3p.nsys-rep[1/8] [8%                          ] nsys-pa-30y-3p.nsys-rep[1/8] [7%                          ] nsys-pa-30y-3p.nsys-rep[1/8] [8%                          ] nsys-pa-30y-3p.nsys-rep[1/8] [7%                          ] nsys-pa-30y-3p.nsys-rep[1/8] [8%                          ] nsys-pa-30y-3p.nsys-rep[1/8] [7%                          ] nsys-pa-30y-3p.nsys-rep[1/8] [10%                         ] nsys-pa-30y-3p.nsys-rep[1/8] [9%                          ] nsys-pa-30y-3p.nsys-rep[1/8] [10%                         ] nsys-pa-30y-3p.nsys-rep[1/8] [9%                          ] nsys-pa-30y-3p.nsys-rep[1/8] [8%                          ] nsys-pa-30y-3p.nsys-rep[1/8] [7%                          ] nsys-pa-30y-3p.nsys-rep[1/8] [9%                          ] nsys-pa-30y-3p.nsys-rep[1/8] [8%                          ] nsys-pa-30y-3p.nsys-rep[1/8] [9%                          ] nsys-pa-30y-3p.nsys-rep[1/8] [8%                          ] nsys-pa-30y-3p.nsys-rep[1/8] [9%                          ] nsys-pa-30y-3p.nsys-rep[1/8] [8%                          ] nsys-pa-30y-3p.nsys-rep[1/8] [9%                          ] nsys-pa-30y-3p.nsys-rep[1/8] [8%                          ] nsys-pa-30y-3p.nsys-rep[1/8] [9%                          ] nsys-pa-30y-3p.nsys-rep[1/8] [8%                          ] nsys-pa-30y-3p.nsys-rep[1/8] [9%                          ] nsys-pa-30y-3p.nsys-rep[1/8] [8%                          ] nsys-pa-30y-3p.nsys-rep[1/8] [9%                          ] nsys-pa-30y-3p.nsys-rep[1/8] [8%                          ] nsys-pa-30y-3p.nsys-rep[1/8] [9%                          ] nsys-pa-30y-3p.nsys-rep[1/8] [8%                          ] nsys-pa-30y-3p.nsys-rep[1/8] [9%                          ] nsys-pa-30y-3p.nsys-rep[1/8] [8%                          ] nsys-pa-30y-3p.nsys-rep[1/8] [9%                          ] nsys-pa-30y-3p.nsys-rep[1/8] [8%                          ] nsys-pa-30y-3p.nsys-rep[1/8] [9%                          ] nsys-pa-30y-3p.nsys-rep[1/8] [8%                          ] nsys-pa-30y-3p.nsys-rep[1/8] [9%                          ] nsys-pa-30y-3p.nsys-rep[1/8] [8%                          ] nsys-pa-30y-3p.nsys-rep[1/8] [9%                          ] nsys-pa-30y-3p.nsys-rep[1/8] [8%                          ] nsys-pa-30y-3p.nsys-rep[1/8] [9%                          ] nsys-pa-30y-3p.nsys-rep[1/8] [8%                          ] nsys-pa-30y-3p.nsys-rep[1/8] [9%                          ] nsys-pa-30y-3p.nsys-rep[1/8] [8%                          ] nsys-pa-30y-3p.nsys-rep[1/8] [9%                          ] nsys-pa-30y-3p.nsys-rep[1/8] [8%                          ] nsys-pa-30y-3p.nsys-rep[1/8] [9%                          ] nsys-pa-30y-3p.nsys-rep[1/8] [8%                          ] nsys-pa-30y-3p.nsys-rep[1/8] [9%                          ] nsys-pa-30y-3p.nsys-rep[1/8] [10%                         ] nsys-pa-30y-3p.nsys-rep[1/8] [9%                          ] nsys-pa-30y-3p.nsys-rep[1/8] [10%                         ] nsys-pa-30y-3p.nsys-rep[1/8] [9%                          ] nsys-pa-30y-3p.nsys-rep[1/8] [10%                         ] nsys-pa-30y-3p.nsys-rep[1/8] [9%                          ] nsys-pa-30y-3p.nsys-rep[1/8] [10%                         ] nsys-pa-30y-3p.nsys-rep[1/8] [9%                          ] nsys-pa-30y-3p.nsys-rep[1/8] [10%                         ] nsys-pa-30y-3p.nsys-rep[1/8] [9%                          ] nsys-pa-30y-3p.nsys-rep[1/8] [10%                         ] nsys-pa-30y-3p.nsys-rep[1/8] [9%                          ] nsys-pa-30y-3p.nsys-rep[1/8] [10%                         ] nsys-pa-30y-3p.nsys-rep[1/8] [11%                         ] nsys-pa-30y-3p.nsys-rep[1/8] [10%                         ] nsys-pa-30y-3p.nsys-rep[1/8] [11%                         ] nsys-pa-30y-3p.nsys-rep[1/8] [10%                         ] nsys-pa-30y-3p.nsys-rep[1/8] [11%                         ] nsys-pa-30y-3p.nsys-rep[1/8] [10%                         ] nsys-pa-30y-3p.nsys-rep[1/8] [11%                         ] nsys-pa-30y-3p.nsys-rep[1/8] [12%                         ] nsys-pa-30y-3p.nsys-rep[1/8] [13%                         ] nsys-pa-30y-3p.nsys-rep[1/8] [14%                         ] nsys-pa-30y-3p.nsys-rep[1/8] [=15%                        ] nsys-pa-30y-3p.nsys-rep[1/8] [=16%                        ] nsys-pa-30y-3p.nsys-rep[1/8] [=17%                        ] nsys-pa-30y-3p.nsys-rep[1/8] [==18%                       ] nsys-pa-30y-3p.nsys-rep[1/8] [==19%                       ] nsys-pa-30y-3p.nsys-rep[1/8] [==20%                       ] nsys-pa-30y-3p.nsys-rep[1/8] [==21%                       ] nsys-pa-30y-3p.nsys-rep[1/8] [===22%                      ] nsys-pa-30y-3p.nsys-rep[1/8] [===23%                      ] nsys-pa-30y-3p.nsys-rep[1/8] [===24%                      ] nsys-pa-30y-3p.nsys-rep[1/8] [====25%                     ] nsys-pa-30y-3p.nsys-rep[1/8] [====26%                     ] nsys-pa-30y-3p.nsys-rep[1/8] [====27%                     ] nsys-pa-30y-3p.nsys-rep[1/8] [====28%                     ] nsys-pa-30y-3p.nsys-rep[1/8] [=====29%                    ] nsys-pa-30y-3p.nsys-rep[1/8] [=====30%                    ] nsys-pa-30y-3p.nsys-rep[1/8] [=====31%                    ] nsys-pa-30y-3p.nsys-rep[1/8] [=====32%                    ] nsys-pa-30y-3p.nsys-rep[1/8] [======33%                   ] nsys-pa-30y-3p.nsys-rep[1/8] [======34%                   ] nsys-pa-30y-3p.nsys-rep[1/8] [======35%                   ] nsys-pa-30y-3p.nsys-rep[1/8] [=======36%                  ] nsys-pa-30y-3p.nsys-rep[1/8] [=======37%                  ] nsys-pa-30y-3p.nsys-rep[1/8] [=======38%                  ] nsys-pa-30y-3p.nsys-rep[1/8] [=======39%                  ] nsys-pa-30y-3p.nsys-rep[1/8] [========40%                 ] nsys-pa-30y-3p.nsys-rep[1/8] [========41%                 ] nsys-pa-30y-3p.nsys-rep[1/8] [========42%                 ] nsys-pa-30y-3p.nsys-rep[1/8] [=========43%                ] nsys-pa-30y-3p.nsys-rep[1/8] [=========44%                ] nsys-pa-30y-3p.nsys-rep[1/8] [=========45%                ] nsys-pa-30y-3p.nsys-rep[1/8] [=========46%                ] nsys-pa-30y-3p.nsys-rep[1/8] [==========47%               ] nsys-pa-30y-3p.nsys-rep[1/8] [==========48%               ] nsys-pa-30y-3p.nsys-rep[1/8] [==========49%               ] nsys-pa-30y-3p.nsys-rep[1/8] [===========50%              ] nsys-pa-30y-3p.nsys-rep[1/8] [===========51%              ] nsys-pa-30y-3p.nsys-rep[1/8] [===========52%              ] nsys-pa-30y-3p.nsys-rep[1/8] [===========53%              ] nsys-pa-30y-3p.nsys-rep[1/8] [============54%             ] nsys-pa-30y-3p.nsys-rep[1/8] [============55%             ] nsys-pa-30y-3p.nsys-rep[1/8] [============56%             ] nsys-pa-30y-3p.nsys-rep[1/8] [============57%             ] nsys-pa-30y-3p.nsys-rep[1/8] [=============58%            ] nsys-pa-30y-3p.nsys-rep[1/8] [=============59%            ] nsys-pa-30y-3p.nsys-rep[1/8] [=============60%            ] nsys-pa-30y-3p.nsys-rep[1/8] [==============61%           ] nsys-pa-30y-3p.nsys-rep[1/8] [==============62%           ] nsys-pa-30y-3p.nsys-rep[1/8] [==============63%           ] nsys-pa-30y-3p.nsys-rep[1/8] [==============64%           ] nsys-pa-30y-3p.nsys-rep[1/8] [===============65%          ] nsys-pa-30y-3p.nsys-rep[1/8] [===============66%          ] nsys-pa-30y-3p.nsys-rep[1/8] [===============67%          ] nsys-pa-30y-3p.nsys-rep[1/8] [================68%         ] nsys-pa-30y-3p.nsys-rep[1/8] [================69%         ] nsys-pa-30y-3p.nsys-rep[1/8] [================70%         ] nsys-pa-30y-3p.nsys-rep[1/8] [================71%         ] nsys-pa-30y-3p.nsys-rep[1/8] [=================72%        ] nsys-pa-30y-3p.nsys-rep[1/8] [==================76%       ] nsys-pa-30y-3p.nsys-rep[1/8] [========================100%] nsys-pa-30y-3p.nsys-rep[1/8] [========================100%] nsys-pa-30y-3p.nsys-rep
+[2/8] [0%                          ] nsys-pa-30y-3p.sqlite[2/8] [1%                          ] nsys-pa-30y-3p.sqlite[2/8] [2%                          ] nsys-pa-30y-3p.sqlite[2/8] [3%                          ] nsys-pa-30y-3p.sqlite[2/8] [4%                          ] nsys-pa-30y-3p.sqlite[2/8] [5%                          ] nsys-pa-30y-3p.sqlite[2/8] [6%                          ] nsys-pa-30y-3p.sqlite[2/8] [7%                          ] nsys-pa-30y-3p.sqlite[2/8] [8%                          ] nsys-pa-30y-3p.sqlite[2/8] [9%                          ] nsys-pa-30y-3p.sqlite[2/8] [10%                         ] nsys-pa-30y-3p.sqlite[2/8] [11%                         ] nsys-pa-30y-3p.sqlite[2/8] [12%                         ] nsys-pa-30y-3p.sqlite[2/8] [13%                         ] nsys-pa-30y-3p.sqlite[2/8] [14%                         ] nsys-pa-30y-3p.sqlite[2/8] [=15%                        ] nsys-pa-30y-3p.sqlite[2/8] [=16%                        ] nsys-pa-30y-3p.sqlite[2/8] [=17%                        ] nsys-pa-30y-3p.sqlite[2/8] [==18%                       ] nsys-pa-30y-3p.sqlite[2/8] [==19%                       ] nsys-pa-30y-3p.sqlite[2/8] [==20%                       ] nsys-pa-30y-3p.sqlite[2/8] [==21%                       ] nsys-pa-30y-3p.sqlite[2/8] [===22%                      ] nsys-pa-30y-3p.sqlite[2/8] [===23%                      ] nsys-pa-30y-3p.sqlite[2/8] [===24%                      ] nsys-pa-30y-3p.sqlite[2/8] [====25%                     ] nsys-pa-30y-3p.sqlite[2/8] [====26%                     ] nsys-pa-30y-3p.sqlite[2/8] [====27%                     ] nsys-pa-30y-3p.sqlite[2/8] [====28%                     ] nsys-pa-30y-3p.sqlite[2/8] [=====29%                    ] nsys-pa-30y-3p.sqlite[2/8] [=====30%                    ] nsys-pa-30y-3p.sqlite[2/8] [=====31%                    ] nsys-pa-30y-3p.sqlite[2/8] [=====32%                    ] nsys-pa-30y-3p.sqlite[2/8] [======33%                   ] nsys-pa-30y-3p.sqlite[2/8] [======34%                   ] nsys-pa-30y-3p.sqlite[2/8] [======35%                   ] nsys-pa-30y-3p.sqlite[2/8] [=======36%                  ] nsys-pa-30y-3p.sqlite[2/8] [=======37%                  ] nsys-pa-30y-3p.sqlite[2/8] [=======38%                  ] nsys-pa-30y-3p.sqlite[2/8] [=======39%                  ] nsys-pa-30y-3p.sqlite[2/8] [========40%                 ] nsys-pa-30y-3p.sqlite[2/8] [========41%                 ] nsys-pa-30y-3p.sqlite[2/8] [========42%                 ] nsys-pa-30y-3p.sqlite[2/8] [=========43%                ] nsys-pa-30y-3p.sqlite[2/8] [=========44%                ] nsys-pa-30y-3p.sqlite[2/8] [=========45%                ] nsys-pa-30y-3p.sqlite[2/8] [=========46%                ] nsys-pa-30y-3p.sqlite[2/8] [==========47%               ] nsys-pa-30y-3p.sqlite[2/8] [==========48%               ] nsys-pa-30y-3p.sqlite[2/8] [==========49%               ] nsys-pa-30y-3p.sqlite[2/8] [===========50%              ] nsys-pa-30y-3p.sqlite[2/8] [===========51%              ] nsys-pa-30y-3p.sqlite[2/8] [===========52%              ] nsys-pa-30y-3p.sqlite[2/8] [===========53%              ] nsys-pa-30y-3p.sqlite[2/8] [============54%             ] nsys-pa-30y-3p.sqlite[2/8] [============55%             ] nsys-pa-30y-3p.sqlite[2/8] [============56%             ] nsys-pa-30y-3p.sqlite[2/8] [============57%             ] nsys-pa-30y-3p.sqlite[2/8] [=============58%            ] nsys-pa-30y-3p.sqlite[2/8] [=============59%            ] nsys-pa-30y-3p.sqlite[2/8] [=============60%            ] nsys-pa-30y-3p.sqlite[2/8] [==============61%           ] nsys-pa-30y-3p.sqlite[2/8] [==============62%           ] nsys-pa-30y-3p.sqlite[2/8] [==============63%           ] nsys-pa-30y-3p.sqlite[2/8] [==============64%           ] nsys-pa-30y-3p.sqlite[2/8] [===============65%          ] nsys-pa-30y-3p.sqlite[2/8] [===============66%          ] nsys-pa-30y-3p.sqlite[2/8] [===============67%          ] nsys-pa-30y-3p.sqlite[2/8] [================68%         ] nsys-pa-30y-3p.sqlite[2/8] [================69%         ] nsys-pa-30y-3p.sqlite[2/8] [================70%         ] nsys-pa-30y-3p.sqlite[2/8] [================71%         ] nsys-pa-30y-3p.sqlite[2/8] [=================72%        ] nsys-pa-30y-3p.sqlite[2/8] [=================73%        ] nsys-pa-30y-3p.sqlite[2/8] [=================74%        ] nsys-pa-30y-3p.sqlite[2/8] [==================75%       ] nsys-pa-30y-3p.sqlite[2/8] [==================76%       ] nsys-pa-30y-3p.sqlite[2/8] [==================77%       ] nsys-pa-30y-3p.sqlite[2/8] [==================78%       ] nsys-pa-30y-3p.sqlite[2/8] [===================79%      ] nsys-pa-30y-3p.sqlite[2/8] [===================80%      ] nsys-pa-30y-3p.sqlite[2/8] [===================81%      ] nsys-pa-30y-3p.sqlite[2/8] [===================82%      ] nsys-pa-30y-3p.sqlite[2/8] [====================83%     ] nsys-pa-30y-3p.sqlite[2/8] [====================84%     ] nsys-pa-30y-3p.sqlite[2/8] [====================85%     ] nsys-pa-30y-3p.sqlite[2/8] [=====================86%    ] nsys-pa-30y-3p.sqlite[2/8] [=====================87%    ] nsys-pa-30y-3p.sqlite[2/8] [=====================88%    ] nsys-pa-30y-3p.sqlite[2/8] [=====================89%    ] nsys-pa-30y-3p.sqlite[2/8] [======================90%   ] nsys-pa-30y-3p.sqlite[2/8] [======================91%   ] nsys-pa-30y-3p.sqlite[2/8] [======================92%   ] nsys-pa-30y-3p.sqlite[2/8] [=======================93%  ] nsys-pa-30y-3p.sqlite[2/8] [=======================94%  ] nsys-pa-30y-3p.sqlite[2/8] [=======================95%  ] nsys-pa-30y-3p.sqlite[2/8] [=======================96%  ] nsys-pa-30y-3p.sqlite[2/8] [========================97% ] nsys-pa-30y-3p.sqlite[2/8] [========================98% ] nsys-pa-30y-3p.sqlite[2/8] [========================99% ] nsys-pa-30y-3p.sqlite[2/8] [========================100%] nsys-pa-30y-3p.sqlite[2/8] [========================100%] nsys-pa-30y-3p.sqlite
+[3/8] Executing 'nvtx_sum' stats report
+
+ Time (%)  Total Time (ns)  Instances  Avg (ns)  Med (ns)  Min (ns)  Max (ns)   StdDev (ns)   Style             Range          
+ --------  ---------------  ---------  --------  --------  --------  ---------  -----------  -------  -------------------------
+    100.0    3,648,761,680    701,630   5,200.4   5,028.0     4,636  2,216,573      5,319.5  PushPop  CCCL:cub::DeviceFor::Bulk
+
+[4/8] Executing 'osrt_sum' stats report
+
+ Time (%)  Total Time (ns)  Num Calls    Avg (ns)      Med (ns)    Min (ns)    Max (ns)    StdDev (ns)            Name         
+ --------  ---------------  ---------  ------------  ------------  ---------  -----------  ------------  ----------------------
+     99.8  526,460,982,236     19,064  27,615,452.3  10,061,900.0      1,512  104,686,830  35,769,342.6  poll                  
+      0.2      909,451,517     11,953      76,085.6      26,610.0      1,000   28,660,442     419,598.5  ioctl                 
+      0.0      223,711,652         28   7,989,701.9   4,703,242.5  1,152,645   18,350,270   6,527,729.3  writev                
+      0.0       64,579,444        376     171,753.8     152,583.5    119,901      395,095      55,594.9  pthread_create        
+      0.0       26,508,802        377      70,315.1      27,380.0     19,035      617,396      96,187.5  pthread_rwlock_wrlock 
+      0.0       12,188,485        584      20,870.7       7,616.5      1,832      134,277      32,977.3  mmap                  
+      0.0       11,690,849      5,972       1,957.6       1,659.0      1,006    1,860,457      24,056.3  read                  
+      0.0        6,727,122        323      20,827.0      19,025.0      1,013       54,200       8,953.5  pthread_rwlock_rdlock 
+      0.0        3,304,471        814       4,059.5       2,981.5      1,028       40,305       3,430.6  munmap                
+      0.0        3,053,536          9     339,281.8     230,594.0     71,309      919,017     314,475.9  fopen64               
+      0.0        1,557,115         15     103,807.7       2,510.0      1,599    1,083,298     285,571.5  write                 
+      0.0        1,330,134         30      44,337.8       8,634.5      4,088      799,796     144,526.1  mmap64                
+      0.0        1,011,612         38      26,621.4       4,006.0      1,094      320,165      75,580.5  fclose                
+      0.0          858,516         12      71,543.0      30,546.5     20,271      525,099     143,023.5  sem_timedwait         
+      0.0          197,662         42       4,706.2       2,235.0      1,256       21,723       5,355.1  fopen                 
+      0.0          177,824         54       3,293.0       2,123.0      1,114        9,894       2,227.2  open64                
+      0.0           76,221          1      76,221.0      76,221.0     76,221       76,221           0.0  pthread_cond_wait     
+      0.0           38,509          1      38,509.0      38,509.0     38,509       38,509           0.0  fgets                 
+      0.0           37,160          5       7,432.0       7,706.0      6,444        8,261         871.7  fflush                
+      0.0           25,145          2      12,572.5      12,572.5      8,671       16,474       5,517.6  fread                 
+      0.0           23,164          4       5,791.0       5,743.5      2,470        9,207       3,656.7  pipe2                 
+      0.0           22,207          6       3,701.2       3,991.0      1,210        6,237       1,932.8  open                  
+      0.0           17,045          2       8,522.5       8,522.5      5,265       11,780       4,606.8  socket                
+      0.0           14,235          1      14,235.0      14,235.0     14,235       14,235           0.0  connect               
+      0.0           10,749          5       2,149.8       1,156.0      1,020        4,993       1,695.9  fwrite                
+      0.0            7,763          4       1,940.8       1,675.5      1,011        3,401       1,065.8  pthread_mutex_lock    
+      0.0            7,095          3       2,365.0       1,788.0      1,706        3,601       1,071.2  pthread_cond_broadcast
+      0.0            2,760          2       1,380.0       1,380.0      1,263        1,497         165.5  fcntl                 
+      0.0            2,256          1       2,256.0       2,256.0      2,256        2,256           0.0  bind                  
+      0.0            1,119          1       1,119.0       1,119.0      1,119        1,119           0.0  listen                
+
+[5/8] Executing 'cuda_api_sum' stats report
+
+ Time (%)  Total Time (ns)  Num Calls    Avg (ns)      Med (ns)     Min (ns)     Max (ns)      StdDev (ns)            Name         
+ --------  ---------------  ---------  ------------  ------------  ----------  -------------  -------------  ----------------------
+     62.3   48,321,823,065        570  84,775,128.2   2,060,216.5       2,013  1,093,235,592  177,961,495.8  cudaStreamSynchronize 
+     22.6   17,535,136,070  1,404,508      12,484.9      12,045.0       5,108      8,131,839       31,217.2  cudaMemcpy            
+      5.1    3,970,406,756        360  11,028,907.7     844,450.5       8,775    196,993,534   35,772,781.7  cudaMemcpyAsync       
+      3.9    3,032,875,014    704,408       4,305.6       3,636.0       2,852     17,448,823       30,035.4  cudaFree              
+      2.8    2,162,325,105    704,156       3,070.8       2,499.0       1,747      5,352,792       17,900.0  cudaMalloc            
+      2.8    2,155,760,641    702,188       3,070.1       2,948.0       2,671      3,245,696        7,388.3  cudaLaunchKernel      
+      0.3      199,404,529         30   6,646,817.6      45,471.5      39,435    197,994,289   36,139,769.0  cudaStreamCreate      
+      0.1       86,810,644        156     556,478.5      10,780.0       4,955      2,148,664      790,599.5  cudaDeviceSynchronize 
+      0.1       44,565,672    702,188          63.5          62.0          50         29,080           63.3  cuKernelGetName       
+      0.0       25,044,573          1  25,044,573.0  25,044,573.0  25,044,573     25,044,573            0.0  cuLibraryLoadData     
+      0.0       11,559,042        312      37,048.2      12,688.0       3,387        503,799       72,042.9  cudaMallocManaged     
+      0.0        5,173,143        606       8,536.5       5,780.5       2,162         81,799        6,513.8  cudaMemset            
+      0.0        3,791,801        900       4,213.1       3,180.0       1,342         23,377        3,240.1  cudaEventRecord       
+      0.0        3,311,475        900       3,679.4         967.5         332        314,377       19,430.1  cudaEventCreate       
+      0.0        2,965,902        450       6,590.9       6,209.5       4,040          9,441        1,081.6  cudaEventSynchronize  
+      0.0          670,952         60      11,182.5      10,500.0       5,503         20,277        4,448.9  cudaMemsetAsync       
+      0.0          628,175        900         698.0         509.0         263          5,564          603.3  cudaEventDestroy      
+      0.0          522,602         30      17,420.1      17,650.0      10,687         27,547        4,506.8  cudaStreamDestroy     
+      0.0           11,473         10       1,147.3       1,158.0         660          1,892          364.7  cuLibraryGetKernel    
+      0.0            1,124          1       1,124.0       1,124.0       1,124          1,124            0.0  cuModuleGetLoadingMode
+
+[6/8] Executing 'cuda_gpu_kern_sum' stats report
+
+ Time (%)  Total Time (ns)  Instances    Avg (ns)       Med (ns)      Min (ns)      Max (ns)      StdDev (ns)                                                   Name                                                
+ --------  ---------------  ---------  -------------  -------------  -----------  -------------  -------------  ----------------------------------------------------------------------------------------------------
+     71.7   37,766,528,060         78  484,186,257.2  461,852,105.5  174,936,432  1,093,213,513  191,831,350.1  kernelCallStage1_warped(int, int, int, ABM *, Graph *, DeviceGraph *, DeviceGraph *, device_map<int…
+     15.3    8,037,158,487         78  103,040,493.4  103,431,811.5   24,825,170    165,084,442   33,836,414.3  kernelCallStage3(int, int, int, ABM *, Graph *, int, device_map<int, Node>::device_view, ABMStageSt…
+      7.1    3,734,696,830         30  124,489,894.3  117,547,996.0   67,616,434    196,984,406   36,154,462.2  void cuco::legacy::detail::insert<(unsigned long)128, (unsigned int)4, cuco::pair<int, int> *, cuda…
+      4.3    2,265,756,043         78   29,048,154.4   29,412,792.5   11,133,024     51,283,086    7,846,487.4  kernelCallStage2(int, int, int, ABM *, Graph *, cuco::static_set_ref<int, (cuda::std::__4::thread_s…
+      1.2      629,299,038    701,600          896.9          896.0          863          1,312           10.9  void cub::CUB_300002_SM_900::detail::for_each::static_kernel<cub::CUB_300002_SM_900::detail::for_ea…
+      0.3      163,309,043         78    2,093,705.7    2,204,210.0      421,568      3,381,123      730,070.2  kernelCallStage4(int, int, int, ABM *, Graph *, int, device_map<int, Node>::device_view, ABMStageSt…
+      0.2       85,934,343        156      550,861.2        3,200.0        1,344      2,142,113      790,296.7  kernel_extract_vector_sizes(device_vector *, int *, int)                                            
+      0.0        5,407,493         30      180,249.8      187,376.5       51,585        379,841       71,280.0  void cuco::detail::open_addressing_ns::insert_if_n<(int)1, (int)128, int *, thrust::THRUST_300002_S…
+      0.0           94,370         30        3,145.7        3,024.0        2,432          4,064          507.9  void cuco::legacy::detail::initialize<(unsigned long)256, cuda::__4::atomic<int, (cuda::std::__4::t…
+      0.0           28,320         30          944.0          928.0          896          1,088           42.6  void cub::CUB_300002_SM_900::detail::for_each::static_kernel<cub::CUB_300002_SM_900::detail::for_ea…
+
+[7/8] Executing 'cuda_gpu_mem_time_sum' stats report
+
+ Time (%)  Total Time (ns)    Count    Avg (ns)   Med (ns)  Min (ns)  Max (ns)   StdDev (ns)               Operation              
+ --------  ---------------  ---------  ---------  --------  --------  ---------  -----------  ------------------------------------
+     85.3    3,361,484,352  1,403,554    2,395.0   2,368.0     1,697     28,192        161.1  [CUDA memcpy Device-to-Host]        
+     12.8      505,151,203      1,314  384,437.7   5,504.0       704  8,037,831    973,527.3  [CUDA memcpy Host-to-Device]        
+      1.2       45,523,778        666   68,354.0   1,456.0       704    430,656    135,828.7  [CUDA memset]                       
+      0.6       22,749,565      7,586    2,998.9   2,431.0     2,174     21,695      1,943.8  [CUDA memcpy Unified Host-to-Device]
+      0.1        4,083,954        624    6,544.8   2,975.0     2,367     22,432      6,196.4  [CUDA memcpy Unified Device-to-Host]
+
+[8/8] Executing 'cuda_gpu_mem_size_sum' stats report
+
+ Total (MB)     Count    Avg (MB)  Med (MB)  Min (MB)  Max (MB)   StdDev (MB)               Operation              
+ -----------  ---------  --------  --------  --------  ---------  -----------  ------------------------------------
+ 146,398.117        666   219.817     0.120     0.000  1,399.598      444.222  [CUDA memset]                       
+   5,680.117      1,314     4.323     0.133     0.000     95.448       11.626  [CUDA memcpy Host-to-Device]        
+     185.794  1,403,554     0.000     0.000     0.000      1.112        0.006  [CUDA memcpy Device-to-Host]        
+     168.428      7,586     0.022     0.008     0.004      1.044        0.069  [CUDA memcpy Unified Host-to-Device]
+     134.676        624     0.216     0.029     0.004      1.044        0.335  [CUDA memcpy Unified Device-to-Host]
+
+Generated:
+    /home/jmukher/workspace/uiuc/citation_abm/profile/nsys-pa-30y-3p.nsys-rep
+    /home/jmukher/workspace/uiuc/citation_abm/profile/nsys-pa-30y-3p.sqlite
+SUCCESS: 155M → profile/nsys-pa-30y-3p.nsys-rep
+Running growth rate 6% for 30 years.
+Profile output: profile/nsys-pa-30y-6p.nsys-rep
+CMD: nsys profile --trace=nvtx,cuda,osrt --gpu-metrics-device=all --gpu-metrics-frequency=10000 --stats=true --force-overwrite=true -o profile/nsys-pa-30y-6p ./abm --edgelist sj_edgelist --nodelist sj_nodelist --out-degree-bag tcen_at_least_five --recency-probabilities sj_recprob --use-warp-bfs true --use-batching true --max-batch-size 200000 --alpha 0.5 --preferential-weight 0.33 --recency-weight 0.33 --fitness-weight 0.33 --growth-rate .06 --fully-random-citations 0.05 --num-cycles 30 --same-year-proportion 0.12 --output-file ./output/30y/nsys-gpu-opt-static-output-30y-6p.edgelist --auxiliary-information-file ./output/30y/nsys-gpu-opt-static-output-30y-6p.aux --log-file ./output/30y/nsys-gpu-opt-static-pa-30y-6p.log --num-processors 14 --log-level 1
+
+Start ABM....
+parse_args....
+edgelist....
+num-cycles....
+output-file....
+log-file = ./output/30y/nsys-gpu-opt-static-pa-30y-6p.log....
+num-processors = 14....
+log-level = 0
+Init ABM....
+Exec ABM....Init Graph
+Inside  Graph ParseNodelist.....
+Populating the continuous_node mappings..
+Elapsed time: ParseNodelist : 1074 millisecs = 1 seconds
+
+Inside Graph ParseEdgelist.....
+Elapsed time: ParseEdgelist : 1579 millisecs = 1 seconds
+
+In updateNodeInDegreeOutDegree: Update Outdegree first:
+In updateNodeInDegreeOutDegree: Update Indegree:
+Total (initial):: In-Degree = 899050, Out-Degree = 899050
+Elapsed time: 0-1 : 1 seconds
+Elapsed time: 1-2 : 1 seconds
+Elapsed time: 2-3 : 0 seconds
+
+Initialized Graph. Let us update the indegree and out-degrees... 
+[EP 1983] N=491532 delta=29492
+[prepareGraph] num_vertices = 491532
+
+[prepareGraph] edges = 899050, offsets = 491533 (should be V+1 = 491533)
+
+[prepareGraph] num_vertices = 491532
+
+[prepareGraph] edges = 899050, offsets = 491533 (should be V+1 = 491533)
+
+updateNodeInDegreeOutDegree(year=1983): updated 29492 out-degrees, 354385 in-degrees  pre=616 csr=607 S1=472 S2=11 S3=54 S4=3 xfer=778 upd=502  total=3149 ms  E/s=1077946
+
+[EP 1984] N=521024 delta=31262
+[prepareGraph] num_vertices = 521024
+
+[prepareGraph] edges = 1479852, offsets = 521025 (should be V+1 = 521025)
+
+[prepareGraph] num_vertices = 521024
+
+[prepareGraph] edges = 1479852, offsets = 521025 (should be V+1 = 521025)
+
+updateNodeInDegreeOutDegree(year=1984): updated 31262 out-degrees, 369711 in-degrees  pre=600 csr=820 S1=715 S2=40 S3=109 S4=3 xfer=838 upd=523  total=3757 ms  E/s=706668
+
+[EP 1985] N=552286 delta=33138
+[prepareGraph] num_vertices = 552286
+
+[prepareGraph] edges = 2093203, offsets = 552287 (should be V+1 = 552287)
+
+[prepareGraph] num_vertices = 552286
+
+[prepareGraph] edges = 2093203, offsets = 552287 (should be V+1 = 552287)
+
+updateNodeInDegreeOutDegree(year=1985): updated 33138 out-degrees, 386443 in-degrees  pre=648 csr=943 S1=470 S2=38 S3=120 S4=4 xfer=884 upd=612  total=3828 ms  E/s=1017668
+
+[EP 1986] N=585424 delta=35126
+[prepareGraph] num_vertices = 585424
+
+[prepareGraph] edges = 2736189, offsets = 585425 (should be V+1 = 585425)
+
+[prepareGraph] num_vertices = 585424
+
+[prepareGraph] edges = 2736189, offsets = 585425 (should be V+1 = 585425)
+
+updateNodeInDegreeOutDegree(year=1986): updated 35126 out-degrees, 406233 in-degrees  pre=651 csr=1118 S1=809 S2=42 S3=129 S4=5 xfer=940 upd=624  total=4438 ms  E/s=695093
+
+[EP 1987] N=620550 delta=37233
+[prepareGraph] num_vertices = 620550
+
+[prepareGraph] edges = 3420072, offsets = 620551 (should be V+1 = 620551)
+
+[prepareGraph] num_vertices = 620550
+
+[prepareGraph] edges = 3420072, offsets = 620551 (should be V+1 = 620551)
+
+updateNodeInDegreeOutDegree(year=1987): updated 37233 out-degrees, 430797 in-degrees  pre=666 csr=1404 S1=1097 S2=54 S3=146 S4=5 xfer=989 upd=732  total=5218 ms  E/s=563280
+
+[EP 1988] N=657783 delta=39467
+[prepareGraph] num_vertices = 657783
+
+[prepareGraph] edges = 4153426, offsets = 657784 (should be V+1 = 657784)
+
+[prepareGraph] num_vertices = 657783
+
+[prepareGraph] edges = 4153426, offsets = 657784 (should be V+1 = 657784)
+
+updateNodeInDegreeOutDegree(year=1988): updated 39467 out-degrees, 454266 in-degrees  pre=682 csr=1591 S1=861 S2=46 S3=150 S4=4 xfer=1058 upd=738  total=5258 ms  E/s=731221
+
+[EP 1989] N=697250 delta=41835
+[prepareGraph] num_vertices = 697250
+
+[prepareGraph] edges = 4929683, offsets = 697251 (should be V+1 = 697251)
+
+[prepareGraph] num_vertices = 697250
+
+[prepareGraph] edges = 4929683, offsets = 697251 (should be V+1 = 697251)
+
+updateNodeInDegreeOutDegree(year=1989): updated 41835 out-degrees, 475799 in-degrees  pre=697 csr=1979 S1=1037 S2=111 S3=166 S4=5 xfer=1121 upd=790  total=6045 ms  E/s=617699
+
+[EP 1990] N=739085 delta=44346
+[prepareGraph] num_vertices = 739085
+
+[prepareGraph] edges = 5744543, offsets = 739086 (should be V+1 = 739086)
+
+[prepareGraph] num_vertices = 739085
+
+[prepareGraph] edges = 5744543, offsets = 739086 (should be V+1 = 739086)
+
+updateNodeInDegreeOutDegree(year=1990): updated 44346 out-degrees, 504015 in-degrees  pre=710 csr=2119 S1=1167 S2=61 S3=175 S4=5 xfer=1177 upd=846  total=6416 ms  E/s=617979
+
+[EP 1991] N=783431 delta=47006
+[prepareGraph] num_vertices = 783431
+
+[prepareGraph] edges = 6614001, offsets = 783432 (should be V+1 = 783432)
+
+[prepareGraph] num_vertices = 783431
+
+[prepareGraph] edges = 6614001, offsets = 783432 (should be V+1 = 783432)
+
+updateNodeInDegreeOutDegree(year=1991): updated 47006 out-degrees, 531401 in-degrees  pre=739 csr=2290 S1=1410 S2=55 S3=189 S4=5 xfer=1248 upd=869  total=6955 ms  E/s=554028
+
+[EP 1992] N=830437 delta=49827
+[prepareGraph] num_vertices = 830437
+
+[prepareGraph] edges = 7532778, offsets = 830438 (should be V+1 = 830438)
+
+[prepareGraph] num_vertices = 830437
+
+[prepareGraph] edges = 7532778, offsets = 830438 (should be V+1 = 830438)
+
+updateNodeInDegreeOutDegree(year=1992): updated 49827 out-degrees, 560602 in-degrees  pre=766 csr=2486 S1=1058 S2=85 S3=301 S4=6 xfer=1328 upd=876  total=7071 ms  E/s=671362
+
+[EP 1993] N=880264 delta=52816
+[prepareGraph] num_vertices = 880264
+
+[prepareGraph] edges = 8505548, offsets = 880265 (should be V+1 = 880265)
+
+[prepareGraph] num_vertices = 880264
+
+[prepareGraph] edges = 8505548, offsets = 880265 (should be V+1 = 880265)
+
+updateNodeInDegreeOutDegree(year=1993): updated 52816 out-degrees, 588945 in-degrees  pre=808 csr=2776 S1=1273 S2=100 S3=325 S4=7 xfer=1406 upd=932  total=7818 ms  E/s=598273
+
+[EP 1994] N=933080 delta=55985
+[prepareGraph] num_vertices = 933080
+
+[prepareGraph] edges = 9526200, offsets = 933081 (should be V+1 = 933081)
+
+[prepareGraph] num_vertices = 933080
+
+[prepareGraph] edges = 9526200, offsets = 933081 (should be V+1 = 933081)
+
+updateNodeInDegreeOutDegree(year=1994): updated 55985 out-degrees, 625472 in-degrees  pre=797 csr=3048 S1=1333 S2=100 S3=354 S4=7 xfer=1502 upd=964  total=8286 ms  E/s=608584
+
+[EP 1995] N=989065 delta=59344
+[prepareGraph] num_vertices = 989065
+
+[prepareGraph] edges = 10617732, offsets = 989066 (should be V+1 = 989066)
+
+[prepareGraph] num_vertices = 989065
+
+[prepareGraph] edges = 10617732, offsets = 989066 (should be V+1 = 989066)
+
+updateNodeInDegreeOutDegree(year=1995): updated 59344 out-degrees, 662815 in-degrees  pre=831 csr=3339 S1=1575 S2=107 S3=387 S4=9 xfer=1579 upd=1014  total=9043 ms  E/s=558298
+
+[EP 1996] N=1048409 delta=62905
+[prepareGraph] num_vertices = 1048409
+
+[prepareGraph] edges = 11777421, offsets = 1048410 (should be V+1 = 1048410)
+
+[prepareGraph] num_vertices = 1048409
+
+[prepareGraph] edges = 11777421, offsets = 1048410 (should be V+1 = 1048410)
+
+updateNodeInDegreeOutDegree(year=1996): updated 62905 out-degrees, 701673 in-degrees  pre=858 csr=4054 S1=2068 S2=148 S3=574 S4=9 xfer=1665 upd=1215  total=10800 ms  E/s=442159
+
+[EP 1997] N=1111314 delta=66679
+[prepareGraph] num_vertices = 1111314
+
+[prepareGraph] edges = 13015092, offsets = 1111315 (should be V+1 = 1111315)
+
+[prepareGraph] num_vertices = 1111314
+
+[prepareGraph] edges = 13015092, offsets = 1111315 (should be V+1 = 1111315)
+
+updateNodeInDegreeOutDegree(year=1997): updated 66679 out-degrees, 741259 in-degrees  pre=857 csr=5574 S1=2879 S2=171 S3=595 S4=8 xfer=1783 upd=1317  total=13414 ms  E/s=358594
+
+[EP 1998] N=1177993 delta=70680
+[prepareGraph] num_vertices = 1177993
+
+[prepareGraph] edges = 14325062, offsets = 1177994 (should be V+1 = 1177994)
+
+[prepareGraph] num_vertices = 1177993
+
+[prepareGraph] edges = 14325062, offsets = 1177994 (should be V+1 = 1177994)
+
+updateNodeInDegreeOutDegree(year=1998): updated 70680 out-degrees, 781137 in-degrees  pre=919 csr=4730 S1=2553 S2=162 S3=644 S4=10 xfer=1880 upd=1367  total=12507 ms  E/s=410260
+
+[EP 1999] N=1248673 delta=74921
+[prepareGraph] num_vertices = 1248673
+
+[prepareGraph] edges = 15707197, offsets = 1248674 (should be V+1 = 1248674)
+
+[prepareGraph] num_vertices = 1248673
+
+[prepareGraph] edges = 15707197, offsets = 1248674 (should be V+1 = 1248674)
+
+updateNodeInDegreeOutDegree(year=1999): updated 74921 out-degrees, 828170 in-degrees  pre=952 csr=5081 S1=2634 S2=209 S3=869 S4=10 xfer=2001 upd=1434  total=13448 ms  E/s=394821
+
+[EP 2000] N=1323594 delta=79416
+[prepareGraph] num_vertices = 1323594
+
+[prepareGraph] edges = 17176731, offsets = 1323595 (should be V+1 = 1323595)
+
+[prepareGraph] num_vertices = 1323594
+
+[prepareGraph] edges = 17176731, offsets = 1323595 (should be V+1 = 1323595)
+
+updateNodeInDegreeOutDegree(year=2000): updated 79416 out-degrees, 877225 in-degrees  pre=951 csr=5427 S1=2792 S2=237 S3=930 S4=11 xfer=2125 upd=1542  total=14276 ms  E/s=392791
+
+[EP 2001] N=1403010 delta=84181
+[prepareGraph] num_vertices = 1403010
+
+[prepareGraph] edges = 18735916, offsets = 1403011 (should be V+1 = 1403011)
+
+[prepareGraph] num_vertices = 1403010
+
+[prepareGraph] edges = 18735916, offsets = 1403011 (should be V+1 = 1403011)
+
+updateNodeInDegreeOutDegree(year=2001): updated 84181 out-degrees, 922810 in-degrees  pre=997 csr=5550 S1=3289 S2=449 S3=1020 S4=10 xfer=2235 upd=1615  total=15456 ms  E/s=344065
+
+[EP 2002] N=1487191 delta=89232
+[prepareGraph] num_vertices = 1487191
+
+[prepareGraph] edges = 20376828, offsets = 1487192 (should be V+1 = 1487192)
+
+[prepareGraph] num_vertices = 1487191
+
+[prepareGraph] edges = 20376828, offsets = 1487192 (should be V+1 = 1487192)
+
+updateNodeInDegreeOutDegree(year=2002): updated 89232 out-degrees, 975745 in-degrees  pre=1031 csr=6013 S1=4222 S2=363 S3=1334 S4=15 xfer=2371 upd=1619  total=17264 ms  E/s=292879
+
+[EP 2003] N=1576423 delta=94586
+[prepareGraph] num_vertices = 1576423
+
+[prepareGraph] edges = 22114438, offsets = 1576424 (should be V+1 = 1576424)
+
+[prepareGraph] num_vertices = 1576423
+
+[prepareGraph] edges = 22114438, offsets = 1576424 (should be V+1 = 1576424)
+
+updateNodeInDegreeOutDegree(year=2003): updated 94586 out-degrees, 1031028 in-degrees  pre=1058 csr=6327 S1=4525 S2=347 S3=1450 S4=16 xfer=2512 upd=1596  total=18153 ms  E/s=290829
+
+[EP 2004] N=1671009 delta=100261
+[prepareGraph] num_vertices = 1671009
+
+[prepareGraph] edges = 23957731, offsets = 1671010 (should be V+1 = 1671010)
+
+[prepareGraph] num_vertices = 1671009
+
+[prepareGraph] edges = 23957731, offsets = 1671010 (should be V+1 = 1671010)
+
+updateNodeInDegreeOutDegree(year=2004): updated 100261 out-degrees, 1096126 in-degrees  pre=1085 csr=7075 S1=5240 S2=442 S3=1808 S4=18 xfer=2657 upd=1829  total=20501 ms  E/s=261686
+
+[EP 2005] N=1771270 delta=106277
+[prepareGraph] num_vertices = 1771270
+
+[prepareGraph] edges = 25922352, offsets = 1771271 (should be V+1 = 1771271)
+
+[prepareGraph] num_vertices = 1771270
+
+[prepareGraph] edges = 25922352, offsets = 1771271 (should be V+1 = 1771271)
+
+updateNodeInDegreeOutDegree(year=2005): updated 106277 out-degrees, 1160892 in-degrees  pre=1166 csr=7633 S1=5984 S2=667 S3=1969 S4=16 xfer=2825 upd=1919  total=22546 ms  E/s=241437
+
+[EP 2006] N=1877547 delta=112653
+[prepareGraph] num_vertices = 1877547
+
+[prepareGraph] edges = 28007384, offsets = 1877548 (should be V+1 = 1877548)
+
+[prepareGraph] num_vertices = 1877547
+
+[prepareGraph] edges = 28007384, offsets = 1877548 (should be V+1 = 1877548)
+
+updateNodeInDegreeOutDegree(year=2006): updated 112653 out-degrees, 1221432 in-degrees  pre=1200 csr=8011 S1=5427 S2=575 S3=2425 S4=17 xfer=2980 upd=1876  total=22899 ms  E/s=259943
+
+[EP 2007] N=1990200 delta=119412
+[prepareGraph] num_vertices = 1990200
+
+[prepareGraph] edges = 30202158, offsets = 1990201 (should be V+1 = 1990201)
+
+[prepareGraph] num_vertices = 1990200
+
+[prepareGraph] edges = 30202158, offsets = 1990201 (should be V+1 = 1990201)
+
+updateNodeInDegreeOutDegree(year=2007): updated 119412 out-degrees, 1300848 in-degrees  pre=1230 csr=8488 S1=8228 S2=654 S3=2997 S4=21 xfer=3159 upd=2083  total=27279 ms  E/s=197257
+
+[EP 2008] N=2109612 delta=126577
+[prepareGraph] num_vertices = 2109612
+
+[prepareGraph] edges = 32549632, offsets = 2109613 (should be V+1 = 2109613)
+
+[prepareGraph] num_vertices = 2109612
+
+[prepareGraph] edges = 32549632, offsets = 2109613 (should be V+1 = 2109613)
+
+updateNodeInDegreeOutDegree(year=2008): updated 126577 out-degrees, 1374981 in-degrees  pre=1294 csr=9074 S1=6306 S2=700 S3=3258 S4=12 xfer=3364 upd=2036  total=26488 ms  E/s=242056
+
+[EP 2009] N=2236189 delta=134172
+[prepareGraph] num_vertices = 2236189
+
+[prepareGraph] edges = 35036904, offsets = 2236190 (should be V+1 = 2236190)
+
+[prepareGraph] num_vertices = 2236189
+
+[prepareGraph] edges = 35036904, offsets = 2236190 (should be V+1 = 2236190)
+
+updateNodeInDegreeOutDegree(year=2009): updated 134172 out-degrees, 1448832 in-degrees  pre=1353 csr=9716 S1=10004 S2=831 S3=3866 S4=13 xfer=3572 upd=2522  total=32378 ms  E/s=177903
+
+[EP 2010] N=2370361 delta=142222
+[prepareGraph] num_vertices = 2370361
+
+[prepareGraph] edges = 37654557, offsets = 2370362 (should be V+1 = 2370362)
+
+[prepareGraph] num_vertices = 2370361
+
+[prepareGraph] edges = 37654557, offsets = 2370362 (should be V+1 = 2370362)
+
+updateNodeInDegreeOutDegree(year=2010): updated 142222 out-degrees, 1537793 in-degrees  pre=1412 csr=10786 S1=11465 S2=963 S3=4629 S4=14 xfer=3769 upd=2460  total=36003 ms  E/s=163552
+
+[EP 2011] N=2512583 delta=150755
+[prepareGraph] num_vertices = 2512583
+
+[prepareGraph] edges = 40446494, offsets = 2512584 (should be V+1 = 2512584)
+
+[prepareGraph] num_vertices = 2512583
+
+[prepareGraph] edges = 40446494, offsets = 2512584 (should be V+1 = 2512584)
+
+updateNodeInDegreeOutDegree(year=2011): updated 150755 out-degrees, 1623880 in-degrees  pre=1475 csr=11241 S1=12784 S2=1526 S3=5408 S4=29 xfer=4011 upd=2864  total=39889 ms  E/s=149248
+
+[EP 2012] N=2663338 delta=159801
+[prepareGraph] num_vertices = 2663338
+
+[prepareGraph] edges = 43393656, offsets = 2663339 (should be V+1 = 2663339)
+
+[prepareGraph] num_vertices = 2663338
+
+[prepareGraph] edges = 43393656, offsets = 2663339 (should be V+1 = 2663339)
+
+updateNodeInDegreeOutDegree(year=2012): updated 159801 out-degrees, 1725187 in-degrees  pre=1552 csr=12440 S1=14041 S2=1372 S3=6499 S4=33 xfer=4239 upd=2823  total=43576 ms  E/s=143089
+
+WriteAttributes: graph size = 2823139
+
+E2E Time, model: PA  num_cycles=30  growth_rate=6%  threads=14  elapsed=512s
+========================================================================================================================
+  PARAGRAH GPU EPOCH BREAKDOWN  model=PA  growth=6.0%  threads=14
+========================================================================================================================
+
+[1] PER-EPOCH STAGE BREAKDOWN  (ms)
+------------------------------------------------------------------------------------------------------------------------
+Ep   N        Delta  B     mB   | FillID  FillFit FillRec CalcScr | NodeInit GenAsgn SameYr  | CSR     Upload | Slab  S1_BFS  S2_WS1  S3_WS2  S4_Fill | Dwnld  EdgeIns  InDeg   FitAsgn | EpTotal  Edges/s   
+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+1983 491532   29492  29492 1    | 132.8   132.6   307.3   43.1    | 30.5    74.7    0.6     | 607.5   15.1   | 0.6   471.7   10.8    53.8    2.5     | 763.4  214.2    138.1   149.9   | 3149     1077946   
+1984 521024   31262  29492 2    | 137.1   134.1   285.0   43.7    | 27.0    79.9    0.6     | 819.7   14.9   | 0.9   715.4   40.4    108.8   3.3     | 823.0  220.3    142.6   160.5   | 3757     706668    
+1985 552286   33138  28608 2    | 139.8   139.1   294.8   73.8    | 24.4    84.6    0.7     | 943.1   14.3   | 0.9   469.5   37.8    120.3   4.2     | 869.3  266.0    165.3   180.6   | 3828     1017668   
+1986 585424   35126  27750 2    | 146.4   141.3   306.4   57.3    | 29.8    89.6    0.7     | 1117.5  13.3   | 1.0   808.8   41.7    128.5   4.8     | 926.3  246.0    188.0   190.4   | 4438     695093    
+1987 620550   37233  26918 2    | 161.3   144.6   319.3   41.0    | 30.0    93.9    0.8     | 1403.9  14.0   | 1.0   1097.1  53.6    146.5   4.7     | 974.5  350.8    194.1   187.3   | 5218     563280    
+1988 657783   39467  26111 2    | 158.4   144.1   318.4   61.5    | 27.0    97.4    0.8     | 1591.0  15.9   | 1.1   861.2   46.2    150.4   3.8     | 1042.3 340.6    200.0   197.7   | 5258     731221    
+1989 697250   41835  25328 2    | 159.6   149.5   331.7   56.4    | 30.6    105.5   0.9     | 1979.4  15.7   | 1.2   1037.1  111.0   166.3   4.8     | 1105.4 376.9    201.7   211.5   | 6045     617699    
+1990 739085   44346  24569 2    | 158.9   152.3   336.7   62.6    | 36.8    118.0   0.9     | 2119.4  15.8   | 1.2   1166.5  60.6    174.6   5.1     | 1160.9 416.5    209.2   219.8   | 6416     617979    
+1991 783431   47006  23832 2    | 162.5   155.4   354.1   66.9    | 34.1    114.8   1.0     | 2289.7  15.7   | 1.3   1410.0  54.6    189.2   4.7     | 1232.4 415.9    213.4   239.4   | 6955     554028    
+1992 830437   49827  23118 3    | 175.7   167.1   361.5   61.8    | 37.0    125.5   1.1     | 2486.1  15.9   | 1.9   1057.6  84.8    300.8   5.8     | 1312.3 416.4    205.2   254.3   | 7071     671362    
+1993 880264   52816  22425 3    | 206.4   168.6   371.5   61.4    | 44.6    143.1   1.1     | 2775.9  15.0   | 1.7   1273.4  100.3   325.4   6.9     | 1391.3 431.7    232.4   267.7   | 7818     598273    
+1994 933080   55985  21753 3    | 174.0   170.9   385.3   66.9    | 38.6    139.8   1.2     | 3047.8  15.8   | 1.9   1333.0  100.0   353.9   6.7     | 1486.2 438.6    242.4   283.3   | 8286     608584    
+1995 989065   59344  21101 3    | 179.6   180.1   409.4   62.2    | 49.5    150.4   1.3     | 3338.9  14.1   | 1.9   1574.9  106.8   387.0   8.6     | 1564.5 455.3    255.1   303.3   | 9043     558298    
+1996 1048409  62905  20468 4    | 187.7   181.2   416.0   72.9    | 48.8    155.9   1.4     | 4054.5  16.1   | 2.3   2067.7  148.1   574.2   9.1     | 1648.5 618.9    281.5   314.8   | 10800    442159    
+1997 1111314  66679  19854 4    | 196.5   185.2   430.3   44.8    | 56.7    168.7   1.5     | 5574.1  32.6   | 2.5   2879.2  171.5   594.7   7.7     | 1750.9 677.6    295.6   344.3   | 13414    358594    
+1998 1177993  70680  19259 4    | 215.2   192.6   439.6   71.2    | 63.2    175.5   1.7     | 4729.9  19.4   | 2.5   2552.7  162.1   644.0   10.2    | 1860.2 698.4    311.9   356.3   | 12507    410260    
+1999 1248673  74921  18682 5    | 222.3   198.6   461.6   69.4    | 65.6    187.4   1.7     | 5081.4  30.3   | 2.9   2634.2  208.9   868.8   10.2    | 1970.6 711.0    348.1   375.1   | 13448    394821    
+2000 1323594  79416  18122 5    | 218.3   208.2   473.5   51.0    | 59.3    197.1   1.8     | 5427.5  16.1   | 3.2   2792.1  236.6   930.2   10.6    | 2108.7 785.3    353.6   402.6   | 14276    392791    
+2001 1403010  84181  17579 5    | 224.7   214.4   499.1   58.3    | 72.8    211.4   2.5     | 5550.4  16.4   | 3.3   3289.2  449.4   1020.3  10.2    | 2218.5 827.4    361.4   426.1   | 15456    344065    
+2002 1487191  89232  17052 6    | 233.0   218.2   505.7   74.5    | 68.0    223.6   2.1     | 6013.0  16.5   | 3.6   4221.5  362.6   1333.9  14.9    | 2354.4 807.2    359.3   452.5   | 17264    292879    
+2003 1576423  94586  16541 6    | 239.5   228.2   531.5   58.8    | 81.1    234.3   2.2     | 6326.6  16.6   | 4.8   4525.2  346.9   1450.2  15.8    | 2494.9 757.8    360.1   478.4   | 18153    290829    
+2004 1671009  100261 16045 7    | 246.4   245.5   543.7   49.6    | 95.2    244.9   2.4     | 7074.6  16.3   | 5.2   5239.5  442.5   1807.6  17.9    | 2640.5 926.0    406.6   496.3   | 20501    261686    
+2005 1771270  106277 15564 7    | 262.1   248.9   581.7   73.3    | 98.4    261.6   2.5     | 7633.0  15.0   | 4.9   5984.2  666.8   1968.7  16.1    | 2809.9 928.2    461.2   529.1   | 22546    241437    
+2006 1877547  112653 15098 8    | 274.8   262.9   611.8   50.7    | 97.7    279.5   5.6     | 8011.4  17.2   | 5.9   5427.1  575.1   2424.6  16.6    | 2962.3 884.1    436.0   555.6   | 22899    259943    
+2007 1990200  119412 14646 9    | 272.8   268.8   630.6   57.2    | 108.6   301.2   2.8     | 8487.7  16.7   | 6.4   8228.3  654.2   2997.2  20.9    | 3142.7 1011.3   468.9   602.4   | 27279    197257    
+2008 2109612  126577 14207 9    | 299.5   281.3   656.2   56.7    | 114.2   319.7   3.1     | 9074.5  19.2   | 6.6   6306.3  699.5   3257.7  12.0    | 3344.6 921.2    469.3   645.8   | 26488    242056    
+2009 2236189  134172 13781 10   | 294.6   294.8   687.0   76.4    | 150.8   341.1   3.2     | 9715.8  16.4   | 7.5   10003.9 831.2   3866.3  12.6    | 3555.1 1272.8   562.6   686.4   | 32378    177903    
+2010 2370361  142222 13368 11   | 322.0   310.8   726.6   52.5    | 137.9   354.1   3.5     | 10785.7 15.5   | 8.9   11465.2 963.3   4628.5  13.7    | 3753.9 1188.6   531.2   740.7   | 36003    163552    
+2011 2512583  150755 12967 12   | 324.6   320.6   763.2   66.2    | 159.2   379.1   3.8     | 11240.6 16.9   | 9.4   12784.3 1525.7  5408.3  28.5    | 3994.5 1458.4   629.9   775.6   | 39889    149248    
+2012 2663338  159801 12578 13   | 354.0   337.2   791.9   68.7    | 163.6   398.8   4.0     | 12440.0 17.3   | 10.3  14040.6 1372.4  6499.0  32.6    | 4222.2 1413.2   605.6   804.4   | 43576    143089    
+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+[2] PER-STAGE STATISTICS ACROSS ALL EPOCHS  (ms)
+------------------------------------------------------------------------------------------------------------------------
+  Host preprocessing            total=     28600  mean=   953.3  std=  270.8  min=  599.9  max=  1551.8
+  CSR build+upload              total=    151741  mean=  5058.0  std= 3361.6  min=  607.5  max= 12440.0
+  Slab alloc+memset             total=       107  mean=     3.6  std=    2.7  min=    0.6  max=    10.3
+  Stage1 BFS                    total=    117718  mean=  3923.9  std= 3778.4  min=  469.5  max= 14040.6
+  Stage2 WS1 (1-hop)            total=     10665  mean=   355.5  std=  392.7  min=   10.8  max=  1525.7
+  Stage3 WS2 (2-hop)            total=     42879  mean=  1429.3  std= 1707.7  min=   53.8  max=  6499.0
+  Stage4 fill+write             total=       326  mean=    10.9  std=    7.1  min=    2.5  max=    32.6
+  GPU kernels (total)           total=    171588  mean=  5719.6  std= 5865.0  min=  538.8  max= 21944.6
+  Transfers (up+down)           total=     61994  mean=  2066.5  std= 1013.5  min=  778.5  max=  4239.5
+  Host graph update             total=     42139  mean=  1404.6  std=  677.6  min=  502.3  max=  2863.9
+  Epoch total                   total=    464158  mean= 15471.9  std=11190.4  min= 3149.3  max= 43575.8
+
+[3] TOTAL TIME DISTRIBUTION
+------------------------------------------------------------------------------------------------------------------------
+  Host preprocessing           :      28600 ms  (  6.2%)
+  CSR build                    :     151741 ms  ( 32.7%)
+  BFS slab overhead            :        107 ms  (  0.0%)
+  Stage1 BFS                   :     117718 ms  ( 25.4%)
+  Stage2+3 sampling            :      53545 ms  ( 11.5%)
+  Stage4 fill+write            :        326 ms  (  0.1%)
+  GPU kernels total            :     171588 ms  ( 37.0%)
+  Transfers                    :      61994 ms  ( 13.4%)
+  Host graph update            :      42139 ms  (  9.1%)
+  Simulation total             :     464158 ms
+  E2E total                    :     512018 ms
+
+[4] BFS DOMINANCE
+------------------------------------------------------------------------------------------------------------------------
+  Stage1 BFS as % of GPU kernels : 68.6%
+  Stage1 BFS as % of epoch total : 25.4%
+  GPU kernels as % of epoch      : 37.0%
+  Total edges generated          : 45634654
+  Overall edges/sec (GPU time)   : 265955
+========================================================================================================================
+
+========================================================================================================================
+  FULL PIPELINE BREAKDOWN (ABM construction -> parse -> init -> simulation -> output write)  model=PA  growth=6.0%  threads=14
+========================================================================================================================
+  ABM construction (out-degree bag, recency probs, planted nodes)        :       1683 ms  (  0.3%)
+  Graph parse (nodelist + edgelist)                                      :       2909 ms  (  0.6%)
+  Init (fitness + array alloc + weight/alpha/outdegree populate)         :        585 ms  (  0.1%)
+  Simulation (epoch loop total -- see breakdown above)                   :     464158 ms  ( 90.4%)
+  Output write (WriteGraph + UpdateGraphAttributes* + WriteAttributes)   :       8713 ms  (  1.7%)
+------------------------------------------------------------------------------------------------------------------------
+  TOTAL (full pipeline, measured)                                        :     478048 ms  ( 93.1%)
+  Unaccounted (measurement gaps / process overhead outside execute())    :      35653 ms  (  6.9%)
+  FULL PIPELINE TOTAL                                                    :     513701 ms  (100.0%)
+========================================================================================================================
+
+E2E Time for num_cycles = 30 with growth_rate = 6 % = 517 seconds.
+GPU 0: General Metrics for NVIDIA GH100 (any frequency)
+Generating '/tmp/nsys-report-5300.qdstrm'
+[1/8] [0%                          ] nsys-pa-30y-6p.nsys-rep[1/8] [0%                          ] nsys-pa-30y-6p.nsys-rep[1/8] [6%                          ] nsys-pa-30y-6p.nsys-rep[1/8] [5%                          ] nsys-pa-30y-6p.nsys-rep[1/8] [6%                          ] nsys-pa-30y-6p.nsys-rep[1/8] [5%                          ] nsys-pa-30y-6p.nsys-rep[1/8] [6%                          ] nsys-pa-30y-6p.nsys-rep[1/8] [8%                          ] nsys-pa-30y-6p.nsys-rep[1/8] [9%                          ] nsys-pa-30y-6p.nsys-rep[1/8] [10%                         ] nsys-pa-30y-6p.nsys-rep[1/8] [9%                          ] nsys-pa-30y-6p.nsys-rep[1/8] [11%                         ] nsys-pa-30y-6p.nsys-rep[1/8] [10%                         ] nsys-pa-30y-6p.nsys-rep[1/8] [11%                         ] nsys-pa-30y-6p.nsys-rep[1/8] [10%                         ] nsys-pa-30y-6p.nsys-rep[1/8] [9%                          ] nsys-pa-30y-6p.nsys-rep[1/8] [10%                         ] nsys-pa-30y-6p.nsys-rep[1/8] [9%                          ] nsys-pa-30y-6p.nsys-rep[1/8] [10%                         ] nsys-pa-30y-6p.nsys-rep[1/8] [9%                          ] nsys-pa-30y-6p.nsys-rep[1/8] [10%                         ] nsys-pa-30y-6p.nsys-rep[1/8] [9%                          ] nsys-pa-30y-6p.nsys-rep[1/8] [10%                         ] nsys-pa-30y-6p.nsys-rep[1/8] [9%                          ] nsys-pa-30y-6p.nsys-rep[1/8] [8%                          ] nsys-pa-30y-6p.nsys-rep[1/8] [9%                          ] nsys-pa-30y-6p.nsys-rep[1/8] [8%                          ] nsys-pa-30y-6p.nsys-rep[1/8] [9%                          ] nsys-pa-30y-6p.nsys-rep[1/8] [8%                          ] nsys-pa-30y-6p.nsys-rep[1/8] [9%                          ] nsys-pa-30y-6p.nsys-rep[1/8] [8%                          ] nsys-pa-30y-6p.nsys-rep[1/8] [9%                          ] nsys-pa-30y-6p.nsys-rep[1/8] [8%                          ] nsys-pa-30y-6p.nsys-rep[1/8] [9%                          ] nsys-pa-30y-6p.nsys-rep[1/8] [8%                          ] nsys-pa-30y-6p.nsys-rep[1/8] [9%                          ] nsys-pa-30y-6p.nsys-rep[1/8] [8%                          ] nsys-pa-30y-6p.nsys-rep[1/8] [9%                          ] nsys-pa-30y-6p.nsys-rep[1/8] [8%                          ] nsys-pa-30y-6p.nsys-rep[1/8] [9%                          ] nsys-pa-30y-6p.nsys-rep[1/8] [8%                          ] nsys-pa-30y-6p.nsys-rep[1/8] [9%                          ] nsys-pa-30y-6p.nsys-rep[1/8] [8%                          ] nsys-pa-30y-6p.nsys-rep[1/8] [9%                          ] nsys-pa-30y-6p.nsys-rep[1/8] [8%                          ] nsys-pa-30y-6p.nsys-rep[1/8] [9%                          ] nsys-pa-30y-6p.nsys-rep[1/8] [8%                          ] nsys-pa-30y-6p.nsys-rep[1/8] [9%                          ] nsys-pa-30y-6p.nsys-rep[1/8] [8%                          ] nsys-pa-30y-6p.nsys-rep[1/8] [9%                          ] nsys-pa-30y-6p.nsys-rep[1/8] [8%                          ] nsys-pa-30y-6p.nsys-rep[1/8] [9%                          ] nsys-pa-30y-6p.nsys-rep[1/8] [8%                          ] nsys-pa-30y-6p.nsys-rep[1/8] [9%                          ] nsys-pa-30y-6p.nsys-rep[1/8] [8%                          ] nsys-pa-30y-6p.nsys-rep[1/8] [9%                          ] nsys-pa-30y-6p.nsys-rep[1/8] [8%                          ] nsys-pa-30y-6p.nsys-rep[1/8] [9%                          ] nsys-pa-30y-6p.nsys-rep[1/8] [8%                          ] nsys-pa-30y-6p.nsys-rep[1/8] [9%                          ] nsys-pa-30y-6p.nsys-rep[1/8] [10%                         ] nsys-pa-30y-6p.nsys-rep[1/8] [9%                          ] nsys-pa-30y-6p.nsys-rep[1/8] [10%                         ] nsys-pa-30y-6p.nsys-rep[1/8] [9%                          ] nsys-pa-30y-6p.nsys-rep[1/8] [10%                         ] nsys-pa-30y-6p.nsys-rep[1/8] [11%                         ] nsys-pa-30y-6p.nsys-rep[1/8] [10%                         ] nsys-pa-30y-6p.nsys-rep[1/8] [11%                         ] nsys-pa-30y-6p.nsys-rep[1/8] [10%                         ] nsys-pa-30y-6p.nsys-rep[1/8] [9%                          ] nsys-pa-30y-6p.nsys-rep[1/8] [10%                         ] nsys-pa-30y-6p.nsys-rep[1/8] [11%                         ] nsys-pa-30y-6p.nsys-rep[1/8] [12%                         ] nsys-pa-30y-6p.nsys-rep[1/8] [13%                         ] nsys-pa-30y-6p.nsys-rep[1/8] [14%                         ] nsys-pa-30y-6p.nsys-rep[1/8] [=15%                        ] nsys-pa-30y-6p.nsys-rep[1/8] [=16%                        ] nsys-pa-30y-6p.nsys-rep[1/8] [=17%                        ] nsys-pa-30y-6p.nsys-rep[1/8] [==18%                       ] nsys-pa-30y-6p.nsys-rep[1/8] [==19%                       ] nsys-pa-30y-6p.nsys-rep[1/8] [==20%                       ] nsys-pa-30y-6p.nsys-rep[1/8] [==21%                       ] nsys-pa-30y-6p.nsys-rep[1/8] [===22%                      ] nsys-pa-30y-6p.nsys-rep[1/8] [===23%                      ] nsys-pa-30y-6p.nsys-rep[1/8] [===24%                      ] nsys-pa-30y-6p.nsys-rep[1/8] [====25%                     ] nsys-pa-30y-6p.nsys-rep[1/8] [====26%                     ] nsys-pa-30y-6p.nsys-rep[1/8] [====27%                     ] nsys-pa-30y-6p.nsys-rep[1/8] [====28%                     ] nsys-pa-30y-6p.nsys-rep[1/8] [=====29%                    ] nsys-pa-30y-6p.nsys-rep[1/8] [=====30%                    ] nsys-pa-30y-6p.nsys-rep[1/8] [=====31%                    ] nsys-pa-30y-6p.nsys-rep[1/8] [=====32%                    ] nsys-pa-30y-6p.nsys-rep[1/8] [======33%                   ] nsys-pa-30y-6p.nsys-rep[1/8] [======34%                   ] nsys-pa-30y-6p.nsys-rep[1/8] [======35%                   ] nsys-pa-30y-6p.nsys-rep[1/8] [=======36%                  ] nsys-pa-30y-6p.nsys-rep[1/8] [=======37%                  ] nsys-pa-30y-6p.nsys-rep[1/8] [=======38%                  ] nsys-pa-30y-6p.nsys-rep[1/8] [=======39%                  ] nsys-pa-30y-6p.nsys-rep[1/8] [========40%                 ] nsys-pa-30y-6p.nsys-rep[1/8] [========41%                 ] nsys-pa-30y-6p.nsys-rep[1/8] [========42%                 ] nsys-pa-30y-6p.nsys-rep[1/8] [=========43%                ] nsys-pa-30y-6p.nsys-rep[1/8] [=========44%                ] nsys-pa-30y-6p.nsys-rep[1/8] [=========45%                ] nsys-pa-30y-6p.nsys-rep[1/8] [=========46%                ] nsys-pa-30y-6p.nsys-rep[1/8] [==========47%               ] nsys-pa-30y-6p.nsys-rep[1/8] [==========48%               ] nsys-pa-30y-6p.nsys-rep[1/8] [==========49%               ] nsys-pa-30y-6p.nsys-rep[1/8] [===========50%              ] nsys-pa-30y-6p.nsys-rep[1/8] [===========51%              ] nsys-pa-30y-6p.nsys-rep[1/8] [===========52%              ] nsys-pa-30y-6p.nsys-rep[1/8] [===========53%              ] nsys-pa-30y-6p.nsys-rep[1/8] [============54%             ] nsys-pa-30y-6p.nsys-rep[1/8] [============55%             ] nsys-pa-30y-6p.nsys-rep[1/8] [============56%             ] nsys-pa-30y-6p.nsys-rep[1/8] [============57%             ] nsys-pa-30y-6p.nsys-rep[1/8] [=============58%            ] nsys-pa-30y-6p.nsys-rep[1/8] [=============59%            ] nsys-pa-30y-6p.nsys-rep[1/8] [=============60%            ] nsys-pa-30y-6p.nsys-rep[1/8] [==============61%           ] nsys-pa-30y-6p.nsys-rep[1/8] [==============62%           ] nsys-pa-30y-6p.nsys-rep[1/8] [==============63%           ] nsys-pa-30y-6p.nsys-rep[1/8] [==============64%           ] nsys-pa-30y-6p.nsys-rep[1/8] [===============65%          ] nsys-pa-30y-6p.nsys-rep[1/8] [===============66%          ] nsys-pa-30y-6p.nsys-rep[1/8] [===============67%          ] nsys-pa-30y-6p.nsys-rep[1/8] [================68%         ] nsys-pa-30y-6p.nsys-rep[1/8] [================69%         ] nsys-pa-30y-6p.nsys-rep[1/8] [================70%         ] nsys-pa-30y-6p.nsys-rep[1/8] [================71%         ] nsys-pa-30y-6p.nsys-rep[1/8] [=================72%        ] nsys-pa-30y-6p.nsys-rep[1/8] [=================73%        ] nsys-pa-30y-6p.nsys-rep[1/8] [==================77%       ] nsys-pa-30y-6p.nsys-rep[1/8] [========================100%] nsys-pa-30y-6p.nsys-rep[1/8] [========================100%] nsys-pa-30y-6p.nsys-rep
+[2/8] [0%                          ] nsys-pa-30y-6p.sqlite[2/8] [1%                          ] nsys-pa-30y-6p.sqlite[2/8] [2%                          ] nsys-pa-30y-6p.sqlite[2/8] [3%                          ] nsys-pa-30y-6p.sqlite[2/8] [4%                          ] nsys-pa-30y-6p.sqlite[2/8] [5%                          ] nsys-pa-30y-6p.sqlite[2/8] [6%                          ] nsys-pa-30y-6p.sqlite[2/8] [7%                          ] nsys-pa-30y-6p.sqlite[2/8] [8%                          ] nsys-pa-30y-6p.sqlite[2/8] [9%                          ] nsys-pa-30y-6p.sqlite[2/8] [10%                         ] nsys-pa-30y-6p.sqlite[2/8] [11%                         ] nsys-pa-30y-6p.sqlite[2/8] [12%                         ] nsys-pa-30y-6p.sqlite[2/8] [13%                         ] nsys-pa-30y-6p.sqlite[2/8] [14%                         ] nsys-pa-30y-6p.sqlite[2/8] [=15%                        ] nsys-pa-30y-6p.sqlite[2/8] [=16%                        ] nsys-pa-30y-6p.sqlite[2/8] [=17%                        ] nsys-pa-30y-6p.sqlite[2/8] [==18%                       ] nsys-pa-30y-6p.sqlite[2/8] [==19%                       ] nsys-pa-30y-6p.sqlite[2/8] [==20%                       ] nsys-pa-30y-6p.sqlite[2/8] [==21%                       ] nsys-pa-30y-6p.sqlite[2/8] [===22%                      ] nsys-pa-30y-6p.sqlite[2/8] [===23%                      ] nsys-pa-30y-6p.sqlite[2/8] [===24%                      ] nsys-pa-30y-6p.sqlite[2/8] [====25%                     ] nsys-pa-30y-6p.sqlite[2/8] [====26%                     ] nsys-pa-30y-6p.sqlite[2/8] [====27%                     ] nsys-pa-30y-6p.sqlite[2/8] [====28%                     ] nsys-pa-30y-6p.sqlite[2/8] [=====29%                    ] nsys-pa-30y-6p.sqlite[2/8] [=====30%                    ] nsys-pa-30y-6p.sqlite[2/8] [=====31%                    ] nsys-pa-30y-6p.sqlite[2/8] [=====32%                    ] nsys-pa-30y-6p.sqlite[2/8] [======33%                   ] nsys-pa-30y-6p.sqlite[2/8] [======34%                   ] nsys-pa-30y-6p.sqlite[2/8] [======35%                   ] nsys-pa-30y-6p.sqlite[2/8] [=======36%                  ] nsys-pa-30y-6p.sqlite[2/8] [=======37%                  ] nsys-pa-30y-6p.sqlite[2/8] [=======38%                  ] nsys-pa-30y-6p.sqlite[2/8] [=======39%                  ] nsys-pa-30y-6p.sqlite[2/8] [========40%                 ] nsys-pa-30y-6p.sqlite[2/8] [========41%                 ] nsys-pa-30y-6p.sqlite[2/8] [========42%                 ] nsys-pa-30y-6p.sqlite[2/8] [=========43%                ] nsys-pa-30y-6p.sqlite[2/8] [=========44%                ] nsys-pa-30y-6p.sqlite[2/8] [=========45%                ] nsys-pa-30y-6p.sqlite[2/8] [=========46%                ] nsys-pa-30y-6p.sqlite[2/8] [==========47%               ] nsys-pa-30y-6p.sqlite[2/8] [==========48%               ] nsys-pa-30y-6p.sqlite[2/8] [==========49%               ] nsys-pa-30y-6p.sqlite[2/8] [===========50%              ] nsys-pa-30y-6p.sqlite[2/8] [===========51%              ] nsys-pa-30y-6p.sqlite[2/8] [===========52%              ] nsys-pa-30y-6p.sqlite[2/8] [===========53%              ] nsys-pa-30y-6p.sqlite[2/8] [============54%             ] nsys-pa-30y-6p.sqlite[2/8] [============55%             ] nsys-pa-30y-6p.sqlite[2/8] [============56%             ] nsys-pa-30y-6p.sqlite[2/8] [============57%             ] nsys-pa-30y-6p.sqlite[2/8] [=============58%            ] nsys-pa-30y-6p.sqlite[2/8] [=============59%            ] nsys-pa-30y-6p.sqlite[2/8] [=============60%            ] nsys-pa-30y-6p.sqlite[2/8] [==============61%           ] nsys-pa-30y-6p.sqlite[2/8] [==============62%           ] nsys-pa-30y-6p.sqlite[2/8] [==============63%           ] nsys-pa-30y-6p.sqlite[2/8] [==============64%           ] nsys-pa-30y-6p.sqlite[2/8] [===============65%          ] nsys-pa-30y-6p.sqlite[2/8] [===============66%          ] nsys-pa-30y-6p.sqlite[2/8] [===============67%          ] nsys-pa-30y-6p.sqlite[2/8] [================68%         ] nsys-pa-30y-6p.sqlite[2/8] [================69%         ] nsys-pa-30y-6p.sqlite[2/8] [================70%         ] nsys-pa-30y-6p.sqlite[2/8] [================71%         ] nsys-pa-30y-6p.sqlite[2/8] [=================72%        ] nsys-pa-30y-6p.sqlite[2/8] [=================73%        ] nsys-pa-30y-6p.sqlite[2/8] [=================74%        ] nsys-pa-30y-6p.sqlite[2/8] [==================75%       ] nsys-pa-30y-6p.sqlite[2/8] [==================76%       ] nsys-pa-30y-6p.sqlite[2/8] [==================77%       ] nsys-pa-30y-6p.sqlite[2/8] [==================78%       ] nsys-pa-30y-6p.sqlite[2/8] [===================79%      ] nsys-pa-30y-6p.sqlite[2/8] [===================80%      ] nsys-pa-30y-6p.sqlite[2/8] [===================81%      ] nsys-pa-30y-6p.sqlite[2/8] [===================82%      ] nsys-pa-30y-6p.sqlite[2/8] [====================83%     ] nsys-pa-30y-6p.sqlite[2/8] [====================84%     ] nsys-pa-30y-6p.sqlite[2/8] [====================85%     ] nsys-pa-30y-6p.sqlite[2/8] [=====================86%    ] nsys-pa-30y-6p.sqlite[2/8] [=====================87%    ] nsys-pa-30y-6p.sqlite[2/8] [=====================88%    ] nsys-pa-30y-6p.sqlite[2/8] [=====================89%    ] nsys-pa-30y-6p.sqlite[2/8] [======================90%   ] nsys-pa-30y-6p.sqlite[2/8] [======================91%   ] nsys-pa-30y-6p.sqlite[2/8] [======================92%   ] nsys-pa-30y-6p.sqlite[2/8] [=======================93%  ] nsys-pa-30y-6p.sqlite[2/8] [=======================94%  ] nsys-pa-30y-6p.sqlite[2/8] [=======================95%  ] nsys-pa-30y-6p.sqlite[2/8] [=======================96%  ] nsys-pa-30y-6p.sqlite[2/8] [========================97% ] nsys-pa-30y-6p.sqlite[2/8] [========================98% ] nsys-pa-30y-6p.sqlite[2/8] [========================99% ] nsys-pa-30y-6p.sqlite[2/8] [========================100%] nsys-pa-30y-6p.sqlite[2/8] [========================100%] nsys-pa-30y-6p.sqlite
+[3/8] Executing 'nvtx_sum' stats report
+
+ Time (%)  Total Time (ns)  Instances  Avg (ns)  Med (ns)  Min (ns)  Max (ns)   StdDev (ns)   Style             Range          
+ --------  ---------------  ---------  --------  --------  --------  ---------  -----------  -------  -------------------------
+    100.0   12,545,541,058  2,331,667   5,380.5   5,180.0     4,815  3,114,463      5,280.5  PushPop  CCCL:cub::DeviceFor::Bulk
+
+[4/8] Executing 'osrt_sum' stats report
+
+ Time (%)   Total Time (ns)   Num Calls    Avg (ns)      Med (ns)    Min (ns)    Max (ns)    StdDev (ns)            Name         
+ --------  -----------------  ---------  ------------  ------------  ---------  -----------  ------------  ----------------------
+     99.8  1,448,510,005,153     52,435  27,624,869.0  10,059,116.0      1,039  105,270,835  35,780,384.1  poll                  
+      0.2      2,537,247,882     23,421     108,332.2      27,494.0      1,000   30,036,510     435,303.0  ioctl                 
+      0.0        658,275,138         28  23,509,826.4  10,862,218.0  2,714,779   44,481,595  16,530,091.5  writev                
+      0.0         62,955,748        376     167,435.5     146,495.0    125,770      389,791      56,970.9  pthread_create        
+      0.0         61,431,639      1,256      48,910.5      27,122.5     11,194      642,772      51,618.2  pthread_rwlock_wrlock 
+      0.0         35,365,254      1,387      25,497.7       7,857.0      1,864    1,045,217      86,267.2  mmap                  
+      0.0         21,516,337      1,037      20,748.6      18,537.0      1,033      132,487       9,716.0  pthread_rwlock_rdlock 
+      0.0         15,017,934      5,974       2,513.9       2,110.0      1,060    2,439,567      31,540.1  read                  
+      0.0          7,328,954      1,798       4,076.2       3,029.0      1,049       18,595       2,914.8  munmap                
+      0.0          3,125,949         10     312,594.9     215,515.5      1,174      814,636     296,765.1  fopen64               
+      0.0          1,303,920         30      43,464.0       7,673.0      3,479      809,319     146,365.0  mmap64                
+      0.0          1,249,328         37      33,765.6       3,969.0      1,950      611,935     111,025.9  fclose                
+      0.0            876,334         12      73,027.8      30,965.5     19,564      549,311     150,181.3  sem_timedwait         
+      0.0            837,949         15      55,863.3       2,529.0      1,493      567,134     147,500.5  write                 
+      0.0            183,461         42       4,368.1       2,119.5      1,258       19,892       4,653.8  fopen                 
+      0.0            169,633         55       3,084.2       2,051.0      1,022       12,380       2,366.9  open64                
+      0.0            109,284         11       9,934.9       1,234.0      1,056       48,940      16,170.4  pthread_mutex_lock    
+      0.0             66,909          1      66,909.0      66,909.0     66,909       66,909           0.0  pthread_cond_wait     
+      0.0             36,126          1      36,126.0      36,126.0     36,126       36,126           0.0  fgets                 
+      0.0             33,494          5       6,698.8       6,674.0      5,030        8,329       1,540.5  fflush                
+      0.0             21,535          2      10,767.5      10,767.5      6,566       14,969       5,941.8  fread                 
+      0.0             21,401          6       3,566.8       4,391.5      1,141        4,878       1,672.2  open                  
+      0.0             20,277          4       5,069.3       5,124.0      2,203        7,826       3,025.3  pipe2                 
+      0.0             15,423          2       7,711.5       7,711.5      5,024       10,399       3,800.7  socket                
+      0.0             10,949          1      10,949.0      10,949.0     10,949       10,949           0.0  connect               
+      0.0              8,510          4       2,127.5       1,704.0      1,002        4,100       1,454.4  fwrite                
+      0.0              8,234          3       2,744.7       2,035.0      1,820        4,379       1,419.5  pthread_cond_broadcast
+      0.0              3,576          3       1,192.0       1,160.0      1,074        1,342         136.8  fcntl                 
+      0.0              1,606          1       1,606.0       1,606.0      1,606        1,606           0.0  bind                  
+
+[5/8] Executing 'cuda_api_sum' stats report
+
+ Time (%)  Total Time (ns)  Num Calls    Avg (ns)       Med (ns)     Min (ns)     Max (ns)      StdDev (ns)            Name         
+ --------  ---------------  ---------  -------------  ------------  ----------  -------------  -------------  ----------------------
+     64.6  171,860,081,438        950  180,905,348.9   3,015,958.0       2,103  1,835,782,393  309,438,993.5  cudaStreamSynchronize 
+     23.0   61,222,459,918  4,665,418       13,122.6      12,702.0       5,761     20,501,497       40,449.1  cudaMemcpy            
+      4.1   10,962,071,454  2,336,421        4,691.8       3,830.0       2,948     10,147,529       37,670.0  cudaFree              
+      2.9    7,622,245,075  2,332,681        3,267.6       3,128.0       2,876      3,097,871        5,079.6  cudaLaunchKernel      
+      2.7    7,101,082,922        360   19,725,230.3   1,828,460.5       8,693    456,030,116   68,883,979.0  cudaMemcpyAsync       
+      2.6    6,904,373,806  2,335,865        2,955.8       2,530.0       1,714      4,207,494       13,148.1  cudaMalloc            
+      0.1      201,377,700         30    6,712,590.0      43,139.5      32,044    199,877,650   36,483,064.7  cudaStreamCreate      
+      0.1      147,796,018  2,332,681           63.4          62.0          52        171,378          122.0  cuKernelGetName       
+      0.0       64,441,350        308      209,225.2       8,579.5       5,505      2,159,429      557,596.0  cudaDeviceSynchronize 
+      0.0       24,349,592        616       39,528.6      15,064.5       3,857        467,823       72,034.3  cudaMallocManaged     
+      0.0       21,410,635          1   21,410,635.0  21,410,635.0  21,410,635     21,410,635            0.0  cuLibraryLoadData     
+      0.0       11,100,611      1,138        9,754.5       8,327.5       2,332         36,321        6,171.0  cudaMemset            
+      0.0        6,739,411      1,660        4,059.9       3,527.5       1,569         26,523        2,393.4  cudaEventRecord       
+      0.0        5,972,047        830        7,195.2       7,124.0       3,940         14,900        1,198.2  cudaEventSynchronize  
+      0.0        4,168,861      1,660        2,511.4       1,158.0         327        384,340       12,706.9  cudaEventCreate       
+      0.0        1,205,318      1,660          726.1         496.0         258         27,153          872.1  cudaEventDestroy      
+      0.0          638,424         60       10,640.4      10,469.0       5,684         17,034        4,088.0  cudaMemsetAsync       
+      0.0          570,359         30       19,012.0      18,532.0      11,748         39,937        6,172.6  cudaStreamDestroy     
+      0.0           13,005         10        1,300.5       1,373.0         777          1,853          428.6  cuLibraryGetKernel    
+      0.0            1,200          1        1,200.0       1,200.0       1,200          1,200            0.0  cuModuleGetLoadingMode
+
+[6/8] Executing 'cuda_gpu_kern_sum' stats report
+
+ Time (%)  Total Time (ns)  Instances    Avg (ns)       Med (ns)      Min (ns)      Max (ns)      StdDev (ns)                                                   Name                                                
+ --------  ---------------  ---------  -------------  -------------  -----------  -------------  -------------  ----------------------------------------------------------------------------------------------------
+     65.3  117,709,489,722        154  764,347,335.9  703,030,204.5  210,034,661  1,835,769,348  323,872,755.0  kernelCallStage1_warped(int, int, int, ABM *, Graph *, DeviceGraph *, DeviceGraph *, device_map<int…
+     23.8   42,876,861,458        154  278,421,178.3  277,800,137.0   50,605,146    543,798,741  136,135,769.5  kernelCallStage3(int, int, int, ABM *, Graph *, int, device_map<int, Node>::device_view, ABMStageSt…
+      5.9   10,663,384,545        154   69,242,756.8   65,856,342.0   10,738,621    435,569,009   45,891,452.2  kernelCallStage2(int, int, int, ABM *, Graph *, cuco::static_set_ref<int, (cuda::std::__4::thread_s…
+      3.6    6,571,555,018         30  219,051,833.9  195,965,182.0   78,350,911    456,016,598  117,827,198.9  void cuco::legacy::detail::insert<(unsigned long)128, (unsigned int)4, cuco::pair<int, int> *, cuda…
+      1.2    2,091,480,339  2,331,637          897.0          896.0          863          1,344           10.8  void cub::CUB_300002_SM_900::detail::for_each::static_kernel<cub::CUB_300002_SM_900::detail::for_ea…
+      0.2      322,027,621        154    2,091,088.4    2,264,545.5      770,048      3,566,339      663,325.0  kernelCallStage4(int, int, int, ABM *, Graph *, int, device_map<int, Node>::device_view, ABMStageSt…
+      0.0       62,723,299        308      203,647.1        3,136.0        1,600      2,153,314      557,306.8  kernel_extract_vector_sizes(device_vector *, int *, int)                                            
+      0.0       19,357,203         30      645,240.1      560,928.0      101,600      1,598,338      390,784.1  void cuco::detail::open_addressing_ns::insert_if_n<(int)1, (int)128, int *, thrust::THRUST_300002_S…
+      0.0          132,066         30        4,402.2        4,048.0        2,400          7,744        1,572.4  void cuco::legacy::detail::initialize<(unsigned long)256, cuda::__4::atomic<int, (cuda::std::__4::t…
+      0.0           29,728         30          990.9          960.0          928          1,184           63.7  void cub::CUB_300002_SM_900::detail::for_each::static_kernel<cub::CUB_300002_SM_900::detail::for_ea…
+
+[7/8] Executing 'cuda_gpu_mem_time_sum' stats report
+
+ Time (%)  Total Time (ns)    Count    Avg (ns)   Med (ns)  Min (ns)   Max (ns)   StdDev (ns)               Operation              
+ --------  ---------------  ---------  ---------  --------  --------  ----------  -----------  ------------------------------------
+     88.0   11,212,406,297  4,663,856    2,404.1   2,400.0     1,792     442,177        711.2  [CUDA memcpy Device-to-Host]        
+      9.3    1,178,996,452      1,922  613,421.7   6,144.5       704  20,386,325  1,950,424.8  [CUDA memcpy Host-to-Device]        
+      2.3      289,734,523      1,198  241,848.5   1,504.0       704   1,294,625    437,575.4  [CUDA memset]                       
+      0.4       54,535,252     15,310    3,562.1   2,623.0     2,303      25,472      2,617.9  [CUDA memcpy Unified Host-to-Device]
+      0.1        6,861,214      1,629    4,211.9   2,912.0     2,367      23,231      4,012.5  [CUDA memcpy Unified Device-to-Host]
+
+[8/8] Executing 'cuda_gpu_mem_size_sum' stats report
+
+ Total (MB)     Count    Avg (MB)  Med (MB)  Min (MB)  Max (MB)   StdDev (MB)               Operation              
+ -----------  ---------  --------  --------  --------  ---------  -----------  ------------------------------------
+ 940,736.001      1,198   785.255     0.374     0.000  4,187.468    1,427.625  [CUDA memset]                       
+  12,930.751      1,922     6.728     0.135     0.000    225.851       21.347  [CUDA memcpy Host-to-Device]        
+     616.893  4,663,856     0.000     0.000     0.000      5.114        0.010  [CUDA memcpy Device-to-Host]        
+     450.298     15,310     0.029     0.008     0.004      1.044        0.102  [CUDA memcpy Unified Host-to-Device]
+     147.194      1,629     0.090     0.020     0.004      1.044        0.217  [CUDA memcpy Unified Device-to-Host]
+
+Generated:
+    /home/jmukher/workspace/uiuc/citation_abm/profile/nsys-pa-30y-6p.nsys-rep
+    /home/jmukher/workspace/uiuc/citation_abm/profile/nsys-pa-30y-6p.sqlite
+SUCCESS: 494M → profile/nsys-pa-30y-6p.nsys-rep

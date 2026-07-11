@@ -94,7 +94,7 @@ constexpr Node make_empty_node() {
 
 Node const empty_node_value_sentinel = make_empty_node();
 
-__global__ void kernelCallStage1(
+__global__ void __launch_bounds__(256, 4) kernelCallStage1(
     int start_idx,
     int batch_size,
     int total_N,
@@ -152,7 +152,7 @@ __global__ void kernelCallStage1(
 // create_thread_vectors_int/create_thread_vectors_bulk).
 // __launch_bounds__(256, 4) 
 // -----------------------------------------------------------------------
-__global__ void kernelCallStage1_warped(
+__global__ void __launch_bounds__(256, 4) kernelCallStage1_warped(
     int start_idx,
     int batch_size,
     int total_N,
@@ -172,7 +172,7 @@ __global__ void kernelCallStage1_warped(
     int num_words,
     int max_vertices);
 
-__global__ void kernelCallStage2(
+__global__ void __launch_bounds__(256, 4) kernelCallStage2(
     int start_idx,
     int batch_size,
     int total_N,
@@ -198,7 +198,7 @@ __global__ void kernelCallStage2(
     int initial_graph_size,
     int final_graph_size);
  
-__global__ void kernelCallStage3(
+__global__ void __launch_bounds__(256, 4) kernelCallStage3(
         int start_idx,
         int batch_size,
         int total_N,
@@ -222,7 +222,7 @@ __global__ void kernelCallStage3(
         int current_year, int current_graph_size,
         int initial_graph_size, int final_graph_size);
 
-__global__ void kernelCallStage4(
+__global__ void __launch_bounds__(256, 4) kernelCallStage4(
         int start_idx,
         int batch_size,
         int total_N,
@@ -276,7 +276,7 @@ __global__ void kernelCallStage4(
 // buildOneNodeConnections / buildOneNodeConnections_timed's fused-kernel
 // branch.
 // =============================================================================
-__global__ void ABMKernel(
+__global__ void __launch_bounds__(256, 4) ABMKernel(
     // ---- common ----
     int start_idx, int batch_size, int total_N,
     ABM* abm, Graph* graph, int graphNodeSetSize,
@@ -313,7 +313,7 @@ __global__ void ABMKernel(
  
 
 // Kernel to verify initialization
-__global__ void verify_bfs_pool(CompactBFSState* pool, int num_threads);
+__global__ void __launch_bounds__(256, 4) verify_bfs_pool(CompactBFSState* pool, int num_threads);
 
 void buildOneNodeConnections(ABM* abm, Graph* graph,
                 std::vector<int>& new_nodes_vec,

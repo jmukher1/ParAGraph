@@ -28,7 +28,7 @@ PROFILE_DIR="./profile"
 ERRORS="./errors"
 
 NUM_THREADS=16
-NUM_CYCLES=10
+NUM_CYCLES=30
 mkdir -p "${PROFILE_DIR}" "${ERRORS}" 
 
 # All input files as absolute paths
@@ -63,7 +63,6 @@ CONFIGS=(
     "no-warp|false|true|100000|true"
     "no-batching|true|false|20000|true"
 )
-
 
 # ── metrics: roofline + occupancy + memory bandwidth + warp divergence ──────
 # These require hardware counters — only works with --reservation=perf_count
