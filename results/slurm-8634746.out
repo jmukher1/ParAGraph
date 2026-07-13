@@ -1,0 +1,256 @@
+Running growth rate 3% for 3 years.
+./output/3y/0.0001/ncu-gpu-er-gnp-3y-3p-0.0001p.edgelist
+./output/3y/0.0001/ncu-gpu-er-gnp-3y-3p-0.0001p.aux
+
+Start ABM....
+parse_args....
+edgelist....
+num-cycles....
+output-file....
+log-file = ./output/3y/0.0001/ncu-gpu-er-gnp-3y-3p-0.0001p.log....
+num-processors = 16....
+log-level = 0
+er_probability = 0.000100
+model = er-gnp
+Init ABM....
+Exec ABM....
+Start execute.Init Graph
+Inside  Graph ParseNodelist.....
+Populating the continuous_node mappings..
+Elapsed time: ParseNodelist : 760 millisecs = 0 seconds
+
+Inside Graph ParseEdgelist.....
+Elapsed time: ParseEdgelist : 2015 millisecs = 2 seconds
+
+In updateNodeInDegreeOutDegree: Update Outdegree first:
+In updateNodeInDegreeOutDegree: Update Indegree:
+Total (initial):: In-Degree = 899050, Out-Degree = 899050
+Elapsed time: 0-1 : 0 seconds
+Elapsed time: 1-2 : 2 seconds
+Elapsed time: 2-3 : 0 seconds
+
+Initialized Graph. Let us update the indegree and out-degrees... 
+Graph init done...
+calling InitializeFitness...
+final graph size is 537112 from initial_graph_size of 491532.
+ populated out degree array.
+ Entering loop for year = 1983
+Elapsed time: 70-71: total : 0.258 secs, iter cost : 0 seconds
+
+Elapsed time: 71-72: total : 0.302 secs, iter cost : 0 seconds
+
+Elapsed time: 72-73: total : 19 millisecs, iter cost : 19 mseconds
+
+num_new_nodes = 14746, current_graph_size = 491532, growth rate = 0.030000 
+Elapsed time: 73-74: total : 0 millisecs, iter cost : 0 mseconds
+
+Elapsed time: 74-75: total : 9 millisecs, iter cost : 9 mseconds
+
+all new nodes initialized with years and mapped. FillSameYearSourceNodes with new_nodes_vec.size() = 14746
+checking same_year_source_nodes size.
+Elapsed time: 75-76: total : 0 millisecs, iter cost : 0 mseconds
+
+new_nodes_vec.size() b4 : 14746
+
+updated  updateGraphAttributesGeneratorNode .... 
+Elapsed time: 76-77: total : 36 millisecs, iter cost : 36 mseconds
+
+continuous_node_mapping.size() b5 : 506278, reverse_continuous_node_mapping size = 506278
+
+[ER Model] Building connections using Erdos-Renyi
+
+[ER Model] Processing 14746 new nodes for year 1983 (graph size: 491532)
+==WARNING== Note: Running with unmodified GPU clocks. If not controlled otherwise, profiling results may be inconsistent.
+==PROF== Connected to process 99605 (/home/jmukher/workspace/uiuc/citation_abm/abm)
+==ERROR== ERR_NVGPUCTRPERM - The user does not have permission to access NVIDIA GPU Performance Counters on the target device 0. For instructions on enabling permissions and to get more information see https://developer.nvidia.com/ERR_NVGPUCTRPERM
+
+ALLOCATE DEVICE MEMORY
+ Allocate RNG states.
+ Estimate capacity based on ER model.
+create_thread_vectors_bulk<int2>(num_new_nodes, per_thread_capacities.
+Instead of batch - process all new nodes in parallel.
+COLLECT RESULTS
+[ER Model] Generated 724781 edges
+
+Year 1983: 14746 new nodes, 724781 new edges
+
+Elapsed time: 78-781 : total : 4.306 secs, this iter cost : 4.306 seconds
+
+Elapsed time: 78-79 : total : 4.555 secs, this iter cost : 4.555 seconds
+
+updateNodeInDegreeOutDegree(year=1983): updated 14746 out-degrees, 393944 in-degrees
+Elapsed time: 79-81 : total : 0.231 secs, this iter cost : 0 seconds
+
+Elapsed time: 79-80 : total : 0.156 secs, this iter cost : 0 seconds
+
+Elapsed time: 80-81 : total : 0.074 secs, this iter cost : 0 seconds
+
+Elapsed time: 70-81 : total : 5.414 secs, this iter cost : 5 seconds
+
+ Entering loop for year = 1984
+Elapsed time: 70-71: total : 0.531 secs, iter cost : 0 seconds
+
+Elapsed time: 71-72: total : 0.599 secs, iter cost : 0 seconds
+
+Elapsed time: 72-73: total : 20 millisecs, iter cost : 1 mseconds
+
+num_new_nodes = 15189, current_graph_size = 506278, growth rate = 0.030000 
+Elapsed time: 73-74: total : 0 millisecs, iter cost : 0 mseconds
+
+Elapsed time: 74-75: total : 17 millisecs, iter cost : 8 mseconds
+
+all new nodes initialized with years and mapped. FillSameYearSourceNodes with new_nodes_vec.size() = 15189
+checking same_year_source_nodes size.
+Elapsed time: 75-76: total : 0 millisecs, iter cost : 0 mseconds
+
+new_nodes_vec.size() b4 : 15189
+
+updated  updateGraphAttributesGeneratorNode .... 
+Elapsed time: 76-77: total : 74 millisecs, iter cost : 38 mseconds
+
+continuous_node_mapping.size() b5 : 521467, reverse_continuous_node_mapping size = 521467
+
+[ER Model] Building connections using Erdos-Renyi
+
+[ER Model] Processing 15189 new nodes for year 1984 (graph size: 506278)
+
+ALLOCATE DEVICE MEMORY
+ Allocate RNG states.
+ Estimate capacity based on ER model.
+create_thread_vectors_bulk<int2>(num_new_nodes, per_thread_capacities.
+Instead of batch - process all new nodes in parallel.
+COLLECT RESULTS
+[ER Model] Generated 768468 edges
+
+Year 1984: 15189 new nodes, 768468 new edges
+
+Elapsed time: 78-781 : total : 9.021 secs, this iter cost : 4.715 seconds
+
+Elapsed time: 78-79 : total : 9.537 secs, this iter cost : 4.982 seconds
+
+updateNodeInDegreeOutDegree(year=1984): updated 15189 out-degrees, 410415 in-degrees
+Elapsed time: 79-81 : total : 0.449 secs, this iter cost : 0 seconds
+
+Elapsed time: 79-80 : total : 0.297 secs, this iter cost : 0 seconds
+
+Elapsed time: 80-81 : total : 0.15 secs, this iter cost : 0 seconds
+
+Elapsed time: 70-81 : total : 11.233 secs, this iter cost : 5 seconds
+
+ Entering loop for year = 1985
+Elapsed time: 70-71: total : 0.802 secs, iter cost : 0 seconds
+
+Elapsed time: 71-72: total : 0.894 secs, iter cost : 0 seconds
+
+Elapsed time: 72-73: total : 20 millisecs, iter cost : 0 mseconds
+
+num_new_nodes = 15645, current_graph_size = 521467, growth rate = 0.030000 
+Elapsed time: 73-74: total : 0 millisecs, iter cost : 0 mseconds
+
+Elapsed time: 74-75: total : 25 millisecs, iter cost : 8 mseconds
+
+all new nodes initialized with years and mapped. FillSameYearSourceNodes with new_nodes_vec.size() = 15645
+checking same_year_source_nodes size.
+Elapsed time: 75-76: total : 0 millisecs, iter cost : 0 mseconds
+
+new_nodes_vec.size() b4 : 15645
+
+updated  updateGraphAttributesGeneratorNode .... 
+Elapsed time: 76-77: total : 113 millisecs, iter cost : 39 mseconds
+
+continuous_node_mapping.size() b5 : 537112, reverse_continuous_node_mapping size = 537112
+
+[ER Model] Building connections using Erdos-Renyi
+
+[ER Model] Processing 15645 new nodes for year 1985 (graph size: 521467)
+
+ALLOCATE DEVICE MEMORY
+ Allocate RNG states.
+ Estimate capacity based on ER model.
+create_thread_vectors_bulk<int2>(num_new_nodes, per_thread_capacities.
+Instead of batch - process all new nodes in parallel.
+COLLECT RESULTS
+[ER Model] Generated 814764 edges
+
+Year 1985: 15645 new nodes, 814764 new edges
+
+Elapsed time: 78-781 : total : 11.025 secs, this iter cost : 2.004 seconds
+
+Elapsed time: 78-79 : total : 11.821 secs, this iter cost : 2.284 seconds
+
+updateNodeInDegreeOutDegree(year=1985): updated 15645 out-degrees, 428058 in-degrees
+Elapsed time: 79-81 : total : 0.699 secs, this iter cost : 0 seconds
+
+Elapsed time: 79-80 : total : 0.468 secs, this iter cost : 0 seconds
+
+Elapsed time: 80-81 : total : 0.228 secs, this iter cost : 0 seconds
+
+Elapsed time: 70-81 : total : 14.383 secs, this iter cost : 3 seconds
+
+Elapsed time: 7-8 :  14 seconds
+
+compute done:: graph size = 537112
+Elapsed time: 8-8.1 :  0 seconds
+
+Writing Graph to file: ./output/3y/0.0001/ncu-gpu-er-gnp-3y-3p-0.0001p.edgelist
+
+Elapsed time: 8.1-9 :  0 seconds
+
+Elapsed time: 9-10 :  0 seconds
+
+ graph size = 537112
+WriteAttributes: graph size = 537112
+
+Elapsed time: 0-1 : 3 seconds
+
+Elapsed time: 1-4 : 0 seconds
+
+Elapsed time: 4-7 : 0 seconds
+
+Elapsed time: 70-71: total : 0.802 seconds.
+
+Elapsed time: 71-72: total : 0.894 seconds.
+
+Elapsed time: 72-73: total : 0.02 seconds.
+
+Elapsed time: 73-74: total : 0 seconds.
+
+Elapsed time: 74-75: total : 0.025 seconds.
+
+Elapsed time: 75-76: total : 0 seconds.
+
+Elapsed time: 76-77: total : 0.113 seconds.
+
+Elapsed time: 77-79: total : 11.821 seconds.
+
+Elapsed time: 79-81 : total : 0.699 seconds.
+
+Elapsed time: 79-80 : total : 0.468 seconds.
+
+Elapsed time: 80-81 : total : 0.228 seconds.
+
+Elapsed time: 70-81 : total : 14.383 seconds.
+
+Elapsed time: 7-8 : 14 seconds
+
+Elapsed time: 8-8.1 :  0 seconds
+
+Elapsed time: 8.1-9 :  0 seconds
+
+Elapsed time: 9-10 : 0 seconds
+
+Elapsed time: 11-12 : 0 seconds
+
+Elapsed time: 10-12 : 0 seconds
+
+Elapsed time: 0-7 : 3 seconds
+
+Elapsed time: 7-8 : 14 seconds
+
+Elapsed time: 8-12 : 1 seconds
+
+E2E Time for num_cycles = 3 with growth_rate = 3 % = 20 seconds.
+==PROF== Disconnected from process 99605
+ncu exit code: 1
+---
+grep: /tmp/ncu_debug_full.log: No such file or directory

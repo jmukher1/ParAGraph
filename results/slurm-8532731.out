@@ -1,0 +1,4 @@
+Running growth rate = .0100 = 1% with 16 thread
+./output/10y/0.5/gpu-opt-static-model-er-gnp-10y-1p-0.5p.edgelist
+./output/10y/0.5/gpu-opt-static-model-er-gnp-10y-1p-0.5p.aux
+[2026-03-24T20:23:42.628] error: *** JOB 8532731 ON h008 CANCELLED AT 2026-03-24T20:23:42 DUE to SIGNAL Terminated ***

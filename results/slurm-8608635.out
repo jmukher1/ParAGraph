@@ -1,0 +1,7 @@
+Running growth rate = .0600 = 6% with 16 thread
+./output/30y/0.10/gpu-opt-static-model-er-gnp-30y-6p-0.10p.edgelist
+./output/30y/0.10/gpu-opt-static-model-er-gnp-30y-6p-0.10p.aux
+
+real	26m45.731s
+user	35m59.385s
+sys	7m44.326s

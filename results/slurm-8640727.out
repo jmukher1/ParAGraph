@@ -1,0 +1,70 @@
+
+Due to MODULEPATH changes, the following have been reloaded:
+  1) openmpi/5.0.5     2) xalt/3.1.4
+
+The following have been reloaded with a version change:
+  1) cuda/12.6.0 => cuda/12.6.1     3) modtree/cpu => modtree/gpu
+  2) gcc/14.1.0 => gcc/11.4.1
+
+Running growth rate 3% for 3 years.
+./output/3y/ncu-gpu-pa-3y-3p.edgelist
+./output/3y/ncu-gpu-pa-3y-3p.aux
+
+Start ABM....
+parse_args....
+edgelist....
+num-cycles....
+output-file....
+log-file = ./output/3y/ncu-gpu-pa-3y-3p.log....
+num-processors = 16....
+log-level = 0
+er_probability = 0.000000
+model = pa
+Init ABM....
+Exec ABM....
+Start execute.Init Graph
+Inside  Graph ParseNodelist.....
+Populating the continuous_node mappings..
+Elapsed time: ParseNodelist : 876 millisecs = 0 seconds
+
+Inside Graph ParseEdgelist.....
+Elapsed time: ParseEdgelist : 2980 millisecs = 2 seconds
+
+In updateNodeInDegreeOutDegree: Update Outdegree first:
+In updateNodeInDegreeOutDegree: Update Indegree:
+Total (initial):: In-Degree = 899050, Out-Degree = 899050
+Elapsed time: 0-1 : 0 seconds
+Elapsed time: 1-2 : 3 seconds
+Elapsed time: 2-3 : 0 seconds
+
+Initialized Graph. Let us update the indegree and out-degrees... 
+Graph init done...
+calling InitializeFitness...
+final graph size is 537112 from initial_graph_size of 491532.
+ populated out degree array.
+ Entering loop for year = 1983
+Elapsed time: 70-71: total : 0.278 secs, iter cost : 0 seconds
+
+Elapsed time: 71-72: total : 0.321 secs, iter cost : 0 seconds
+
+Elapsed time: 72-73: total : 24 millisecs, iter cost : 24 mseconds
+
+num_new_nodes = 14746, current_graph_size = 491532, growth rate = 0.030000 
+Elapsed time: 73-74: total : 0 millisecs, iter cost : 0 mseconds
+
+Elapsed time: 74-75: total : 9 millisecs, iter cost : 9 mseconds
+
+all new nodes initialized with years and mapped. FillSameYearSourceNodes with new_nodes_vec.size() = 14746
+checking same_year_source_nodes size.
+Elapsed time: 75-76: total : 0 millisecs, iter cost : 0 mseconds
+
+new_nodes_vec.size() b4 : 14746
+
+updated  updateGraphAttributesGeneratorNode .... 
+Elapsed time: 76-77: total : 37 millisecs, iter cost : 37 mseconds
+
+continuous_node_mapping.size() b5 : 506278, reverse_continuous_node_mapping size = 506278
+==WARNING== Note: Running with unmodified GPU clocks. If not controlled otherwise, profiling results may be inconsistent.
+==PROF== Connected to process 4025887 (/home/jmukher/workspace/uiuc/citation_abm/abm)
+==ERROR== ERR_NVGPUCTRPERM - The user does not have permission to access NVIDIA GPU Performance Counters on the target device 0. For instructions on enabling permissions and to get more information see https://developer.nvidia.com/ERR_NVGPUCTRPERM
+[2026-04-01T20:42:47.004] error: *** JOB 8640727 ON h008 CANCELLED AT 2026-04-01T20:42:47 DUE TO TIME LIMIT ***

@@ -1,0 +1,27 @@
+
+Due to MODULEPATH changes, the following have been reloaded:
+  1) openmpi/5.0.5     2) xalt/3.1.4
+
+The following have been reloaded with a version change:
+  1) cuda/12.6.0 => cuda/12.6.1     3) modtree/cpu => modtree/gpu
+  2) gcc/14.1.0 => gcc/11.4.1
+
+mkdir: cannot create directory ‘/var/spool/slurm/job8640221/output’: Permission denied
+mkdir: cannot create directory ‘/var/spool/slurm/job8640221/errors’: Permission denied
+=== FILE CHECK ===
+MISSING /var/spool/slurm/job8640221/sj_edgelist
+MISSING /var/spool/slurm/job8640221/sj_nodelist
+MISSING /var/spool/slurm/job8640221/tcen_at_least_five
+MISSING /var/spool/slurm/job8640221/sj_recprob
+MISSING /var/spool/slurm/job8640221/abm
+nsys: /apps/spack/gautschi-gpu/apps/cuda/12.6.1-gcc-11.4.1-jtjtgkd/bin/nsys  NVIDIA Nsight Systems version 2024.4.2.133-244234382004v0
+================================
+mkdir: cannot create directory ‘/var/spool/slurm/job8640221/output’: Permission denied
+=== Growth 3% — output: /home/jmukher/workspace/uiuc/citation_abm/profile/nsys_er-gnp_3y_3p.nsys-rep ===
+/var/spool/slurm/job8640221/slurm_script: line 65: /var/spool/slurm/job8640221/errors/nsys-abm-3p.err: No such file or directory
+FAILED — stderr output:
+cat: /var/spool/slurm/job8640221/errors/nsys-abm-3p.err: No such file or directory
+=== Growth 6% — output: /home/jmukher/workspace/uiuc/citation_abm/profile/nsys_er-gnp_3y_6p.nsys-rep ===
+/var/spool/slurm/job8640221/slurm_script: line 65: /var/spool/slurm/job8640221/errors/nsys-abm-6p.err: No such file or directory
+FAILED — stderr output:
+cat: /var/spool/slurm/job8640221/errors/nsys-abm-6p.err: No such file or directory

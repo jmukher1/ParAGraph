@@ -1,0 +1,15 @@
+\begin{table}[t]
+\centering
+\caption{Session-level GPU profiling metrics collected with NVIDIA Nsight Systems~\cite{nsightsystems} (\texttt{--trace=cuda,nvtx}) on NVIDIA H100 80GB HBM3 (3350\,GB/s peak bandwidth). GPU util.\ = kernel time $\div$ session time; Memcpy ovh.\ = memcpy time $\div$ kernel time; Eff.\ BW = total data $\div$ total memcpy duration.}
+\label{tab:pa_vary_years-nsys-session}
+\resizebox{\columnwidth}{!}{%
+\begin{tabular}{lrrrrrrrr}
+\toprule
+\textbf{Run} & \textbf{Session (s)} & \textbf{Kernel (s)} & \textbf{GPU util.\%} & \textbf{Memcpy ovh.\%} & \textbf{Data (MB)} & \textbf{Eff.\ BW (GB/s)} & \textbf{BW\%} & \textbf{Launches} \\
+\midrule
+  3y/1% & 20.76 & 3.719 & 17.9 & 8.0 & 227.3 & 0.769 & 0.023 & 14,929 \\
+  10y/1% & 47.07 & 13.326 & 28.3 & 7.7 & 825.5 & 0.807 & 0.024 & 51,540 \\
+  30y/1% & 152.31 & 47.734 & 31.3 & 7.1 & 3131.0 & 0.919 & 0.027 & 171,325 \\
+\bottomrule
+\end{{tabular}}}
+\end{{table}}

@@ -1,0 +1,11 @@
+Running growth rate = .0100 = 1% with 1 thread
+./output/0.1/gpu-opt-static-model-er-gnp-3y-1p-0.1p.edgelist
+./output/0.1/gpu-opt-static-model-er-gnp-3y-1p-0.1p.aux
+
+real	0m28.028s
+user	0m26.069s
+sys	0m1.573s
+Running growth rate = .0300 = 3% with 1 thread
+./output/0.1/gpu-opt-static-model-er-gnp-3y-3p-0.1p.edgelist
+./output/0.1/gpu-opt-static-model-er-gnp-3y-3p-0.1p.aux
+[2026-03-23T18:13:39.155] error: *** JOB 8526412 ON h003 CANCELLED AT 2026-03-23T18:13:39 DUE to SIGNAL Terminated ***

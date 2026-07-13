@@ -1,0 +1,9 @@
+Running growth rate = .0600 = 6% with 16 thread
+./output/30y/0.10/gpu-opt-static-model-er-gnp-30y-6p-0.10p.edgelist
+./output/30y/0.10/gpu-opt-static-model-er-gnp-30y-6p-0.10p.aux
+./drivers/p001gpu_er_static_vary_p.sh: line 29: 1927217 Killed                  ./abm --model er-gnp --er-probability ${ER_PROBABILITY} --edgelist ${INPUT_EDGELIST} --nodelist ${INPUT_NODELIST} --out-degree-bag ${OUTDEGREE_BAG} --recency-probabilities ${RECENCY_PROBABILITIES} --alpha 0.5 --preferential-weight 0.33 --recency-weight 0.33 --fitness-weight 0.33 --growth-rate ${GROWTH_RATE} --fully-random-citations ${FULLY_RANDOM_CITATIONS} --num-cycles ${NUM_CYCLES} --same-year-proportion ${SAME_YEAR_PROPORTION} --output-file ${OUTPUT_FILE} --auxiliary-information-file ${OUTPUT_AUX} --log-file ${OUTPUT_LOG} --num-processors ${NUM_THREADS} --log-level ${LOG_LEVEL} 2> ${ERRORS}/abm-${GROWTH_PERCENT}p.err > ${OUT_FILE}
+
+real	12m24.699s
+user	12m4.511s
+sys	2m33.108s
+[2026-03-31T13:13:15.225] error: Detected 1 oom_kill event in StepId=8601791.batch. Some of the step tasks have been OOM Killed.

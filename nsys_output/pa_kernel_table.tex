@@ -1,0 +1,22 @@
+\begin{table}[t]
+\centering
+\caption{Per-kernel timing and launch configuration profiled on Tesla P100-PCIE-16GB (3y/1% run). Th.\ Occ = theoretical occupancy (\%) computed from launch configuration; Lim.\ = binding occupancy limiter (\textbf{reg}=register file, \textbf{shmem}=shared memory, \textbf{thr}=thread count, \textbf{block}=block size); \%GPU = fraction of total kernel time.}
+\label{tab:pa-nsys-kernel}
+\resizebox{\columnwidth}{!}{%
+\begin{tabular}{lrrrrrrrrl}
+\toprule
+\textbf{Kernel} & \textbf{Launches} & \textbf{Total (ms)} & \textbf{Avg (ms)} & \textbf{Min (ms)} & \textbf{Max (ms)} & \textbf{Block} & \textbf{Regs} & \textbf{Th.\ Occ\%} & \textbf{Lim.} \\
+\midrule
+  \texttt{Stage1} & 3 & 3079.856 & 1026.6188 & 981.8674 & 1060.1529 & 16 & 110 & 28.1 & reg \\
+  \texttt{Stage3} & 3 & 365.135 & 121.7117 & 115.6338 & 125.0758 & 16 & 118 & 26.6 & reg \\
+  \texttt{cuco::insert} & 3 & 221.110 & 73.7033 & 69.8424 & 80.6343 & 128 & 36 & 75.0 & shmem \\
+  \texttt{Stage2} & 3 & 31.198 & 10.3993 & 8.1677 & 12.8196 & 16 & 118 & 26.6 & reg \\
+  \texttt{cuco::init} & 14,899 & 18.166 & 0.0012 & 0.0011 & 0.0016 & 256 & 16 & 100.0 & thr \\
+  \texttt{Stage4} & 3 & 3.141 & 1.0470 & 1.0094 & 1.0831 & 16 & 107 & 28.1 & reg \\
+  \texttt{ExtractSizes} & 6 & 0.303 & 0.0505 & 0.0045 & 0.1028 & 256 & 32 & 100.0 & thr \\
+  \texttt{cuco::insert_if} & 3 & 0.111 & 0.0370 & 0.0339 & 0.0425 & 128 & 37 & 75.0 & shmem \\
+  \texttt{cuco::init} & 3 & 0.010 & 0.0032 & 0.0030 & 0.0033 & 256 & 24 & 100.0 & thr \\
+  \texttt{cub::ForEach} & 3 & 0.004 & 0.0014 & 0.0013 & 0.0015 & 256 & 16 & 100.0 & thr \\
+\bottomrule
+\end{{tabular}}}
+\end{{table}}

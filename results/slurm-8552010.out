@@ -1,0 +1,84 @@
+Running growth rate 1% for 3 years.
+./output/3y/gpu-opt-static-output-3y-1p.edgelist
+./output/3y/gpu-opt-static-output-3y-1p.aux
+
+real	0m17.508s
+user	0m17.466s
+sys	0m1.504s
+Running growth rate 3% for 3 years.
+./output/3y/gpu-opt-static-output-3y-3p.edgelist
+./output/3y/gpu-opt-static-output-3y-3p.aux
+
+real	0m25.297s
+user	0m25.105s
+sys	0m2.157s
+Running growth rate 5% for 3 years.
+./output/3y/gpu-opt-static-output-3y-5p.edgelist
+./output/3y/gpu-opt-static-output-3y-5p.aux
+
+real	0m33.916s
+user	0m33.474s
+sys	0m2.617s
+Running growth rate 6% for 3 years.
+./output/3y/gpu-opt-static-output-3y-6p.edgelist
+./output/3y/gpu-opt-static-output-3y-6p.aux
+
+real	0m38.663s
+user	0m37.531s
+sys	0m3.052s
+Running growth rate 1% for 10 years.
+./output/10y/gpu-opt-static-output-10y-1p.edgelist
+./output/10y/gpu-opt-static-output-10y-1p.aux
+
+real	0m45.423s
+user	0m47.692s
+sys	0m2.604s
+Running growth rate 3% for 10 years.
+./output/10y/gpu-opt-static-output-10y-3p.edgelist
+./output/10y/gpu-opt-static-output-10y-3p.aux
+
+real	1m21.307s
+user	1m21.514s
+sys	0m5.075s
+Running growth rate 5% for 10 years.
+./output/10y/gpu-opt-static-output-10y-5p.edgelist
+./output/10y/gpu-opt-static-output-10y-5p.aux
+
+real	2m5.510s
+user	2m3.471s
+sys	0m7.949s
+Running growth rate 6% for 10 years.
+./output/10y/gpu-opt-static-output-10y-6p.edgelist
+./output/10y/gpu-opt-static-output-10y-6p.aux
+
+real	2m31.843s
+user	2m28.517s
+sys	0m9.772s
+Running growth rate 1% for 30 years.
+./output/30y/gpu-opt-static-output-30y-1p.edgelist
+./output/30y/gpu-opt-static-output-30y-1p.aux
+
+real	2m26.481s
+user	2m33.845s
+sys	0m5.977s
+Running growth rate 3% for 30 years.
+./output/30y/gpu-opt-static-output-30y-3p.edgelist
+./output/30y/gpu-opt-static-output-30y-3p.aux
+
+real	6m0.968s
+user	6m4.147s
+sys	0m12.194s
+Running growth rate 5% for 30 years.
+./output/30y/gpu-opt-static-output-30y-5p.edgelist
+./output/30y/gpu-opt-static-output-30y-5p.aux
+
+real	15m27.682s
+user	15m3.476s
+sys	0m45.041s
+Running growth rate 6% for 30 years.
+./output/30y/gpu-opt-static-output-30y-6p.edgelist
+./output/30y/gpu-opt-static-output-30y-6p.aux
+
+real	25m40.028s
+user	25m4.258s
+sys	1m1.114s

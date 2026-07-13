@@ -1,0 +1,28 @@
+Running growth rate 1% for 3 years.
+./output/3y/gpu-opt-static-output-3y-1p.edgelist
+./output/3y/gpu-opt-static-output-3y-1p.aux
+
+real	0m17.174s
+user	0m17.775s
+sys	0m1.387s
+Running growth rate 3% for 3 years.
+./output/3y/gpu-opt-static-output-3y-3p.edgelist
+./output/3y/gpu-opt-static-output-3y-3p.aux
+
+real	0m24.873s
+user	0m25.188s
+sys	0m1.953s
+Running growth rate 5% for 3 years.
+./output/3y/gpu-opt-static-output-3y-5p.edgelist
+./output/3y/gpu-opt-static-output-3y-5p.aux
+
+real	0m33.901s
+user	0m33.186s
+sys	0m2.684s
+Running growth rate 6% for 3 years.
+./output/3y/gpu-opt-static-output-3y-6p.edgelist
+./output/3y/gpu-opt-static-output-3y-6p.aux
+
+real	0m37.900s
+user	0m37.243s
+sys	0m2.869s
