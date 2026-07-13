@@ -801,8 +801,8 @@ void buildOneNodeConnections(ABM* abm, Graph* graph,
                             d_new_edges_vec_vectors,
                             per_thread_selected_set_capacity);
 
-                    CUDA_CHECK(cudaGetLastError());
-                    CUDA_CHECK(cudaStreamSynchronize(stream));
+                    // CUDA_CHECK(cudaGetLastError());
+                    // CUDA_CHECK(cudaStreamSynchronize(stream));
 
                     if (d_bfs_pool) { cudaFree(d_bfs_pool); d_bfs_pool = nullptr; }
                     CUDA_CHECK(cudaFree(d_visited_slab));
@@ -885,8 +885,8 @@ void buildOneNodeConnections(ABM* abm, Graph* graph,
                     );
         
             
-                    CUDA_CHECK(cudaGetLastError());
-                    CUDA_CHECK(cudaStreamSynchronize(stream));
+                    //CUDA_CHECK(cudaGetLastError());
+                    //CUDA_CHECK(cudaStreamSynchronize(stream));
 
                     CUDA_CHECK(cudaFree(d_visited_slab_warp));
                     CUDA_CHECK(cudaFree(d_curr_slab_warp));
@@ -960,8 +960,8 @@ void buildOneNodeConnections(ABM* abm, Graph* graph,
                     );
     
         
-                    CUDA_CHECK(cudaGetLastError());
-                    CUDA_CHECK(cudaStreamSynchronize(stream));
+                    //CUDA_CHECK(cudaGetLastError());
+                    //CUDA_CHECK(cudaStreamSynchronize(stream));
 
                     // Free device memory
                     if (d_bfs_pool) {
@@ -1003,9 +1003,9 @@ void buildOneNodeConnections(ABM* abm, Graph* graph,
                                 num_generator_node_citation,
                                 current_year, current_graph_size,
                                 initial_graph_size, final_graph_size);
-                CUDA_CHECK(cudaGetLastError());
-                CUDA_CHECK(cudaStreamSynchronize(stream));
-                
+                //CUDA_CHECK(cudaGetLastError());
+                //CUDA_CHECK(cudaStreamSynchronize(stream));
+
                 // Free 1-hop data (no longer needed after Stage 2)
                 destroy_thread_vectors_int(one_hop_neighborhood_vectors, num_threads);
                 one_hop_neighborhood_vectors = nullptr;
@@ -1041,8 +1041,8 @@ void buildOneNodeConnections(ABM* abm, Graph* graph,
                                 current_year, current_graph_size,
                                 initial_graph_size, final_graph_size);
 
-                CUDA_CHECK(cudaGetLastError());
-                CUDA_CHECK(cudaStreamSynchronize(stream));
+                //CUDA_CHECK(cudaGetLastError());
+                //CUDA_CHECK(cudaStreamSynchronize(stream));
 
                 destroy_device_heaps<float>(heaps);
 
@@ -1065,8 +1065,8 @@ void buildOneNodeConnections(ABM* abm, Graph* graph,
                                 initial_graph_size, final_graph_size, 
                                 per_thread_selected_set_capacity);
 
-                CUDA_CHECK(cudaGetLastError());
-                CUDA_CHECK(cudaStreamSynchronize(stream));
+                //CUDA_CHECK(cudaGetLastError());
+                //CUDA_CHECK(cudaStreamSynchronize(stream));
                 } // end multistage-path else
 
                 // Free all per-batch temporaries (shared by both branches)
@@ -1295,7 +1295,7 @@ static void buildOneNodeConnections_timed(
                     cudaMemset(d_visited_slab,    0, slab_bytes);
                     cudaMemset(d_queue_curr_slab, 0, slab_bytes);
                     cudaMemset(d_queue_next_slab, 0, slab_bytes);
-                    cudaStreamSynchronize(stream);
+                    //cudaStreamSynchronize(stream);
                     _ep.t_slab_alloc += _gt.stop(stream);
                 }
 
@@ -1344,8 +1344,8 @@ static void buildOneNodeConnections_timed(
                         citations_vectors,
                         d_new_edges_vec_vectors,
                         per_thread_selected_set_capacity);
-                    CUDA_CHECK(cudaGetLastError());
-                    CUDA_CHECK(cudaStreamSynchronize(stream));
+                    //  CUDA_CHECK(cudaGetLastError());
+                    //  CUDA_CHECK(cudaStreamSynchronize(stream));
                     _ep.t_stage1_bfs += _gt.stop(stream);
                 }
 
@@ -1381,7 +1381,7 @@ static void buildOneNodeConnections_timed(
                         cudaMalloc(&d_visited_slab_warp, slab_bytes);
                         cudaMalloc(&d_curr_slab_warp,     slab_bytes);
                         cudaMalloc(&d_next_slab_warp,     slab_bytes);
-                        cudaStreamSynchronize(stream);
+                        //cudaStreamSynchronize(stream);
                         _ep.t_slab_alloc += _gt.stop(stream);
                     }
 
@@ -1397,8 +1397,8 @@ static void buildOneNodeConnections_timed(
                             one_hop_neighborhood_vectors, two_hop_neighborhood_vectors,
                             d_visited_slab_warp, d_curr_slab_warp, d_next_slab_warp,
                             num_words, current_graph_size);
-                        CUDA_CHECK(cudaGetLastError());
-                        CUDA_CHECK(cudaStreamSynchronize(stream));
+                        //CUDA_CHECK(cudaGetLastError());
+                        //CUDA_CHECK(cudaStreamSynchronize(stream));
                         _ep.t_stage1_bfs += _gt.stop(stream);
                     }
 
@@ -1418,7 +1418,7 @@ static void buildOneNodeConnections_timed(
                         cudaMemset(d_visited_slab,    0, slab_bytes);
                         cudaMemset(d_queue_curr_slab, 0, slab_bytes);
                         cudaMemset(d_queue_next_slab, 0, slab_bytes);
-                        cudaStreamSynchronize(stream);
+                        //cudaStreamSynchronize(stream);
                         _ep.t_slab_alloc += _gt.stop(stream);
                     }
 
@@ -1449,8 +1449,8 @@ static void buildOneNodeConnections_timed(
                             one_hop_neighborhood_vectors,
                             two_hop_neighborhood_vectors,
                             d_bfs_pool, graph->getNodeSetSize());
-                        CUDA_CHECK(cudaGetLastError());
-                        CUDA_CHECK(cudaStreamSynchronize(stream));
+                        //CUDA_CHECK(cudaGetLastError());
+                        //CUDA_CHECK(cudaStreamSynchronize(stream));
                         _ep.t_stage1_bfs += _gt.stop(stream);
                     }
 
@@ -1485,8 +1485,8 @@ static void buildOneNodeConnections_timed(
                         num_generator_node_citation,
                         current_year, current_graph_size,
                         initial_graph_size, final_graph_size);
-                    CUDA_CHECK(cudaGetLastError());
-                    CUDA_CHECK(cudaStreamSynchronize(stream));
+                    // CUDA_CHECK(cudaGetLastError());
+                    // CUDA_CHECK(cudaStreamSynchronize(stream));
                     _ep.t_stage2_ws1 += _gt.stop(stream);
                 }
 
@@ -1518,8 +1518,8 @@ static void buildOneNodeConnections_timed(
                         num_generator_node_citation,
                         current_year, current_graph_size,
                         initial_graph_size, final_graph_size);
-                    CUDA_CHECK(cudaGetLastError());
-                    CUDA_CHECK(cudaStreamSynchronize(stream));
+                    //CUDA_CHECK(cudaGetLastError());
+                    //CUDA_CHECK(cudaStreamSynchronize(stream));
                     _ep.t_stage3_ws2 += _gt.stop(stream);
                 }
 
@@ -1543,8 +1543,8 @@ static void buildOneNodeConnections_timed(
                         current_year, current_graph_size,
                         initial_graph_size, final_graph_size,
                         per_thread_selected_set_capacity);
-                    CUDA_CHECK(cudaGetLastError());
-                    CUDA_CHECK(cudaStreamSynchronize(stream));
+                    //CUDA_CHECK(cudaGetLastError());
+                    //CUDA_CHECK(cudaStreamSynchronize(stream));
                     _ep.t_stage4_fill += _gt.stop(stream);
                 }
             } // end multistage-path else
@@ -1564,7 +1564,7 @@ static void buildOneNodeConnections_timed(
             append_device_to_host<int2>(d_new_edges_vec_vectors, new_edges_vec,
                                         num_new_nodes, out_degree_arr + growth_offset,
                                         graph->getNodeSetSize());
-            CUDA_CHECK(cudaStreamSynchronize(stream));
+            //CUDA_CHECK(cudaStreamSynchronize(stream));
             _ep.t_download += _gt.stop(stream);
         }
 

@@ -52,6 +52,12 @@ Usage
         --pattern "nsys-pa-{years}y-{growth}p.nsys-rep" \
         --gpu h100 \
         --out pa_h100_occupancy.csv
+
+    python parse_nsys_occupancy.py --dir ./profile \
+        --years 30 --growth 6 \
+        --pattern "nsys-pa-{years}y-{growth}p.nsys-rep" \
+        --gpu h100 \
+        --out pa_30y6p_h100_occupancy.csv
 """
 
 import argparse

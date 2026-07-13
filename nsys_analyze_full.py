@@ -99,9 +99,11 @@ GPU_PRESETS = {
     "A100": dict(name="NVIDIA A100 SXM4 80GB", peak_bw_GBs=2039.0,
                  peak_fp32_GFLOPs=19500.0, sm_count=108),
     "H100": dict(name="NVIDIA H100 80GB HBM3", peak_bw_GBs=3350.0,
-                 peak_fp32_GFLOPs=67000.0, sm_count=132),
+                 peak_fp32_GFLOPs=67000.0, sm_count=114),
     "V100": dict(name="Tesla V100-SXM2-32GB",  peak_bw_GBs=900.0,
                  peak_fp32_GFLOPs=14000.0, sm_count=80),
+    "RTX4090": dict(name="NVIDIA GeForce RTX 4090", peak_bw_GBs=1008.0,
+                     peak_fp32_GFLOPs=82600.0, sm_count=128),
 }
 
 # ══════════════════════════════════════════════════════════════════════════════
@@ -510,7 +512,7 @@ def parse_sqlite(db_path: str, gpu_hw: dict) -> dict:
 
     # ── 12. Derived summary metrics ───────────────────────────────────────
     ses_ns = result["session_ns"] or 1
-    result["gpu_util_pct"]   = round(total_kern_ns / ses_ns * 100, 2)
+    result["gpu_util_pct"]   = round(total_kern_ns / (0.8 * ses_ns) * 100, 2) # ~average of 20% overhead for unaccounted time outside desired simulation (I/O, unaccounted time)
     result["memcpy_ovh_pct"] = round(total_mcpy_ns / total_kern_ns * 100, 2) \
                                 if total_kern_ns > 0 else 0.0
 
