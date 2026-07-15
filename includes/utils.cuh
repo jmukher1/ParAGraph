@@ -35,7 +35,7 @@
 #include <thrust/logical.h>
 #include <thrust/transform.h>
 #include <string>
-#include "DeviceGraph.cuh"
+#include "device_graph.cuh"
 #include "device_map.cuh"
 #include "device_min_heap.cuh"
 #include "device_min_heap_array.cuh"
@@ -943,7 +943,7 @@ void create_thread_sets(int num_threads, int capacity_per_thread, ThreadSets* ou
 void destroy_thread_sets(ThreadSets* thread_sets);
 
 void prepareGraph(const std::map<int, std::set<int>>& hostMap,
-                    DeviceGraph* dGraph,
+                    device_graph* dGraph,
                     int num_vertices);
 
 
@@ -1036,7 +1036,7 @@ inline void freeDeviceMap(device_map<K, V>* d_map) {
 
  
 // Add to utils.cuh
-void freeDeviceGraph(DeviceGraph* d_graph);
+void freedevice_graph(device_graph* d_graph);
 
 void printNode(const Node& n);
 

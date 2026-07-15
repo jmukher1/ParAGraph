@@ -16,8 +16,8 @@ __global__ void kernelCallStage1(
     int total_N,
     ABM* abm,
     Graph* graph,
-    DeviceGraph* d_forward_adj_map_Graph,
-    DeviceGraph* d_backward_adj_map_Graph,
+    device_graph* d_forward_adj_map_Graph,
+    device_graph* d_backward_adj_map_Graph,
     device_map<int, Node>::device_view d_nodeAttributeMap_view,
     ABMStageState* d_states,
     int* d_new_nodes_arr,
@@ -334,8 +334,8 @@ void buildOneNodeConnections(ABM* abm, Graph* graph,
         // GRAPH STRUCTURES (needed only for Stage 1)
         // ---------------------------------------------------------------------
         //std::cout<<"\ncalling prepareGraph(graph->getForwardAdjMap ...";
-        DeviceGraph* d_forward_adj_map_Graph;
-        CUDA_CHECK(cudaMalloc(&d_forward_adj_map_Graph, sizeof(DeviceGraph)));
+        device_graph* d_forward_adj_map_Graph;
+        CUDA_CHECK(cudaMalloc(&d_forward_adj_map_Graph, sizeof(device_graph)));
         prepareGraph(graph->getForwardAdjMap(), d_forward_adj_map_Graph, graph->getNodeSetSize());
 
         /*if (MEM_DEBUG) { 
@@ -345,8 +345,8 @@ void buildOneNodeConnections(ABM* abm, Graph* graph,
         }*/
 
         //std::cout<<"\ncalling prepareGraph(graph->getBackwardAdjMap ...";
-        DeviceGraph* d_backward_adj_map_Graph;
-        CUDA_CHECK(cudaMalloc(&d_backward_adj_map_Graph, sizeof(DeviceGraph)));
+        device_graph* d_backward_adj_map_Graph;
+        CUDA_CHECK(cudaMalloc(&d_backward_adj_map_Graph, sizeof(device_graph)));
         prepareGraph(graph->getBackwardAdjMap(), d_backward_adj_map_Graph, graph->getNodeSetSize());
 
         /*if (MEM_DEBUG) { 
@@ -792,10 +792,10 @@ void buildOneNodeConnections(ABM* abm, Graph* graph,
         delete d_reverse_continuous_node_mapping;*/
         //delete d_nodeAttributeMap;
         freeDeviceMap(d_nodeAttributeMap);
-        freeDeviceGraph(d_forward_adj_map_Graph);
-        freeDeviceGraph(d_backward_adj_map_Graph);
+        freedevice_graph(d_forward_adj_map_Graph);
+        freedevice_graph(d_backward_adj_map_Graph);
 
-        /*std::cout << "\nfreeDeviceGraph(d_backward_adj_map_Graph";
+        /*std::cout << "\nfreedevice_graph(d_backward_adj_map_Graph";
         if (MEM_DEBUG) { 
                 cudaMemGetInfo(&free_mem, &total_mem); 
                 std::cout << "\n18.Free " << (free_mem / (1024.0 * 1024.0)) 

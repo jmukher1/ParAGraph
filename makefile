@@ -12,8 +12,8 @@ NVLINKFLAGS= --expt-extended-lambda -lcudadevrt -lcudart -Xcompiler -fopenmp -lg
 SRC_DIR = src
 BUILD_DIR = build
 INC_DIR = ./includes
-INCDIRS=-I$(INC_DIR) -I$(SRC_DIR) -I$(CUCO_HOME)/include -I $(CCCL_HOME)/libcudacxx -I $(CCCL_HOME)/thrust -I $(CCCL_HOME)
-INCDIRS=-I$(INC_DIR) -I$(SRC_DIR) -I$(CUCO_HOME)/include -I $(CUCO_HOME)/build/_deps/cccl-src/libcudacxx -I $(CUCO_HOME)/build/_deps/cccl-src/libcudacxx/include -I $(CUCO_HOME)/build/_deps/cccl-src/thrust -I $(CUCO_HOME)/build/_deps/cccl-src/cub
+GPU-STD_DIR = ./gpu-std
+INCDIRS=-I$(INC_DIR) -I$(SRC_DIR) -I$(GPU-STD_DIR) -I$(CUCO_HOME)/include -I $(CUCO_HOME)/build/_deps/cccl-src/libcudacxx -I $(CUCO_HOME)/build/_deps/cccl-src/libcudacxx/include -I $(CUCO_HOME)/build/_deps/cccl-src/thrust -I $(CUCO_HOME)/build/_deps/cccl-src/cub
 
 
 # Default target

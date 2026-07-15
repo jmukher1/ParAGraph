@@ -7,7 +7,7 @@
 #include <iostream>
 #include <cuda_runtime.h>
 
-struct DeviceGraph {
+struct device_graph {
     //int* keys;       // keys of map
     int* edges;     // // CSR values (neighbors): flattened adjacency list 
     int* offsets;    // CSR offset array: offsets[i] = start index in values for keys[i]
@@ -16,7 +16,7 @@ struct DeviceGraph {
 };
 
 // must be trivially copyable
-static_assert(std::is_trivially_copyable_v<DeviceGraph>, "DeviceGraph must be trivially copyable");
+static_assert(std::is_trivially_copyable_v<device_graph>, "device_graph must be trivially copyable");
 
 
 #endif 

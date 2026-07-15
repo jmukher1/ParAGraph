@@ -1,749 +1,0 @@
-The following modules were not unloaded:
-  (Use "module --force purge" to unload all):
-
-  1) xalt/3.1.4
-
-Due to MODULEPATH changes, the following have been reloaded:
-  1) xalt/3.1.4
-
-Running growth rate 1% for 10 years.
-Profile output: erprofile/nsys-H100-er-gnp-10y-1p.nsys-rep
-CMD: nsys profile --trace=cuda,nvtx,osrt --gpu-metrics-device=all --gpu-metrics-frequency=10000 --stats=true --force-overwrite=true -o erprofile/nsys-H100-er-gnp-10y-1p ./abm_er --model er-gnp --er-probability 0.0001 --edgelist sj_edgelist --nodelist sj_nodelist --out-degree-bag tcen_at_least_five --recency-probabilities sj_recprob --alpha 0.5 --preferential-weight 0.33 --recency-weight 0.33 --fitness-weight 0.33 --growth-rate .01 --fully-random-citations 0.05 --num-cycles 10 --same-year-proportion 0.12 --output-file ./output/10y/nsys-H100-er-static-output-10y-1p.edgelist --auxiliary-information-file ./output/10y/nsys-H100-er-static-auxiliary-10y-1p.aux --log-file ./output/10y/nsys-H100-er-static-er-gnp-10y-1p.log --num-processors 14 --log-level 1
-
-Start ABM....
-parse_args....
-edgelist....
-num-cycles....
-output-file....
-log-file = ./output/10y/nsys-H100-er-static-er-gnp-10y-1p.log....
-num-processors = 14....
-log-level = 0
-er_probability = 0.000100
-model = er-gnp
-Init ABM....
-Exec ABM....
-Start execute.Init Graph
-Inside  Graph ParseNodelist.....
-Populating the continuous_node mappings..
-Elapsed time: ParseNodelist : 772 millisecs = 0 seconds
-
-Inside Graph ParseEdgelist.....
-Elapsed time: ParseEdgelist : 1951 millisecs = 1 seconds
-
-In updateNodeInDegreeOutDegree: Update Outdegree first:
-In updateNodeInDegreeOutDegree: Update Indegree:
-Total (initial):: In-Degree = 899050, Out-Degree = 899050
-Elapsed time: 0-1 : 0 seconds
-Elapsed time: 1-2 : 1 seconds
-Elapsed time: 2-3 : 0 seconds
-
-Initialized Graph. Let us update the indegree and out-degrees... 
-Graph init done...
-calling InitializeFitness...
-final graph size is 542962 from initial_graph_size of 491532.
- populated out degree array.
- Entering loop for year = 1983
-Elapsed time: 70-71: total : 0.26 secs, iter cost : 0 seconds
-
-Elapsed time: 71-72: total : 0.297 secs, iter cost : 0 seconds
-
-Elapsed time: 72-73: total : 20 millisecs, iter cost : 20 mseconds
-
-num_new_nodes = 4916, current_graph_size = 491532, growth rate = 0.010000 
-Elapsed time: 73-74: total : 0 millisecs, iter cost : 0 mseconds
-
-Elapsed time: 74-75: total : 3 millisecs, iter cost : 3 mseconds
-
-all new nodes initialized with years and mapped. FillSameYearSourceNodes with new_nodes_vec.size() = 4916
-checking same_year_source_nodes size.
-Elapsed time: 75-76: total : 0 millisecs, iter cost : 0 mseconds
-
-new_nodes_vec.size() b4 : 4916
-
-updated  updateGraphAttributesGeneratorNode .... 
-Elapsed time: 76-77: total : 12 millisecs, iter cost : 12 mseconds
-
-continuous_node_mapping.size() b5 : 496448, reverse_continuous_node_mapping size = 496448
-
-[ER Model] Building connections using Erdos-Renyi
-
-[ER Model] Processing 4916 new nodes for year 1983 (graph size: 491532)
-
-ALLOCATE DEVICE MEMORY
- Allocate RNG states.
- Estimate capacity based on ER model.
-create_thread_vectors_bulk<int2>(num_new_nodes, per_thread_capacities.
-Instead of batch - process all new nodes in parallel.
-COLLECT RESULTS
-[ER Model] Generated 241162 edges
-
-Year 1983: 4916 new nodes, 241162 new edges
-
-Elapsed time: 78-781 : total : 0.607 secs, this iter cost : 0.607 seconds
-
-Elapsed time: 78-79 : total : 0.709 secs, this iter cost : 0.709 seconds
-
-updateNodeInDegreeOutDegree(year=1983): updated 4916 out-degrees, 195491 in-degrees
-Elapsed time: 79-81 : total : 0.104 secs, this iter cost : 0 seconds
-
-Elapsed time: 79-80 : total : 0.079 secs, this iter cost : 0 seconds
-
-Elapsed time: 80-81 : total : 0.024 secs, this iter cost : 0 seconds
-
-Elapsed time: 70-81 : total : 1.41 secs, this iter cost : 1 seconds
-
- Entering loop for year = 1984
-Elapsed time: 70-71: total : 0.572 secs, iter cost : 0 seconds
-
-Elapsed time: 71-72: total : 0.616 secs, iter cost : 0 seconds
-
-Elapsed time: 72-73: total : 49 millisecs, iter cost : 29 mseconds
-
-num_new_nodes = 4965, current_graph_size = 496448, growth rate = 0.010000 
-Elapsed time: 73-74: total : 0 millisecs, iter cost : 0 mseconds
-
-Elapsed time: 74-75: total : 6 millisecs, iter cost : 3 mseconds
-
-all new nodes initialized with years and mapped. FillSameYearSourceNodes with new_nodes_vec.size() = 4965
-checking same_year_source_nodes size.
-Elapsed time: 75-76: total : 0 millisecs, iter cost : 0 mseconds
-
-new_nodes_vec.size() b4 : 4965
-
-updated  updateGraphAttributesGeneratorNode .... 
-Elapsed time: 76-77: total : 24 millisecs, iter cost : 12 mseconds
-
-continuous_node_mapping.size() b5 : 501413, reverse_continuous_node_mapping size = 501413
-
-[ER Model] Building connections using Erdos-Renyi
-
-[ER Model] Processing 4965 new nodes for year 1984 (graph size: 496448)
-
-ALLOCATE DEVICE MEMORY
- Allocate RNG states.
- Estimate capacity based on ER model.
-create_thread_vectors_bulk<int2>(num_new_nodes, per_thread_capacities.
-Instead of batch - process all new nodes in parallel.
-COLLECT RESULTS
-[ER Model] Generated 246433 edges
-
-Year 1984: 4965 new nodes, 246433 new edges
-
-Elapsed time: 78-781 : total : 0.911 secs, this iter cost : 0.304 seconds
-
-Elapsed time: 78-79 : total : 1.123 secs, this iter cost : 0.414 seconds
-
-updateNodeInDegreeOutDegree(year=1984): updated 4965 out-degrees, 199092 in-degrees
-Elapsed time: 79-81 : total : 0.216 secs, this iter cost : 0 seconds
-
-Elapsed time: 79-80 : total : 0.166 secs, this iter cost : 0 seconds
-
-Elapsed time: 80-81 : total : 0.049 secs, this iter cost : 0 seconds
-
-Elapsed time: 70-81 : total : 2.615 secs, this iter cost : 1 seconds
-
- Entering loop for year = 1985
-Elapsed time: 70-71: total : 0.838 secs, iter cost : 0 seconds
-
-Elapsed time: 71-72: total : 0.917 secs, iter cost : 0 seconds
-
-Elapsed time: 72-73: total : 68 millisecs, iter cost : 19 mseconds
-
-num_new_nodes = 5015, current_graph_size = 501413, growth rate = 0.010000 
-Elapsed time: 73-74: total : 0 millisecs, iter cost : 0 mseconds
-
-Elapsed time: 74-75: total : 8 millisecs, iter cost : 2 mseconds
-
-all new nodes initialized with years and mapped. FillSameYearSourceNodes with new_nodes_vec.size() = 5015
-checking same_year_source_nodes size.
-Elapsed time: 75-76: total : 0 millisecs, iter cost : 0 mseconds
-
-new_nodes_vec.size() b4 : 5015
-
-updated  updateGraphAttributesGeneratorNode .... 
-Elapsed time: 76-77: total : 36 millisecs, iter cost : 12 mseconds
-
-continuous_node_mapping.size() b5 : 506428, reverse_continuous_node_mapping size = 506428
-
-[ER Model] Building connections using Erdos-Renyi
-
-[ER Model] Processing 5015 new nodes for year 1985 (graph size: 501413)
-
-ALLOCATE DEVICE MEMORY
- Allocate RNG states.
- Estimate capacity based on ER model.
-create_thread_vectors_bulk<int2>(num_new_nodes, per_thread_capacities.
-Instead of batch - process all new nodes in parallel.
-COLLECT RESULTS
-[ER Model] Generated 250575 edges
-
-Year 1985: 5015 new nodes, 250575 new edges
-
-Elapsed time: 78-781 : total : 1.206 secs, this iter cost : 0.295 seconds
-
-Elapsed time: 78-79 : total : 1.524 secs, this iter cost : 0.401 seconds
-
-updateNodeInDegreeOutDegree(year=1985): updated 5015 out-degrees, 202277 in-degrees
-Elapsed time: 79-81 : total : 0.325 secs, this iter cost : 0 seconds
-
-Elapsed time: 79-80 : total : 0.249 secs, this iter cost : 0 seconds
-
-Elapsed time: 80-81 : total : 0.074 secs, this iter cost : 0 seconds
-
-Elapsed time: 70-81 : total : 3.728 secs, this iter cost : 1 seconds
-
- Entering loop for year = 1986
-Elapsed time: 70-71: total : 1.105 secs, iter cost : 0 seconds
-
-Elapsed time: 71-72: total : 1.222 secs, iter cost : 0 seconds
-
-Elapsed time: 72-73: total : 88 millisecs, iter cost : 20 mseconds
-
-num_new_nodes = 5065, current_graph_size = 506428, growth rate = 0.010000 
-Elapsed time: 73-74: total : 0 millisecs, iter cost : 0 mseconds
-
-Elapsed time: 74-75: total : 10 millisecs, iter cost : 2 mseconds
-
-all new nodes initialized with years and mapped. FillSameYearSourceNodes with new_nodes_vec.size() = 5065
-checking same_year_source_nodes size.
-Elapsed time: 75-76: total : 0 millisecs, iter cost : 0 mseconds
-
-new_nodes_vec.size() b4 : 5065
-
-updated  updateGraphAttributesGeneratorNode .... 
-Elapsed time: 76-77: total : 48 millisecs, iter cost : 12 mseconds
-
-continuous_node_mapping.size() b5 : 511493, reverse_continuous_node_mapping size = 511493
-
-[ER Model] Building connections using Erdos-Renyi
-
-[ER Model] Processing 5065 new nodes for year 1986 (graph size: 506428)
-
-ALLOCATE DEVICE MEMORY
- Allocate RNG states.
- Estimate capacity based on ER model.
-create_thread_vectors_bulk<int2>(num_new_nodes, per_thread_capacities.
-Instead of batch - process all new nodes in parallel.
-COLLECT RESULTS
-[ER Model] Generated 257659 edges
-
-Year 1986: 5065 new nodes, 257659 new edges
-
-Elapsed time: 78-781 : total : 1.512 secs, this iter cost : 0.306 seconds
-
-Elapsed time: 78-79 : total : 1.968 secs, this iter cost : 0.444 seconds
-
-updateNodeInDegreeOutDegree(year=1986): updated 5065 out-degrees, 206911 in-degrees
-Elapsed time: 79-81 : total : 0.461 secs, this iter cost : 0 seconds
-
-Elapsed time: 79-80 : total : 0.359 secs, this iter cost : 0 seconds
-
-Elapsed time: 80-81 : total : 0.099 secs, this iter cost : 0 seconds
-
-Elapsed time: 70-81 : total : 4.916 secs, this iter cost : 1 seconds
-
- Entering loop for year = 1987
-Elapsed time: 70-71: total : 1.391 secs, iter cost : 0 seconds
-
-Elapsed time: 71-72: total : 1.537 secs, iter cost : 0 seconds
-
-Elapsed time: 72-73: total : 122 millisecs, iter cost : 34 mseconds
-
-num_new_nodes = 5115, current_graph_size = 511493, growth rate = 0.010000 
-Elapsed time: 73-74: total : 0 millisecs, iter cost : 0 mseconds
-
-Elapsed time: 74-75: total : 12 millisecs, iter cost : 2 mseconds
-
-all new nodes initialized with years and mapped. FillSameYearSourceNodes with new_nodes_vec.size() = 5115
-checking same_year_source_nodes size.
-Elapsed time: 75-76: total : 0 millisecs, iter cost : 0 mseconds
-
-new_nodes_vec.size() b4 : 5115
-
-updated  updateGraphAttributesGeneratorNode .... 
-Elapsed time: 76-77: total : 60 millisecs, iter cost : 12 mseconds
-
-continuous_node_mapping.size() b5 : 516608, reverse_continuous_node_mapping size = 516608
-
-[ER Model] Building connections using Erdos-Renyi
-
-[ER Model] Processing 5115 new nodes for year 1987 (graph size: 511493)
-
-ALLOCATE DEVICE MEMORY
- Allocate RNG states.
- Estimate capacity based on ER model.
-create_thread_vectors_bulk<int2>(num_new_nodes, per_thread_capacities.
-Instead of batch - process all new nodes in parallel.
-COLLECT RESULTS
-[ER Model] Generated 261668 edges
-
-Year 1987: 5115 new nodes, 261668 new edges
-
-Elapsed time: 78-781 : total : 1.82 secs, this iter cost : 0.308 seconds
-
-Elapsed time: 78-79 : total : 2.395 secs, this iter cost : 0.427 seconds
-
-updateNodeInDegreeOutDegree(year=1987): updated 5115 out-degrees, 210133 in-degrees
-Elapsed time: 79-81 : total : 0.577 secs, this iter cost : 0 seconds
-
-Elapsed time: 79-80 : total : 0.45 secs, this iter cost : 0 seconds
-
-Elapsed time: 80-81 : total : 0.124 secs, this iter cost : 0 seconds
-
-Elapsed time: 70-81 : total : 6.112 secs, this iter cost : 1 seconds
-
- Entering loop for year = 1988
-Elapsed time: 70-71: total : 1.665 secs, iter cost : 0 seconds
-
-Elapsed time: 71-72: total : 1.839 secs, iter cost : 0 seconds
-
-Elapsed time: 72-73: total : 139 millisecs, iter cost : 17 mseconds
-
-num_new_nodes = 5167, current_graph_size = 516608, growth rate = 0.010000 
-Elapsed time: 73-74: total : 0 millisecs, iter cost : 0 mseconds
-
-Elapsed time: 74-75: total : 14 millisecs, iter cost : 2 mseconds
-
-all new nodes initialized with years and mapped. FillSameYearSourceNodes with new_nodes_vec.size() = 5167
-checking same_year_source_nodes size.
-Elapsed time: 75-76: total : 0 millisecs, iter cost : 0 mseconds
-
-new_nodes_vec.size() b4 : 5167
-
-updated  updateGraphAttributesGeneratorNode .... 
-Elapsed time: 76-77: total : 72 millisecs, iter cost : 12 mseconds
-
-continuous_node_mapping.size() b5 : 521775, reverse_continuous_node_mapping size = 521775
-
-[ER Model] Building connections using Erdos-Renyi
-
-[ER Model] Processing 5167 new nodes for year 1988 (graph size: 516608)
-
-ALLOCATE DEVICE MEMORY
- Allocate RNG states.
- Estimate capacity based on ER model.
-create_thread_vectors_bulk<int2>(num_new_nodes, per_thread_capacities.
-Instead of batch - process all new nodes in parallel.
-COLLECT RESULTS
-[ER Model] Generated 266755 edges
-
-Year 1988: 5167 new nodes, 266755 new edges
-
-Elapsed time: 78-781 : total : 2.126 secs, this iter cost : 0.306 seconds
-
-Elapsed time: 78-79 : total : 2.843 secs, this iter cost : 0.448 seconds
-
-updateNodeInDegreeOutDegree(year=1988): updated 5167 out-degrees, 213489 in-degrees
-Elapsed time: 79-81 : total : 0.716 secs, this iter cost : 0 seconds
-
-Elapsed time: 79-80 : total : 0.563 secs, this iter cost : 0 seconds
-
-Elapsed time: 80-81 : total : 0.149 secs, this iter cost : 0 seconds
-
-Elapsed time: 70-81 : total : 7.31 secs, this iter cost : 1 seconds
-
- Entering loop for year = 1989
-Elapsed time: 70-71: total : 1.952 secs, iter cost : 0 seconds
-
-Elapsed time: 71-72: total : 2.151 secs, iter cost : 0 seconds
-
-Elapsed time: 72-73: total : 167 millisecs, iter cost : 28 mseconds
-
-num_new_nodes = 5218, current_graph_size = 521775, growth rate = 0.010000 
-Elapsed time: 73-74: total : 0 millisecs, iter cost : 0 mseconds
-
-Elapsed time: 74-75: total : 16 millisecs, iter cost : 2 mseconds
-
-all new nodes initialized with years and mapped. FillSameYearSourceNodes with new_nodes_vec.size() = 5218
-checking same_year_source_nodes size.
-Elapsed time: 75-76: total : 0 millisecs, iter cost : 0 mseconds
-
-new_nodes_vec.size() b4 : 5218
-
-updated  updateGraphAttributesGeneratorNode .... 
-Elapsed time: 76-77: total : 85 millisecs, iter cost : 13 mseconds
-
-continuous_node_mapping.size() b5 : 526993, reverse_continuous_node_mapping size = 526993
-
-[ER Model] Building connections using Erdos-Renyi
-
-[ER Model] Processing 5218 new nodes for year 1989 (graph size: 521775)
-
-ALLOCATE DEVICE MEMORY
- Allocate RNG states.
- Estimate capacity based on ER model.
-create_thread_vectors_bulk<int2>(num_new_nodes, per_thread_capacities.
-Instead of batch - process all new nodes in parallel.
-COLLECT RESULTS
-[ER Model] Generated 272077 edges
-
-Year 1989: 5218 new nodes, 272077 new edges
-
-Elapsed time: 78-781 : total : 2.442 secs, this iter cost : 0.316 seconds
-
-Elapsed time: 78-79 : total : 3.307 secs, this iter cost : 0.464 seconds
-
-updateNodeInDegreeOutDegree(year=1989): updated 5218 out-degrees, 216938 in-degrees
-Elapsed time: 79-81 : total : 0.838 secs, this iter cost : 0 seconds
-
-Elapsed time: 79-80 : total : 0.659 secs, this iter cost : 0 seconds
-
-Elapsed time: 80-81 : total : 0.175 secs, this iter cost : 0 seconds
-
-Elapsed time: 70-81 : total : 8.541 secs, this iter cost : 1 seconds
-
- Entering loop for year = 1990
-Elapsed time: 70-71: total : 2.258 secs, iter cost : 0 seconds
-
-Elapsed time: 71-72: total : 2.482 secs, iter cost : 0 seconds
-
-Elapsed time: 72-73: total : 168 millisecs, iter cost : 1 mseconds
-
-num_new_nodes = 5270, current_graph_size = 526993, growth rate = 0.010000 
-Elapsed time: 73-74: total : 0 millisecs, iter cost : 0 mseconds
-
-Elapsed time: 74-75: total : 18 millisecs, iter cost : 2 mseconds
-
-all new nodes initialized with years and mapped. FillSameYearSourceNodes with new_nodes_vec.size() = 5270
-checking same_year_source_nodes size.
-Elapsed time: 75-76: total : 0 millisecs, iter cost : 0 mseconds
-
-new_nodes_vec.size() b4 : 5270
-
-updated  updateGraphAttributesGeneratorNode .... 
-Elapsed time: 76-77: total : 98 millisecs, iter cost : 13 mseconds
-
-continuous_node_mapping.size() b5 : 532263, reverse_continuous_node_mapping size = 532263
-
-[ER Model] Building connections using Erdos-Renyi
-
-[ER Model] Processing 5270 new nodes for year 1990 (graph size: 526993)
-
-ALLOCATE DEVICE MEMORY
- Allocate RNG states.
- Estimate capacity based on ER model.
-create_thread_vectors_bulk<int2>(num_new_nodes, per_thread_capacities.
-Instead of batch - process all new nodes in parallel.
-COLLECT RESULTS
-[ER Model] Generated 277302 edges
-
-Year 1990: 5270 new nodes, 277302 new edges
-
-Elapsed time: 78-781 : total : 2.757 secs, this iter cost : 0.315 seconds
-
-Elapsed time: 78-79 : total : 3.769 secs, this iter cost : 0.462 seconds
-
-updateNodeInDegreeOutDegree(year=1990): updated 5270 out-degrees, 221024 in-degrees
-Elapsed time: 79-81 : total : 0.968 secs, this iter cost : 0 seconds
-
-Elapsed time: 79-80 : total : 0.762 secs, this iter cost : 0 seconds
-
-Elapsed time: 80-81 : total : 0.201 secs, this iter cost : 0 seconds
-
-Elapsed time: 70-81 : total : 9.79 secs, this iter cost : 1 seconds
-
- Entering loop for year = 1991
-Elapsed time: 70-71: total : 2.538 secs, iter cost : 0 seconds
-
-Elapsed time: 71-72: total : 2.806 secs, iter cost : 0 seconds
-
-Elapsed time: 72-73: total : 187 millisecs, iter cost : 19 mseconds
-
-num_new_nodes = 5323, current_graph_size = 532263, growth rate = 0.010000 
-Elapsed time: 73-74: total : 0 millisecs, iter cost : 0 mseconds
-
-Elapsed time: 74-75: total : 20 millisecs, iter cost : 2 mseconds
-
-all new nodes initialized with years and mapped. FillSameYearSourceNodes with new_nodes_vec.size() = 5323
-checking same_year_source_nodes size.
-Elapsed time: 75-76: total : 0 millisecs, iter cost : 0 mseconds
-
-new_nodes_vec.size() b4 : 5323
-
-updated  updateGraphAttributesGeneratorNode .... 
-Elapsed time: 76-77: total : 111 millisecs, iter cost : 13 mseconds
-
-continuous_node_mapping.size() b5 : 537586, reverse_continuous_node_mapping size = 537586
-
-[ER Model] Building connections using Erdos-Renyi
-
-[ER Model] Processing 5323 new nodes for year 1991 (graph size: 532263)
-
-ALLOCATE DEVICE MEMORY
- Allocate RNG states.
- Estimate capacity based on ER model.
-create_thread_vectors_bulk<int2>(num_new_nodes, per_thread_capacities.
-Instead of batch - process all new nodes in parallel.
-COLLECT RESULTS
-[ER Model] Generated 284151 edges
-
-Year 1991: 5323 new nodes, 284151 new edges
-
-Elapsed time: 78-781 : total : 3.075 secs, this iter cost : 0.318 seconds
-
-Elapsed time: 78-79 : total : 4.248 secs, this iter cost : 0.479 seconds
-
-updateNodeInDegreeOutDegree(year=1991): updated 5323 out-degrees, 225713 in-degrees
-Elapsed time: 79-81 : total : 1.122 secs, this iter cost : 0 seconds
-
-Elapsed time: 79-80 : total : 0.889 secs, this iter cost : 0 seconds
-
-Elapsed time: 80-81 : total : 0.227 secs, this iter cost : 0 seconds
-
-Elapsed time: 70-81 : total : 11.065 secs, this iter cost : 1 seconds
-
- Entering loop for year = 1992
-Elapsed time: 70-71: total : 2.824 secs, iter cost : 0 seconds
-
-Elapsed time: 71-72: total : 3.149 secs, iter cost : 0 seconds
-
-Elapsed time: 72-73: total : 208 millisecs, iter cost : 21 mseconds
-
-num_new_nodes = 5376, current_graph_size = 537586, growth rate = 0.010000 
-Elapsed time: 73-74: total : 0 millisecs, iter cost : 0 mseconds
-
-Elapsed time: 74-75: total : 23 millisecs, iter cost : 3 mseconds
-
-all new nodes initialized with years and mapped. FillSameYearSourceNodes with new_nodes_vec.size() = 5376
-checking same_year_source_nodes size.
-Elapsed time: 75-76: total : 0 millisecs, iter cost : 0 mseconds
-
-new_nodes_vec.size() b4 : 5376
-
-updated  updateGraphAttributesGeneratorNode .... 
-Elapsed time: 76-77: total : 124 millisecs, iter cost : 13 mseconds
-
-continuous_node_mapping.size() b5 : 542962, reverse_continuous_node_mapping size = 542962
-
-[ER Model] Building connections using Erdos-Renyi
-
-[ER Model] Processing 5376 new nodes for year 1992 (graph size: 537586)
-
-ALLOCATE DEVICE MEMORY
- Allocate RNG states.
- Estimate capacity based on ER model.
-create_thread_vectors_bulk<int2>(num_new_nodes, per_thread_capacities.
-Instead of batch - process all new nodes in parallel.
-COLLECT RESULTS
-[ER Model] Generated 289616 edges
-
-Year 1992: 5376 new nodes, 289616 new edges
-
-Elapsed time: 78-781 : total : 3.402 secs, this iter cost : 0.327 seconds
-
-Elapsed time: 78-79 : total : 4.715 secs, this iter cost : 0.467 seconds
-
-updateNodeInDegreeOutDegree(year=1992): updated 5376 out-degrees, 229182 in-degrees
-Elapsed time: 79-81 : total : 1.259 secs, this iter cost : 0 seconds
-
-Elapsed time: 79-80 : total : 0.998 secs, this iter cost : 0 seconds
-
-Elapsed time: 80-81 : total : 0.254 secs, this iter cost : 0 seconds
-
-Elapsed time: 70-81 : total : 12.337 secs, this iter cost : 1 seconds
-
-Elapsed time: 7-8 :  12 seconds
-
-compute done:: graph size = 542962
-Elapsed time: 8-8.1 :  0 seconds
-
-Writing Graph to file: ./output/10y/nsys-H100-er-static-output-10y-1p.edgelist
-
-Elapsed time: 8.1-9 :  0 seconds
-
-Elapsed time: 9-10 :  0 seconds
-
- graph size = 542962
-WriteAttributes: graph size = 542962
-
-Elapsed time: 0-1 : 3 seconds
-
-Elapsed time: 1-4 : 0 seconds
-
-Elapsed time: 4-7 : 0 seconds
-
-Elapsed time: 70-71: total : 2.824 seconds.
-
-Elapsed time: 71-72: total : 3.149 seconds.
-
-Elapsed time: 72-73: total : 0.208 seconds.
-
-Elapsed time: 73-74: total : 0 seconds.
-
-Elapsed time: 74-75: total : 0.023 seconds.
-
-Elapsed time: 75-76: total : 0 seconds.
-
-Elapsed time: 76-77: total : 0.124 seconds.
-
-Elapsed time: 77-79: total : 4.715 seconds.
-
-Elapsed time: 79-81 : total : 1.259 seconds.
-
-Elapsed time: 79-80 : total : 0.998 seconds.
-
-Elapsed time: 80-81 : total : 0.254 seconds.
-
-Elapsed time: 70-81 : total : 12.337 seconds.
-
-Elapsed time: 7-8 : 12 seconds
-
-Elapsed time: 8-8.1 :  0 seconds
-
-Elapsed time: 8.1-9 :  0 seconds
-
-Elapsed time: 9-10 : 0 seconds
-
-Elapsed time: 11-12 : 0 seconds
-
-Elapsed time: 10-12 : 0 seconds
-
-Elapsed time: 0-7 : 3 seconds
-
-Elapsed time: 7-8 : 12 seconds
-
-Elapsed time: 8-12 : 1 seconds
-
-E2E Time for num_cycles = 10 with growth_rate = 1 % = 18 seconds.
-GPU 0: General Metrics for NVIDIA GH100 (any frequency)
-Generating '/tmp/nsys-report-53cd.qdstrm'
-[1/8] [0%                          ] nsys-H100-er-gnp-10y-1p.nsys-rep[1/8] [0%                          ] nsys-H100-er-gnp-10y-1p.nsys-rep[1/8] [7%                          ] nsys-H100-er-gnp-10y-1p.nsys-rep[1/8] [6%                          ] nsys-H100-er-gnp-10y-1p.nsys-rep[1/8] [8%                          ] nsys-H100-er-gnp-10y-1p.nsys-rep[1/8] [7%                          ] nsys-H100-er-gnp-10y-1p.nsys-rep[1/8] [8%                          ] nsys-H100-er-gnp-10y-1p.nsys-rep[1/8] [7%                          ] nsys-H100-er-gnp-10y-1p.nsys-rep[1/8] [8%                          ] nsys-H100-er-gnp-10y-1p.nsys-rep[1/8] [7%                          ] nsys-H100-er-gnp-10y-1p.nsys-rep[1/8] [8%                          ] nsys-H100-er-gnp-10y-1p.nsys-rep[1/8] [7%                          ] nsys-H100-er-gnp-10y-1p.nsys-rep[1/8] [8%                          ] nsys-H100-er-gnp-10y-1p.nsys-rep[1/8] [7%                          ] nsys-H100-er-gnp-10y-1p.nsys-rep[1/8] [8%                          ] nsys-H100-er-gnp-10y-1p.nsys-rep[1/8] [9%                          ] nsys-H100-er-gnp-10y-1p.nsys-rep[1/8] [8%                          ] nsys-H100-er-gnp-10y-1p.nsys-rep[1/8] [9%                          ] nsys-H100-er-gnp-10y-1p.nsys-rep[1/8] [8%                          ] nsys-H100-er-gnp-10y-1p.nsys-rep[1/8] [9%                          ] nsys-H100-er-gnp-10y-1p.nsys-rep[1/8] [10%                         ] nsys-H100-er-gnp-10y-1p.nsys-rep[1/8] [11%                         ] nsys-H100-er-gnp-10y-1p.nsys-rep[1/8] [12%                         ] nsys-H100-er-gnp-10y-1p.nsys-rep[1/8] [13%                         ] nsys-H100-er-gnp-10y-1p.nsys-rep[1/8] [14%                         ] nsys-H100-er-gnp-10y-1p.nsys-rep[1/8] [=15%                        ] nsys-H100-er-gnp-10y-1p.nsys-rep[1/8] [=16%                        ] nsys-H100-er-gnp-10y-1p.nsys-rep[1/8] [=17%                        ] nsys-H100-er-gnp-10y-1p.nsys-rep[1/8] [==19%                       ] nsys-H100-er-gnp-10y-1p.nsys-rep[1/8] [==20%                       ] nsys-H100-er-gnp-10y-1p.nsys-rep[1/8] [===22%                      ] nsys-H100-er-gnp-10y-1p.nsys-rep[1/8] [===24%                      ] nsys-H100-er-gnp-10y-1p.nsys-rep[1/8] [====25%                     ] nsys-H100-er-gnp-10y-1p.nsys-rep[1/8] [====27%                     ] nsys-H100-er-gnp-10y-1p.nsys-rep[1/8] [====28%                     ] nsys-H100-er-gnp-10y-1p.nsys-rep[1/8] [=====30%                    ] nsys-H100-er-gnp-10y-1p.nsys-rep[1/8] [=====31%                    ] nsys-H100-er-gnp-10y-1p.nsys-rep[1/8] [======33%                   ] nsys-H100-er-gnp-10y-1p.nsys-rep[1/8] [======34%                   ] nsys-H100-er-gnp-10y-1p.nsys-rep[1/8] [=======36%                  ] nsys-H100-er-gnp-10y-1p.nsys-rep[1/8] [=======37%                  ] nsys-H100-er-gnp-10y-1p.nsys-rep[1/8] [=======39%                  ] nsys-H100-er-gnp-10y-1p.nsys-rep[1/8] [========40%                 ] nsys-H100-er-gnp-10y-1p.nsys-rep[1/8] [========42%                 ] nsys-H100-er-gnp-10y-1p.nsys-rep[1/8] [=========43%                ] nsys-H100-er-gnp-10y-1p.nsys-rep[1/8] [=========45%                ] nsys-H100-er-gnp-10y-1p.nsys-rep[1/8] [=========46%                ] nsys-H100-er-gnp-10y-1p.nsys-rep[1/8] [==========48%               ] nsys-H100-er-gnp-10y-1p.nsys-rep[1/8] [==========49%               ] nsys-H100-er-gnp-10y-1p.nsys-rep[1/8] [===========51%              ] nsys-H100-er-gnp-10y-1p.nsys-rep[1/8] [===========53%              ] nsys-H100-er-gnp-10y-1p.nsys-rep[1/8] [============54%             ] nsys-H100-er-gnp-10y-1p.nsys-rep[1/8] [============56%             ] nsys-H100-er-gnp-10y-1p.nsys-rep[1/8] [=============58%            ] nsys-H100-er-gnp-10y-1p.nsys-rep[1/8] [=============60%            ] nsys-H100-er-gnp-10y-1p.nsys-rep[1/8] [==============61%           ] nsys-H100-er-gnp-10y-1p.nsys-rep[1/8] [==============63%           ] nsys-H100-er-gnp-10y-1p.nsys-rep[1/8] [===============65%          ] nsys-H100-er-gnp-10y-1p.nsys-rep[1/8] [===============67%          ] nsys-H100-er-gnp-10y-1p.nsys-rep[1/8] [================68%         ] nsys-H100-er-gnp-10y-1p.nsys-rep[1/8] [================70%         ] nsys-H100-er-gnp-10y-1p.nsys-rep[1/8] [=================72%        ] nsys-H100-er-gnp-10y-1p.nsys-rep[1/8] [=================73%        ] nsys-H100-er-gnp-10y-1p.nsys-rep[1/8] [==================75%       ] nsys-H100-er-gnp-10y-1p.nsys-rep[1/8] [==================76%       ] nsys-H100-er-gnp-10y-1p.nsys-rep[1/8] [========================100%] nsys-H100-er-gnp-10y-1p.nsys-rep[1/8] [========================100%] nsys-H100-er-gnp-10y-1p.nsys-rep
-[2/8] [0%                          ] nsys-H100-er-gnp-10y-1p.sqlite[2/8] [1%                          ] nsys-H100-er-gnp-10y-1p.sqlite[2/8] [2%                          ] nsys-H100-er-gnp-10y-1p.sqlite[2/8] [3%                          ] nsys-H100-er-gnp-10y-1p.sqlite[2/8] [4%                          ] nsys-H100-er-gnp-10y-1p.sqlite[2/8] [5%                          ] nsys-H100-er-gnp-10y-1p.sqlite[2/8] [6%                          ] nsys-H100-er-gnp-10y-1p.sqlite[2/8] [7%                          ] nsys-H100-er-gnp-10y-1p.sqlite[2/8] [8%                          ] nsys-H100-er-gnp-10y-1p.sqlite[2/8] [9%                          ] nsys-H100-er-gnp-10y-1p.sqlite[2/8] [10%                         ] nsys-H100-er-gnp-10y-1p.sqlite[2/8] [11%                         ] nsys-H100-er-gnp-10y-1p.sqlite[2/8] [12%                         ] nsys-H100-er-gnp-10y-1p.sqlite[2/8] [13%                         ] nsys-H100-er-gnp-10y-1p.sqlite[2/8] [14%                         ] nsys-H100-er-gnp-10y-1p.sqlite[2/8] [=15%                        ] nsys-H100-er-gnp-10y-1p.sqlite[2/8] [=16%                        ] nsys-H100-er-gnp-10y-1p.sqlite[2/8] [=17%                        ] nsys-H100-er-gnp-10y-1p.sqlite[2/8] [==18%                       ] nsys-H100-er-gnp-10y-1p.sqlite[2/8] [==19%                       ] nsys-H100-er-gnp-10y-1p.sqlite[2/8] [==20%                       ] nsys-H100-er-gnp-10y-1p.sqlite[2/8] [==21%                       ] nsys-H100-er-gnp-10y-1p.sqlite[2/8] [===22%                      ] nsys-H100-er-gnp-10y-1p.sqlite[2/8] [===23%                      ] nsys-H100-er-gnp-10y-1p.sqlite[2/8] [===24%                      ] nsys-H100-er-gnp-10y-1p.sqlite[2/8] [====25%                     ] nsys-H100-er-gnp-10y-1p.sqlite[2/8] [====26%                     ] nsys-H100-er-gnp-10y-1p.sqlite[2/8] [====27%                     ] nsys-H100-er-gnp-10y-1p.sqlite[2/8] [====28%                     ] nsys-H100-er-gnp-10y-1p.sqlite[2/8] [=====29%                    ] nsys-H100-er-gnp-10y-1p.sqlite[2/8] [=====30%                    ] nsys-H100-er-gnp-10y-1p.sqlite[2/8] [=====31%                    ] nsys-H100-er-gnp-10y-1p.sqlite[2/8] [=====32%                    ] nsys-H100-er-gnp-10y-1p.sqlite[2/8] [======33%                   ] nsys-H100-er-gnp-10y-1p.sqlite[2/8] [======34%                   ] nsys-H100-er-gnp-10y-1p.sqlite[2/8] [======35%                   ] nsys-H100-er-gnp-10y-1p.sqlite[2/8] [=======36%                  ] nsys-H100-er-gnp-10y-1p.sqlite[2/8] [=======37%                  ] nsys-H100-er-gnp-10y-1p.sqlite[2/8] [=======38%                  ] nsys-H100-er-gnp-10y-1p.sqlite[2/8] [=======39%                  ] nsys-H100-er-gnp-10y-1p.sqlite[2/8] [========40%                 ] nsys-H100-er-gnp-10y-1p.sqlite[2/8] [========41%                 ] nsys-H100-er-gnp-10y-1p.sqlite[2/8] [========42%                 ] nsys-H100-er-gnp-10y-1p.sqlite[2/8] [=========43%                ] nsys-H100-er-gnp-10y-1p.sqlite[2/8] [=========44%                ] nsys-H100-er-gnp-10y-1p.sqlite[2/8] [=========45%                ] nsys-H100-er-gnp-10y-1p.sqlite[2/8] [=========46%                ] nsys-H100-er-gnp-10y-1p.sqlite[2/8] [==========47%               ] nsys-H100-er-gnp-10y-1p.sqlite[2/8] [==========48%               ] nsys-H100-er-gnp-10y-1p.sqlite[2/8] [==========49%               ] nsys-H100-er-gnp-10y-1p.sqlite[2/8] [===========50%              ] nsys-H100-er-gnp-10y-1p.sqlite[2/8] [===========51%              ] nsys-H100-er-gnp-10y-1p.sqlite[2/8] [===========52%              ] nsys-H100-er-gnp-10y-1p.sqlite[2/8] [===========53%              ] nsys-H100-er-gnp-10y-1p.sqlite[2/8] [============54%             ] nsys-H100-er-gnp-10y-1p.sqlite[2/8] [============55%             ] nsys-H100-er-gnp-10y-1p.sqlite[2/8] [============56%             ] nsys-H100-er-gnp-10y-1p.sqlite[2/8] [============57%             ] nsys-H100-er-gnp-10y-1p.sqlite[2/8] [=============58%            ] nsys-H100-er-gnp-10y-1p.sqlite[2/8] [=============59%            ] nsys-H100-er-gnp-10y-1p.sqlite[2/8] [=============60%            ] nsys-H100-er-gnp-10y-1p.sqlite[2/8] [==============61%           ] nsys-H100-er-gnp-10y-1p.sqlite[2/8] [==============62%           ] nsys-H100-er-gnp-10y-1p.sqlite[2/8] [==============63%           ] nsys-H100-er-gnp-10y-1p.sqlite[2/8] [==============64%           ] nsys-H100-er-gnp-10y-1p.sqlite[2/8] [===============65%          ] nsys-H100-er-gnp-10y-1p.sqlite[2/8] [===============66%          ] nsys-H100-er-gnp-10y-1p.sqlite[2/8] [===============67%          ] nsys-H100-er-gnp-10y-1p.sqlite[2/8] [================68%         ] nsys-H100-er-gnp-10y-1p.sqlite[2/8] [================69%         ] nsys-H100-er-gnp-10y-1p.sqlite[2/8] [================70%         ] nsys-H100-er-gnp-10y-1p.sqlite[2/8] [================71%         ] nsys-H100-er-gnp-10y-1p.sqlite[2/8] [=================72%        ] nsys-H100-er-gnp-10y-1p.sqlite[2/8] [=================73%        ] nsys-H100-er-gnp-10y-1p.sqlite[2/8] [=================74%        ] nsys-H100-er-gnp-10y-1p.sqlite[2/8] [==================75%       ] nsys-H100-er-gnp-10y-1p.sqlite[2/8] [==================76%       ] nsys-H100-er-gnp-10y-1p.sqlite[2/8] [==================77%       ] nsys-H100-er-gnp-10y-1p.sqlite[2/8] [==================78%       ] nsys-H100-er-gnp-10y-1p.sqlite[2/8] [===================79%      ] nsys-H100-er-gnp-10y-1p.sqlite[2/8] [===================80%      ] nsys-H100-er-gnp-10y-1p.sqlite[2/8] [===================81%      ] nsys-H100-er-gnp-10y-1p.sqlite[2/8] [===================82%      ] nsys-H100-er-gnp-10y-1p.sqlite[2/8] [====================83%     ] nsys-H100-er-gnp-10y-1p.sqlite[2/8] [====================84%     ] nsys-H100-er-gnp-10y-1p.sqlite[2/8] [====================85%     ] nsys-H100-er-gnp-10y-1p.sqlite[2/8] [=====================86%    ] nsys-H100-er-gnp-10y-1p.sqlite[2/8] [=====================87%    ] nsys-H100-er-gnp-10y-1p.sqlite[2/8] [=====================88%    ] nsys-H100-er-gnp-10y-1p.sqlite[2/8] [=====================89%    ] nsys-H100-er-gnp-10y-1p.sqlite[2/8] [======================90%   ] nsys-H100-er-gnp-10y-1p.sqlite[2/8] [======================91%   ] nsys-H100-er-gnp-10y-1p.sqlite[2/8] [======================92%   ] nsys-H100-er-gnp-10y-1p.sqlite[2/8] [=======================93%  ] nsys-H100-er-gnp-10y-1p.sqlite[2/8] [=======================94%  ] nsys-H100-er-gnp-10y-1p.sqlite[2/8] [=======================95%  ] nsys-H100-er-gnp-10y-1p.sqlite[2/8] [=======================96%  ] nsys-H100-er-gnp-10y-1p.sqlite[2/8] [========================97% ] nsys-H100-er-gnp-10y-1p.sqlite[2/8] [========================98% ] nsys-H100-er-gnp-10y-1p.sqlite[2/8] [========================99% ] nsys-H100-er-gnp-10y-1p.sqlite[2/8] [========================100%] nsys-H100-er-gnp-10y-1p.sqlite[2/8] [========================100%] nsys-H100-er-gnp-10y-1p.sqlite
-SKIPPED: /home/jmukher/workspace/er/citation_abm/erprofile/nsys-H100-er-gnp-10y-1p.sqlite does not contain NV Tools Extension (NVTX) data.
-[3/8] Executing 'nvtx_sum' stats report
-[4/8] Executing 'osrt_sum' stats report
-
- Time (%)  Total Time (ns)  Num Calls    Avg (ns)      Med (ns)    Min (ns)   Max (ns)    StdDev (ns)            Name         
- --------  ---------------  ---------  ------------  ------------  --------  -----------  ------------  ----------------------
-     99.2   37,326,892,375      1,366  27,325,689.9  10,062,932.0     2,061  106,983,703  35,558,414.0  poll                  
-      0.5      187,613,076        913     205,490.8      24,477.0     1,054   30,351,273   1,264,674.6  ioctl                 
-      0.2       59,083,480         28   2,110,124.3   1,268,882.5   421,299   19,261,572   3,695,616.0  writev                
-      0.1       28,211,678        136     207,438.8     197,313.0   147,903      415,163      57,130.2  pthread_create        
-      0.0       17,733,970      5,973       2,969.0       2,347.0     1,300    3,543,280      45,817.1  read                  
-      0.0       11,736,029         51     230,118.2       2,977.0     1,162    6,569,196     955,371.1  fopen                 
-      0.0        3,407,714         20     170,385.7      38,284.0    21,910      580,676     213,542.3  pthread_rwlock_wrlock 
-      0.0        1,297,063         30      43,235.4       6,581.0     3,453      815,846     147,545.2  mmap64                
-      0.0          984,152         36      27,337.6      14,772.0     1,356      157,324      42,241.6  write                 
-      0.0          980,065        127       7,717.0       4,558.0     1,036       52,183       9,590.5  fflush                
-      0.0          893,795         12      74,482.9      29,296.0    19,204      550,238     150,236.2  sem_timedwait         
-      0.0          838,628         38      22,069.2       3,938.5     1,669      276,028      61,045.5  fclose                
-      0.0          378,584         17      22,269.6      24,468.0     1,652       39,704       9,995.5  pthread_rwlock_rdlock 
-      0.0          207,758         16      12,984.9       8,779.0     3,636       51,157      12,064.0  mmap                  
-      0.0          157,502         56       2,812.5       1,921.0     1,036        9,030       2,002.9  open64                
-      0.0           67,837          1      67,837.0      67,837.0    67,837       67,837           0.0  pthread_cond_wait     
-      0.0           37,911         19       1,995.3       1,708.0     1,000        5,682       1,144.6  fwrite                
-      0.0           37,275          1      37,275.0      37,275.0    37,275       37,275           0.0  fgets                 
-      0.0           26,712          4       6,678.0       7,129.5     4,338        8,115       1,629.2  munmap                
-      0.0           22,009          6       3,668.2       4,268.0     1,332        5,490       1,704.4  open                  
-      0.0           18,327          4       4,581.8       4,457.5     2,358        7,054       2,050.5  pipe2                 
-      0.0           17,083          2       8,541.5       8,541.5     6,646       10,437       2,680.6  fread                 
-      0.0           16,838          2       8,419.0       8,419.0     5,007       11,831       4,825.3  socket                
-      0.0           13,470          1      13,470.0      13,470.0    13,470       13,470           0.0  connect               
-      0.0            7,980          3       2,660.0       1,920.0     1,821        4,239       1,368.3  pthread_cond_broadcast
-      0.0            7,892          3       2,630.7       1,475.0     1,061        5,356       2,369.3  fcntl                 
-      0.0            1,693          1       1,693.0       1,693.0     1,693        1,693           0.0  bind                  
-
-[5/8] Executing 'cuda_api_sum' stats report
-
- Time (%)  Total Time (ns)  Num Calls    Avg (ns)      Med (ns)     Min (ns)    Max (ns)    StdDev (ns)            Name         
- --------  ---------------  ---------  ------------  ------------  ----------  -----------  ------------  ----------------------
-     62.9    1,985,853,967    205,750       9,651.8      12,329.0       3,952    4,748,153      11,495.0  cudaMemcpy            
-     13.5      425,107,278    102,900       4,131.3       4,028.0       3,291      531,119       3,576.7  cudaFree              
-      9.7      305,905,343         10  30,590,534.3  30,587,235.0  29,234,836   31,977,877     921,191.5  cudaStreamSynchronize 
-      9.0      282,655,932    102,900       2,746.9       2,482.0       1,627    1,659,072       7,044.2  cudaMalloc            
-      4.6      145,793,233         10  14,579,323.3      59,226.5      32,264  145,007,719  45,827,972.7  cudaStreamCreate      
-      0.4       11,705,763         10   1,170,576.3      26,089.5      17,541   11,500,093   3,629,424.7  cudaLaunchKernel      
-      0.0          424,562         10      42,456.2      44,238.0      24,142       48,752       6,798.0  cudaMemcpyAsync       
-      0.0          384,944         10      38,494.4      38,545.0      30,852       45,489       6,045.9  cudaMemset            
-      0.0          145,157         10      14,515.7      13,605.5      11,619       20,512       2,743.3  cudaStreamDestroy     
-      0.0            1,422          1       1,422.0       1,422.0       1,422        1,422           0.0  cuModuleGetLoadingMode
-
-[6/8] Executing 'cuda_gpu_kern_sum' stats report
-
- Time (%)  Total Time (ns)  Instances    Avg (ns)      Med (ns)     Min (ns)    Max (ns)   StdDev (ns)                                                  Name                                                
- --------  ---------------  ---------  ------------  ------------  ----------  ----------  -----------  ----------------------------------------------------------------------------------------------------
-    100.0      305,855,489         10  30,585,548.9  30,577,101.0  29,240,918  31,976,325    917,804.1  kernelErdosRenyiGNP(int, int, int, ABM *, curandStateXORWOW *, unsigned long long, int *, device_ve…
-
-[7/8] Executing 'cuda_gpu_mem_time_sum' stats report
-
- Time (%)  Total Time (ns)   Count   Avg (ns)  Med (ns)  Min (ns)  Max (ns)  StdDev (ns)           Operation          
- --------  ---------------  -------  --------  --------  --------  --------  -----------  ----------------------------
-     75.0      239,320,136  102,880   2,326.2   2,336.0     1,856     9,119         80.9  [CUDA memcpy Device-to-Host]
-     25.0       79,932,883  102,880     777.0     768.0       703     6,560        142.5  [CUDA memcpy Host-to-Device]
-      0.0           21,440       10   2,144.0   2,144.0     2,080     2,240         60.3  [CUDA memset]               
-
-[8/8] Executing 'cuda_gpu_mem_size_sum' stats report
-
- Total (MB)   Count   Avg (MB)  Med (MB)  Min (MB)  Max (MB)  StdDev (MB)           Operation          
- ----------  -------  --------  --------  --------  --------  -----------  ----------------------------
-     42.206       10     4.221     4.216     3.854     4.602        0.252  [CUDA memset]               
-     24.676  102,880     0.000     0.000     0.000     0.172        0.002  [CUDA memcpy Device-to-Host]
-      2.263  102,880     0.000     0.000     0.000     0.172        0.002  [CUDA memcpy Host-to-Device]
-
-Generated:
-    /home/jmukher/workspace/er/citation_abm/erprofile/nsys-H100-er-gnp-10y-1p.nsys-rep
-    /home/jmukher/workspace/er/citation_abm/erprofile/nsys-H100-er-gnp-10y-1p.sqlite
-SUCCESS: 12M → erprofile/nsys-H100-er-gnp-10y-1p.nsys-rep
-Running growth rate 3% for 10 years.
-Profile output: erprofile/nsys-H100-er-gnp-10y-3p.nsys-rep
-CMD: nsys profile --trace=cuda,nvtx,osrt --gpu-metrics-device=all --gpu-metrics-frequency=10000 --stats=true --force-overwrite=true -o erprofile/nsys-H100-er-gnp-10y-3p ./abm_er --model er-gnp --er-probability 0.0001 --edgelist sj_edgelist --nodelist sj_nodelist --out-degree-bag tcen_at_least_five --recency-probabilities sj_recprob --alpha 0.5 --preferential-weight 0.33 --recency-weight 0.33 --fitness-weight 0.33 --growth-rate .03 --fully-random-citations 0.05 --num-cycles 10 --same-year-proportion 0.12 --output-file ./output/10y/nsys-H100-er-static-output-10y-3p.edgelist --auxiliary-information-file ./output/10y/nsys-H100-er-static-auxiliary-10y-3p.aux --log-file ./output/10y/nsys-H100-er-static-er-gnp-10y-3p.log --num-processors 14 --log-level 1
-
-Start ABM....
-parse_args....
-edgelist....
-num-cycles....
-output-file....
-log-file = ./output/10y/nsys-H100-er-static-er-gnp-10y-3p.log....
-num-processors = 14....
-log-level = 0
-er_probability = 0.000100
-model = er-gnp
-Init ABM....
-Exec ABM....
-Start execute.Init Graph
-Inside  Graph ParseNodelist.....
-Populating the continuous_node mappings..
-Elapsed time: ParseNodelist : 769 millisecs = 0 seconds
-
-Inside Graph ParseEdgelist.....
-Elapsed time: ParseEdgelist : 1895 millisecs = 1 seconds
-
-In updateNodeInDegreeOutDegree: Update Outdegree first:
-In updateNodeInDegreeOutDegree: Update Indegree:
-Total (initial):: In-Degree = 899050, Out-Degree = 899050
-Elapsed time: 0-1 : 0 seconds
-Elapsed time: 1-2 : 1 seconds
-Elapsed time: 2-3 : 0 seconds
-
-Initialized Graph. Let us update the indegree and out-degrees... 
-Graph init done...
-calling InitializeFitness...
-final graph size is 660583 from initial_graph_size of 491532.
- populated out degree array.
- Entering loop for year = 1983
-Elapsed time: 70-71: total : 0.257 secs, iter cost : 0 seconds
-
-Elapsed time: 71-72: total : 0.304 secs, iter cost : 0 seconds
-
-Elapsed time: 72-73: total : 15 millisecs, iter cost : 15 mseconds
-
-num_new_nodes = 14746, current_graph_size = 491532, growth rate = 0.030000 
-Elapsed time: 73-74: total : 4 millisecs, iter cost : 4 mseconds
-
-Elapsed time: 74-75: total : 9 millisecs, iter cost : 9 mseconds
-
-all new nodes initialized with years and mapped. FillSameYearSourceNodes with new_nodes_vec.size() = 14746
-checking same_year_source_nodes size.
-Elapsed time: 75-76: total : 0 millisecs, iter cost : 0 mseconds
-
-new_nodes_vec.size() b4 : 14746
-
-updated  updateGraphAttributesGeneratorNode .... 
-Elapsed time: 76-77: total : 36 millisecs, iter cost : 36 mseconds
-
-continuous_node_mapping.size() b5 : 506278, reverse_continuous_node_mapping size = 506278
-
-[ER Model] Building connections using Erdos-Renyi
-
-[ER Model] Processing 14746 new nodes for year 1983 (graph size: 491532)
-[2026-07-09T03:41:58.303] error: *** JOB 13328989 ON h006 CANCELLED AT 2026-07-09T03:41:58 DUE to SIGNAL Terminated ***
