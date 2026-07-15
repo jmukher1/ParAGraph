@@ -21,7 +21,7 @@ MODEL="er-gnp"
 ER_PROBABILITY="0.0001"
 datasets=("amz" "eu" "yutb" "twt")
 
-for GROWTH_PERCENT in 1 3 6
+for GROWTH_PERCENT in 3 6
 do
     GROWTH_RATE=$(echo "scale=4; $GROWTH_PERCENT/100" | bc -l)
     GROWTH_LABEL=$(echo "$GROWTH_PERCENT" | sed 's/0\./dot/; s/\./dot/') 
@@ -31,7 +31,7 @@ do
     echo ${ER_PROBABILITY_LABEL}
     mkdir -p output/${ER_PROBABILITY_LABEL}
 
-    for NUM_CYCLES in 3 10 30
+    for NUM_CYCLES in 10
     do
         for dataset in "${datasets[@]}"
         do
