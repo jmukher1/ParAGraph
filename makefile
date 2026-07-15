@@ -30,11 +30,12 @@ NVLINKFLAGS = --expt-extended-lambda -lcudadevrt -lcudart \
 SRC_DIR   = src
 BUILD_DIR = build
 INC_DIR   = ./includes
+GPU_STD_DIR   = ./gpu-std
 
 # Single INCDIRS definition (the earlier duplicate -- referencing an
 # undefined $(CCCL_HOME) -- has been removed; it was silently overwritten
 # by this one anyway since Make is last-assignment-wins).
-INCDIRS = -I$(INC_DIR) -I$(SRC_DIR) -I$(CUCO_HOME)/include \
+INCDIRS = -I$(INC_DIR) -I$(SRC_DIR) -I$(GPU_STD_DIR) -I$(CUCO_HOME)/include \
           -I$(CUCO_HOME)/build/_deps/cccl-src/libcudacxx \
           -I$(CUCO_HOME)/build/_deps/cccl-src/libcudacxx/include \
           -I$(CUCO_HOME)/build/_deps/cccl-src/thrust \

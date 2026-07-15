@@ -1,6 +1,6 @@
 #!/bin/sh
 # Vary growth rate from 1% to 10%
-# 3 years simulation
+# 30 years simulation
 # 1 thread
 
 mkdir -p output
@@ -20,15 +20,19 @@ RECENCY_PROBABILITIES="sj_recprob"
 SAME_YEAR_PROPORTION="0.12"
 FULLY_RANDOM_CITATIONS="0.05"
 LOG_LEVEL="1"
+USE_WARP_BFS="true"
+USE_BATCHING="true"
+MAX_BATCH_SIZE="100000"
+USE_MULTISTAGE_KERNEL="true" 
 
 for GROWTH_PERCENT in 1 3 6
 do
     GROWTH_RATE=$(echo "scale=2; $GROWTH_PERCENT/100" | bc)
 
-    OUTPUT_FILE="./output/1M-gpu-parallel-static-${NUM_CYCLES}y-${GROWTH_PERCENT}p.edgelist"
-    OUTPUT_LOG="./output/1M-gpu-parallel-static-${NUM_CYCLES}y-${GROWTH_PERCENT}p-${NUM_THREADS}t.log"
-    OUTPUT_AUX="./output/1M-gpu-parallel-static-${NUM_CYCLES}y-${GROWTH_PERCENT}p.aux"
-    OUT_FILE="./output/1M-gpu-parallel-static-${NUM_CYCLES}y-${GROWTH_PERCENT}p-${NUM_THREADS}t.out"
+    OUTPUT_FILE="./output/baseline-gpu-parallel-static-${NUM_CYCLES}y-${GROWTH_PERCENT}p.edgelist"
+    OUTPUT_LOG="./output/baseline-gpu-parallel-static-${NUM_CYCLES}y-${GROWTH_PERCENT}p-${NUM_THREADS}t.log"
+    OUTPUT_AUX="./output/baseline-gpu-parallel-static-${NUM_CYCLES}y-${GROWTH_PERCENT}p.aux"
+    OUT_FILE="./output/baseline-gpu-parallel-static-${NUM_CYCLES}y-${GROWTH_PERCENT}p-${NUM_THREADS}t.out"
 
     echo "Running growth rate ${GROWTH_PERCENT}% with ${NUM_THREADS} thread"
     echo $OUTPUT_FILE
@@ -50,6 +54,10 @@ do
     --output-file ${OUTPUT_FILE} \
     --auxiliary-information-file ${OUTPUT_AUX} \
     --log-file ${OUTPUT_LOG} \
+    --use-warp-bfs ${USE_WARP_BFS} \
+    --use-batching ${USE_BATCHING} \
+    --max-batch-size ${MAX_BATCH_SIZE} \
+    --use-multistage-kernel ${USE_MULTISTAGE_KERNEL} \
     --num-processors ${NUM_THREADS} \
     --log-level ${LOG_LEVEL} \
     2>${ERRORS}/abm-${GROWTH_PERCENT}p.err \

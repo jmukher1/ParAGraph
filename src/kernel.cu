@@ -20,8 +20,8 @@ __global__ void __launch_bounds__(256, 4) kernelCallStage1(
     int total_N,
     ABM* abm,
     Graph* graph,
-    DeviceGraph* d_forward_adj_map_Graph,
-    DeviceGraph* d_backward_adj_map_Graph,
+    device_graph* d_forward_adj_map_Graph,
+    device_graph* d_backward_adj_map_Graph,
     device_map<int, Node>::device_view d_nodeAttributeMap_view,
     ABMStageState* d_states,
     int* d_new_nodes_arr,
@@ -113,8 +113,8 @@ __global__ void __launch_bounds__(256, 4) kernelCallStage1_warped(
     int total_N,
     ABM* abm,
     Graph* graph,
-    DeviceGraph* d_forward_adj_map_Graph,
-    DeviceGraph* d_backward_adj_map_Graph,
+    device_graph* d_forward_adj_map_Graph,
+    device_graph* d_backward_adj_map_Graph,
     device_map<int, Node>::device_view d_nodeAttributeMap_view,
     ABMStageState* d_states,
     int* d_new_nodes_arr,
@@ -444,8 +444,8 @@ __global__ void __launch_bounds__(256, 4) ABMKernel(
     int current_year, int current_graph_size,
     int initial_graph_size, int final_graph_size,
     // ---- Stage 1 (non-warped BFS) ----
-    DeviceGraph* d_forward_adj_map_Graph,
-    DeviceGraph* d_backward_adj_map_Graph,
+    device_graph* d_forward_adj_map_Graph,
+    device_graph* d_backward_adj_map_Graph,
     CompactBFSState* d_bfs_pool,
     device_vector* one_hop_neighborhood_vectors,
     device_vector* two_hop_neighborhood_vectors,
@@ -647,12 +647,12 @@ void buildOneNodeConnections(ABM* abm, Graph* graph,
         // ---------------------------------------------------------------------
         // GRAPH STRUCTURES (needed only for Stage 1)
         // ---------------------------------------------------------------------
-        DeviceGraph* d_forward_adj_map_Graph;
-        CUDA_CHECK(cudaMalloc(&d_forward_adj_map_Graph, sizeof(DeviceGraph)));
+        device_graph* d_forward_adj_map_Graph;
+        CUDA_CHECK(cudaMalloc(&d_forward_adj_map_Graph, sizeof(device_graph)));
         prepareGraph(graph->getForwardAdjMap(), d_forward_adj_map_Graph, graph->getNodeSetSize());
 
-        DeviceGraph* d_backward_adj_map_Graph;
-        CUDA_CHECK(cudaMalloc(&d_backward_adj_map_Graph, sizeof(DeviceGraph)));
+        device_graph* d_backward_adj_map_Graph;
+        CUDA_CHECK(cudaMalloc(&d_backward_adj_map_Graph, sizeof(device_graph)));
         prepareGraph(graph->getBackwardAdjMap(), d_backward_adj_map_Graph, graph->getNodeSetSize());
 
         int nodeAttrMapSize = graph->getNodeAttributeMapSize();
@@ -1096,8 +1096,8 @@ void buildOneNodeConnections(ABM* abm, Graph* graph,
         // ---------------------------------------------------------------------
         delete d_same_year_source_nodes_set;
         freeDeviceMap(d_nodeAttributeMap);
-        freeDeviceGraph(d_forward_adj_map_Graph);
-        freeDeviceGraph(d_backward_adj_map_Graph);
+        freedevice_graph(d_forward_adj_map_Graph);
+        freedevice_graph(d_backward_adj_map_Graph);
 
         CUDA_CHECK(cudaFree(d_new_nodes_arr));
         CUDA_CHECK(cudaFree(d_pa_arr));
@@ -1191,10 +1191,10 @@ static void buildOneNodeConnections_timed(
     }
 
     // ── CSR BUILD (timed) ─────────────────────────────────────────────────────
-    DeviceGraph* d_forward_adj_map_Graph;
-    DeviceGraph* d_backward_adj_map_Graph;
-    CUDA_CHECK(cudaMalloc(&d_forward_adj_map_Graph,  sizeof(DeviceGraph)));
-    CUDA_CHECK(cudaMalloc(&d_backward_adj_map_Graph, sizeof(DeviceGraph)));
+    device_graph* d_forward_adj_map_Graph;
+    device_graph* d_backward_adj_map_Graph;
+    CUDA_CHECK(cudaMalloc(&d_forward_adj_map_Graph,  sizeof(device_graph)));
+    CUDA_CHECK(cudaMalloc(&d_backward_adj_map_Graph, sizeof(device_graph)));
     {
         HostTimer _ht; _ht.start();
         prepareGraph(graph->getForwardAdjMap(),  d_forward_adj_map_Graph,  graph->getNodeSetSize());
@@ -1575,8 +1575,8 @@ static void buildOneNodeConnections_timed(
         freeDeviceMap(d_nodeAttributeMap);
     } // end CSR scope
 
-    freeDeviceGraph(d_forward_adj_map_Graph);
-    freeDeviceGraph(d_backward_adj_map_Graph);
+    freedevice_graph(d_forward_adj_map_Graph);
+    freedevice_graph(d_backward_adj_map_Graph);
     CUDA_CHECK(cudaFree(d_new_nodes_arr));
     CUDA_CHECK(cudaFree(d_pa_arr));   CUDA_CHECK(cudaFree(d_recency_arr));
     CUDA_CHECK(cudaFree(d_fit_arr));  CUDA_CHECK(cudaFree(d_pa_weight_arr));

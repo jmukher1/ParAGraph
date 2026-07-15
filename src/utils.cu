@@ -73,7 +73,7 @@ void convertStdSetToDeviceStaticSet(
 }
 
 void prepareGraph(const std::map<int, std::set<int>>& hostMap,
-                  DeviceGraph* dGraph, int num_vertices)
+                  device_graph* dGraph, int num_vertices)
 {
     printf("\n[prepareGraph] num_vertices = %d\n", num_vertices);
 
@@ -117,7 +117,7 @@ void prepareGraph(const std::map<int, std::set<int>>& hostMap,
     // -----------------------------------------------------
     // 3. Allocate device memory for CSR
     // -----------------------------------------------------
-    DeviceGraph hGraph;
+    device_graph hGraph;
 
     CUDA_CHECK(cudaMalloc(&hGraph.edges,  num_edges * sizeof(int)));
     CUDA_CHECK(cudaMalloc(&hGraph.offsets, (num_vertices + 1) * sizeof(int)));
@@ -138,10 +138,10 @@ void prepareGraph(const std::map<int, std::set<int>>& hostMap,
     // 5. Copy struct to device pointer
     // -----------------------------------------------------
     CUDA_CHECK(cudaMemcpy(dGraph, &hGraph,
-                          sizeof(DeviceGraph), cudaMemcpyHostToDevice));
+                          sizeof(device_graph), cudaMemcpyHostToDevice));
 }
 /*void prepareGraph(const std::map<int, std::set<int>>& hostMap,
-                    DeviceGraph* dGraph) { 
+                    device_graph* dGraph) { 
     int num_vertices = hostMap.size();
     printf("\nIn prepareGraph:: num_vertices = %d", num_vertices);
     //std::vector<int> h_keys;
@@ -173,7 +173,7 @@ void prepareGraph(const std::map<int, std::set<int>>& hostMap,
 
 
     // ---------- 2. Copy arrays to device ----------
-    DeviceGraph hGraph;  // temporary host struct
+    device_graph hGraph;  // temporary host struct
 
     //cudaMalloc(&hGraph.keys,    numKeys   * sizeof(int));
     cudaMalloc(&hGraph.edges,  num_edges * sizeof(int));
@@ -187,7 +187,7 @@ void prepareGraph(const std::map<int, std::set<int>>& hostMap,
     hGraph.num_edges = num_edges;
 
     // Copy struct itself to device
-    cudaMemcpy(dGraph, &hGraph, sizeof(DeviceGraph), cudaMemcpyHostToDevice); 
+    cudaMemcpy(dGraph, &hGraph, sizeof(device_graph), cudaMemcpyHostToDevice); 
     //printf("\ncudaMemcpy(dGraph, &hGraph,....");
 }
 */
@@ -308,10 +308,10 @@ void destroy_thread_sets(ThreadSets* thread_sets) {
 }
 
 // Add to utils.cuh
-void freeDeviceGraph(DeviceGraph* d_graph) {
+void freedevice_graph(device_graph* d_graph) {
     // First, copy the struct back to get the device pointers
-    DeviceGraph h_graph;
-    cudaMemcpy(&h_graph, d_graph, sizeof(DeviceGraph), cudaMemcpyDeviceToHost);
+    device_graph h_graph;
+    cudaMemcpy(&h_graph, d_graph, sizeof(device_graph), cudaMemcpyDeviceToHost);
     
     // Free the two internal arrays
     if (h_graph.edges != nullptr) {

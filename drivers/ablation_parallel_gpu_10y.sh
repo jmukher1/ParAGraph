@@ -62,7 +62,7 @@ CONFIGS=(
     "no-warp|false|true|20000|true"
     "no-batching|true|false|20000|true"
     "large-batch|true|true|1000000|true"
-    "monolithic|true|true|20000|false"
+    "monolithic|false|true|20000|false"
 )
 
 growth_percents="1 3 6"
