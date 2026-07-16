@@ -1219,6 +1219,7 @@ public:
 // main
 // ─────────────────────────────────────────────────────────────────────────────
 int main(int argc, char** argv) {
+    std::chrono::steady_clock::time_point t0 = std::chrono::steady_clock::now();
     std::cout << "Citation Network ABM – MASS CUDA\n"
               << "=================================\n\n";
 
@@ -1273,6 +1274,9 @@ int main(int argc, char** argv) {
     sim.run();
     sim.exportResults();
 
+    std::chrono::steady_clock::time_point t1 = std::chrono::steady_clock::now();
+    auto durationE2E = std::chrono::duration_cast<std::chrono::milliseconds>(t1 - t0);
+    std::cout << "\nE2E Time for num_cycles = "<< cfg.num_cycles << " with growth_rate = "<< (100*cfg.growth_rate) << " % = " << durationE2E.count()/1000 << " seconds." << std::endl;
     std::cout << "\nDone.\n";
     return 0;
 }

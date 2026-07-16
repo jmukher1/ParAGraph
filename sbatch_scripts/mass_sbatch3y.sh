@@ -3,7 +3,7 @@
 #SBATCH --nodes=1
 #SBATCH --ntasks-per-node=1
 #SBATCH --cpus-per-task=14
-#SBATCH --job-name="gpu-mrun-10y"
+#SBATCH --job-name="mass-3y-pa"
 #SBATCH --account=ayg
 #SBATCH --partition=ai
 #SBATCH --gres=gpu:h100:1 

@@ -3,7 +3,7 @@
 #SBATCH --nodes=1
 #SBATCH --ntasks-per-node=1
 #SBATCH --cpus-per-task=14
-#SBATCH --job-name="gpu-mrun-10y"
+#SBATCH --job-name="mass-10y-pa"
 #SBATCH --account=ayg
 #SBATCH --partition=ai
 #SBATCH --gres=gpu:h100:1 
@@ -13,4 +13,4 @@ source ~/.bashrc
 export OMP_NUM_THREADS=16
 cat /proc/cpuinfo
 
-./drivers/mass_30y_vary_p.sh 
+./drivers/mass_10y_vary_p.sh 
