@@ -1,9 +1,9 @@
 #!/bin/bash
-#SBATCH --time=11:59:00
+#SBATCH --time=23:59:00
 #SBATCH --nodes=1
 #SBATCH --ntasks-per-node=1
 #SBATCH --cpus-per-task=14
-#SBATCH --job-name="cpu-6p-30y"
+#SBATCH --job-name="cpu-6p-24h-6p"
 #SBATCH --account=ayg
 #SBATCH --partition=ai
 #SBATCH --gres=gpu:h100:1
