@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/bin/bash
 # ER Probability sweep: 0.01% to 0.1%
 # Growth rate sweep: 1%, 3%, 6%
 # Simulation length sweep: 3, 10, 30 years
@@ -21,23 +21,19 @@ MODEL="er-gnp"
 
 datasets=("sj")
 er_probabilities=(0.0001 0.0003 0.0005 0.001)
-BFS_BATCH_SIZE=10
+BFS_BATCH_SIZE=20
 
-for GROWTH_PERCENT in 1 3 6
+for GROWTH_PERCENT in 6
 do
     GROWTH_RATE=$(echo "scale=4; $GROWTH_PERCENT/100" | bc -l)
     GROWTH_LABEL=$(echo "$GROWTH_PERCENT" | sed 's/0\./dot/; s/\./dot/')
 
     # Set BFS batch size (based on your logic)
-    if [ "$GROWTH_PERCENT" -eq 5 ]; then
-        BFS_BATCH_SIZE=20
-    elif [ "$GROWTH_PERCENT" -ge 6 ]; then
-        BFS_BATCH_SIZE=30
-    else
-        BFS_BATCH_SIZE=10
+    if [ "$GROWTH_PERCENT" -ge 6 ]; then
+        BFS_BATCH_SIZE=50
     fi
 
-    for NUM_CYCLES in 3 10 30
+    for NUM_CYCLES in 3 10
     do
         for ER_PROBABILITY in "${er_probabilities[@]}"
         do

@@ -21,7 +21,7 @@ MODEL="er-gnp"
 
 datasets=("amz" "eu" "yutb" "twt")
 er_probabilities=(0.0001 0.0003 0.0005 0.001)
-BFS_BATCH_SIZE=10
+BFS_BATCH_SIZE=30
 
 for GROWTH_PERCENT in 1 3 6
 do
@@ -29,12 +29,8 @@ do
     GROWTH_LABEL=$(echo "$GROWTH_PERCENT" | sed 's/0\./dot/; s/\./dot/')
 
     # Set BFS batch size (based on your logic)
-    if [ "$GROWTH_PERCENT" -eq 5 ]; then
-        BFS_BATCH_SIZE=20
-    elif [ "$GROWTH_PERCENT" -ge 6 ]; then
-        BFS_BATCH_SIZE=30
-    else
-        BFS_BATCH_SIZE=10
+    if [ "$GROWTH_PERCENT" -ge 6 ]; then
+        BFS_BATCH_SIZE=50
     fi
 
     for NUM_CYCLES in 3 10 30
