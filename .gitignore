@@ -3,6 +3,5 @@ output/
 build/
 errors/
 abm
-seeds
 seeds/
 *.nsys-rep
